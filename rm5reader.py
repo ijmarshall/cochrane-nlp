@@ -75,8 +75,8 @@ class RM5(XMLReader):
         return output
     
 
-
     def refs(self, full_parse=False, return_dict=False):
+
         studies_ET = self.data.findall("STUDIES_AND_REFERENCES/STUDIES/INCLUDED_STUDIES/STUDY")
         
         if full_parse:
@@ -89,17 +89,53 @@ class RM5(XMLReader):
                    
         def _ref_parse_to_dict(study_ET, characteristics=None, quality=None):
 
-            output_dict = {"TI": self._ETfind("REFERENCE/TI", study_ET), # title
-                          "SO": self._ETfind("REFERENCE/SO", study_ET),  # journal
-                          "AU": self._refs_AU(self._ETfind("REFERENCE/AU", study_ET)), # list of authors
-                          "fAU": self._refs_AU(self._ETfind("REFERENCE/AU", study_ET))[0], # first author
-                          "YR": self._ETfind("REFERENCE/YR", study_ET), # year of publication
-                          "PG": self._refs_PG(self._ETfind("REFERENCE/PG", study_ET)), # page range
-                          "fPG": self._refs_PG(self._ETfind("REFERENCE/PG", study_ET))[0], # first page
-                          "VL": self._ETfind("REFERENCE/VL", study_ET), # volume
-                          "NO": self._ETfind("REFERENCE/NO", study_ET), # issue
-                          "ID": study_ET.attrib.get("ID"), # id (unique ID for the review)
-                          }
+            references = study_ET.findall("REFERENCE")
+
+
+
+            for i, reference in enumerate(references):
+                if reference.get("PRIMARY") == "YES":
+                    # either get the first references marked as the primary ref
+                    primary_ref = reference
+                    primary_status = "YES"
+                    index_ref = i
+                    break
+            else:
+                
+                # or set the primary ref to the first one
+                primary_ref = study_ET.find("REFERENCE") # select first one
+                # if no references, should return empty
+                primary_status = "NO"
+                index_ref = 0
+                
+
+            if primary_ref:
+                output_dict = {"TI": self._ETfind("TI", primary_ref),
+                              "SO": self._ETfind("SO", primary_ref),
+                              "AU": self._refs_AU(self._ETfind("AU", primary_ref)),
+                              "fAU": self._refs_AU(self._ETfind("AU", primary_ref))[0],
+                              "YR": self._ETfind("YR", primary_ref),
+                              "PG": self._refs_PG(self._ETfind("PG", primary_ref)),
+                              "fPG": self._refs_PG(self._ETfind("PG", primary_ref))[0],
+                              "VL": self._ETfind("VL", primary_ref),
+                              "NO": self._ETfind("NO", primary_ref),
+                              "ID": study_ET.attrib.get("ID"),
+                              "PRIMARY": primary_status,
+                              "REF_INDEX": index_ref}
+            else: # else no data in cochrane review
+                output_dict = {"TI": "",
+                              "SO": "",
+                              "AU": [],
+                              "fAU": "",
+                              "YR": "",
+                              "PG": [],
+                              "fPG": "",
+                              "VL": "",
+                              "NO": "",
+                              "ID": study_ET.attrib.get("ID"),
+                              "PRIMARY": -1,
+                              "REF_INDEX": -1}
+
                           
             if characteristics != None:
                 id = output_dict["ID"]
@@ -110,7 +146,6 @@ class RM5(XMLReader):
                 output_dict["QUALITY"] = quality.get(id, {})
            
             return output_dict
-
         if return_dict:
             return {study_ET.attrib.get("ID"): _ref_parse_to_dict(study_ET, characteristics=characteristics, quality=quality) for study_ET in studies_ET}
         else:
