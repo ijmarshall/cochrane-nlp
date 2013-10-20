@@ -1,0 +1,10 @@
+js/app.js
+js/test.js
+*.swp
+/tags
+/R/service.R
+/js/patavi.js
+*~
+\#*\#
+.\#*
+*_archive
