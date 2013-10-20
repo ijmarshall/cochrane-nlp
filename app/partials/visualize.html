@@ -15,7 +15,7 @@
     </div>
 
     <div class="row" ng-repeat="abstracts in abstracts(files) track by $index">
-      <div class="columns large-4" ng-repeat="abstract in abstracts">
+      <div class="columns large-4" ng-repeat="abstract in abstracts track by $index">
         <h3>{{$parent.$index}}</h3>
         <abstract content="{{abstract}}"></abstract>
         <hr>
