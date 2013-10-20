@@ -8,3 +8,7 @@ It contains:
 
 The set of allowed annotations can be edited in the =app/js/app.js= file.
 See @ijmarshal [[https://gist.github.com/ijmarshall/6729959][tagdict]] for an overview of the current tags.
+
+** Usage
+Clone the repository and point a web server to the root directory (the one containing =index.html=)
+For example =python -m SimpleHTTPServer=.
