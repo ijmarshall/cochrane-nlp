@@ -16,6 +16,7 @@ directives.directive('abstract', function ($compile) {
       attrs.$observe('content', function(str) {
         if(str && str.length !== 0) {
           if(attrs.editable) element.attr("contenteditable", true);
+          if(attrs.editable) element.attr("spellcheck", false);
           element.attr("id", attrs.id);
           element.html(str);
           $compile(element.contents())(scope);

@@ -62,40 +62,41 @@ controllers.controller('AnnotateController', ['$scope', '$compile', 'Annotations
     return sel;
   };
 
-  var sel = {};
   var popup = $("#annotatePopup");
 
   $scope.annotate = function(annotation) {
-    var range, node;
-    if (typeof window.getSelection != "undefined") {
-
-      // Test that the Selection object contains at least one Range
-      if (sel.getRangeAt && sel.rangeCount) {
-        // Get the first Range (only Firefox supports more than one)
-        range = window.getSelection().getRangeAt(0);
-
-        if (range.createContextualFragment) {
-          var newNode = document.createElement(annotation);
-          range.surroundContents(newNode);
-          window.getSelection().removeAllRanges();
-          popup.hide();
-        }
+    var sel, range;
+    if (window.getSelection) {
+      sel = window.getSelection();
+      var newNode = document.createElement(annotation);
+      if (sel.rangeCount) {
+        range = sel.getRangeAt(0);
+        range.surroundContents(newNode);
       }
-    };
+    } else if (document.selection && document.selection.createRange) {
+      range = document.selection.createRange();
+      range.surroundContents(newNode);
+    }
+    window.getSelection().removeAllRanges();
+    popup.hide();
   };
 
   $scope.annotations = Annotations;
 
   $scope.triggerAnnotate = function() {
-    sel = snapSelectionToWord(); // should bubble to Controller closure
+    var sel = snapSelectionToWord();
     if (sel.getRangeAt && sel.rangeCount) {
       var range = sel.getRangeAt(0);
       if(!_.isEmpty(sel.toString())) {
         var boundingBox = range.getClientRects();
+
+        var doc = document.documentElement;
+        var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+        var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+        popup.show();
         popup
-          .css("top", boundingBox[0].top)
-          .css("left", boundingBox[0].left)
-          .css("display", "block");
+          .css("top", top + boundingBox[0].top)
+          .css("left", left + boundingBox[0].left + (popup.offset().width / 2))
       }
       else {
         popup.hide();
