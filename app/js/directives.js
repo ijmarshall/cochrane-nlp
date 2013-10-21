@@ -15,8 +15,10 @@ directives.directive('abstract', function ($compile) {
     link: function(scope, element, attrs) {
       attrs.$observe('content', function(str) {
         if(str && str.length !== 0) {
-          if(attrs.editable) element.attr("contenteditable", true);
-          if(attrs.editable) element.attr("spellcheck", false);
+          if(attrs.editable) {
+            element.attr("contenteditable", true);
+            element.attr("spellcheck", false);
+          }
           element.attr("id", attrs.id);
           element.html(str);
           $compile(element.contents())(scope);
@@ -38,7 +40,7 @@ directives.directive('confirmationNeeded', function () {
       var clickAction = attr.ngClick;
       element.bind('click',function () {
         if ( window.confirm(msg) ) {
-          scope.$eval(clickAction)
+          scope.$eval(clickAction);
         }
       });
     }
