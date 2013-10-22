@@ -43,8 +43,8 @@ class BiViewer():
 
 
     def __init__(self, make_index=True, in_memory=False, cdsr_cache_length=20, pm_filter=None,
-                 cdsr_filter=None, test_mode=False):
-        self.import_data(test_mode=test_mode)
+                 cdsr_filter=None, test_mode=False, linkfile="data/biviewer_links_all.pck"):
+        self.import_data(filename=linkfile, test_mode=test_mode)
         if make_index==True:
             self.generate_index()
                 # if make_index True then generate index on class initialisation
@@ -59,9 +59,9 @@ class BiViewer():
         self.cdsr_filter = cdsr_filter
 
 
-    def import_data(self, test_mode=False):
+    def import_data(self, filename, test_mode=False):
         "loads the pubmed-cdsr correspondance list"
-        with open("data/biviewer_links_all.pck", 'rb') as f:
+        with open(filename, 'rb') as f:
             self.lookup = pickle.load(f)
         if test_mode:
             # get the first 250 studies only
