@@ -73,7 +73,7 @@ class BiViewer():
 
     def __getitem__(self, key):
         """
-        returns list relating to index number
+        returns (cochrane_data, pubmed_data) tuple relating to study index number
         implements a cache of last cochrane reviews accessed to avoid reparsing for
         when using file based access rather than memory based
         """
