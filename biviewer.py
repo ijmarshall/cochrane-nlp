@@ -21,8 +21,6 @@ import random
 import re
 
 
-
-
 ### set local paths here
 
 COCHRANE_REVIEWS_PATH = "/users/iain/code/data/cdsr2013/" # to revman files
@@ -42,34 +40,33 @@ class BiViewer():
     """
 
 
-    def __init__(self, make_index=True, in_memory=False, cdsr_cache_length=20, pm_filter=None,
+    def __init__(self, in_memory=False, cdsr_cache_length=20, pm_filter=None,
                  cdsr_filter=None, test_mode=False, linkfile="data/biviewer_links_all.pck"):
+
         self.import_data(filename=linkfile, test_mode=test_mode)
-        if make_index==True:
-            self.generate_index()
-                # if make_index True then generate index on class initialisation
-                # else will be generated on first use
-        if in_memory==True:
-            self.load_data_in_memory()
-        else:
-            self.cdsr_cache_length = cdsr_cache_length
-            self.cdsr_cache_index = collections.deque()
-            self.cdsr_cache_data = {}
+
+        self.data = []
+        self.cdsr_cache_length = cdsr_cache_length
+        self.cdsr_cache_index = collections.deque()
+        self.cdsr_cache_data = {}
         self.pm_filter = pm_filter
         self.cdsr_filter = cdsr_filter
+
+        if in_memory==True:
+            self.load_data_in_memory()
 
 
     def import_data(self, filename, test_mode=False):
         "loads the pubmed-cdsr correspondance list"
         with open(filename, 'rb') as f:
-            self.lookup = pickle.load(f)
+            self.index_data = pickle.load(f)
         if test_mode:
-            # get the first 250 studies only
-            self.lookup = self.lookup[:250]
+            # get the first 2500 studies only (more since now per study, not per review)
+            self.index_data = self.index_data[:2500]
                     
     def __len__(self):
         "returns number of RCTs in index (not number of Cochrane reviews)"
-        return len(self.index())
+        return len(self.index_data)
 
     def __getitem__(self, key):
         """
@@ -79,20 +76,19 @@ class BiViewer():
         """
         try:
             return self.data[key] # first return data if loaded in memory
-
-        except AttributeError: # if not in memory will retrieve from file
+        except IndexError: # if not in memory will retrieve from file
             
-            cdsr_filename, cdsr_refcode, pm_filename = self.index()[key]
-            # self.index()[key][0] == cdsr filename; [1] == cdsr refcode; [2] == pubmed filename
+            study = self.index_data[key]
             
-            if cdsr_filename in self.cdsr_cache_data:
+            
+            if study['cdsr_filename'] in self.cdsr_cache_data:
                 # if review in cache return it
-                cr = self.cdsr_cache_data[cdsr_filename] 
+                cr = self.cdsr_cache_data[study['cdsr_filename']] 
             else:
                 # else load from file, save to end of cache, and delete oldest cached review
-                cr = RM5(COCHRANE_REVIEWS_PATH + cdsr_filename).refs(full_parse=True, return_dict=True)
-                self.cdsr_cache_data[cdsr_filename] = cr # save to cache
-                self.cdsr_cache_index.append(cdsr_filename) # and add to index deque
+                cr = RM5(COCHRANE_REVIEWS_PATH + study['cdsr_filename']).refs(full_parse=True, return_dict=True)
+                self.cdsr_cache_data[study['cdsr_filename']] = cr # save to cache
+                self.cdsr_cache_index.append(study['cdsr_filename']) # and add to index deque
 
                 if len(self.cdsr_cache_index) > self.cdsr_cache_length:
                     self.cdsr_cache_data.pop(self.cdsr_cache_index.popleft())
@@ -100,19 +96,11 @@ class BiViewer():
                     # (the one indexed 0 in the index deque)
                     # and simultaneously removes from the index (popleft)
 
-            pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + pm_filename)
+            pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + study['pm_filename'])
             if self.cdsr_filter and self.pm_filter:
-                return (cr[cdsr_refcode].get(self.cdsr_filter, ""), pm.text_filtered(part_id=self.pm_filter))
+                return (cr[study['cdsr_refcode']].get(self.cdsr_filter, ""), pm.text_filtered(part_id=self.pm_filter))
             else:
-                return (cr[cdsr_refcode], pm.text_all())
-
-    def index(self):
-        "generates index on first run"
-        try:
-            return self.index_data
-        except AttributeError: # first run will generate a AttributeError, so make the index
-            self.generate_index()
-            return self.index_data
+                return (cr[study['cdsr_refcode']], pm.text_all())
 
     def generate_index(self):
         self.index_data = []
@@ -123,27 +111,12 @@ class BiViewer():
 
     def load_data_in_memory(self):
         self.data = []
-        p = ProgressBar(len(self))
-        for i in self.iter():
+        p = ProgressBar(len(self), timer=True)
+        for i in range(len(self)):
             p.tap()
-            self.data.append(i)
+            self.data.append(self[i])
         
-    def iter(self):
-        for i in self.lookup:
-            cr = RM5(COCHRANE_REVIEWS_PATH + i["CDSRfilename"]).refs(full_parse=True, return_dict=True)
-            for ref in i["refs"]:
-                pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + ref["PMfilename"])
-                
-                if self.cdsr_filter and self.pm_filter:
-                    yield (cr[ref["CDSRrefcode"]].get(self.cdsr_filter, ""), pm.text_filtered(part_id=self.pm_filter))
-                else:
-                    yield (cr[ref["CDSRrefcode"]], pm.text_all())
-
-
-
-
-
-
+    
 
     
 def main():
