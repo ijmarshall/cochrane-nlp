@@ -135,7 +135,7 @@ class Pipeline(object):
 
 
 def main():
-    from biview import BiViewer
+    from biviewer import BiViewer
     from bilearn import bilearnPipeline
 
     
