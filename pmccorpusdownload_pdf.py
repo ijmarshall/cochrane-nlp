@@ -17,16 +17,13 @@ from io import BytesIO
 from progressbar import ProgressBar
 
 
-OUTPUT_PATH = '/users/iain/Code/data/cdsrpmc2/'
+OUTPUT_PATH = '/users/iain/Code/data/cdsrpdfs/'
 
-def gettar(ftp, filename):
+def getfile(ftp, filename):
+    with open(OUTPUT_PATH + os.path.basename(filename), 'wb') as f:
+        # print "writing file to %s" % (OUTPUT_PATH + os.path.basename(filename),)
+        ftp.retrbinary("RETR " + filename, f.write)
 
-    data = BytesIO()
-    ftp.retrbinary("RETR " + filename, data.write)
-    data.seek(0)
-    tar = tarfile.open(mode="r:gz", fileobj=data)
-    # print tar.getmembers()
-    tar.extractall(OUTPUT_PATH)
 
 def getaddresses(filename):
 
@@ -53,17 +50,17 @@ def main():
 
 
     print "Loading Cochrane and Pubmed linked data..."
-    viewer = BiViewer(linkfile='data/biviewer_links_pmc_oa.pck')
-
+    with open('data/biviewer_links_pmc_oa.pck', 'rb') as f:
+        viewer = pickle.load(f)
+    
     print "Loading PMC index..."
-    lookup = getaddresses('data/pmc_file_list.txt')
+    lookup = getaddresses('data/pmc_pdf_list.txt')
 
 
 
     print "Connecting to Pubmed Central FTP..."
 
 
-    p = ProgressBar(len(viewer))
 
     ftp = FTP('ftp.ncbi.nlm.nih.gov')
     ftp.login()
@@ -71,13 +68,31 @@ def main():
     print    
     print "Downloading pdfs"
 
-   
+    notfound = 0
+    found = 0
+
+    pdf_present_links = []
+
+    p = ProgressBar(len(viewer), timer=True)
+
     for study in viewer:
         p.tap()
-        pmc_id = study[1]['PMCid']
-        gettar(ftp, 'pub/pmc/%s' % (lookup[pmc_id],))
+        pmc_id = study['pmc_id']
+        # print pmc_id
+        if pmc_id in lookup:
+            pdf_filename = lookup[pmc_id]
+            getfile(ftp, 'pub/pmc/%s' % (pdf_filename,))
+            # print "yes"
+            study["pdf_filename"] = pdf_filename
+            pdf_present_links.append(study)
+            found += 1
+        else:
+            notfound += 1
 
+    with open('data/pdf_present_links.pck', 'wb') as f:
+        pickle.dump(pdf_present_links, f)
 
+    print "done! %d pdfs not found; %d found" % (notfound, found)
 
 if __name__ == '__main__':
     main()
