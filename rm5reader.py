@@ -34,6 +34,9 @@ class RM5(XMLReader):
                     cdno = "Unknown"
         return cdno
 
+    def review_type(self):
+        return self.data.getroot().attrib.get("TYPE")
+
     def ref_characteristics(self):
 
         studies_characteristics = self.data.findall("CHARACTERISTICS_OF_STUDIES/CHARACTERISTICS_OF_INCLUDED_STUDIES/INCLUDED_CHAR")
@@ -203,6 +206,10 @@ def main():
 
     print "Title:"
     print reader.title()
+    print
+
+    print "Review type:"
+    print reader.review_type()
     print
 
     print "Cochrane ID:"
