@@ -102,12 +102,6 @@ class BiViewer():
             else:
                 return (cr[study['cdsr_refcode']], pm.text_all())
 
-    def generate_index(self):
-        self.index_data = []
-        for i in self.lookup:
-            cdsr_filename = i["CDSRfilename"]
-            for ref in i["refs"]:
-                self.index_data.append([cdsr_filename, ref["CDSRrefcode"], ref["PMfilename"]])
 
     def load_data_in_memory(self):
         self.data = []
