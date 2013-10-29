@@ -83,7 +83,7 @@ def main():
             pdf_filename = lookup[pmc_id]
             getfile(ftp, 'pub/pmc/%s' % (pdf_filename,))
             # print "yes"
-            study["pdf_filename"] = pdf_filename
+            study["pdf_filename"] = os.path.basename(pdf_filename)
             pdf_present_links.append(study)
             found += 1
         else:
