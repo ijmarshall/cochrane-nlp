@@ -25,8 +25,8 @@ import re
 
 ### set local paths here
 
-COCHRANE_REVIEWS_PATH = "/users/iain/code/data/cdsr2013/" # to revman files
-PUBMED_ABSTRACTS_PATH = "/users/iain/code/data/cdsrpubmed/" # to pubmed xml
+COCHRANE_REVIEWS_PATH = "/Users/bwallace/dev/cochrane/reviews06072013/" # to revman files
+PUBMED_ABSTRACTS_PATH = "/Users/bwallace/dev/cochrane/pubmed20131018/" # to pubmed xml
 
 
 
