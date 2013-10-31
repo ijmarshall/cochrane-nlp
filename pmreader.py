@@ -50,8 +50,6 @@ class PMCCorpusReader(NLMCorpusReader):
         self.section_map["abstract"] = 'front/article-meta/abstract'
         
         
-   
-        
 
 class PubmedCorpusReader(NLMCorpusReader):
 
@@ -62,15 +60,20 @@ class PubmedCorpusReader(NLMCorpusReader):
         self.section_map["linkedIds"] = 'OtherID'
         self.section_map["pmid"] = 'PMID'
         self.section_map["mesh"] = 'MeshHeadingList/MeshHeading/DescriptorName'
+
+    def text_all(self):
+        output = NLMCorpusReader.text_all(self) # get the normal output dict
+        output["PMCid"] = self.is_pmc_linked()
+        return output
         
     def is_pmc_linked(self):
         els = self.data.findall('OtherID')
         if len(els) > 0:
             for el in els:
                 text = self._ET2unicode(el)
-                result = re.search("PMC[0-9]+", text)
+                result = re.match("PMC[0-9]+", text)
                 if result is not None:
-                    return text.strip()
+                    return result.group(0)
         return None
 
 
