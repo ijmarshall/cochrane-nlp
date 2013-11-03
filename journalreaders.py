@@ -52,12 +52,10 @@ class PdfReader(TextReader):
     def import_pdf(self, filename):
         """
             runs pdftotext command line util via python subprocess
-            uses '-' to direct output to stdout
-            and is captured by communicate()
+
         """
-        p = subprocess.Popen(['pdftotext', filename, '-'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out, err = p.communicate()
-        return out.strip() # remove any multiple blank lines at the end
+        rawtext = subprocess.check_output(['pdftotext', filename, '-'])
+        return rawtext.strip() # remove any multiple blank lines at the end
 
 
 class HtmlReader(TextReader):
