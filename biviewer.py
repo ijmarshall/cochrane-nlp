@@ -27,6 +27,8 @@ COCHRANE_REVIEWS_PATH = "/users/iain/code/data/cdsr2013/" # to revman files
 PUBMED_ABSTRACTS_PATH = "/users/iain/code/data/cdsrpubmed/" # to pubmed xml
 
 
+BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'pubmed'])
+
 
 class BiViewer():
     """
@@ -100,7 +102,7 @@ class BiViewer():
             if self.cdsr_filter and self.pm_filter:
                 return (cr[study['cdsr_refcode']].get(self.cdsr_filter, ""), pm.text_filtered(part_id=self.pm_filter))
             else:
-                return (cr[study['cdsr_refcode']], pm.text_all())
+                return BiviewerView(cr[study['cdsr_refcode']], pm.text_all())
 
 
     def load_data_in_memory(self):
@@ -124,13 +126,13 @@ def main():
     # bv[corpus_study_index][0=cochrane;1=pubmed][part_to_retrieve]
 
     print "Title:"
-    print bv[0][1]["title"] # print the pubmed title of the first study
+    print bv[0].pubmed["title"] # print the pubmed title of the first study
     print
     print "Abstract:"
-    print bv[0][1]["abstract"] # find out the pubmed abstract of the first study
+    print bv[0].pubmed["abstract"] # find out the pubmed abstract of the first study
     print
     print "Intervention description in Cochrane:"
-    print bv[0][0]["CHAR_INTERVENTIONS"]
+    print bv[0].cochrane["CHAR_INTERVENTIONS"]
 
     # the biviewer essentially returns a list of tuples (cochrane, pubmed), with cochrane and pubmed being dicts
     #  showing interesting parts of the studies
@@ -147,12 +149,12 @@ def main():
     study = random.choice(bv)
 
     print "Title"
-    print study[1]["title"]
+    print study.pubmed["title"]
     print
 
     print "Risk of bias"
     print
-    for i, domain in enumerate(study[0]["QUALITY"]):
+    for i, domain in enumerate(study.cochrane["QUALITY"]):
         print "Domain number %d" % (i, )
         print "Name\t\t" + domain["DOMAIN"]
         print "Description\t" + domain["DESCRIPTION"]
