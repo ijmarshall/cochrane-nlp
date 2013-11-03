@@ -10,6 +10,7 @@ import os
 import glob
 import codecs
 from bs4 import BeautifulSoup
+import subprocess
 
 class TextReader:
     """Reads plain text files, and base class for other file types
@@ -49,13 +50,14 @@ class PdfReader(TextReader):
                      "raw": self.import_pdf(filename)}
 
     def import_pdf(self, filename):
-        "converts pdf to temporary text file, then reads to memory as unicode"
-        # TODO use python implementation of pdf reader; this version works
-        # well in linux for the moment
-        os.system("pdftotext %s temp.txt" % (filename, ))
-        raw_text = self.import_text("temp.txt")
-        os.remove("temp.txt")
-        return raw_text
+        """
+            runs pdftotext command line util via python subprocess
+            uses '-' to direct output to stdout
+            and is captured by communicate()
+        """
+        p = subprocess.Popen(['pdftotext', filename, '-'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = p.communicate()
+        return out.strip() # remove any multiple blank lines at the end
 
 
 class HtmlReader(TextReader):
