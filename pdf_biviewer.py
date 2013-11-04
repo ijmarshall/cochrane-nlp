@@ -13,7 +13,8 @@ Class for iterating through PDF full text papers with associated Cochrane data
 
 """
 
-from journalreadersbeta import PdfReader
+
+from journalreaders import PdfReader
 from rm5reader import *
 from pmreader import *
 import cPickle as pickle
