@@ -23,9 +23,14 @@ import re
 
 ### set local paths here
 
-COCHRANE_REVIEWS_PATH = "/Users/bwallace/dev/cochrane/reviews06072013/" # to revman files
-PUBMED_ABSTRACTS_PATH = "/Users/bwallace/dev/cochrane/pubmed20131018/" # to pubmed xml
+import configparser # easy_install configparser
+config = configparser.ConfigParser()
+config.read('CNLP.INI')
 
+### set local paths here
+COCHRANE_REVIEWS_PATH = config["Paths"]["cochrane_reviews_path"] # to revman files
+PUBMED_ABSTRACTS_PATH = config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
+PDF_PATH = config["Paths"]["pdf_path"] # to pubmed pdfs
 
 BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'pubmed'])
 
