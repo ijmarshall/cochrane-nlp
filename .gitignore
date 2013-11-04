@@ -1,7 +1,7 @@
 *.pyc
+*.ipynb
+*_beta.py
 confused.txt
 pmccorpusdownload.py
-*_beta.py
-*.ipynb
 testdata/
 
