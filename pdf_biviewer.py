@@ -13,7 +13,7 @@ Class for iterating through PDF full text papers with associated Cochrane data
 
 """
 
-from journalreaders_beta import PdfReader
+from journalreadersbeta import PdfReader
 from rm5reader import *
 from pmreader import *
 import cPickle as pickle
@@ -25,13 +25,14 @@ import sys
 import random
 import re
 
+import configparser # easy_install configparser
+config = configparser.ConfigParser()
+config.read('CNLP.INI')
 
 ### set local paths here
-
-COCHRANE_REVIEWS_PATH = "/users/iain/code/data/cdsr2013/" # to revman files
-PUBMED_ABSTRACTS_PATH = "/users/iain/code/data/cdsrpubmed/" # to pubmed xml
-PDF_PATH = "/users/iain/code/data/cdsrpdfs/" # to pubmed pdfs
-
+COCHRANE_REVIEWS_PATH = config["Paths"]["cochrane_reviews_path"] # to revman files
+PUBMED_ABSTRACTS_PATH = config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
+PDF_PATH = config["Paths"]["pdf_path"] # to pubmed pdfs
 
 
 class BiViewer():
