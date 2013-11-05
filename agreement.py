@@ -50,16 +50,17 @@ def tokenize_abstract(abstract, tag_def):
 
 def annotations(tokens):
     """
-    Process tokens into a dictionary of word -> [tokens]
+    Process tokens into a list with {word -> [tokens]} items
     The value is a list, since tokens can be annotated several times
     """
     mapping = []
     stack = []
     for token in tokens:
         if re.match(open_tag, token):
-            tag = re.match('<([a-z0-9_]+)>',token).group(1)
-            # We ignore the treatment number, tx1 is the same as tx2 (and tx1_a to tx2_a)
-            stack.append(re.sub('([0-9])((?:_a)?)', '_x\g<2>', tag))
+            stack.append(re.match('<([a-z0-9_]+)>',token).group(1))
+            # ignore the treatment number, tx1 is the same as tx2 (and tx1_a to tx2_a)
+            # stack.append(re.sub('([0-9])((?:_a)?)', '_x\g<2>', tag))
+
         elif re.match(close_tag, token):
             stack.pop()
         else:
@@ -81,7 +82,7 @@ def get_annotations(abstract_nr, annotator):
 def agreement(abstract_nr):
     """
     Figure out who annotator A and B should be in a round-robin fashion
-    And returned the combined annotations for the abstract_nr
+    Returns the combined annotations for the abstract_nr
     """
     annotators = ["IJM", "BCW", "JKU"]
     annotator_A = annotators[abstract_nr % len(annotators)]
@@ -92,12 +93,21 @@ def agreement(abstract_nr):
              "annotator_A" : annotator_A,
              "annotator_B" : annotator_B }
 
+def agreement_fn(a,b):
+    a = set(a.split('&') if a else [])
+    b = set(b.split('&') if b else [])
+    if len(a) == 0 and len(b) == 0:
+        return 0.0
+    else:
+        return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
+
+
 # Loop over the abstracts and caluclate the kappa and alpha per abstract
 aggregate = []
-nr_of_abstracts = 20
+nr_of_abstracts = 50
 for i in range(0, nr_of_abstracts):
     _agreement = agreement(i)
-    a = AnnotationTask(_agreement['annotations'])
+    a = AnnotationTask(_agreement['annotations'], agreement_fn)
     aggregate.append({
         "kappa" : a.kappa(),
         "alpha" : a.alpha(),
