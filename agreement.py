@@ -104,7 +104,7 @@ def agreement_fn(a,b):
 
 # Loop over the abstracts and caluclate the kappa and alpha per abstract
 aggregate = []
-nr_of_abstracts = 50
+nr_of_abstracts = 25
 for i in range(0, nr_of_abstracts):
     _agreement = agreement(i)
     a = AnnotationTask(_agreement['annotations'], agreement_fn)
