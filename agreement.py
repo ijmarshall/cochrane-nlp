@@ -57,14 +57,13 @@ def annotations(tokens):
     stack = []
     for token in tokens:
         if re.match(open_tag, token):
-            stack.append(re.match('<([a-z0-9_]+)>',token).group(1))
+            tag = re.match('<([a-z0-9_]+)>',token).group(1)
             # ignore the treatment number, tx1 is the same as tx2 (and tx1_a to tx2_a)
-            # stack.append(re.sub('([0-9])((?:_a)?)', '_x\g<2>', tag))
-
+            stack.append(re.sub('([0-9])((?:_a)?)', '_x\g<2>', tag))
         elif re.match(close_tag, token):
             stack.pop()
         else:
-            mapping.append({token: "&".join(stack)})
+            mapping.append({token: list(stack)})
     return mapping
 
 
@@ -72,8 +71,8 @@ def combine_annotations(annotations_A, annotations_B):
     """
     Build a list of [annotator, word, annotation] for two annotators
     """
-    a = [['A', idx, x.values()[0]] for idx, x in enumerate(annotations_A)]
-    b = [['B', idx, x.values()[0]] for idx, x in enumerate(annotations_B)]
+    a = [['A', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_A)]
+    b = [['B', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_B)]
     return a + b
 
 def get_annotations(abstract_nr, annotator):
