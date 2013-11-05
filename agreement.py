@@ -37,8 +37,7 @@ def tokenize_abstract(abstract, tag_def):
     """
     Takes an abstact (string) and converts it to a list of words or tokens
     For example "A <tx>treatment</tx>, of" -> ['A', '<tx>', 'treatment', '</tx>', ',' 'of']
-    Note that when Chomsky is done with Anarcho-Syndicalism he'll probably kill me for
-    the mere notion that I might be breaking his precious hierarchy.
+    This uses regexes and not a proper (context-free) DOM parser, so beware.
     """
     tokens_by_tag = re.split(tag_def, abstract)
     def tokenize(token):
