@@ -18,6 +18,8 @@ class SupervisedLearner:
 
         return X, words
 
+        
+
 class LabeledAbstractReader:
     ''' 
     Parses labeled citations from the provided path. Assumes format is like:
