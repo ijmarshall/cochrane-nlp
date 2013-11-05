@@ -174,8 +174,7 @@ class BiLearner():
         logging.info("Loading biview data")
 
         # load cochrane and pubmed parallel text viewer
-        self.biviewer = biviewer.BiViewer(in_memory=False, cdsr_filter="CHAR_PARTICIPANTS", pm_filter="abstract",
-                                        test_mode=test_mode)
+        self.biviewer = biviewer.BiViewer(in_memory=False, test_mode=test_mode)
 
         # feature variables
         # each item is a candidate answer (here meaning an integer from the text)
@@ -213,10 +212,13 @@ class BiLearner():
 
             p.tap()
 
-            cochrane_text, pubmed_text = study
+            cochrane_dict, pubmed_dict = study
+            cochrane_text = cochrane_dict["CHAR_PARTICIPANTS"]
+            pubmed_text = pubmed_dict["abstract"]
+
 
             # use simple rule to identify population sizes (low sens/recall, high spec/precision)
-            matches = re.findall('([1-9][0-9]*) (?:participants|men|women|patients) were (?:randomi[sz]ed)', self.numberswapper.swap(study[1]))
+            matches = re.findall('([1-9][0-9]*) (?:participants|men|women|patients) were (?:randomi[sz]ed)', self.numberswapper.swap(pubmed_text))
             if len(matches) == 1:
                 self.data["y_lookup_init"][study_id] = int(matches[0])
                 counter += 1
@@ -228,8 +230,8 @@ class BiLearner():
             # the generate_features functions only generate features for integers
             # words are stored separately since they are not necessarily used as features
             #     but are needed for the answers
-            X_cochrane_study, words_cochrane_study = self.generate_features_cochrane(study[0])
-            X_pubmed_study, words_pubmed_study = self.generate_features_pubmed(study[1])
+            X_cochrane_study, words_cochrane_study = self.generate_features_cochrane(cochrane_text)
+            X_pubmed_study, words_pubmed_study = self.generate_features_pubmed(pubmed_text)
 
             # these lists will be made into array to be used as lookup dicts
             study_id_lookup_cochrane_l.extend([study_id] * len(X_cochrane_study))
