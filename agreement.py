@@ -106,6 +106,7 @@ def agreement_fn(a,b):
     if len(a) == 0 and len(b) == 0:
         return 0.0
     else:
+        # linearly scale (all agree = 0) (none agree = 1)
         return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
 
 
