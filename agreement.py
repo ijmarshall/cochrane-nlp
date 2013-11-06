@@ -53,16 +53,19 @@ def annotations(tokens):
     The value is a list, since tokens can be annotated several times
     """
     mapping = []
-    stack = []
+    curr = []
     for token in tokens:
         if re.match(open_tag, token):
-            tag = re.match('<([a-z0-9_]+)>',token).group(1)
+            curr.append(re.match('<([a-z0-9_]+)>',token).group(1))
             # ignore the treatment number, tx1 is the same as tx2 (and tx1_a to tx2_a)
-            stack.append(re.sub('([0-9])((?:_a)?)', '_x\g<2>', tag))
         elif re.match(close_tag, token):
-            stack.pop()
+            tag = re.match('<\/([a-z0-9_]+)>',token).group(1)
+            try:
+                curr.remove(tag)
+            except ValueError:
+                pass
         else:
-            mapping.append({token: list(stack)})
+            mapping.append({token: list(curr)})
     return mapping
 
 
@@ -92,8 +95,11 @@ def agreement(abstract_nr):
              "annotator_B" : annotator_B }
 
 def agreement_fn(a,b):
-    a = set(a.split('&') if a else [])
-    b = set(b.split('&') if b else [])
+    # ignore the treatment number, tx1 is the same as tx2 (and tx1_a to tx2_a)
+    def get_tag_set(string):
+        return set([re.sub('([0-9])((?:_a)?)', 'X\g<2>', x) for x in string.split('&')] if string else [])
+    a = get_tag_set(a)
+    b = get_tag_set(b)
     if len(a) == 0 and len(b) == 0:
         return 0.0
     else:
@@ -102,15 +108,20 @@ def agreement_fn(a,b):
 
 # Loop over the abstracts and caluclate the kappa and alpha per abstract
 aggregate = []
-nr_of_abstracts = 25
+nr_of_abstracts = 100
 for i in range(0, nr_of_abstracts):
     _agreement = agreement(i)
-    a = AnnotationTask(_agreement['annotations'], agreement_fn)
-    aggregate.append({
-        "kappa" : a.kappa(),
-        "alpha" : a.alpha(),
-        "annotator_A" : _agreement['annotator_A'],
-        "annotator_B" : _agreement['annotator_B'] })
+    try:
+        a = AnnotationTask(_agreement['annotations'], agreement_fn)
+        aggregate.append({
+            "kappa" : a.kappa(),
+            "alpha" : a.alpha(),
+            "annotator_A" : _agreement['annotator_A'],
+            "annotator_B" : _agreement['annotator_B'] })
+    except:
+        print("Could not calculate kappa for %i" % i)
+        pass
+
 
 # Summary statistics
 kappa = describe([a['kappa'] for a in aggregate])
