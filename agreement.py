@@ -26,7 +26,10 @@ def get_abstracts(annotator):
     with open (annotated_abstracts_file, "r") as file:
         data=file.read()
 
-    return [abstract.strip() for abstract in re.split('Abstract \d+ of \d+', data)][1:]
+    def clean(abstract):
+        return (re.split("BiviewID [0-9]*; PMID ?[0-9]*", abstract)[0]).strip()
+
+    return [clean(abstract) for abstract in re.split('Abstract \d+ of \d+', data)][1:]
 
 # Tokenize an abstract
 open_tag = '<[a-z0-9_]+>'
@@ -125,6 +128,7 @@ for i in range(0, nr_of_abstracts):
 
 # Summary statistics
 kappa = describe([a['kappa'] for a in aggregate])
+print("number of abstracts %i" % kappa[0])
 print("[kappa] mean: " + str(kappa[2]))
 print("[kappa] variance: " + str(kappa[3]))
 alpha = describe([a['alpha'] for a in aggregate])
