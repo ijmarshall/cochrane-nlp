@@ -122,7 +122,7 @@ for i in range(0, nr_of_abstracts):
             "annotator_A" : _agreement['annotator_A'],
             "annotator_B" : _agreement['annotator_B'] })
     except:
-        print("Could not calculate kappa for abstract %i between %s and %s" % (i, _agreement['annotator_A'], _agreement['annotator_B']))
+        print("Could not calculate kappa for abstract %i between %s and %s" % (i + 1, _agreement['annotator_A'], _agreement['annotator_B']))
         pass
 
 
