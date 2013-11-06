@@ -60,7 +60,6 @@ def annotations(tokens):
     for token in tokens:
         if re.match(open_tag, token):
             curr.append(re.match('<([a-z0-9_]+)>',token).group(1))
-            # ignore the treatment number, tx1 is the same as tx2 (and tx1_a to tx2_a)
         elif re.match(close_tag, token):
             tag = re.match('<\/([a-z0-9_]+)>',token).group(1)
             try:
