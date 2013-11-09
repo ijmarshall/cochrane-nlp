@@ -1,3 +1,7 @@
+###
+# bcw -- maybe want to call this module something more general, 
+# e.g., tokenizer? or something. I don't know.
+###
 import re
 
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
@@ -5,6 +9,14 @@ from nltk.metrics.agreement import AnnotationTask
 from itertools import chain
 from functools import wraps
 from scipy.stats import describe
+
+import configparser # easy_install configparser
+config = configparser.ConfigParser()
+config.read('CNLP.INI')
+
+# base_path = "/Users/joelkuiper/Desktop/drug_trials_in_cochrane_"
+base_path = config["Paths"]["base_path"] # to pubmed pdfs
+
 
 def memo(func):
     cache = {}
@@ -15,7 +27,6 @@ def memo(func):
         return cache[args]
     return wrap
 
-base_path = "/Users/joelkuiper/Desktop/drug_trials_in_cochrane_"
 
 @memo
 def get_abstracts(annotator):
@@ -108,29 +119,34 @@ def agreement_fn(a,b):
         # linearly scale (all agree = 0) (none agree = 1)
         return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
 
+# bcw -- I factored the below into a method so that
+# the module doesn't automatically calculate stuff on import.
+def calc_agreements():
+    # Loop over the abstracts and caluclate the kappa and alpha per abstract
+    aggregate = []
+    nr_of_abstracts = 100
+    for i in range(0, nr_of_abstracts):
+        _agreement = agreement(i)
+        try:
+            a = AnnotationTask(_agreement['annotations'], agreement_fn)
+            aggregate.append({
+                "kappa" : a.kappa(),
+                "alpha" : a.alpha(),
+                "annotator_A" : _agreement['annotator_A'],
+                "annotator_B" : _agreement['annotator_B'] })
+        except:
+            print("Could not calculate kappa for abstract %i between %s and %s" % (i + 1, _agreement['annotator_A'], _agreement['annotator_B']))
+            pass
 
-# Loop over the abstracts and caluclate the kappa and alpha per abstract
-aggregate = []
-nr_of_abstracts = 100
-for i in range(0, nr_of_abstracts):
-    _agreement = agreement(i)
-    try:
-        a = AnnotationTask(_agreement['annotations'], agreement_fn)
-        aggregate.append({
-            "kappa" : a.kappa(),
-            "alpha" : a.alpha(),
-            "annotator_A" : _agreement['annotator_A'],
-            "annotator_B" : _agreement['annotator_B'] })
-    except:
-        print("Could not calculate kappa for abstract %i between %s and %s" % (i + 1, _agreement['annotator_A'], _agreement['annotator_B']))
-        pass
 
+    # Summary statistics
+    kappa = describe([a['kappa'] for a in aggregate])
+    print("number of abstracts %i" % kappa[0])
+    print("[kappa] mean: " + str(kappa[2]))
+    print("[kappa] variance: " + str(kappa[3]))
+    alpha = describe([a['alpha'] for a in aggregate])
+    print("[alpha] mean: " + str(alpha[2]))
+    print("[alpha] variance: " + str(alpha[3]))
 
-# Summary statistics
-kappa = describe([a['kappa'] for a in aggregate])
-print("number of abstracts %i" % kappa[0])
-print("[kappa] mean: " + str(kappa[2]))
-print("[kappa] variance: " + str(kappa[3]))
-alpha = describe([a['alpha'] for a in aggregate])
-print("[alpha] mean: " + str(alpha[2]))
-print("[alpha] variance: " + str(alpha[3]))
+if __name__ == "__main__":
+    calc_agreements()
