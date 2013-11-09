@@ -133,12 +133,6 @@ class bilearnPipeline(pipeline.Pipeline):
                 self.functions[i][k]["next_noun"] = "END_OF_SENTENCE"
 
 
-                
-
-
-
-
-
 
 class BiLearner():
 
@@ -261,8 +255,6 @@ class BiLearner():
         # train vectorisers
         self.data["X_cochrane"] = self.data["vectoriser_cochrane"].fit_transform(X_cochrane_l)
         self.data["X_pubmed"] = self.data["vectoriser_pubmed"].fit_transform(X_pubmed_l)
-
-        
 
         self.reset()
  

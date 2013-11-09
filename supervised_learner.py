@@ -35,6 +35,7 @@ class LabeledAbstractReader:
         self.path_to_abstracts = path_to_data
         print "parsing data from {0}".format(self.path_to_abstracts)
         self.parse_abstracts()
+        print "ok."
 
     def _is_demarcater(self, l):
         '''
@@ -61,12 +62,13 @@ class LabeledAbstractReader:
             cur_abstract = ""
             
             for line in abstracts_file.readlines():
+                line = line.strip()
                 if self._is_demarcater(line):
                     biview_id, pmid_id = self._get_IDs(line)
                     self.citation_d[pmid_id] = {"abstract":cur_abstract, 
                                                 "Biview_id":biview_id}
                     in_citation = False
-                elif in_citation and line.strip():
+                elif in_citation and line:
                     # then this is the abstract
                     cur_abstract = line
                 elif self._is_new_citation_line(line):
@@ -74,6 +76,8 @@ class LabeledAbstractReader:
 
         return self.citation_d
 
+    def get_text(self):
+        return [cit["abstract"] for cit in self.citation_d.values()]
 
 
 
