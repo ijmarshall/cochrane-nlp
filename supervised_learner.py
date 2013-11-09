@@ -4,7 +4,12 @@ Do 'vanilla' supervised learning over labeled citations.
 
 import bilearn
 from bilearn import bilearnPipeline
+import agreement as annotation_parser
+import pdb
 
+# tmp @TODO use some aggregation of our 
+# annotations as the gold-standard.
+annotator_str = "BCW"
 
 class SupervisedLearner:
     def __init__(self, abstract_reader):
@@ -14,7 +19,11 @@ class SupervisedLearner:
         X, y = [], []
         for cit in self.abstract_reader:
             abstract_text = cit["abstract"]
-            p = bilearnPipeline(text)
+            cit_file_id = cit["file_id"]
+            # aahhhh stupid zero indexing confusion
+            abstract_tags = annotation_parser.get_annotations(cit_file_id-1, annotator_str)
+            pdb.set_trace()
+            p = bilearnPipeline(abstract_text)
             p.generate_features()
             #filter=lambda x: x["w[0]"].isdigit()
             X_i = p.get_features()
@@ -39,16 +48,17 @@ class LabeledAbstractReader:
         # @TODO probably want to read things in lazily, rather than
         # reading everything into memory at once...
         self.abstracts = []
-        self.abstract_index = 0 # for iterator
+        self.abstract_index = 1 # for iterator
         self.path_to_abstracts = path_to_data
         print "parsing data from {0}".format(self.path_to_abstracts)
+
         self.parse_abstracts()
         self.num_citations = len(self.citation_d) 
         print "ok."
 
 
     def __iter__(self):
-        self.abstract_index = 0
+        self.abstract_index = 1
         return self
 
     def next(self):
@@ -56,7 +66,7 @@ class LabeledAbstractReader:
             raise StopIteration
         else:
             self.abstract_index += 1
-            return self.citation_d.values()[self.abstract_index-1]
+            return self.citation_d[self.abstract_index-1]
 
     def _is_demarcater(self, l):
         '''
@@ -79,6 +89,10 @@ class LabeledAbstractReader:
     def parse_abstracts(self):
         self.citation_d = {}
         in_citation = False
+        # abstract_num is the arbitrary, per-file, sequentially
+        # incremented id assigned abstracts. this is *not*
+        # zero-indexed and varies across files.
+        abstract_num = 1
         with open(self.path_to_abstracts, 'rU') as abstracts_file:
             cur_abstract = ""
             
@@ -86,10 +100,12 @@ class LabeledAbstractReader:
                 line = line.strip()
                 if self._is_demarcater(line):
                     biview_id, pmid = self._get_IDs(line)
-                    self.citation_d[pmid] = {"abstract":cur_abstract, 
+                    self.citation_d[abstract_num] = {"abstract":cur_abstract, 
                                                 "Biview_id":biview_id,
-                                                "pubmed_id":pmid} # yes, redundant
+                                                "pubmed_id":pmid,
+                                                "file_id":abstract_num} # yes, redundant
                     in_citation = False
+                    abstract_num += 1
                 elif in_citation and line:
                     # then this is the abstract
                     cur_abstract = line
