@@ -9,30 +9,28 @@ Class for iterating through pubmed abstracts with associated Cochrane data
 
 """
 
-from rm5reader import *
-from pmreader import *
 import cPickle as pickle
-from pprint import pprint
-from time import time
-from progressbar import ProgressBar
 import collections
-import sys
-import random
-import re
+
+from journalreaders import PdfReader
+from pmreader import *
+from progressbar import ProgressBar
+from rm5reader import *
 
 
-### set local paths here
+
+
+### set local paths from CNLP.INI
 
 import configparser # easy_install configparser
 config = configparser.ConfigParser()
 config.read('CNLP.INI')
 
-### set local paths here
 COCHRANE_REVIEWS_PATH = config["Paths"]["cochrane_reviews_path"] # to revman files
 PUBMED_ABSTRACTS_PATH = config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
 PDF_PATH = config["Paths"]["pdf_path"] # to pubmed pdfs
 
-BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'pubmed'])
+
 
 
 class BiViewer():
@@ -47,17 +45,20 @@ class BiViewer():
     """
 
 
-    def __init__(self, in_memory=False, cdsr_cache_length=20, pm_filter=None,
-                 cdsr_filter=None, test_mode=False, linkfile="data/biviewer_links_all.pck"):
+    def __init__(self, **kwargs):
+        
+        self.init_common_variables(self, **kwargs)
+        self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'pubmed'])
 
+
+    def init_common_variables(self, in_memory=False, cdsr_cache_length=20,
+                 test_mode=False, linkfile="data/biviewer_links_all.pck"):
+        "set up variables used in all subclasses"
         self.import_data(filename=linkfile, test_mode=test_mode)
-
         self.data = []
         self.cdsr_cache_length = cdsr_cache_length
         self.cdsr_cache_index = collections.deque()
         self.cdsr_cache_data = {}
-        self.pm_filter = pm_filter
-        self.cdsr_filter = cdsr_filter
 
         if in_memory==True:
             self.load_data_in_memory()
@@ -71,9 +72,11 @@ class BiViewer():
             # get the first 2500 studies only (more since now per study, not per review)
             self.index_data = self.index_data[:2500]
                     
+
     def __len__(self):
         "returns number of RCTs in index (not number of Cochrane reviews)"
         return len(self.index_data)
+
 
     def __getitem__(self, key):
         """
@@ -103,26 +106,52 @@ class BiViewer():
                     # (the one indexed 0 in the index deque)
                     # and simultaneously removes from the index (popleft)
 
-            pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + study['pm_filename'])
-            if self.cdsr_filter and self.pm_filter:
-                return (cr[study['cdsr_refcode']].get(self.cdsr_filter, ""), pm.text_filtered(part_id=self.pm_filter))
-            else:
-                return BiviewerView(cr[study['cdsr_refcode']], pm.text_all())
+            return self.BiviewerView(cr[study['cdsr_refcode']], self.second_view(study))
 
 
+    def second_view(self, study):
+        """ parses pubmed abstract file for base class
+        or can be overridden in subclass to return other
+        data, e.g. PDF text"""
+        pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + study['pm_filename'])
+        return pm.text_all()
+
+    
     def load_data_in_memory(self):
         self.data = []
         p = ProgressBar(len(self), timer=True)
         for i in range(len(self)):
             p.tap()
             self.data.append(self[i])
-        
+
+
+
+class PDFBiViewer(BiViewer):
+    """
+    Accesses parallel data from Cochrane reviews and associated
+    full text PDFs.
+    PDFs are converted to plain text using pdftotext (done in
+    PdfReader class located in journalreaders.py)
+    """
+
+    def __init__(self, linkfile="data/pdf_present_links.pck", **kwargs):
+        self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'studypdf'])
+        BiViewer.init_common_variables(self, linkfile=linkfile, **kwargs)
+
+
+    def second_view(self, study):
+        """ overrides code which gets pubmed abstract
+        and instead returns the full text of an associated PDF"""
+        pm = PdfReader(PDF_PATH + study['pdf_filename'])
+        return pm.get_text()
+            
+
     
 
     
 def main():
     # example
-    # set paths at top of script before running
+    # set paths in CNLP.INI before running
 
 
 
@@ -139,7 +168,7 @@ def main():
     print "Intervention description in Cochrane:"
     print bv[0].cochrane["CHAR_INTERVENTIONS"]
 
-    # the biviewer essentially returns a list of tuples (cochrane, pubmed), with cochrane and pubmed being dicts
+    # the biviewer essentially returns a list of named tuples (cochrane, pubmed), with cochrane and pubmed being dicts
     #  showing interesting parts of the studies
     #
     # cochrane is the cochrane review parsed by reference (and only the parts related to the current study returned)
