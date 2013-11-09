@@ -1,35 +1,134 @@
 '''
 Do 'vanilla' supervised learning over labeled citations.
+
+> import supervised_learner
+> reader = supervised_learner.LabeledAbstractReader()
+> sl = supervised_learner.SupervisedLearner(reader)
+> X,y = sl.features_from_citations()
+
+To actually vectorize, something like:
+> vectorizer = DictVectorizer(sparse=True)
+> vectorizer.fit_transform(X)
 '''
+
+import string
+import pdb
+
+import sklearn
+from sklearn.feature_extraction import DictVectorizer
 
 import bilearn
 from bilearn import bilearnPipeline
 import agreement as annotation_parser
-import pdb
+
 
 # tmp @TODO use some aggregation of our 
 # annotations as the gold-standard.
 annotator_str = "BCW"
+# a useful helper.
+punctuation_only = lambda s: s.strip(string.punctuation).strip() == ""
 
 class SupervisedLearner:
-    def __init__(self, abstract_reader):
+    def __init__(self, abstract_reader, target="n"):
+        '''
+        abstract_reader: a LabeledAbstractReader instance.
+        target: the tag of interest (i.e., to be predicted)
+        '''
         self.abstract_reader = abstract_reader
+        self.target = target
+
+    @staticmethod
+    def filter_tags(tags):
+        kept_tags = []
+        for tag in tags:
+            if not punctuation_only (tag.keys()[0]):
+                kept_tags.append(tag)
+        return kept_tags
+
+    @staticmethod
+    def filter_words(words_to_annotations, words, feature_vectors):
+        '''
+        return the subset of words in words that appears in 
+        words_to_annotations. also filter out puncutation-only 
+        tokens. note that we take in the feature_vectors list, 
+        too, so that we may return the right X_i's (i.e., those
+        corresponding to the word that are kept)
+        '''
+
+        annotated_words = []
+        for w_to_tags in words_to_annotations:
+            # w_to_tags is a dict {word: [tag set]}
+            word = w_to_tags.keys()[0]
+            annotated_words.append(word)
+
+        kept_words, kept_fvs = [], []
+        for i,w in enumerate(words):
+            if not punctuation_only(w) and w in annotated_words:
+                kept_words.append(w)
+                kept_fvs.append(feature_vectors[i])
+                annotated_words.remove(w)
+
+        return (kept_words, kept_fvs)
+
 
     def features_from_citations(self):
         X, y = [], []
         for cit in self.abstract_reader:
+            # first we perform feature extraction over the
+            # abstract text (X)
             abstract_text = cit["abstract"]
-            cit_file_id = cit["file_id"]
-            # aahhhh stupid zero indexing confusion
-            abstract_tags = annotation_parser.get_annotations(cit_file_id-1, annotator_str)
-            pdb.set_trace()
             p = bilearnPipeline(abstract_text)
             p.generate_features()
             #filter=lambda x: x["w[0]"].isdigit()
+            ###
+            # note that the pipeline segments text into
+            # sentences. so X_i will comprise k lists, 
+            # where k is the number of sentences. each 
+            # of these lists contain the feature vectors
+            # for the words comprising the respective 
+            # sentences.
+            ###
             X_i = p.get_features()
             words = p.get_answers()
-            X.append(X_i)
-            y.append() ##????
+            #X.extend(X_i)
+
+            # now construct y vector based on parsed tags
+            cit_file_id = cit["file_id"]
+            # aahhhh stupid zero indexing confusion
+            abstract_tags = annotation_parser.get_annotations(
+                                    cit_file_id-1, annotator_str)
+
+            # for now we'll flatten the sentences 
+            words_flat, X_i_flat = [], []
+            for sentence_i in xrange(len(X_i)):
+                X_i_flat.extend(X_i[sentence_i])
+                words_flat.extend(words[sentence_i])
+
+            # we only keep words for which we have annotations
+            # and that are not, e.g., just puncutation.
+            training_words, training_fvs = SupervisedLearner.filter_words(
+                                    abstract_tags, words_flat, X_i_flat)
+            training_tags = SupervisedLearner.filter_tags(abstract_tags)
+            y_i = []
+            #pdb.set_trace()
+            for j, w in enumerate(training_words):
+                tags = None
+                for tag_index, tag in enumerate(training_tags):
+                    if tag.keys()[0] == w:
+                        tags = tag.values()[0]
+                        break
+
+                if tags is None:
+                    # uh-oh.
+                    raise Exception, "no tags???"
+                w_lbl = 1 if self.target in tags else -1
+                X.append(training_fvs[j])
+                y.append(w_lbl)
+                # remove this tag from the list -- remember,
+                # words can appear multiple times!
+                training_tags.pop(tag_index)
+
+        #pdb.set_trace()
         return X, y
 
         
