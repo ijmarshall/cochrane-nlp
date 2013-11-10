@@ -95,7 +95,7 @@ class Pipeline(object):
     #         return self.X
 
 
-    def get_features(self, filter=None):
+    def get_features(self, filter=None, return_sent=True):
 
         if filter:
             output = []
@@ -103,28 +103,39 @@ class Pipeline(object):
                 output.extend([word for word in sent_X if filter(word)])
             return output
         else:
-            return self.X
+            if return_sent:
+                return self.X
+            else:
+                return [item for sublist in self.X for item in sublist]
 
-    def get_words(self, filter=None):
+    def get_words(self, filter=None, return_sent=True):
         if filter:
             output = []
             for sent in self.functions:
                 output.extend([word["w"] for word in sent if filter(word)])
             return output
         else:
-            return [[word["w"] for word in sent] for sent in self.functions]
+            words = [[word["w"] for word in sent] for sent in self.functions]
+            if return_sent:
+                return words
+            else:
+                return [item for sublist in words for item in sublist]
 
     def get_text(self):
         return self.text
 
 
-    def get_answers(self, answer_key=None, filter=None):
+    def get_answers(self, answer_key=None, filter=None, return_sent=True):
         if not answer_key:
             answer_key = self.answer_key
         if filter:
             return [item[answer_key] for sublist in self.functions for item in sublist if filter(item)]
         else:
-            return [[word[answer_key] for word in sent] for sent in self.functions]
+            answers = [[word[answer_key] for word in sent] for sent in self.functions]
+            if return_sent:
+                return answers
+            else:
+                return [item for sublist in l for item in sublist]
 
     def get_crfsuite_features(self):
         return [[["%s=%s" % (key, value) for key, value in word.iteritems()] for word in sent] for sent in self.X]
@@ -144,19 +155,20 @@ def main():
 
     p = bilearnPipeline(b[1][1]['abstract'])
 
-    p.generate_features()
-    print p.get_features(filter=lambda x: x["w[0]"].isdigit())
-    # print p.get_answers(filter=lambda x: x["w"].isdigit())
+    # p.generate_features()
+    # print p.get_features(filter=lambda x: x["w[0]"].isdigit())
+    # # print p.get_answers(filter=lambda x: x["w"].isdigit())
 
-    p2 = bilearnPipeline("")
-    p2.generate_features()
-    # print p2.get_answers()
-    print p2.get_features(filter = lambda x: x["w"].isdigit())    
+    # p2 = bilearnPipeline("")
+    # p2.generate_features()
+    # # print p2.get_answers()
+    # print p2.get_features(filter = lambda x: x["w"].isdigit())    
 
 
     p2 = bilearnPipeline("No numbers in this sentence! Or this one either.")
     p2.generate_features()
-    print p2.get_features(filter = lambda x: x["w[0]"].isdigit())
+    print p2.get_features(return_sent=False)
+    # print p2.get_features(filter = lambda x: x["w[0]"].isdigit())
 
 
 if __name__ == '__main__':
