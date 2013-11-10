@@ -26,6 +26,22 @@ from indexnumbers import swap_num
 
 import cPickle as pickle
 
+from functools import wraps
+
+
+def list_flattener(func):
+    """
+    decorates other functions which may output lists of sentences
+
+    """
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        if isinstance(inp, list):
+            return {item: wrapper(self, item, *args, **kwargs) for item in inp}
+        else:
+            return func(self, inp, *args, **kwargs)
+    return wrapper
+
 
 class Pipeline(object):
 
@@ -95,7 +111,7 @@ class Pipeline(object):
     #         return self.X
 
 
-    def get_features(self, filter=None, return_sent=True):
+    def get_features(self, filter=None, flatten=False):
 
         if filter:
             output = []
@@ -103,12 +119,12 @@ class Pipeline(object):
                 output.extend([word for word in sent_X if filter(word)])
             return output
         else:
-            if return_sent:
-                return self.X
-            else:
+            if flatten:
                 return [item for sublist in self.X for item in sublist]
+            else:
+                return self.X
 
-    def get_words(self, filter=None, return_sent=True):
+    def get_words(self, filter=None, flatten=False):
         if filter:
             output = []
             for sent in self.functions:
@@ -116,30 +132,36 @@ class Pipeline(object):
             return output
         else:
             words = [[word["w"] for word in sent] for sent in self.functions]
-            if return_sent:
-                return words
-            else:
+            if flatten:
                 return [item for sublist in words for item in sublist]
+            else:
+                return words
 
     def get_text(self):
         return self.text
 
 
-    def get_answers(self, answer_key=None, filter=None, return_sent=True):
+    def get_answers(self, answer_key=None, filter=None, flatten=False):
         if not answer_key:
             answer_key = self.answer_key
         if filter:
             return [item[answer_key] for sublist in self.functions for item in sublist if filter(item)]
         else:
             answers = [[word[answer_key] for word in sent] for sent in self.functions]
-            if return_sent:
-                return answers
+            if flatten:
+                return [item for sublist in answers for item in sublist]
             else:
-                return [item for sublist in l for item in sublist]
+                return answers
 
-    def get_crfsuite_features(self):
-        return [[["%s=%s" % (key, value) for key, value in word.iteritems()] for word in sent] for sent in self.X]
+    def get_crfsuite_features(self, flatten=False):
 
+        features =  [[["%s=%s" % (key, value) for key, value in word.iteritems()] for word in sent] for sent in self.X]
+        if flatten:
+            return [item for sublist in features for item in sublist]
+        else:
+            return features
+
+        
 
 
 
@@ -167,7 +189,7 @@ def main():
 
     p2 = bilearnPipeline("No numbers in this sentence! Or this one either.")
     p2.generate_features()
-    print p2.get_features(return_sent=False)
+    print p2.get_crfsuite_features(flatten=False)
     # print p2.get_features(filter = lambda x: x["w[0]"].isdigit())
 
 
