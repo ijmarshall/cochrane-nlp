@@ -285,7 +285,7 @@ if __name__ == "__main__":
 
     avg = lambda x: x / float(nruns)
 
-    print "average # of target words: {0} precision: {1}, recall: {2}, f: {3}".format(
+    print "averages\n # of target words: {0}\n precision: {1}\n recall: {2}\n f: {3}".format(
                     avg(np_sum), avg(p_sum), avg(r_sum), avg(f_sum))
 
 
