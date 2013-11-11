@@ -9,7 +9,8 @@
 import os
 import glob
 import codecs
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
+import BeautifulSoup
 import subprocess
 
 class TextReader:
