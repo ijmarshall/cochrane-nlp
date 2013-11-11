@@ -90,8 +90,7 @@ class SupervisedLearner:
             ###
             X_i = p.get_features()
             words = p.get_answers()
-            #X.extend(X_i)
-
+   
             # now construct y vector based on parsed tags
             cit_file_id = cit["file_id"]
             # aahhhh stupid zero indexing confusion
@@ -110,7 +109,7 @@ class SupervisedLearner:
                                     abstract_tags, words_flat, X_i_flat)
             training_tags = SupervisedLearner.filter_tags(abstract_tags)
             y_i = []
-            #pdb.set_trace()
+            
             for j, w in enumerate(training_words):
                 tags = None
                 for tag_index, tag in enumerate(training_tags):

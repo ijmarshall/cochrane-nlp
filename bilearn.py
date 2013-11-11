@@ -50,6 +50,9 @@ class bilearnPipeline(pipeline.Pipeline):
     def __init__(self, text):
         self.functions = [[{"w": word, "p": pos} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(text))]
         self.load_templates()
+        # bcw: this caches the words, so parent methods won't
+        # break (e.g., get_text()).
+        self.text = text  
         # self.stem = PorterStemmer()
 
     def load_templates(self):
@@ -224,9 +227,10 @@ class BiLearner():
             # the generate_features functions only generate features for integers
             # words are stored separately since they are not necessarily used as features
             #     but are needed for the answers
+
             X_cochrane_study, words_cochrane_study = self.generate_features_cochrane(cochrane_text)
             X_pubmed_study, words_pubmed_study = self.generate_features_pubmed(pubmed_text)
-
+            
             # these lists will be made into array to be used as lookup dicts
             study_id_lookup_cochrane_l.extend([study_id] * len(X_cochrane_study))
             study_id_lookup_pubmed_l.extend([study_id] * len(X_pubmed_study))
