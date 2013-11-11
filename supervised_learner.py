@@ -50,12 +50,15 @@ class SupervisedLearner:
         all_preds = [preds[i][1] for i in xrange(len(y))]
         pos_preds = [preds[i][1] for i in pos_indices]
 
-    def cv(self):
-        features, y = self.features_from_citations()
+    def generate_features(self):
+        print "generating feature vectors"
+        self.features, self.y = self.features_from_citations()
         self.vectorizer = DictVectorizer(sparse=True)
-        X_fv = self.vectorizer.fit_transform(features)
+        self.X_fv = self.vectorizer.fit_transform(self.features)
+
+    def cv(self):
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(
-            X_fv, y, test_size=0.1)
+            self.X_fv, self.y, test_size=0.1)
         clf = SupervisedLearner._get_SVM()
         clf.fit(X_train, y_train)
         preds = clf.predict(X_test)
@@ -68,7 +71,7 @@ class SupervisedLearner:
     def train(self):
         features, y = self.features_from_citations()
         self.vectorizer = DictVectorizer(sparse=True)
-        X_fv = self.vectorizer.fit_transform(features)
+        X_fv = self.vectorizer.fit_transform(self.features)
         
         self.clf = _get_SVM()
 
@@ -113,10 +116,14 @@ class SupervisedLearner:
 
     def features_from_citations(self):
         X, y = [], []
+
+        pb = progressbar.ProgressBar(len(self.abstract_reader), timer=True)
+
         for cit in self.abstract_reader:
             # first we perform feature extraction over the
             # abstract text (X)
-            abstract_text = cit["abstract"]
+            abstract_text = swap_num(cit["abstract"]) #IM changed swap_num to up here
+            #                                         #since works on full text
             p = bilearnPipeline(abstract_text)
             p.generate_features()
             #filter=lambda x: x["w[0]"].isdigit()
@@ -128,8 +135,8 @@ class SupervisedLearner:
             # for the words comprising the respective 
             # sentences.
             ###
-            X_i = p.get_features()
-            words = p.get_answers()
+            X_i = p.get_features(flatten=True)
+            words = p.get_answers(flatten=True)
    
             # now construct y vector based on parsed tags
             cit_file_id = cit["file_id"]
@@ -139,20 +146,21 @@ class SupervisedLearner:
                                 cit_file_id-1, annotator_str, convert_numbers=True)
 
 
-            # for now we'll flatten the sentences 
-            words_flat, X_i_flat = [], []
-            for sentence_i in xrange(len(X_i)):
-                X_i_flat.extend(X_i[sentence_i])
-                # one more step; swap in numbers!
-                words_flat.extend([swap_num(w_ij) for w_ij in words[sentence_i]])
+            ## IM: moved the flattening to the pipeline
+            # words_flat, X_i_flat = [], []
+            # for sentence_i in xrange(len(X_i)):
+            #     X_i_flat.extend(X_i[sentence_i])
+            #     # one more step; swap in numbers!
+            #     words_flat.extend([swap_num(w_ij) for w_ij in words[sentence_i]])
 
 
             # we only keep words for which we have annotations
             # and that are not, e.g., just puncutation.
             training_words, training_fvs = SupervisedLearner.filter_words(
-                                    abstract_tags, words_flat, X_i_flat)
+                                    abstract_tags, words, X_i)
 
-            training_words = [swap_num(w_i) for w_i in training_words]
+            # IM: swap_num needs to work on the untokenized abstract (since numbers may be multiple words)
+            # training_words = [swap_num(w_i) for w_i in training_words]
 
             training_tags = SupervisedLearner.filter_tags(abstract_tags)
             y_i = []
@@ -177,6 +185,7 @@ class SupervisedLearner:
                 # remove this tag from the list -- remember,
                 # words can appear multiple times!
                 training_tags.pop(tag_index)
+            pb.tap()
 
         return X, y
 
@@ -208,6 +217,9 @@ class LabeledAbstractReader:
     def __iter__(self):
         self.abstract_index = 1
         return self
+
+    def __len__(self):
+        return self.num_citations
 
     def next(self):
         if self.abstract_index >= self.num_citations:
@@ -268,10 +280,14 @@ class LabeledAbstractReader:
 
 if __name__ == "__main__":
     nruns = 10
+
     reader = LabeledAbstractReader()
     sl = SupervisedLearner(reader)
+    sl.generate_features()
     p_sum, r_sum, f_sum, np_sum = [0]*4
-    pb = progressbar.ProgressBar(nruns)
+    print
+    print "running models"
+    pb = progressbar.ProgressBar(nruns, timer=True)
     for i in xrange(nruns):
         #print "on iter {0}".format(i)
         

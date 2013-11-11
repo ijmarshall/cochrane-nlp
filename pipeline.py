@@ -35,7 +35,6 @@ class Pipeline(object):
         self.load_templates()
 
 
-
     def load_templates(self):
         " used in subclasses to load template tuples "
         pass
