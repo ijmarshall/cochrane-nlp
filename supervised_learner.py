@@ -267,7 +267,7 @@ class LabeledAbstractReader:
 
 
 if __name__ == "__main__":
-    nruns = 1
+    nruns = 10
     reader = LabeledAbstractReader()
     sl = SupervisedLearner(reader)
     p_sum, r_sum, f_sum, np_sum = [0]*4
