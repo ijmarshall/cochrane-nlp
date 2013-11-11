@@ -26,22 +26,6 @@ from indexnumbers import swap_num
 
 import cPickle as pickle
 
-from functools import wraps
-
-
-def list_flattener(func):
-    """
-    decorates other functions which may output lists of sentences
-
-    """
-    @wraps(func)
-    def wrapper(self, *args, **kwargs):
-        if isinstance(inp, list):
-            return {item: wrapper(self, item, *args, **kwargs) for item in inp}
-        else:
-            return func(self, inp, *args, **kwargs)
-    return wrapper
-
 
 class Pipeline(object):
 
