@@ -16,11 +16,16 @@ import pdb
 
 import sklearn
 from sklearn.feature_extraction import DictVectorizer
+from sklearn.svm import SVC
+from sklearn import cross_validation
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 
+from indexnumbers import swap_num
 import bilearn
 from bilearn import bilearnPipeline
 import agreement as annotation_parser
 
+import progressbar
 
 # tmp @TODO use some aggregation of our 
 # annotations as the gold-standard.
@@ -36,6 +41,41 @@ class SupervisedLearner:
         '''
         self.abstract_reader = abstract_reader
         self.target = target
+
+    def plot_preds(self, preds, y):
+        # (preds, y) = sl.cv()
+        # sklearn wraps up the predicted results
+        
+        pos_indices = [i for i in xrange(len(y)) if y[i]>0]
+        all_preds = [preds[i][1] for i in xrange(len(y))]
+        pos_preds = [preds[i][1] for i in pos_indices]
+
+    def cv(self):
+        features, y = self.features_from_citations()
+        self.vectorizer = DictVectorizer(sparse=True)
+        X_fv = self.vectorizer.fit_transform(features)
+        X_train, X_test, y_train, y_test = cross_validation.train_test_split(
+            X_fv, y, test_size=0.1)
+        clf = SupervisedLearner._get_SVM()
+        clf.fit(X_train, y_train)
+        preds = clf.predict(X_test)
+        return preds, y_test
+
+    @staticmethod 
+    def _get_SVM():
+        return SVC(probability=True, kernel='linear')
+
+    def train(self):
+        features, y = self.features_from_citations()
+        self.vectorizer = DictVectorizer(sparse=True)
+        X_fv = self.vectorizer.fit_transform(features)
+        
+        self.clf = _get_SVM()
+
+        ##
+        # @TODO grid search over c?
+        self.clf.fit(X_fv, y)
+
 
     @staticmethod
     def filter_tags(tags):
@@ -93,25 +133,33 @@ class SupervisedLearner:
    
             # now construct y vector based on parsed tags
             cit_file_id = cit["file_id"]
+         
             # aahhhh stupid zero indexing confusion
             abstract_tags = annotation_parser.get_annotations(
-                                    cit_file_id-1, annotator_str)
+                                cit_file_id-1, annotator_str, convert_numbers=True)
+
 
             # for now we'll flatten the sentences 
             words_flat, X_i_flat = [], []
             for sentence_i in xrange(len(X_i)):
                 X_i_flat.extend(X_i[sentence_i])
-                words_flat.extend(words[sentence_i])
+                # one more step; swap in numbers!
+                words_flat.extend([swap_num(w_ij) for w_ij in words[sentence_i]])
+
 
             # we only keep words for which we have annotations
             # and that are not, e.g., just puncutation.
             training_words, training_fvs = SupervisedLearner.filter_words(
                                     abstract_tags, words_flat, X_i_flat)
+
+            training_words = [swap_num(w_i) for w_i in training_words]
+
             training_tags = SupervisedLearner.filter_tags(abstract_tags)
             y_i = []
             
             for j, w in enumerate(training_words):
                 tags = None
+
                 for tag_index, tag in enumerate(training_tags):
                     if tag.keys()[0] == w:
                         tags = tag.values()[0]
@@ -120,14 +168,16 @@ class SupervisedLearner:
                 if tags is None:
                     # uh-oh.
                     raise Exception, "no tags???"
+
+
                 w_lbl = 1 if self.target in tags else -1
                 X.append(training_fvs[j])
+
                 y.append(w_lbl)
                 # remove this tag from the list -- remember,
                 # words can appear multiple times!
                 training_tags.pop(tag_index)
 
-        #pdb.set_trace()
         return X, y
 
         
@@ -214,6 +264,30 @@ class LabeledAbstractReader:
 
     def get_text(self):
         return [cit["abstract"] for cit in self.citation_d.values()]
+
+
+if __name__ == "__main__":
+    nruns = 1
+    reader = LabeledAbstractReader()
+    sl = SupervisedLearner(reader)
+    p_sum, r_sum, f_sum, np_sum = [0]*4
+    pb = progressbar.ProgressBar(nruns)
+    for i in xrange(nruns):
+        #print "on iter {0}".format(i)
+        
+        preds, y_test = sl.cv()
+        p, r, f, s = precision_recall_fscore_support(y_test, preds, average="micro")
+        p_sum += p
+        r_sum += r
+        f_sum += f
+        np_sum += s
+        pb.tap()
+
+    avg = lambda x: x / float(nruns)
+
+    print "average # of target words: {0} precision: {1}, recall: {2}, f: {3}".format(
+                    avg(np_sum), avg(p_sum), avg(r_sum), avg(f_sum))
+
 
 
 

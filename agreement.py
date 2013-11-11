@@ -10,6 +10,8 @@ from itertools import chain
 from functools import wraps
 from scipy.stats import describe
 
+from indexnumbers import swap_num
+
 import configparser # easy_install configparser
 config = configparser.ConfigParser()
 config.read('CNLP.INI')
@@ -61,7 +63,7 @@ def tokenize_abstract(abstract, tag_def):
             return [token]
     return list(chain.from_iterable([tokenize(token) for token in tokens_by_tag])) # flatten
 
-def annotations(tokens):
+def annotations(tokens, convert_numbers=False):
     """
     Process tokens into a list with {word -> [tokens]} items
     The value is a list, since tokens can be annotated several times
@@ -78,6 +80,8 @@ def annotations(tokens):
             except ValueError:
                 pass
         else:
+            if convert_numbers:
+                token = swap_num(token)
             mapping.append({token: list(curr)})
     return mapping
 
@@ -90,8 +94,13 @@ def combine_annotations(annotations_A, annotations_B):
     b = [['B', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_B)]
     return a + b
 
-def get_annotations(abstract_nr, annotator):
-    return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def))
+def get_annotations(abstract_nr, annotator, convert_numbers=False):
+    '''
+    if convert_numbers is True, numerical strings (e.g., "twenty-five")
+    will be converted to number ("25").
+    '''
+    return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def), 
+                        convert_numbers=convert_numbers)
 
 def agreement(abstract_nr):
     """
@@ -121,10 +130,9 @@ def agreement_fn(a,b):
 
 # bcw -- I factored the below into a method so that
 # the module doesn't automatically calculate stuff on import.
-def calc_agreements():
+def calc_agreements(nr_of_abstracts=100):
     # Loop over the abstracts and caluclate the kappa and alpha per abstract
     aggregate = []
-    nr_of_abstracts = 100
     for i in range(0, nr_of_abstracts):
         _agreement = agreement(i)
         try:
