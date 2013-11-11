@@ -1,6 +1,7 @@
 *.pyc
 *.ipynb
 *_beta.py
+CNLP.INI
 confused.txt
 pmccorpusdownload.py
 testdata/
