@@ -27,6 +27,8 @@ import agreement as annotation_parser
 
 import progressbar
 
+import re
+
 # tmp @TODO use some aggregation of our 
 # annotations as the gold-standard.
 annotator_str = "BCW"
@@ -127,6 +129,11 @@ class SupervisedLearner:
             # first we perform feature extraction over the
             # abstract text (X)
             abstract_text = cit["abstract"] #swap_num removed; already done in pipeline
+
+
+            ###
+            # IM: added, removes all tags before sending to the pipeline
+            abstract_text = re.sub('(<\/([a-z0-9_]+)>|<([a-z0-9_]+)>)', "", abstract_text) 
             
             p = bilearnPipeline(abstract_text)
             p.generate_features()
