@@ -82,11 +82,6 @@ def annotations(tokens):
             except ValueError:
                 pass
         else:
-            ####
-            #   IM swapping individual tokens for numbers doesn't work correctly 
-            #   need to move to whole text
-            # if convert_numbers:
-            #     token = swap_num(token)
             mapping.append({token: list(curr)})
     return mapping
 

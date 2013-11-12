@@ -11,24 +11,28 @@ To actually vectorize, something like:
 > vectorizer.fit_transform(X)
 '''
 
+# std lib
 import string
 import pdb
+import random 
+import re
 
+# sklearn, &etc
 import sklearn
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.svm import SVC
 from sklearn import cross_validation
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
+import scipy
 
+# homegrown
 from indexnumbers import swap_num
 import bilearn
 from bilearn import bilearnPipeline
 import agreement as annotation_parser
 
 import progressbar
-
-import re
 
 # tmp @TODO use some aggregation of our 
 # annotations as the gold-standard.
@@ -44,6 +48,10 @@ class SupervisedLearner:
         '''
         self.abstract_reader = abstract_reader
         self.target = target
+        # this is a special target because we 
+        # enforce the additional constraint that
+        # there be only one 'yes' vote per citation
+        self.predicting_sample_size = target == "n"
 
     def plot_preds(self, preds, y):
         # (preds, y) = sl.cv()
@@ -55,15 +63,74 @@ class SupervisedLearner:
 
     def generate_features(self):
         print "generating feature vectors"
-        self.features, self.y = self.features_from_citations()
+        self.features, self.y = self.features_from_citations(flatten_abstracts=not self.predicting_sample_size)
         self.vectorizer = DictVectorizer(sparse=True)
-        self.X_fv = self.vectorizer.fit_transform(self.features)
+
+        if self.predicting_sample_size:
+            # then features will be a list feature vectors representing words
+            # in utterances comprising distinct citations
+            all_features = []
+            for citation_fvs in self.features:
+                all_features.extend(citation_fvs)
+       
+            self.vectorizer.fit(all_features) 
+            self.X_fv = []
+            no_abstracts = 0
+            for X_citation in self.features:
+                if len(X_citation) > 0:
+                    self.X_fv.append(self.vectorizer.transform(X_citation))
+                else:
+                    self.X_fv.append(None)
+                    no_abstracts += 1
+            print "({0} had no abstracts!)".format(no_abstracts)
+            #self.X_fv = [self.vectorizer.transform(X_citation) for X_citation in self.features if len(X_citation) > 0]
+        else:
+            self.X_fv = self.vectorizer.fit_transform(self.features)
+
+    def train_and_test_sample_size(self, test_size=.1):
+        n_citations = len(self.X_fv)
+        test_size = int(test_size*n_citations)
+        print "test set of size {0} out of {1} total citations".format(test_size, n_citations)
+        test_citation_indices = random.sample(range(n_citations), test_size)
+        X_train, y_train = [], []
+        X_test, y_test = [], []
+        for i in xrange(n_citations):
+            if self.X_fv[i] is not None:
+                if not i in test_citation_indices:
+                    # we flatten these for training.
+                    X_train.extend(self.X_fv[i])
+                    y_train.extend(self.y[i])
+                else:
+                    # these we keep structured, though.
+                    X_test.append(self.X_fv[i])
+                    y_test.append(self.y[i])
+
+        clf = SupervisedLearner._get_SVM()
+        X_train = scipy.sparse.vstack(X_train)
+        clf.fit(X_train, y_train)
+        #pdb.set_trace()
+        print "ok -- testing!"
+        max_index = lambda a: max((v, i) for i, v in enumerate(a))[1]
+        test_preds, test_true = [], [] # these will be flat!
+        for test_citation_i, citation_fvs in enumerate(X_test):
+            true_lbls_i = y_test[test_citation_i]
+            preds_i = [p[1] for p in clf.predict_log_proba(citation_fvs)]
+            # we set the index corresponding to the max 
+            # val (most likely entry) to 1; all else are 0
+            preds_i_max = max_index(preds_i)
+            preds_i = [-1]*len(preds_i)
+            preds_i[preds_i_max] = 1
+
+            test_preds.extend(preds_i)
+            test_true.extend(true_lbls_i)
+
+        return test_preds, test_true
+
 
     def cv(self, predict_probs=False):
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(
             self.X_fv, self.y, test_size=0.1)
         clf = SupervisedLearner._get_SVM()
-        #pdb.set_trace()
         clf.fit(X_train, y_train)
         preds = None
         if predict_probs:
@@ -128,15 +195,15 @@ class SupervisedLearner:
         return (kept_words, kept_fvs)
 
 
-    def features_from_citations(self):
+    def features_from_citations(self, flatten_abstracts=True):
         X, y = [], []
 
         pb = progressbar.ProgressBar(len(self.abstract_reader), timer=True)
-
         for cit in self.abstract_reader:
             # first we perform feature extraction over the
             # abstract text (X)
-            abstract_text = cit["abstract"] #swap_num removed; already done in pipeline
+
+            abstract_text = cit["abstract"] 
 
             ###
             # IM: added, removes all tags before sending to the pipeline
@@ -145,14 +212,9 @@ class SupervisedLearner:
             p = bilearnPipeline(abstract_text)
             p.generate_features()
             #filter=lambda x: x["w[0]"].isdigit()
-            ###
-            # note that the pipeline segments text into
-            # sentences. so X_i will comprise k lists, 
-            # where k is the number of sentences. each 
-            # of these lists contain the feature vectors
-            # for the words comprising the respective 
-            # sentences.
-            ###
+  
+            # @TODO will eventually want to exploit sentence 
+            # structure, I think 
             X_i = p.get_features(flatten=True)
             words = p.get_answers(flatten=True)
    
@@ -160,10 +222,8 @@ class SupervisedLearner:
             cit_file_id = cit["file_id"]
          
             # aahhhh stupid zero indexing confusion
-            abstract_tags = annotation_parser.get_annotations(
-                                cit_file_id-1, annotator_str, convert_numbers=True)
-
-
+            abstract_tags = annotation_parser.get_annotations(cit_file_id-1, annotator_str, convert_numbers=True)
+            
             # we only keep words for which we have annotations
             # and that are not, e.g., just puncutation.
             training_words, training_fvs = SupervisedLearner.filter_words(
@@ -174,8 +234,7 @@ class SupervisedLearner:
             # training_words = [swap_num(w_i) for w_i in training_words]
             training_tags = SupervisedLearner.filter_tags(abstract_tags)
 
-            y_i = []
-            
+            X_cit, y_cit = [], [] # only useful if we are not flattening abstracts
             for j, w in enumerate(training_words):
                 tags = None
 
@@ -203,13 +262,20 @@ class SupervisedLearner:
 
 
                 w_lbl = 1 if self.target in tags else -1
-                X.append(training_fvs[j])
-                y.append(w_lbl)
+                X_cit.append(training_fvs[j])
+                y_cit.append(w_lbl)
 
 
                 # remove this tag from the list -- remember,
                 # words can appear multiple times!
                 training_tags.pop(tag_index) ## IM: first instance of tagged word removed here
+            
+            if flatten_abstracts:
+                X.extend(X_cit)
+                y.extend(y_cit)
+            else:
+                X.append(X_cit)
+                y.append(y_cit)
             pb.tap()
 
         return X, y
@@ -226,7 +292,7 @@ class LabeledAbstractReader:
         BiviewID 42957; PMID 11927130
 
     '''
-    def __init__(self, path_to_data="data/drug_trials_in_cochrane_BCW.txt"):
+    def __init__(self, path_to_data="data/drug_trials_in_cochrane_BCW.txt", num_labeled_abstracts=150):
         # @TODO probably want to read things in lazily, rather than
         # reading everything into memory at once...
         self.abstracts = []
@@ -234,13 +300,15 @@ class LabeledAbstractReader:
         self.path_to_abstracts = path_to_data
         print "parsing data from {0}".format(self.path_to_abstracts)
 
+        self.num_abstracts = num_labeled_abstracts
         self.parse_abstracts()
+
         self.num_citations = len(self.citation_d) 
         print "ok."
 
 
     def __iter__(self):
-        self.abstract_index = 1
+        self.abstract_index = 0
         return self
 
     def __len__(self):
@@ -252,6 +320,7 @@ class LabeledAbstractReader:
         else:
             self.abstract_index += 1
             return self.citation_d[self.abstract_index-1]
+            
 
     def _is_demarcater(self, l):
         '''
@@ -276,8 +345,14 @@ class LabeledAbstractReader:
         in_citation = False
         # abstract_num is the arbitrary, per-file, sequentially
         # incremented id assigned abstracts. this is *not*
-        # zero-indexed and varies across files.
-        abstract_num = 1
+        # zero-indexed and varies across files. we need to hold
+        # on to this to cross-ref with the annotations_parser 
+        # (agreement.py) module -- this is the ID that lib uses!
+        #
+        # abstract_index is used only internally; the difference
+        # is that we only hold on to abstracts that have annotations
+        # (many do not, especially when using just, e.g., my file)
+        abstract_num, abstract_index = 1, 0 
         with open(self.path_to_abstracts, 'rU') as abstracts_file:
             cur_abstract = ""
             
@@ -285,10 +360,15 @@ class LabeledAbstractReader:
                 line = line.strip()
                 if self._is_demarcater(line):
                     biview_id, pmid = self._get_IDs(line)
-                    self.citation_d[abstract_num] = {"abstract":cur_abstract, 
+                    if LabeledAbstractReader.is_annotated(abstract_num):
+                        self.citation_d[abstract_index] = {"abstract":cur_abstract, 
                                                 "Biview_id":biview_id,
                                                 "pubmed_id":pmid,
                                                 "file_id":abstract_num} # yes, redundant
+                        abstract_index += 1
+                    else:
+                        print "no annotations for {0} -- ignoring!".format(abstract_num)
+                    cur_abstract = ""
                     in_citation = False
                     abstract_num += 1
                 elif in_citation and line:
@@ -297,7 +377,20 @@ class LabeledAbstractReader:
                 elif self._is_new_citation_line(line):
                     in_citation = True
 
+                if abstract_num > self.num_abstracts:
+                    return self.citation_d
+
         return self.citation_d
+
+    @staticmethod
+    def is_annotated(cit_file_id):
+        # aahhhh stupid zero indexing confusion
+        abstract_tags = annotation_parser.get_annotations(cit_file_id-1, annotator_str, convert_numbers=True)
+
+        for w in abstract_tags:
+            if len(w.values()[0]) > 0:
+                return True
+        return False
 
     def get_text(self):
         return [cit["abstract"] for cit in self.citation_d.values()]
@@ -306,10 +399,10 @@ class LabeledAbstractReader:
 if __name__ == "__main__":
     # @TODO make these args.
     nruns = 10
-    predict_probs = True
+    predict_probs = False
 
     reader = LabeledAbstractReader()
-    sl = SupervisedLearner(reader)
+    sl = SupervisedLearner(reader)#, target="tx")
     sl.generate_features()
 
     p_sum, r_sum, f_sum, np_sum = [0]*4
@@ -317,7 +410,9 @@ if __name__ == "__main__":
     print "running models"
     pb = progressbar.ProgressBar(nruns, timer=True)
     for i in xrange(nruns):
-        preds, y_test = sl.cv(predict_probs=predict_probs)
+        #preds, y_test = sl.cv(predict_probs=predict_probs)
+        preds, y_test = sl.train_and_test_sample_size()
+       
         if predict_probs:
             fpr, tpr, thresholds = metrics.roc_curve(y_test, preds)
             auc += metrics.auc(fpr, tpr)
@@ -326,6 +421,8 @@ if __name__ == "__main__":
             #pdb.set_trace()
         else:
             p, r, f, s = precision_recall_fscore_support(y_test, preds, average="micro")
+
+            print "\n--precision: {0} / recall {1} / f {2}\n".format(p, r, f)
             p_sum += p
             r_sum += r
             f_sum += f
