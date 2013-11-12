@@ -18,6 +18,7 @@ import sklearn
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.svm import SVC
 from sklearn import cross_validation
+from sklearn import metrics
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 
 from indexnumbers import swap_num
@@ -26,6 +27,8 @@ from bilearn import bilearnPipeline
 import agreement as annotation_parser
 
 import progressbar
+
+import re
 
 # tmp @TODO use some aggregation of our 
 # annotations as the gold-standard.
@@ -50,16 +53,26 @@ class SupervisedLearner:
         all_preds = [preds[i][1] for i in xrange(len(y))]
         pos_preds = [preds[i][1] for i in pos_indices]
 
-    def cv(self):
-        features, y = self.features_from_citations()
+    def generate_features(self):
+        print "generating feature vectors"
+        self.features, self.y = self.features_from_citations()
         self.vectorizer = DictVectorizer(sparse=True)
-        X_fv = self.vectorizer.fit_transform(features)
+        self.X_fv = self.vectorizer.fit_transform(self.features)
+
+    def cv(self, predict_probs=False):
         X_train, X_test, y_train, y_test = cross_validation.train_test_split(
-            X_fv, y, test_size=0.1)
+            self.X_fv, self.y, test_size=0.1)
         clf = SupervisedLearner._get_SVM()
+        #pdb.set_trace()
         clf.fit(X_train, y_train)
-        preds = clf.predict(X_test)
+        preds = None
+        if predict_probs:
+            # well, *log* probs, anyway
+            preds = [p[1] for p in clf.predict_log_proba(X_test)]
+        else:
+            preds = clf.predict(X_test)
         return preds, y_test
+    
 
     @staticmethod 
     def _get_SVM():
@@ -68,7 +81,7 @@ class SupervisedLearner:
     def train(self):
         features, y = self.features_from_citations()
         self.vectorizer = DictVectorizer(sparse=True)
-        X_fv = self.vectorizer.fit_transform(features)
+        X_fv = self.vectorizer.fit_transform(self.features)
         
         self.clf = _get_SVM()
 
@@ -79,6 +92,10 @@ class SupervisedLearner:
 
     @staticmethod
     def filter_tags(tags):
+        '''
+        returns the subset of tags which are not referring to
+        punctuation
+        '''
         kept_tags = []
         for tag in tags:
             if not punctuation_only (tag.keys()[0]):
@@ -113,10 +130,18 @@ class SupervisedLearner:
 
     def features_from_citations(self):
         X, y = [], []
+
+        pb = progressbar.ProgressBar(len(self.abstract_reader), timer=True)
+
         for cit in self.abstract_reader:
             # first we perform feature extraction over the
             # abstract text (X)
-            abstract_text = cit["abstract"]
+            abstract_text = cit["abstract"] #swap_num removed; already done in pipeline
+
+            ###
+            # IM: added, removes all tags before sending to the pipeline
+            abstract_text = re.sub('(<\/([a-z0-9_]+)>|<([a-z0-9_]+)>)', "", abstract_text) 
+            
             p = bilearnPipeline(abstract_text)
             p.generate_features()
             #filter=lambda x: x["w[0]"].isdigit()
@@ -128,8 +153,8 @@ class SupervisedLearner:
             # for the words comprising the respective 
             # sentences.
             ###
-            X_i = p.get_features()
-            words = p.get_answers()
+            X_i = p.get_features(flatten=True)
+            words = p.get_answers(flatten=True)
    
             # now construct y vector based on parsed tags
             cit_file_id = cit["file_id"]
@@ -139,30 +164,35 @@ class SupervisedLearner:
                                 cit_file_id-1, annotator_str, convert_numbers=True)
 
 
-            # for now we'll flatten the sentences 
-            words_flat, X_i_flat = [], []
-            for sentence_i in xrange(len(X_i)):
-                X_i_flat.extend(X_i[sentence_i])
-                # one more step; swap in numbers!
-                words_flat.extend([swap_num(w_ij) for w_ij in words[sentence_i]])
-
-            pdb.set_trace()
-
             # we only keep words for which we have annotations
             # and that are not, e.g., just puncutation.
             training_words, training_fvs = SupervisedLearner.filter_words(
-                                    abstract_tags, words_flat, X_i_flat)
+                                    abstract_tags, words, X_i)
 
 
-            training_words = [swap_num(w_i) for w_i in training_words]
-
+            # IM: swap_num needs to work on the untokenized abstract (since numbers may be multiple words)
+            # training_words = [swap_num(w_i) for w_i in training_words]
             training_tags = SupervisedLearner.filter_tags(abstract_tags)
+
             y_i = []
             
             for j, w in enumerate(training_words):
                 tags = None
 
                 for tag_index, tag in enumerate(training_tags):
+                    ####
+                    # IM: this runs through whole abstract to see if
+                    #     a word is tagged, but could this return errors
+                    #     if same word is tagged differently in different
+                    #     places (e.g. 'mg' in '200 mg ibuprofen versus 500 mg paracetamol')
+                    #     since it always returns the tag of the first tagged instance
+                    #
+                    #  BCW: I do not think so, because the training_tags
+                    #    are ordered in the same way as the training_words.
+                    #    note that we break when we find the first instance
+                    #    of the word, and then remove this word from the 
+                    #    training_tags. 
+                    ###
                     if tag.keys()[0] == w:
                         tags = tag.values()[0]
                         break
@@ -174,11 +204,13 @@ class SupervisedLearner:
 
                 w_lbl = 1 if self.target in tags else -1
                 X.append(training_fvs[j])
-
                 y.append(w_lbl)
+
+
                 # remove this tag from the list -- remember,
                 # words can appear multiple times!
-                training_tags.pop(tag_index)
+                training_tags.pop(tag_index) ## IM: first instance of tagged word removed here
+            pb.tap()
 
         return X, y
 
@@ -210,6 +242,9 @@ class LabeledAbstractReader:
     def __iter__(self):
         self.abstract_index = 1
         return self
+
+    def __len__(self):
+        return self.num_citations
 
     def next(self):
         if self.abstract_index >= self.num_citations:
@@ -269,25 +304,40 @@ class LabeledAbstractReader:
 
 
 if __name__ == "__main__":
+    # @TODO make these args.
     nruns = 10
+    predict_probs = True
+
     reader = LabeledAbstractReader()
-    sl = SupervisedLearner(reader, target="tx1")
+    sl = SupervisedLearner(reader)
+    sl.generate_features()
+
     p_sum, r_sum, f_sum, np_sum = [0]*4
-    pb = progressbar.ProgressBar(nruns)
+    auc, apr = 0, 0
+    print "running models"
+    pb = progressbar.ProgressBar(nruns, timer=True)
     for i in xrange(nruns):
-        #print "on iter {0}".format(i)
-        
-        preds, y_test = sl.cv()
-        p, r, f, s = precision_recall_fscore_support(y_test, preds, average="micro")
-        p_sum += p
-        r_sum += r
-        f_sum += f
-        np_sum += s
+        preds, y_test = sl.cv(predict_probs=predict_probs)
+        if predict_probs:
+            fpr, tpr, thresholds = metrics.roc_curve(y_test, preds)
+            auc += metrics.auc(fpr, tpr)
+            prec, recall, thresholds = metrics.precision_recall_curve(y_test, preds)
+            apr += metrics.auc(recall, prec)
+            #pdb.set_trace()
+        else:
+            p, r, f, s = precision_recall_fscore_support(y_test, preds, average="micro")
+            p_sum += p
+            r_sum += r
+            f_sum += f
+            np_sum += s
         pb.tap()
 
     avg = lambda x: x / float(nruns)
 
-    print "averages\n # of target words: {0}\n precision: {1}\n recall: {2}\n f: {3}".format(
+    if predict_probs:
+        print "averages\nAUC: {0}\nArea under precision-recall curve {1}".format(avg(auc), avg(apr))
+    else:
+        print "averages\n # of target words: {0:.2}\n precision: {1:.2}\n recall: {2:.2}\n f: {3:.2}".format(
                     avg(np_sum), avg(p_sum), avg(r_sum), avg(f_sum))
 
 
