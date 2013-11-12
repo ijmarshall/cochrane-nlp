@@ -49,12 +49,14 @@ open_tag = '<[a-z0-9_]+>'
 close_tag = '<\/[a-z0-9_]+>'
 tag_def = "(" + open_tag + "|" + close_tag + ")" # more convinient than '<\/?[a-z0-9_]+>'
 
-def tokenize_abstract(abstract, tag_def):
+def tokenize_abstract(abstract, tag_def, convert_numbers=False):
     """
     Takes an abstact (string) and converts it to a list of words or tokens
     For example "A <tx>treatment</tx>, of" -> ['A', '<tx>', 'treatment', '</tx>', ',' 'of']
     This uses regexes and not a proper (context-free) DOM parser, so beware.
     """
+    if convert_numbers:
+        abstract = swap_num(abstract)
     tokens_by_tag = re.split(tag_def, abstract)
     def tokenize(token):
         if not re.match(tag_def, token):
@@ -63,7 +65,7 @@ def tokenize_abstract(abstract, tag_def):
             return [token]
     return list(chain.from_iterable([tokenize(token) for token in tokens_by_tag])) # flatten
 
-def annotations(tokens, convert_numbers=False):
+def annotations(tokens):
     """
     Process tokens into a list with {word -> [tokens]} items
     The value is a list, since tokens can be annotated several times
@@ -80,8 +82,11 @@ def annotations(tokens, convert_numbers=False):
             except ValueError:
                 pass
         else:
-            if convert_numbers:
-                token = swap_num(token)
+            ####
+            #   IM swapping individual tokens for numbers doesn't work correctly 
+            #   need to move to whole text
+            # if convert_numbers:
+            #     token = swap_num(token)
             mapping.append({token: list(curr)})
     return mapping
 
@@ -99,8 +104,7 @@ def get_annotations(abstract_nr, annotator, convert_numbers=False):
     if convert_numbers is True, numerical strings (e.g., "twenty-five")
     will be converted to number ("25").
     '''
-    return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def), 
-                        convert_numbers=convert_numbers)
+    return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def, convert_numbers=convert_numbers))
 
 def agreement(abstract_nr):
     """
