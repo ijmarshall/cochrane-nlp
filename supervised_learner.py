@@ -146,11 +146,13 @@ class SupervisedLearner:
                 # one more step; swap in numbers!
                 words_flat.extend([swap_num(w_ij) for w_ij in words[sentence_i]])
 
+            pdb.set_trace()
 
             # we only keep words for which we have annotations
             # and that are not, e.g., just puncutation.
             training_words, training_fvs = SupervisedLearner.filter_words(
                                     abstract_tags, words_flat, X_i_flat)
+
 
             training_words = [swap_num(w_i) for w_i in training_words]
 
@@ -269,7 +271,7 @@ class LabeledAbstractReader:
 if __name__ == "__main__":
     nruns = 10
     reader = LabeledAbstractReader()
-    sl = SupervisedLearner(reader)
+    sl = SupervisedLearner(reader, target="tx1")
     p_sum, r_sum, f_sum, np_sum = [0]*4
     pb = progressbar.ProgressBar(nruns)
     for i in xrange(nruns):
