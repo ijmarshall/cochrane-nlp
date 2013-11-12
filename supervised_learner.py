@@ -82,6 +82,10 @@ class SupervisedLearner:
 
     @staticmethod
     def filter_tags(tags):
+        '''
+        returns the subset of tags which are not referring to
+        punctuation
+        '''
         kept_tags = []
         for tag in tags:
             if not punctuation_only (tag.keys()[0]):
@@ -122,8 +126,8 @@ class SupervisedLearner:
         for cit in self.abstract_reader:
             # first we perform feature extraction over the
             # abstract text (X)
-            abstract_text = swap_num(cit["abstract"]) #IM changed swap_num to up here
-            #                                         #since works on full text
+            abstract_text = cit["abstract"] #swap_num removed; already done in pipeline
+            
             p = bilearnPipeline(abstract_text)
             p.generate_features()
             #filter=lambda x: x["w[0]"].isdigit()
@@ -137,6 +141,8 @@ class SupervisedLearner:
             ###
             X_i = p.get_features(flatten=True)
             words = p.get_answers(flatten=True)
+
+
    
             # now construct y vector based on parsed tags
             cit_file_id = cit["file_id"]
@@ -146,12 +152,13 @@ class SupervisedLearner:
                                 cit_file_id-1, annotator_str, convert_numbers=True)
 
 
-            ## IM: moved the flattening to the pipeline
-            # words_flat, X_i_flat = [], []
-            # for sentence_i in xrange(len(X_i)):
-            #     X_i_flat.extend(X_i[sentence_i])
-            #     # one more step; swap in numbers!
-            #     words_flat.extend([swap_num(w_ij) for w_ij in words[sentence_i]])
+
+
+            
+
+            ###
+            # IM: moved the flattening to the pipeline
+
 
 
             # we only keep words for which we have annotations
@@ -159,16 +166,26 @@ class SupervisedLearner:
             training_words, training_fvs = SupervisedLearner.filter_words(
                                     abstract_tags, words, X_i)
 
+
+
             # IM: swap_num needs to work on the untokenized abstract (since numbers may be multiple words)
             # training_words = [swap_num(w_i) for w_i in training_words]
 
             training_tags = SupervisedLearner.filter_tags(abstract_tags)
+
             y_i = []
             
             for j, w in enumerate(training_words):
                 tags = None
 
                 for tag_index, tag in enumerate(training_tags):
+                    ####
+                    # IM: this runs through whole abstract to see if
+                    #     a word is tagged, but could this return errors
+                    #     if same word is tagged differently in different
+                    #     places (e.g. 'mg' in '200 mg ibuprofen versus 500 mg paracetamol')
+                    #     since it always returns the tag of the first tagged instance
+                    ###
                     if tag.keys()[0] == w:
                         tags = tag.values()[0]
                         break
@@ -182,9 +199,11 @@ class SupervisedLearner:
                 X.append(training_fvs[j])
 
                 y.append(w_lbl)
+
+
                 # remove this tag from the list -- remember,
                 # words can appear multiple times!
-                training_tags.pop(tag_index)
+                training_tags.pop(tag_index) ## IM: first instance of tagged word removed here
             pb.tap()
 
         return X, y
@@ -301,7 +320,10 @@ if __name__ == "__main__":
 
     avg = lambda x: x / float(nruns)
 
-    print "averages\n # of target words: {0}\n precision: {1}\n recall: {2}\n f: {3}".format(
+    ###
+    #IM: number of decimal places increased due to outstanding performance : )
+
+    print "averages\n # of target words: {0:.2}\n precision: {1:.2}\n recall: {2:.2}\n f: {3:.2}".format(
                     avg(np_sum), avg(p_sum), avg(r_sum), avg(f_sum))
 
 
