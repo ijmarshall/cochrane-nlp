@@ -26,11 +26,11 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 import scipy
 
+
 # homegrown
 from indexnumbers import swap_num
 import bilearn
-from bilearn import bilearnPipeline
-import agreement as annotation_parser
+from taggedpipeline import TaggedTextPipeline
 
 import progressbar
 
@@ -63,6 +63,7 @@ class SupervisedLearner:
 
     def generate_features(self):
         print "generating feature vectors"
+
         self.features, self.y = self.features_from_citations(flatten_abstracts=not self.predicting_sample_size)
         self.vectorizer = DictVectorizer(sparse=True)
 
@@ -143,7 +144,7 @@ class SupervisedLearner:
 
     @staticmethod 
     def _get_SVM():
-        return SVC(probability=True, kernel='linear')
+        return SVC(probability=True, kernel='linear', C=3)
 
     def train(self):
         features, y = self.features_from_citations()
@@ -157,44 +158,6 @@ class SupervisedLearner:
         self.clf.fit(X_fv, y)
 
 
-    @staticmethod
-    def filter_tags(tags):
-        '''
-        returns the subset of tags which are not referring to
-        punctuation
-        '''
-        kept_tags = []
-        for tag in tags:
-            if not punctuation_only (tag.keys()[0]):
-                kept_tags.append(tag)
-        return kept_tags
-
-    @staticmethod
-    def filter_words(words_to_annotations, words, feature_vectors):
-        '''
-        return the subset of words in words that appears in 
-        words_to_annotations. also filter out puncutation-only 
-        tokens. note that we take in the feature_vectors list, 
-        too, so that we may return the right X_i's (i.e., those
-        corresponding to the word that are kept)
-        '''
-
-        annotated_words = []
-        for w_to_tags in words_to_annotations:
-            # w_to_tags is a dict {word: [tag set]}
-            word = w_to_tags.keys()[0]
-            annotated_words.append(word)
-
-        kept_words, kept_fvs = [], []
-        for i,w in enumerate(words):
-            if not punctuation_only(w) and w in annotated_words:
-                kept_words.append(w)
-                kept_fvs.append(feature_vectors[i])
-                annotated_words.remove(w)
-
-        return (kept_words, kept_fvs)
-
-
     def features_from_citations(self, flatten_abstracts=True):
         X, y = [], []
 
@@ -205,88 +168,38 @@ class SupervisedLearner:
 
             abstract_text = cit["abstract"] 
 
-            ###
-            # IM: added, removes all tags before sending to the pipeline
-            abstract_text = re.sub('(<\/([a-z0-9_]+)>|<([a-z0-9_]+)>)', "", abstract_text) 
-            
-            p = bilearnPipeline(abstract_text)
+            p = TaggedTextPipeline(abstract_text)
             p.generate_features()
-            
+
+
             # @TODO will eventually want to exploit sentence 
             # structure, I think 
+
+
+            ####
+            # IM: 'punct' = token has all punctuation
+            # filter here is a lambda function used on the
+            # individual word's hidden features
+            ###
+            X_i = p.get_features(flatten=True, filter=lambda w: w['punct']==False)
+            y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda w: w['punct']==False)
+
+            ###
+            # alternative code to restrict to integers only
+            #
+            # X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
+            # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
+
             
-
-            X_i = p.get_features(flatten=True)
-            # IM: changed to simplify, don't need computed y function here
-            # we're just using the words
-            words = p.get_words(flatten=True)
-
-
-            # if we want to evaluate per integer instead would use:
-            # f = lambda x: x["num"]
-            # X_i = p.get_features(flatten=True, filter=f)
-            # words = p.get_words(flatten=True, filter=f)
-
-   
-            # now construct y vector based on parsed tags
-            cit_file_id = cit["file_id"]
-         
-            # aahhhh stupid zero indexing confusion
-            abstract_tags = annotation_parser.get_annotations(cit_file_id-1, annotator_str, convert_numbers=True)
+            ####
+            # IM: xml annotations are now all available using the key "xml-annotation-[tag-name]"
+            ####
             
-            # we only keep words for which we have annotations
-            # and that are not, e.g., just puncutation.
-            training_words, training_fvs = SupervisedLearner.filter_words(
-                                    abstract_tags, words, X_i)
+            X.append(X_i)
+            y.append(y_i)
 
-
-            # IM: swap_num needs to work on the untokenized abstract (since numbers may be multiple words)
-            # training_words = [swap_num(w_i) for w_i in training_words]
-            training_tags = SupervisedLearner.filter_tags(abstract_tags)
-
-            X_cit, y_cit = [], [] # only useful if we are not flattening abstracts
-            for j, w in enumerate(training_words):
-                tags = None
-
-                for tag_index, tag in enumerate(training_tags):
-                    ####
-                    # IM: this runs through whole abstract to see if
-                    #     a word is tagged, but could this return errors
-                    #     if same word is tagged differently in different
-                    #     places (e.g. 'mg' in '200 mg ibuprofen versus 500 mg paracetamol')
-                    #     since it always returns the tag of the first tagged instance
-                    #
-                    #  BCW: I do not think so, because the training_tags
-                    #    are ordered in the same way as the training_words.
-                    #    note that we break when we find the first instance
-                    #    of the word, and then remove this word from the 
-                    #    training_tags. 
-                    ###
-                    if tag.keys()[0] == w:
-                        tags = tag.values()[0]
-                        break
-
-                if tags is None:
-                    # uh-oh.
-                    raise Exception, "no tags???"
-
-
-                w_lbl = 1 if self.target in tags else -1
-                X_cit.append(training_fvs[j])
-                y_cit.append(w_lbl)
-
-
-                # remove this tag from the list -- remember,
-                # words can appear multiple times!
-                training_tags.pop(tag_index) ## IM: first instance of tagged word removed here
-            
-            if flatten_abstracts:
-                X.extend(X_cit)
-                y.extend(y_cit)
-            else:
-                X.append(X_cit)
-                y.append(y_cit)
             pb.tap()
+
 
         return X, y
 
@@ -370,14 +283,18 @@ class LabeledAbstractReader:
                 line = line.strip()
                 if self._is_demarcater(line):
                     biview_id, pmid = self._get_IDs(line)
-                    if LabeledAbstractReader.is_annotated(abstract_num):
+
+                    if LabeledAbstractReader.is_annotated(cur_abstract):
+
+
                         self.citation_d[abstract_index] = {"abstract":cur_abstract, 
-                                                "Biview_id":biview_id,
-                                                "pubmed_id":pmid,
-                                                "file_id":abstract_num} # yes, redundant
+                                                           "Biview_id":biview_id,
+                                                           "pubmed_id":pmid,
+                                                           "file_id":abstract_num} # yes, redundant
                         abstract_index += 1
                     else:
                         print "no annotations for {0} -- ignoring!".format(abstract_num)
+
                     cur_abstract = ""
                     in_citation = False
                     abstract_num += 1
@@ -393,28 +310,30 @@ class LabeledAbstractReader:
         return self.citation_d
 
     @staticmethod
-    def is_annotated(cit_file_id):
-        # aahhhh stupid zero indexing confusion
-        abstract_tags = annotation_parser.get_annotations(cit_file_id-1, annotator_str, convert_numbers=True)
-
-        for w in abstract_tags:
-            if len(w.values()[0]) > 0:
-                return True
-        return False
+    def is_annotated(text):
+        #change to checking abstract text instead, don't need to completely parse annotations
+        if re.search("<([a-z0-9_]+)>", text):
+            return True
+        else:
+            return False
 
     def get_text(self):
         return [cit["abstract"] for cit in self.citation_d.values()]
 
 
 if __name__ == "__main__":
+
     # @TODO make these args.
     nruns = 10
-    predict_probs = False
+    predict_probs = True
 
     reader = LabeledAbstractReader()
+
     sl = SupervisedLearner(reader)#, target="tx")
+
     sl.generate_features()
 
+    
     p_sum, r_sum, f_sum, np_sum = [0]*4
     auc, apr = 0, 0
     print "running models"
