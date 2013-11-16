@@ -507,9 +507,8 @@ class BiLearner():
         "generate and return features for Cochrane review"
         p = bilearnPipeline(text)
         p.generate_features()
-        X = p.get_features(filter=lambda x: x["w[0]"].isdigit())
-        words = p.get_answers(filter=lambda x: x["w"].isdigit())
-
+        X = p.get_features(filter=lambda x: x["num"], flatten=True)
+        words = p.get_words(filter=lambda x: x["num"], flatten=True)
         
         return X, words
 
@@ -517,8 +516,8 @@ class BiLearner():
         "generate features for pubmed abstract"
         p = bilearnPipeline(text)
         p.generate_features()
-        X = p.get_features(filter=lambda x: x["w[0]"].isdigit())
-        words = p.get_answers(filter=lambda x: x["w"].isdigit())
+        X = p.get_features(filter=lambda x: x["num"], flatten=True)
+        words = p.get_words(filter=lambda x: x["num"], flatten=True)
 
         return X, words
 
