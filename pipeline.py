@@ -25,7 +25,11 @@ def filters(func):
     and filters based on the base (hidden) features
     """
     @wraps(func)
-    def wrapper(self, flatten=False, filter=None, *args, **kwargs):
+    def wrapper(self, *args, **kwargs):
+        
+        flatten = kwargs.pop("flatten", False)
+        filter = kwargs.pop("filter", None)
+
         raw_output = func(self, *args, **kwargs)
         if filter:
             filtered_output = [[raw_word for raw_word, base_word in izip(raw_sent, base_sent) if filter(base_word)]
