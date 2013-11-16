@@ -184,6 +184,11 @@ class SupervisedLearner:
             X_i = p.get_features(flatten=True, filter=lambda w: w['punct']==False)
             y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda w: w['punct']==False)
 
+            ####
+            # IM: xml annotations are now all available in w["tags"] for each word in the features list
+            ####
+
+
             ###
             # alternative code to restrict to integers only
             #
@@ -191,9 +196,6 @@ class SupervisedLearner:
             # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
 
             
-            ####
-            # IM: xml annotations are now all available using the key "xml-annotation-[tag-name]"
-            ####
             
             X.append(X_i)
             y.append(y_i)
@@ -311,7 +313,9 @@ class LabeledAbstractReader:
 
     @staticmethod
     def is_annotated(text):
-        #change to checking abstract text instead, don't need to completely parse annotations
+        ###
+        # IM: change to checking abstract text for any opening tag
+        # to save repeating full annotation parse
         if re.search("<([a-z0-9_]+)>", text):
             return True
         else:
