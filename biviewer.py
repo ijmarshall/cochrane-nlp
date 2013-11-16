@@ -47,7 +47,7 @@ class BiViewer():
 
     def __init__(self, **kwargs):
         
-        self.init_common_variables(self, **kwargs)
+        self.init_common_variables(**kwargs)
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'pubmed'])
 
 
