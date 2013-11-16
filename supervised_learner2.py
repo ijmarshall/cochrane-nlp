@@ -32,8 +32,6 @@ from indexnumbers import swap_num
 import bilearn
 from taggedpipeline import TaggedTextPipeline
 
-import agreement as annotation_parser
-
 import progressbar
 
 # tmp @TODO use some aggregation of our 
@@ -324,14 +322,18 @@ class LabeledAbstractReader:
 
 
 if __name__ == "__main__":
+
     # @TODO make these args.
     nruns = 10
     predict_probs = True
 
     reader = LabeledAbstractReader()
+
     sl = SupervisedLearner(reader)#, target="tx")
+
     sl.generate_features()
 
+    
     p_sum, r_sum, f_sum, np_sum = [0]*4
     auc, apr = 0, 0
     print "running models"
