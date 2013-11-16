@@ -109,7 +109,7 @@ class bilearnPipeline(pipeline.Pipeline):
                 word = self.functions[i][j]["w"]
                 features = {"num": word.isdigit(),
                             "cap": word[0].isupper(),
-                            "sym": word.isalnum(),
+                            "sym": not word.isalnum(),
                             "p1": word[0],
                             "p2": word[:2],
                             "p3": word[:3],
