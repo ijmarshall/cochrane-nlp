@@ -25,6 +25,7 @@ from sklearn import cross_validation
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 import scipy
+import numpy
 
 # homegrown
 from indexnumbers import swap_num
@@ -394,6 +395,29 @@ class LabeledAbstractReader:
 
     def get_text(self):
         return [cit["abstract"] for cit in self.citation_d.values()]
+
+
+def learning_curve():
+    nruns = 10
+
+    reader = LabeledAbstractReader()
+    sl = SupervisedLearner(reader)
+    sl.generate_features()
+    average_fs = []
+    pb = progressbar.ProgressBar(nruns, timer=True)
+    train_ps = numpy.linspace(.1,.8,5)
+    for train_p in train_ps:
+        cur_avg_f = 0
+        for i in xrange(nruns):
+            preds, y_test = sl.train_and_test_sample_size(test_size=1-train_p)
+            p, r, f, s = precision_recall_fscore_support(y_test, preds, average="micro")
+            cur_avg_f += f
+            pb.tap()
+        avg_f = cur_avg_f/float(nruns)
+        print "\naverage f-score for {0}:{1}".format(train_p, avg_f)
+        average_fs.append(avg_f)
+    return train_ps, average_fs
+
 
 
 if __name__ == "__main__":
