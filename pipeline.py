@@ -1,30 +1,48 @@
 #
-#   Pipeline 5
+#   Pipeline 6
 #
 
 
-"""
 
-V5 of Pipeline
+import cPickle as pickle
+from collections import defaultdict
+from functools import wraps
+from itertools import izip
 
-changes:
-    - Pipeline is now only used for chaining together functions
-    - New functions are added by subclassing Pipeline
-    - Baseline function is only "w" for word
-
-"""
-
+from indexnumbers import swap_num
+from nltk import PorterStemmer
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from progressbar import ProgressBar
 
-from collections import defaultdict
-from itertools import izip
-from nltk import PorterStemmer
 
-from indexnumbers import swap_num
 
-import cPickle as pickle
+def filters(func):
+    """
+    used as decorator
+    allows pipeline functions to return helpful
+    views/permetations of output data - flattened lists
+    and filters based on the base (hidden) features
+    """
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        
+        flatten = kwargs.pop("flatten", False)
+        filter = kwargs.pop("filter", None)
+
+        raw_output = func(self, *args, **kwargs)
+        if filter:
+            filtered_output = [[raw_word for raw_word, base_word in izip(raw_sent, base_sent) if filter(base_word)]
+                                for raw_sent, base_sent in izip(raw_output, self.functions)]
+        else:
+            filtered_output = raw_output
+
+        if flatten:
+            return [item for sublist in filtered_output for item in sublist]
+        else:
+            return filtered_output
+    return wrapper
+
 
 
 class Pipeline(object):
@@ -56,7 +74,7 @@ class Pipeline(object):
 
     def run_functions(self, show_progress=False):
         " used in subclasses to chain together feature functions "
-        pass
+        raise NotImplemented
 
     def apply_templates(self, templates=None, show_progress=False):
         """
@@ -87,63 +105,34 @@ class Pipeline(object):
                         X[sent_index][word_index][name] = '|'.join([str(value) for value in values])
         return X
 
-    # def get_features(self, filter=None):
-    #     if filter:
-    #         return [item for sublist in self.X for item in sublist if filter(item)]
-    #     else:
-    #         return self.X
-
-
-    def get_features(self, filter=None, flatten=False):
-
-        if filter:
-            output = []
-            for sent_X in self.X:
-                output.extend([word for word in sent_X if filter(word)])
-            return output
-        else:
-            if flatten:
-                return [item for sublist in self.X for item in sublist]
-            else:
-                return self.X
-
-    def get_words(self, filter=None, flatten=False):
-        if filter:
-            output = []
-            for sent in self.functions:
-                output.extend([word["w"] for word in sent if filter(word)])
-            return output
-        else:
-            words = [[word["w"] for word in sent] for sent in self.functions]
-            if flatten:
-                return [item for sublist in words for item in sublist]
-            else:
-                return words
 
     def get_text(self):
         return self.text
 
+    @filters
+    def get_words(self):
+        return [[word["w"] for word in sent] for sent in self.functions]
 
-    def get_answers(self, answer_key=None, filter=None, flatten=False):
-        if not answer_key:
-            answer_key = self.answer_key
-        if filter:
-            return [item[answer_key] for sublist in self.functions for item in sublist if filter(item)]
-        else:
-            answers = [[word[answer_key] for word in sent] for sent in self.functions]
-            if flatten:
-                return [item for sublist in answers for item in sublist]
-            else:
-                return answers
+    @filters
+    def get_base_functions(self):
+        return self.functions
 
-    def get_crfsuite_features(self, flatten=False):
+    @filters
+    def get_answers(self, answer_key=lambda x: True):
+        """
+        returns y vectors for each sentence, where the answer_key
+        is a lambda function which derives the answer from the 
+        base (hidden) features
+        """
+        return [[answer_key(word) for word in sent] for sent in self.functions]
 
-        features =  [[["%s=%s" % (key, value) for key, value in word.iteritems()] for word in sent] for sent in self.X]
-        if flatten:
-            return [item for sublist in features for item in sublist]
-        else:
-            return features
+    @filters
+    def get_features(self, filter=None, flatten=False):
+        return self.X
 
+    @filters
+    def get_crfsuite_features(self):
+        return [[["%s=%s" % (key, value) for key, value in word.iteritems()] for word in sent] for sent in self.X]
         
 
 
@@ -170,9 +159,14 @@ def main():
     # print p2.get_features(filter = lambda x: x["w"].isdigit())    
 
 
-    p2 = bilearnPipeline("No numbers in this sentence! Or this one either.")
+    p2 = bilearnPipeline("No numbers in this sentence! Or this one which has a number of 123 either.")
     p2.generate_features()
-    print p2.get_crfsuite_features(flatten=False)
+    
+    # print p2.get_crfsuite_features(flatten=True, filter=lambda x: x["sym"]==False)
+    print p2.get_features(flatten=True, filter=lambda x: x["num"])
+    print p2.get_answers(flatten=False, answer_key=lambda x: x["num"], filter=lambda x: not x["sym"])
+
+    
     # print p2.get_features(filter = lambda x: x["w[0]"].isdigit())
 
 
