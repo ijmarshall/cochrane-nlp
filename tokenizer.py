@@ -79,15 +79,6 @@ def annotations(tokens):
             mapping.append({token: list(curr)})
     return mapping
 
-
-def combine_annotations(annotations_A, annotations_B):
-    """
-    Build a list of [annotator, word, annotation] for two annotators
-    """
-    a = [['A', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_A)]
-    b = [['B', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_B)]
-    return a + b
-
 def get_annotations(abstract_nr, annotator, convert_numbers=False):
     '''
     if convert_numbers is True, numerical strings (e.g., "twenty-five")
@@ -95,19 +86,13 @@ def get_annotations(abstract_nr, annotator, convert_numbers=False):
     '''
     return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def, convert_numbers=convert_numbers))
 
-def agreement(abstract_nr):
+
+def round_robin(abstract_nr, annotators = ["IJM", "BCW", "JKU"]):
     """
     Figure out who annotator A and B should be in a round-robin fashion
-    Returns the combined annotations for the abstract_nr
     """
-    annotators = ["IJM", "BCW", "JKU"]
-    annotator_A = annotators[abstract_nr % len(annotators)]
-    annotator_B = annotators[(abstract_nr + 1) % len(annotators)]
-    annotations_A = get_annotations(abstract_nr, annotator_A)
-    annotations_B = get_annotations(abstract_nr, annotator_B)
-    return { "annotations" : combine_annotations(annotations_A, annotations_B),
-             "annotator_A" : annotator_A,
-             "annotator_B" : annotator_B }
+    return [annotators[abstract_nr % len(annotators)],
+            annotators[(abstract_nr + 1) % len(annotators)]]
 
 def eliminate_order(tag):
     return re.sub('([0-9])((?:_a)?)', 'X\g<2>', tag)
@@ -124,22 +109,33 @@ def agreement_fn(a,b):
         # linearly scale (all agree = 0) (none agree = 1)
         return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
 
+
+def str_combine_annotations(annotations_A, annotations_B):
+    """
+    Builds a string of annotations sepearate by an & for two annotators
+    """
+    a = [['A', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_A)]
+    b = [['B', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_B)]
+    return a + b
+
 def calc_agreements(nr_of_abstracts=100):
     # Loop over the abstracts and caluclate the kappa and alpha per abstract
     aggregate = []
     for i in range(0, nr_of_abstracts):
-        _agreement = agreement(i)
+        annotators = round_robin(i)
+        annotations_A = get_annotations(i, annotators[0])
+        annotations_B = get_annotations(i, annotators[1])
+        annotations = str_combine_annotations(annotations_A, annotations_B)
         try:
-            a = AnnotationTask(_agreement['annotations'], agreement_fn)
+            a = AnnotationTask(annotations, agreement_fn)
             aggregate.append({
                 "kappa" : a.kappa(),
                 "alpha" : a.alpha(),
-                "annotator_A" : _agreement['annotator_A'],
-                "annotator_B" : _agreement['annotator_B'] })
+                "annotator_A" : annotators[0],
+                "annotator_B" : annotators[1] })
         except:
-            print("Could not calculate kappa for abstract %i between %s and %s" % (i + 1, _agreement['annotator_A'], _agreement['annotator_B']))
+            print("Could not calculate kappa for abstract %i" % (i + 1))
             pass
-
 
     # Summary statistics
     kappa = describe([a['kappa'] for a in aggregate])
@@ -158,12 +154,6 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
     return the processed tag
 
     example usage:
-    JKU = get_abstracts("JKU")
-    BCW = get_abstracts("BCW")
-
-    JKU1 = annotations(tokenize_abstract(JKU[1], tag_def))
-    BCW1 = annotations(tokenize_abstract(BCW[1], tag_def))
-
     print(merge_annotations(JKU1, BCW1, preprocess = eliminate_order))
     """
     assert(len(a) == len(b))
@@ -175,6 +165,25 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
         result.append({key : list(strategy(first, second))})
     return result
 
+def remove_key(d, key):
+    if key in d:
+        r = dict(d)
+        del r[key]
+        return r
+    else:
+        return d
+
+def merged_annotations(abstract_nr, **kwargs):
+    """
+    Determines the annotators for abstract_nr and returns
+    the merged annotations for that abstract.
+    Optionally takes convert_numbers, all other arguments are passed to merge_annotations
+    """
+    annotators = round_robin(abstract_nr)
+    def ann(annotator):
+        return get_annotations(abstract_nr, annotator, kwargs.get("convert_numbers", False))
+    keywords = remove_key(kwargs, "convert_numbers")
+    return merge_annotations(ann(annotators[1]), ann(annotators[0]), **keywords)
 
 if __name__ == "__main__":
     calc_agreements()
