@@ -34,8 +34,9 @@ def get_abstracts(annotator):
         data=file.read()
 
     def clean(abstract):
-        return (re.split("BiviewID [0-9]*; PMID ?[0-9]*", abstract)[0]).strip()
-
+        text = (re.split("BiviewID [0-9]*; PMID ?[0-9]*", abstract)[0]).strip()
+        text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
+        return text
     return [clean(abstract) for abstract in re.split('Abstract \d+ of \d+', data)][1:]
 
 # Tokenize an abstract
@@ -85,7 +86,6 @@ def get_annotations(abstract_nr, annotator, convert_numbers=False):
     will be converted to number ("25").
     '''
     return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def, convert_numbers=convert_numbers))
-
 
 def round_robin(abstract_nr, annotators = ["IJM", "BCW", "JKU"]):
     """
@@ -181,7 +181,7 @@ def merged_annotations(abstract_nr, **kwargs):
     Optionally takes convert_numbers, all other arguments are passed to merge_annotations
 
     example usage:
-    merge_annotations(50, convert_numbers = True, preprocess = eliminate_order)
+    merged_annotations(50, convert_numbers = True, preprocess = eliminate_order)
     """
     annotators = round_robin(abstract_nr)
     def ann(annotator):
