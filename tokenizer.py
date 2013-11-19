@@ -110,7 +110,7 @@ def agreement_fn(a,b):
         return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
 
 
-def str_combine_annotations(annotations_A, annotations_B):
+def __str_combine_annotations(annotations_A, annotations_B):
     """
     Builds a string of annotations sepearate by an & for two annotators
     """
@@ -125,7 +125,7 @@ def calc_agreements(nr_of_abstracts=100):
         annotators = round_robin(i)
         annotations_A = get_annotations(i, annotators[0])
         annotations_B = get_annotations(i, annotators[1])
-        annotations = str_combine_annotations(annotations_A, annotations_B)
+        annotations = __str_combine_annotations(annotations_A, annotations_B)
         try:
             a = AnnotationTask(annotations, agreement_fn)
             aggregate.append({
@@ -156,7 +156,8 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
     example usage:
     print(merge_annotations(JKU1, BCW1, preprocess = eliminate_order))
     """
-    assert(len(a) == len(b))
+    if not len(a) == len(b):
+        raise Exception("the annotations differ in length! {0} vs {1}".format(len(a), len(b)))
     result = []
     for i in range(0, len(a)):
         key = a[i].keys()[0]
@@ -178,6 +179,9 @@ def merged_annotations(abstract_nr, **kwargs):
     Determines the annotators for abstract_nr and returns
     the merged annotations for that abstract.
     Optionally takes convert_numbers, all other arguments are passed to merge_annotations
+
+    example usage:
+    merge_annotations(50, convert_numbers = True, preprocess = eliminate_order)
     """
     annotators = round_robin(abstract_nr)
     def ann(annotator):
