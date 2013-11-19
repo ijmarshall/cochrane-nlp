@@ -7,6 +7,7 @@ from functools import wraps
 from scipy.stats import describe
 
 from indexnumbers import swap_num
+from taggedpipeline import *
 
 import configparser # easy_install configparser
 config = configparser.ConfigParser()
@@ -39,53 +40,18 @@ def get_abstracts(annotator):
         return text
     return [clean(abstract) for abstract in re.split('Abstract \d+ of \d+', data)][1:]
 
-# Tokenize an abstract
-open_tag = '<[a-z0-9_]+>'
-close_tag = '<\/[a-z0-9_]+>'
-tag_def = "(" + open_tag + "|" + close_tag + ")" # more convinient than '<\/?[a-z0-9_]+>'
-
-def tokenize_abstract(abstract, tag_def, convert_numbers=False):
-    """
-    Takes an abstact (string) and converts it to a list of words or tokens
-    For example "A <tx>treatment</tx>, of" -> ['A', '<tx>', 'treatment', '</tx>', ',' 'of']
-    This uses regexes and not a proper (context-free) DOM parser, so beware.
-    """
-    if convert_numbers:
-        abstract = swap_num(abstract)
-    tokens_by_tag = re.split(tag_def, abstract)
-    def tokenize(token):
-        if not re.match(tag_def, token):
-            return word_tokenize(token)
-        else:
-            return [token]
-    return list(chain.from_iterable([tokenize(token) for token in tokens_by_tag])) # flatten
-
-def annotations(tokens):
-    """
-    Process tokens into a list with {word -> [tokens]} items
-    The value is a list, since tokens can be annotated several times
-    """
-    mapping = []
-    curr = []
-    for token in tokens:
-        if re.match(open_tag, token):
-            curr.append(re.match('<([a-z0-9_]+)>',token).group(1))
-        elif re.match(close_tag, token):
-            tag = re.match('<\/([a-z0-9_]+)>',token).group(1)
-            try:
-                curr.remove(tag)
-            except ValueError:
-                pass
-        else:
-            mapping.append({token: list(curr)})
-    return mapping
-
 def get_annotations(abstract_nr, annotator, convert_numbers=False):
     '''
     if convert_numbers is True, numerical strings (e.g., "twenty-five")
     will be converted to number ("25").
     '''
-    return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def, convert_numbers=convert_numbers))
+    abstract = get_abstracts(annotator)[abstract_nr]
+    if convert_numbers:
+        abstract = swap_num(abstract)
+    p = TaggedTextPipeline(abstract)
+    tags = p.get_tags(flatten=True) # returns a list of tags
+    return tags
+
 
 def round_robin(abstract_nr, annotators = ["IJM", "BCW", "JKU"]):
     """
@@ -109,24 +75,23 @@ def agreement_fn(a,b):
         # linearly scale (all agree = 0) (none agree = 1)
         return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
 
-
 def __str_combine_annotations(annotations_A, annotations_B):
     """
-    Builds a string of annotations sepearate by an & for two annotators
+    Builds a string of annotations separate by an & for two annotators
     """
-    a = [['A', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_A)]
-    b = [['B', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_B)]
+    a = [['A', idx, "&".join(x['tags'])] for idx, x in enumerate(annotations_A)]
+    b = [['B', idx, "&".join(x['tags'])] for idx, x in enumerate(annotations_B)]
     return a + b
 
 def calc_agreements(nr_of_abstracts=100):
-    # Loop over the abstracts and caluclate the kappa and alpha per abstract
+    # Loop over the abstracts and calculate the kappa and alpha per abstract
     aggregate = []
     for i in range(0, nr_of_abstracts):
-        annotators = round_robin(i)
-        annotations_A = get_annotations(i, annotators[0])
-        annotations_B = get_annotations(i, annotators[1])
-        annotations = __str_combine_annotations(annotations_A, annotations_B)
         try:
+            annotators = round_robin(i)
+            annotations_A = get_annotations(i, annotators[0])
+            annotations_B = get_annotations(i, annotators[1])
+            annotations = __str_combine_annotations(annotations_A, annotations_B)
             a = AnnotationTask(annotations, agreement_fn)
             aggregate.append({
                 "kappa" : a.kappa(),
@@ -160,10 +125,9 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
         raise Exception("the annotations differ in length! {0} vs {1}".format(len(a), len(b)))
     result = []
     for i in range(0, len(a)):
-        key = a[i].keys()[0]
-        first = set([preprocess(x) for x in a[i].values()[0]])
-        second = set([preprocess(x) for x in b[i].values()[0]])
-        result.append({key : list(strategy(first, second))})
+        first = set([preprocess(x) for x in a[i]['tags']])
+        second = set([preprocess(x) for x in b[i]['tags']])
+        result.append({"w": a[i]['w'], "tags": list(strategy(first, second))})
     return result
 
 def remove_key(d, key):
