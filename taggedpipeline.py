@@ -109,7 +109,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
         index_tag_stack = set() # tags active at current index
 
         char_stack = []
-        current_word_tag_stack = []
+        current_word_tag_stack = set()
         # per word tagging, so if beginning of word token is tagged only, e.g. '<n>Fifty</n>-nine'
         # and 'Fifty-nine' was a single token, then we assume the whole
 
@@ -144,17 +144,18 @@ class TaggedTextPipeline(pipeline.Pipeline):
             if i == word_indices[0][1]: # if a word has ended
                 keep_char = False
                 word_stack.append(''.join(char_stack)) # push word to the word stack
-                word_tag_stack.append(current_word_tag_stack)
+                word_tag_stack.append(list(current_word_tag_stack))
                 char_stack = [] # clear char stack
-                current_word_tag_stack = []
+                current_word_tag_stack = set()
                 word_indices.popleft() # remove current word
 
             if i == word_indices[0][0]:
-                current_word_tag_stack = list(index_tag_stack)
+                # current_word_tag_stack = list(index_tag_stack)
                 keep_char = True
 
             if keep_char:
                 char_stack.append(untagged_text[i])
+                current_word_tag_stack.update(index_tag_stack)
 
             if i == sent_indices[0][1]:
                 sent_word_stack.append(word_stack)
@@ -292,7 +293,7 @@ def main():
     in premature neonates and are susceptible to aggravation by assisted ventilation. We hypothesized that
     treatment with <tx4_a>inhaled salbutamol and <tx3_a>beclomethasone</tx3_a></tx4_a> might be of clinical
     value in the prevention of bronchopulmonary dysplasia (BPD) in ventilator-dependent premature neonates. The
-    study was double-blinded and <tx1_a><tx2_a>placebo</tx1_a></tx2_a> controlled. We studied <n>173</n> infants
+    study was double-blinded and <tx1_a><tx2_a>placebo</tx1_a></tx2_a> controlled. We studied 1<n>7</n>3 infants
     of less than 31 weeks of gestational age, who needed ventilatory support at the 10th postnatal day. They
     were randomised to four groups and received either <tx1>placebo + placebo</tx1>, <tx2>placebo + salbutamol</tx2>
     , <tx3>placebo + beclomethasone</tx3> or <tx4>beclomethasone + salbutomol</tx4>, respectively for 28 days.
