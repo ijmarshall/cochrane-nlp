@@ -61,6 +61,7 @@ class SupervisedLearner:
             assert test_set_p is not None
 
         self.test_set_p = test_set_p
+        self.n_citations = len(self.abstract_reader)
 
     def plot_preds(self, preds, y):
         # (preds, y) = sl.cv()
@@ -101,7 +102,7 @@ class SupervisedLearner:
         else:
             self.X_fv = self.vectorizer.fit_transform(self.features)
 
-        self.n_citations = len(self.X_fv)
+
         if self.holding_out_a_test_set:
             self.set_held_out_indices()
 
@@ -119,15 +120,18 @@ class SupervisedLearner:
         '''
         # first remove the held out indices.
         self.train_indices = [
-                i for i in range(len(self.X_fv)) if not i in self.test_indices]
+                i for i in range(self.n_citations) if not i in self.test_indices]
         # now draw a sample from the remaining (train) abstracts.
         train_set_size = int(train_p*len(self.train_indices))
         print "going to train on {0} citations".format(train_set_size)
         self.train_indices = random.sample(self.train_indices, train_set_size)
 
     def train_and_test_sample_size(self, test_size=.1, train_p=None):
-        n_citations = len(self.X_fv)
-
+        '''
+        @TODO need to amend for predicting things other than sample size
+        in retrospect, should probably never flatten abstracts; at test
+        time we'll want to enforce certain constraints
+        '''
         test_citation_indices = None
         train_citation_indices = None
         if self.holding_out_a_test_set:
@@ -136,15 +140,15 @@ class SupervisedLearner:
             test_citation_indices = self.test_indices
             train_citation_indices = self.train_indices
         else:
-            test_size = int(test_size*n_citations)
-            test_citation_indices = random.sample(range(n_citations), test_size)
+            test_size = int(test_size*self.n_citations)
+            test_citation_indices = random.sample(range(self.n_citations), test_size)
 
         print "test set of size {0} out of {1} total citations".format(
-                                    test_size, n_citations)
+                                    test_size, self.n_citations)
         
         X_train, y_train = [], []
         X_test, y_test = [], []
-        for i in xrange(n_citations):
+        for i in xrange(self.n_citations):
             if self.X_fv[i] is not None:
                 is_a_training_instance = (
                         train_citation_indices is None or 
@@ -153,6 +157,7 @@ class SupervisedLearner:
                     # we flatten these for training.
                     X_train.extend(self.X_fv[i])
                     y_train.extend(self.y[i])
+
                 elif i in test_citation_indices:
                     # these we keep structured, though.
                     X_test.append(self.X_fv[i])
@@ -247,9 +252,12 @@ class SupervisedLearner:
             #
             # X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
             # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
-
-            X.append(X_i)
-            y.append(y_i)
+            if flatten_abstracts:
+                X.extend(X_i)
+                y.extend(y_i)
+            else:
+                X.append(X_i)
+                y.append(y_i)
 
             pb.tap()
 
@@ -376,6 +384,14 @@ class LabeledAbstractReader:
         return [cit["abstract"] for cit in self.citation_d.values()]
 
 
+def average_learning_curve(nruns=5):
+    ys = []
+    for i in xrange(nruns):
+        print "\n\n--on run %s\n\n" % i
+        x_i, y_i = learning_curve()
+        ys.append(y_i)
+    return x_i, ys
+
 def learning_curve():
     nruns = 10
 
@@ -399,7 +415,8 @@ def learning_curve():
         avg_f = cur_avg_f/float(nruns)
         print "\naverage f-score for {0}:{1}".format(train_p, avg_f)
         average_fs.append(avg_f)
-    return train_ps, average_fs
+
+    return [int(sl.n_citations*p) for p in train_ps], average_fs
 
 
 
@@ -429,7 +446,6 @@ if __name__ == "__main__":
             auc += metrics.auc(fpr, tpr)
             prec, recall, thresholds = metrics.precision_recall_curve(y_test, preds)
             apr += metrics.auc(recall, prec)
-            #pdb.set_trace()
         else:
             p, r, f, s = precision_recall_fscore_support(y_test, preds, labels=[1,-1], average="micro")
 
@@ -437,7 +453,6 @@ if __name__ == "__main__":
             p_sum += p
             r_sum += r
             f_sum += f
-            #pdb.set_trace()
             np_sum += s
         pb.tap()
 
