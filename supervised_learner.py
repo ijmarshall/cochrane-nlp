@@ -148,6 +148,7 @@ class SupervisedLearner:
         
         X_train, y_train = [], []
         X_test, y_test = [], []
+        test_citation_indices.sort() # not necessary; tmp
         for i in xrange(self.n_citations):
             if self.X_fv[i] is not None:
                 is_a_training_instance = (
@@ -164,10 +165,8 @@ class SupervisedLearner:
                     y_test.append(self.y[i])
 
         clf = SupervisedLearner._get_SVM()
-        #pdb.set_trace()
         X_train = scipy.sparse.vstack(X_train)
         clf.fit(X_train, y_train)
-        #pdb.set_trace()
         print "ok -- testing!"
         max_index = lambda a: max((v, i) for i, v in enumerate(a))[1]
         test_preds, test_true = [], [] # these will be flat!
@@ -180,8 +179,22 @@ class SupervisedLearner:
             preds_i = [-1]*len(preds_i)
             preds_i[preds_i_max] = 1
 
-            test_preds.extend(preds_i)
-            test_true.extend(true_lbls_i)
+            # bcw -- this code results in a per word evaluation!
+            #test_preds.extend(preds_i)
+            #test_true.extend(true_lbls_i)
+            #test_preds.append(preds_i.index())
+
+            # and this results in abstract level predictions
+            # basically we'll just always
+            test_true.append(1)
+            if not 1 in true_lbls_i:
+                cit_n = test_citation_indices[test_citation_i]
+                print "-- no sample size for abstract (biview_id) {0}!".format(
+                            self.abstract_reader.citation_d[cit_n]["Biview_id"])
+                #pdb.set_trace()
+                test_preds.append(0) # i guess i'll penalize us?
+            else:
+                test_preds.append(preds_i.index(1) == true_lbls_i.index(1))
 
         return test_preds, test_true
 
@@ -289,6 +302,16 @@ class LabeledAbstractReader:
 
         self.num_citations = len(self.citation_d) 
         print "ok."
+
+    def __getitem__(self, key):
+        return self.citation_d[key-1]
+
+    def get_file_id(self, file_id):
+        for i in self:
+            if i["file_id"] == file_id:
+                return i
+        else:
+            raise IndexError("File ID %d not in reader" % (file_id,))
 
 
     def __iter__(self):
@@ -408,7 +431,9 @@ def learning_curve():
             #preds, y_test = sl.train_and_test_sample_size(test_size=1-train_p)
             sl.select_train_citation_indices(train_p)
             preds, y_test = sl.train_and_test_sample_size(train_p=train_p)
-            p, r, f, s = precision_recall_fscore_support(y_test, preds, labels=[1,-1], average="micro")
+            p, r, f, s = precision_recall_fscore_support(y_test, preds, 
+                                                labels=[1,-1], average="micro")
+            print "precision: {0}; recall: {1}".format(p, r)
             cur_avg_f += f
         
         pb.tap()
