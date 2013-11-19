@@ -13,7 +13,7 @@ sent_tokenizer = PunktSentenceTokenizer()
 class newPunktWordTokenizer(TokenizerI):
     """
     taken from new version of NLTK 3.0 alpha
-    to allow for span tokenization of words (current 
+    to allow for span tokenization of words (current
     full version does not allow this)
     """
     def __init__(self, lang_vars=PunktLanguageVars()):
@@ -60,9 +60,9 @@ class TaggedTextPipeline(pipeline.Pipeline):
     def set_functions(self, text):
 
         text = swap_num(text.strip())
-        
+
         tag_pattern = '<(\/?[a-z0-9_]+)>'
-        
+
         # tag_matches_a is indices in annotated text
         tag_matches = [(m.start(), m.end(), m.group(1)) for m in re.finditer(tag_pattern, text)]
 
@@ -78,7 +78,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
         sentences = []
         index_tag_stack = set() # tags active at current index
-        
+
 
         char_stack = []
         current_word_tag_stack = []
@@ -91,7 +91,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
         current_word_tags = []
         # per word tagging, so if beginning of word token is tagged only, e.g. '<n>Fifty</n>-nine'
-        # and 'Fifty-nine' was a single token, then we assume the whole 
+        # and 'Fifty-nine' was a single token, then we assume the whole
 
         keep_char = False # either keep or discard character; only kept if in a word token
         sent_indices, word_indices = self.wordsent_span_tokenize(untagged_text)
@@ -139,7 +139,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
             i += 1
 
         base_functions = []
-        
+
         # then pull altogether in a list of list of dicts
         # a list of sentences, each containing a list of word tokens,
         # each word represented by a dict
@@ -160,12 +160,6 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
         return base_functions
 
-
-
-
-
-
-
     def wordsent_span_tokenize(self, text):
         """
         first sentence tokenizes then word tokenizes *per sentence*
@@ -180,7 +174,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
             word_indices.extend([(w_start + s_start, w_end + s_start) for w_start, w_end in word_tokenizer.span_tokenize(text[s_start:s_end])])
 
         return sent_indices, word_indices
-        
+
         # [[{"w": word, "p": pos} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(text))]
 
 
@@ -207,7 +201,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
                           (('p', -1), ),
                           (('p', 1), ),
                           (('p', 2), ),
-                          (('num', -1), ), 
+                          (('num', -1), ),
                           (('num', 1), ),
                           (('cap', -1), ),
                           (('cap', 1), ),
@@ -234,7 +228,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
             # line below not used yet
             # need to implement in Pipeline run_templates
-            # words = {"BOW" + word["w"]: True for word in self.functions[i]} 
+            # words = {"BOW" + word["w"]: True for word in self.functions[i]}
 
             last_noun_index = 0
 
@@ -260,7 +254,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
                 # line below not used yet
                 # need to implement in Pipeline run_templates
-                # self.functions[i][j].update(words) 
+                # self.functions[i][j].update(words)
 
                 # if pos is a noun, back fill the previous words
                 pos = self.functions[i][j]["p"]
@@ -274,15 +268,10 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
     @pipeline.filters
     def get_tags(self):
-
-
         return [[{k: w[k] for k in ('w', 'tags')} for w in s] for s in self.get_base_functions()]
 
-
-
-
 def main():
-    
+
     test_text = """
     Early inflammatory lesions and bronchial hyperresponsiveness are characteristics of the respiratory distress
     in premature neonates and are susceptible to aggravation by assisted ventilation. We hypothesized that
@@ -296,10 +285,10 @@ def main():
       ventilatory support and oxygen therapy. The trial groups were similar with respect to age at entry (9.8-10.1
      days), gestational age (27.6-27.8 weeks), birth weight and oxygen dependence. We did not observe any
     significant effect of treatment on survival, diagnosis and severity of BPD, duration of ventilatory support
-     or oxygen therapy. For instance, the odds-ratio (95% confidence interval) for severe or moderate BPD were 
+     or oxygen therapy. For instance, the odds-ratio (95% confidence interval) for severe or moderate BPD were
      1.04 (0.52-2.06) for <tx3_a><tx4_a>inhaled beclomethasone</tx3_a></tx4_a> and 1.54 (0.78-3.05) for <tx4_a>
-     inhaled salbutamol</tx4_a>. This randomised prospective trial does not support the use of treatment with 
-     inhaled <tx3_a><tx4_a>beclomethasone</tx3_a>, salbutamol</tx4_a> or their combination in the prevention of 
+     inhaled salbutamol</tx4_a>. This randomised prospective trial does not support the use of treatment with
+     inhaled <tx3_a><tx4_a>beclomethasone</tx3_a>, salbutamol</tx4_a> or their combination in the prevention of
      BPD in premature ventilated neonates.
     """
 
@@ -318,19 +307,6 @@ def main():
     print
     print "number of people randomised"
     print [w["w"] for w in tags if "n" in w["tags"]]
-    
-    
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     main()
