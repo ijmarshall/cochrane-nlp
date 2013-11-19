@@ -1,7 +1,3 @@
-###
-# bcw -- maybe want to call this module something more general, 
-# e.g., tokenizer? or something. I don't know.
-###
 import re
 
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
@@ -15,9 +11,7 @@ from indexnumbers import swap_num
 import configparser # easy_install configparser
 config = configparser.ConfigParser()
 config.read('CNLP.INI')
-
-# base_path = "/Users/joelkuiper/Desktop/drug_trials_in_cochrane_"
-base_path = config["Paths"]["base_path"] # to pubmed pdfs
+base_path = config["Paths"]["base_path"]
 
 
 def memo(func):
@@ -115,10 +109,13 @@ def agreement(abstract_nr):
              "annotator_A" : annotator_A,
              "annotator_B" : annotator_B }
 
+def eliminate_order(tag):
+    return re.sub('([0-9])((?:_a)?)', 'X\g<2>', tag)
+
 def agreement_fn(a,b):
     # ignore the treatment number, tx1 is the same as tx2 (and tx1_a to tx2_a)
     def get_tag_set(string):
-        return set([re.sub('([0-9])((?:_a)?)', 'X\g<2>', x) for x in string.split('&')] if string else [])
+        return set([eliminate_order(x) for x in string.split('&')] if string else [])
     a = get_tag_set(a)
     b = get_tag_set(b)
     if len(a) == 0 and len(b) == 0:
@@ -127,8 +124,6 @@ def agreement_fn(a,b):
         # linearly scale (all agree = 0) (none agree = 1)
         return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
 
-# bcw -- I factored the below into a method so that
-# the module doesn't automatically calculate stuff on import.
 def calc_agreements(nr_of_abstracts=100):
     # Loop over the abstracts and caluclate the kappa and alpha per abstract
     aggregate = []
@@ -157,3 +152,32 @@ def calc_agreements(nr_of_abstracts=100):
 
 if __name__ == "__main__":
     calc_agreements()
+
+
+def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x: x):
+    """"
+    Returns the merging of a and b
+    based on strategy (defaults to set intersection) Optionally takes
+    a preprocess argument which takes a tag as argument and must
+    return the processed tag
+    """
+    assert(len(a) == len(b))
+    result = []
+    for i in range(0, len(a)):
+        key = a[i].keys()[0]
+        first = set([preprocess(x) for x in a[i].values()[0]])
+        second = set([preprocess(x) for x in b[i].values()[0]])
+        result.append({key : list(strategy(first, second))})
+    return result
+
+"""
+example usage:
+JKU = get_abstracts("JKU")
+BCW = get_abstracts("BCW")
+
+JKU1 = annotations(tokenize_abstract(JKU[1], tag_def))
+BCW1 = annotations(tokenize_abstract(BCW[1], tag_def))
+
+
+print(merge_annotations(JKU1, BCW1, preprocess = eliminate_order))
+"""
