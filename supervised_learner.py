@@ -303,6 +303,16 @@ class LabeledAbstractReader:
         self.num_citations = len(self.citation_d) 
         print "ok."
 
+    def __getitem__(self, key):
+        return self.citation_d[key-1]
+
+    def get_file_id(self, file_id):
+        for i in self:
+            if i["file_id"] == file_id:
+                return i
+        else:
+            raise IndexError("File ID %d not in reader" % (file_id,))
+
 
     def __iter__(self):
         self.abstract_index = 0
