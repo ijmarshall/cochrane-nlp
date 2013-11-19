@@ -1,12 +1,16 @@
 
 import pipeline
 
-from nltk.tokenize import TreebankWordTokenizer
-from nltk.tokenize.punkt import *
+# from nltk.tokenize import TreebankWordTokenizer
+
 from collections import defaultdict, deque
 import cPickle as pickle
 from itertools import izip
 from indexnumbers import swap_num
+from nltk.tokenize.punkt import *
+
+with open('data/brill_pos_tagger.pck', 'rb') as f:
+    pos_tagger = pickle.load(f)
 
 sent_tokenizer = PunktSentenceTokenizer()
 
@@ -42,29 +46,29 @@ class newPunktWordTokenizer(TokenizerI):
 word_tokenizer = newPunktWordTokenizer()
 
 
-with open('data/brill_pos_tagger.pck', 'rb') as f:
-    pos_tagger = pickle.load(f)
-
-
 class TaggedTextPipeline(pipeline.Pipeline):
 
 
     def __init__(self, text):
-        self.functions = self.set_functions(text)
+        self.text = swap_num(text)
+        self.functions = self.set_functions(self.text)
         self.load_templates()
-        self.text = text
+        
 
 
 
-
-    def set_functions(self, text):
-
-        text = swap_num(text.strip())
+    def split_tag_data(self, tagged_text):
+        """
+        takes in raw, tagged text
+        gets tag indices, then removes all tags
+        returns untagged_text, tag_positions
+        (where tag_positions = position in untagged_text)
+        """
 
         tag_pattern = '<(\/?[a-z0-9_]+)>'
 
         # tag_matches_a is indices in annotated text
-        tag_matches = [(m.start(), m.end(), m.group(1)) for m in re.finditer(tag_pattern, text)]
+        tag_matches = [(m.start(), m.end(), m.group(1)) for m in re.finditer(tag_pattern, tagged_text)]
 
         tag_positions = defaultdict(list)
         displacement = 0 # initial re.finditer gets indices in the tagged text
@@ -74,14 +78,40 @@ class TaggedTextPipeline(pipeline.Pipeline):
             tag_positions[start-displacement].append(tag)
             displacement += (end-start) # add on the current tag length to cumulative displacement
 
-        untagged_text = re.sub(tag_pattern, "", text) # now remove all tags
+        untagged_text = re.sub(tag_pattern, "", tagged_text) # now remove all tags
 
-        sentences = []
+        return untagged_text, tag_positions
+
+    def wordsent_span_tokenize(self, text):
+        """
+        first sentence tokenizes then word tokenizes *per sentence*
+        adjusts word indices for the full text
+        this guarantees no overlap of words over sentence boundaries
+        """
+
+        sent_indices = deque(sent_tokenizer.span_tokenize(text)) # use deques since lots of left popping later
+        word_indices = deque() # use deques since lots of left popping later
+
+        for s_start, s_end in sent_indices:
+            word_indices.extend([(w_start + s_start, w_end + s_start) for w_start, w_end in word_tokenizer.span_tokenize(text[s_start:s_end])])
+
+        return sent_indices, word_indices
+
+
+    def set_functions(self, tagged_text):
+
+        tagged_text = tagged_text.strip() # remove whitespace
+        untagged_text, tag_positions = self.split_tag_data(tagged_text) # split the tagging data from the text
+        
+    
+        # set up a few stacks at char, word, and sentence levels
+
         index_tag_stack = set() # tags active at current index
-
 
         char_stack = []
         current_word_tag_stack = []
+        # per word tagging, so if beginning of word token is tagged only, e.g. '<n>Fifty</n>-nine'
+        # and 'Fifty-nine' was a single token, then we assume the whole
 
         word_stack = []
         word_tag_stack = []
@@ -89,11 +119,9 @@ class TaggedTextPipeline(pipeline.Pipeline):
         sent_word_stack = []
         sent_tag_stack = []
 
-        current_word_tags = []
-        # per word tagging, so if beginning of word token is tagged only, e.g. '<n>Fifty</n>-nine'
-        # and 'Fifty-nine' was a single token, then we assume the whole
+        keep_char = False # whether we're keeping or discarding the current char
+                          # (we'll keep at false unless within the indices of a word_token)
 
-        keep_char = False # either keep or discard character; only kept if in a word token
         sent_indices, word_indices = self.wordsent_span_tokenize(untagged_text)
 
         i = 0
@@ -160,20 +188,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
         return base_functions
 
-    def wordsent_span_tokenize(self, text):
-        """
-        first sentence tokenizes then word tokenizes *per sentence*
-        adjusts word indices for the full text
-        this guarantees no overlap of words over sentence boundaries
-        """
 
-        sent_indices = deque(sent_tokenizer.span_tokenize(text)) # use deques since lots of left popping later
-        word_indices = deque() # use deques since lots of left popping later
-
-        for s_start, s_end in sent_indices:
-            word_indices.extend([(w_start + s_start, w_end + s_start) for w_start, w_end in word_tokenizer.span_tokenize(text[s_start:s_end])])
-
-        return sent_indices, word_indices
 
         # [[{"w": word, "p": pos} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(text))]
 
