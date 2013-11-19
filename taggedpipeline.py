@@ -97,15 +97,13 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
         return sent_indices, word_indices
 
+    def tag_words(self, untagged_text, tag_positions):
+        """
+        returns lists of (word, tag_list) tuples when given untagged text and tag indices
+        per *token* assumed (so mid word tags are extended to the whole word)
+        """
 
-    def set_functions(self, tagged_text):
-
-        tagged_text = tagged_text.strip() # remove whitespace
-        untagged_text, tag_positions = self.split_tag_data(tagged_text) # split the tagging data from the text
-        
-    
         # set up a few stacks at char, word, and sentence levels
-
         index_tag_stack = set() # tags active at current index
 
         char_stack = []
@@ -114,10 +112,8 @@ class TaggedTextPipeline(pipeline.Pipeline):
         # and 'Fifty-nine' was a single token, then we assume the whole
 
         word_stack = []
-        word_tag_stack = []
 
-        sent_word_stack = []
-        sent_tag_stack = []
+        sent_stack = []
 
         keep_char = False # whether we're keeping or discarding the current char
                           # (we'll keep at false unless within the indices of a word_token)
@@ -143,8 +139,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
             if i == word_indices[0][1]: # if a word has ended
                 keep_char = False
-                word_stack.append(''.join(char_stack)) # push word to the word stack
-                word_tag_stack.append(list(current_word_tag_stack))
+                word_stack.append((''.join(char_stack), list(current_word_tag_stack))) # push word and tag tuple to the word stack
                 char_stack = [] # clear char stack
                 current_word_tag_stack = set()
                 word_indices.popleft() # remove current word
@@ -158,26 +153,37 @@ class TaggedTextPipeline(pipeline.Pipeline):
                 current_word_tag_stack.update(index_tag_stack)
 
             if i == sent_indices[0][1]:
-                sent_word_stack.append(word_stack)
-                sent_tag_stack.append(word_tag_stack)
+                sent_stack.append(word_stack)
                 word_stack = []
-                word_tag_stack = []
-
+                
                 sent_indices.popleft()
 
             i += 1
+
+
+        return sent_stack
+
+    def set_functions(self, tagged_text):
+
+        tagged_text = tagged_text.strip() # remove whitespace
+        untagged_text, tag_positions = self.split_tag_data(tagged_text) # split the tagging data from the text
+        
+        tag_tuple_sents = self.tag_words(untagged_text, tag_positions)
+        
+
 
         base_functions = []
 
         # then pull altogether in a list of list of dicts
         # a list of sentences, each containing a list of word tokens,
         # each word represented by a dict
-        for words, tags in izip(sent_word_stack, sent_tag_stack):
+        for sent in tag_tuple_sents:
 
             base_sent_functions = []
-            pos_tags = pos_tagger.tag(words)
 
-            for (word, pos_tag), tag_list in izip(pos_tags, tags):
+            pos_tags = pos_tagger.tag([word for word, tag_list in sent])
+
+            for (word, pos_tag), (word, tag_list) in izip(pos_tags, sent):
                 base_word_functions = {"w": word,
                                        "p": pos_tag,
                                        "tags": []}
