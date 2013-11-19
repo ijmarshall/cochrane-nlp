@@ -150,16 +150,21 @@ def calc_agreements(nr_of_abstracts=100):
     print("[alpha] mean: " + str(alpha[2]))
     print("[alpha] variance: " + str(alpha[3]))
 
-if __name__ == "__main__":
-    calc_agreements()
-
-
 def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x: x):
     """"
     Returns the merging of a and b
     based on strategy (defaults to set intersection) Optionally takes
     a preprocess argument which takes a tag as argument and must
     return the processed tag
+
+    example usage:
+    JKU = get_abstracts("JKU")
+    BCW = get_abstracts("BCW")
+
+    JKU1 = annotations(tokenize_abstract(JKU[1], tag_def))
+    BCW1 = annotations(tokenize_abstract(BCW[1], tag_def))
+
+    print(merge_annotations(JKU1, BCW1, preprocess = eliminate_order))
     """
     assert(len(a) == len(b))
     result = []
@@ -170,14 +175,6 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
         result.append({key : list(strategy(first, second))})
     return result
 
-"""
-example usage:
-JKU = get_abstracts("JKU")
-BCW = get_abstracts("BCW")
 
-JKU1 = annotations(tokenize_abstract(JKU[1], tag_def))
-BCW1 = annotations(tokenize_abstract(BCW[1], tag_def))
-
-
-print(merge_annotations(JKU1, BCW1, preprocess = eliminate_order))
-"""
+if __name__ == "__main__":
+    calc_agreements()
