@@ -97,7 +97,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
         return sent_indices, word_indices
 
-    def tag_words(self, untagged_text, tag_positions):
+    def tag_words(self, untagged_text, tag_indices):
         """
         returns lists of (word, tag_list) tuples when given untagged text and tag indices
         per *token* assumed (so mid word tags are extended to the whole word)
@@ -125,7 +125,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
         while i < len(untagged_text):
 
             # first process tag stack to see whether next words are tagged
-            for tag in tag_positions[i]:
+            for tag in tag_indices[i]:
                 if tag[0] == '/':
                     try:
                         index_tag_stack.remove(tag[1:])
@@ -145,12 +145,13 @@ class TaggedTextPipeline(pipeline.Pipeline):
                 word_indices.popleft() # remove current word
 
             if i == word_indices[0][0]:
-                # current_word_tag_stack = list(index_tag_stack)
                 keep_char = True
 
             if keep_char:
                 char_stack.append(untagged_text[i])
-                current_word_tag_stack.update(index_tag_stack)
+                current_word_tag_stack.update(index_tag_stack) # add any new tags
+                # (keeps all tags no matter where they start inside a word,
+                #  and the stack is cleared when move to a new work)
 
             if i == sent_indices[0][1]:
                 sent_stack.append(word_stack)
