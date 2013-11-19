@@ -1,12 +1,16 @@
 
 import pipeline
 
-from nltk.tokenize import TreebankWordTokenizer
-from nltk.tokenize.punkt import *
+# from nltk.tokenize import TreebankWordTokenizer
+
 from collections import defaultdict, deque
 import cPickle as pickle
 from itertools import izip
 from indexnumbers import swap_num
+from nltk.tokenize.punkt import *
+
+with open('data/brill_pos_tagger.pck', 'rb') as f:
+    pos_tagger = pickle.load(f)
 
 sent_tokenizer = PunktSentenceTokenizer()
 
@@ -42,29 +46,29 @@ class newPunktWordTokenizer(TokenizerI):
 word_tokenizer = newPunktWordTokenizer()
 
 
-with open('data/brill_pos_tagger.pck', 'rb') as f:
-    pos_tagger = pickle.load(f)
-
-
 class TaggedTextPipeline(pipeline.Pipeline):
 
 
     def __init__(self, text):
-        self.functions = self.set_functions(text)
+        self.text = swap_num(text)
+        self.functions = self.set_functions(self.text)
         self.load_templates()
-        self.text = text
+        
 
 
 
-
-    def set_functions(self, text):
-
-        text = swap_num(text.strip())
+    def split_tag_data(self, tagged_text):
+        """
+        takes in raw, tagged text
+        gets tag indices, then removes all tags
+        returns untagged_text, tag_positions
+        (where tag_positions = position in untagged_text)
+        """
 
         tag_pattern = '<(\/?[a-z0-9_]+)>'
 
         # tag_matches_a is indices in annotated text
-        tag_matches = [(m.start(), m.end(), m.group(1)) for m in re.finditer(tag_pattern, text)]
+        tag_matches = [(m.start(), m.end(), m.group(1)) for m in re.finditer(tag_pattern, tagged_text)]
 
         tag_positions = defaultdict(list)
         displacement = 0 # initial re.finditer gets indices in the tagged text
@@ -74,91 +78,9 @@ class TaggedTextPipeline(pipeline.Pipeline):
             tag_positions[start-displacement].append(tag)
             displacement += (end-start) # add on the current tag length to cumulative displacement
 
-        untagged_text = re.sub(tag_pattern, "", text) # now remove all tags
+        untagged_text = re.sub(tag_pattern, "", tagged_text) # now remove all tags
 
-        sentences = []
-        index_tag_stack = set() # tags active at current index
-
-
-        char_stack = []
-        current_word_tag_stack = []
-
-        word_stack = []
-        word_tag_stack = []
-
-        sent_word_stack = []
-        sent_tag_stack = []
-
-        current_word_tags = []
-        # per word tagging, so if beginning of word token is tagged only, e.g. '<n>Fifty</n>-nine'
-        # and 'Fifty-nine' was a single token, then we assume the whole
-
-        keep_char = False # either keep or discard character; only kept if in a word token
-        sent_indices, word_indices = self.wordsent_span_tokenize(untagged_text)
-
-        i = 0
-
-        while i < len(untagged_text):
-
-            # first process tag stack to see whether next words are tagged
-            for tag in tag_positions[i]:
-                if tag[0] == '/':
-                    try:
-                        index_tag_stack.remove(tag[1:])
-                    except:
-                        print text
-                        print untagged_text[i-20:i+20]
-                        raise ValueError('unexpected tag %s in position %d of text' % (tag, i))
-                else:
-                    index_tag_stack.add(tag)
-
-
-            if i == word_indices[0][1]: # if a word has ended
-                keep_char = False
-                word_stack.append(''.join(char_stack)) # push word to the word stack
-                word_tag_stack.append(current_word_tag_stack)
-                char_stack = [] # clear char stack
-                current_word_tag_stack = []
-                word_indices.popleft() # remove current word
-
-            if i == word_indices[0][0]:
-                current_word_tag_stack = list(index_tag_stack)
-                keep_char = True
-
-            if keep_char:
-                char_stack.append(untagged_text[i])
-
-            if i == sent_indices[0][1]:
-                sent_word_stack.append(word_stack)
-                sent_tag_stack.append(word_tag_stack)
-                word_stack = []
-                word_tag_stack = []
-
-                sent_indices.popleft()
-
-            i += 1
-
-        base_functions = []
-
-        # then pull altogether in a list of list of dicts
-        # a list of sentences, each containing a list of word tokens,
-        # each word represented by a dict
-        for words, tags in izip(sent_word_stack, sent_tag_stack):
-
-            base_sent_functions = []
-            pos_tags = pos_tagger.tag(words)
-
-            for (word, pos_tag), tag_list in izip(pos_tags, tags):
-                base_word_functions = {"w": word,
-                                       "p": pos_tag,
-                                       "tags": []}
-                for tag in tag_list:
-                    base_word_functions["tags"].append(tag)
-
-                base_sent_functions.append(base_word_functions)
-            base_functions.append(base_sent_functions)
-
-        return base_functions
+        return untagged_text, tag_positions
 
     def wordsent_span_tokenize(self, text):
         """
@@ -174,6 +96,107 @@ class TaggedTextPipeline(pipeline.Pipeline):
             word_indices.extend([(w_start + s_start, w_end + s_start) for w_start, w_end in word_tokenizer.span_tokenize(text[s_start:s_end])])
 
         return sent_indices, word_indices
+
+    def tag_words(self, untagged_text, tag_indices):
+        """
+        returns lists of (word, tag_list) tuples when given untagged text and tag indices
+        per *token* assumed (so mid word tags are extended to the whole word)
+        """
+
+        # set up a few stacks at char, word, and sentence levels
+        index_tag_stack = set() # tags active at current index
+
+        char_stack = []
+        current_word_tag_stack = set()
+        # per word tagging, so if beginning of word token is tagged only, e.g. '<n>Fifty</n>-nine'
+        # and 'Fifty-nine' was a single token, then we assume the whole
+
+        word_stack = []
+
+        sent_stack = []
+
+        keep_char = False # whether we're keeping or discarding the current char
+                          # (we'll keep at false unless within the indices of a word_token)
+
+        sent_indices, word_indices = self.wordsent_span_tokenize(untagged_text)
+
+        i = 0
+
+        while i < len(untagged_text):
+
+            # first process tag stack to see whether next words are tagged
+            for tag in tag_indices[i]:
+                if tag[0] == '/':
+                    try:
+                        index_tag_stack.remove(tag[1:])
+                    except:
+                        print text
+                        print untagged_text[i-20:i+20]
+                        raise ValueError('unexpected tag %s in position %d of text' % (tag, i))
+                else:
+                    index_tag_stack.add(tag)
+
+
+            if i == word_indices[0][1]: # if a word has ended
+                keep_char = False
+                word_stack.append((''.join(char_stack), list(current_word_tag_stack))) # push word and tag tuple to the word stack
+                char_stack = [] # clear char stack
+                current_word_tag_stack = set()
+                word_indices.popleft() # remove current word
+
+            if i == word_indices[0][0]:
+                keep_char = True
+
+            if keep_char:
+                char_stack.append(untagged_text[i])
+                current_word_tag_stack.update(index_tag_stack) # add any new tags
+                # (keeps all tags no matter where they start inside a word,
+                #  and the stack is cleared when move to a new work)
+
+            if i == sent_indices[0][1]:
+                sent_stack.append(word_stack)
+                word_stack = []
+                
+                sent_indices.popleft()
+
+            i += 1
+
+
+        return sent_stack
+
+    def set_functions(self, tagged_text):
+
+        tagged_text = tagged_text.strip() # remove whitespace
+        untagged_text, tag_positions = self.split_tag_data(tagged_text) # split the tagging data from the text
+        
+        tag_tuple_sents = self.tag_words(untagged_text, tag_positions)
+        
+
+
+        base_functions = []
+
+        # then pull altogether in a list of list of dicts
+        # a list of sentences, each containing a list of word tokens,
+        # each word represented by a dict
+        for sent in tag_tuple_sents:
+
+            base_sent_functions = []
+
+            pos_tags = pos_tagger.tag([word for word, tag_list in sent])
+
+            for (word, pos_tag), (word, tag_list) in izip(pos_tags, sent):
+                base_word_functions = {"w": word,
+                                       "p": pos_tag,
+                                       "tags": []}
+                for tag in tag_list:
+                    base_word_functions["tags"].append(tag)
+
+                base_sent_functions.append(base_word_functions)
+            base_functions.append(base_sent_functions)
+
+        return base_functions
+
+
 
         # [[{"w": word, "p": pos} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(text))]
 
@@ -277,7 +300,7 @@ def main():
     in premature neonates and are susceptible to aggravation by assisted ventilation. We hypothesized that
     treatment with <tx4_a>inhaled salbutamol and <tx3_a>beclomethasone</tx3_a></tx4_a> might be of clinical
     value in the prevention of bronchopulmonary dysplasia (BPD) in ventilator-dependent premature neonates. The
-    study was double-blinded and <tx1_a><tx2_a>placebo</tx1_a></tx2_a> controlled. We studied <n>173</n> infants
+    study was double-blinded and <tx1_a><tx2_a>placebo</tx1_a></tx2_a> controlled. We studied 1<n>7</n>3 infants
     of less than 31 weeks of gestational age, who needed ventilatory support at the 10th postnatal day. They
     were randomised to four groups and received either <tx1>placebo + placebo</tx1>, <tx2>placebo + salbutamol</tx2>
     , <tx3>placebo + beclomethasone</tx3> or <tx4>beclomethasone + salbutomol</tx4>, respectively for 28 days.
