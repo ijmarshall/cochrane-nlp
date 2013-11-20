@@ -126,11 +126,13 @@ class SupervisedLearner:
         print "going to train on {0} citations".format(train_set_size)
         self.train_indices = random.sample(self.train_indices, train_set_size)
 
-    def train_and_test_sample_size(self, test_size=.1, train_p=None):
+    def train_and_test_sample_size(self, test_size=.2, train_p=None):
         '''
         @TODO need to amend for predicting things other than sample size
         in retrospect, should probably never flatten abstracts; at test
         time we'll want to enforce certain constraints
+
+        @TODO refactor -- this method is too long.
         '''
         test_citation_indices = None
         train_citation_indices = None
@@ -169,7 +171,12 @@ class SupervisedLearner:
         clf.fit(X_train, y_train)
         print "ok -- testing!"
         max_index = lambda a: max((v, i) for i, v in enumerate(a))[1]
-        test_preds, test_true = [], [] # these will be flat!
+
+        '''
+        @TODO refactor. note that this will have to change for other
+        targets (TX's, etc.)
+        '''
+        TPs, FPs, N_pos = 0, 0, 0
         for test_citation_i, citation_fvs in enumerate(X_test):
             true_lbls_i = y_test[test_citation_i]
             preds_i = [p[1] for p in clf.predict_log_proba(citation_fvs)]
@@ -179,24 +186,24 @@ class SupervisedLearner:
             preds_i = [-1]*len(preds_i)
             preds_i[preds_i_max] = 1
 
-            # bcw -- this code results in a per word evaluation!
-            #test_preds.extend(preds_i)
-            #test_true.extend(true_lbls_i)
-            #test_preds.append(preds_i.index())
-
-            # and this results in abstract level predictions
-            # basically we'll just always
-            test_true.append(1)
+            # *abstract level* predictions. 
             if not 1 in true_lbls_i:
                 cit_n = test_citation_indices[test_citation_i]
                 print "-- no sample size for abstract (biview_id) {0}!".format(
                             self.abstract_reader.citation_d[cit_n]["Biview_id"])
-                #pdb.set_trace()
-                test_preds.append(0) # i guess i'll penalize us?
+                # since we force a prediction for every abstract right now,
+                # i'll penalize us here. this is an upperbound on precision.
+                FPs += 1 
             else:
-                test_preds.append(preds_i.index(1) == true_lbls_i.index(1))
+                N_pos += 1 
+                if preds_i.index(1) == true_lbls_i.index(1):
+                    TPs +=1
+                else:
+                    FPs += 1
 
-        return test_preds, test_true
+
+        N = len(X_test)
+        return TPs, FPs, N_pos, N
 
 
     def cv(self, predict_probs=False):
@@ -398,12 +405,26 @@ class LabeledAbstractReader:
 
 
 def average_learning_curve(nruns=5):
-    ys = []
+    y_total = numpy.array([])
     for i in xrange(nruns):
         print "\n\n--on run %s\n\n" % i
         x_i, y_i = learning_curve()
-        ys.append(y_i)
-    return x_i, ys
+        if y_total.shape[0] == 0:
+            y_total = numpy.array(y_i)
+        else:
+            y_total += numpy.array(y_i)
+            print "\n\n---\naverage so far (after %s iters): %s \n\n" % (
+                                    i, y_total / float(i+1))
+    return x_i, y_total / float(nruns)
+
+def calc_metrics(TPs, FPs, N_pos, N):
+    TPs, FPs, N_pos, N = float(TPs), float(FPs), float(N_pos), float(N)
+    recall = TPs /  N_pos
+    precision = TPs / (TPs + FPs)
+    f = None
+    if precision + recall > 0:
+        f = 2 * (precision * recall) / (precision + recall)
+    return recall, precision, f
 
 def learning_curve():
     nruns = 10
@@ -418,12 +439,10 @@ def learning_curve():
     for train_p in train_ps:
         cur_avg_f = 0
         for i in xrange(nruns):
-            #preds, y_test = sl.train_and_test_sample_size(test_size=1-train_p)
             sl.select_train_citation_indices(train_p)
-            preds, y_test = sl.train_and_test_sample_size(train_p=train_p)
-            p, r, f, s = precision_recall_fscore_support(y_test, preds, 
-                                                labels=[1,-1], average="micro")
-            print "precision: {0}; recall: {1}".format(p, r)
+            TPs, FPs, N_pos, N = sl.train_and_test_sample_size(train_p=train_p)
+            r, p, f = calc_metrics(TPs, FPs, N_pos, N)
+            print "precision: {0}; recall: {1}; f: {2}".format(p, r, f)
             cur_avg_f += f
         
         pb.tap()
@@ -444,17 +463,14 @@ if __name__ == "__main__":
     reader = LabeledAbstractReader()
 
     sl = SupervisedLearner(reader)#, target="tx")
-
     sl.generate_features()
 
-    
     p_sum, r_sum, f_sum, np_sum = [0]*4
     auc, apr = 0, 0
     print "running models"
     pb = progressbar.ProgressBar(nruns, timer=True)
     for i in xrange(nruns):
-        #preds, y_test = sl.cv(predict_probs=predict_probs)
-        preds, y_test = sl.train_and_test_sample_size()
+        TPs, FPs, N_pos, N = sl.train_and_test_sample_size()
        
         if predict_probs:
             fpr, tpr, thresholds = metrics.roc_curve(y_test, preds)
@@ -462,13 +478,12 @@ if __name__ == "__main__":
             prec, recall, thresholds = metrics.precision_recall_curve(y_test, preds)
             apr += metrics.auc(recall, prec)
         else:
-            p, r, f, s = precision_recall_fscore_support(y_test, preds, labels=[1,-1], average="micro")
-
+            r, p, f = calc_metrics(TPs, FPs, N_pos, N)
             print "\n--precision: {0} / recall {1} / f {2}\n".format(p, r, f)
             p_sum += p
             r_sum += r
             f_sum += f
-            np_sum += s
+  
         pb.tap()
 
     avg = lambda x: x / float(nruns)
@@ -476,8 +491,8 @@ if __name__ == "__main__":
     if predict_probs:
         print "averages\nAUC: {0}\nArea under precision-recall curve {1}".format(avg(auc), avg(apr))
     else:
-        print "averages\n # of target words: {0:.2}\n precision: {1:.2}\n recall: {2:.2}\n f: {3:.2}".format(
-                    avg(np_sum), avg(p_sum), avg(r_sum), avg(f_sum))
+        print "averages\n precision: {0:.2}\n recall: {1:.2}\n f: {2:.2}".format(
+                    avg(p_sum), avg(r_sum), avg(f_sum))
 
 
 
