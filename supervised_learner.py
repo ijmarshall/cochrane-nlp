@@ -26,7 +26,6 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 import scipy
 import numpy
-import math
 
 
 # homegrown
@@ -180,31 +179,12 @@ class SupervisedLearner:
         TPs, FPs, N_pos = 0, 0, 0
         for test_citation_i, citation_fvs in enumerate(X_test):
             true_lbls_i = y_test[test_citation_i]
-
             preds_i = [p[1] for p in clf.predict_log_proba(citation_fvs)]
-
-            confident = any((log_p > -1.0) for log_p in preds_i)
-
-
-            print " * * * * * * * * * * * "
-            print
-            print self.abstract_reader.citation_d[test_citation_i]["abstract"]
-            print  
-            print [math.exp(p) for p in preds_i] # remove
-            print clf.predict(citation_fvs)
-            print true_lbls_i
-            print "confident", confident
-            print
-
-            
             # we set the index corresponding to the max 
             # val (most likely entry) to 1; all else are 0
             preds_i_max = max_index(preds_i)
             preds_i = [-1]*len(preds_i)
             preds_i[preds_i_max] = 1
-
-            
-            
 
             # *abstract level* predictions. 
             if not 1 in true_lbls_i:
@@ -213,24 +193,13 @@ class SupervisedLearner:
                             self.abstract_reader.citation_d[cit_n]["Biview_id"])
                 # since we force a prediction for every abstract right now,
                 # i'll penalize us here. this is an upperbound on precision.
-
-                if confident: # penalise only if makes a confident prediction
-                    FPs += 1
-                
-
-
+                FPs += 1 
             else:
-
-                N_pos += 1
-
-        
-                    
-                if confident:
-                    if (preds_i.index(1) == true_lbls_i.index(1)):
-                        TPs +=1
-                    else:
-                        FPs += 1
-
+                N_pos += 1 
+                if preds_i.index(1) == true_lbls_i.index(1):
+                    TPs +=1
+                else:
+                    FPs += 1
 
 
         N = len(X_test)
@@ -253,7 +222,7 @@ class SupervisedLearner:
 
     @staticmethod 
     def _get_SVM():
-        return SVC(probability=True, kernel='linear')
+        return SVC(probability=True, kernel='linear', C=3)
 
     def train(self):
         features, y = self.features_from_citations()
@@ -290,8 +259,8 @@ class SupervisedLearner:
             # filter here is a lambda function used on the
             # individual word's hidden features
             ###
-            # X_i = p.get_features(flatten=True, filter=lambda w: w['punct']==False)
-            # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda w: w['punct']==False)
+            X_i = p.get_features(flatten=True, filter=lambda w: w['punct']==False)
+            y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda w: w['punct']==False)
 
             ####
             # IM: xml annotations are now all available in w["tags"] for each word in the features list
@@ -301,10 +270,8 @@ class SupervisedLearner:
             ###
             # alternative code to restrict to integers only
             #
-            X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
-            y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
-
-
+            # X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
+            # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
             if flatten_abstracts:
                 X.extend(X_i)
                 y.extend(y_i)
@@ -461,25 +428,13 @@ def average_learning_curve(nruns=5):
     return x_i, y_total / float(nruns)
 
 def calc_metrics(TPs, FPs, N_pos, N):
-    print N_pos, TPs, FPs
-
     TPs, FPs, N_pos, N = float(TPs), float(FPs), float(N_pos), float(N)
-
-
-
     recall = TPs /  N_pos
-    
     precision = TPs / (TPs + FPs)
-
-
     f = None
-
     if precision + recall > 0:
         f = 2 * (precision * recall) / (precision + recall)
-
-    accuracy = TPs / N
-
-    return recall, precision, f, accuracy
+    return recall, precision, f
 
 def learning_curve():
     nruns = 10
@@ -496,8 +451,8 @@ def learning_curve():
         for i in xrange(nruns):
             sl.select_train_citation_indices(train_p)
             TPs, FPs, N_pos, N = sl.train_and_test_sample_size(train_p=train_p)
-            r, p, f, a = calc_metrics(TPs, FPs, N_pos, N)
-            print "precision: {0}; recall: {1}; f: {2}; accuracy: {3}".format(p, r, f, a)
+            r, p, f = calc_metrics(TPs, FPs, N_pos, N)
+            print "precision: {0}; recall: {1}; f: {2}".format(p, r, f)
             cur_avg_f += f
         
         pb.tap()
@@ -533,8 +488,8 @@ if __name__ == "__main__":
             prec, recall, thresholds = metrics.precision_recall_curve(y_test, preds)
             apr += metrics.auc(recall, prec)
         else:
-            r, p, f, a = calc_metrics(TPs, FPs, N_pos, N)
-            print "\n--precision: {0} / recall {1} / f {2} / accuracy {3}\n".format(p, r, f, a)
+            r, p, f = calc_metrics(TPs, FPs, N_pos, N)
+            print "\n--precision: {0} / recall {1} / f {2}\n".format(p, r, f)
             p_sum += p
             r_sum += r
             f_sum += f
