@@ -2,16 +2,52 @@ import re
 
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
 from nltk.metrics.agreement import AnnotationTask
-from itertools import chain
+from itertools import chain, izip
 from functools import wraps
 from scipy.stats import describe
+from collections import defaultdict, deque
+from nltk.tokenize.punkt import *
 
 from indexnumbers import swap_num
+
 
 import configparser # easy_install configparser
 config = configparser.ConfigParser()
 config.read('CNLP.INI')
 base_path = config["Paths"]["base_path"]
+
+sent_tokenizer = PunktSentenceTokenizer()
+
+class newPunktWordTokenizer(TokenizerI):
+    """
+    taken from new version of NLTK 3.0 alpha
+    to allow for span tokenization of words (current
+    full version does not allow this)
+    """
+    def __init__(self, lang_vars=PunktLanguageVars()):
+        self._lang_vars = lang_vars
+
+    def tokenize(self, text):
+        return self._lang_vars.word_tokenize(text)
+
+    def span_tokenize(self, text):
+        """
+        Given a text, returns a list of the (start, end) spans of words
+        in the text.
+        """
+        return [(sl.start, sl.stop) for sl in self._slices_from_text(text)]
+
+    def _slices_from_text(self, text):
+        last_break = 0
+        contains_no_words = True
+        for match in self._lang_vars._word_tokenizer_re().finditer(text):
+            contains_no_words = False
+            context = match.group()
+            yield slice(match.start(), match.end())
+        if contains_no_words:
+            yield slice(0, 0) # matches PunktSentenceTokenizer's functionality
+
+word_tokenizer = newPunktWordTokenizer()
 
 
 def memo(func):
@@ -23,6 +59,8 @@ def memo(func):
         return cache[args]
     return wrap
 
+def flatten(nested_list):
+    return [item for sublist in nested_list for item in sublist]
 
 @memo
 def get_abstracts(annotator):
@@ -34,57 +72,137 @@ def get_abstracts(annotator):
         data=file.read()
 
     def clean(abstract):
-        return (re.split("BiviewID [0-9]*; PMID ?[0-9]*", abstract)[0]).strip()
-
+        text = (re.split("BiviewID [0-9]*; PMID ?[0-9]*", abstract)[0]).strip()
+        text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
+        return text
     return [clean(abstract) for abstract in re.split('Abstract \d+ of \d+', data)][1:]
-
-# Tokenize an abstract
-open_tag = '<[a-z0-9_]+>'
-close_tag = '<\/[a-z0-9_]+>'
-tag_def = "(" + open_tag + "|" + close_tag + ")" # more convinient than '<\/?[a-z0-9_]+>'
-
-def tokenize_abstract(abstract, tag_def, convert_numbers=False):
-    """
-    Takes an abstact (string) and converts it to a list of words or tokens
-    For example "A <tx>treatment</tx>, of" -> ['A', '<tx>', 'treatment', '</tx>', ',' 'of']
-    This uses regexes and not a proper (context-free) DOM parser, so beware.
-    """
-    if convert_numbers:
-        abstract = swap_num(abstract)
-    tokens_by_tag = re.split(tag_def, abstract)
-    def tokenize(token):
-        if not re.match(tag_def, token):
-            return word_tokenize(token)
-        else:
-            return [token]
-    return list(chain.from_iterable([tokenize(token) for token in tokens_by_tag])) # flatten
-
-def annotations(tokens):
-    """
-    Process tokens into a list with {word -> [tokens]} items
-    The value is a list, since tokens can be annotated several times
-    """
-    mapping = []
-    curr = []
-    for token in tokens:
-        if re.match(open_tag, token):
-            curr.append(re.match('<([a-z0-9_]+)>',token).group(1))
-        elif re.match(close_tag, token):
-            tag = re.match('<\/([a-z0-9_]+)>',token).group(1)
-            try:
-                curr.remove(tag)
-            except ValueError:
-                pass
-        else:
-            mapping.append({token: list(curr)})
-    return mapping
 
 def get_annotations(abstract_nr, annotator, convert_numbers=False):
     '''
     if convert_numbers is True, numerical strings (e.g., "twenty-five")
     will be converted to number ("25").
     '''
-    return annotations(tokenize_abstract(get_abstracts(annotator)[abstract_nr], tag_def, convert_numbers=convert_numbers))
+    abstract = get_abstracts(annotator)[abstract_nr]
+    if convert_numbers:
+        abstract = swap_num(abstract)
+    tags = tag_words(abstract)
+
+
+    # tags = p.get_tags(flatten=True) # returns a list of tags
+    return tags
+
+
+def split_tag_data(tagged_text):
+    """
+    takes in raw, tagged text
+    gets tag indices, then removes all tags
+    returns untagged_text, tag_positions
+    (where tag_positions = position in untagged_text)
+    """
+
+    tag_pattern = '<(\/?[a-z0-9_]+)>'
+
+    # tag_matches_a is indices in annotated text
+    tag_matches = [(m.start(), m.end(), m.group(1)) for m in re.finditer(tag_pattern, tagged_text)]
+
+    tag_positions = defaultdict(list)
+    displacement = 0 # initial re.finditer gets indices in the tagged text
+                     # this corrects and produces indices for untagged text
+
+    for start, end, tag in tag_matches:
+        tag_positions[start-displacement].append(tag)
+        displacement += (end-start) # add on the current tag length to cumulative displacement
+
+    untagged_text = re.sub(tag_pattern, "", tagged_text) # now remove all tags
+
+    return untagged_text, tag_positions
+
+def wordsent_span_tokenize(text):
+    """
+    first sentence tokenizes then word tokenizes *per sentence*
+    adjusts word indices for the full text
+    this guarantees no overlap of words over sentence boundaries
+    """
+
+    sent_indices = deque(sent_tokenizer.span_tokenize(text)) # use deques since lots of left popping later
+    word_indices = deque() # use deques since lots of left popping later
+
+    for s_start, s_end in sent_indices:
+        word_indices.extend([(w_start + s_start, w_end + s_start) for w_start, w_end in word_tokenizer.span_tokenize(text[s_start:s_end])])
+
+    return sent_indices, word_indices
+
+def tag_words(tagged_text):
+    """
+    returns lists of (word, tag_list) tuples when given tagged text
+    per *token* assumed (so mid word tags are extended to the whole word)
+    """
+
+    tagged_text = tagged_text.strip() # remove whitespace
+    untagged_text, tag_indices = split_tag_data(tagged_text) # split the tagging data from the text
+    
+    
+
+    # set up a few stacks at char, word, and sentence levels
+    index_tag_stack = set() # tags active at current index
+
+    char_stack = []
+    current_word_tag_stack = set()
+    # per word tagging, so if beginning of word token is tagged only, e.g. '<n>Fifty</n>-nine'
+    # and 'Fifty-nine' was a single token, then we assume the whole
+
+    word_stack = []
+
+    sent_stack = []
+
+    keep_char = False # whether we're keeping or discarding the current char
+                      # (we'll keep at false unless within the indices of a word_token)
+
+    sent_indices, word_indices = wordsent_span_tokenize(untagged_text)
+
+    i = 0
+
+    while i < len(untagged_text):
+
+        # first process tag stack to see whether next words are tagged
+        for tag in tag_indices[i]:
+            if tag[0] == '/':
+                try:
+                    index_tag_stack.remove(tag[1:])
+                except:
+                    print text
+                    print untagged_text[i-20:i+20]
+                    raise ValueError('unexpected tag %s in position %d of text' % (tag, i))
+            else:
+                index_tag_stack.add(tag)
+
+
+        if i == word_indices[0][1]: # if a word has ended
+            keep_char = False
+            word_stack.append((''.join(char_stack), list(current_word_tag_stack))) # push word and tag tuple to the word stack
+            char_stack = [] # clear char stack
+            current_word_tag_stack = set()
+            word_indices.popleft() # remove current word
+
+        if i == word_indices[0][0]:
+            keep_char = True
+
+        if keep_char:
+            char_stack.append(untagged_text[i])
+            current_word_tag_stack.update(index_tag_stack) # add any new tags
+            # (keeps all tags no matter where they start inside a word,
+            #  and the stack is cleared when move to a new work)
+
+        if i == sent_indices[0][1]:
+            sent_stack.append(word_stack)
+            word_stack = []
+            
+            sent_indices.popleft()
+
+        i += 1
+
+
+    return sent_stack
 
 
 def round_robin(abstract_nr, annotators = ["IJM", "BCW", "JKU"]):
@@ -109,24 +227,23 @@ def agreement_fn(a,b):
         # linearly scale (all agree = 0) (none agree = 1)
         return len(a.difference(b)) * (1 / float(max(len(a), len(b))))
 
-
 def __str_combine_annotations(annotations_A, annotations_B):
     """
-    Builds a string of annotations sepearate by an & for two annotators
+    Builds a string of annotations separate by an & for two annotators
     """
-    a = [['A', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_A)]
-    b = [['B', idx, "&".join(x.values()[0])] for idx, x in enumerate(annotations_B)]
+    a = [['A', idx, "&".join(x[1])] for idx, x in enumerate(annotations_A)]
+    b = [['B', idx, "&".join(x[1])] for idx, x in enumerate(annotations_B)]
     return a + b
 
 def calc_agreements(nr_of_abstracts=100):
-    # Loop over the abstracts and caluclate the kappa and alpha per abstract
+    # Loop over the abstracts and calculate the kappa and alpha per abstract
     aggregate = []
     for i in range(0, nr_of_abstracts):
-        annotators = round_robin(i)
-        annotations_A = get_annotations(i, annotators[0])
-        annotations_B = get_annotations(i, annotators[1])
-        annotations = __str_combine_annotations(annotations_A, annotations_B)
         try:
+            annotators = round_robin(i)
+            annotations_A = flatten(get_annotations(i, annotators[0]))
+            annotations_B = flatten(get_annotations(i, annotators[1]))
+            annotations = __str_combine_annotations(annotations_A, annotations_B)
             a = AnnotationTask(annotations, agreement_fn)
             aggregate.append({
                 "kappa" : a.kappa(),
@@ -156,23 +273,39 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
     example usage:
     print(merge_annotations(JKU1, BCW1, preprocess = eliminate_order))
     """
-    if not len(a) == len(b):
-        raise Exception("the annotations differ in length! {0} vs {1}".format(len(a), len(b)))
+        
     result = []
-    for i in range(0, len(a)):
-        key = a[i].keys()[0]
-        first = set([preprocess(x) for x in a[i].values()[0]])
-        second = set([preprocess(x) for x in b[i].values()[0]])
-        result.append({key : list(strategy(first, second))})
+
+    for sent_a, sent_b in izip(a, b):
+        result_sent = []
+        for (word_a, tag_list_a), (word_b, tag_list_b) in izip(sent_a, sent_b):
+            if word_a != word_b:
+                print "Mismatch:"
+                print "Sentence A:"
+                print sent_a
+                print
+                print "Sentence B:"
+                print sent_b
+                raise Exception("Mismatch in abstract contents - please check tags! {0} vs {1}".format(len(a), len(b)))
+
+            tag_set_a = set([preprocess(x) for x in a[i]['tags']])
+            tag_set_b = set([preprocess(x) for x in b[i]['tags']])
+
+            result_sent.append((word_a, list(strategy(tag_set_a, tag_set_b))))
+        result.append(result_sent)
     return result
 
-def remove_key(d, key):
-    if key in d:
-        r = dict(d)
-        del r[key]
-        return r
-    else:
-        return d
+
+
+
+
+# def remove_key(d, key):
+#     if key in d:
+#         r = dict(d)
+#         del r[key]
+#         return r
+#     else:
+#         return d
 
 def merged_annotations(abstract_nr, **kwargs):
     """
@@ -181,13 +314,12 @@ def merged_annotations(abstract_nr, **kwargs):
     Optionally takes convert_numbers, all other arguments are passed to merge_annotations
 
     example usage:
-    merge_annotations(50, convert_numbers = True, preprocess = eliminate_order)
+    merged_annotations(50, convert_numbers = True, preprocess = eliminate_order)
     """
     annotators = round_robin(abstract_nr)
     def ann(annotator):
-        return get_annotations(abstract_nr, annotator, kwargs.get("convert_numbers", False))
-    keywords = remove_key(kwargs, "convert_numbers")
-    return merge_annotations(ann(annotators[1]), ann(annotators[0]), **keywords)
+        return get_annotations(abstract_nr, annotator, kwargs.pop("convert_numbers", False)) # pop = remove_key fn
+    return merge_annotations(ann(annotators[1]), ann(annotators[0]), **kwargs)
 
 if __name__ == "__main__":
     calc_agreements()
