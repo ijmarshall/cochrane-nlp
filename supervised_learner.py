@@ -320,6 +320,13 @@ class LabeledAbstractReader:
         else:
             raise IndexError("File ID %d not in reader" % (file_id,))
 
+    def get_biview_id(self, biview_id):
+        for i in self:
+            if i["Biview_id"] == str(biview_id):
+                return i
+        else:
+            raise IndexError("BiViewer ID %d not in reader" % (biview_id,))
+
 
     def __iter__(self):
         self.abstract_index = 0
