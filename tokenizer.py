@@ -8,6 +8,7 @@ from scipy.stats import describe
 from collections import defaultdict, deque
 from nltk.tokenize.punkt import *
 
+from pipeline import filters
 from indexnumbers import swap_num
 
 
@@ -18,14 +19,23 @@ base_path = config["Paths"]["base_path"]
 
 sent_tokenizer = PunktSentenceTokenizer()
 
+class CochraneNLPLanguageVars(PunktLanguageVars):
+    _re_non_word_chars   = r"(?:[?!)\";}\]\*:@\'\({\[=])" # added =
+    """Characters that cannot appear within words"""
+
+    _re_word_start    = r"[^\(\"\`{\[:;&\#\*@\)}\]\-,=]" # added =
+    """Excludes some characters from starting word tokens"""
+
+
 class newPunktWordTokenizer(TokenizerI):
     """
     taken from new version of NLTK 3.0 alpha
     to allow for span tokenization of words (current
     full version does not allow this)
     """
-    def __init__(self, lang_vars=PunktLanguageVars()):
+    def __init__(self, lang_vars=CochraneNLPLanguageVars()):
         self._lang_vars = lang_vars
+        
 
     def tokenize(self, text):
         return self._lang_vars.word_tokenize(text)
@@ -73,7 +83,7 @@ def get_abstracts(annotator):
 
     def clean(abstract):
         text = (re.split("BiviewID [0-9]*; PMID ?[0-9]*", abstract)[0]).strip()
-        text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
+        # text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text) # not needed any more since change to tokenization
         return text
     return [clean(abstract) for abstract in re.split('Abstract \d+ of \d+', data)][1:]
 
@@ -132,6 +142,7 @@ def wordsent_span_tokenize(text):
 
     return sent_indices, word_indices
 
+@filters
 def tag_words(tagged_text):
     """
     returns lists of (word, tag_list) tuples when given tagged text
