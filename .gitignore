@@ -6,3 +6,5 @@ confused.txt
 pmccorpusdownload.py
 testdata/
 
+
+*.INI
