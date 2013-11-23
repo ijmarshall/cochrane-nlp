@@ -12,36 +12,14 @@ from itertools import izip
 from indexnumbers import swap_num
 from nltk import PorterStemmer
 from nltk.tokenize import sent_tokenize
-from nltk.tokenize import word_tokenize
+# from nltk.tokenize import word_tokenize
 from progressbar import ProgressBar
 
+from tokenizer import newPunktWordTokenizer, filters
 
 
-def filters(func):
-    """
-    used as decorator
-    allows pipeline functions to return helpful
-    views/permetations of output data - flattened lists
-    and filters based on the base (hidden) features
-    """
-    @wraps(func)
-    def wrapper(self, *args, **kwargs):
-        
-        flatten = kwargs.pop("flatten", False)
-        filter = kwargs.pop("filter", None)
+word_tokenize = newPunktWordTokenizer().tokenize
 
-        raw_output = func(self, *args, **kwargs)
-        if filter:
-            filtered_output = [[raw_word for raw_word, base_word in izip(raw_sent, base_sent) if filter(base_word)]
-                                for raw_sent, base_sent in izip(raw_output, self.functions)]
-        else:
-            filtered_output = raw_output
-
-        if flatten:
-            return [item for sublist in filtered_output for item in sublist]
-        else:
-            return filtered_output
-    return wrapper
 
 
 
@@ -69,6 +47,7 @@ class Pipeline(object):
 
         # 1. run base functions
         self.run_functions(show_progress=show_progress)
+        
         # 2. apply templates
         self.X = self.apply_templates(templates, show_progress=show_progress)
 
@@ -82,6 +61,8 @@ class Pipeline(object):
         """
         if not templates:
             templates = self.templates
+
+
         X = [[{} for word in sent] for sent in self.functions]
         if show_progress:
             pb = ProgressBar(len(templates) * len(X), timer=True)
@@ -91,7 +72,8 @@ class Pipeline(object):
                 if show_progress:
                     pb.tap()
                 sent_len = len(X_sent)
-                for word_index, X_word in enumerate(X_sent):
+                for word_index in range(sent_len):
+                    # print sent_index, word_index
                     values = []
                     for field, offset in template:
                         p = word_index + offset
@@ -144,10 +126,10 @@ def main():
     from bilearn import bilearnPipeline
 
     
-    b = BiViewer()
+    # b = BiViewer()
 
 
-    p = bilearnPipeline(b[1][1]['abstract'])
+    # p = bilearnPipeline(b[1][1]['abstract'])
 
     # p.generate_features()
     # print p.get_features(filter=lambda x: x["w[0]"].isdigit())
@@ -159,12 +141,18 @@ def main():
     # print p2.get_features(filter = lambda x: x["w"].isdigit())    
 
 
-    p2 = bilearnPipeline("No numbers in this sentence! Or this one which has a number of 123 either.")
+    p2 = bilearnPipeline("No numbers in this sentence! Or this one which has a number of 123 either go.")
+    # p2.run_functions()
+
+    # print p2.functions
     p2.generate_features()
+    print p2.get_features()
+
+
     
     # print p2.get_crfsuite_features(flatten=True, filter=lambda x: x["sym"]==False)
-    print p2.get_features(flatten=True, filter=lambda x: x["num"])
-    print p2.get_answers(flatten=False, answer_key=lambda x: x["num"], filter=lambda x: not x["sym"])
+    # print p2.get_features(flatten=True, filter=lambda x: x["num"])
+    # print p2.get_answers(flatten=False, answer_key=lambda x: x["num"], filter=lambda x: not x["sym"])
 
     
     # print p2.get_features(filter = lambda x: x["w[0]"].isdigit())
