@@ -52,6 +52,7 @@ class bilearnPipeline(pipeline.Pipeline):
         self.load_templates()
         # bcw: this caches the words, so parent methods won't
         # break (e.g., get_text()).
+        
         self.text = text  
         # self.stem = PorterStemmer()
 
@@ -95,17 +96,27 @@ class bilearnPipeline(pipeline.Pipeline):
                           (('wi', 0), ),
                           (('si', 0), ),
                           (('next_noun', 0), ),
+                          (('next_verb', 0), ),
+                          (('last_noun', 0), ),
+                          (('last_verb', 0), ),
                           )
 
         self.answer_key = "w"
 
     def run_functions(self, show_progress=False):
-        for i, sent_function in enumerate(self.functions):
-            words = {"BOW" + word["w"]: True for word in self.functions[i]}
 
+        for i, sent_function in enumerate(self.functions):
+
+            # words = {"BOW" + word["w"]: True for word in self.functions[i]}
+            
             last_noun_index = 0
+            last_noun = "BEGINNING_OF_SENTENCE"
+
+            last_verb_index = 0
+            last_verb = "BEGINNING_OF_SENTENCE"
 
             for j, function in enumerate(sent_function):
+                # print j
                 word = self.functions[i][j]["w"]
                 features = {"num": word.isdigit(),
                             "cap": word[0].isupper(),
@@ -123,17 +134,39 @@ class bilearnPipeline(pipeline.Pipeline):
                             "si": i}
                 
                 self.functions[i][j].update(features)
-                self.functions[i][j].update(words)
 
-                # if pos is a noun, back fill the previous words
+
+                # self.functions[i][j].update(words)
+
+                # if pos is a noun, back fill the previous words with 'next_noun'
+                # and the rest as 'last_noun'
                 pos = self.functions[i][j]["p"]
-                if re.match("NN*", pos):
+                
+                if re.match("NN.*", pos):
+
                     for k in range(last_noun_index, j):
                         self.functions[i][k]["next_noun"] = word
+                        self.functions[i][k]["last_noun"] = last_noun
                     last_noun_index = j
+                    last_noun = word
+                    
+                # and the same for verbs
+                elif re.match("VB.*", pos):
+
+                    for k in range(last_verb_index, j):
+                        
+                        self.functions[i][k]["next_verb"] = word
+                        self.functions[i][k]["last_verb"] = last_verb
+                    last_verb_index = j
+                    last_verb = word
 
             for k in range(last_noun_index, len(sent_function)):
                 self.functions[i][k]["next_noun"] = "END_OF_SENTENCE"
+                self.functions[i][k]["last_noun"] = last_noun
+
+            for k in range(last_verb_index, len(sent_function)):
+                self.functions[i][k]["next_verb"] = "END_OF_SENTENCE"
+                self.functions[i][k]["last_verb"] = last_verb
 
 
 
@@ -200,7 +233,9 @@ class BiLearner():
         # should make a copy
         self.data["y_lookup_init"] = {}
 
-        logging.info("Generating features, and finding seed data")
+        
+
+        logging.info("Generating features")
         p = progressbar.ProgressBar(len(self.biviewer), timer=True)
 
         counter = 0  # number of studies initially found
@@ -210,19 +245,11 @@ class BiLearner():
             p.tap()
 
             cochrane_dict, pubmed_dict = study
-            cochrane_text = cochrane_dict["CHAR_PARTICIPANTS"]
-            pubmed_text = pubmed_dict["abstract"]
+            cochrane_text = cochrane_dict.get("CHAR_PARTICIPANTS", "")
+            pubmed_text = pubmed_dict.get("abstract", "")
 
 
-            # use simple rule to identify population sizes (low sens/recall, high spec/precision)
-            matches = re.findall('([1-9][0-9]*) (?:participants|men|women|patients) were (?:randomi[sz]ed)', self.numberswapper.swap(pubmed_text))
-            if len(matches) == 1:
-                self.data["y_lookup_init"][study_id] = int(matches[0])
-                counter += 1
-            else:
-                # -1 signifies population not known (at this stage)
-                self.data["y_lookup_init"][study_id] = -1
-
+            
             # generate features for all studies
             # the generate_features functions only generate features for integers
             # words are stored separately since they are not necessarily used as features
@@ -244,6 +271,8 @@ class BiLearner():
             words_cochrane_l.extend((int(word) for word in words_cochrane_study))
             words_pubmed_l.extend((int(word) for word in words_pubmed_study))
 
+        self.init_y_regex() # generate y vector from regex
+
         logging.info("Creating NumPy arrays")
 
         # create np arrays for fast lookup of corresponding answer
@@ -263,6 +292,26 @@ class BiLearner():
         self.data["X_pubmed"] = self.data["vectoriser_pubmed"].fit_transform(X_pubmed_l)
 
         self.reset()
+
+    def init_y_regex(self):
+        logging.info("Identifying seed data from regular expression")
+        p = progressbar.ProgressBar(len(self.biviewer), timer=True)
+        counter = 0  # number of studies initially found
+        for study_id, (cochrane_dict, pubmed_dict) in enumerate(self.biviewer):
+            p.tap()
+            pubmed_text = pubmed_dict.get("abstract", "")
+            # use simple rule to identify population sizes (low sens/recall, high spec/precision)
+            matches = re.findall('([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients) were (?:randomi[sz]ed)', self.numberswapper.swap(pubmed_text))
+            if len(matches) == 1:
+                self.data["y_lookup_init"][study_id] = int(matches[0])
+                counter += 1
+            else:
+                # -1 signifies population not known (at this stage)
+                self.data["y_lookup_init"][study_id] = -1
+        self.seed_abstracts = counter
+        logging.info("%d seed abstracts found", counter)
+
+
  
     def save_data(self, filename):
         with open(filename, 'wb') as f:
@@ -294,6 +343,7 @@ class BiLearner():
 
             features, words = self.text_to_features(entry["text"])
             test_data.append({"features":features, "words": words, "answer": entry["answer"], "text": entry['text']})
+
 
         logging.info("%d/%d accuracy with seed rule", counter, len(raw_data))
         self.metrics["study_accuracy"] = [counter]
@@ -411,7 +461,9 @@ class BiLearner():
 
         for i in top_result_indices:
             # if instances[study_id_lookup_cochrane_test[i]] == 1:
-            self.y_lookup[study_id_lookup_cochrane_test[i]] = words_cochrane_test[i]
+            if self.y_lookup[study_id_lookup_cochrane_test[i]] == -1: # only change the one's which are not already set!!!!
+                self.y_lookup[study_id_lookup_cochrane_test[i]] = words_cochrane_test[i]
+
             # print "Number %d, with %.2f probability" % (words_cochrane_test[i], result[i])
             # print
             # print self.biviewer[study_id_lookup_cochrane_test[i]][0]
@@ -578,7 +630,8 @@ def test():
 
     b = BiLearner()
     b.generate_features(test_mode=True) # test_mode just uses the first 250 cochrane reviews for speed
-    b.learn(iterations=10, C=3, aperture=100, aperture_type="absolute")
+
+    b.learn(iterations=10, C=1, aperture=100, aperture_type="absolute")
     pprint(b.metrics)
     
 
