@@ -22,7 +22,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
 
     def __init__(self, text):
-        self.text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
+        # self.text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
         self.text = swap_num(text)
         self.functions = self.set_functions(self.text)
         self.load_templates()
