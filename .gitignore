@@ -8,3 +8,7 @@ testdata/
 
 
 *.INI
+
+*.pck
+
+CNLP.INI
