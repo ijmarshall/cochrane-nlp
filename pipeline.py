@@ -82,8 +82,10 @@ class Pipeline(object):
                             break
                             values.append("_OUT_OF_RANGE_")
                         else:
-                            values.append(self.functions[sent_index][p][field])
-                    if values:    
+                            values.append(self.functions[sent_index][p].get(field, 0))
+                    if len(values)==1:    
+                        X[sent_index][word_index][name] = values[0]
+                    elif len(values)>1:
                         X[sent_index][word_index][name] = '|'.join([str(value) for value in values])
         return X
 
