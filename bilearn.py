@@ -18,7 +18,7 @@ import re
 
 import biviewer
 from indexnumbers import swap_num
-import indexnumbers
+
 import numpy as np
 import pipeline
 import progressbar
@@ -32,6 +32,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
 
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_selection import SelectKBest
+from sklearn.linear_model import RandomizedLogisticRegression
 
 
 with open('data/brill_pos_tagger.pck', 'rb') as f:
@@ -56,31 +58,32 @@ class bilearnPipeline(pipeline.Pipeline):
 
     def __init__(self, text):
         self.functions = [[{"w": word, "p": pos} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(text))]
-
-        
-
-
-        self.load_templates()
-        # bcw: this caches the words, so parent methods won't
-        # break (e.g., get_text()).
-        
+        self.load_templates()        
         self.text = text  
-        # self.stem = PorterStemmer()
+        
 
     def load_templates(self):
         self.templates = (
                           (("w_int", 0),),
                           # (("w", 1),),
                           # (("w", 2),),
-                          # # (("w", 3),),
+                          # (("w", 3),),
+                          # # (("wl", 4),),
                           # (("w", -1),),
                           # (("w", -2),),
                           # (("w", -3),),
+                          # (("wl", -4),),
                           # (('w', -2), ('w',  -1)),
+                          # (('wl',  -1), ('wl',  -2), ('wl',  -3)),
                           # (('stem', -1), ('stem',  0)),
                           # (('stem',  0), ('stem',  1)),
                           # (('w',  1), ('w',  2)),
+                          # (('wl',  1), ('wl',  2), ('wl',  3)),
                           # (('p',  0), ('p',  1)),
+                          # (('p',  1),),
+                          # (('p',  2),),
+                          # (('p',  -1),),
+                          # (('p',  -2),),
                           # (('p',  1), ('p',  2)),
                           # (('p',  -1), ('p',  -2)),
                           # (('stem', -2), ('stem',  -1), ('stem',  0)),
@@ -109,14 +112,16 @@ class bilearnPipeline(pipeline.Pipeline):
                           # (('s4', 0), ),
                           (('wi', 0), ),
                           (('si', 0), ),
-                          (('next_noun', 0), ),
-                          (('next_verb', 0), ),
-                          (('last_noun', 0), ),
-                          (('last_verb', 0), ),
+                          # (('next_noun', 0), ),
+                          # (('next_verb', 0), ),
+                          # (('last_noun', 0), ),
+                          # (('last_verb', 0), ),
+                          (('in_num_list', 0), ),
                           )
 
         self.answer_key = "w"
-
+        self.w_pos_window = 6 # set 0 for no w_pos window features
+ 
     def run_functions(self, show_progress=False):
 
         # make dict to look up ranking of number in abstract
@@ -127,8 +132,6 @@ class bilearnPipeline(pipeline.Pipeline):
 
         for i, sent_function in enumerate(self.functions):
 
-            # words = {"BOW" + word["w"]: True for word in self.functions[i]}
-            
             last_noun_index = 0
             last_noun = "BEGINNING_OF_SENTENCE"
 
@@ -151,7 +154,8 @@ class bilearnPipeline(pipeline.Pipeline):
                             "s4": word[-4:],
                             # "stem": self.stem.stem(word),
                             "wi": j,
-                            "si": i}
+                            "si": i,
+                            "wl": word.lower()}
                 if word.isdigit():
                     num = int(word)
                     features[">10"] = num > 10
@@ -198,11 +202,14 @@ class bilearnPipeline(pipeline.Pipeline):
 
 class BiLearner():
 
-    def __init__(self):
+    def __init__(self, test_mode=True):
 
         logging.info("Initialising Bilearner")
         self.data = {}
-        self.numberswapper = indexnumbers.NumberTagger()
+        # load cochrane and pubmed parallel text viewer
+        self.biviewer = biviewer.BiViewer(in_memory=False, test_mode=test_mode)
+
+        
         # self.stem = PorterStemmer()
 
     def reset(self, seed="regex"):
@@ -216,7 +223,7 @@ class BiLearner():
         else:
             self.init_y_regex() # generate y vector from regex
 
-        print "SETTING pred_joint"
+        print "Resetting joint predictions"
         self.pred_joint = self.data["y_lookup_init"].copy()
 
         # define empty arrays for the answers to both sides
@@ -230,18 +237,17 @@ class BiLearner():
         # defaultdict can accept non-lists fine, for non changing properties
 
 
-    def generate_features(self, test_mode=False):
+    def generate_features(self, test_mode=False, filter_uniques=True):
         """
         generate the variables for the learning problem
         each row represents a candidate answer
+        filter_uniques = exclude candidates where the number is not replicated in both Cochrane + Pubmed
         """        
         if test_mode:
             logging.warning("In test mode: not processing all data")
         logging.info("Loading biview data")
 
-        # load cochrane and pubmed parallel text viewer
-        self.biviewer = biviewer.BiViewer(in_memory=False, test_mode=test_mode)
-
+        
         # feature variables
         # each item is a candidate answer (here meaning an integer from the text)
         # the X variables are static
@@ -257,6 +263,12 @@ class BiLearner():
         # candidate answer comes from, converted to numpy arrays later
         study_id_lookup_cochrane_l = []
         study_id_lookup_pubmed_l = []
+
+        # filter the training/test data to integers which appear in both datasets
+        # during training
+        # models for assessment run on the whole dataset
+        cochrane_distant_filter_l = []
+        pubmed_distant_filter_l = []
 
         # answer variable PER STUDY (assumes one population per study)
         # used to generate y which is used for training
@@ -281,7 +293,7 @@ class BiLearner():
             p.tap()
 
             cochrane_dict, pubmed_dict = study
-            cochrane_text = cochrane_dict.get("CHAR_PARTICIPANTS", "")
+            cochrane_text = cochrane_dict.get("CHAR_PARTICIPANTS", "") + cochrane_dict.get("CHAR_INTERVENTIONS", "") + cochrane_dict.get("CHAR_OUTCOMES", "") + cochrane_dict.get("CHAR_NOTES", "")
             pubmed_text = pubmed_dict.get("abstract", "")
 
 
@@ -291,8 +303,43 @@ class BiLearner():
             # words are stored separately since they are not necessarily used as features
             #     but are needed for the answers
 
-            X_cochrane_study, words_cochrane_study = self.features_from_text(cochrane_text)
-            X_pubmed_study, words_pubmed_study = self.features_from_text(pubmed_text)
+
+
+
+            # first generate features from the parallel texts
+
+            p_cochrane = bilearnPipeline(cochrane_text)
+            p_cochrane.generate_features()
+            
+
+
+            words_cochrane_study = p_cochrane.get_words(filter=lambda x: x["num"], flatten=True) # get the integers
+
+
+
+            p_pubmed = bilearnPipeline(pubmed_text)
+            p_pubmed.generate_features()
+            
+            words_pubmed_study = p_pubmed.get_words(filter=lambda x: x["num"], flatten=True) # get the integers
+
+
+            # generate filter vectors for integers which match between Cochrane + Pubmed
+            common_ints = list(set(words_cochrane_study) &  set(words_pubmed_study))
+
+
+
+            cochrane_filter_study = p_cochrane.get_answers(answer_key=lambda x: x["w"] in common_ints, filter=lambda x: x["num"], flatten=True)
+            pubmed_filter_study = p_pubmed.get_answers(answer_key=lambda x: x["w"] in common_ints, filter=lambda x: x["num"], flatten=True)
+
+
+            # get filtered + flattened feature dicts
+            X_cochrane_study = p_cochrane.get_features(filter=lambda x: x["num"], flatten=True)
+            X_pubmed_study = p_pubmed.get_features(filter=lambda x: x["num"], flatten=True)
+
+
+            # print X_pubmed_study
+
+            
             
             # these lists will be made into array to be used as lookup dicts
             study_id_lookup_cochrane_l.extend([study_id] * len(X_cochrane_study))
@@ -300,14 +347,16 @@ class BiLearner():
 
             # Add features to the feature lists
             X_cochrane_l.extend(X_cochrane_study)
-            # pprint(X_cochrane_study)
             X_pubmed_l.extend(X_pubmed_study)
 
             # Add words to the word lists
             words_cochrane_l.extend((int(word) for word in words_cochrane_study))
             words_pubmed_l.extend((int(word) for word in words_pubmed_study))
 
- 
+            # Add filters to the filter lists
+            cochrane_distant_filter_l.extend(cochrane_filter_study)
+            pubmed_distant_filter_l.extend(pubmed_filter_study)
+
 
         logging.info("Creating NumPy arrays")
 
@@ -319,6 +368,10 @@ class BiLearner():
         self.data["words_cochrane"] = np.array(words_cochrane_l)
         self.data["words_pubmed"] = np.array(words_pubmed_l)
 
+        # create filter vectors for training
+        self.data["distant_filter_cochrane"] = np.array(cochrane_distant_filter_l)
+        self.data["distant_filter_pubmed"] = np.array(pubmed_distant_filter_l)
+
         # set up vectorisers for cochrane and pubmed
         self.data["vectoriser_cochrane"] = DictVectorizer(sparse=True)
         self.data["vectoriser_pubmed"] = DictVectorizer(sparse=True)
@@ -327,7 +380,7 @@ class BiLearner():
         self.data["X_cochrane"] = self.data["vectoriser_cochrane"].fit_transform(X_cochrane_l)
         self.data["X_pubmed"] = self.data["vectoriser_pubmed"].fit_transform(X_pubmed_l)
 
-        self.reset()
+        # self.reset()
 
     def init_y_regex(self):
         """
@@ -340,10 +393,10 @@ class BiLearner():
             p.tap()
             pubmed_text = pubmed_dict.get("abstract", "")
             # use simple rule to identify population sizes (low sens/recall, high spec/precision)
-            pubmed_text = self.numberswapper.swap(pubmed_text)
+            pubmed_text = swap_num(pubmed_text)
             matches = re.findall('([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients) were (?:randomi[sz]ed)', pubmed_text)
-            matches += re.findall('(?:[Ww]e randomi[sz]ed )([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients)', pubmed_text)
-            matches += re.findall('(?:[Aa] total of )([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients)', pubmed_text)
+            # matches += re.findall('(?:[Ww]e randomi[sz]ed )([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients)', pubmed_text)
+            # matches += re.findall('(?:[Aa] total of )([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients)', pubmed_text)
             if len(matches) == 1:
                 self.data["y_lookup_init"][study_id] = int(matches[0])
                 counter += 1
@@ -421,28 +474,50 @@ class BiLearner():
 
         p = progressbar.ProgressBar(iterations)
 
+        p_filter, c_filter = self.data["distant_filter_pubmed"], self.data["distant_filter_cochrane"]
+
         for i in xrange(iterations):
             p.tap()
             confusion = []
             # self.learn_cochrane(C=C, aperture=aperture, aperture_type=aperture_type)
 
-            if i==0:
+            if i > 0:
+
+                # # if i % 2 == 0:
+                # cochrane_model_f = self.learn_view(self.data["X_cochrane"][c_filter], self.data["words_cochrane"][c_filter], self.data["study_id_lookup_cochrane"][c_filter],
+                #                 C=C, aperture=aperture, aperture_type=aperture_type, update_joint=True)
+
+                # # else:
+                # pubmed_model_f = self.learn_view(self.data["X_pubmed"][p_filter], self.data["words_pubmed"][p_filter], self.data["study_id_lookup_pubmed"][p_filter],
+                #                 C=C, aperture=aperture, aperture_type=aperture_type, update_joint=True)
+
+                # print p_filter
+                # print c_filter
+
+                # print len(p_filter), len(c_filter)
+
+                cochrane_model_f = self.learn_view(self.data["X_cochrane"], self.data["words_cochrane"], self.data["study_id_lookup_cochrane"],
+                                C=1, aperture=aperture, aperture_type=aperture_type, update_joint=True)
+
+                # print show_most_informative_features(self.data["vectoriser_pubmed"], cochrane_model_f)
+
+
                 pubmed_model = self.learn_view(self.data["X_pubmed"], self.data["words_pubmed"], self.data["study_id_lookup_pubmed"],
-                            C=C, aperture=aperture, aperture_type=aperture_type, update_joint=False)
+                                C=C, aperture=aperture, aperture_type=aperture_type, update_joint=True)
+
+                
+
 
             else:
-                self.learn_view(self.data["X_cochrane"], self.data["words_cochrane"], self.data["study_id_lookup_cochrane"],
-                                C=C, aperture=aperture, aperture_type=aperture_type)
+
 
                 pubmed_model = self.learn_view(self.data["X_pubmed"], self.data["words_pubmed"], self.data["study_id_lookup_pubmed"],
-                                C=C, aperture=aperture, aperture_type=aperture_type)
-
+                            C=C, aperture=aperture, aperture_type=aperture_type, update_joint=False)
             
             
-            print show_most_informative_features(self.data["vectoriser_pubmed"], pubmed_model)
+            
+            
 
-            # self.learn_pubmed(C=C, aperture=aperture, aperture_type=aperture_type)
-            # logging.info("End of iteration %d" % (i, ))
 
             score = 0
 
@@ -469,94 +544,6 @@ class BiLearner():
             f.write("\n\n".join(confusion))
 
 
-        
-    # def learn_cochrane(self, C=2.5, aperture=0.90, aperture_type='probability'):
-
-        
-
-    #     # create answer vectors with the seed answers
-    #     for word_id in xrange(len(self.y_cochrane_no)):
-    #         self.y_cochrane_no[word_id] = self.pred_joint[self.data["study_id_lookup_cochrane"][word_id]]
-
-    #     self.y_cochrane = (self.y_cochrane_no == self.data["words_cochrane"])
-
-
-
-
-    #     # set filter vectors (-1 = unknown)
-    #     filter_train = (self.y_cochrane_no != -1).nonzero()[0]
-    #     filter_test = (self.y_cochrane_no == -1).nonzero()[0]
-
-    #     self.metrics["cochrane_training_examples"].append(len(filter_train))
-    #     self.metrics["cochrane_test_examples"].append(len(filter_test))
-
-    #     if len(filter_test)==0:
-    #         print "leaving early - run out of data!"
-    #         raise IndexError("Out of data from Cochrane side")
-
-    #     # set training vectors
-    #     X_cochrane_train = self.data["X_cochrane"][filter_train]
-    #     y_cochrane_train = self.y_cochrane[filter_train]
-
-    #     # and test vectors as the rest
-    #     X_cochrane_test = self.data["X_cochrane"][filter_test]
-    #     y_cochrane_test = self.y_cochrane[filter_test]
-
-    #     # and the numbers to go with it for illustration purposes
-    #     words_cochrane_test = self.data["words_cochrane"][filter_test]
-    #     study_id_lookup_cochrane_test = self.data["study_id_lookup_cochrane"][filter_test]
-
-    #     # make and fit new LR model
-    #     # model = LogisticRegression(C=C, penalty='l1')
-    #     model = self.model()
-    #     logging.debug("fitting model to cochrane data...")
-    #     model.fit(X_cochrane_train, y_cochrane_train)
-
-
-
-
-
-    #     # assign predicted probabilities of being a population size to result
-    #     result = model.predict_proba(X_cochrane_test)[:,1]
-
-    #     self.metrics["cochrane_prob_dist"].append(np.array(np.percentile(np.absolute(0.5-result), list(np.arange(0, 1, 0.1)))).round(3))
-        
-
-    #     # set the cut off for picking the most confident results
-        
-    #     if aperture_type == "percentile":
-    #         top_pc_score = stats.scoreatpercentile(result, aperture)
-    #         top_result_indices = (result > top_pc_score).nonzero()[0]
-    #     elif aperture_type == "absolute":
-    #         top_result_indices = np.argsort(result)[-aperture:]
-    #     else:
-    #         top_pc_score = aperture
-    #         top_result_indices = (result > top_pc_score).nonzero()[0]
-
-
-    #     self.metrics["cochrane_no_top_indices"].append(len(top_result_indices))
-
-    #     # # exclude the answer if another answer in the same study scores > 0.5 probability
-    #     # exclude_result_indices = (result > 0.95).nonzero()[0]
-    #     # print len(top_result_indices), len(self.biviewer)
-
-    #             # number of times each study is represented
-    #     # instances = np.bincount(study_id_lookup_cochrane_test[exclude_result_indices])
-
-    #     for i in top_result_indices:
-    #         # if instances[study_id_lookup_cochrane_test[i]] == 1:
-    #         if self.pred_joint[study_id_lookup_cochrane_test[i]] == -1: # only change the one's which are not already set!!!!
-    #             self.pred_joint[study_id_lookup_cochrane_test[i]] = words_cochrane_test[i]
-
-    #         # print "Number %d, with %.2f probability" % (words_cochrane_test[i], result[i])
-    #         # print
-    #         # print self.biviewer[study_id_lookup_cochrane_test[i]][0]
-    #         # print
-    #         # print
-    #         # else:
-    #         #     print "multiple high probability results for no %d" % (i,)
-
-        # show_most_informative_features(self.data["vectoriser_cochrane"], model)
     def learn_view(self, X_view, words_view, joint_from_view_index,
                     C=2.5, aperture=0.90, aperture_type='probability', update_joint=True):
 
@@ -631,87 +618,6 @@ class BiLearner():
 
 
 
-    # def learn_pubmed(self, C=2.5, aperture=0.90, aperture_type='probability'):
-
-    #     for word_id in xrange(len(self.y_pubmed_no)):
-    #         self.y_pubmed_no[word_id] = self.pred_joint[self.data["study_id_lookup_pubmed"][word_id]]
-
-    #     self.y_pubmed = (self.y_pubmed_no == self.data["words_pubmed"])
-
-    #     # set filter vectors (-1 = unknown)
-    #     filter_train = (self.y_pubmed_no != -1).nonzero()[0]
-    #     filter_test = (self.y_pubmed_no == -1).nonzero()[0]
-
-    #     if len(filter_test)==0:
-    #         print "leaving early - run out of data!"
-    #         raise IndexError("Out of data from Pubmed side")
-
-
-    #     self.metrics["pubmed_training_examples"].append(len(filter_train))
-    #     self.metrics["pubmed_test_examples"].append(len(filter_test))
-
-
-    #     # set training vectors
-    #     X_pubmed_train = self.data["X_pubmed"][filter_train]
-    #     y_pubmed_train = self.y_pubmed[filter_train]
-
-    #     # and test vectors as the rest
-    #     X_pubmed_test = self.data["X_pubmed"][filter_test]
-    #     y_pubmed_test = self.y_pubmed[filter_test]
-
-    #     # and the numbers to go with it for illustration purposes
-    #     words_pubmed_test = self.data["words_pubmed"][filter_test]
-    #     study_id_lookup_pubmed_test = self.data["study_id_lookup_pubmed"][filter_test]
-
-    #     # make and fit new LR model
-    #     # self.pubmed_model = LogisticRegression(C=C, penalty='l1')
-    #     self.pubmed_model = self.model()
-    #     logging.debug("fitting model to pubmed data...")
-    #     self.pubmed_model.fit(X_pubmed_train, y_pubmed_train)
-
-    #     # assign predicted probabilities of being a population size to result
-    #     result = self.pubmed_model.predict_proba(X_pubmed_test)[:,1]
-
-        
-    #     self.metrics["pubmed_prob_dist"].append(np.array(np.percentile(np.absolute(0.5-result), list(np.arange(0, 1, 0.1)))).round(3))
-
-    #     # set the cut off for picking the most confident results in both directions
-        
-    #     if aperture_type == "percentile":
-    #         top_pc_score = stats.scoreatpercentile(result, aperture)
-    #         top_result_indices = (result > top_pc_score).nonzero()[0]
-    #     elif aperture_type == "absolute":
-    #         top_result_indices = np.argsort(result)[-aperture:]
-    #     else:
-    #         top_pc_score = aperture
-    #         top_result_indices = (result > top_pc_score).nonzero()[0]
-
-    #     self.metrics["pubmed_no_top_indices"].append(len(top_result_indices))
-
-    #     if len(top_result_indices) == 0:
-    #         raise IndexError("Iteration not identifying any further high probability candidates")
-
-    #     # top_result_indices = np.argsort(result)[-10:]
-
-    #     # exclude the answer if another answer in the same study scores > 0.5 probability
-    #     # exclude_result_indices = (result > 0.95).nonzero()[0]
-
-
-    #     # number of times each study is represented
-    #     # instances = np.bincount(study_id_lookup_pubmed_test[exclude_result_indices])
-
-    #     for i in top_result_indices:
-    #         # if instances[study_id_lookup_pubmed_test[i]] == 1:
-    #         self.pred_joint[study_id_lookup_pubmed_test[i]] = words_pubmed_test[i]
-    #         # print "Number %d, with %.2f probability" % (words_pubmed_test[i], result[i])
-    #         # print
-    #         # print self.biviewer[study_id_lookup_pubmed_test[i]][1]
-    #         # print
-    #         # print
-    #         # else:
-    #         #     print "multiple high probability results for no %d" % (i,)
-
-        # show_most_informative_features(self.data["vectoriser_pubmed"], self.pubmed_model)
 
     def features_from_text(self, text):
         "generate and return features for a piece of text"
@@ -725,11 +631,14 @@ class BiLearner():
 
     def model(self, C=1.0):
         # clf = Pipeline([
-        #     ('feature_selection', LogisticRegression(penalty="l1")),
-        #     ('classification', RandomForestClassifier())
-        #  ])
-        # clf = SVC(C=C, probability=True, kernel='linear', penalty="l1")
-        clf = LogisticRegression(C=C, penalty="l1")
+        #                 ('feature_selection', RandomizedLogisticRegression()),
+        #                 ('classification', SVC(probability=True))
+        #                ])
+        clf = RandomForestClassifier()
+        #SVC(C=C, kernel='linear')
+        # clf = LogisticRegression(C=C, penalty="l1")
+        
+        
         return clf
 
 
@@ -757,16 +666,6 @@ class BiLearner():
             X_study_vec = None
         return X_study_vec, words_study
 
-    # def evaluate_test(self, filename):
-    #     with open(filename, 'rb') as f:
-    #         test_data = pickle.load(f)
-
-    #     score = 0
-    #     for entry in test_data:
-    #         if int(self.predict_population_text(entry["text"])[0])==entry["answer"]:
-    #             score += 1
-    #     print "final score %d/%d" % (score, len(test_data))
-
 
 
 
@@ -790,10 +689,11 @@ def main():
 
 def test():
 
-    b = BiLearner()
-    b.generate_features(test_mode=True) # test_mode just uses the first 250 cochrane reviews for speed
+    b = BiLearner(test_mode=True)
+    b.generate_features() # test_mode just uses the first 250 cochrane reviews for speed
 
-    b.learn(iterations=10, C=1, aperture=100, aperture_type="absolute")
+    b.reset(seed='regex')
+    b.learn(iterations=30, C=3.5, aperture=10, aperture_type="absolute")
     pprint(b.metrics)
     
 
