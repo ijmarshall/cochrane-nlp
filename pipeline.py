@@ -16,7 +16,7 @@ from nltk.tokenize import sent_tokenize
 from progressbar import ProgressBar
 
 from tokenizer import newPunktWordTokenizer, filters
-
+from pprint import pprint
 
 word_tokenize = newPunktWordTokenizer().tokenize
 
@@ -51,9 +51,24 @@ class Pipeline(object):
         # 2. apply templates
         self.X = self.apply_templates(templates, show_progress=show_progress)
 
+
     def run_functions(self, show_progress=False):
         " used in subclasses to chain together feature functions "
         raise NotImplemented
+
+    def add_feature(self, feature_id, feature_fn):
+        """ add a feature function later on
+        after the main functions are made
+        id = string
+        feature_fn = lambda/other function to apply to each base function
+        """
+
+        len_text = len(self.functions)
+        for sent_index in range(len_text):
+            sent_len = len(self.functions[sent_index])
+            for word_index in range(sent_len):
+                self.functions[sent_index][word_index][feature_id] = feature_fn(self.functions[sent_index][word_index])
+
 
     def apply_templates(self, templates=None, show_progress=False):
         """
@@ -82,11 +97,36 @@ class Pipeline(object):
                             break
                             values.append("_OUT_OF_RANGE_")
                         else:
-                            values.append(self.functions[sent_index][p].get(field, 0))
+                            value = self.functions[sent_index][p].get(field)
+                            if value:
+                                values.append(value)
                     if len(values)==1:    
                         X[sent_index][word_index][name] = values[0]
                     elif len(values)>1:
                         X[sent_index][word_index][name] = '|'.join([str(value) for value in values])
+
+        if self.w_pos_window > 0:
+            for sent_index, X_sent in enumerate(X):
+                sent_len = len(X_sent)
+                for word_index in range(sent_len):
+                    for i in range(word_index-self.w_pos_window, word_index):
+                        if i < 0 :
+                            X[sent_index][word_index]["left window start of sentence"] = True
+                        else:
+                            word = self.functions[sent_index][i]
+                            X[sent_index][word_index]["left window " + word["w"] + "|" + word["p"]] = 1#float(self.w_pos_window) / (word_index-i)
+
+                    for i in range(word_index+1, word_index+self.w_pos_window):
+                        if i > (sent_len - 1):
+                            X[sent_index][word_index]["right window end of sentence"] = True
+                        else:
+                            word = self.functions[sent_index][i]
+                            X[sent_index][word_index]["right window " + word["w"] + "|" + word["p"]] = 1#float(self.w_pos_window) / (i-word_index)
+
+
+        
+
+
         return X
 
 
@@ -145,10 +185,13 @@ def main():
 
     p2 = bilearnPipeline("No numbers in this sentence! Or this one which has a number of 123 either go.")
     # p2.run_functions()
-
+    p2.add_feature(feature_id="in_num_list", feature_fn=lambda x: x["w"] in ["125", "128", "123"])
     # print p2.functions
     p2.generate_features()
-    print p2.get_features()
+    
+
+    pprint(p2.get_features())
+
 
 
     
