@@ -8,7 +8,7 @@ import cPickle as pickle
 from itertools import izip
 from indexnumbers import swap_num
 import re
-
+import bilearn2
 
 from tokenizer import tag_words
 
@@ -18,7 +18,7 @@ with open('data/brill_pos_tagger.pck', 'rb') as f:
 
 
 
-class TaggedTextPipeline(pipeline.Pipeline):
+class TaggedTextPipeline(bilearn2.bilearnPipeline):
 
 
     def __init__(self, text):
@@ -63,34 +63,44 @@ class TaggedTextPipeline(pipeline.Pipeline):
 
     def load_templates(self):
         self.templates = (
-                          (("w", 0),),
-                          (("w", 1),),
-                          (("w", 2),),
-                          (("w", 3),),
-                          (("w", -1),),
-                          (("w", -2),),
-                          (("w", -3),),
-                          (('w', -2), ('w',  -1)),
+                          (("w_int", 0),),
+                          # (("w", 1),),
+                          # (("w", 2),),
+                          # (("w", 3),),
+                          # # (("wl", 4),),
+                          # (("w", -1),),
+                          # (("w", -2),),
+                          # (("w", -3),),
+                          # (("wl", -4),),
+                          # (('w', -2), ('w',  -1)),
+                          # (('wl',  -1), ('wl',  -2), ('wl',  -3)),
                           # (('stem', -1), ('stem',  0)),
                           # (('stem',  0), ('stem',  1)),
-                          (('w',  1), ('w',  2)),
+                          # (('w',  1), ('w',  2)),
+                          # (('wl',  1), ('wl',  2), ('wl',  3)),
                           # (('p',  0), ('p',  1)),
-                          (('p',  1), ('p',  2)),
-                          (('p',  -1), ('p',  -2)),
+                          # (('p',  1),),
+                          # (('p',  2),),
+                          # (('p',  -1),),
+                          # (('p',  -2),),
+                          # (('p',  1), ('p',  2)),
+                          # (('p',  -1), ('p',  -2)),
                           # (('stem', -2), ('stem',  -1), ('stem',  0)),
                           # (('stem', -1), ('stem',  0), ('stem',  1)),
                           # (('stem', 0), ('stem',  1), ('stem',  2)),
-                          (('p', -2), ),
-                          (('p', -1), ),
-                          (('p', 1), ),
-                          (('p', 2), ),
-                          (('num', -1), ),
-                          (('num', 1), ),
-                          (('cap', -1), ),
-                          (('cap', 1), ),
-                          (('sym', 0), ),
-                          (('sym', -1), ),
-                          (('sym', 1), ),
+                          # (('p', -2), ),
+                          # (('p', -1), ),
+                          # (('p', 1), ),
+                          # (('p', 2), ),
+                          # (('num', -1), ), 
+                          # (('num', 1), ),
+                          # (('cap', -1), ),
+                          # (('cap', 1), ),
+                          # (('sym', -1), ),
+                          # (('sym', 1), ),
+                          (('div10', 0), ),
+                          (('>10', 0), ),
+                          (('numrank', 0), ),
                           # (('p1', 1), ),
                           # (('p2', 1), ),
                           # (('p3', 1), ),
@@ -101,56 +111,60 @@ class TaggedTextPipeline(pipeline.Pipeline):
                           # (('s4', 0), ),
                           (('wi', 0), ),
                           (('si', 0), ),
-                          (('next_noun', 0), ),
+                          # (('cochrane_part', 0), ),
+                          # (('next_noun', 0), ),
+                          # (('next_verb', 0), ),
+                          # (('last_noun', 0), ),
+                          # (('last_verb', 0), ),
                           )
          
          
-        self.w_pos_window = 0
+        self.w_pos_window = 4
 
         self.answer_key = lambda x: x["w"]
 
-    def run_functions(self, show_progress=False):
-        for i, sent_function in enumerate(self.functions):
+    # def run_functions(self, show_progress=False):
+    #     for i, sent_function in enumerate(self.functions):
 
-            # line below not used yet
-            # need to implement in Pipeline run_templates
-            # words = {"BOW" + word["w"]: True for word in self.functions[i]}
+    #         # line below not used yet
+    #         # need to implement in Pipeline run_templates
+    #         # words = {"BOW" + word["w"]: True for word in self.functions[i]}
 
-            last_noun_index = 0
+    #         last_noun_index = 0
 
-            for j, function in enumerate(sent_function):
-                word = self.functions[i][j]["w"]
-                features = {"num": word.isdigit(), # all numeric
-                            "cap": word[0].isupper(), # starts with upper case
-                            "sym": not word.isalnum(), # contains a symbol anywhere
-                            "p1": word[0],  # first 1 char (prefix)
-                            "p2": word[:2], # first 2 chars
-                            "p3": word[:3], # ...
-                            "p4": word[:4],
-                            "s1": word[-1],  # last 1 char (suffix)
-                            "s2": word[-2:], # last 2 chars
-                            "s3": word[-3:], # ...
-                            "s4": word[-4:],
-                            # "stem": self.stem.stem(word),
-                            "wi": j,
-                            "si": i,
-                            "punct": not any(c.isalnum() for c in word) # all punctuation}
-                           }
-                self.functions[i][j].update(features)
+    #         for j, function in enumerate(sent_function):
+    #             word = self.functions[i][j]["w"]
+    #             features = {"num": word.isdigit(), # all numeric
+    #                         "cap": word[0].isupper(), # starts with upper case
+    #                         "sym": not word.isalnum(), # contains a symbol anywhere
+    #                         "p1": word[0],  # first 1 char (prefix)
+    #                         "p2": word[:2], # first 2 chars
+    #                         "p3": word[:3], # ...
+    #                         "p4": word[:4],
+    #                         "s1": word[-1],  # last 1 char (suffix)
+    #                         "s2": word[-2:], # last 2 chars
+    #                         "s3": word[-3:], # ...
+    #                         "s4": word[-4:],
+    #                         # "stem": self.stem.stem(word),
+    #                         "wi": j,
+    #                         "si": i,
+    #                         "punct": not any(c.isalnum() for c in word) # all punctuation}
+    #                        }
+    #             self.functions[i][j].update(features)
 
-                # line below not used yet
-                # need to implement in Pipeline run_templates
-                # self.functions[i][j].update(words)
+    #             # line below not used yet
+    #             # need to implement in Pipeline run_templates
+    #             # self.functions[i][j].update(words)
 
-                # if pos is a noun, back fill the previous words
-                pos = self.functions[i][j]["p"]
-                if re.match("NN*", pos):
-                    for k in range(last_noun_index, j):
-                        self.functions[i][k]["next_noun"] = word
-                    last_noun_index = j
+    #             # if pos is a noun, back fill the previous words
+    #             pos = self.functions[i][j]["p"]
+    #             if re.match("NN*", pos):
+    #                 for k in range(last_noun_index, j):
+    #                     self.functions[i][k]["next_noun"] = word
+    #                 last_noun_index = j
 
-            for k in range(last_noun_index, len(sent_function)):
-                self.functions[i][k]["next_noun"] = "END_OF_SENTENCE"
+    #         for k in range(last_noun_index, len(sent_function)):
+    #             self.functions[i][k]["next_noun"] = "END_OF_SENTENCE"
 
     @pipeline.filters
     def get_tags(self):
