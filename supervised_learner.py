@@ -259,8 +259,8 @@ class SupervisedLearner:
             # filter here is a lambda function used on the
             # individual word's hidden features
             ###
-            X_i = p.get_features(flatten=True, filter=lambda w: w['punct']==False)
-            y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda w: w['punct']==False)
+            # X_i = p.get_features(flatten=True, filter=lambda w: w['punct']==False)
+            # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda w: w['punct']==False)
 
             ####
             # IM: xml annotations are now all available in w["tags"] for each word in the features list
@@ -270,8 +270,8 @@ class SupervisedLearner:
             ###
             # alternative code to restrict to integers only
             #
-            # X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
-            # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
+            X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
+            y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
             if flatten_abstracts:
                 X.extend(X_i)
                 y.extend(y_i)
