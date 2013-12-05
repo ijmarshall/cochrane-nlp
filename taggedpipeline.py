@@ -26,7 +26,7 @@ class TaggedTextPipeline(pipeline.Pipeline):
         self.text = swap_num(text)
         self.functions = self.set_functions(self.text)
         self.load_templates()
-        
+
 
 
     def set_functions(self, tagged_text):
@@ -103,6 +103,9 @@ class TaggedTextPipeline(pipeline.Pipeline):
                           (('si', 0), ),
                           (('next_noun', 0), ),
                           )
+         
+         
+        self.w_pos_window = 0
 
         self.answer_key = lambda x: x["w"]
 
