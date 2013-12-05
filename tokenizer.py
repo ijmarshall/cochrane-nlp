@@ -311,7 +311,7 @@ def calc_agreements(nr_of_abstracts=100):
     print("[alpha] variance: " + str(alpha[3]))
 
 def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x: x):
-    """"
+    """
     Returns the merging of a and b
     based on strategy (defaults to set intersection) Optionally takes
     a preprocess argument which takes a tag as argument and must
@@ -335,8 +335,9 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
                 print sent_b
                 raise Exception("Mismatch in abstract contents - please check tags! {0} vs {1}".format(len(a), len(b)))
 
-            tag_set_a = set([preprocess(x) for x in a[i]['tags']])
-            tag_set_b = set([preprocess(x) for x in b[i]['tags']])
+
+            tag_set_a = set([preprocess(x) for x in tag_list_a])
+            tag_set_b = set([preprocess(x) for x in tag_list_b])
 
             result_sent.append((word_a, list(strategy(tag_set_a, tag_set_b))))
         result.append(result_sent)
@@ -370,3 +371,4 @@ def merged_annotations(abstract_nr, **kwargs):
 
 if __name__ == "__main__":
     calc_agreements()
+    # print merged_annotations(1)
