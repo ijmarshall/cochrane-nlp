@@ -190,7 +190,12 @@ class RM5(XMLReader):
         return authors
 
     def sof_table(self):
-        return self._ETfind("SOF_TABLES/SOF_TABLE", self.data)
+        result = self.data.find("SOF_TABLES/SOF_TABLE")
+        if result:
+            return ET.tostring(result, encoding='utf8', method='xml')
+        else:
+            return None
+        
 
 
 
@@ -235,6 +240,10 @@ def main():
 
     print "Population details"
     print refs[0]["CHAR_PARTICIPANTS"]
+    print
+
+    print "Summary or findings table"
+    print reader.sof_table()
     print
 
     print "Risk of bias"

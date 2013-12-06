@@ -8,15 +8,60 @@ from scipy.stats import describe
 from collections import defaultdict, deque
 from nltk.tokenize.punkt import *
 
+
 from indexnumbers import swap_num
 
 
 import configparser # easy_install configparser
+
+
+
 config = configparser.ConfigParser()
 config.read('CNLP.INI')
 base_path = config["Paths"]["base_path"]
 
+
+
+def filters(func):
+    """
+    used as decorator
+    allows pipeline functions to return helpful
+    views/permetations of output data - flattened lists
+    and filters based on the base (hidden) features
+    """
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        
+        flatten = kwargs.pop("flatten", False)
+        filter = kwargs.pop("filter", None)
+
+        raw_output = func(self, *args, **kwargs)
+        if filter:
+            filtered_output = [[raw_word for raw_word, base_word in izip(raw_sent, base_sent) if filter(base_word)]
+                                for raw_sent, base_sent in izip(raw_output, self.functions)]
+        else:
+            filtered_output = raw_output
+
+        if flatten:
+            return [item for sublist in filtered_output for item in sublist]
+        else:
+            return filtered_output
+    return wrapper
+
+
+
+
 sent_tokenizer = PunktSentenceTokenizer()
+
+
+
+class CochraneNLPLanguageVars(PunktLanguageVars):
+    _re_non_word_chars   = r"(?:[?!)\";}\]\*:@\'\({\[=])" # added =
+    """Characters that cannot appear within words"""
+
+    _re_word_start    = r"[^\(\"\`{\[:;&\#\*@\)}\]\-,=]" # added =
+    """Excludes some characters from starting word tokens"""
+
 
 class newPunktWordTokenizer(TokenizerI):
     """
@@ -24,8 +69,9 @@ class newPunktWordTokenizer(TokenizerI):
     to allow for span tokenization of words (current
     full version does not allow this)
     """
-    def __init__(self, lang_vars=PunktLanguageVars()):
+    def __init__(self, lang_vars=CochraneNLPLanguageVars()):
         self._lang_vars = lang_vars
+        
 
     def tokenize(self, text):
         return self._lang_vars.word_tokenize(text)
@@ -73,7 +119,7 @@ def get_abstracts(annotator):
 
     def clean(abstract):
         text = (re.split("BiviewID [0-9]*; PMID ?[0-9]*", abstract)[0]).strip()
-        text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
+        # text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text) # not needed any more since change to tokenization
         return text
     return [clean(abstract) for abstract in re.split('Abstract \d+ of \d+', data)][1:]
 
@@ -132,6 +178,7 @@ def wordsent_span_tokenize(text):
 
     return sent_indices, word_indices
 
+@filters
 def tag_words(tagged_text):
     """
     returns lists of (word, tag_list) tuples when given tagged text
@@ -264,7 +311,7 @@ def calc_agreements(nr_of_abstracts=100):
     print("[alpha] variance: " + str(alpha[3]))
 
 def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x: x):
-    """"
+    """
     Returns the merging of a and b
     based on strategy (defaults to set intersection) Optionally takes
     a preprocess argument which takes a tag as argument and must
@@ -288,8 +335,9 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
                 print sent_b
                 raise Exception("Mismatch in abstract contents - please check tags! {0} vs {1}".format(len(a), len(b)))
 
-            tag_set_a = set([preprocess(x) for x in a[i]['tags']])
-            tag_set_b = set([preprocess(x) for x in b[i]['tags']])
+
+            tag_set_a = set([preprocess(x) for x in tag_list_a])
+            tag_set_b = set([preprocess(x) for x in tag_list_b])
 
             result_sent.append((word_a, list(strategy(tag_set_a, tag_set_b))))
         result.append(result_sent)
@@ -323,3 +371,4 @@ def merged_annotations(abstract_nr, **kwargs):
 
 if __name__ == "__main__":
     calc_agreements()
+    # print merged_annotations(1)
