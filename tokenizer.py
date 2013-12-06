@@ -170,7 +170,7 @@ def tag_words(tagged_text):
                 try:
                     index_tag_stack.remove(tag[1:])
                 except:
-                    print text
+                    print tagged_text
                     print untagged_text[i-20:i+20]
                     raise ValueError('unexpected tag %s in position %d of text' % (tag, i))
             else:

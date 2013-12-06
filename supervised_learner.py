@@ -418,7 +418,7 @@ def average_learning_curve(nruns=5):
     y_total = numpy.array([])
     for i in xrange(nruns):
         print "\n\n--on run %s\n\n" % i
-        x_i, y_i = learning_curve()
+        x_i, y_i, lows, highs = learning_curve()
         if y_total.shape[0] == 0:
             y_total = numpy.array(y_i)
         else:
@@ -431,36 +431,46 @@ def calc_metrics(TPs, FPs, N_pos, N):
     TPs, FPs, N_pos, N = float(TPs), float(FPs), float(N_pos), float(N)
     recall = TPs /  N_pos
     precision = TPs / (TPs + FPs)
-    f = None
+    f = 0
     if precision + recall > 0:
         f = 2 * (precision * recall) / (precision + recall)
     return recall, precision, f
 
 def learning_curve():
-    nruns = 10
+    nruns = 5
 
     reader = LabeledAbstractReader()
     sl = SupervisedLearner(reader, hold_out_a_test_set=True, test_set_p=.2)
     sl.generate_features()
 
     average_fs = []
+    lows, highs = [], []
     pb = progressbar.ProgressBar(nruns, timer=True)
-    train_ps = numpy.linspace(.1,1,5)
+    train_ps = numpy.linspace(.15,.95,4)
     for train_p in train_ps:
         cur_avg_f = 0
+        cur_low, cur_high = numpy.inf, -numpy.inf
         for i in xrange(nruns):
             sl.select_train_citation_indices(train_p)
             TPs, FPs, N_pos, N = sl.train_and_test_sample_size(train_p=train_p)
             r, p, f = calc_metrics(TPs, FPs, N_pos, N)
             print "precision: {0}; recall: {1}; f: {2}".format(p, r, f)
             cur_avg_f += f
-        
+            if f < cur_low:
+                cur_low = f
+            if f > cur_high:
+                cur_high = f
+        lows.append(cur_low)
+        highs.append(cur_high)
+            
         pb.tap()
         avg_f = cur_avg_f/float(nruns)
         print "\naverage f-score for {0}:{1}".format(train_p, avg_f)
         average_fs.append(avg_f)
 
-    return [int(sl.n_citations*p) for p in train_ps], average_fs
+    # factor in the held out data
+    train_citations = sl.n_citations - (sl.n_citations * sl.test_set_p)
+    return [int(sl.n_citations*p) for p in train_ps], average_fs, lows, highs
 
 
 
