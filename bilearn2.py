@@ -35,6 +35,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectKBest
 from sklearn.linear_model import RandomizedLogisticRegression
 
+from scipy.sparse import vstack
+
 
 with open('data/brill_pos_tagger.pck', 'rb') as f:
     pos_tagger = pickle.load(f)
@@ -56,9 +58,10 @@ def show_most_informative_features(vectorizer, clf, n=50):
 
 class bilearnPipeline(pipeline.Pipeline):
 
-    def __init__(self, text):
+    def __init__(self, text, window_size):
         self.functions = [[{"w": word, "p": pos} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(text))]
         self.load_templates()        
+        self.w_pos_window = window_size
         self.text = text  
         
 
@@ -116,11 +119,10 @@ class bilearnPipeline(pipeline.Pipeline):
                           # (('next_verb', 0), ),
                           # (('last_noun', 0), ),
                           # (('last_verb', 0), ),
-                          (('in_num_list', 0), ),
                           )
 
         self.answer_key = "w"
-        self.w_pos_window = 6 # set 0 for no w_pos window features
+        # self.w_pos_window = window_size # set 0 for no w_pos window features
  
     def run_functions(self, show_progress=False):
 
@@ -155,7 +157,9 @@ class bilearnPipeline(pipeline.Pipeline):
                             # "stem": self.stem.stem(word),
                             "wi": j,
                             "si": i,
-                            "wl": word.lower()}
+                            "wl": word.lower(),
+                            "punct": not any(c.isalnum() for c in word) # all 
+                            }
                 if word.isdigit():
                     num = int(word)
                     features[">10"] = num > 10
@@ -198,16 +202,84 @@ class bilearnPipeline(pipeline.Pipeline):
                 self.functions[i][k]["next_verb"] = "END_OF_SENTENCE"
                 self.functions[i][k]["last_verb"] = last_verb
 
+class bilearnPipelineCochrane(bilearnPipeline):
 
+    def __init__(self, text_dict, window_size):
+
+        self.functions = []
+        for key, value in text_dict.iteritems():
+            self.functions.extend([[{"w": word, "p": pos, "cochrane_part":key} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(value))])
+
+        self.load_templates()        
+        self.w_pos_window = window_size
+        # self.text = text  
+        
+    def load_templates(self):
+        self.templates = (
+                          (("w_int", 0),),
+                          # (("w", 1),),
+                          # (("w", 2),),
+                          # (("w", 3),),
+                          # # (("wl", 4),),
+                          # (("w", -1),),
+                          # (("w", -2),),
+                          # (("w", -3),),
+                          # (("wl", -4),),
+                          # (('w', -2), ('w',  -1)),
+                          # (('wl',  -1), ('wl',  -2), ('wl',  -3)),
+                          # (('stem', -1), ('stem',  0)),
+                          # (('stem',  0), ('stem',  1)),
+                          # (('w',  1), ('w',  2)),
+                          # (('wl',  1), ('wl',  2), ('wl',  3)),
+                          # (('p',  0), ('p',  1)),
+                          # (('p',  1),),
+                          # (('p',  2),),
+                          # (('p',  -1),),
+                          # (('p',  -2),),
+                          # (('p',  1), ('p',  2)),
+                          # (('p',  -1), ('p',  -2)),
+                          # (('stem', -2), ('stem',  -1), ('stem',  0)),
+                          # (('stem', -1), ('stem',  0), ('stem',  1)),
+                          # (('stem', 0), ('stem',  1), ('stem',  2)),
+                          # (('p', -2), ),
+                          # (('p', -1), ),
+                          # (('p', 1), ),
+                          # (('p', 2), ),
+                          # (('num', -1), ), 
+                          # (('num', 1), ),
+                          # (('cap', -1), ),
+                          # (('cap', 1), ),
+                          # (('sym', -1), ),
+                          # (('sym', 1), ),
+                          (('div10', 0), ),
+                          (('>10', 0), ),
+                          (('numrank', 0), ),
+                          # (('p1', 1), ),
+                          # (('p2', 1), ),
+                          # (('p3', 1), ),
+                          # (('p4', 1), ),
+                          # (('s1', 1), ),
+                          # (('s2', 1), ),
+                          # (('s3', 0), ),
+                          # (('s4', 0), ),
+                          (('wi', 0), ),
+                          (('si', 0), ),
+                          # (('cochrane_part', 0), ),
+                          # (('next_noun', 0), ),
+                          # (('next_verb', 0), ),
+                          # (('last_noun', 0), ),
+                          # (('last_verb', 0), ),
+                          )
 
 class BiLearner():
 
-    def __init__(self, test_mode=True):
+    def __init__(self, test_mode=True, window_size=4):
 
         logging.info("Initialising Bilearner")
         self.data = {}
         # load cochrane and pubmed parallel text viewer
         self.biviewer = biviewer.BiViewer(in_memory=False, test_mode=test_mode)
+        self.window_size = window_size
 
         
         # self.stem = PorterStemmer()
@@ -293,7 +365,8 @@ class BiLearner():
             p.tap()
 
             cochrane_dict, pubmed_dict = study
-            cochrane_text = cochrane_dict.get("CHAR_PARTICIPANTS", "") + cochrane_dict.get("CHAR_INTERVENTIONS", "") + cochrane_dict.get("CHAR_OUTCOMES", "") + cochrane_dict.get("CHAR_NOTES", "")
+            cochrane_dict_subset = {k: cochrane_dict.get(k, "") for k in ('CHAR_PARTICIPANTS', 'CHAR_INTERVENTIONS', 'CHAR_OUTCOMES', 'CHAR_NOTES')}
+            
             pubmed_text = pubmed_dict.get("abstract", "")
 
 
@@ -308,23 +381,30 @@ class BiLearner():
 
             # first generate features from the parallel texts
 
-            p_cochrane = bilearnPipeline(cochrane_text)
-            p_cochrane.generate_features()
-            
+            p_cochrane = bilearnPipelineCochrane(cochrane_dict_subset, self.window_size)
+            words_cochrane_study = p_cochrane.get_words(filter=lambda x: x["w"].isdigit(), flatten=True) # get the integers
 
-
-            words_cochrane_study = p_cochrane.get_words(filter=lambda x: x["num"], flatten=True) # get the integers
-
-
-
-            p_pubmed = bilearnPipeline(pubmed_text)
-            p_pubmed.generate_features()
-            
-            words_pubmed_study = p_pubmed.get_words(filter=lambda x: x["num"], flatten=True) # get the integers
+            p_pubmed = bilearnPipeline(pubmed_text, self.window_size)
+            words_pubmed_study = p_pubmed.get_words(filter=lambda x: x["w"].isdigit(), flatten=True) # get the integers
 
 
             # generate filter vectors for integers which match between Cochrane + Pubmed
-            common_ints = list(set(words_cochrane_study) &  set(words_pubmed_study))
+            common_ints = set(words_cochrane_study) &  set(words_pubmed_study)
+
+
+            # add presence in both texts as a common feature
+            p_cochrane.add_feature(feature_id="shared_num", feature_fn=lambda x: x["w"] in common_ints)
+            p_pubmed.add_feature(feature_id="shared_num", feature_fn=lambda x: x["w"] in common_ints)
+
+
+            # p_cochrane = bilearnPipeline(cochrane_dict_subset["CHAR_PARTICIPANTS"], self.window_size)
+            p_cochrane.generate_features()
+            p_pubmed.generate_features()
+            
+            
+
+
+
 
 
 
@@ -442,7 +522,7 @@ class BiLearner():
             self.data = pickle.load(f)
         logging.info("%s loaded successfully", filename)
 
-    def learn(self, iterations=1, C=2, aperture=0.95, aperture_type="probability", test_abstract_file="data/test_abstracts.pck"):
+    def learn(self, iterations=1, C=2, aperture=0.95, sample_weight=1, aperture_type="probability", test_abstract_file="data/test_abstracts.pck"):
 
         # save the current settings
         (self.metrics["iterations"], self.metrics["C"], self.metrics["aperture"],
@@ -476,6 +556,12 @@ class BiLearner():
 
         p_filter, c_filter = self.data["distant_filter_pubmed"], self.data["distant_filter_cochrane"]
 
+
+        
+
+
+
+
         for i in xrange(iterations):
             p.tap()
             confusion = []
@@ -497,13 +583,13 @@ class BiLearner():
                 # print len(p_filter), len(c_filter)
 
                 cochrane_model_f = self.learn_view(self.data["X_cochrane"], self.data["words_cochrane"], self.data["study_id_lookup_cochrane"],
-                                C=1, aperture=aperture, aperture_type=aperture_type, update_joint=True)
+                                C=C, aperture=aperture, aperture_type=aperture_type, update_joint=True, sample_weight=sample_weight)
 
                 # print show_most_informative_features(self.data["vectoriser_pubmed"], cochrane_model_f)
 
 
                 pubmed_model = self.learn_view(self.data["X_pubmed"], self.data["words_pubmed"], self.data["study_id_lookup_pubmed"],
-                                C=C, aperture=aperture, aperture_type=aperture_type, update_joint=True)
+                                C=C, aperture=aperture, aperture_type=aperture_type, update_joint=True, sample_weight=sample_weight)
 
                 
 
@@ -512,7 +598,7 @@ class BiLearner():
 
 
                 pubmed_model = self.learn_view(self.data["X_pubmed"], self.data["words_pubmed"], self.data["study_id_lookup_pubmed"],
-                            C=C, aperture=aperture, aperture_type=aperture_type, update_joint=False)
+                            C=0.8, aperture=aperture, aperture_type=aperture_type, update_joint=False, sample_weight=sample_weight)
             
             
             
@@ -545,22 +631,72 @@ class BiLearner():
 
 
     def learn_view(self, X_view, words_view, joint_from_view_index,
-                    C=2.5, aperture=0.90, aperture_type='probability', update_joint=True):
+                    C=1.0, aperture=0.90, aperture_type='probability', update_joint=True,
+                    sample_weight=1):
+        
+
+        initial_test_filter = np.empty(shape=(len(words_view),), dtype=bool)
+
+        for word_id in xrange(len(words_view)):
+            y = self.data["y_lookup_init"][joint_from_view_index[word_id]]
+            initial_test_filter[word_id] = (y != -1)
+
+        
+        # extend all the variables appropriately
+
+        X_view_w = X_view
+        words_view_w = words_view
+        joint_from_view_index_w = joint_from_view_index
+
+        
+
+        # print "X VIEW"
+        # print X_view.get_shape()
+        # print X_view
+        # print "X VIEW WINDOW - pre"
+        # print X_view_w.get_shape()
+        # print X_view_w
+
+        initial_test_filter = initial_test_filter.nonzero()[0]
+
+        # print "initial test filter"
+        # print initial_test_filter
+        # print len(initial_test_filter)
+
+        for i in range(sample_weight-1):
+            X_view_w = vstack((X_view_w, X_view[initial_test_filter]), format="csr")
+            words_view_w = np.concatenate((words_view_w, words_view[initial_test_filter]))
+            joint_from_view_index_w = np.concatenate((joint_from_view_index_w, joint_from_view_index[initial_test_filter]))
+
+        # print "X VIEW WINDOW - post"
+        # print X_view_w.get_shape()
+        # print X_view_w
+        
+
+        
 
 
-        pred_view = np.empty(shape=(len(words_view),)) # make a new empty vector for predicted values
+        pred_view_w = np.empty(shape=(len(words_view_w),)) # make a new empty vector for predicted values
         # (pred_view is predicted population sizes; not true/false)
 
-        # create answer vectors with the seed answers
-        for word_id in xrange(len(pred_view)):
-            pred_view[word_id] = self.pred_joint[joint_from_view_index[word_id]]
+        # print self.pred_joint
 
-        y_view = (pred_view == words_view) * 2 - 1 # set Trues to 1 and Falses to -1
+        # create answer vectors with the seed answers
+        for word_id in xrange(len(pred_view_w)):
+            pred_view_w[word_id] = self.pred_joint[joint_from_view_index_w[word_id]]
+            
+
+
+
+
+        y_view_w = (pred_view_w == words_view_w) * 2 - 1 # set Trues to 1 and Falses to -1
 
         # set filter vectors (-1 = unknown)
-        filter_train = (pred_view != -1).nonzero()[0]
-        filter_test = (pred_view == -1).nonzero()[0]
+        filter_train = (pred_view_w != -1).nonzero()[0]
+        filter_test = (pred_view_w == -1).nonzero()[0]
 
+        # print filter_train, len(filter_train)
+        # print filter_train, len(filter_test)
 
 
         # self.metrics["cochrane_training_examples"].append(len(filter_train))
@@ -573,16 +709,17 @@ class BiLearner():
 
 
         # set training vectors
-        X_train = X_view[filter_train]
-        y_train = y_view[filter_train]
+        X_train = X_view_w[filter_train]
+        y_train = y_view_w[filter_train]
+        
 
         # and test vectors as the rest
-        X_test = X_view[filter_test]
-        y_test = y_view[filter_test]
+        X_test = X_view_w[filter_test]
+        y_test = y_view_w[filter_test]
 
         # and the numbers to go with it for illustration purposes
-        words_test = words_view[filter_test]
-        joint_from_view_index_test = joint_from_view_index[filter_test]
+        words_test = words_view_w[filter_test]
+        joint_from_view_index_test = joint_from_view_index_w[filter_test]
 
         # make and fit new LR model
         # model = LogisticRegression(C=C, penalty='l1')
@@ -621,7 +758,7 @@ class BiLearner():
 
     def features_from_text(self, text):
         "generate and return features for a piece of text"
-        p = bilearnPipeline(text)
+        p = bilearnPipeline(text, self.window_size)
         p.generate_features()
         X = p.get_features(filter=lambda x: x["num"], flatten=True)
         words = p.get_words(filter=lambda x: x["num"], flatten=True)
@@ -634,9 +771,8 @@ class BiLearner():
         #                 ('feature_selection', RandomizedLogisticRegression()),
         #                 ('classification', SVC(probability=True))
         #                ])
-        clf = RandomForestClassifier()
-        #SVC(C=C, kernel='linear')
-        # clf = LogisticRegression(C=C, penalty="l1")
+        # clf = SVC(C=C, kernel='linear', probability=True)
+        clf = LogisticRegression(C=C, penalty="l1")
         
         
         return clf
@@ -689,13 +825,26 @@ def main():
 
 def test():
 
-    b = BiLearner(test_mode=True)
+
+    # with open('log4.txt', 'wb') as f:
+
+        # pprint("log 4: Variation on aperture sizes, with other parameters set to good averages (C=2.4, window_size=4)", f)
+
+    #     for n in range(1, 10):
+    b = BiLearner(test_mode=True, window_size=4)
     b.generate_features() # test_mode just uses the first 250 cochrane reviews for speed
 
+    # for c in np.arange(0.4, 7.0, 0.2):
+        
+    # no_to_add = 600
+
+    # for a in range(5, 50, 5):
+    # pprint ("aperture %d; iterations %d" % (a, no_to_add/a))
     b.reset(seed='regex')
-    b.learn(iterations=30, C=3.5, aperture=10, aperture_type="absolute")
+
+    b.learn(iterations=30, C=2.4, aperture=20, aperture_type="absolute", sample_weight=5)
     pprint(b.metrics)
-    
+            
 
 if __name__ == '__main__':
     main()

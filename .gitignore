@@ -6,3 +6,17 @@ confused.txt
 pmccorpusdownload.py
 testdata/
 
+
+*.INI
+
+*.pck
+
+CNLP.INI
+
+log.txt
+
+log2.txt
+
+log3.txt
+
+log4.txt
