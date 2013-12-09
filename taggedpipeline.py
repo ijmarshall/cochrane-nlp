@@ -21,17 +21,27 @@ with open('data/brill_pos_tagger.pck', 'rb') as f:
 class TaggedTextPipeline(bilearn2.bilearnPipeline):
 
 
-    def __init__(self, text):
+    def __init__(self, text, window_size):
         # self.text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
-        self.text = swap_num(text)
-        self.functions = self.set_functions(self.text)
+        
+
+        if isinstance(text, str):
+            self.text = swap_num(text)
+            self.tag_tuple_sents = tag_words(self.text)
+        elif isinstance(text, list):
+            self.tag_tuple_sents = text
+
+
+        self.functions = self.set_functions(self.tag_tuple_sents)
+
+        self.w_pos_window = window_size
         self.load_templates()
 
 
 
-    def set_functions(self, tagged_text):
+    def set_functions(self, tag_tuple_sents):
         
-        tag_tuple_sents = tag_words(tagged_text)
+        
 
         base_functions = []
 

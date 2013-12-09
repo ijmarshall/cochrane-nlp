@@ -8,6 +8,10 @@ from scipy.stats import describe
 from collections import defaultdict, deque
 from nltk.tokenize.punkt import *
 
+from pprint import pprint
+
+import parse_annotations
+
 
 from indexnumbers import swap_num
 
@@ -113,7 +117,7 @@ def get_abstracts(annotator):
     """
     Take the annotators abstract files
     """
-    annotated_abstracts_file = base_path + annotator + ".txt"
+    annotated_abstracts_file = base_path + "drug_trials_in_cochrane_" + annotator + ".txt"
     with open (annotated_abstracts_file, "r") as file:
         data=file.read()
 
@@ -131,6 +135,8 @@ def get_annotations(abstract_nr, annotator, convert_numbers=False):
     abstract = get_abstracts(annotator)[abstract_nr]
     if convert_numbers:
         abstract = swap_num(abstract)
+
+
     tags = tag_words(abstract)
 
 
@@ -282,7 +288,7 @@ def __str_combine_annotations(annotations_A, annotations_B):
     b = [['B', idx, "&".join(x[1])] for idx, x in enumerate(annotations_B)]
     return a + b
 
-def calc_agreements(nr_of_abstracts=100):
+def calc_agreements(nr_of_abstracts=150):
     # Loop over the abstracts and calculate the kappa and alpha per abstract
     aggregate = []
     for i in range(0, nr_of_abstracts):
@@ -344,6 +350,93 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
     return result
 
 
+class MergedTaggedAbstractReader:
+
+    def __init__(self, no_abstracts=150):
+        self.load_abstracts(no_abstracts)
+
+    def load_abstracts(self, no_abstracts, annotators=["IJM", "BCW", "JKU"]):
+
+        def get_abstracts(annotator):
+            return parse_annotations.get_abstracts(base_path + "drug_trials_in_cochrane_" + annotator + ".txt")
+
+        # get three individual lists of abstracts (up to our maximum
+        all_abstracts = [get_abstracts(annotator)[:no_abstracts] for annotator in annotators]
+
+        # then zip into a list accessible by individual annotator ID
+        all_abstracts = [{annotator: abstract for annotator, abstract in zip(annotators, abstracts)} for abstracts in zip(*all_abstracts)]
+        self.abstracts = []
+
+        for i, abstract in enumerate(all_abstracts):
+            annotators = round_robin(i)
+
+            # if not exclude hashtag in the combined string of both annotators notes
+            if not re.search("\#(exclude|EXCLUDE)", ''.join(abstract[annotators[0]]["notes"] + abstract[annotators[1]]["notes"])):
+
+                entry = {"biview_id": abstract[annotators[0]]["biviewid"],
+                         "pmid": abstract[annotators[0]]["pmid"],
+                         "file_id": abstract[annotators[0]]["annotid"],
+                         "abstract a": abstract[annotators[0]]["abstract"],
+                         "abstract b": abstract[annotators[1]]["abstract"]
+                         }
+                self.abstracts.append(entry)
+
+    def __len__(self):
+        return len(self.abstracts)
+
+    def __getitem__(self, key):
+        return self.abstracts[key]
+
+    def get(self, key, **kwargs):
+        return merge_annotations(self.get_annotations(self.abstracts[key]["abstract a"]), self.get_annotations(self.abstracts[key]["abstract b"]), **kwargs)
+
+
+    def get_file_id(self, file_id, **kwargs):
+        for i in self:
+            if i["file_id"] == file_id:
+                return merge_annotations(self.get_annotations(i["abstract a"]), self.get_annotations(i["abstract b"]), **kwargs)
+        else:
+            raise IndexError("File ID %d not in reader" % (file_id,))
+
+    def get_biview_id(self, biview_id, **kwargs):
+        for i in self:
+            if i["biview_id"] == biview_id:
+                return merge_annotations(self.get_annotations(i["abstract a"]), self.get_annotations(i["abstract b"]), **kwargs)
+        else:
+            raise IndexError("BiViewer ID %d not in reader" % (biview_id,))
+
+    def get_annotations(self, abstract, convert_numbers=True):
+        '''
+        if convert_numbers is True, numerical strings (e.g., "twenty-five")
+        will be converted to number ("25").
+        '''        
+        if convert_numbers:
+            abstract = swap_num(abstract)
+
+        tags = tag_words(abstract)
+        return tags
+
+    def __iter__(self):
+        self.abstract_index = 0
+        return self
+
+    def next(self):
+        if self.abstract_index >= len(self):
+            raise StopIteration
+        else:
+            self.abstract_index += 1
+            return self.get(self.abstract_index-1)
+
+
+
+
+
+
+
+
+
+        
+
 
 
 
@@ -359,7 +452,7 @@ def merged_annotations(abstract_nr, **kwargs):
     """
     Determines the annotators for abstract_nr and returns
     the merged annotations for that abstract.
-    Optionally takes convert_numbers, all other arguments are passed to merge_annotations
+    All arguments are passed to merge_annotations
 
     example usage:
     merged_annotations(50, convert_numbers = True, preprocess = eliminate_order)
@@ -369,6 +462,27 @@ def merged_annotations(abstract_nr, **kwargs):
         return get_annotations(abstract_nr, annotator, kwargs.pop("convert_numbers", False)) # pop = remove_key fn
     return merge_annotations(ann(annotators[1]), ann(annotators[0]), **kwargs)
 
+
+def main():
+    m = MergedTaggedAbstractReader()
+    for a, i in enumerate(m):
+        print a, i
+    
+
+
+
+
 if __name__ == "__main__":
-    calc_agreements()
+    main()
+    # m = MergedTaggedAbstractReader()
+
+    # print len(m)
+
+    # print get_abstracts("IJM")[0]
+    # calc_agreements()
+    # 
+
+        
+    
+
     # print merged_annotations(1)

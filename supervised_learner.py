@@ -33,6 +33,7 @@ from indexnumbers import swap_num
 import bilearn
 from taggedpipeline import TaggedTextPipeline
 from journalreaders import LabeledAbstractReader
+from tokenizer import MergedTaggedAbstractReader
 import progressbar
 
 # tmp @TODO use some aggregation of our 
@@ -190,7 +191,7 @@ class SupervisedLearner:
             if not 1 in true_lbls_i:
                 cit_n = test_citation_indices[test_citation_i]
                 print "-- no sample size for abstract (biview_id) {0}!".format(
-                            self.abstract_reader.citation_d[cit_n]["Biview_id"])
+                            self.abstract_reader[cit_n]["biview_id"])
                 # since we force a prediction for every abstract right now,
                 # i'll penalize us here. this is an upperbound on precision.
                 FPs += 1 
@@ -240,13 +241,13 @@ class SupervisedLearner:
         X, y = [], []
 
         pb = progressbar.ProgressBar(len(self.abstract_reader), timer=True)
-        for cit in self.abstract_reader:
+        for cit_id in range(len(self.abstract_reader)):
             # first we perform feature extraction over the
             # abstract text (X)
 
-            abstract_text = cit["abstract"] 
+            merged_tags = self.abstract_reader.get(cit_id)     
 
-            p = TaggedTextPipeline(abstract_text)
+            p = TaggedTextPipeline(merged_tags, window_size=4)
             p.generate_features()
 
 
@@ -314,7 +315,7 @@ def calc_metrics(TPs, FPs, N_pos, N):
 def learning_curve():
     nruns = 5
 
-    reader = LabeledAbstractReader()
+    reader = MergedTaggedAbstractReader()
     sl = SupervisedLearner(reader, hold_out_a_test_set=True, test_set_p=.2)
     sl.generate_features()
 
@@ -355,7 +356,7 @@ if __name__ == "__main__":
     nruns = 10
     predict_probs = False
 
-    reader = LabeledAbstractReader()
+    reader = MergedTaggedAbstractReader()
 
     sl = SupervisedLearner(reader)#, target="tx")
     sl.generate_features()
