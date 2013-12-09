@@ -25,8 +25,8 @@ import progressbar
 from scipy import stats
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
-from tokenizer import tag_words
-from journalreaders import LabeledAbstractReader
+from tokenizer import tag_words, MergedTaggedAbstractReader
+# from journalreaders import LabeledAbstractReader
 
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC
@@ -490,14 +490,20 @@ class BiLearner():
         """
         logging.info("Identifying seed data from annotated data")
         p = progressbar.ProgressBar(len(self.biviewer), timer=True)
-        annotation_viewer = LabeledAbstractReader()
+        annotation_viewer = MergedTaggedAbstractReader()
 
         counter = 0
-        for study in annotation_viewer:
-            study_id = int(study["Biview_id"])
-            text = swap_num(annotation_viewer.get_biview_id(study_id)['abstract'])                
+        for study in range(len(annotation_viewer)):
+            study_id = annotation_viewer[study]["biview_id"]
+            # text = swap_num(annotation_viewer.get_biview_id(study_id)['abstract'])                
 
-            parsed_tags = tag_words(text, flatten=True)
+
+            parsed_tags = [item for sublist in annotation_viewer.get(study) for item in sublist]
+            
+
+            print study
+            print parsed_tags
+
             tagged_number = [w[0] for w in parsed_tags if 'n' in w[1]]
             if tagged_number:
                 number = re.match("[Nn]?=?([1-9]+[0-9]*)", tagged_number[0])
@@ -840,7 +846,7 @@ def test():
 
     # for a in range(5, 50, 5):
     # pprint ("aperture %d; iterations %d" % (a, no_to_add/a))
-    b.reset(seed='regex')
+    b.reset(seed='annotations')
 
     b.learn(iterations=30, C=2.4, aperture=20, aperture_type="absolute", sample_weight=5)
     pprint(b.metrics)
