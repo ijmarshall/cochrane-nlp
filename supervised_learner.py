@@ -36,9 +36,6 @@ from journalreaders import LabeledAbstractReader
 from tokenizer import MergedTaggedAbstractReader
 import progressbar
 
-# tmp @TODO use some aggregation of our 
-# annotations as the gold-standard.
-annotator_str = "BCW"
 # a useful helper.
 punctuation_only = lambda s: s.strip(string.punctuation).strip() == ""
 
@@ -75,33 +72,32 @@ class SupervisedLearner:
     def generate_features(self):
         print "generating feature vectors"
 
-        self.features, self.y = self.features_from_citations(flatten_abstracts=not self.predicting_sample_size)
+        # I don't think we ever want to flatten abstracts.
+        self.features, self.y = self.features_from_citations(
+                    flatten_abstracts=False)
         self.vectorizer = DictVectorizer(sparse=True)
 
-        # if the target is 'n' (sample size), then we want to enforce
-        # the constraint that only a single word in a given citation
-        # is predicted as the sample size. to realize this, we keep
-        # a structure around that keeps features in citations together.
-        if self.predicting_sample_size:
-            # then features will be a list feature vectors representing words
-            # in utterances comprising distinct citations
-            all_features = []
-            for citation_fvs in self.features:
-                all_features.extend(citation_fvs)
-       
-            self.vectorizer.fit(all_features) 
-            self.X_fv = []
-            no_abstracts = 0
-            for X_citation in self.features:
-                if len(X_citation) > 0:
-                    self.X_fv.append(self.vectorizer.transform(X_citation))
-                else:
-                    self.X_fv.append(None)
-                    no_abstracts += 1
-            print "({0} had no abstracts!)".format(no_abstracts)
-            #self.X_fv = [self.vectorizer.transform(X_citation) for X_citation in self.features if len(X_citation) > 0]
-        else:
-            self.X_fv = self.vectorizer.fit_transform(self.features)
+        # note that we keep structure around that keeps features 
+        # in citations together. specifically, features will be a 
+        # list of feature vectors representing words
+        # in abstracts comprising distinct citations
+        all_features = []
+        for citation_fvs in self.features:
+            all_features.extend(citation_fvs)
+   
+        pdb.set_trace()
+        self.vectorizer.fit(all_features) 
+        self.X_fv = []
+        no_abstracts = 0
+        for X_citation in self.features:
+            if len(X_citation) > 0:
+                self.X_fv.append(self.vectorizer.transform(X_citation))
+            else:
+                self.X_fv.append(None)
+                no_abstracts += 1
+        print "({0} had no abstracts!)".format(no_abstracts)
+        #self.X_fv = [self.vectorizer.transform(X_citation) for X_citation in self.features if len(X_citation) > 0]
+
 
 
         if self.holding_out_a_test_set:
@@ -126,6 +122,27 @@ class SupervisedLearner:
         train_set_size = int(train_p*len(self.train_indices))
         print "going to train on {0} citations".format(train_set_size)
         self.train_indices = random.sample(self.train_indices, train_set_size)
+
+    '''
+    @TODO this method is meant to supplant the following routine.
+    The idea is that is more general, i.e., allows us to
+    assess performance on <tx>, etc; not just <n>
+    '''
+    def train_and_test(self, test_size=.2, train_p=None):
+        test_citation_indices = None
+        train_citation_indices = None
+        if self.holding_out_a_test_set:
+            print "using the held-out test set!"
+            test_size = len(self.test_indices)
+            test_citation_indices = self.test_indices
+            train_citation_indices = self.train_indices
+        else:
+            test_size = int(test_size*self.n_citations)
+            test_citation_indices = random.sample(range(self.n_citations), test_size)
+
+        print "test set of size {0} out of {1} total citations".format(
+                                    test_size, self.n_citations)
+
 
     def train_and_test_sample_size(self, test_size=.2, train_p=None):
         '''
@@ -160,6 +177,7 @@ class SupervisedLearner:
                 if not i in test_citation_indices and is_a_training_instance:
                     # we flatten these for training.
                     X_train.extend(self.X_fv[i])
+                    pdb.set_trace()
                     y_train.extend(self.y[i])
 
                 elif i in test_citation_indices:
@@ -237,7 +255,7 @@ class SupervisedLearner:
         self.clf.fit(X_fv, y)
 
 
-    def features_from_citations(self, flatten_abstracts=True):
+    def features_from_citations(self, flatten_abstracts=False):
         X, y = [], []
 
         pb = progressbar.ProgressBar(len(self.abstract_reader), timer=True)
@@ -268,11 +286,20 @@ class SupervisedLearner:
             ####
 
 
-            ###
-            # alternative code to restrict to integers only
-            #
-            X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
-            y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda x: x['num']==True)
+            if self.predicting_sample_size:            
+                ###
+                # restrict to integers only
+                ###
+                X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
+                y_i = p.get_answers(flatten=True, 
+                        answer_key=lambda w: "n" in w["tags"], 
+                        filter=lambda x: x['num']==True)
+            else: 
+                X_i = p.get_features(flatten=False)
+                y_i = p.get_answers(flatten=False, 
+                        answer_key=lambda w: self.target in w["tags"])
+                pdb.set_trace()
+
             if flatten_abstracts:
                 X.extend(X_i)
                 y.extend(y_i)
@@ -355,10 +382,11 @@ if __name__ == "__main__":
     # @TODO make these args.
     nruns = 10
     predict_probs = False
+    target = "tx1"
 
     reader = MergedTaggedAbstractReader()
 
-    sl = SupervisedLearner(reader)#, target="tx")
+    sl = SupervisedLearner(reader, target=target)
     sl.generate_features()
 
     p_sum, r_sum, f_sum, np_sum = [0]*4
