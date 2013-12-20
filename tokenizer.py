@@ -1,4 +1,5 @@
 import re
+import pdb
 
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
 from nltk.metrics.agreement import AnnotationTask
@@ -254,6 +255,16 @@ def tag_words(tagged_text):
 
         i += 1
 
+    if len(word_indices) > 0:
+        word_stack.append((''.join(char_stack), list(current_word_tag_stack))) # push word and tag tuple to the word stack
+        char_stack = [] # clear char stack
+        current_word_tag_stack = set()
+        word_indices.popleft()
+        #pdb.set_trace()
+
+    # sitill in word_stack!!!
+    sent_stack.append(word_stack)
+    #import pdb; pdb.set_trace()
 
     return sent_stack
 
