@@ -1,4 +1,5 @@
 import re
+import pdb
 
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
 from nltk.metrics.agreement import AnnotationTask
@@ -257,11 +258,11 @@ def tag_words(tagged_text):
         i += 1
 
     else:
-        word_stack.append(''.join(char_stack))
+        word_stack.append((''.join(char_stack), list(current_word_tag_stack)))
         sent_stack.append(word_stack)
 
     
-
+    #import pdb; pdb.set_trace()
     return sent_stack
 
 
@@ -338,6 +339,9 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
 
     for sent_a, sent_b in izip(a, b):
         result_sent = []
+        print sent_a
+        print sent_b
+        print "\n"
         for (word_a, tag_list_a), (word_b, tag_list_b) in izip(sent_a, sent_b):
             if word_a != word_b:
                 print "Mismatch:"
@@ -388,6 +392,7 @@ class MergedTaggedAbstractReader:
                          "abstract a": abstract[annotators[0]]["abstract"],
                          "abstract b": abstract[annotators[1]]["abstract"]
                          }
+              
                 self.abstracts.append(entry)
 
     def __len__(self):
