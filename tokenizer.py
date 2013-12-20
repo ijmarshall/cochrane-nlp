@@ -352,8 +352,10 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
 
 class MergedTaggedAbstractReader:
 
-    def __init__(self, no_abstracts=150):
+    def __init__(self, no_abstracts=200, merge_function=lambda a,b: a & b):
         self.load_abstracts(no_abstracts)
+        # the function to merge two labels
+        self.merge_function = merge_function
 
     def load_abstracts(self, no_abstracts, annotators=["IJM", "BCW", "JKU"]):
 
@@ -388,7 +390,11 @@ class MergedTaggedAbstractReader:
         return self.abstracts[key]
 
     def get(self, key, **kwargs):
-        return merge_annotations(self.get_annotations(self.abstracts[key]["abstract a"]), self.get_annotations(self.abstracts[key]["abstract b"]), **kwargs)
+        return merge_annotations(self.get_annotations(
+            self.abstracts[key]["abstract a"]), 
+            self.get_annotations(self.abstracts[key]["abstract b"]), 
+            strategy = self.merge_function,
+            **kwargs)
 
 
     def get_file_id(self, file_id, **kwargs):
