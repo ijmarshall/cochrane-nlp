@@ -258,8 +258,10 @@ def tag_words(tagged_text):
         i += 1
 
     else:
-        word_stack.append((''.join(char_stack), list(current_word_tag_stack)))
-        sent_stack.append(word_stack)
+        #if len(word_stack):
+        if ''.join(char_stack) != "":
+            word_stack.append((''.join(char_stack), list(current_word_tag_stack)))
+            sent_stack.append(word_stack)
 
     
     #import pdb; pdb.set_trace()
@@ -339,17 +341,20 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
 
     for sent_a, sent_b in izip(a, b):
         result_sent = []
-        print sent_a
-        print sent_b
-        print "\n"
+        #print sent_a
+        #print sent_b
+        #print "\n"
         for (word_a, tag_list_a), (word_b, tag_list_b) in izip(sent_a, sent_b):
             if word_a != word_b:
+
                 print "Mismatch:"
                 print "Sentence A:"
                 print sent_a
                 print
                 print "Sentence B:"
                 print sent_b
+                print "\n"
+                print "word a: {0}; word b: {1}".format(word_a, word_b)
                 raise Exception("Mismatch in abstract contents - please check tags! {0} vs {1}".format(len(a), len(b)))
 
 

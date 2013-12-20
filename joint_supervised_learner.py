@@ -4,15 +4,14 @@ Fancier than supervised_learner, or will be.
 The idea here is to implement a model that incorporates
 all fields of interest at once (since these are not independent).
 
+To run vanilla/baseline CRF:
 
-> import supervised_learner
-> reader = supervised_learner.LabeledAbstractReader()
-> sl = supervised_learner.SupervisedLearner(reader)
-> X,y = sl.features_from_citations()
-
-To actually vectorize, something like:
-> vectorizer = DictVectorizer(sparse=True)
-> vectorizer.fit_transform(X)
+# note that I'm using the union of tags here!
+> reader = tokenizer.MergedTaggedAbstractReader(merge_function=lambda a,b: a or b)
+# important to pass in the 'tx', because otherwise it will think its
+# predicting sample size! 
+> sl = joint_supervised_learner.SupervisedLearner(reader, target="tx")
+> sl.train_and_test_mallet()
 '''
 
 # std lib
@@ -34,7 +33,7 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, classification_report, f1_score
 import scipy
 import numpy
-
+import csv
 
 # homegrown
 from indexnumbers import swap_num
@@ -43,6 +42,8 @@ from taggedpipeline import TaggedTextPipeline
 from journalreaders import LabeledAbstractReader
 from tokenizer import MergedTaggedAbstractReader
 import progressbar
+
+
 
 ### assuming this is effectively 'constant'.
 cur_dir = os.getcwd()
@@ -119,7 +120,6 @@ class SupervisedLearner:
         for X_citation in self.features:
             if len(X_citation) > 0:
                 self.X_fv.append(self.vectorizer.transform(X_citation))
-                #pdb.set_trace()
             else:
                 self.X_fv.append(None)
                 no_abstracts += 1
@@ -133,7 +133,6 @@ class SupervisedLearner:
     def set_held_out_indices(self):
         test_set_size = int(self.test_set_p*self.n_citations)
         print "setting aside a test set of size {0}".format(test_set_size)
-        #import pdb; pdb.set_trace()
         self.test_indices = random.sample(range(self.n_citations), test_set_size)
 
     def select_train_citation_indices(self, train_p):
@@ -173,9 +172,9 @@ class SupervisedLearner:
                 y_test_out.append(to_lbl(y_i))
 
             cur_str = " ".join(
-                    [str(f_j) for f_j in x_features]) + " " + lbl_str + "\n"
+                    [str(f_j) for f_j in x_features]) + " " + lbl_str 
             
-            mallet_out.append(cur_str.lstrip())
+            mallet_out.append(cur_str.lstrip() + "\n")
         
         mallet_out.append("\n") # blank line separating instances
         if test_file:
@@ -224,7 +223,7 @@ class SupervisedLearner:
         ''' mallet! '''
         print "assembling mallet str..."
         train_str, test_str, test_lbls_str = [], [], []
-
+        test_tokens_str = [] # also build a tokens string dict
         # check if it's a test instance.
         # create strings...
         for i in xrange(self.n_citations):
@@ -240,10 +239,10 @@ class SupervisedLearner:
                     mallet_str, test_lbls_i = SupervisedLearner.to_mallet(
                                     self.X_fv[i], self.y[i], test_file=True)
 
-                    #pdb.set_trace()
-                    test_str.append(mallet_str)
-                    test_lbls_str.append(test_lbls_i)
-            
+                    test_str.append(mallet_str.strip() + "\n\n")
+                    test_lbls_str.append(test_lbls_i.strip() + "\n\n")
+                    test_tokens_str.append("\n".join(self.tokens[i]) + "\n\n")
+
         test_indices_out = os.path.join(MALLET_OUTPUT_DIR, fpath + "test-indices")
         with open(test_indices_out, 'w') as test_out:
             test_out.write("".join("\n".join([str(i) for i in test_citation_indices])))
@@ -260,10 +259,16 @@ class SupervisedLearner:
         with open(test_out_path, 'w') as test_out:
             test_out.write("".join(test_str))
 
-        print "train and test files written to disk."
-        return train_out_path, test_out_path, test_lbls_path
+        test_tokens_str = "".join(test_tokens_str)
+        test_tokens_out_path = os.path.join(MALLET_OUTPUT_DIR, fpath + "test-tokens")
+        with open(test_tokens_out_path, 'w') as test_tokens_out:
+            test_tokens_out.write(test_tokens_str)
 
-    def train_and_test_mallet(self, fpath="mallet."):
+        print "train and test files written to disk."
+
+        return train_out_path, test_out_path, test_lbls_path, test_tokens_out_path
+
+    def train_and_test_mallet(self, fpath="CRF."):
         if self.X_fv is None:
             print "features not yet generated! taking a stab at it..."
             self.generate_features()
@@ -274,8 +279,9 @@ class SupervisedLearner:
         for i, (train_indices, test_indices) in enumerate(folds):
             fpath_i = fpath + "{0}.".format(i)
 
-            train_path, test_path, test_y_path = self.write_files_to_disk_for_mallet(
-                test_citation_indices=test_indices, fpath=fpath_i)
+            train_path, test_path, test_y_path, test_tokens_out_path =\
+                 self.write_files_to_disk_for_mallet(
+                        test_citation_indices=test_indices, fpath=fpath_i)
 
             '''
             train and test in mallet
@@ -283,36 +289,41 @@ class SupervisedLearner:
             model_f = fpath + "model"
             full_model_path = SupervisedLearner.train_mallet(train_path, model_f)
             predictions, errors = SupervisedLearner.test_mallet(test_path, full_model_path)
-            predictions = [l.strip() for l in predictions.split("\n")]
+            #predictions = [l.strip() for l in predictions.split("\n")]
+            #predictions = open(preds_path).readlines()
+            predictions = [pred.strip() + "\n" for pred in predictions.split("\n")]
+            #predictions_str = "\n".join(predictions)
+            #pdb.set_trace()
             # mallet outputs an extra empty line...
-            if predictions[-1] == predictions[-2] == "":
-                predictions = predictions[:-1]
+            #if predictions[-1] == predictions[-2] == "":
+            #    predictions = predictions[:-1]
 
-            true_lbls = [l.strip() for l in open(test_y_path).readlines()]
-
-            #tokens = ["\n".join(self.tokens[i]) + "\n" for i in test_indices]
-            tokens = ["\n".join(self.tokens[i]) + "\n" 
-                for i in xrange(self.n_citations) if i in test_indices]
+            #true_lbls = [l.strip() for l in open(test_y_path).readlines()]
+            true_lbls = open(test_y_path).readlines()
+            #test_tokens = [l.strip() for l in open(test_tokens_path).readlines()]
+            test_tokens = open(test_tokens_out_path).readlines()
             
-            with open(os.path.join(MALLET_OUTPUT_DIR, fpath_i + "test.tokens"), 'w') as test_tokens_out:
-                test_tokens_out.write("\n".join(tokens))
-
             ###
             # sanity check and convert to ints, as this is what sklearn
             # demands.
-            y_true, y_pred = [], []
-            if len(true_lbls) != len(predictions):
-                raise Exception("lengths of predictions and true do not match!")
+            y_true, y_pred, abstract_tokens = [], [], []
+            
+            #if len(true_lbls) != len(predictions):
+            #    raise Exception("lengths of predictions and true do not match!")
             ## assert that segments are aligned
+            
             for i, (y_i, pred_i) in enumerate(izip(true_lbls, predictions)):
-                if (y_i == "" and pred_i != "") or (pred_i == "" and y_i != ""):
+                if (y_i == "\n" and pred_i != "\n") or (pred_i == "\n" and y_i != "\n"):
+                    pdb.set_trace()
                     raise Exception("segments are not aligned! (index: {0})".format(i))
-                elif y_i == pred_i == "":
+                elif y_i == pred_i == "\n":
+                #if y_i == pred_i == "":
                     pass
                 elif y_i != "":
                     y_true.append(int(y_i))
                     y_pred.append(int(pred_i))
-              
+
+                
 
             print "\n----- results for fold {0} ------- \n".format(i)
             print confusion_matrix(y_true, y_pred)
@@ -326,9 +337,30 @@ class SupervisedLearner:
             # dump them to disk, too.
             predictions_out = os.path.join(MALLET_OUTPUT_DIR, fpath_i + "predictions")
             with open(predictions_out, 'w') as preds_out:
-                preds_out.write("\n".join(predictions))
+                preds_out.write("".join(predictions))
 
-        #return F_scores
+            #tokens_str = " ".join(tokens)
+            
+            merged_output = os.path.join(MALLET_OUTPUT_DIR, fpath_i + "crf.preds.csv")
+            with open(merged_output, 'w') as merged_out_file:
+                merged_writer = csv.writer(merged_out_file)
+                merged_writer.writerow(["token", "y (true)", "y (predicted)"])
+                #merged_out_file.write("\t".join(["token", "y (true)", "y (predicted)"]))
+                #pdb.set_trace()
+                for merged_line in izip(test_tokens, true_lbls, predictions):
+                    #for merged_line in izip(tokens_i.split("\n"), abstract_i, preds_i):
+                    if "\n" in merged_line:
+                        #pdb.set_trace()
+                        # two blank lines
+                        merged_writer.writerow(["", "", ""])
+                        merged_writer.writerow(["", "", ""])
+                    else:
+                        merged_writer.writerow([str(s) for s in merged_line])
+                    #merged_out_file.write("\t".join([str(s) for s in merged_line]))
+                    #merged_writer.writerow("") # blank row to demarcate abstracts
+
+            
+        print sum(F_scores)/float(len(F_scores))
         pdb.set_trace()
 
 
@@ -499,6 +531,7 @@ class SupervisedLearner:
             pb.tap()
 
         if return_tokens:
+            #pdb.set_trace()
             return X, y, tokens
         return X, y
 
