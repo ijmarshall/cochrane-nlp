@@ -1,5 +1,9 @@
 '''
-Do 'vanilla' supervised learning over labeled citations.
+Fancier than supervised_learner, or will be. 
+
+The idea here is to implement a model that incorporates
+all fields of interest at once (since these are not independent).
+
 
 > import supervised_learner
 > reader = supervised_learner.LabeledAbstractReader()
@@ -13,9 +17,13 @@ To actually vectorize, something like:
 
 # std lib
 import string
+import os
 import pdb
 import random 
 import re
+import subprocess
+from itertools import izip
+tx_tag = re.compile("tx[0-9]+")
 
 # sklearn, &etc
 import sklearn
@@ -23,7 +31,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.svm import SVC
 from sklearn import cross_validation
 from sklearn import metrics
-from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, classification_report, f1_score
 import scipy
 import numpy
 
@@ -35,6 +43,19 @@ from taggedpipeline import TaggedTextPipeline
 from journalreaders import LabeledAbstractReader
 from tokenizer import MergedTaggedAbstractReader
 import progressbar
+
+### assuming this is effectively 'constant'.
+cur_dir = os.getcwd()
+
+##################
+# for CRF stuff! #
+##################
+MALLET_PATHS = "/Users/bwallace/dev/eclipse-workspace/mallet/bin/:/Users/bwallace/dev/eclipse-workspace/mallet/lib/mallet-deps.jar"
+JAVA_PATH = "/usr/bin/java"
+MALLET_OUTPUT_DIR = os.path.join(cur_dir, "mallet-output")
+if not os.path.exists(MALLET_OUTPUT_DIR):
+    os.makedirs(MALLET_OUTPUT_DIR)
+
 
 # a useful helper.
 punctuation_only = lambda s: s.strip(string.punctuation).strip() == ""
@@ -61,6 +82,8 @@ class SupervisedLearner:
         self.test_set_p = test_set_p
         self.n_citations = len(self.abstract_reader)
 
+        self.X_fv, self.y = None, None
+
     def plot_preds(self, preds, y):
         # (preds, y) = sl.cv()
         # sklearn wraps up the predicted results
@@ -73,8 +96,9 @@ class SupervisedLearner:
         print "generating feature vectors"
 
         # I don't think we ever want to flatten abstracts.
-        self.features, self.y = self.features_from_citations(
-                    flatten_abstracts=False)
+        self.features, self.y, self.tokens = self.features_from_citations(
+                    flatten_abstracts=False, return_tokens=True)
+
         self.vectorizer = DictVectorizer(sparse=True)
 
         # note that we keep structure around that keeps features 
@@ -84,24 +108,27 @@ class SupervisedLearner:
         all_features = []
         for citation_fvs in self.features:
             all_features.extend(citation_fvs)
-   
-        pdb.set_trace()
+        
         self.vectorizer.fit(all_features) 
+
+
         self.X_fv = []
+        # for later look up
+        self.tokens_fv = []
         no_abstracts = 0
         for X_citation in self.features:
             if len(X_citation) > 0:
                 self.X_fv.append(self.vectorizer.transform(X_citation))
+                #pdb.set_trace()
             else:
                 self.X_fv.append(None)
                 no_abstracts += 1
         print "({0} had no abstracts!)".format(no_abstracts)
         #self.X_fv = [self.vectorizer.transform(X_citation) for X_citation in self.features if len(X_citation) > 0]
 
-
-
         if self.holding_out_a_test_set:
             self.set_held_out_indices()
+
 
     def set_held_out_indices(self):
         test_set_size = int(self.test_set_p*self.n_citations)
@@ -123,25 +150,186 @@ class SupervisedLearner:
         print "going to train on {0} citations".format(train_set_size)
         self.train_indices = random.sample(self.train_indices, train_set_size)
 
-    '''
-    @TODO this method is meant to supplant the following routine.
-    The idea is that is more general, i.e., allows us to
-    assess performance on <tx>, etc; not just <n>
-    '''
-    def train_and_test(self, test_size=.2, train_p=None):
-        test_citation_indices = None
-        train_citation_indices = None
-        if self.holding_out_a_test_set:
-            print "using the held-out test set!"
-            test_size = len(self.test_indices)
-            test_citation_indices = self.test_indices
-            train_citation_indices = self.train_indices
-        else:
-            test_size = int(test_size*self.n_citations)
-            test_citation_indices = random.sample(range(self.n_citations), test_size)
 
+    '''
+    CRF via Mallet
+    '''
+    @staticmethod
+    def to_mallet(X, y, test_file=False):
+        to_lbl = lambda bool_y: "1" if bool_y else "-1"
+
+        mallet_out = []
+        y_test_out = []
+        # all nonzero features
+        # X represents a single abstract
+        # X_i is word i in said abstract
+        for x_i, y_i in izip(X, y):
+            x_features = x_i.nonzero()[1] # we only care for the columns
+            lbl_str = ""
+            if not test_file:
+                # then we include the label
+                lbl_str = " " + to_lbl(y_i)
+            else:
+                y_test_out.append(to_lbl(y_i))
+
+            cur_str = " ".join(
+                    [str(f_j) for f_j in x_features]) + " " + lbl_str + "\n"
+            
+            mallet_out.append(cur_str.lstrip())
+        
+        mallet_out.append("\n") # blank line separating instances
+        if test_file:
+            y_test_out.append("\n")
+
+        mallet_str = "".join(mallet_out)
+        if test_file:
+            return (mallet_str, "\n".join(y_test_out))
+        return mallet_str
+
+    @staticmethod
+    def train_mallet(train_f, model_f_name):
+        full_train_path = os.path.join(MALLET_OUTPUT_DIR, train_f)
+        full_model_path = os.path.join(MALLET_OUTPUT_DIR, model_f_name)
+
+        p = subprocess.Popen([JAVA_PATH, '-Xmx2g', '-cp', 
+                               MALLET_PATHS, 'cc.mallet.fst.SimpleTagger',
+                               "--train", "true", 
+                               "--iterations", "500",
+                               "--model-file", full_model_path, 
+                               full_train_path], stdout=subprocess.PIPE)
+        output, errors = p.communicate()
+        print "ok! model trained!"
+        return full_model_path
+
+    @staticmethod
+    def test_mallet(test_f, full_model_path):
+        full_test_path = os.path.join(MALLET_OUTPUT_DIR, test_f)
+        print "making predictions for instances @ "
+        p = subprocess.Popen([JAVA_PATH, '-Xmx2g', '-cp', 
+                               MALLET_PATHS, 'cc.mallet.fst.SimpleTagger',
+                               "--model-file", full_model_path, 
+                               full_test_path,
+                               ], stdout=subprocess.PIPE)
+        
+        predictions, errors = p.communicate()
+        return predictions, errors
+
+
+    def write_files_to_disk_for_mallet(self, test_citation_indices, fpath):
+
+        test_size = len(test_citation_indices)
         print "test set of size {0} out of {1} total citations".format(
                                     test_size, self.n_citations)
+
+        ''' mallet! '''
+        print "assembling mallet str..."
+        train_str, test_str, test_lbls_str = [], [], []
+
+        # check if it's a test instance.
+        # create strings...
+        for i in xrange(self.n_citations):
+            if self.X_fv[i] is not None:
+                if not i in test_citation_indices:
+                    # we flatten these for training.
+                    train_str.append(
+                        SupervisedLearner.to_mallet(self.X_fv[i], self.y[i]))
+
+                else:
+                    # in the test case, we generate separate file strings for 
+                    # the instances and the lables
+                    mallet_str, test_lbls_i = SupervisedLearner.to_mallet(
+                                    self.X_fv[i], self.y[i], test_file=True)
+
+                    #pdb.set_trace()
+                    test_str.append(mallet_str)
+                    test_lbls_str.append(test_lbls_i)
+            
+        test_indices_out = os.path.join(MALLET_OUTPUT_DIR, fpath + "test-indices")
+        with open(test_indices_out, 'w') as test_out:
+            test_out.write("".join("\n".join([str(i) for i in test_citation_indices])))
+
+        train_out_path = os.path.join(MALLET_OUTPUT_DIR, fpath + "train")
+        with open(train_out_path, 'w') as train_out:
+            train_out.write("".join(train_str))
+
+        test_lbls_path = os.path.join(MALLET_OUTPUT_DIR, fpath + "test-lbls")
+        with open(test_lbls_path, 'w') as test_lbls_out:
+            test_lbls_out.write("".join(test_lbls_str))
+
+        test_out_path = os.path.join(MALLET_OUTPUT_DIR, fpath + "test")
+        with open(test_out_path, 'w') as test_out:
+            test_out.write("".join(test_str))
+
+        print "train and test files written to disk."
+        return train_out_path, test_out_path, test_lbls_path
+
+    def train_and_test_mallet(self, fpath="mallet."):
+        if self.X_fv is None:
+            print "features not yet generated! taking a stab at it..."
+            self.generate_features()
+            print "ok."
+
+        folds = cross_validation.ShuffleSplit(self.n_citations, n_iter=10)
+        F_scores, precs, recalls = [], [], []
+        for i, (train_indices, test_indices) in enumerate(folds):
+            fpath_i = fpath + "{0}.".format(i)
+
+            train_path, test_path, test_y_path = self.write_files_to_disk_for_mallet(
+                test_citation_indices=test_indices, fpath=fpath_i)
+
+            '''
+            train and test in mallet
+            '''
+            model_f = fpath + "model"
+            full_model_path = SupervisedLearner.train_mallet(train_path, model_f)
+            predictions, errors = SupervisedLearner.test_mallet(test_path, full_model_path)
+            predictions = [l.strip() for l in predictions.split("\n")]
+            # mallet outputs an extra empty line...
+            if predictions[-1] == predictions[-2] == "":
+                predictions = predictions[:-1]
+
+            true_lbls = [l.strip() for l in open(test_y_path).readlines()]
+
+            #tokens = ["\n".join(self.tokens[i]) + "\n" for i in test_indices]
+            tokens = ["\n".join(self.tokens[i]) + "\n" 
+                for i in xrange(self.n_citations) if i in test_indices]
+            
+            with open(os.path.join(MALLET_OUTPUT_DIR, fpath_i + "test.tokens"), 'w') as test_tokens_out:
+                test_tokens_out.write("\n".join(tokens))
+
+            ###
+            # sanity check and convert to ints, as this is what sklearn
+            # demands.
+            y_true, y_pred = [], []
+            if len(true_lbls) != len(predictions):
+                raise Exception("lengths of predictions and true do not match!")
+            ## assert that segments are aligned
+            for i, (y_i, pred_i) in enumerate(izip(true_lbls, predictions)):
+                if (y_i == "" and pred_i != "") or (pred_i == "" and y_i != ""):
+                    raise Exception("segments are not aligned! (index: {0})".format(i))
+                elif y_i == pred_i == "":
+                    pass
+                elif y_i != "":
+                    y_true.append(int(y_i))
+                    y_pred.append(int(pred_i))
+              
+
+            print "\n----- results for fold {0} ------- \n".format(i)
+            print confusion_matrix(y_true, y_pred)
+            print classification_report(y_true, y_pred)
+            F_scores.append(f1_score(y_true, y_pred))
+            prec_i, recall_i = precision_recall_fscore_support(y_true, y_pred)[:2]
+            precs.append(prec_i[1])
+            recalls.append(recall_i[1])
+            print "\n------------ \n"
+
+            # dump them to disk, too.
+            predictions_out = os.path.join(MALLET_OUTPUT_DIR, fpath_i + "predictions")
+            with open(predictions_out, 'w') as preds_out:
+                preds_out.write("\n".join(predictions))
+
+        #return F_scores
+        pdb.set_trace()
 
 
     def train_and_test_sample_size(self, test_size=.2, train_p=None):
@@ -177,7 +365,6 @@ class SupervisedLearner:
                 if not i in test_citation_indices and is_a_training_instance:
                     # we flatten these for training.
                     X_train.extend(self.X_fv[i])
-                    pdb.set_trace()
                     y_train.extend(self.y[i])
 
                 elif i in test_citation_indices:
@@ -255,9 +442,18 @@ class SupervisedLearner:
         self.clf.fit(X_fv, y)
 
 
-    def features_from_citations(self, flatten_abstracts=False):
+    def features_from_citations(self, flatten_abstracts=False, 
+                                        flatten_sentences=True, return_tokens=False):
+        '''
+        Notes on structure: there are two 'levels' of possible structure
+        here, sentence-level and abstract-level. On one extreme,
+        X will comprise a completely flat list of vectors representing each 
+        x_i; the other extreme is that X comprises nested lists of lists,
+        where X[j] corresponds to abstract j and X[j][k] maps to the x[i]
+        (word instance) in abstract i 
+        '''
         X, y = [], []
-
+        tokens = []
         pb = progressbar.ProgressBar(len(self.abstract_reader), timer=True)
         for cit_id in range(len(self.abstract_reader)):
             # first we perform feature extraction over the
@@ -268,19 +464,6 @@ class SupervisedLearner:
             p = TaggedTextPipeline(merged_tags, window_size=4)
             p.generate_features()
 
-
-            # @TODO will eventually want to exploit sentence 
-            # structure, I think 
-
-
-            ####
-            # IM: 'punct' = token has all punctuation
-            # filter here is a lambda function used on the
-            # individual word's hidden features
-            ###
-            # X_i = p.get_features(flatten=True, filter=lambda w: w['punct']==False)
-            # y_i = p.get_answers(flatten=True, answer_key=lambda w: "n" in w["tags"], filter=lambda w: w['punct']==False)
-
             ####
             # IM: xml annotations are now all available in w["tags"] for each word in the features list
             ####
@@ -290,16 +473,22 @@ class SupervisedLearner:
                 ###
                 # restrict to integers only
                 ###
-                X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
-                y_i = p.get_answers(flatten=True, 
+                X_i = p.get_features(flatten=flatten_sentences, 
+                            filter=lambda w: w['num']==True)
+                y_i = p.get_answers(flatten=flatten_sentences, 
                         answer_key=lambda w: "n" in w["tags"], 
                         filter=lambda x: x['num']==True)
             else: 
-                X_i = p.get_features(flatten=False)
-                y_i = p.get_answers(flatten=False, 
-                        answer_key=lambda w: self.target in w["tags"])
-                pdb.set_trace()
+                ### *this* flatten refers to flattening sentences!
+                X_i = p.get_features(flatten=flatten_sentences)
+                y_i = p.get_answers(flatten=flatten_sentences, 
+                        answer_key=
+                        lambda w: any (
+                            [tx_tag.match(tag_i) for tag_i in w["tags"]]))
+                tokens.append(p.get_words(flatten=flatten_sentences))
 
+            # see comments above regarding possible
+            # structures
             if flatten_abstracts:
                 X.extend(X_i)
                 y.extend(y_i)
@@ -309,7 +498,8 @@ class SupervisedLearner:
 
             pb.tap()
 
-
+        if return_tokens:
+            return X, y, tokens
         return X, y
 
         
@@ -342,7 +532,7 @@ def calc_metrics(TPs, FPs, N_pos, N):
 def learning_curve():
     nruns = 5
 
-    reader = MergedTaggedAbstractReader()
+    reader = MergedTaggedAbstractReader(merge_function=lambda a,b: a or b)
     sl = SupervisedLearner(reader, hold_out_a_test_set=True, test_set_p=.2)
     sl.generate_features()
 
