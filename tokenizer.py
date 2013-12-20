@@ -1,5 +1,4 @@
 import re
-import pdb
 
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
 from nltk.metrics.agreement import AnnotationTask
@@ -61,7 +60,7 @@ sent_tokenizer = PunktSentenceTokenizer()
 
 
 class CochraneNLPLanguageVars(PunktLanguageVars):
-    _re_non_word_chars   = r"(?:[?!)\";}\]\*:@\'\({\[=])" # added =
+    _re_non_word_chars   = r"(?:[?!)\";}\]\*:@\'\({\[=\.])" # added =
     """Characters that cannot appear within words"""
 
     _re_word_start    = r"[^\(\"\`{\[:;&\#\*@\)}\]\-,=]" # added =
@@ -253,18 +252,15 @@ def tag_words(tagged_text):
             
             sent_indices.popleft()
 
+
+
         i += 1
 
-    if len(word_indices) > 0:
-        word_stack.append((''.join(char_stack), list(current_word_tag_stack))) # push word and tag tuple to the word stack
-        char_stack = [] # clear char stack
-        current_word_tag_stack = set()
-        word_indices.popleft()
-        #pdb.set_trace()
+    else:
+        word_stack.append(''.join(char_stack))
+        sent_stack.append(word_stack)
 
-    # sitill in word_stack!!!
-    sent_stack.append(word_stack)
-    #import pdb; pdb.set_trace()
+    
 
     return sent_stack
 
@@ -303,7 +299,7 @@ def calc_agreements(nr_of_abstracts=150):
     # Loop over the abstracts and calculate the kappa and alpha per abstract
     aggregate = []
     for i in range(0, nr_of_abstracts):
-        try:
+        # try:
             annotators = round_robin(i)
             annotations_A = flatten(get_annotations(i, annotators[0]))
             annotations_B = flatten(get_annotations(i, annotators[1]))
@@ -314,9 +310,9 @@ def calc_agreements(nr_of_abstracts=150):
                 "alpha" : a.alpha(),
                 "annotator_A" : annotators[0],
                 "annotator_B" : annotators[1] })
-        except:
-            print("Could not calculate kappa for abstract %i" % (i + 1))
-            pass
+        # except:
+        #     print("Could not calculate kappa for abstract %i" % (i + 1))
+        #     pass
 
     # Summary statistics
     kappa = describe([a['kappa'] for a in aggregate])
@@ -429,6 +425,7 @@ class MergedTaggedAbstractReader:
         '''        
         if convert_numbers:
             abstract = swap_num(abstract)
+            abstract = re.sub('(?:[0-9]+)\,(?:[0-9]+)', '', abstract)
 
         tags = tag_words(abstract)
         return tags
@@ -481,10 +478,9 @@ def merged_annotations(abstract_nr, **kwargs):
 
 
 def main():
-    m = MergedTaggedAbstractReader()
-    for a, i in enumerate(m):
-        print a, i
-    
+    calc_agreements()
+    # abstract = "Hello this is a sentence. Hello this is a sentence."
+    # print tag_words(abstract)
 
 
 
