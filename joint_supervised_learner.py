@@ -292,11 +292,7 @@ class SupervisedLearner:
             #predictions = [l.strip() for l in predictions.split("\n")]
             #predictions = open(preds_path).readlines()
             predictions = [pred.strip() + "\n" for pred in predictions.split("\n")]
-            #predictions_str = "\n".join(predictions)
-            #pdb.set_trace()
-            # mallet outputs an extra empty line...
-            #if predictions[-1] == predictions[-2] == "":
-            #    predictions = predictions[:-1]
+   
 
             #true_lbls = [l.strip() for l in open(test_y_path).readlines()]
             true_lbls = open(test_y_path).readlines()
