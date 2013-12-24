@@ -7,6 +7,8 @@ all fields of interest at once (since these are not independent).
 To run vanilla/baseline CRF:
 
 # note that I'm using the union of tags here!
+> import tokenizer
+> import joint_supervised_learner
 > reader = tokenizer.MergedTaggedAbstractReader(merge_function=lambda a,b: a or b)
 # important to pass in the 'tx', because otherwise it will think its
 # predicting sample size! 
@@ -268,7 +270,30 @@ class SupervisedLearner:
 
         return train_out_path, test_out_path, test_lbls_path, test_tokens_out_path
 
-    def train_and_test_mallet(self, fpath="CRF."):
+    @staticmethod
+    def limit_to_two_txs(predictions, max_TXs=2):
+        n_TXs = 0
+        in_TX = False 
+
+        new_preds = []
+        for pred in predictions:
+            if pred.strip() == "1":
+                if in_TX:
+                    new_preds.append(pred)
+                else:
+                    if n_TXs < max_TXs:
+                        new_preds.append(pred)
+                        in_TX = True
+                    else:
+                        new_preds.append("-1\n")
+                    n_TXs += 1
+            else:
+                # -1 
+                new_preds.append(pred)
+                in_TX = False
+        return new_preds
+
+    def train_and_test_mallet(self, fpath="CRF.", force_two_TXs=False):
         if self.X_fv is None:
             print "features not yet generated! taking a stab at it..."
             self.generate_features()
@@ -292,7 +317,9 @@ class SupervisedLearner:
             #predictions = [l.strip() for l in predictions.split("\n")]
             #predictions = open(preds_path).readlines()
             predictions = [pred.strip() + "\n" for pred in predictions.split("\n")]
-   
+            if force_two_TXs:
+                new_predictions = SupervisedLearner.limit_to_two_txs(predictions)
+                predictions = new_predictions
 
             #true_lbls = [l.strip() for l in open(test_y_path).readlines()]
             true_lbls = open(test_y_path).readlines()
@@ -488,7 +515,6 @@ class SupervisedLearner:
             # abstract text (X)
 
             merged_tags = self.abstract_reader.get(cit_id)     
-
             p = TaggedTextPipeline(merged_tags, window_size=4)
             p.generate_features()
 
