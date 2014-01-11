@@ -1,5 +1,4 @@
 *.pyc
-*.ipynb
 *_beta.py
 CNLP.INI
 confused.txt
@@ -7,6 +6,7 @@ pmccorpusdownload.py
 testdata/
 old/
 results/
+.ipynb_checkpoints/
 
 
 *.INI
