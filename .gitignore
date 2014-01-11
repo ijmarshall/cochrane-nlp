@@ -5,6 +5,7 @@ CNLP.INI
 confused.txt
 pmccorpusdownload.py
 testdata/
+old/
 
 
 *.INI
@@ -20,3 +21,7 @@ log2.txt
 log3.txt
 
 log4.txt
+
+*.pdf
+
+*.log
