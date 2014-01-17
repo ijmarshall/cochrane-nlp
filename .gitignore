@@ -6,6 +6,7 @@ pmccorpusdownload.py
 testdata/
 old/
 results/
+data/cache/
 .ipynb_checkpoints/
 
 
