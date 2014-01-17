@@ -38,6 +38,7 @@ class QualityQuoteReader():
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'studypdf'])
         self.pdfviewer = biviewer.PDFBiViewer()
 
+
     def __iter__(self):
         " run through PDF/Cochrane data, and return filtered data of interest "
 
@@ -78,7 +79,10 @@ def main():
 
 
 
+def test_pdf_cache():
 
+    pdfviewer = biviewer.PDFBiViewer()
+    pdfviewer.cache_pdfs()
 
 
 
@@ -87,3 +91,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # test_pdf_cache()
