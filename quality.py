@@ -13,6 +13,21 @@ import re
 import progressbar
 import collections
 
+import yaml
+
+
+def load_domain_map(filename="data/domain_names.txt"):
+
+    with open(filename, 'rb') as f:
+        raw_data = yaml.load(f)
+
+    mapping = {}
+
+    for key, value in raw_data.iteritems():
+        for synonym in value:
+            mapping[synonym] = key
+
+    return mapping
 
 class QualityQuoteReader():
     """
@@ -36,8 +51,8 @@ class QualityQuoteReader():
                     quality_quotes.append(domain)
 
             if quality_quotes:
-
                 yield self.BiviewerView(cochrane={"QUALITY": quality_quotes}, studypdf=study.studypdf)
+                # returns only the quality data with quotes in it for ease of use
 
 
 
@@ -46,12 +61,19 @@ class QualityQuoteReader():
 
 
 def main():
+
+    m = load_domain_map()
     q = QualityQuoteReader()
 
     for i, study in enumerate(q):
         print i
-        print study
-        if i == 10:
+        for domain in study.cochrane["QUALITY"]:
+            print m[domain["DOMAIN"]]
+            print
+            print domain["DESCRIPTION"]
+            print
+            print
+        if i > 5:
             break
 
 
