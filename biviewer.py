@@ -153,15 +153,18 @@ class PDFBiViewer(BiViewer):
             pm = PdfReader(PDF_PATH + study['pdf_filename'])
             return pm.get_text()
 
-    def cache_pdfs(self, cachepath="data/cache/"):
+    def cache_pdfs(self, cachepath="data/cache/", refresh=False):
 
         if not os.path.exists(cachepath):
             os.makedirs(cachepath)
         
         all_pdfs = set(os.path.splitext(os.path.basename(entry["pdf_filename"]))[0] for entry in self.index_data)
-        already_done = set(os.path.splitext(os.path.basename(filename))[0] for filename in glob(cachepath + "*.txt"))
 
-        todo = list(all_pdfs - already_done)
+        if not refresh:
+            already_done = set(os.path.splitext(os.path.basename(filename))[0] for filename in glob(cachepath + "*.txt"))
+            todo = list(all_pdfs - already_done)
+        else:
+            todo = list(all_pdfs)
 
         if not todo:
             print "cache up to date"
