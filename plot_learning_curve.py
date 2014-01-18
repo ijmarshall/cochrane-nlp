@@ -8,6 +8,9 @@ simple code to reproduce (hopefully pretty) plots.
 '''
 
 import pylab
+import seaborn as sns ### makes really pretty plots!
+sns.set(style="whitegrid")
+# pylab.fill_between(X, numpy.array(highs), numpy.array(lows), alpha=.2)
 
 def plot_curve(X, y, xlabel="number of labeled abstracts", 
                 ylabel="F2 (sample size)", out_f="learning_curve.pdf"):

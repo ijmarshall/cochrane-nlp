@@ -23,7 +23,8 @@ class TaggedTextPipeline(bilearn2.bilearnPipeline):
 
     def __init__(self, text, window_size):
         # self.text = re.sub('[nN]=([1-9]+[0-9]*)', r'N = \1', text)
-        self.text = re.sub('(?:[0-9]+)\,(?:[0-9]+)', '', text)
+        #import pdb; pdb.set_trace()
+        #self.text = re.sub('(?:[0-9]+)\,(?:[0-9]+)', '', text)
 
         if isinstance(text, str):
             self.text = swap_num(text)
