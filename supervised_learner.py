@@ -85,7 +85,7 @@ class SupervisedLearner:
         for citation_fvs in self.features:
             all_features.extend(citation_fvs)
    
-        pdb.set_trace()
+       
         self.vectorizer.fit(all_features) 
         self.X_fv = []
         no_abstracts = 0
