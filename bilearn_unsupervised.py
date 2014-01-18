@@ -6,8 +6,6 @@
 # requires numpy, sklearn
 #
 #
-
-
 import cPickle as pickle
 import cPickle as pickle
 from collections import defaultdict
@@ -23,6 +21,7 @@ import numpy as np
 import pipeline
 import progressbar
 from scipy import stats
+import scipy
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
 from tokenizer import tag_words, MergedTaggedAbstractReader
@@ -34,6 +33,8 @@ from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectKBest
 from sklearn.linear_model import RandomizedLogisticRegression
+
+from sklearn.cross_validation import ShuffleSplit
 
 from scipy.sparse import vstack
 
@@ -59,6 +60,7 @@ def show_most_informative_features(vectorizer, clf, n=50):
 class bilearnPipeline(pipeline.Pipeline):
 
     def __init__(self, text, window_size):
+        self.text = re.sub('(?:[0-9]+)\,(?:[0-9]+)', '', text)
         self.functions = [[{"w": word, "p": pos} for word, pos in pos_tagger.tag(self.word_tokenize(sent))] for sent in self.sent_tokenize(swap_num(text))]
         self.load_templates()        
         self.w_pos_window = window_size
@@ -67,59 +69,59 @@ class bilearnPipeline(pipeline.Pipeline):
 
     def load_templates(self):
         self.templates = (
-                          (("w_int", 0),),
-                          # (("w", 1),),
-                          # (("w", 2),),
-                          # (("w", 3),),
-                          # # (("wl", 4),),
-                          # (("w", -1),),
-                          # (("w", -2),),
-                          # (("w", -3),),
-                          # (("wl", -4),),
-                          # (('w', -2), ('w',  -1)),
-                          # (('wl',  -1), ('wl',  -2), ('wl',  -3)),
-                          # (('stem', -1), ('stem',  0)),
-                          # (('stem',  0), ('stem',  1)),
-                          # (('w',  1), ('w',  2)),
-                          # (('wl',  1), ('wl',  2), ('wl',  3)),
-                          # (('p',  0), ('p',  1)),
-                          # (('p',  1),),
-                          # (('p',  2),),
-                          # (('p',  -1),),
-                          # (('p',  -2),),
-                          # (('p',  1), ('p',  2)),
-                          # (('p',  -1), ('p',  -2)),
-                          # (('stem', -2), ('stem',  -1), ('stem',  0)),
-                          # (('stem', -1), ('stem',  0), ('stem',  1)),
-                          # (('stem', 0), ('stem',  1), ('stem',  2)),
-                          # (('p', -2), ),
-                          # (('p', -1), ),
-                          # (('p', 1), ),
-                          # (('p', 2), ),
-                          # (('num', -1), ), 
-                          # (('num', 1), ),
-                          # (('cap', -1), ),
-                          # (('cap', 1), ),
-                          # (('sym', -1), ),
-                          # (('sym', 1), ),
-                          (('div10', 0), ),
-                          (('>10', 0), ),
-                          (('numrank', 0), ),
-                          # (('p1', 1), ),
-                          # (('p2', 1), ),
-                          # (('p3', 1), ),
-                          # (('p4', 1), ),
-                          # (('s1', 1), ),
-                          # (('s2', 1), ),
-                          # (('s3', 0), ),
-                          # (('s4', 0), ),
-                          (('wi', 0), ),
-                          (('si', 0), ),
-                          # (('next_noun', 0), ),
-                          # (('next_verb', 0), ),
-                          # (('last_noun', 0), ),
-                          # (('last_verb', 0), ),
-                          )
+                            (("w_int", 0),),
+                            # (("w", 1),),
+                            # (("w", 2),),
+                            # (("w", 3),),
+                            # # (("wl", 4),),
+                            # (("w", -1),),
+                            # (("w", -2),),
+                            # (("w", -3),),
+                            # (("wl", -4),),
+                            # (('w', -2), ('w',  -1)),
+                            # (('wl',  -1), ('wl',  -2), ('wl',  -3)),
+                            # (('stem', -1), ('stem',  0)),
+                            # (('stem',  0), ('stem',  1)),
+                            # (('w',  1), ('w',  2)),
+                            # (('wl',  1), ('wl',  2), ('wl',  3)),
+                            # (('p',  0), ('p',  1)),
+                            # (('p',  1),),
+                            # (('p',  2),),
+                            # (('p',  -1),),
+                            # (('p',  -2),),
+                            # (('p',  1), ('p',  2)),
+                            # (('p',  -1), ('p',  -2)),
+                            # (('stem', -2), ('stem',  -1), ('stem',  0)),
+                            # (('stem', -1), ('stem',  0), ('stem',  1)),
+                            # (('stem', 0), ('stem',  1), ('stem',  2)),
+                            # (('p', -2), ),
+                            # (('p', -1), ),
+                            # (('p', 1), ),
+                            # (('p', 2), ),
+                            # (('num', -1), ), 
+                            # (('num', 1), ),
+                            # (('cap', -1), ),
+                            # (('cap', 1), ),
+                            # (('sym', -1), ),
+                            # (('sym', 1), ),
+                            (('div10', 0), ),
+                            (('>10', 0), ),
+                            (('numrank', 0), ),
+                            # (('p1', 1), ),
+                            # (('p2', 1), ),
+                            # (('p3', 1), ),
+                            # (('p4', 1), ),
+                            # (('s1', 1), ),
+                            # (('s2', 1), ),
+                            # (('s3', 0), ),
+                            # (('s4', 0), ),
+                            (('wi', 0), ),
+                            (('si', 0), ),
+                            # (('next_noun', 0), ),
+                            # (('next_verb', 0), ),
+                            # (('last_noun', 0), ),
+                            # (('last_verb', 0), ),
+                            )
 
         self.answer_key = "w"
         # self.w_pos_window = window_size # set 0 for no w_pos window features
@@ -130,8 +132,8 @@ class bilearnPipeline(pipeline.Pipeline):
         num_list_nest = [[int(word["w"]) for word in sent if word["w"].isdigit()] for sent in self.functions]
         num_list = [item for sublist in num_list_nest for item in sublist] # flatten
         num_list.sort(reverse=True)
-        num_dict = {num: rank for rank, num in enumerate(num_list)}
-
+        num_dict = {num: len(num_list)+2-rank for rank, num in enumerate(num_list)}
+        num_index = 0
         for i, sent_function in enumerate(self.functions):
 
             last_noun_index = 0
@@ -162,10 +164,12 @@ class bilearnPipeline(pipeline.Pipeline):
                             }
                 if word.isdigit():
                     num = int(word)
+                    num_index += 1
                     features[">10"] = num > 10
                     features["w_int"] = num
                     features["div10"] = ((num % 10) == 0)
                     features["numrank"] = num_dict[num]
+                    features["numindex"] = num_index
                 
                 self.functions[i][j].update(features)
 
@@ -216,60 +220,60 @@ class bilearnPipelineCochrane(bilearnPipeline):
         
     def load_templates(self):
         self.templates = (
-                          (("w_int", 0),),
-                          # (("w", 1),),
-                          # (("w", 2),),
-                          # (("w", 3),),
-                          # # (("wl", 4),),
-                          # (("w", -1),),
-                          # (("w", -2),),
-                          # (("w", -3),),
-                          # (("wl", -4),),
-                          # (('w', -2), ('w',  -1)),
-                          # (('wl',  -1), ('wl',  -2), ('wl',  -3)),
-                          # (('stem', -1), ('stem',  0)),
-                          # (('stem',  0), ('stem',  1)),
-                          # (('w',  1), ('w',  2)),
-                          # (('wl',  1), ('wl',  2), ('wl',  3)),
-                          # (('p',  0), ('p',  1)),
-                          # (('p',  1),),
-                          # (('p',  2),),
-                          # (('p',  -1),),
-                          # (('p',  -2),),
-                          # (('p',  1), ('p',  2)),
-                          # (('p',  -1), ('p',  -2)),
-                          # (('stem', -2), ('stem',  -1), ('stem',  0)),
-                          # (('stem', -1), ('stem',  0), ('stem',  1)),
-                          # (('stem', 0), ('stem',  1), ('stem',  2)),
-                          # (('p', -2), ),
-                          # (('p', -1), ),
-                          # (('p', 1), ),
-                          # (('p', 2), ),
-                          # (('num', -1), ), 
-                          # (('num', 1), ),
-                          # (('cap', -1), ),
-                          # (('cap', 1), ),
-                          # (('sym', -1), ),
-                          # (('sym', 1), ),
-                          (('div10', 0), ),
-                          (('>10', 0), ),
-                          (('numrank', 0), ),
-                          # (('p1', 1), ),
-                          # (('p2', 1), ),
-                          # (('p3', 1), ),
-                          # (('p4', 1), ),
-                          # (('s1', 1), ),
-                          # (('s2', 1), ),
-                          # (('s3', 0), ),
-                          # (('s4', 0), ),
-                          (('wi', 0), ),
-                          (('si', 0), ),
-                          # (('cochrane_part', 0), ),
-                          # (('next_noun', 0), ),
-                          # (('next_verb', 0), ),
-                          # (('last_noun', 0), ),
-                          # (('last_verb', 0), ),
-                          )
+                        (("w_int", 0),),
+                        # (("w", 1),),
+                        # (("w", 2),),
+                        # (("w", 3),),
+                        # # (("wl", 4),),
+                        # (("w", -1),),
+                        # (("w", -2),),
+                        # (("w", -3),),
+                        # (("wl", -4),),
+                        # (('w', -2), ('w',  -1)),
+                        # (('wl',  -1), ('wl',  -2), ('wl',  -3)),
+                        # (('stem', -1), ('stem',  0)),
+                        # (('stem',  0), ('stem',  1)),
+                        # (('w',  1), ('w',  2)),
+                        # (('wl',  1), ('wl',  2), ('wl',  3)),
+                        # (('p',  0), ('p',  1)),
+                        # (('p',  1),),
+                        # (('p',  2),),
+                        # (('p',  -1),),
+                        # (('p',  -2),),
+                        # (('p',  1), ('p',  2)),
+                        # (('p',  -1), ('p',  -2)),
+                        # (('stem', -2), ('stem',  -1), ('stem',  0)),
+                        # (('stem', -1), ('stem',  0), ('stem',  1)),
+                        # (('stem', 0), ('stem',  1), ('stem',  2)),
+                        # (('p', -2), ),
+                        # (('p', -1), ),
+                        # (('p', 1), ),
+                        # (('p', 2), ),
+                        # (('num', -1), ), 
+                        # (('num', 1), ),
+                        # (('cap', -1), ),
+                        # (('cap', 1), ),
+                        # (('sym', -1), ),
+                        # (('sym', 1), ),
+                        (('div10', 0), ),
+                        (('>10', 0), ),
+                        (('numrank', 0), ),
+                        # (('p1', 1), ),
+                        # (('p2', 1), ),
+                        # (('p3', 1), ),
+                        # (('p4', 1), ),
+                        # (('s1', 1), ),
+                        # (('s2', 1), ),
+                        # (('s3', 0), ),
+                        # (('s4', 0), ),
+                        (('wi', 0), ),
+                        (('si', 0), ),
+                        # (('cochrane_part', 0), ),
+                        # (('next_noun', 0), ),
+                        # (('next_verb', 0), ),
+                        # (('last_noun', 0), ),
+                        # (('last_verb', 0), ),
+                        )
 
 class BiLearner():
 
@@ -284,16 +288,15 @@ class BiLearner():
         
         # self.stem = PorterStemmer()
 
-    def reset(self, seed="regex"):
-        " sets the y_lookup back to the original regex rule results "
+    def initialise(self, seed="regex"):
 
         
         self.data["y_lookup_init"] = {i: -1 for i in range(len(self.biviewer))}
 
-        if seed == "annotations":
-            self.init_y_annotations() # generate y vector from regex
-        else:
-            self.init_y_regex() # generate y vector from regex
+        # if seed == "annotations":
+        #     self.seed_y_annotations() # generate y vector from regex
+        # else:
+        #     self.seed_y_regex() # generate y vector from regex
 
         print "Resetting joint predictions"
         self.pred_joint = self.data["y_lookup_init"].copy()
@@ -325,6 +328,7 @@ class BiLearner():
         # the X variables are static
         X_cochrane_l = []
         X_pubmed_l = []
+        X_pubmed_external_l = [] # so that predictions on 'unseen' abstracts can't use the internal cochrane features
 
         # store the words (here=numbers) of interest in a separate list
         # since these may not always be used as a feature, but still needed
@@ -390,6 +394,9 @@ class BiLearner():
 
             # generate filter vectors for integers which match between Cochrane + Pubmed
             common_ints = set(words_cochrane_study) &  set(words_pubmed_study)
+
+
+            
 
 
             # add presence in both texts as a common feature
@@ -459,14 +466,87 @@ class BiLearner():
         # train vectorisers
         self.data["X_cochrane"] = self.data["vectoriser_cochrane"].fit_transform(X_cochrane_l)
         self.data["X_pubmed"] = self.data["vectoriser_pubmed"].fit_transform(X_pubmed_l)
+        self.data["X_pubmed_external"] = self.data["vectoriser_pubmed"].fit_transform(X_pubmed_external_l)
+
 
         # self.reset()
 
-    def init_y_regex(self):
+
+
+    def seed_y_annotations(self, annotation_viewer, hide_reader_ids, test_reader_ids):
         """
-        initialises the joint y vector with data from a simple seed regex rule
+        initialises the joint y vector with data from manually annotated abstracts
+        filter_ids = ids of the MergedTaggedAbstractReader to pay attention to
         """
-        logging.info("Identifying seed data from regular expression")
+
+        self.initialise()
+
+        self.annotation_viewer = annotation_viewer
+
+        self.annotator_viewer_to_biviewer = {}
+
+        logging.info("Generating seed data from annotated abstracts")
+        
+        p = progressbar.ProgressBar(len(self.annotation_viewer), timer=True)
+
+        hide_biviewer_ids = []
+        test_biviewer_ids = []
+
+        for study in range(len(self.annotation_viewer)):
+            p.tap()
+
+            biview_id = annotation_viewer[study]["biview_id"]
+            self.annotation_viewer_to_biviewer[study] = biview_id
+
+            parsed_tags = [item for sublist in annotation_viewer.get(study) for item in sublist] # flatten list
+            tagged_numbers = [w[0] for w in parsed_tags if 'n' in w[1]] # then get any tagged numbers
+
+            if tagged_numbers:
+                number = int(tagged_numbers[0])
+            else:
+                number = -2
+
+            self.data["y_lookup_init"][biview_id] = number
+
+
+    def seed_y_regex(self, annotation_viewer):
+        """
+        initialises the joint y vector with data from manually annotated abstracts
+        filter_ids = ids of the MergedTaggedAbstractReader to pay attention to
+        """
+
+        self.initialise()
+
+        self.annotation_viewer_to_biviewer = {}
+        self.answers = {}
+
+        self.annotation_viewer = annotation_viewer
+
+        logging.info("Generating answers for test set")
+        
+        p = progressbar.ProgressBar(len(self.annotation_viewer), timer=True)
+
+
+        for study in range(len(self.annotation_viewer)):
+            p.tap()
+
+            biview_id = annotation_viewer[study]["biview_id"]
+            self.annotation_viewer_to_biviewer[study] = biview_id
+
+            # set answers
+            parsed_tags = [item for sublist in annotation_viewer.get(study) for item in sublist] # flatten list
+            tagged_numbers = [w[0] for w in parsed_tags if 'n' in w[1]] # then get any tagged numbers
+
+            if tagged_numbers:
+                number = int(tagged_numbers[0])
+            else:
+                number = -2
+
+            self.answers[biview_id] = number
+
+
+        logging.info("Generating seed data from regular expression")
+
         p = progressbar.ProgressBar(len(self.biviewer), timer=True)
         counter = 0  # number of studies initially found
         for study_id, (cochrane_dict, pubmed_dict) in enumerate(self.biviewer):
@@ -474,7 +554,7 @@ class BiLearner():
             pubmed_text = pubmed_dict.get("abstract", "")
             # use simple rule to identify population sizes (low sens/recall, high spec/precision)
             pubmed_text = swap_num(pubmed_text)
-            matches = re.findall('([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients) were (?:randomi[sz]ed)', pubmed_text)
+            matches = re.findall('([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients|children|people) were (?:randomi[sz]ed)', pubmed_text)
             # matches += re.findall('(?:[Ww]e randomi[sz]ed )([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients)', pubmed_text)
             # matches += re.findall('(?:[Aa] total of )([1-9][0-9]*) (?:\w+ )*(?:participants|men|women|patients)', pubmed_text)
             if len(matches) == 1:
@@ -484,38 +564,38 @@ class BiLearner():
         self.seed_abstracts = counter
         logging.info("%d seed abstracts found", counter)
 
-    def init_y_annotations(self):
-        """
-        initialises the joint y vector with data from manually annotated abstracts
-        """
-        logging.info("Identifying seed data from annotated data")
-        p = progressbar.ProgressBar(len(self.biviewer), timer=True)
-        annotation_viewer = MergedTaggedAbstractReader()
-
-        counter = 0
-        for study in range(len(annotation_viewer)):
-            study_id = annotation_viewer[study]["biview_id"]
-            # text = swap_num(annotation_viewer.get_biview_id(study_id)['abstract'])                
+     
 
 
-            parsed_tags = [item for sublist in annotation_viewer.get(study) for item in sublist]
-            
+      
+    def reset(self, hide_reader_ids, test_reader_ids):
 
-            print study
-            print parsed_tags
+        self.test_reader_ids = test_reader_ids
+        self.hide_reader_ids = hide_reader_ids
 
-            tagged_number = [w[0] for w in parsed_tags if 'n' in w[1]]
-            if tagged_number:
-                number = re.match("[Nn]?=?([1-9]+[0-9]*)", tagged_number[0])
+        hide_biviewer_ids = []
+        test_biviewer_ids = []
 
-                if number:
-                    self.data["y_lookup_init"][study_id] = int(number.group(1))
-                    counter += 1
-                else:
-                    raise TypeError('Unable to convert tagged number %s to integer', tagged_number[0])
+        for study_id in test_reader_ids:
+            test_biviewer_ids.append(self.annotation_viewer_to_biviewer[study_id])
 
-        self.seed_abstracts = counter
-        logging.info("%d seed abstracts found", counter)
+        for study_id in hide_reader_ids:
+            hide_biviewer_ids.append(self.annotation_viewer_to_biviewer[study_id])
+
+
+        self.visible_biviewer_ids = np.array(list(set(range(len(self.biviewer))) - set(hide_biviewer_ids)))
+        self.test_biviewer_ids = np.array(test_biviewer_ids)
+
+        
+        self.pred_joint = self.data["y_lookup_init"].copy()
+
+        # these weird bits of code find the indices of the pubmed and cochrane
+        # training data vectors which correspond to the biviewer ids found in 
+        # the loop above
+        self.visible_cochrane_ids = np.arange(self.data["study_id_lookup_cochrane"].shape[0])[np.in1d(self.data["study_id_lookup_cochrane"], self.visible_biviewer_ids)]
+        self.visible_pubmed_ids = np.arange(self.data["study_id_lookup_pubmed"].shape[0])[np.in1d(self.data["study_id_lookup_pubmed"], self.visible_biviewer_ids)]
+        self.test_pubmed_ids = np.arange(self.data["study_id_lookup_pubmed"].shape[0])[np.in1d(self.data["study_id_lookup_pubmed"], self.test_biviewer_ids)]
+     
 
 
     def save_data(self, filename):
@@ -636,6 +716,22 @@ class BiLearner():
             f.write("\n\n".join(confusion))
 
 
+    def learn_pubmed(self, C=1.0, update=False, aperture_type="absolute", aperture=20, sample_weight=1):
+
+        pubmed_model = self.learn_view(self.data["X_pubmed"][self.visible_pubmed_ids], self.data["words_pubmed"][self.visible_pubmed_ids], self.data["study_id_lookup_pubmed"][self.visible_pubmed_ids],
+                        C=C, aperture=aperture, aperture_type=aperture_type, update_joint=update, sample_weight=sample_weight)
+        
+        return pubmed_model
+
+    def learn_cochrane(self, C=1.0, update=False, aperture_type="absolute", aperture=20, sample_weight=1):
+
+
+        cochrane_model = self.learn_view(self.data["X_cochrane"][self.visible_cochrane_ids], self.data["words_cochrane"][self.visible_cochrane_ids], self.data["study_id_lookup_cochrane"][self.visible_cochrane_ids],
+                        C=C, aperture=aperture, aperture_type=aperture_type, update_joint=update, sample_weight=sample_weight)
+        
+        return cochrane_model
+
+
     def learn_view(self, X_view, words_view, joint_from_view_index,
                     C=1.0, aperture=0.90, aperture_type='probability', update_joint=True,
                     sample_weight=1):
@@ -646,6 +742,17 @@ class BiLearner():
         for word_id in xrange(len(words_view)):
             y = self.data["y_lookup_init"][joint_from_view_index[word_id]]
             initial_test_filter[word_id] = (y != -1)
+
+
+        # print "self.pred_joint info"
+        # no_known = len([i for i in self.pred_joint.values() if i != -1])
+        # print "no known = %d/%d" % (no_known, len(self.pred_joint.values()))
+        # print
+
+
+
+
+
 
         
         # extend all the variables appropriately
@@ -679,27 +786,36 @@ class BiLearner():
         # print X_view_w
         
 
-        
 
 
-        pred_view_w = np.empty(shape=(len(words_view_w),)) # make a new empty vector for predicted values
+        pred_view_w = np.empty(shape=(len(words_view_w),), dtype=int) # make a new empty vector for predicted values
         # (pred_view is predicted population sizes; not true/false)
 
         # print self.pred_joint
+
+
+        
+
+
 
         # create answer vectors with the seed answers
         for word_id in xrange(len(pred_view_w)):
             pred_view_w[word_id] = self.pred_joint[joint_from_view_index_w[word_id]]
             
+        
 
 
 
-
-        y_view_w = (pred_view_w == words_view_w) * 2 - 1 # set Trues to 1 and Falses to -1
+        y_view_w = (pred_view_w == words_view_w) #* 2 - 1 # set Trues to 1 and Falses to -1
 
         # set filter vectors (-1 = unknown)
+
+
+
         filter_train = (pred_view_w != -1).nonzero()[0]
         filter_test = (pred_view_w == -1).nonzero()[0]
+
+        # print len(filter_train), len(filter_test)
 
         # print filter_train, len(filter_train)
         # print filter_train, len(filter_test)
@@ -754,9 +870,144 @@ class BiLearner():
 
             # extend the joint predictions
             for i in top_result_indices:
+
                 self.pred_joint[joint_from_view_index_test[i]] = words_test[i]
+                # pubmed = self.biviewer[joint_from_view_index_test[i]][1]['abstract']
+                # cochrane = self.biviewer[joint_from_view_index_test[i]][0]['CHAR_PARTICIPANTS']
+                # # print
+                # print pubmed
+                # print
+                # print cochrane
+                # print words_test
+                # print words_test[i]
 
         return model
+
+
+    def test_pubmed(self, model, display_preds=False, default_stats=False):
+
+        # print "train on"
+        # print len(self.visible_pubmed_ids)
+        # print self.visible_pubmed_ids
+        # print "test on"
+        # print len(self.test_pubmed_ids)
+        # print self.test_pubmed_ids
+
+        assert len(set(self.visible_pubmed_ids) & set(self.test_pubmed_ids)) == 0 # visible and test must not overlap
+
+        
+
+        return self.test(model, self.data["X_pubmed"][self.test_pubmed_ids], self.data["words_pubmed"][self.test_pubmed_ids], self.data["study_id_lookup_pubmed"][self.test_pubmed_ids], display_preds=display_preds, default_stats=default_stats)
+
+
+    def test(self, model, X_test, words_test, joint_from_view_index, display_preds, default_stats=False):
+
+        
+        preds = model.predict_proba(X_test)[:,1] # predict unknowns
+        
+        metrics = {}
+
+        accuracy_count = 0
+        total_abstracts = len(set(joint_from_view_index))
+        total_candidates = 0
+        per_integer_accuracy_count = 0
+        potential_correct_answers = 0
+
+
+        true_pos_preds = []
+        false_pos_preds = []
+
+
+        # enforce one pop size per abstract
+
+        for id in list(set(joint_from_view_index)):
+
+
+
+            max_index = preds[joint_from_view_index==id].argmax()
+            
+            no_candidates = len(preds[joint_from_view_index==id])
+            pred_probs_neg = np.delete(preds[joint_from_view_index==id], max_index)
+            std_neg = np.std(pred_probs_neg)
+            mean_neg = np.mean(pred_probs_neg)
+
+
+            prob_pos = preds[joint_from_view_index==id][max_index]
+
+
+
+            # print preds[joint_from_view_index==id][~max_index]
+            # print np.std(preds[joint_from_view_index==id][~max_index])
+
+            std_from_mean = (prob_pos - mean_neg) / std_neg
+            prob_mass = prob_pos / np.sum(preds[joint_from_view_index==id])
+            
+            expected_ratio = prob_mass / (float(1)/float(no_candidates))
+
+
+
+
+            if default_stats: # default tagger selects the first integer
+                y_pred = words_test[joint_from_view_index==id][0]
+            else:
+                y_pred = words_test[joint_from_view_index==id][max_index]
+
+            # print
+            # print self.biviewer[id][1]['abstract']
+            # print
+
+            y_actual = self.answers[id]
+
+            # print y_pred, y_actual
+            # print type(y_pred), type(y_actual)
+
+
+            if y_actual != -2:
+                potential_correct_answers += 1
+                
+
+            if display_preds:
+                print "Abstract %d; answer=%d" % (id, y_actual)
+                print "Predicted answer %d\n%f SDs from negative examples\n%f percent of probability mass\n%f times expected probability mass" % (y_pred, std_from_mean, prob_mass, expected_ratio)
+                result = np.around(np.vstack((preds[joint_from_view_index==id], words_test[joint_from_view_index==id])).T, decimals=2)
+                np.set_printoptions(precision=3, suppress=True)
+                print result
+
+            total_candidates += no_candidates
+
+
+            if y_pred == y_actual:
+                # print "matched!"
+                accuracy_count += 1
+                per_integer_accuracy_count += no_candidates
+                true_pos_preds.append(prob_pos)
+
+            elif no_candidates > 1:
+                false_pos_preds.append(prob_pos)
+                per_integer_accuracy_count += (no_candidates-2) # the wrongly guessed and the actual right answer were both mistakes
+            elif no_candidates > 0:
+                false_pos_preds.append(prob_pos)
+
+
+
+
+
+
+            # print y_pred, y_actual
+
+
+        metrics["accuracy"] = float(accuracy_count)/float(total_abstracts)
+        metrics["per_integer_accuracy"] = float(per_integer_accuracy_count)/float(total_candidates)
+        metrics["recall"] = float(accuracy_count)/float(potential_correct_answers)
+        metrics["precision"] = float(accuracy_count)/float(total_abstracts)
+        if (metrics["precision"] + metrics["recall"]) > 0:
+            metrics["f1"] = 2 * (metrics["precision"] * metrics["recall"]) / (metrics["precision"] + metrics["recall"])
+        else:
+            metrics["f1"] = 0
+        # metrics["true_pos_preds"] = true_pos_preds
+        # metrics["false_pos_preds"] = false_pos_preds
+
+        return metrics
 
 
 
@@ -821,7 +1072,162 @@ def main():
     test()
 
 
+def cross_validate():
+    """
+    find optimal C and number of iterations using cross validation
+    using annotated abstracts
+    """
 
+    metrics = []
+
+    annotated_abstracts = MergedTaggedAbstractReader()    
+
+    bilearn = BiLearner(test_mode=False)
+    bilearn.load_data('new_features.pck') # regenerate this with current feature set before running
+    # bilearn.generate_features() # regenerate this with current feature set before running
+    # bilearn.save_data('new_features.pck')
+    bilearn.seed_y_regex(annotation_viewer=annotated_abstracts)
+
+    # set up parameters
+    C_candidates = np.logspace(-1, 1, 5)
+    folds = 4
+    fold_size = 0.25
+    # fold_size = float(1) / float(folds)
+
+    # C_candidates = np.logspace(-1, 1, 3)
+    # (approx [0.1, 0.22, 0.46, 1.0, 2.15, 4.64, 10.0, 21.5, 46.4, 100.0])
+
+    scale_C = True # whether to use constant C or scale
+    # scaling factor True = 1/n_samples; False = 1
+
+    n_iter_max = 60 # for distant supervision
+    # optimisation_type = "accuracy" # which metric to optimise C on
+    optimisation_type = "recall" # which metric to optimise C on
+
+    # split annotated abstracts into: A - test, hidden 20%; B - train, visible 80%
+    CV_main = ShuffleSplit(len(annotated_abstracts), n_iter=folds, test_size=fold_size)
+
+
+
+    distant_metrics_l = []
+    
+    for B_indices, A_indices in CV_main:
+
+        print len(B_indices), len(A_indices)
+        
+
+        print "DISTANT"
+        distant_metrics_l_C_axis = []
+
+        for C_i in C_candidates:
+            distant_metrics_l_n_axis = []
+            
+            bilearn.reset(hide_reader_ids=A_indices,
+                          test_reader_ids=A_indices)
+
+            for n_i in range(n_iter_max):
+                print
+                print "C=%f, iteration %d" % (C_i, n_i)
+                print
+
+                if n_i % 2:
+                    bilearn.learn_cochrane(C=C_i, update=True)
+                elif n_i > 0:
+                    # NB first run of loop runs this branch of the if.. else (0 % 2 == 0)
+                    bilearn.learn_pubmed(C=C_i, update=True)
+                    
+                    
+
+                model = bilearn.learn_pubmed(C=C_i, update=False)
+
+                metrics_i = bilearn.test_pubmed(model, default_stats=True)
+                
+                print "default f1", metrics_i["f1"]
+                print "default precision", metrics_i["precision"]
+                print "default recall", metrics_i["recall"]
+                print "default accuracy", metrics_i["per_integer_accuracy"]
+
+
+
+                metrics_i = bilearn.test_pubmed(model)
+                distant_metrics_l_n_axis.append(metrics_i[optimisation_type])
+
+                print "f1", metrics_i["f1"]
+                print "precision", metrics_i["precision"]
+                print "recall", metrics_i["recall"]
+                print "accuracy", metrics_i["per_integer_accuracy"]
+
+            distant_metrics_l_C_axis.append(distant_metrics_l_n_axis)
+
+
+        distant_metrics = np.array(distant_metrics_l_C_axis)
+
+
+        ####
+        ##  iteration 1-n_all (=distant supervised part)
+        ##   
+        ##  n_all = all data used up
+        ##
+        ##   iterate through C candidates, training on B2 and testing on B1
+        ##   repeat on each CV_tune split
+        ##
+        ##   score as maximum performance at *any* iteration
+        ##   record max performing C, and n
+        ##
+        ##   record mean highest performing C and n (C_iter_max, n_iter_max)
+        ####
+
+        print "FINAL RESULTS"
+
+
+        print "distant metrics"
+        # print "Iteration %d" % (i,)
+        print distant_metrics
+
+        C_max_index, n_max =  np.unravel_index(distant_metrics.argmax(), distant_metrics.shape)
+        C_max = C_candidates[C_max_index]
+
+        print "Max C=%f, max n=%d" % (C_max, n_max)
+
+        # then test on the tuned parameters
+        bilearn.reset(hide_reader_ids=B_indices,
+                      test_reader_ids=B_indices)
+
+
+        test_metrics = []
+        for n_i in range(n_max):
+            if n_i % 2:
+                bilearn.learn_cochrane(C=C_max, update=True)
+            elif n_i > 0:
+                # NB first run of loop runs this branch of the if.. else (0 % 2 == 0)
+                bilearn.learn_pubmed(C=C_max, update=True)
+                
+
+            model = bilearn.learn_pubmed(C=C_max, update=False)
+            metrics_i = bilearn.test_pubmed(model)
+
+            metrics_i["C_max"] = C_max
+            metrics_i["n_max"] = n_max
+            metrics_i["n"] = n_i
+
+            print "f1", metrics_i["f1"]
+            print "precision", metrics_i["precision"]
+            print "recall", metrics_i["recall"]
+            print "accuracy", metrics_i["per_integer_accuracy"]
+
+            test_metrics.append(metrics_i)
+
+        distant_metrics_l.append(test_metrics)
+
+    output = {"C_candidates": C_candidates,
+              "folds": folds,
+              "fold_size": fold_size,
+              "n_iter_max": n_iter_max,
+              "optimisation_type": optimisation_type,
+              "metrics": distant_metrics_l}
+
+    with open('bilearn11output.log', 'wb') as f:
+        pprint(output, f)
 
 
 
@@ -830,28 +1236,15 @@ def main():
 
 
 def test():
+    cross_validate()
+
+    # b = BiLearner(test_mode=True, window_size=4)
+    # b.generate_features() # test_mode just uses the first 250 cochrane reviews for speed
 
 
-    # with open('log4.txt', 'wb') as f:
-
-        # pprint("log 4: Variation on aperture sizes, with other parameters set to good averages (C=2.4, window_size=4)", f)
-
-    #     for n in range(1, 10):
-    b = BiLearner(test_mode=True, window_size=4)
-    b.generate_features() # test_mode just uses the first 250 cochrane reviews for speed
-
-    # for c in np.arange(0.4, 7.0, 0.2):
-        
-    # no_to_add = 600
-
-    # for a in range(5, 50, 5):
-    # pprint ("aperture %d; iterations %d" % (a, no_to_add/a))
-    b.reset(seed='annotations')
-
-    b.learn(iterations=30, C=2.4, aperture=20, aperture_type="absolute", sample_weight=5)
-    pprint(b.metrics)
             
 
 if __name__ == '__main__':
     main()
 
+print "2"

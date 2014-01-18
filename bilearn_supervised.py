@@ -998,8 +998,8 @@ def cross_validate():
 
     # set up parameters
     C_candidates = np.logspace(-1, 1, 5)
-    folds = 2
-    fold_size = 0.3
+    folds = 4
+    fold_size = 0.25
     # fold_size = float(1) / float(folds)
 
     # C_candidates = np.logspace(-1, 1, 3)
@@ -1010,7 +1010,7 @@ def cross_validate():
 
     n_iter_max = 25 # for distant supervision
     # optimisation_type = "accuracy" # which metric to optimise C on
-    optimisation_type = "per_integer_accuracy" # which metric to optimise C on
+    optimisation_type = "recall" # which metric to optimise C on
 
     # split annotated abstracts into: A - test, hidden 20%; B - train, visible 80%
     CV_main = ShuffleSplit(len(annotated_abstracts), n_iter=folds, test_size=fold_size)
@@ -1088,174 +1088,189 @@ def cross_validate():
     print "recall", np.mean([i["recall"] for i in metrics])
     print "accuracy", np.mean([i["per_integer_accuracy"] for i in metrics])
 
+    output = {"C_candidates": C_candidates,
+              "folds": folds,
+              "fold_size": fold_size,
+              "n_iter_max": n_iter_max,
+              "optimisation_type": optimisation_type,
+              "metrics": metrics}
+
+    with open('supervised_output02.log', 'wb') as f:
+        pprint(output, f)
 
 
 
-    distant_metrics_overall = []
+
+    # distant_metrics_overall = []
     
-    for B_indices, A_indices in CV_main:
+    # for B_indices, A_indices in CV_main:
 
-        print "DISTANT"
+    #     print "DISTANT"
 
-        CV_tune = ShuffleSplit(len(B_indices), n_iter=folds, test_size=fold_size)
+    #     CV_tune = ShuffleSplit(len(B_indices), n_iter=folds, test_size=fold_size)
 
         
-        distant_metrics_l = []
+    #     distant_metrics_l = []
 
-        for B2_B_indices, B1_B_indices in CV_tune:
+    #     for B2_B_indices, B1_B_indices in CV_tune:
 
-            # then get the main indices (i.e. in annotated_abstracts)
-            B1_indices, B2_indices = B_indices[B1_B_indices], B_indices[B2_B_indices]
+    #         # then get the main indices (i.e. in annotated_abstracts)
+    #         B1_indices, B2_indices = B_indices[B1_B_indices], B_indices[B2_B_indices]
 
 
-            ####
-            ## lookup biviewer IDs for A and B1
-            ##  and hide these from the pool of unlabelled data
-            ####
-            hidden_abstract_ids = np.append(A_indices, B1_indices)
+    #         ####
+    #         ## lookup biviewer IDs for A and B1
+    #         ##  and hide these from the pool of unlabelled data
+    #         ####
+    #         hidden_abstract_ids = np.append(A_indices, B1_indices)
 
             
-            # bilearn.seed_y_annotations(annotation_viewer=annotated_abstracts,
-            #                             hide_reader_ids=hidden_abstract_ids,
-            #                             test_reader_ids=B1_indices)
+    #         # bilearn.seed_y_annotations(annotation_viewer=annotated_abstracts,
+    #         #                             hide_reader_ids=hidden_abstract_ids,
+    #         #                             test_reader_ids=B1_indices)
 
-            distant_metrics_l_C_axis = []
+    #         distant_metrics_l_C_axis = []
 
-            for C_i in C_candidates:
-                distant_metrics_l_n_axis = []
+    #         for C_i in C_candidates:
+    #             distant_metrics_l_n_axis = []
                 
-                bilearn.seed_y_annotations(annotation_viewer=annotated_abstracts,
-                            hide_reader_ids=hidden_abstract_ids,
-                            test_reader_ids=B1_indices)
+    #             bilearn.seed_y_annotations(annotation_viewer=annotated_abstracts,
+    #                         hide_reader_ids=hidden_abstract_ids,
+    #                         test_reader_ids=B1_indices)
 
-                for n_i in range(n_iter_max):
-                    print n_i
+    #             for n_i in range(n_iter_max):
+    #                 print n_i
 
-                    if (n_i % 2) and (n_i > 0):
-                        bilearn.learn_pubmed(C=C_i, update=True)
-                    else:
-                        # NB first run of loop runs this branch of the if.. else (0 % 2 == 0)
-                        bilearn.learn_cochrane(C=C_i, update=True)
+    #                 if (n_i % 2) and (n_i > 0):
+    #                     bilearn.learn_pubmed(C=C_i, update=True)
+    #                 else:
+    #                     # NB first run of loop runs this branch of the if.. else (0 % 2 == 0)
+    #                     bilearn.learn_cochrane(C=C_i, update=True)
                         
 
-                    model = bilearn.learn_pubmed(C=C_max_supervised, update=False)
-                    metrics_i = bilearn.test_pubmed(model)
-                    distant_metrics_l_n_axis.append(metrics_i[optimisation_type])
+    #                 model = bilearn.learn_pubmed(C=C_max_supervised, update=False)
+    #                 metrics_i = bilearn.test_pubmed(model)
+    #                 distant_metrics_l_n_axis.append(metrics_i[optimisation_type])
 
-                    print "f1", metrics_i["f1"]
-                    print "precision", metrics_i["precision"]
-                    print "recall", metrics_i["recall"]
-                    print "accuracy", metrics_i["per_integer_accuracy"]
+    #                 print "f1", metrics_i["f1"]
+    #                 print "precision", metrics_i["precision"]
+    #                 print "recall", metrics_i["recall"]
+    #                 print "accuracy", metrics_i["per_integer_accuracy"]
 
-                distant_metrics_l_C_axis.append(distant_metrics_l_n_axis)
+    #             distant_metrics_l_C_axis.append(distant_metrics_l_n_axis)
 
-            distant_metrics_l.append(distant_metrics_l_C_axis)
+    #         distant_metrics_l.append(distant_metrics_l_C_axis)
         
         
 
-        distant_metrics = np.array(distant_metrics_l)
+    #     distant_metrics = np.array(distant_metrics_l)
 
 
-        ####
-        ##  iteration 1-n_all (=distant supervised part)
-        ##   
-        ##  n_all = all data used up
-        ##
-        ##   iterate through C candidates, training on B2 and testing on B1
-        ##   repeat on each CV_tune split
-        ##
-        ##   score as maximum performance at *any* iteration
-        ##   record max performing C, and n
-        ##
-        ##   record mean highest performing C and n (C_iter_max, n_iter_max)
-        ####
+    #     ####
+    #     ##  iteration 1-n_all (=distant supervised part)
+    #     ##   
+    #     ##  n_all = all data used up
+    #     ##
+    #     ##   iterate through C candidates, training on B2 and testing on B1
+    #     ##   repeat on each CV_tune split
+    #     ##
+    #     ##   score as maximum performance at *any* iteration
+    #     ##   record max performing C, and n
+    #     ##
+    #     ##   record mean highest performing C and n (C_iter_max, n_iter_max)
+    #     ####
 
-        print "FINAL RESULTS"
+    #     print "FINAL RESULTS"
 
-        print
-        print "distant supervision metrics array"
+    #     print
+    #     print "distant supervision metrics array"
     
 
     
 
 
-        C_max_list = []
+    #     C_max_list = []
 
-        n_max_list = []
+    #     n_max_list = []
 
-        C_n_list = []
+    #     C_n_list = []
 
-        print "distant metrics"
-        print distant_metrics
+    #     print "distant metrics"
+    #     print distant_metrics
 
-        for i, row in enumerate(distant_metrics):
-            print "Iteration %d" % (i,)
-            print row
-            C_i, n_i =  np.unravel_index(row.argmax(), row.shape)
-            print C_i, n_i
-            C_max_list.append(C_i)
-            n_max_list.append(n_i)
+    #     for i, row in enumerate(distant_metrics):
+    #         print "Iteration %d" % (i,)
+    #         print row
+    #         C_i, n_i =  np.unravel_index(row.argmax(), row.shape)
+    #         print C_i, n_i
+    #         C_max_list.append(C_i)
+    #         n_max_list.append(n_i)
 
-            C_n_list.append((C_i, n_i))
-
-
-        print C_max_list
-        print n_max_list
-        print C_n_list
-
-        C_n_list.sort(key=lambda x: x[0])
-
-        middle_index = len(C_n_list)/2
-
-        C_max, n_max = C_n_list[middle_index]
-
-        # C_max = np.mean(C_candidates[C_max_list])
-        print "C_max ", C_max
-        # n_max = int(math.ceil(np.median(n_max_list)))
-        print "n_max", n_max
+    #         C_n_list.append((C_i, n_i))
 
 
-        # then test on the tuned parameters
-        bilearn.seed_y_annotations(annotation_viewer=annotated_abstracts,
-                    hide_reader_ids=A_indices,
-                    test_reader_ids=A_indices)
+    #     print C_max_list
+    #     print n_max_list
+    #     print C_n_list
+
+    #     C_n_list.sort(key=lambda x: x[0])
+
+    #     middle_index = len(C_n_list)/2
+
+    #     C_max, n_max = C_n_list[middle_index]
+
+    #     # C_max = np.mean(C_candidates[C_max_list])
+    #     print "C_max ", C_max
+    #     # n_max = int(math.ceil(np.median(n_max_list)))
+    #     print "n_max", n_max
 
 
-        # distant_metrics_final_l = []
+    #     # then test on the tuned parameters
+    #     bilearn.seed_y_annotations(annotation_viewer=annotated_abstracts,
+    #                 hide_reader_ids=A_indices,
+    #                 test_reader_ids=A_indices)
+
+
+    #     # distant_metrics_final_l = []
         
 
-        for n_i in range(n_max):
-            print n_i
+    #     for n_i in range(n_max):
+    #         print n_i
 
-            if (n_i % 2) and (n_i > 0):
-                bilearn.learn_pubmed(C=C_max, update=True)
-            else:
-                # NB first run of loop runs this branch of the if.. else (0 % 2 == 0)
-                bilearn.learn_cochrane(C=C_max, update=True)
+    #         if (n_i % 2) and (n_i > 0):
+    #             bilearn.learn_pubmed(C=C_max, update=True)
+    #         else:
+    #             # NB first run of loop runs this branch of the if.. else (0 % 2 == 0)
+    #             bilearn.learn_cochrane(C=C_max, update=True)
                 
 
-            model = bilearn.learn_pubmed(C=C_max_supervised, update=False)
-            metrics_i = bilearn.test_pubmed(model)
-            # distant_metrics_final_l.append(metrics_i)
+    #         model = bilearn.learn_pubmed(C=C_max_supervised, update=False)
+    #         metrics_i = bilearn.test_pubmed(model)
+    #         # distant_metrics_final_l.append(metrics_i)
 
-            print "f1", metrics_i["f1"]
-            print "precision", metrics_i["precision"]
-            print "recall", metrics_i["recall"]
-            print "accuracy", metrics_i["per_integer_accuracy"]
+    #         print "f1", metrics_i["f1"]
+    #         print "precision", metrics_i["precision"]
+    #         print "recall", metrics_i["recall"]
+    #         print "accuracy", metrics_i["per_integer_accuracy"]
 
-        metrics_i["C_max"] = C_max
-        metrics_i["n_max"] = n_max
-        distant_metrics_overall.append(metrics_i) #add the final iteration performance
+    #     metrics_i["C_max"] = C_max
+    #     metrics_i["n_max"] = n_max
+    #     distant_metrics_overall.append(metrics_i) #add the final iteration performance
 
 
-    print "OVERALL - DISTANT"
-    print "C's", ','.join([str(i["C_max"]) for i in distant_metrics_overall])
-    print "n's", ','.join([str(i["n_max"]) for i in distant_metrics_overall])
-    print
-    print "f1", np.mean([i["f1"] for i in distant_metrics_overall])
-    print "precision", np.mean([i["precision"] for i in distant_metrics_overall])
-    print "recall", np.mean([i["recall"] for i in distant_metrics_overall])
-    print "accuracy", np.mean([i["per_integer_accuracy"] for i in distant_metrics_overall])
+    # print "OVERALL - DISTANT"
+    # print "C's", ','.join([str(i["C_max"]) for i in distant_metrics_overall])
+    # print "n's", ','.join([str(i["n_max"]) for i in distant_metrics_overall])
+    # print
+    # print "f1", np.mean([i["f1"] for i in distant_metrics_overall])
+    # print "precision", np.mean([i["precision"] for i in distant_metrics_overall])
+    # print "recall", np.mean([i["recall"] for i in distant_metrics_overall])
+    # print "accuracy", np.mean([i["per_integer_accuracy"] for i in distant_metrics_overall])
+
+    # print distant_metrics_overall
+
+    # with open('bilearn3output.log', 'wb') as f:
+    #     pprint(distant_metrics_overall, f)
 
 
 

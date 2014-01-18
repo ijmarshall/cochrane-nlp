@@ -17,7 +17,7 @@ from pmreader import *
 from progressbar import ProgressBar
 from rm5reader import *
 
-
+import os
 
 
 ### set local paths from CNLP.INI
@@ -139,12 +139,52 @@ class PDFBiViewer(BiViewer):
         BiViewer.init_common_variables(self, linkfile=linkfile, **kwargs)
 
 
-    def second_view(self, study):
+    def second_view(self, study, cachepath="data/cache/"):
         """ overrides code which gets pubmed abstract
         and instead returns the full text of an associated PDF"""
-        pm = PdfReader(PDF_PATH + study['pdf_filename'])
-        return pm.get_text()
+
+        try:
+            # try to read first as plain text from the cache if exists
+            with open(cachepath + os.path.splitext(os.path.basename(study['pdf_filename']))[0] + '.txt', 'rb') as f:
+                text = f.read()
+            return text
+        except:
+            # otherwise run through pdftotext
+            pm = PdfReader(PDF_PATH + study['pdf_filename'])
+            return pm.get_text()
+
+    def cache_pdfs(self, cachepath="data/cache/", refresh=False):
+
+        if not os.path.exists(cachepath):
+            os.makedirs(cachepath)
+        
+        all_pdfs = set(os.path.splitext(os.path.basename(entry["pdf_filename"]))[0] for entry in self.index_data)
+
+        if not refresh:
+            already_done = set(os.path.splitext(os.path.basename(filename))[0] for filename in glob(cachepath + "*.txt"))
+            todo = list(all_pdfs - already_done)
+        else:
+            todo = list(all_pdfs)
+
+        if not todo:
+            print "cache up to date"
+        else:
+            pb = ProgressBar(len(todo), timer=True)
+
+        for pdf_filename in todo:
             
+            pb.tap()
+
+            pm = PdfReader(PDF_PATH + pdf_filename + '.pdf')
+            text = pm.get_text()
+
+            with open(cachepath + pdf_filename + '.txt', 'wb') as f:
+                f.write(text)
+
+
+
+
+
 
     
 

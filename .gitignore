@@ -1,10 +1,13 @@
 *.pyc
-*.ipynb
 *_beta.py
 CNLP.INI
 confused.txt
 pmccorpusdownload.py
 testdata/
+old/
+results/
+data/cache/
+.ipynb_checkpoints/
 
 
 *.INI
@@ -20,3 +23,7 @@ log2.txt
 log3.txt
 
 log4.txt
+
+*.pdf
+
+*.log
