@@ -3,9 +3,7 @@
 #   Predicting risk of bias from full text papers   #
 #                                                   #
 #####################################################
-
-
-
+import pdb 
 
 from tokenizer import sent_tokenizer, word_tokenizer
 import biviewer
@@ -157,7 +155,7 @@ def main():
                 break 
 
     y = np.array(y).flatten()
-
+    pdb.set_trace()
     print "Finished! %d studies included domain %s" % (counter, test_domain)
 
 
@@ -168,8 +166,6 @@ def test_pdf_cache():
 
     pdfviewer = biviewer.PDFBiViewer()
     pdfviewer.cache_pdfs()
-
-
 
 
 
