@@ -140,9 +140,9 @@ def main():
                         pdf_sent_bow = set((word.lower() for word in pdf_sent))
 
                         if not pdf_sent_bow or not quote_sent_bow:
-                            continue
-
-                        prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
+                            prop_quote_in_sent = 0
+                        else:
+                            prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
 
                         # print "%.0f" % (prop_quote_in_sent,)
 
