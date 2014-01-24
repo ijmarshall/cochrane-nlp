@@ -113,7 +113,7 @@ class BiViewer():
         """ parses pubmed abstract file for base class
         or can be overridden in subclass to return other
         data, e.g. PDF text"""
-        pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + study['pm_filename'])
+        pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + study['pmid'] + ".xml")
         return pm.text_all()
 
     
@@ -126,6 +126,7 @@ class BiViewer():
 
 
 
+
 class PDFBiViewer(BiViewer):
     """
     Accesses parallel data from Cochrane reviews and associated
@@ -134,9 +135,34 @@ class PDFBiViewer(BiViewer):
     PdfReader class located in journalreaders.py)
     """
 
-    def __init__(self, linkfile="data/pdf_present_links.pck", **kwargs):
+    def __init__(self, **kwargs):
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'studypdf'])
-        BiViewer.init_common_variables(self, linkfile=linkfile, **kwargs)
+        BiViewer.init_common_variables(self, **kwargs)
+        self.pdf_index = self.get_pdf_index()
+
+        # limit self index to those studies with linked PDFs
+        self.index_data = [item for item in self.index_data if item["pmid"] in self.pdf_index]
+
+
+    def get_pdf_index(self):
+    	"""
+    	Makes an index (dict) of pdfs by pubmed id
+    	RULES:
+    	PDF files must be named where the last consecutive number string
+    	is the pubmed ID (or just named PMID.pdf)
+    	"""
+
+    	pdf_filenames_all = glob(PDF_PATH + "*.pdf")
+    	pdf_index = {}
+
+    	for filename in pdf_filenames_all:
+    		
+    		pmids = re.search("([1-9][0-9]*)\.pdf", filename)
+    		if pmids:
+    			pdf_index[pmids.group(1)] = filename
+    	return pdf_index
+
+
 
 
     def second_view(self, study, cachepath="data/cache/"):
@@ -145,12 +171,12 @@ class PDFBiViewer(BiViewer):
 
         try:
             # try to read first as plain text from the cache if exists
-            with open(cachepath + os.path.splitext(os.path.basename(study['pdf_filename']))[0] + '.txt', 'rb') as f:
+            with open(cachepath + os.path.splitext(os.path.basename(self.pdf_index[study['pmid']]))[0] + '.txt', 'rb') as f:
                 text = f.read()
             return text
         except:
             # otherwise run through pdftotext
-            pm = PdfReader(PDF_PATH + study['pdf_filename'])
+            pm = PdfReader(self.pdf_index[study['pmid']])
             return pm.get_text()
 
     def cache_pdfs(self, cachepath="data/cache/", refresh=False):
@@ -158,7 +184,7 @@ class PDFBiViewer(BiViewer):
         if not os.path.exists(cachepath):
             os.makedirs(cachepath)
         
-        all_pdfs = set(os.path.splitext(os.path.basename(entry["pdf_filename"]))[0] for entry in self.index_data)
+        all_pdfs = set(os.path.splitext(os.path.basename(self.pdf_index[entry['pmid']]))[0] for entry in self.index_data)
 
         if not refresh:
             already_done = set(os.path.splitext(os.path.basename(filename))[0] for filename in glob(cachepath + "*.txt"))
@@ -180,8 +206,6 @@ class PDFBiViewer(BiViewer):
 
             with open(cachepath + pdf_filename + '.txt', 'wb') as f:
                 f.write(text)
-
-
 
 
 
