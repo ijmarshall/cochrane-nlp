@@ -19,6 +19,13 @@ import numpy as np
 
 QUALITY_QUOTE_REGEX = re.compile("Quote\:\s*[\'\"](.*?)[\'\"]")
 
+CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
+                "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
+                # there is a seventh domain "Other", but not listed here since covers multiple areas
+                # see data/domain_names.txt for various other criteria
+                # all of these are available via QualityQuoteReader
+
+
 
 def word_sent_tokenize(raw_text):
     return [(word_tokenizer.tokenize(sent)) for sent in sent_tokenizer.tokenize(raw_text)]
@@ -100,9 +107,7 @@ def main():
 
     domains = q.domains()
 
-    test_domain = "Blinding of participants and personnel"
-
-    print domains
+    test_domain = CORE_DOMAINS[1]
 
 
     counter = 0
@@ -132,7 +137,10 @@ def main():
                     
                         pdf_sent_bow = set((word.lower() for word in pdf_sent))
 
-                        prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
+                        if not pdf_sent_bow or not quote_sent_bow:
+                            prop_quote_in_sent = 0
+                        else:
+                            prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
 
                         # print "%.0f" % (prop_quote_in_sent,)
 
