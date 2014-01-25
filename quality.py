@@ -20,6 +20,7 @@ import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import cross_validation
 from sklearn import svm
+from sklearn.linear_model import SGDClassifier
 
 QUALITY_QUOTE_REGEX = re.compile("Quote\:\s*[\'\"](.*?)[\'\"]")
 
@@ -132,7 +133,7 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
                 #### for now lump 'unknown' together with 
                 #### 'no'
                 if quality_rating == "UNKNOWN":
-                    quality_rating == "NO"
+                    quality_rating = "NO"
 
                 y.append(quality_rating)
 
@@ -145,7 +146,7 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
         #    pdb.set_trace()
         
     #pdb.set_trace()
-    vectorizer = CountVectorizer(max_features=5000)
+    vectorizer = CountVectorizer(max_features=10000)
     Xvec = vectorizer.fit_transform(X)            
 
     return Xvec, y
@@ -156,7 +157,7 @@ def predict_domains_for_documents():
     # note that asarray call below, which seems necessary for 
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
-
+    clf = SGDClassifier(loss="hinge", penalty="l2")
     cv_res = cross_validation.cross_val_score(
                 clf, X, numpy.asarray(y), 
                 score_func=sklearn.metrics.precision_recall_fscore_support, cv=5)
