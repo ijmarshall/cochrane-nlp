@@ -54,10 +54,11 @@ class QualityQuoteReader():
     iterates through Cochrane Risk of Bias information for domains where there is a quote only
     """
 
-    def __init__(self):
+    def __init__(self, quotes_only=True):
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'studypdf'])
         self.pdfviewer = biviewer.PDFBiViewer()
         self.domain_map = load_domain_map()
+        self.quotes_only = quotes_only
 
 
     def __iter__(self):
@@ -74,7 +75,7 @@ class QualityQuoteReader():
 
             for domain in quality_data:
                 domain['DESCRIPTION'] = self.preprocess_cochrane(domain['DESCRIPTION'])
-                if QUALITY_QUOTE_REGEX.match(domain['DESCRIPTION']):
+                if QUALITY_QUOTE_REGEX.match(domain['DESCRIPTION']) or not self.quotes_only:
                     domain["DOMAIN"] = self.domain_map[domain["DOMAIN"]] # map domain titles to our core categories
                     quality_quotes.append(domain)
 
@@ -114,7 +115,7 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
     '''
     X, y = [], []
     #study_counter = 0
-    q = QualityQuoteReader()
+    q = QualityQuoteReader(quotes_only=True)
 
     map_lbl = lambda lbl: 1 if lbl=="YES" else -1
 
@@ -252,5 +253,5 @@ def test_pdf_cache():
 
 
 if __name__ == '__main__':
-    main()
+    predict_domains_for_documents()
     # test_pdf_cache()
