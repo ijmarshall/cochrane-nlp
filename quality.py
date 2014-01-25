@@ -115,10 +115,14 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
     X, y = [], []
     #study_counter = 0
     q = QualityQuoteReader()
+
+    map_lbl = lambda lbl: 1 if lbl=="YES" else -1
+
     for i, study in enumerate(q):
         domain_in_study = False
         pdf_tokens = study.studypdf#_simple_BoW(study)
-        
+            
+
         for domain in study.cochrane["QUALITY"]:
             # note that the 2nd clause deals with odd cases 
             # in which a domain is *repeated* for a study,
@@ -135,7 +139,8 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
                 if quality_rating == "UNKNOWN":
                     quality_rating = "NO"
 
-                y.append(quality_rating)
+
+                y.append(map_lbl(quality_rating))
 
                 
         if not domain_in_study:
@@ -160,7 +165,7 @@ def predict_domains_for_documents():
     clf = SGDClassifier(loss="hinge", penalty="l2")
     cv_res = cross_validation.cross_val_score(
                 clf, X, numpy.asarray(y), 
-                score_func=sklearn.metrics.precision_recall_fscore_support, cv=5)
+                score_func=sklearn.metrics.f1_score, cv=5)
     
     
     
