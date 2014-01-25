@@ -10,12 +10,16 @@ import biviewer
 import re
 import progressbar
 import collections
-
+import string
 from unidecode import unidecode
 
 import yaml
 import numpy as np
 
+import sklearn
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn import cross_validation
+from sklearn import svm
 
 QUALITY_QUOTE_REGEX = re.compile("Quote\:\s*[\'\"](.*?)[\'\"]")
 
@@ -94,12 +98,75 @@ class QualityQuoteReader():
 
 
 
+def _get_domains_from_study(study):
+    return [domain["DOMAIN"] for domain in study.cochrane["QUALITY"]]
+
+def _simple_BoW(study):
+    return [s for s in word_tokenizer.tokenize(study.studypdf) 
+                if not s in string.punctuation]
+
+def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
+    '''
+    return X, y for the specified test domain. here
+    X will be of dimensionality equal to the number of 
+    studies for which we have the test_domain data. 
+    '''
+    X, y = [], []
+    #study_counter = 0
+    q = QualityQuoteReader()
+    for i, study in enumerate(q):
+        domain_in_study = False
+        pdf_tokens = study.studypdf#_simple_BoW(study)
+        
+        for domain in study.cochrane["QUALITY"]:
+            # note that the 2nd clause deals with odd cases 
+            # in which a domain is *repeated* for a study,
+            if domain["DOMAIN"] == test_domain and not domain_in_study:
+                domain_in_study = True
+                #study_counter += 1
+                #pdf_tokens = word_sent_tokenize(study.studypdf)
+
+                X.append(pdf_tokens)
+
+                quality_rating = domain["RATING"]
+                #### for now lump 'unknown' together with 
+                #### 'no'
+                if quality_rating == "UNKNOWN":
+                    quality_rating == "NO"
+
+                y.append(quality_rating)
+
+                
+        if not domain_in_study:
+            #y.append("MISSING")
+            pass
+            
+        #if len(y) != len(X):
+        #    pdb.set_trace()
+        
+    #pdb.set_trace()
+    vectorizer = CountVectorizer(max_features=5000)
+    Xvec = vectorizer.fit_transform(X)            
+
+    return Xvec, y
+
+def predict_domains_for_documents():
+    X, y = _get_study_level_X_y()
+
+    # note that asarray call below, which seems necessary for 
+    # reasons that escape me (see here 
+    # https://github.com/scikit-learn/scikit-learn/issues/2508)
+
+    cv_res = cross_validation.cross_val_score(
+                clf, X, numpy.asarray(y), 
+                score_func=sklearn.metrics.precision_recall_fscore_support, cv=5)
+    
+    
+    
 
 
 
 def main():
-
-
     q = QualityQuoteReader()
 
     y = []
@@ -113,9 +180,9 @@ def main():
     counter = 0
 
     for i, study in enumerate(q):
-
         for domain in study.cochrane["QUALITY"]:
             if domain["DOMAIN"] == test_domain:
+                #pdb.set_trace()
                 try:
                     quote = QUALITY_QUOTE_REGEX.search(domain["DESCRIPTION"]).group(1)
                 except:
