@@ -3,6 +3,7 @@ Random sequence generation:
   - Random sequence generation (selection bias)
   - Random sequence generation
   - Adequate sequence generation?
+  - Randomisation
 
 Allocation concealment:
   - Adequate sequence generation
@@ -10,8 +11,13 @@ Allocation concealment:
   - Allocation concealment?
   - Allocation concealment
   - Allocation concealment (selection bias)
+  - Recruitment bias
+  - Concealment of allocation (RCT / CCT)
+  - Knowledge of the allocation adequately prevented(ITS)?
+  - Selective recruitment of participants
 
 Blinding of participants and personnel:
+  - Blinding (participant)
   - Blinding
   - Blinding of participants/carers?
   - Blinding? (Participant and investigator)
@@ -34,6 +40,22 @@ Blinding of participants and personnel:
   - Blinding during pre-, peri- and postoperative care?
   - Blinding (performance bias and detection bias)
   - Blinding of the providers?
+  - Blinding participants
+  - Adequate blinding of patients?
+  - Blinding of participants?
+  - Reporting of participants by allocation group?
+  - Blinding of participants/personnel (efficacy outcomes);performance bias
+  - Blinding of care providers?
+  - Adequate blinding of physicians/physical therapists?
+  - Blinding of carers?
+  - Free from performance bias?
+  - Blinding of participants/personnel (safety outcomes);performance bias
+  - Blinding clinicians
+  - Blinding method
+  - Blinding, quality assessment
+  - Knowledge of the interventions adequately prevented during the study?
+  - Blinding (RCT / CCT)
+
 
 Blinding of outcome assessment:
   - Blinded data collection?
@@ -64,6 +86,28 @@ Blinding of outcome assessment:
   - Blinded adjudification of endpoints?
   - Risk of bias in recall of falls
   - Adequate blinding of outcome assessors?
+  - Assessment blinding
+  - Blinding of outcome assessors
+  - Blinding - Outcome Assessors
+  - Blinding of assessment of subjective outcomes
+  - Blinding of outcome assessment (detection bias) (reoperation, treatment failure, range of motion)
+  - Blinding of Outcome Assessment
+  - Blinding (assessor)
+  - Blinding of outcome assessment (detection bias) (Patient satisfaction, health status).
+  - Blinding of outcome assessment (efficacy outcomes);detection bias
+  - Blinded assessment of outcomes (CBA)
+  - Blinding of outcome assessment (safety outcomes);detection bias
+  - Withdrawals and drop-outs
+  - Intervention likely to affect data collection (protection against detection bias) (ITS)
+  - Intervention unlikely to affect data collection - ITS
+  - Intervention unlikely to affect data collection (ITS only)
+  - Intervention unlikely to affect / bias data collection?
+  - Blinded assessment of outcomes (ITS)
+  - Blinding of outcome assessors (detection bias) - ITS
+  - Outcome assessors blinded to treatment allocation
+  - Blinding outcome assessor
+  - Blinding pathologist
+
 
 Incomplete outcome data:
   - Incomplete outcome data (attrition bias)
@@ -85,25 +129,56 @@ Incomplete outcome data:
   - Incomplete data addressed?
   - Intention-to-treat analysis and loss to follow up
   - Intention to treat analysis?
+  - Adequate follow up?
+  - Intention to treat analysis
+  - intention to treat analysis?
+  - Incomplete data outcome reported?
+  - Intention-to-treat/Drop-outs?
+  - Incomplete outcome data addressed? (Post-treatment)
+  - Intention-to-treat?
+  - Completeness of (follow up) data?
+  - Intention-to-treat analysis performed?
+  - Incomplete outcome data addressed (ITS) ?
+  - Withdrawals or dropouts?
+  - "Incomplete outcome reporting: intention-to-treat analysis performed?"
+  - Completeness of follow-up?
+  - Intention to Treat Analysis
+  - Losses to follow-up less than 20%
+  - Incomplete outcome data (attrition bias) - ITS
+  - Completeness of data set (ITS)
+
 
 Selective reporting:
   - Selective reporting (reporting bias)
   - Selective outcome data
   - Free of selective reporting?
+  - Free of selective reporting
+  - Selective reporting
+  - Free of selected reporting (ITS) ?
+  - Selective reporting (reporting bias) - ITS
+  - Outcome Reporting
+  - Outcomes reported
+
 
 Other sources of bias - General:
   - Other sources of potential bias
   - Other bias
   - Free of other biases?
   - Free of other bias?
+  - Free of other bias (ITS) ?
+  - Free of other sources of bias?
+  - Other sources of bias
+  - Free of other bias
+  - Other bias - ITS
 
 Other sources of bias - Similarity of groups at baseline:
+  - Free from baseline imbalance?
   - Free of other bias? Baseline comparability
   - Baseline imbalance? (were groups balanced at baseline)
   - No major imbalances in baseline characteristics?
   - Similarity of baseline characteristics?
   - Baseline (provider) characteristics similar
-  - 'Other bias: Comparability of cohorts'
+  - "Other bias: Comparability of cohorts"
   - Baseline assessment?
   - Baseline characteristics balanced?
   - Baseline characteristics similar?
@@ -119,6 +194,43 @@ Other sources of bias - Similarity of groups at baseline:
   - Balance in baseline characteristics
   - Baseline (patient) characteristics similar
   - Comparability at Baseline
+  - Baseline Outcomes similar?
+  - "Other bias: Selection of comparison cohort"
+  - Imbalance of outcome measures at baseline
+  - Baseline comparability?
+  - Baseline outcome measurements similar
+  - Free of baseline imbalance?
+  - Baseline outcome measures similar
+  - Similar baseline outcome measurements
+  - Baseline characteristics similar (selection bias)
+  - Selection bias (imbalance in baseline characteristics)
+  - No baseline imbalance between groups
+  - Baseline Characteristics?
+  - Important prognostic indicators at baseline
+  - Free from baseline imbalance bias?
+  - Free of other bias - were groups similar at baseline regarding the most important prognostic indicators?
+  - Baseline measures
+  - Baseline similar?
+  - Baseline imbalance
+  - No recruitment bias
+  - Similar baseline characteristics
+  - Groups similar at baseline?
+  - Comparability of intervention and control group characteristics at baseline
+  - Baseline characteristics similar
+  - Baseline outcome measurements similar (selection bias)
+  - Comparability of exercise and control group at entry
+  - Baseline comparability
+  - Were the treatment and control group comparable at entry?
+
+
+Other sources of bias - quality of intervention used:
+  - Surgeons'' experience with trial operations
+
+Other sources of bias - Similarity of outcome assessment between groups:
+  - Timing outcome assessments similar?
+  - Timing of outcome assessment similar in all groups?
+  - Free of other bias - was the timing of the outcome assessment similar in all groups?
+  - Timing of the outcome assessment across groups
 
 Other sources of bias - Explicitly stated inclusion criteria:
   - Explicit inclusion/exclusion criteria?
@@ -144,6 +256,19 @@ Other sources of bias - Maintenance of group allocation:
   - Protection against contamination?
   - Co-interventions avoided or similar?
   - Compliance acceptable?
+  - Protection from contamination?
+  - Free of contamination?
+  - No contamination?
+  - Co-interventions
+  - Protection against contamination (RCT / CCT)
+  - Protection against contamination (CBA)
+  - Co interventions avoided or similar?
+  - Contamination protection (contamination bias)
+  - Adequate protection against contamination
+  - Compliance
+  - Study protected against contamination
+  - "Other bias: Ascertainment of exposure"
+
 
 Other sources of bias - Reliability of outcome measures chosen:
   - Reliable outcome measurements
@@ -152,6 +277,24 @@ Other sources of bias - Reliability of outcome measures chosen:
   - Rater agreement
   - Multiple raters
   - Standardization of study endpoints?
+  - Data collection methods valid and reliable?
+  - Definitions and measurements of outcomes
+  - Cramp diary (recall bias)
+  - Reliable ascertainment of falls/fallers outcome
+  - Reliability of outcome measurement (RCT / CCT)
+  - Reliable outcome measurement (ITS)
+  - Reliable outcome measurement (CBA)
+  - Reliable primary outcome measure
+
+Other sources of bias - Adequate length of follow up:
+  - "Follow-up ≧ 1 year"
+  - Study duration
+  - Was the surveillance active, and of clinically appropriate duration (i.e. at least 3 months post intervention)?
+  - Appropriateness of duration of surveillance
+  - Follow-up of patients/caregivers (CBA)
+
+Other sources of bias - Similarity of personel delivering intervention and control:
+  - Characteristics of intervention and control providers (CBA)
 
 Other sources of bias - Financial/other conflicts of interest:
   - Free of vested interest bias?
@@ -163,18 +306,42 @@ Other sources of bias - Financial/other conflicts of interest:
   - Free of sponsor bias?
   - Financial support (no financial interest)?
   - Vested interest bias
+  - Free of academic bias?
+  - Academic bias
+  - Free from academic bias (assessed from primary author)?
+  - Free of other bias? Funding
+  - Free from academic bias?
+  - Free of Sponsorship bias?
+  - Financial support for trial or trialists?
+  - Funding by commercial organisation avoided?
+  - Sponsor bias
+  - Free from sponsor bias?
+  - Funding by non-profit organisation?
+
 
 Other sources of bias - Early halting of trial:
   - Free from early stopping?
+  - Free from early stopping bias?
+  - Free of early stopping bias?
+  - Free of early stopping?
+  - Early stopping of trial
 
 Other sources of bias - Journal where study was published:
   - Confounding by journal quality
 
 Other sources of bias - Characteristics of intervention:
-  - Surgeons' experience with trial operations
+  - Surgeons'' experience with trial operations
 
 Other sources of bias - Statistical reliability:
   - Power calculation
+  - Sample size calculation
+  - Power calculation?
+  - Size
+  - "Large Cohort "
+  - No loss of cluster bias
+  - Loss of clusters
+  - Incorrect analysis
+  - Methods of analysis adequate for cluster randomised trials
 
 Other sources of bias - Unclear:
   - Characteristics for control site
@@ -182,8 +349,37 @@ Other sources of bias - Unclear:
   - Follow-up of professionals?
   - Knowledge of allocated interventions adequate (Patient satisfaction, health status)
   - Free of expertise bias?
+  - Intervention is independent of other changes?
+  - Free of other bias? - as specified in the description
+  - Intervention independent of other changes (ITS only)  
+  - Implementation Integrity
+  - Intervention independent (ITS) ?
+  - Analysed appropriately (ITS) ?
+  - Shape of effect pre-specified (ITS) ?
+  - Unlikely to affect data collection (ITS) ?
+  - Shape of the intervention prespecified (ITS only)
+  - "Other bias: Representativeness of exposed cohort"
+  - Follow-up (RCT / CCT)
+  - Reason for number of points pre- and post-intervention (ITS)
+  - Knowledge of allocated intervention adequate (Process variables)
+  - Summary Assessment of Bias
+  - Data analysed appropriately (ITS)
+  - Shape of intervention effect specified (ITS)
+  - Intervention independent of other changes - ITS
+  - Comparability with individually randomised trials
+  - Baseline measurement (CBA)
+  - Shape of Intervention effect pre-specified - ITS
+  - Baseline measurement (RCT / CCT)
+  - Intervention dependent of other changes (protection against secular trends) (ITS)
+
+Overal judgements for a study:
+  - Summary Assessment?
+  - Trials according to risk of bias
+  - Risk of bias overall?
+
 
 Inseparable combinations of other criteria:
-  - Adequate blinding of participants, personnel and outcome assessors?
+  - "Adequate blinding of participants, personnel and outcome assessors?"
   - Random sequence generation/allocation concealment (selection bias)
-
+  - Summary Assessment of Bias?
+  - Extra performance bias (care programmes and surgical experience, etc.)
