@@ -12,15 +12,19 @@ import progressbar
 import collections
 import string
 from unidecode import unidecode
+import codecs
 
 import yaml
 import numpy as np
+import math
 
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import cross_validation
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
+
+from collections import Counter
 
 QUALITY_QUOTE_REGEX = re.compile("Quote\:\s*[\'\"](.*?)[\'\"]")
 
@@ -36,9 +40,67 @@ def word_sent_tokenize(raw_text):
     return [(word_tokenizer.tokenize(sent)) for sent in sent_tokenizer.tokenize(raw_text)]
 
 
+def describe_data():
+
+    perdomain_output = [Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter()]
+    perdomain_quotes = [Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter()]
+
+    overall_output = Counter()
+    overall_quotes = Counter()
+
+    q = QualityQuoteReader()
+
+    for i, study in enumerate(q):
+            
+        for domain in study.cochrane["QUALITY"]:
+
+            domain_text = domain["DOMAIN"].replace("\xc2\xa0", " ")
+
+            if domain_text in CORE_DOMAINS:
+                domain_index = CORE_DOMAINS.index(domain_text)
+            else:
+                domain_index = 6 # other
+
+            perdomain_output[domain_index][domain["RATING"]] += 1
+            overall_output[domain["RATING"]] += 1
+
+            if QUALITY_QUOTE_REGEX.match(domain['DESCRIPTION']):
+                perdomain_quotes[domain_index][domain["RATING"]] += 1
+                overall_quotes[domain["RATING"]] += 1
+
+    print
+    print "ALL"
+    for domain, counts in zip(CORE_DOMAINS + ["OTHER"], perdomain_output):
+        print
+        print domain
+        print
+        print counts
+
+    print
+    print "OVERALL"
+    print
+    print overall_output
+
+    
+
+
+def show_most_informative_features(vectorizer, clf, n=50):
+    c_f = sorted(zip(clf.coef_[0], vectorizer.get_feature_names()))
+
+    if n == 0:
+        n = len(c_f)/2
+
+    top = zip(c_f[:n], c_f[:-(n+1):-1])
+    print
+    print "%d most informative features:" % (n, )
+    print
+    for (c1, f1), (c2, f2) in top:
+        print "\t%.4f\t%-15s\t\t%.4f\t%-15s" % (c1, f1, c2, f2)
+
+
 def load_domain_map(filename="data/domain_names.txt"):
 
-    with open(filename, 'rb') as f:
+    with codecs.open(filename, 'rb', 'utf-8') as f:
         raw_data = yaml.load(f)
 
     mapping = {}
@@ -68,15 +130,27 @@ class QualityQuoteReader():
         and maps domain title to one of the core Risk of Bias domains if possible
         """
 
+        used_pmids = set()
+
+        p = progressbar.ProgressBar(len(self.pdfviewer), timer=True)
+
         for study in self.pdfviewer:
+
+            p.tap()
 
             quality_quotes = []
             quality_data = study.cochrane["QUALITY"]
 
+
             for domain in quality_data:
                 domain['DESCRIPTION'] = self.preprocess_cochrane(domain['DESCRIPTION'])
                 if QUALITY_QUOTE_REGEX.match(domain['DESCRIPTION']) or not self.quotes_only:
-                    domain["DOMAIN"] = self.domain_map[domain["DOMAIN"]] # map domain titles to our core categories
+                    domain_text = domain["DOMAIN"].replace("\xc2\xa0", " ")
+
+                    try:
+                        domain["DOMAIN"] = self.domain_map[domain_text] # map domain titles to our core categories
+                    except:
+                        domain["DOMAIN"] = "UNMAPPED"
                     quality_quotes.append(domain)
 
             if quality_quotes:
@@ -100,6 +174,8 @@ class QualityQuoteReader():
 
 
 
+
+
 def _get_domains_from_study(study):
     return [domain["DOMAIN"] for domain in study.cochrane["QUALITY"]]
 
@@ -107,7 +183,7 @@ def _simple_BoW(study):
     return [s for s in word_tokenizer.tokenize(study.studypdf) 
                 if not s in string.punctuation]
 
-def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
+def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
     '''
     return X, y for the specified test domain. here
     X will be of dimensionality equal to the number of 
@@ -115,7 +191,8 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
     '''
     X, y = [], []
     #study_counter = 0
-    q = QualityQuoteReader(quotes_only=True)
+    q = QualityQuoteReader(quotes_only=False)
+
 
     map_lbl = lambda lbl: 1 if lbl=="YES" else -1
 
@@ -125,29 +202,31 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
             
 
         for domain in study.cochrane["QUALITY"]:
+
+            quality_rating = domain["RATING"]
+            #### for now skip unknowns, test YES v NO
+            if quality_rating == "UNKNOWN":
+                quality_rating = "NO"
+                # break
+
             # note that the 2nd clause deals with odd cases 
             # in which a domain is *repeated* for a study,
             if domain["DOMAIN"] == test_domain and not domain_in_study:
+
                 domain_in_study = True
                 #study_counter += 1
                 #pdf_tokens = word_sent_tokenize(study.studypdf)
 
                 X.append(pdf_tokens)
-
-                quality_rating = domain["RATING"]
-                #### for now lump 'unknown' together with 
-                #### 'no'
-                if quality_rating == "UNKNOWN":
-                    quality_rating = "NO"
-
-
                 y.append(map_lbl(quality_rating))
 
+        
                 
         if not domain_in_study:
             #y.append("MISSING")
             pass
             
+
         #if len(y) != len(X):
         #    pdb.set_trace()
         
@@ -155,33 +234,52 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
     vectorizer = CountVectorizer(max_features=10000)
     Xvec = vectorizer.fit_transform(X)            
 
-    return Xvec, y
+    return Xvec, y, vectorizer
 
 def predict_domains_for_documents():
-    X, y = _get_study_level_X_y()
+    X, y, vec = _get_study_level_X_y()
 
     # note that asarray call below, which seems necessary for 
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
     clf = SGDClassifier(loss="hinge", penalty="l2")
     cv_res = cross_validation.cross_val_score(
-                clf, X, numpy.asarray(y), 
+                clf, X, np.asarray(y), 
                 score_func=sklearn.metrics.f1_score, cv=5)
+
+    print cv_res
+
+
+    ### train on all
+    model = clf.fit(X, y)
+    print show_most_informative_features(vec, model, n=50)
     
-    
+
+def predict_sentences_reporting_bias():
+    X, y, vec = _get_sentence_level_X_y()
+
+    clf = SGDClassifier(loss="hinge", penalty="l2")
+    cv_res = cross_validation.cross_val_score(
+                clf, X, np.asarray(y), 
+                score_func=sklearn.metrics.recall_score, cv=5)
+
+    print cv_res
+
+    model = clf.fit(X, y)
+    print show_most_informative_features(vec, model, n=50)
+
+
     
 
 
-
-def main():
+def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[2]):
     q = QualityQuoteReader()
-
     y = []
     X_words = []
 
     domains = q.domains()
 
-    test_domain = CORE_DOMAINS[1]
+    
 
 
     counter = 0
@@ -222,24 +320,32 @@ def main():
 
                     rankings.sort(key=lambda x: x[0], reverse=True)
                     best_match_index = rankings[0][1]
-                    print quote
-                    print pdf_tokens[best_match_index]
+                    # print quote
+                    # print pdf_tokens[best_match_index]
 
                     y_study = np.zeros(len(pdf_tokens))
                     y_study[best_match_index] = 1
 
-                    y.append(y_study)
-                    X_words.extend(pdf_tokens)
-                    
-                    counter += 1
+                    y.extend(y_study)
+                    X_words.extend((" ".join(sent) for sent in pdf_tokens))
 
-                    print y_study
+
+
+                    
+                    
                 break 
 
-    y = np.array(y).flatten()
-    pdb.set_trace()
-    print "Finished! %d studies included domain %s" % (counter, test_domain)
 
+
+    vectorizer = CountVectorizer(max_features=10000)
+    Xvec = vectorizer.fit_transform(X_words)            
+
+    return Xvec, y, vectorizer
+
+
+    y = np.array(y).flatten()
+
+    print "Finished! %d studies included domain %s" % (counter, test_domain)
 
 
 
@@ -255,3 +361,5 @@ def test_pdf_cache():
 if __name__ == '__main__':
     predict_domains_for_documents()
     # test_pdf_cache()
+    # predict_sentences_reporting_bias()
+    # getmapgaps()
