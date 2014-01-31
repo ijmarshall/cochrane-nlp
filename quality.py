@@ -106,7 +106,7 @@ def _simple_BoW(study):
     return [s for s in word_tokenizer.tokenize(study.studypdf) 
                 if not s in string.punctuation]
 
-def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
+def _get_study_level_X_y(test_domain):
     '''
     return X, y for the specified test domain. here
     X will be of dimensionality equal to the number of 
@@ -116,6 +116,7 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
     #study_counter = 0
     q = QualityQuoteReader()
 
+    # creates binary task
     map_lbl = lambda lbl: 1 if lbl=="YES" else -1
 
     for i, study in enumerate(q):
@@ -151,25 +152,41 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
         #    pdb.set_trace()
         
     #pdb.set_trace()
-    vectorizer = CountVectorizer(max_features=10000)
+    vectorizer = CountVectorizer(max_features=5000)
     Xvec = vectorizer.fit_transform(X)            
 
     return Xvec, y
 
-def predict_domains_for_documents():
-    X, y = _get_study_level_X_y()
-
+def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
+    X, y = _get_study_level_X_y(test_domain=test_domain)
+    score_f = lambda y_true, y_pred : sklearn.metrics.precision_recall_fscore_support(
+                                            y_true, y_pred, average="macro")
+    #score_f = sklearn.metrics.f1_score
     # note that asarray call below, which seems necessary for 
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
     clf = SGDClassifier(loss="hinge", penalty="l2")
     cv_res = cross_validation.cross_val_score(
                 clf, X, numpy.asarray(y), 
-                score_func=sklearn.metrics.f1_score, cv=5)
-    
-    
-    
+                score_func=score_f, 
+                #sklearn.metrics.precision_recall_fscore_support,
+                cv=5)
 
+    if avg:
+        cv_res = sum(cv_res)/float(cv_res.shape[0])
+    #metrics.precision_recall_fscore_support
+    
+    #if dump_output:
+    #    np.savetxt(test_domain.replace(" ", "_") + ".csv", cv_res, delimiter=',', fmt='%2.2f')
+    return cv_res
+    
+def predict_all_domains():
+    # need to label mapping
+    results_d = {}
+    for domain in core_domains:
+        print ("on domain: {0}".format(domain))
+        results_d[domain] = predict_domains_for_documents(test_domain=domain)
+    return results_d
 
 
 def main():
