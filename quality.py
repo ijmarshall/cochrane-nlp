@@ -24,6 +24,10 @@ from sklearn import cross_validation
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
 
+from sklearn.cross_validation import KFold
+
+
+
 from collections import Counter
 
 QUALITY_QUOTE_REGEX = re.compile("Quote\:\s*[\'\"](.*?)[\'\"]")
@@ -243,12 +247,17 @@ def predict_domains_for_documents():
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
     clf = SGDClassifier(loss="hinge", penalty="l2")
+
+
+
+
+
+
     cv_res = cross_validation.cross_val_score(
                 clf, X, np.asarray(y), 
                 score_func=sklearn.metrics.f1_score, cv=5)
 
     print cv_res
-
 
     ### train on all
     model = clf.fit(X, y)
@@ -257,13 +266,42 @@ def predict_domains_for_documents():
 
 def predict_sentences_reporting_bias():
     X, y, vec = _get_sentence_level_X_y()
+    
 
     clf = SGDClassifier(loss="hinge", penalty="l2")
-    cv_res = cross_validation.cross_val_score(
-                clf, X, np.asarray(y), 
-                score_func=sklearn.metrics.recall_score, cv=5)
 
-    print cv_res
+
+    kf = KFold(len(y), n_folds=5, shuffle=True)
+
+    for fold_i, (train, test) in enumerate(kf):
+
+
+
+        X_train = X[train]
+        y_train = y[train]
+        X_test = X[test]
+        y_test = y[test]
+
+        clf.fit(X_train, y_train)
+
+        y_preds = clf.predict(X_test)
+
+        f1 = sklearn.metrics.f1_score(y_test, y_preds)
+        recall = sklearn.metrics.recall_score(y_test, y_preds)
+        precision = sklearn.metrics.precision_score(y_test, y_preds)
+
+        print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f" % (fold_i, f1, recall, precision)
+
+
+
+
+
+
+    # cv_res = cross_validation.cross_val_score(
+    #             clf, X, np.asarray(y), 
+    #             score_func=sklearn.metrics.recall_score, cv=5)
+
+    # print cv_res
 
     model = clf.fit(X, y)
     print show_most_informative_features(vec, model, n=50)
@@ -278,10 +316,6 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[2]):
     X_words = []
 
     domains = q.domains()
-
-    
-
-
     counter = 0
 
     for i, study in enumerate(q):
@@ -339,11 +373,12 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[2]):
 
     vectorizer = CountVectorizer(max_features=10000)
     Xvec = vectorizer.fit_transform(X_words)            
+    y = np.array(y)
 
     return Xvec, y, vectorizer
 
 
-    y = np.array(y).flatten()
+    
 
     print "Finished! %d studies included domain %s" % (counter, test_domain)
 
@@ -359,7 +394,7 @@ def test_pdf_cache():
 
 
 if __name__ == '__main__':
-    predict_domains_for_documents()
+    # predict_domains_for_documents()
     # test_pdf_cache()
-    # predict_sentences_reporting_bias()
+    predict_sentences_reporting_bias()
     # getmapgaps()
