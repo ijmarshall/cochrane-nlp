@@ -208,6 +208,7 @@ def _simple_BoW(study):
     return [s for s in word_tokenizer.tokenize(study.studypdf) 
                 if not s in string.punctuation]
 
+
 def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
     '''
     return X, y for the specified test domain. here
@@ -219,6 +220,7 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
     q = QualityQuoteReader(quotes_only=False)
 
 
+    # creates binary task
     map_lbl = lambda lbl: 1 if lbl=="YES" else -1
 
     for i, study in enumerate(q):
@@ -256,33 +258,51 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
         #    pdb.set_trace()
         
     #pdb.set_trace()
-    vectorizer = CountVectorizer(max_features=10000)
+    vectorizer = CountVectorizer(max_features=5000)
     Xvec = vectorizer.fit_transform(X)            
 
     return Xvec, y, vectorizer
 
-def predict_domains_for_documents():
-    X, y, vec = _get_study_level_X_y()
+
+def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
+    X, y = _get_study_level_X_y(test_domain=test_domain)
+    score_f = lambda y_true, y_pred : sklearn.metrics.precision_recall_fscore_support(
+                                            y_true, y_pred, average="macro")
+    #score_f = sklearn.metrics.f1_score
 
     # note that asarray call below, which seems necessary for 
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
-    clf = SGDClassifier(loss="hinge", penalty="l2", class_weight={1:10, 0:1})
 
-
-
-
-
-
+    clf = SGDClassifier(loss="hinge", penalty="l2")
     cv_res = cross_validation.cross_val_score(
-                clf, X, np.asarray(y), 
-                score_func=sklearn.metrics.f1_score, cv=5)
+                clf, X, numpy.asarray(y), 
+                score_func=score_f, 
+                #sklearn.metrics.precision_recall_fscore_support,
+                cv=5)
+
+    if avg:
+        cv_res = sum(cv_res)/float(cv_res.shape[0])
+    #metrics.precision_recall_fscore_support
+    
+    #if dump_output:
+    #    np.savetxt(test_domain.replace(" ", "_") + ".csv", cv_res, delimiter=',', fmt='%2.2f')
 
     print cv_res
 
     ### train on all
     model = clf.fit(X, y)
     print show_most_informative_features(vec, model, n=50)
+    
+def predict_all_domains():
+    # need to label mapping
+    results_d = {}
+    for domain in core_domains:
+        print ("on domain: {0}".format(domain))
+        results_d[domain] = predict_domains_for_documents(test_domain=domain)
+    return results_d
+
+
     
 
 def predict_sentences_reporting_bias():
@@ -314,6 +334,7 @@ def predict_sentences_reporting_bias():
         y_test = y[np_indices(test_indices)]
         print "done!"
 
+
         print "fitting model..."
         clf.fit(X_train, y_train)
         print "done!"
@@ -328,6 +349,7 @@ def predict_sentences_reporting_bias():
         precision = sklearn.metrics.precision_score(y_test, y_preds)
 
         print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f" % (fold_i, f1, recall, precision)
+
 
         for start, end in test_indices:
 
@@ -358,6 +380,7 @@ def predict_sentences_reporting_bias():
         #     if y_pred > 0:
         #         print
         #         print "%d: %s" % (i, sent)
+
 
 
 
@@ -447,6 +470,7 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
 
 
 
+
                     
                     
                 
@@ -463,9 +487,6 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
 
     return X, y, X_words, vectorizer, study_sent_indices
 
-
-    
-
     print "Finished! %d studies included domain %s" % (counter, test_domain)
 
 
@@ -475,8 +496,6 @@ def test_pdf_cache():
 
     pdfviewer = biviewer.PDFBiViewer()
     pdfviewer.cache_pdfs()
-
-
 
 
 if __name__ == '__main__':
