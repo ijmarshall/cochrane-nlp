@@ -85,7 +85,28 @@ def describe_data():
     print
     print overall_output
 
-    
+
+
+def flatten_list(l):
+    return [item for sublist in l for item in sublist]
+
+
+def sublist(l, indices):
+    if isinstance(indices, tuple):
+        indices = [indices]
+
+    output = [l[start: end] for (start, end) in indices]
+    return flatten_list(output)
+
+def np_indices(indices):
+    if isinstance(indices, tuple):
+        indices = [indices]
+
+    output = [np.arange(start, end) for (start, end) in indices]
+    return np.hstack(output)
+
+
+
 
 
 def show_most_informative_features(vectorizer, clf, n=50):
@@ -202,7 +223,7 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
 
     for i, study in enumerate(q):
         domain_in_study = False
-        pdf_tokens = study.studypdf#_simple_BoW(study)
+        pdf_tokens = study.studypdf
             
 
         for domain in study.cochrane["QUALITY"]:
@@ -246,7 +267,7 @@ def predict_domains_for_documents():
     # note that asarray call below, which seems necessary for 
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
-    clf = SGDClassifier(loss="hinge", penalty="l2")
+    clf = SGDClassifier(loss="hinge", penalty="l2", class_weight={1:10, 0:1})
 
 
 
@@ -265,32 +286,79 @@ def predict_domains_for_documents():
     
 
 def predict_sentences_reporting_bias():
-    X, y, vec = _get_sentence_level_X_y()
+    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
+    
     
 
     clf = SGDClassifier(loss="hinge", penalty="l2")
 
 
-    kf = KFold(len(y), n_folds=5, shuffle=True)
+    kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
 
     for fold_i, (train, test) in enumerate(kf):
 
+        print "making test sentences"
+        
+        test_indices = [study_sent_indices[i] for i in test]
+        train_indices = [study_sent_indices[i] for i in train]
 
+        X_sents_test = sublist(X_sents, test_indices)
+        # [X_sents[i] for i in test]
+        
+        print "done!"
 
-        X_train = X[train]
-        y_train = y[train]
-        X_test = X[test]
-        y_test = y[test]
+        print "generating split"
+        X_train = X[np_indices(train_indices)]
+        y_train = y[np_indices(train_indices)]
+        X_test = X[np_indices(test_indices)]
+        y_test = y[np_indices(test_indices)]
+        print "done!"
 
+        print "fitting model..."
         clf.fit(X_train, y_train)
+        print "done!"
 
+        print "making predictions"
         y_preds = clf.predict(X_test)
+        print "done!"
+        
 
         f1 = sklearn.metrics.f1_score(y_test, y_preds)
         recall = sklearn.metrics.recall_score(y_test, y_preds)
         precision = sklearn.metrics.precision_score(y_test, y_preds)
 
         print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f" % (fold_i, f1, recall, precision)
+
+        for start, end in test_indices:
+
+            study_X = X[np_indices((start, end))]
+            study_y = y[np_indices((start, end))]
+
+            pred_probs = clf.decision_function(study_X)
+
+            max_index = np.argmax(pred_probs) + start
+
+            real_index = np.where(study_y==1)[0][0] + start
+
+            print "Max distance +ve %.2f:\n%s\n" % (np.max(pred_probs), X_sents[max_index])
+
+            print "Actual answer:\n%s\n\n" % (X_sents[real_index])
+
+
+            # min_index = np.argmin(pred_probs) + start
+
+            # print "Max distance -ve %.2f:\n%s\n\n" % (np.min(pred_probs), X_sents[min_index])
+
+
+
+
+
+        # for i, (y_pred, sent) in enumerate(zip(y_preds, X_sents_test)):
+
+        #     if y_pred > 0:
+        #         print
+        #         print "%d: %s" % (i, sent)
+
 
 
 
@@ -310,72 +378,90 @@ def predict_sentences_reporting_bias():
     
 
 
-def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[2]):
+def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
     q = QualityQuoteReader()
     y = []
     X_words = []
+    
+    study_sent_indices = [] # list of (start, end) indices corresponding to each study
+    sent_index_counter = 0
+
 
     domains = q.domains()
     counter = 0
 
     for i, study in enumerate(q):
+
+        # fast forward to the matching domain
         for domain in study.cochrane["QUALITY"]:
             if domain["DOMAIN"] == test_domain:
-                #pdb.set_trace()
-                try:
-                    quote = QUALITY_QUOTE_REGEX.search(domain["DESCRIPTION"]).group(1)
-                except:
-                    print "Unable to extract quote:"
-                    print domain["DESCRIPTION"]
-                    raise
+                break
+        else:
+            # if no matching domain continue to the next study
+            continue
 
-                quote_tokens = word_sent_tokenize(quote)
-                pdf_tokens = word_sent_tokenize(study.studypdf)
 
+        try:
+            quote = QUALITY_QUOTE_REGEX.search(domain["DESCRIPTION"]).group(1)
+        except:
+            print "Unable to extract quote:"
+            print domain["DESCRIPTION"]
+            raise
+
+        quote_words = word_tokenizer.tokenize(quote)
+        pdf_sents = sent_tokenizer.tokenize(study.studypdf)
+
+ 
+        quote_sent_bow = set((word.lower() for word in quote_words))
+
+        rankings = []
+
+        for pdf_i, pdf_sent in enumerate(pdf_sents):
+
+            pdf_words = word_tokenizer.tokenize(pdf_sent)
+        
+            pdf_sent_bow = set((word.lower() for word in pdf_words))
+
+            if not pdf_sent_bow or not quote_sent_bow:
+                prop_quote_in_sent = 0
+            else:
+                prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
+
+            # print "%.0f" % (prop_quote_in_sent,)
+
+            rankings.append((prop_quote_in_sent, pdf_i))
+
+        rankings.sort(key=lambda x: x[0], reverse=True)
+        best_match_index = rankings[0][1]
+        # print quote
+        # print pdf_tokens[best_match_index]
+
+        y_study = np.zeros(len(pdf_sents))
+        y_study[best_match_index] = 1
+
+        y.extend(y_study)
+        X_words.extend(pdf_sents)
+        sent_end_index = sent_index_counter + len(pdf_sents)
+        study_sent_indices.append((sent_index_counter, sent_end_index))
+        sent_index_counter = sent_end_index
+
+
+
+                    
+                    
                 
-                for quote_i, quote_sent in enumerate(quote_tokens):
-
-                    quote_sent_bow = set((word.lower() for word in quote_sent))
-
-                    rankings = []
-
-                    for pdf_i, pdf_sent in enumerate(pdf_tokens):
-                    
-                        pdf_sent_bow = set((word.lower() for word in pdf_sent))
-
-                        if not pdf_sent_bow or not quote_sent_bow:
-                            prop_quote_in_sent = 0
-                        else:
-                            prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
-
-                        # print "%.0f" % (prop_quote_in_sent,)
-
-                        rankings.append((prop_quote_in_sent, pdf_i))
-
-                    rankings.sort(key=lambda x: x[0], reverse=True)
-                    best_match_index = rankings[0][1]
-                    # print quote
-                    # print pdf_tokens[best_match_index]
-
-                    y_study = np.zeros(len(pdf_tokens))
-                    y_study[best_match_index] = 1
-
-                    y.extend(y_study)
-                    X_words.extend((" ".join(sent) for sent in pdf_tokens))
 
 
+    print len(X_words)
+    print X_words[0]
 
-                    
-                    
-                break 
-
-
-
+    print "fitting vectorizer"
     vectorizer = CountVectorizer(max_features=10000)
-    Xvec = vectorizer.fit_transform(X_words)            
+    X = vectorizer.fit_transform(X_words)            
+    print "done!"
     y = np.array(y)
 
-    return Xvec, y, vectorizer
+    return X, y, X_words, vectorizer, study_sent_indices
 
 
     
