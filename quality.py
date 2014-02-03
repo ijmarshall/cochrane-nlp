@@ -126,7 +126,7 @@ def show_most_informative_features(vectorizer, clf, n=50):
     for (c1, f1), (c2, f2) in top:
         out_str.append("\t%.4f\t%-15s\t\t%.4f\t%-15s" % (c1, f1, c2, f2))
     feature_str = "\n".join(out_str)
-    return feature_str
+    return (feature_str, top)
 
 def load_domain_map(filename="data/domain_names.txt"):
 
@@ -214,13 +214,25 @@ def _simple_BoW(study):
                 if not s in string.punctuation]
 
 def to_TeX(all_res):
-    tex_table = ['''\\begin{table}\n \\begin{tabular}{l | l l l} \n domain & F (\emph{high}) & F (\emph{unknown}) & F (\emph{low}) \\\\ \n \hline''']
+    tex_table = ['''\\begin{table*}\n \\begin{tabular}{l | l l l l} \n Quality domain & \emph{high risk} F (\#) & \emph{unknown} F (\#) & \emph{low risk} F (\#) & top terms \\\\ \n \hline''']
     for domain in all_res:
         cur_row = domain + " & "
         res_matrix = all_res[domain][0]
-        cur_row += _to_TeX(res_matrix) + "\\\\"
+        cur_row += _to_TeX(res_matrix) 
+
+        # add terms
+        terms = all_res[domain][1][1]
+        print "\n\n"
+        print domain
+        print [t[1] for t in terms[:20]]
+        
+        top_three = [t[1][1] for t in terms[:3]]
+        cur_row += " & %s" % "; ".join(["\\emph{%s}" % t for t in top_three])
+        cur_row +=  "\\\\"
         tex_table.append(cur_row)
-    tex_table.append("\end{tabular} \n \end{table}")
+
+
+    tex_table.append("\end{tabular} \n \end{table*}")
     return "\n".join(tex_table)
 
 def _to_TeX(res):
@@ -288,8 +300,8 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
             pass
             
         
-        if i > 500:
-            break
+        #if i > 500:
+        #    break
         #if len(y) != len(X):
         #    pdb.set_trace()
         
@@ -310,7 +322,7 @@ def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
 
-    clf = SGDClassifier(loss="hinge", penalty="l2")
+    clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
     #pdb.set_trace()
     cv_res = cross_validation.cross_val_score(
                 clf, X, np.asarray(y), 
@@ -329,8 +341,8 @@ def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
 
     ### train on all
     model = clf.fit(X, y)
-    informative_features_str = show_most_informative_features(vectorizer, model, n=50)
-    return (cv_res, informative_features_str, y)
+    informative_features = show_most_informative_features(vectorizer, model, n=50)
+    return (cv_res, informative_features, y)
 
 def predict_all_domains():
     # need to label mapping
