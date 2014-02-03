@@ -15,12 +15,14 @@ from unidecode import unidecode
 import codecs
 
 import yaml
+
 import numpy as np
 import math
 
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import cross_validation
+from sklearn import metrics
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
 
@@ -86,10 +88,13 @@ def describe_data():
     print overall_output
 
     
-
-
 def show_most_informative_features(vectorizer, clf, n=50):
-    c_f = sorted(zip(clf.coef_[0], vectorizer.get_feature_names()))
+    ###
+    # note that in the multi-class case, clf.coef_ will
+    # have k weight vectors, which I believe are one per
+    # each class (i.e., each is a classifier discriminating
+    # one class versus the rest). 
+    c_f = sorted(zip(clf.coef_[2], vectorizer.get_feature_names()))
 
     if n == 0:
         n = len(c_f)/2
@@ -97,10 +102,11 @@ def show_most_informative_features(vectorizer, clf, n=50):
     top = zip(c_f[:n], c_f[:-(n+1):-1])
     print
     print "%d most informative features:" % (n, )
-    print
+    out_str = []
     for (c1, f1), (c2, f2) in top:
-        print "\t%.4f\t%-15s\t\t%.4f\t%-15s" % (c1, f1, c2, f2)
-
+        out_str.append("\t%.4f\t%-15s\t\t%.4f\t%-15s" % (c1, f1, c2, f2))
+    print "\n".join(out_str)
+    return "\n".join(out_str)
 
 def load_domain_map(filename="data/domain_names.txt"):
 
@@ -187,8 +193,37 @@ def _simple_BoW(study):
     return [s for s in word_tokenizer.tokenize(study.studypdf) 
                 if not s in string.punctuation]
 
+def to_TeX(all_res):
+    tex_table = ['''\\begin{table}\n \\begin{tabular}{l | l l l} \n domain & F (\emph{high}) & F (\emph{unknown}) & F (\emph{low}) \\\\ \n \hline''']
+    for domain in all_res:
+        cur_row = domain + " & "
+        res_matrix = all_res[domain][0]
+        cur_row += _to_TeX(res_matrix) + "\\\\"
+        tex_table.append(cur_row)
+    tex_table.append("\end{tabular} \n \end{table}")
+    return "\n".join(tex_table)
 
-def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
+def _to_TeX(res):
+    '''
+    Assume res is like:
+
+    [  1.18793103e-01   6.78426907e-01   7.03841752e-01]
+     [  4.09195402e-02   7.47927854e-01   6.73109244e-01]
+     [  5.63686201e-02   7.10841025e-01   6.86779839e-01]
+     [  2.92000000e+01   2.69800000e+02   2.38000000e+02]
+
+     this is [row index]: [0] precision, [1] recall, [2] F [3] support
+     for each of [column index]: [0] no, [1] unknown [2] yes
+    '''
+    f_scores = res[2]
+    support = res[3]
+    tex_row_str = "%.3f (%.1f) & %.3f (%.1f) & %.3f (%.1f)" % (
+        f_scores[0], support[0], f_scores[1], support[1], 
+        f_scores[2], support[2])
+    return tex_row_str
+
+
+def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
     '''
     return X, y for the specified test domain. here
     X will be of dimensionality equal to the number of 
@@ -200,8 +235,8 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
 
 
     # creates binary task
-    map_lbl = lambda lbl: 1 if lbl=="YES" else -1
-
+    #map_lbl = lambda lbl: 1 if lbl=="YES" else -1
+    map_lbl = lambda lbl: {"YES":2, "NO":0, "UNKNOWN":1}[lbl]
     for i, study in enumerate(q):
         domain_in_study = False
         pdf_tokens = study.studypdf#_simple_BoW(study)
@@ -211,8 +246,8 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
 
             quality_rating = domain["RATING"]
             #### for now skip unknowns, test YES v NO
-            if quality_rating == "UNKNOWN":
-                quality_rating = "NO"
+            #if quality_rating == "UNKNOWN":
+            #    quality_rating = "NO"
                 # break
 
             # note that the 2nd clause deals with odd cases 
@@ -224,41 +259,44 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[4]):
                 #pdf_tokens = word_sent_tokenize(study.studypdf)
 
                 X.append(pdf_tokens)
-                y.append(map_lbl(quality_rating))
-
+                #y.append(map_lbl(quality_rating))
+                y.append(quality_rating)
         
                 
         if not domain_in_study:
             #y.append("MISSING")
             pass
             
-
+        
+        if i > 500:
+            break
         #if len(y) != len(X):
         #    pdb.set_trace()
         
     #pdb.set_trace()
-    vectorizer = CountVectorizer(max_features=5000)
+    vectorizer = CountVectorizer(max_features=5000, binary=True)
     Xvec = vectorizer.fit_transform(X)            
-
+    #pdb.set_trace()
     return Xvec, y, vectorizer
 
 
 def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
-    X, y = _get_study_level_X_y(test_domain=test_domain)
-    score_f = lambda y_true, y_pred : sklearn.metrics.precision_recall_fscore_support(
-                                            y_true, y_pred, average="macro")
+    X, y, vectorizer = _get_study_level_X_y(test_domain=test_domain)
+    score_f = lambda y_true, y_pred : metrics.precision_recall_fscore_support(
+                                            y_true, y_pred, average=None)#, average="macro")
     #score_f = sklearn.metrics.f1_score
 
     # note that asarray call below, which seems necessary for 
     # reasons that escape me (see here 
     # https://github.com/scikit-learn/scikit-learn/issues/2508)
     clf = SGDClassifier(loss="hinge", penalty="l2")
+    #pdb.set_trace()
     cv_res = cross_validation.cross_val_score(
-                clf, X, numpy.asarray(y), 
+                clf, X, np.asarray(y), 
                 score_func=score_f, 
                 #sklearn.metrics.precision_recall_fscore_support,
                 cv=5)
-
+    #pdb.set_trace()
     if avg:
         cv_res = sum(cv_res)/float(cv_res.shape[0])
     #metrics.precision_recall_fscore_support
@@ -270,12 +308,13 @@ def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
 
     ### train on all
     model = clf.fit(X, y)
-    print show_most_informative_features(vec, model, n=50)
-    
+    informative_features_str = show_most_informative_features(vectorizer, model, n=50)
+    return (cv_res, informative_features_str, y)
+
 def predict_all_domains():
     # need to label mapping
     results_d = {}
-    for domain in core_domains:
+    for domain in CORE_DOMAINS:
         print ("on domain: {0}".format(domain))
         results_d[domain] = predict_domains_for_documents(test_domain=domain)
     return results_d
@@ -291,6 +330,11 @@ def predict_sentences_reporting_bias():
     kf = KFold(len(y), n_folds=5, shuffle=True)
 
     for fold_i, (train, test) in enumerate(kf):
+        # for whatever reason, this fails for me!
+        # i get: 
+        # *** TypeError: only integer arrays with one element can be converted to an index
+        # so something weird with the masking. need to
+        # further investigate i guess.
         X_train = X[train]
         y_train = y[train]
         X_test = X[test]
@@ -304,7 +348,8 @@ def predict_sentences_reporting_bias():
         recall = sklearn.metrics.recall_score(y_test, y_preds)
         precision = sklearn.metrics.precision_score(y_test, y_preds)
 
-        print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f" % (fold_i, f1, recall, precision)
+        print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f" % (
+            fold_i, f1, recall, precision)
 
     # cv_res = cross_validation.cross_val_score(
     #             clf, X, np.asarray(y), 
