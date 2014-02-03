@@ -26,6 +26,8 @@ from sklearn import metrics
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
 
+import random
+
 from sklearn.cross_validation import KFold
 
 
@@ -355,8 +357,8 @@ def predict_all_domains():
 
     
 
-def predict_sentences_reporting_bias():
-    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
+def predict_sentences_reporting_bias(sample_negative_examples=0):
+    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y(sample_negative_examples=5)
     
     
 
@@ -384,10 +386,18 @@ def predict_sentences_reporting_bias():
         y_test = y[np_indices(test_indices)]
         print "done!"
 
+        if sample_negative_examples:
 
-        print "fitting model..."
-        clf.fit(X_train, y_train)
-        print "done!"
+            all_indices = np.arange(len(y_train))
+
+            train_positives = np.nonzero(y_train)
+            train_negatives = all_indices[~train_positives]
+
+
+        else:
+            print "fitting model..."
+            clf.fit(X_train, y_train)
+            print "done!"
 
         print "making predictions"
         y_preds = clf.predict(X_test)
@@ -453,6 +463,11 @@ def predict_sentences_reporting_bias():
 
 
 def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
+    # sample_negative_examples = n: for low rate of positive examples; random sample
+    # of n negative examples if > n negative examples in article; if n=0 then all examples
+    # used
+
+
     q = QualityQuoteReader()
     y = []
     X_words = []
@@ -510,14 +525,19 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
         # print quote
         # print pdf_tokens[best_match_index]
 
+
+
+
         y_study = np.zeros(len(pdf_sents))
         y_study[best_match_index] = 1
-
-        y.extend(y_study)
         X_words.extend(pdf_sents)
+
+
+
         sent_end_index = sent_index_counter + len(pdf_sents)
         study_sent_indices.append((sent_index_counter, sent_end_index))
         sent_index_counter = sent_end_index
+        y.extend(y_study)
 
 
 
