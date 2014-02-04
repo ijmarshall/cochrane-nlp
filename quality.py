@@ -15,6 +15,7 @@ from unidecode import unidecode
 import codecs
 
 import yaml
+from pprint import pprint
 
 import numpy as np
 import math
@@ -357,15 +358,16 @@ def predict_all_domains():
 
     
 
-def predict_sentences_reporting_bias(sample_negative_examples=0):
-    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y(sample_negative_examples=5)
-    
+def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_models=1, positives_per_pdf=1):
+    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
     
 
-    clf = SGDClassifier(loss="hinge", penalty="l2")
+    
 
 
     kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
+
+    metrics = []
 
     for fold_i, (train, test) in enumerate(kf):
 
@@ -379,53 +381,163 @@ def predict_sentences_reporting_bias(sample_negative_examples=0):
         
         print "done!"
 
-        print "generating split"
+        # print "generating split"
         X_train = X[np_indices(train_indices)]
         y_train = y[np_indices(train_indices)]
         X_test = X[np_indices(test_indices)]
         y_test = y[np_indices(test_indices)]
-        print "done!"
+        # print "done!"
 
-        if sample_negative_examples:
+        if negative_sample_weighting:
 
             all_indices = np.arange(len(y_train))
 
-            train_positives = np.nonzero(y_train)
+
+            train_positives = np.nonzero(y_train)[0]
             train_negatives = all_indices[~train_positives]
+
+            total_positives = len(train_positives)
+
+
+
+            if (negative_sample_weighting * total_positives) > len(train_negatives):
+                sample_negative_examples = len(train_negatives)
+            else:
+                sample_negative_examples = negative_sample_weighting * total_positives
+
+
+            models = []
+
+            print "fitting models..."
+            p = progressbar.ProgressBar(number_of_models, timer=True)
+
+            for model_no in range(number_of_models):
+
+                p.tap()
+
+
+                train_negatives_sample = np.random.choice(train_negatives, sample_negative_examples, replace=False)
+
+
+                train_sample = np.concatenate([train_positives, train_negatives_sample])
+
+                
+                clf = SGDClassifier(loss="hinge", penalty="l2")
+                clf.fit(X_train[train_sample], y_train[train_sample])
+                models.append(clf)
+
+
 
 
         else:
             print "fitting model..."
+            clf = SGDClassifier(loss="hinge", penalty="l2")
             clf.fit(X_train, y_train)
             print "done!"
 
-        print "making predictions"
-        y_preds = clf.predict(X_test)
-        print "done!"
+
+        # if negative_sample_weighting:
+
+        #     print "making predictions"
+
+        #     y_preds_all = []
+
+        #     for model in models:
+        #         y_preds_all.append(model.predict(X_test))
+
+        #     y_preds = np.round(np.mean(np.vstack(y_preds_all),0))
+
+        #     print "done!"
+
+
+
+        # else:
+        #     print "making predictions"
+        #     y_preds = clf.predict(X_test)
+        #     print "done!"
         
 
-        f1 = sklearn.metrics.f1_score(y_test, y_preds)
-        recall = sklearn.metrics.recall_score(y_test, y_preds)
-        precision = sklearn.metrics.precision_score(y_test, y_preds)
+        # f1 = sklearn.metrics.f1_score(y_test, y_preds)
+        # recall = sklearn.metrics.recall_score(y_test, y_preds)
+        # precision = sklearn.metrics.precision_score(y_test, y_preds)
 
-        print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f" % (
-            fold_i, f1, recall, precision)
+        
 
+
+        TP = 0
+        FP = 0
+        TN = 0
+        FN = 0
+
+        print "testing..."
+        p = progressbar.ProgressBar(len(test_indices), timer=True)
 
         for start, end in test_indices:
 
+            p.tap()
             study_X = X[np_indices((start, end))]
             study_y = y[np_indices((start, end))]
 
-            pred_probs = clf.decision_function(study_X)
+            # pred_probs = clf.decision_function(study_X)
 
-            max_index = np.argmax(pred_probs) + start
+
+
+            pred_probs_all = [(np.argmax(clf.decision_function(study_X)) + start) for clf in models]
+            
+            # print pred_probs_all
+            # pred_probs = np.round(np.mean(np.vstack(y_preds_all),0))
+
+            # max_index = np.argmax(pred_probs) + start
+            max_indices = np.bincount(pred_probs_all).argsort()[-positives_per_pdf:][::-1]
+
+            max_index = np.bincount(pred_probs_all).argmax()
 
             real_index = np.where(study_y==1)[0][0] + start
 
-            print "Max distance +ve %.2f:\n%s\n" % (np.max(pred_probs), X_sents[max_index])
+            # print "Max distance +ve %.2f:\n%s\n" % (np.max(pred_probs), X_sents[max_index])
+            # print "Max distance +ve:\n%s\n" % ('\n'.join([X_sents[i] for i in max_indices]),)
 
-            print "Actual answer:\n%s\n\n" % (X_sents[real_index])
+            # print "Actual answer:\n%s\n\n" % (X_sents[real_index])
+
+            if real_index in max_indices:
+                TP += 1
+                TN += (len(study_y) - positives_per_pdf)
+                FP += (positives_per_pdf - 1)
+                # FN += 0
+            else:
+                # TP += 1
+                TN += (len(study_y) - positives_per_pdf - 1) 
+                FN += 1
+                FP += positives_per_pdf
+
+
+        precision = float(TP) / (float(TP) + float(FP))
+        recall = float(TP) / (float(TP) + float(FN))
+        f1 = 2 * ((precision * recall) / (precision + recall))
+        accuracy = float(TP) / len(test_indices)
+
+        metrics.append({"precision": precision,
+                        "recall": recall,
+                        "f1": f1,
+                        "accuracy": accuracy})
+
+        print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f\taccuracy: %.2f" % (
+            fold_i, f1, recall, precision, accuracy)
+
+
+
+    print
+    pprint(metrics)
+
+    metric_types = ["precision", "recall", "f1", "accuracy"]
+
+    for metric_type in metric_types:
+
+        metric_vec = [metric[metric_type] for metric in metrics]
+
+        metric_mean = np.mean(metric_vec)
+
+        print "%s: %.2f" % (metric_type, metric_mean)
 
 
             # min_index = np.argmin(pred_probs) + start
@@ -455,8 +567,8 @@ def predict_sentences_reporting_bias(sample_negative_examples=0):
 
     # print cv_res
 
-    model = clf.fit(X, y)
-    print show_most_informative_features(vec, model, n=50)
+    # model = clf.fit(X, y)
+    # print show_most_informative_features(vec, model, n=50)
 
 
     
@@ -572,5 +684,5 @@ def test_pdf_cache():
 if __name__ == '__main__':
     # predict_domains_for_documents()
     # test_pdf_cache()
-    predict_sentences_reporting_bias()
+    predict_sentences_reporting_bias(negative_sample_weighting=10, number_of_models=5, positives_per_pdf=1)
     # getmapgaps()
