@@ -610,5 +610,5 @@ def test_pdf_cache():
 if __name__ == '__main__':
     # predict_domains_for_documents()
     # test_pdf_cache()
-    predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_models=100, positives_per_pdf=5)
+    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=5)
     # getmapgaps()
