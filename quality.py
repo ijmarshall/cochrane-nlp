@@ -697,7 +697,7 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
 
         if i > 500:
             print "WARNING RETURNING SMALL SUBSET OF DATA!"
-            break
+        #    break
 
 
                     
