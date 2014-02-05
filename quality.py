@@ -482,15 +482,16 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
 
 
 
-            pred_probs_all = [(np.argmax(clf.decision_function(study_X)) + start) for clf in models]
+            # pred_probs_all = [(np.argmax(clf.decision_function(study_X)) + start) for clf in models]
             
-            # print pred_probs_all
-            # pred_probs = np.round(np.mean(np.vstack(y_preds_all),0))
+            preds_all = np.mean([clf.predict(study_X) for clf in models], 0)
 
-            # max_index = np.argmax(pred_probs) + start
-            max_indices = np.bincount(pred_probs_all).argsort()[-positives_per_pdf:][::-1]
+            max_indices = preds_all.argsort()[-positives_per_pdf:][::-1] + start
+        
+        
+            # max_indices = np.bincount(pred_probs_all).argsort()[-positives_per_pdf:][::-1]
 
-            max_index = np.bincount(pred_probs_all).argmax()
+            # max_index = np.bincount(pred_probs_all).argmax()
 
             real_index = np.where(study_y==1)[0][0] + start
 
@@ -499,7 +500,10 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
 
             # print "Actual answer:\n%s\n\n" % (X_sents[real_index])
 
+            # assume that we got it wrong
+
             if real_index in max_indices:
+
                 TP += 1
                 TN += (len(study_y) - positives_per_pdf)
                 FP += (positives_per_pdf - 1)
@@ -509,8 +513,8 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
                 TN += (len(study_y) - positives_per_pdf - 1) 
                 FN += 1
                 FP += positives_per_pdf
-
-
+            print len(study_y)
+            print TP, FP, TN, FN
         precision = float(TP) / (float(TP) + float(FP))
         recall = float(TP) / (float(TP) + float(FN))
         f1 = 2 * ((precision * recall) / (precision + recall))
@@ -537,7 +541,7 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
 
         metric_mean = np.mean(metric_vec)
 
-        print "%s: %.2f" % (metric_type, metric_mean)
+        print "%s: %.5f" % (metric_type, metric_mean)
 
 
             # min_index = np.argmin(pred_probs) + start
@@ -684,5 +688,5 @@ def test_pdf_cache():
 if __name__ == '__main__':
     # predict_domains_for_documents()
     # test_pdf_cache()
-    predict_sentences_reporting_bias(negative_sample_weighting=10, number_of_models=5, positives_per_pdf=1)
+    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=5)
     # getmapgaps()
