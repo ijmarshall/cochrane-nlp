@@ -300,8 +300,9 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
             pass
             
         
-        #if i > 500:
-        #    break
+        if i > 500:
+            print "WARNING RETURNING SMALL SUBSET OF DATA!"
+            break
         #if len(y) != len(X):
         #    pdb.set_trace()
         
@@ -354,6 +355,49 @@ def predict_all_domains():
 
 
     
+def joint_predict_sentences_reporting_bias():
+    '''
+    @TODO bcw
+
+    1. For each fold, augment training data with true labels
+    2. Train as usual (with augmented feature vectors)
+    3. Make predictions at the *document level* for specified domain
+    4. Augment test vectors with predicted labels
+    5. bam
+    '''
+    
+    # first, get the true document-level labels
+    study_X, study_y, study_vectorizer = _get_study_level_X_y()
+
+    # here are the sentence level X,y's
+    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
+
+    # now cross-validate
+    clf = SGDClassifier(loss="hinge", penalty="l2")
+    kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
+
+    for fold_i, (train, test) in enumerate(kf):
+        test_indices = [study_sent_indices[i] for i in test]
+        train_indices = [study_sent_indices[i] for i in train]
+
+        # again, these are sentence level features
+        X_sents_test = sublist(X_sents, test_indices)
+
+        # train/test split
+        X_train = X[np_indices(train_indices)]
+        y_train = y[np_indices(train_indices)]
+        X_test = X[np_indices(test_indices)]
+        y_test = y[np_indices(test_indices)]
+        
+        ###
+        # now we want to augment vectors with study-level
+        # information. specifically, create a copy of
+        # the feature set that is an interaction with
+        # the study-level bias assessment
+        ###
+
+        pdb.set_trace()
+
 
 def predict_sentences_reporting_bias():
     X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
@@ -519,7 +563,9 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
         study_sent_indices.append((sent_index_counter, sent_end_index))
         sent_index_counter = sent_end_index
 
-
+        if i > 500:
+            print "WARNING RETURNING SMALL SUBSET OF DATA!"
+            break
 
 
                     
