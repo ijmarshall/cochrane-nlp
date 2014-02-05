@@ -466,7 +466,7 @@ def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_mode
                 FP += positives_per_pdf
 
             print len(study_y)
-            print TP, FP, TN, FN
+            
 
         precision = float(TP) / (float(TP) + float(FP))
         recall = float(TP) / (float(TP) + float(FN))
