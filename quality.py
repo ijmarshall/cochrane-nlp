@@ -402,7 +402,7 @@ def joint_predict_sentences_reporting_bias():
         pdb.set_trace()
 
 
-def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_models=1, positives_per_pdf=1):
+def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=1, positives_per_pdf=1):
     X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
     
 
@@ -432,78 +432,44 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
         y_test = y[np_indices(test_indices)]
         # print "done!"
 
-        if negative_sample_weighting:
-
-            all_indices = np.arange(len(y_train))
-
-
-            train_positives = np.nonzero(y_train)[0]
-            train_negatives = all_indices[~train_positives]
-
-            total_positives = len(train_positives)
-
-
-
-            if (negative_sample_weighting * total_positives) > len(train_negatives):
-                sample_negative_examples = len(train_negatives)
-            else:
-                sample_negative_examples = negative_sample_weighting * total_positives
-
-
-            models = []
-
-            print "fitting models..."
-            p = progressbar.ProgressBar(number_of_models, timer=True)
-
-            for model_no in range(number_of_models):
-
-                p.tap()
-
-
-                train_negatives_sample = np.random.choice(train_negatives, sample_negative_examples, replace=False)
-
-
-                train_sample = np.concatenate([train_positives, train_negatives_sample])
-
-                
-                clf = SGDClassifier(loss="hinge", penalty="l2")
-                clf.fit(X_train[train_sample], y_train[train_sample])
-                models.append(clf)
-
-
-
-
-        else:
-            print "fitting model..."
-            clf = SGDClassifier(loss="hinge", penalty="l2")
-            clf.fit(X_train, y_train)
-            print "done!"
-
-
-        # if negative_sample_weighting:
-
-        #     print "making predictions"
-
-        #     y_preds_all = []
-
-        #     for model in models:
-        #         y_preds_all.append(model.predict(X_test))
-
-        #     y_preds = np.round(np.mean(np.vstack(y_preds_all),0))
-
-        #     print "done!"
-
-
-
-        # else:
-        #     print "making predictions"
-        #     y_preds = clf.predict(X_test)
-        #     print "done!"
         
 
-        # f1 = sklearn.metrics.f1_score(y_test, y_preds)
-        # recall = sklearn.metrics.recall_score(y_test, y_preds)
-        # precision = sklearn.metrics.precision_score(y_test, y_preds)
+        all_indices = np.arange(len(y_train))
+
+
+        train_positives = np.nonzero(y_train)[0]
+        train_negatives = all_indices[~train_positives]
+
+        total_positives = len(train_positives)
+
+
+
+        if (negative_sample_weighting * total_positives) > len(train_negatives):
+            sample_negative_examples = len(train_negatives)
+        else:
+            sample_negative_examples = negative_sample_weighting * total_positives
+
+
+        models = []
+
+        print "fitting models..."
+        p = progressbar.ProgressBar(number_of_models, timer=True)
+
+        for model_no in range(number_of_models):
+
+            p.tap()
+
+
+            train_negatives_sample = np.random.choice(train_negatives, sample_negative_examples, replace=False)
+
+
+            train_sample = np.concatenate([train_positives, train_negatives_sample])
+
+            
+            clf = SGDClassifier(loss="hinge", penalty="l2")
+            clf.fit(X_train[train_sample], y_train[train_sample])
+            models.append(clf)
+
 
         
 
@@ -522,38 +488,29 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
             study_X = X[np_indices((start, end))]
             study_y = y[np_indices((start, end))]
 
-            # pred_probs = clf.decision_function(study_X)
-
-
-
-            pred_probs_all = [(np.argmax(clf.decision_function(study_X)) + start) for clf in models]
             
-            # print pred_probs_all
-            # pred_probs = np.round(np.mean(np.vstack(y_preds_all),0))
+            
+            preds_all = np.mean([clf.predict(study_X) for clf in models], 0)
 
-            # max_index = np.argmax(pred_probs) + start
-            max_indices = np.bincount(pred_probs_all).argsort()[-positives_per_pdf:][::-1]
-
-            max_index = np.bincount(pred_probs_all).argmax()
-
+            max_indices = preds_all.argsort()[-positives_per_pdf:][::-1] + start
+        
+        
             real_index = np.where(study_y==1)[0][0] + start
 
-            # print "Max distance +ve %.2f:\n%s\n" % (np.max(pred_probs), X_sents[max_index])
-            # print "Max distance +ve:\n%s\n" % ('\n'.join([X_sents[i] for i in max_indices]),)
-
-            # print "Actual answer:\n%s\n\n" % (X_sents[real_index])
-
             if real_index in max_indices:
+
                 TP += 1
                 TN += (len(study_y) - positives_per_pdf)
                 FP += (positives_per_pdf - 1)
                 # FN += 0
             else:
-                # TP += 1
+                # TP += 0
                 TN += (len(study_y) - positives_per_pdf - 1) 
                 FN += 1
                 FP += positives_per_pdf
 
+            print len(study_y)
+            
 
         precision = float(TP) / (float(TP) + float(FP))
         recall = float(TP) / (float(TP) + float(FN))
@@ -564,9 +521,6 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
                         "recall": recall,
                         "f1": f1,
                         "accuracy": accuracy})
-
-        print "fold %d:\tf1: %.2f\trecall: %.2f\tprecision: %.2f\taccuracy: %.2f" % (
-            fold_i, f1, recall, precision, accuracy)
 
 
 
@@ -581,37 +535,9 @@ def predict_sentences_reporting_bias(negative_sample_weighting=0, number_of_mode
 
         metric_mean = np.mean(metric_vec)
 
-        print "%s: %.2f" % (metric_type, metric_mean)
+        print "%s: %.5f" % (metric_type, metric_mean)
 
 
-            # min_index = np.argmin(pred_probs) + start
-
-            # print "Max distance -ve %.2f:\n%s\n\n" % (np.min(pred_probs), X_sents[min_index])
-
-
-
-
-
-        # for i, (y_pred, sent) in enumerate(zip(y_preds, X_sents_test)):
-
-        #     if y_pred > 0:
-        #         print
-        #         print "%d: %s" % (i, sent)
-
-
-
-
-
-
-
-
-    # cv_res = cross_validation.cross_val_score(
-    #             clf, X, np.asarray(y), 
-    #             score_func=sklearn.metrics.recall_score, cv=5)
-
-    # print cv_res
-
-    # model = clf.fit(X, y)
     # print show_most_informative_features(vec, model, n=50)
 
 
@@ -730,5 +656,5 @@ def test_pdf_cache():
 if __name__ == '__main__':
     # predict_domains_for_documents()
     # test_pdf_cache()
-    predict_sentences_reporting_bias(negative_sample_weighting=10, number_of_models=5, positives_per_pdf=1)
+    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=5)
     # getmapgaps()
