@@ -13,7 +13,6 @@ import collections
 import string
 from unidecode import unidecode
 import codecs
-import scipy
 
 import yaml
 from pprint import pprint
@@ -376,12 +375,6 @@ def joint_predict_sentences_reporting_bias():
     # here are the sentence level X,y's
     X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
 
-
-    # fix matrix type in earlier versions of scikits
-    if not isinstance(X, scipy.sparse.csr.csr_matrix):
-        print "Converting matrix to CSR"
-        X = X.tocsr()
-
     # now cross-validate
     clf = SGDClassifier(loss="hinge", penalty="l2")
     kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
@@ -409,13 +402,10 @@ def joint_predict_sentences_reporting_bias():
         pdb.set_trace()
 
 
-def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=1):
+def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=1, positives_per_pdf=1):
     X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
     
-    # fix matrix type in earlier versions of scikits
-    if not isinstance(X, scipy.sparse.csr.csr_matrix):
-        print "Converting matrix to CSR"
-        X = X.tocsr()
+
     
 
 
@@ -431,7 +421,7 @@ def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_mode
         train_indices = [study_sent_indices[i] for i in train]
 
         X_sents_test = sublist(X_sents, test_indices)
-        
+        # [X_sents[i] for i in test]
         
         print "done!"
 
@@ -554,7 +544,7 @@ def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_mode
     
 
 
-def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[1]):
+def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
     # sample_negative_examples = n: for low rate of positive examples; random sample
     # of n negative examples if > n negative examples in article; if n=0 then all examples
     # used
@@ -646,8 +636,7 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[1]):
 
     print "fitting vectorizer"
     vectorizer = CountVectorizer(max_features=10000)
-    X = vectorizer.fit_transform(X_words) 
-    print X           
+    X = vectorizer.fit_transform(X_words)            
     print "done!"
     y = np.array(y)
 
@@ -667,6 +656,5 @@ def test_pdf_cache():
 if __name__ == '__main__':
     # predict_domains_for_documents()
     # test_pdf_cache()
-    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=25, positives_per_pdf=3)
+    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=5)
     # getmapgaps()
-    # predict_sentences_reporting_bias()
