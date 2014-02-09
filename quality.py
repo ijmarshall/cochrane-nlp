@@ -13,12 +13,12 @@ import collections
 import string
 from unidecode import unidecode
 import codecs
-import scipy
 
 import yaml
 from pprint import pprint
 
 import numpy as np
+import scipy
 import math
 
 import sklearn
@@ -101,14 +101,33 @@ def sublist(l, indices):
     if isinstance(indices, tuple):
         indices = [indices]
 
-    output = [l[start: end] for (start, end) in indices]
+
+    # bcw -- editing to allow for missing supporting quotes
+    #output = [l[start: end] for (start, end) in indices]
+    output = []
+    for t in indices:
+        if len(t) > 0:
+            start, end = t 
+            output.append(l[start: end])
+        else:
+            # no quote for this guy
+            output.append("")
+   
     return flatten_list(output)
 
+ 
 def np_indices(indices):
     if isinstance(indices, tuple):
         indices = [indices]
 
-    output = [np.arange(start, end) for (start, end) in indices]
+    #output = [np.arange(start, end) for (start, end) in indices]
+    output = []
+    for t in indices:
+        if len(t) > 0:
+            start, end = t
+            output.append(np.arange(start, end))
+        else:
+            output.append((0,0))
     return np.hstack(output)
 
 
@@ -259,25 +278,36 @@ def _to_TeX(res):
     return tex_row_str
 
 
-def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
+def _get_study_level_X_y(test_domain=CORE_DOMAINS[0], append_missing=False):
     '''
     return X, y for the specified test domain. here
     X will be of dimensionality equal to the number of 
-    studies for which we have the test_domain data. 
+    studies for which we have the test_domain data.
+
+    if append_missing flag is True, this returns the 
+
     '''
     X, y = [], []
     #study_counter = 0
     q = QualityQuoteReader(quotes_only=False)
 
-
+    study_indices = []
     # creates binary task
     #map_lbl = lambda lbl: 1 if lbl=="YES" else -1
     map_lbl = lambda lbl: {"YES":2, "NO":0, "UNKNOWN":1}[lbl]
     for i, study in enumerate(q):
         domain_in_study = False
         pdf_tokens = study.studypdf
-            
+        
+        #if i == 7:
+        #    print "STUDY LEVEL !!!!"
+        #    pdb.set_trace()
 
+        if i > 200:
+            print "WARNING RETURNING SMALL SUBSET OF DATA!"
+            break  
+
+        study_indices.append(i)
         for domain in study.cochrane["QUALITY"]:
 
             quality_rating = domain["RATING"]
@@ -293,28 +323,25 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
                 domain_in_study = True
                 #study_counter += 1
                 #pdf_tokens = word_sent_tokenize(study.studypdf)
-
                 X.append(pdf_tokens)
                 #y.append(map_lbl(quality_rating))
                 y.append(quality_rating)
         
                 
-        if not domain_in_study:
-            #y.append("MISSING")
-            pass
+        if not domain_in_study and append_missing:
+            y.append("MISSING")
+            X.append('')
+            #pass
             
-        
-        if i > 500:
-            print "WARNING RETURNING SMALL SUBSET OF DATA!"
-            break
+
         #if len(y) != len(X):
         #    pdb.set_trace()
         
-    #pdb.set_trace()
+
     vectorizer = CountVectorizer(max_features=5000, binary=True)
     Xvec = vectorizer.fit_transform(X)            
-    #pdb.set_trace()
-    return Xvec, y, vectorizer
+ 
+    return Xvec, y, vectorizer, study_indices
 
 
 def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
@@ -358,7 +385,74 @@ def predict_all_domains():
     return results_d
 
 
+def augment_X(X, study_indices, y):
+    '''
+    return new matrix X' 
+    '''
+    n_studies = len(study_indices)
+    n_sentences, n_features = X.shape
     
+    cur_study_index = 0
+
+    def sentences_in_study(t):
+        return t[1] - t[0]
+
+    sentences_in_current_study = sentences_in_study(study_indices[0])
+    sent_counter = 0
+
+    #X_prime = scipy.sparse.csc.csc_matrix((n_sentences, n_features*2))
+    X_prime = scipy.sparse.lil_matrix((n_sentences, n_features*2))
+    csc_rows = [] # list of row indices
+    csc_cols = [] # cols
+    csc_data = [] # 1's, basically
+
+    for row in xrange(X.shape[0]):
+        if row % 100 == 0:
+            print row
+
+        y_i = y[cur_study_index]
+ 
+        #pdb.set_trace()
+        nonzeros = X[row].nonzero()[1] 
+
+        if len(nonzeros) > 0:
+
+            n_nonzeros = len(nonzeros)
+            csc_rows.extend([row]*n_nonzeros)
+            csc_cols.extend(list(nonzeros))
+            csc_data.extend([1]*n_nonzeros)
+
+            # now make a copy!
+            if y_i == 1:
+                csc_cols.extend(
+                    [col*2+1 for col in nonzeros])
+                csc_data.extend(
+                    [1]*n_nonzeros)
+                csc_rows.extend([row]*
+                                    n_nonzeros)
+
+
+        '''
+        for col in nonzeros:
+            X_prime[row, col] = 1
+            if y_i is not None and y_i == 1:
+                X_prime[row, col*2 + 1] = 1
+        '''
+        sent_counter += 1
+        if sent_counter >= sentences_in_current_study:
+            cur_study_index += 1
+            if cur_study_index < n_studies:
+                sentences_in_current_study = sentences_in_study(study_indices[cur_study_index])
+            else:
+                pass
+            sent_counter = 0
+
+    print "ok... converting to sparse matrix"
+    #return X_prime.tocsc()
+    #pdb.set_trace()
+    return scipy.sparse.csc.csc_matrix((np.array(csc_data),(np.array(csc_rows),np.array(csc_cols))), 
+                                        shape=(n_sentences, n_features*2))
+
 def joint_predict_sentences_reporting_bias():
     '''
     @TODO bcw
@@ -370,21 +464,30 @@ def joint_predict_sentences_reporting_bias():
     5. bam
     '''
     
+    '''
+    2/8/14
+
+    OK so the problem is that the studies will not line up here,
+    in particular because when we do things at the sentence level,
+    the QualityQuoteReader class is instantiated to skip
+    studies with no quote. This needs to be changed.
+
+    I **think** I have fixed this... things should be sane now.
+    '''
     # first, get the true document-level labels
-    study_X, study_y, study_vectorizer = _get_study_level_X_y()
+    study_X, study_y, study_vectorizer, study_indices1 = _get_study_level_X_y(append_missing=True)
 
     # here are the sentence level X,y's
-    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
-
-
-    # fix matrix type in earlier versions of scikits
-    if not isinstance(X, scipy.sparse.csr.csr_matrix):
-        print "Converting matrix to CSR"
-        X = X.tocsr()
+    # note that these may be effectively 'missing' for more studies in cases that no
+    # supporting quote could be found...
+    X, y, X_sents, vec, study_sent_indices, study_indices2 = _get_sentence_level_X_y()
+    
 
     # now cross-validate
     clf = SGDClassifier(loss="hinge", penalty="l2")
     kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
+
+    map_study_lbl = lambda lbl: 1 if lbl=="YES" else 0
 
     for fold_i, (train, test) in enumerate(kf):
         test_indices = [study_sent_indices[i] for i in test]
@@ -394,7 +497,9 @@ def joint_predict_sentences_reporting_bias():
         X_sents_test = sublist(X_sents, test_indices)
 
         # train/test split
-        X_train = X[np_indices(train_indices)]
+        study_y_train = [map_study_lbl(study_y[i]) for i in train]
+
+        X_train = X[np_indices(train_indices)] 
         y_train = y[np_indices(train_indices)]
         X_test = X[np_indices(test_indices)]
         y_test = y[np_indices(test_indices)]
@@ -405,20 +510,25 @@ def joint_predict_sentences_reporting_bias():
         # the feature set that is an interaction with
         # the study-level bias assessment
         ###
+        
+        X_train = augment_X(X_train, train_indices, study_y_train)
 
+
+        ### cheating!!!
+        study_y_test = [map_study_lbl(study_y[i]) for i in test]
+        X_test = augment_X(X_test, test_indices, study_y_test)
+
+       
+        clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
+        clf.fit(X_train, y_train)
         pdb.set_trace()
 
+        ### TODO TODO TODO actually generate and evaluate predictions!!!
+        
 
-def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=1):
+def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=1, positives_per_pdf=1):
     X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
     
-    # fix matrix type in earlier versions of scikits
-    if not isinstance(X, scipy.sparse.csr.csr_matrix):
-        print "Converting matrix to CSR"
-        X = X.tocsr()
-    
-
-
     kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
 
     metrics = []
@@ -431,9 +541,11 @@ def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_mode
         train_indices = [study_sent_indices[i] for i in train]
 
         X_sents_test = sublist(X_sents, test_indices)
-        
+        # [X_sents[i] for i in test]
         
         print "done!"
+
+        #pdb.set_trace()
 
         # print "generating split"
         X_train = X[np_indices(train_indices)]
@@ -554,16 +666,18 @@ def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_mode
     
 
 
-def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[1]):
+def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
     # sample_negative_examples = n: for low rate of positive examples; random sample
     # of n negative examples if > n negative examples in article; if n=0 then all examples
     # used
 
 
-    q = QualityQuoteReader()
+    q = QualityQuoteReader(quotes_only=False)
     y = []
     X_words = []
     
+    study_indices = []
+
     study_sent_indices = [] # list of (start, end) indices corresponding to each study
     sent_index_counter = 0
 
@@ -573,55 +687,66 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[1]):
 
     for i, study in enumerate(q):
 
+        if i > 200:
+            #pdb.set_trace()
+            print "WARNING RETURNING SMALL SUBSET OF DATA!"
+            break
+
+        study_indices.append(i)
+
         # fast forward to the matching domain
         for domain in study.cochrane["QUALITY"]:
             if domain["DOMAIN"] == test_domain:
                 break
         else:
+            #pdb.set_trace()
             # if no matching domain continue to the next study
-            continue
+            #study_sent_indices.append(())
+            #continue
+            pass
 
-
+        quote = None
+        has_quote = False
         try:
             quote = QUALITY_QUOTE_REGEX.search(domain["DESCRIPTION"]).group(1)
+            has_quote = True
         except:
-            print "Unable to extract quote:"
-            print domain["DESCRIPTION"]
-            raise
+            ## formerly this was freaking out, instead, let's just pass
+            pass
+        #    print "Unable to extract quote:"
+        #    print domain["DESCRIPTION"]
+        #    raise
 
-        quote_words = word_tokenizer.tokenize(quote)
+
+
         pdf_sents = sent_tokenizer.tokenize(study.studypdf)
 
  
-        quote_sent_bow = set((word.lower() for word in quote_words))
-
-        rankings = []
-
-        for pdf_i, pdf_sent in enumerate(pdf_sents):
-
-            pdf_words = word_tokenizer.tokenize(pdf_sent)
         
-            pdf_sent_bow = set((word.lower() for word in pdf_words))
+        if has_quote:
+            quote_words = word_tokenizer.tokenize(quote)
+            quote_sent_bow = set((word.lower() for word in quote_words))
+            rankings = []
 
-            if not pdf_sent_bow or not quote_sent_bow:
-                prop_quote_in_sent = 0
-            else:
-                prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
+            for pdf_i, pdf_sent in enumerate(pdf_sents):
+                pdf_words = word_tokenizer.tokenize(pdf_sent)
+                pdf_sent_bow = set((word.lower() for word in pdf_words))
+
+                if not pdf_sent_bow or not quote_sent_bow:
+                    prop_quote_in_sent = 0
+                else:
+                    prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
 
             # print "%.0f" % (prop_quote_in_sent,)
 
-            rankings.append((prop_quote_in_sent, pdf_i))
+                rankings.append((prop_quote_in_sent, pdf_i))
 
-        rankings.sort(key=lambda x: x[0], reverse=True)
-        best_match_index = rankings[0][1]
-        # print quote
-        # print pdf_tokens[best_match_index]
+            rankings.sort(key=lambda x: x[0], reverse=True)
+            best_match_index = rankings[0][1]
 
-
-
-
-        y_study = np.zeros(len(pdf_sents))
-        y_study[best_match_index] = 1
+        y_study = np.zeros(len(pdf_sents)) # all zeros when we don't have a quote
+        if has_quote:
+            y_study[best_match_index] = 1
         X_words.extend(pdf_sents)
 
 
@@ -631,9 +756,7 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[1]):
         sent_index_counter = sent_end_index
         y.extend(y_study)
 
-        if i > 500:
-            print "WARNING RETURNING SMALL SUBSET OF DATA!"
-            break
+ 
 
 
                     
@@ -646,12 +769,11 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[1]):
 
     print "fitting vectorizer"
     vectorizer = CountVectorizer(max_features=10000)
-    X = vectorizer.fit_transform(X_words) 
-    print X           
+    X = vectorizer.fit_transform(X_words)            
     print "done!"
     y = np.array(y)
 
-    return X, y, X_words, vectorizer, study_sent_indices
+    return X, y, X_words, vectorizer, study_sent_indices, study_indices
 
     print "Finished! %d studies included domain %s" % (counter, test_domain)
 
@@ -667,6 +789,5 @@ def test_pdf_cache():
 if __name__ == '__main__':
     # predict_domains_for_documents()
     # test_pdf_cache()
-    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=25, positives_per_pdf=3)
+    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=5)
     # getmapgaps()
-    # predict_sentences_reporting_bias()
