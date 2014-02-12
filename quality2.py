@@ -1,10 +1,3 @@
-#####################################################
-#                                                   #
-#   Predicting risk of bias from full text papers   #
-#                                                   #
-#####################################################
-import pdb 
-
 from tokenizer import sent_tokenizer, word_tokenizer
 import biviewer
 import re
@@ -20,104 +13,56 @@ from pprint import pprint
 import numpy as np
 import math
 
+import difflib
+
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
+
+from sklearn.feature_extraction import DictVectorizer
+
 from sklearn import cross_validation
 from sklearn import metrics
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
 
+from collections import defaultdict
+
+from sklearn.metrics import precision_recall_fscore_support
 import random
 
 from sklearn.cross_validation import KFold
 
+from journalreaders import PdfReader
+
+import cPickle as pickle
+
+# QUALITY_QUOTE_REGEX = re.compile("Quote\:\s*[\'\"](.*?)[\'\"]")
 
 
-from collections import Counter
+REGEX_QUOTE_PRESENT = re.compile("Quote\:")
+REGEX_QUOTE = re.compile("\"(.*?)\"") # retrive blocks of text in quotes
+REGEX_ELLIPSIS = re.compile("\s*[\[\(]?\s?\.\.+\s?[\]\)]?\s*") # to catch various permetations of "..." and "[...]"
 
-QUALITY_QUOTE_REGEX = re.compile("Quote\:\s*[\'\"](.*?)[\'\"]")
+SIMPLE_WORD_TOKENIZER = re.compile("[a-zA-Z]{2,}") # regex of the rule used by sklearn CountVectorizer
 
 CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
                 "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
-                # there is a seventh domain "Other", but not listed here since covers multiple areas
+                # "OTHER" is generated in code, not in the mapping file
                 # see data/domain_names.txt for various other criteria
                 # all of these are available via QualityQuoteReader
 
-
-
-def word_sent_tokenize(raw_text):
-    return [(word_tokenizer.tokenize(sent)) for sent in sent_tokenizer.tokenize(raw_text)]
-
-
-def describe_data():
-
-    perdomain_output = [Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter()]
-    perdomain_quotes = [Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter()]
-
-    overall_output = Counter()
-    overall_quotes = Counter()
-
-    q = QualityQuoteReader()
-
-    for i, study in enumerate(q):
-            
-        for domain in study.cochrane["QUALITY"]:
-
-            domain_text = domain["DOMAIN"].replace("\xc2\xa0", " ")
-
-            if domain_text in CORE_DOMAINS:
-                domain_index = CORE_DOMAINS.index(domain_text)
-            else:
-                domain_index = 6 # other
-
-            perdomain_output[domain_index][domain["RATING"]] += 1
-            overall_output[domain["RATING"]] += 1
-
-            if QUALITY_QUOTE_REGEX.match(domain['DESCRIPTION']):
-                perdomain_quotes[domain_index][domain["RATING"]] += 1
-                overall_quotes[domain["RATING"]] += 1
-
-    print
-    print "ALL"
-    for domain, counts in zip(CORE_DOMAINS + ["OTHER"], perdomain_output):
-        print
-        print domain
-        print
-        print counts
-
-    print
-    print "OVERALL"
-    print
-    print overall_output
+ALL_DOMAINS = CORE_DOMAINS[:] # will be added to later
 
 
 
-def flatten_list(l):
-    return [item for sublist in l for item in sublist]
 
-
-def sublist(l, indices):
-    if isinstance(indices, tuple):
-        indices = [indices]
-
-    output = [l[start: end] for (start, end) in indices]
-    return flatten_list(output)
-
-def np_indices(indices):
-    if isinstance(indices, tuple):
-        indices = [indices]
-
-    output = [np.arange(start, end) for (start, end) in indices]
-    return np.hstack(output)
-
-
-def show_most_informative_features(vectorizer, clf, n=50):
+def show_most_informative_features(vectorizer, clf, n=10):
     ###
     # note that in the multi-class case, clf.coef_ will
     # have k weight vectors, which I believe are one per
     # each class (i.e., each is a classifier discriminating
     # one class versus the rest). 
-    c_f = sorted(zip(clf.coef_[2], vectorizer.get_feature_names()))
+    c_f = sorted(zip(clf.coef_, vectorizer.get_feature_names()))
 
     if n == 0:
         n = len(c_f)/2
@@ -129,7 +74,36 @@ def show_most_informative_features(vectorizer, clf, n=50):
     for (c1, f1), (c2, f2) in top:
         out_str.append("\t%.4f\t%-15s\t\t%.4f\t%-15s" % (c1, f1, c2, f2))
     feature_str = "\n".join(out_str)
-    return (feature_str, top)
+    return feature_str
+
+
+def show_most_informative_features_ynu(vectorizer, clf, n=10):
+    ###
+    # note that in the multi-class case, clf.coef_ will
+    # have k weight vectors, which I believe are one per
+    # each class (i.e., each is a classifier discriminating
+    # one class versus the rest). 
+
+    combinations =  ["NO vs (YES + UNKNOWN)", "UNKNOWN vs (YES + NO)", "YES vs (NO + UNKNOWN)"]
+
+    out_str = []
+
+    for i, combination in enumerate(combinations):
+
+        out_str.append(combination)
+        out_str.append("*" * 20)
+
+        c_f = sorted(zip(clf.coef_[i], vectorizer.get_feature_names()))
+
+        if n == 0:
+            n = len(c_f)/2
+
+        top = zip(c_f[:n], c_f[:-(n+1):-1])
+    
+        for (c1, f1), (c2, f2) in top:
+            out_str.append("\t%.4f\t%-15s\t\t%.4f\t%-15s" % (c1, f1, c2, f2))
+    feature_str = "\n".join(out_str)
+    return feature_str
 
 def load_domain_map(filename="data/domain_names.txt"):
 
@@ -176,14 +150,24 @@ class QualityQuoteReader():
 
 
             for domain in quality_data:
-                domain['DESCRIPTION'] = self.preprocess_cochrane(domain['DESCRIPTION'])
-                if QUALITY_QUOTE_REGEX.match(domain['DESCRIPTION']) or not self.quotes_only:
-                    domain_text = domain["DOMAIN"].replace("\xc2\xa0", " ")
+                
+                
+                if REGEX_QUOTE_PRESENT.match(domain['DESCRIPTION']) or not self.quotes_only:
 
+                    domain['DESCRIPTION'] = self.preprocess_cochrane(domain['DESCRIPTION'])
                     try:
-                        domain["DOMAIN"] = self.domain_map[domain_text] # map domain titles to our core categories
+                        mapped_domain = self.domain_map[domain["DOMAIN"]] # map domain titles to our core categories
+
+                        domain["DOMAIN"] = mapped_domain
+                        
+                        if mapped_domain not in ALL_DOMAINS:                            
+                            ALL_DOMAINS.append(mapped_domain)
+                        
+                        
+                            
                     except:
-                        domain["DOMAIN"] = "UNMAPPED"
+                        domain["DOMAIN"] = "OTHER"
+                    
                     quality_quotes.append(domain)
 
             if quality_quotes:
@@ -196,9 +180,21 @@ class QualityQuoteReader():
         pdftext = re.sub("\n", " ", pdftext) # preprocessing rule 1
         return pdftext
 
-    def preprocess_cochrane(self, cochranetext):
-        cochranetext = unidecode(cochranetext)
-        return cochranetext
+    def preprocess_cochrane(self, rawtext):
+
+        # regex clean up of cochrane strings
+        processedtext = unidecode(rawtext)
+        processedtext = re.sub(" +", " ", processedtext)
+
+        # extract all parts in quotes
+        quotes = REGEX_QUOTE.findall(processedtext)
+
+        # then split at any ellipses
+        quote_parts = []
+        for quote in quotes:
+            quote_parts.extend(REGEX_ELLIPSIS.split(quote))
+        return quote_parts
+        
 
     def domains(self):
         domain_headers = set((value for key, value in self.domain_map.iteritems()))
@@ -206,455 +202,982 @@ class QualityQuoteReader():
 
 
 
+# class SentenceDataViewer():
+#     """
+#     Stores data at sentence level in parallel with study level indices
+#     """
+#     def __init__(self, indices=None, data=None)
 
 
 
-def _get_domains_from_study(study):
-    return [domain["DOMAIN"] for domain in study.cochrane["QUALITY"]]
+class PDFMatcher():
+    """
+    matches and generates sent tokens from pdf text
+    """
+    def __init__(self, quotes=None, pdftext=None):
+        # load a sequence matcher; turn autojunk off (since buggy for long strings)
+        self.sequencematcher = difflib.SequenceMatcher(None, autojunk=False)
 
-def _simple_BoW(study):
-    return [s for s in word_tokenizer.tokenize(study.studypdf) 
-                if not s in string.punctuation]
-
-def to_TeX(all_res):
-    tex_table = ['''\\begin{table*}\n \\begin{tabular}{l | l l l l} \n Quality domain & \emph{high risk} F (\#) & \emph{unknown} F (\#) & \emph{low risk} F (\#) & top terms \\\\ \n \hline''']
-    for domain in all_res:
-        cur_row = domain + " & "
-        res_matrix = all_res[domain][0]
-        cur_row += _to_TeX(res_matrix) 
-
-        # add terms
-        terms = all_res[domain][1][1]
-        print "\n\n"
-        print domain
-        print [t[1] for t in terms[:20]]
-        
-        top_three = [t[1][1] for t in terms[:3]]
-        cur_row += " & %s" % "; ".join(["\\emph{%s}" % t for t in top_three])
-        cur_row +=  "\\\\"
-        tex_table.append(cur_row)
+        if quotes:
+            self.quotes = self.load_quotes(quotes)
+        if pdftext:
+            self.pdftext = self.load_pdftext(pdftext)
 
 
-    tex_table.append("\end{tabular} \n \end{table*}")
-    return "\n".join(tex_table)
-
-def _to_TeX(res):
-    '''
-    Assume res is like:
-
-    [  1.18793103e-01   6.78426907e-01   7.03841752e-01]
-     [  4.09195402e-02   7.47927854e-01   6.73109244e-01]
-     [  5.63686201e-02   7.10841025e-01   6.86779839e-01]
-     [  2.92000000e+01   2.69800000e+02   2.38000000e+02]
-
-     this is [row index]: [0] precision, [1] recall, [2] F [3] support
-     for each of [column index]: [0] no, [1] unknown [2] yes
-    '''
-    f_scores = res[2]
-    support = res[3]
-    tex_row_str = "%.3f (%.1f) & %.3f (%.1f) & %.3f (%.1f)" % (
-        f_scores[0], support[0], f_scores[1], support[1], 
-        f_scores[2], support[2])
-    return tex_row_str
 
 
-def _get_study_level_X_y(test_domain=CORE_DOMAINS[0]):
-    '''
-    return X, y for the specified test domain. here
-    X will be of dimensionality equal to the number of 
-    studies for which we have the test_domain data. 
-    '''
-    X, y = [], []
-    #study_counter = 0
-    q = QualityQuoteReader(quotes_only=False)
+    def load_quotes(self, quotes):
+        self.quotes = quotes
+
+    def load_pdftext(self, pdftext):
+        self.pdftext = pdftext
+        self.lenpdf = len(pdftext)
+        self.sequencematcher.set_seq2(self.pdftext)
+        self.sent_indices =  sent_tokenizer.span_tokenize(self.pdftext)
 
 
-    # creates binary task
-    #map_lbl = lambda lbl: 1 if lbl=="YES" else -1
-    map_lbl = lambda lbl: {"YES":2, "NO":0, "UNKNOWN":1}[lbl]
-    for i, study in enumerate(q):
-        domain_in_study = False
-        pdf_tokens = study.studypdf
-            
+    def _overlap(self, t1, t2):
+        """
+        finds out whether two tuples overlap
+        """
+        t1s, t1e = t1
+        t2s, t2e = t2
 
-        for domain in study.cochrane["QUALITY"]:
-
-            quality_rating = domain["RATING"]
-            #### for now skip unknowns, test YES v NO
-            #if quality_rating == "UNKNOWN":
-            #    quality_rating = "NO"
-                # break
-
-            # note that the 2nd clause deals with odd cases 
-            # in which a domain is *repeated* for a study,
-            if domain["DOMAIN"] == test_domain and not domain_in_study:
-
-                domain_in_study = True
-                #study_counter += 1
-                #pdf_tokens = word_sent_tokenize(study.studypdf)
-
-                X.append(pdf_tokens)
-                #y.append(map_lbl(quality_rating))
-                y.append(quality_rating)
-        
-                
-        if not domain_in_study:
-            #y.append("MISSING")
-            pass
-            
-        
-        if i > 500:
-            print "WARNING RETURNING SMALL SUBSET OF DATA!"
-            break
-        #if len(y) != len(X):
-        #    pdb.set_trace()
-        
-    #pdb.set_trace()
-    vectorizer = CountVectorizer(max_features=5000, binary=True)
-    Xvec = vectorizer.fit_transform(X)            
-    #pdb.set_trace()
-    return Xvec, y, vectorizer
+        # true if either start of t1 is inside t2, or start of t2 is inside t1
+        return (t2s <= t1s <= t2e) or (t1s <= t2s <= t1e) 
 
 
-def predict_domains_for_documents(test_domain=CORE_DOMAINS[0], avg=True):
-    X, y, vectorizer = _get_study_level_X_y(test_domain=test_domain)
-    score_f = lambda y_true, y_pred : metrics.precision_recall_fscore_support(
-                                            y_true, y_pred, average=None)#, average="macro")
-    #score_f = sklearn.metrics.f1_score
-
-    # note that asarray call below, which seems necessary for 
-    # reasons that escape me (see here 
-    # https://github.com/scikit-learn/scikit-learn/issues/2508)
-
-    clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
-    #pdb.set_trace()
-    cv_res = cross_validation.cross_val_score(
-                clf, X, np.asarray(y), 
-                score_func=score_f, 
-                #sklearn.metrics.precision_recall_fscore_support,
-                cv=5)
-    #pdb.set_trace()
-    if avg:
-        cv_res = sum(cv_res)/float(cv_res.shape[0])
-    #metrics.precision_recall_fscore_support
-    
-    #if dump_output:
-    #    np.savetxt(test_domain.replace(" ", "_") + ".csv", cv_res, delimiter=',', fmt='%2.2f')
-
-    print cv_res
-
-    ### train on all
-    model = clf.fit(X, y)
-    informative_features = show_most_informative_features(vectorizer, model, n=50)
-    return (cv_res, informative_features, y)
-
-def predict_all_domains():
-    # need to label mapping
-    results_d = {}
-    for domain in CORE_DOMAINS:
-        print ("on domain: {0}".format(domain))
-        results_d[domain] = predict_domains_for_documents(test_domain=domain)
-    return results_d
+    def generate_X(self):
+        X = []
+        # go through sentence indices
+        # make X (list of sentences)
+        for (start_i, end_i) in self.sent_indices:
+            X.append(self.pdftext[start_i: end_i])
+        return X
 
 
-    
-def joint_predict_sentences_reporting_bias():
-    '''
-    @TODO bcw
+    def generate_y(self, min_char_match=20):
+        """
+        returns X: list of sentence strings
+                y: numpy vector of 1, -1 (for positive/negative examples)
+        """
+        good_match = False # this will be set to True if sufficent matching characters in
+                           # at least one of the parts of the quotes
 
-    1. For each fold, augment training data with true labels
-    2. Train as usual (with augmented feature vectors)
-    3. Make predictions at the *document level* for specified domain
-    4. Augment test vectors with predicted labels
-    5. bam
-    '''
-    
-    # first, get the true document-level labels
-    study_X, study_y, study_vectorizer = _get_study_level_X_y()
-
-    # here are the sentence level X,y's
-    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
-
-    # now cross-validate
-    clf = SGDClassifier(loss="hinge", penalty="l2")
-    kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
-
-    for fold_i, (train, test) in enumerate(kf):
-        test_indices = [study_sent_indices[i] for i in test]
-        train_indices = [study_sent_indices[i] for i in train]
-
-        # again, these are sentence level features
-        X_sents_test = sublist(X_sents, test_indices)
-
-        # train/test split
-        X_train = X[np_indices(train_indices)]
-        y_train = y[np_indices(train_indices)]
-        X_test = X[np_indices(test_indices)]
-        y_test = y[np_indices(test_indices)]
-        
-        ###
-        # now we want to augment vectors with study-level
-        # information. specifically, create a copy of
-        # the feature set that is an interaction with
-        # the study-level bias assessment
-        ###
-
-        pdb.set_trace()
+        match_indices = []
 
 
-def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=1, positives_per_pdf=1):
-    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
-    
+        # go through quotes, match using difflib
+        # and keep any matches which are long enough so likely true matches
+        for quote in self.quotes:
 
-    
+            self.sequencematcher.set_seq1(quote)
 
+            best_match = self.sequencematcher.find_longest_match(0, len(quote), 0, self.lenpdf)
 
-    kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
-
-    metrics = []
-
-    for fold_i, (train, test) in enumerate(kf):
-
-        print "making test sentences"
-        
-        test_indices = [study_sent_indices[i] for i in test]
-        train_indices = [study_sent_indices[i] for i in train]
-
-        X_sents_test = sublist(X_sents, test_indices)
-        # [X_sents[i] for i in test]
-        
-        print "done!"
-
-        # print "generating split"
-        X_train = X[np_indices(train_indices)]
-        y_train = y[np_indices(train_indices)]
-        X_test = X[np_indices(test_indices)]
-        y_test = y[np_indices(test_indices)]
-        # print "done!"
+            # only interested in good quality matches
+            if best_match.size > min_char_match:
+                good_match = True
+                match_indices.append((best_match.b, best_match.b + best_match.size)) # add (start_i, end_i) tuples (of PDF indices)
 
         
+        y = []
 
-        all_indices = np.arange(len(y_train))
+        if not good_match:
+            # if quality criteria not met, leave here
+            # (i.e. return empty lists [], [])
+            return y
 
+        # otherwise continue and generate feature and answer vectors
 
-        train_positives = np.nonzero(y_train)[0]
-        train_negatives = all_indices[~train_positives]
+        # get indices of sentences (rather than split)
+        sent_indices = sent_tokenizer.span_tokenize(self.pdftext)
 
-        total_positives = len(train_positives)
-
-
-
-        if (negative_sample_weighting * total_positives) > len(train_negatives):
-            sample_negative_examples = len(train_negatives)
-        else:
-            sample_negative_examples = negative_sample_weighting * total_positives
-
-
-        models = []
-
-        print "fitting models..."
-        p = progressbar.ProgressBar(number_of_models, timer=True)
-
-        for model_no in range(number_of_models):
-
-            p.tap()
+        # go through sentence indices
+        # make X (list of sentences)
+        # and calculate y, if there is *any* overlap with matched quoted text then
+        # y = True
+        for (start_i, end_i) in sent_indices:
 
 
-            train_negatives_sample = np.random.choice(train_negatives, sample_negative_examples, replace=False)
 
-
-            train_sample = np.concatenate([train_positives, train_negatives_sample])
-
-            
-            clf = SGDClassifier(loss="hinge", penalty="l2")
-            clf.fit(X_train[train_sample], y_train[train_sample])
-            models.append(clf)
-
-
-        
-
-
-        TP = 0
-        FP = 0
-        TN = 0
-        FN = 0
-
-        print "testing..."
-        p = progressbar.ProgressBar(len(test_indices), timer=True)
-
-        for start, end in test_indices:
-
-            p.tap()
-            study_X = X[np_indices((start, end))]
-            study_y = y[np_indices((start, end))]
-
-            
-            
-            preds_all = np.mean([clf.predict(study_X) for clf in models], 0)
-
-            max_indices = preds_all.argsort()[-positives_per_pdf:][::-1] + start
-        
-        
-            real_index = np.where(study_y==1)[0][0] + start
-
-            if real_index in max_indices:
-
-                TP += 1
-                TN += (len(study_y) - positives_per_pdf)
-                FP += (positives_per_pdf - 1)
-                # FN += 0
+            # if any overlaps with quotes, then y = True, else False
+            if any((self._overlap((start_i, end_i), match_tuple) for match_tuple in match_indices)):
+                y.append(1)
             else:
-                # TP += 0
-                TN += (len(study_y) - positives_per_pdf - 1) 
-                FN += 1
-                FP += positives_per_pdf
+                y.append(-1)
 
-            print len(study_y)
+        return y
+
+
+
+class SentenceDataView():
+    def __init__(self, study_ids, data):
+        self.study_ids = study_ids
+        self.data = data
+
+
+
+
+
+
+
+class SentenceVectorizer():
+    """
+    for predicting whether sentences relate to a risk of bias domain
+    """
+
+    def __init__(self):
+        pass
+        
+
+    def generate_data(self, test_mode=False, restrict_to_core=False):
+
+        self.test_mode = test_mode
+        if self.test_mode:
+            print "WARNING - in test mode, using data sample only"
+
+
+
+        if restrict_to_core:
+            test_domains = CORE_DOMAINS
+        else:
+            test_domains = ALL_DOMAINS
+
+        # one y vector for each core domain
+
+        # one feature matrix X
+        self.X_list = SentenceDataView([], [])
+
+        y_list = defaultdict(lambda: SentenceDataView([], []))
+
+
+
+
+        q = QualityQuoteReader()
+
+        for study_i, study in enumerate(q):
+
+            matcher = PDFMatcher()
+            matcher.load_pdftext(study.studypdf)
+
+            
+            X_study = matcher.generate_X()
+            self.X_list.data.extend(X_study)
+            self.X_list.study_ids.extend([study_i] * len(X_study))
+
+            domains_done_already = [] # for this particular study
+            # (we're ignoring multiple quotes per domain at the moment and getting the first...)
+
+            for domain in study.cochrane["QUALITY"]:
+
+                matcher.load_quotes(domain["DESCRIPTION"])
+                y_study = matcher.generate_y()
+
+                if domain["DOMAIN"] in domains_done_already:
+                    continue
+                else:
+                    domains_done_already.append(domain["DOMAIN"])
+                    y_list[domain["DOMAIN"]].data.extend(y_study)
+                    y_list[domain["DOMAIN"]].study_ids.extend([study_i] * len(y_study))
+
+                
+
+
+                
+
+            if self.test_mode and study_i == 250:
+                break
+
+        self.vectorizer = CountVectorizer(max_features=5000)
+
+        
+
+
+        self.X = SentenceDataView(np.array(self.X_list.study_ids), self.vectorizer.fit_transform(self.X_list.data))
+        self.y = {domain: SentenceDataView(np.array(y_list[domain].study_ids), np.array(y_list[domain].data)) for domain in test_domains}
+
+
+    def save_data(self, filename):
+        out = (self.vectorizer, self.X, self.y)
+        with open(filename, 'wb') as f:
+            pickle.dump(out, f)
             
 
-        precision = float(TP) / (float(TP) + float(FP))
-        recall = float(TP) / (float(TP) + float(FN))
-        f1 = 2 * ((precision * recall) / (precision + recall))
-        accuracy = float(TP) / len(test_indices)
+    def load_data(self, filename):
+        with open(filename, 'rb') as f:
+            inp = pickle.load(f)
+            
+        self.vectorizer, self.X, self.y = inp
+            
+    def save_text(self, filename):
+        """
+        saves the original text of all PDFs, to debugging and looking at predicted text from corpus
+        NB this is a large file
+        """
+        with open(filename, 'wb') as f:
+            pickle.dump(self.X_list, f)
 
-        metrics.append({"precision": precision,
-                        "recall": recall,
-                        "f1": f1,
-                        "accuracy": accuracy})
+    def load_text(self, filename):
+        """
+        loads the original text of all PDFs, to debugging and looking at predicted text from corpus
+        NB this is a large file
+        """
+        with open(filename, 'rb') as f:
+            self.X_list = pickle.load(f)
+            
+        
+    def len_domain(self, domain=0):
+        """
+        returns number of *studies* (not sentences)
+        per domain
+        """
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+        return len(np.unique(self.y[domain].study_ids))
+
+    def get_all_domains(self):
+        return self.y.keys()
 
 
+    def X_get_sentence(self, select_sent_id, domain=0):
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
 
-    print
-    pprint(metrics)
+        y_study_ids = np.unique(self.y[domain].study_ids)
 
-    metric_types = ["precision", "recall", "f1", "accuracy"]
+        X_filter = np.nonzero([X_study_id in y_study_ids for X_study_id in self.X.study_ids])[0]
 
-    for metric_type in metric_types:
-
-        metric_vec = [metric[metric_type] for metric in metrics]
-
-        metric_mean = np.mean(metric_vec)
-
-        print "%s: %.5f" % (metric_type, metric_mean)
+        return self.X_list.data[X_filter[select_sent_id]]
 
 
-    # print show_most_informative_features(vec, model, n=50)
+    def X_domain_all(self, domain=0):
+        """
+        retrieve X data
+        N.B. study_ids in the data are for internal use only
+        externally, studies are 0 indexed and separate for each domain
+        """
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
 
+        y_study_ids = np.unique(self.y[domain].study_ids)
+
+        X_filter = np.nonzero([(X_study_id in y_study_ids) for X_study_id in self.X.study_ids])[0]
+
+        return SentenceDataView(self.X.study_ids[X_filter], self.X.data[X_filter])
+
+    def y_domain_all(self, domain=0):
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+        return self.y[domain]
+
+
+    def X_y_filtered(self, filter_ids, domain=0):
+
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+        X_all = self.X_domain_all(domain=domain)
+        y_all = self.y[domain]
+
+        # np.unique always returns ordered ids
+        unique_study_ids = np.unique(y_all.study_ids)
+
+        
+
+        mapped_ids = [unique_study_ids[filter_id] for filter_id in filter_ids]
+
+        X_filter_ids = np.nonzero([(X_study_id in mapped_ids) for X_study_id in X_all.study_ids])[0]
+        # can probably remove the next line, ids should be the same for both at this stage
+        y_filter_ids = np.nonzero([(y_study_id in mapped_ids) for y_study_id in y_all.study_ids])[0]
+
+        
+        X_filtered = SentenceDataView(X_all.study_ids[X_filter_ids], X_all.data[X_filter_ids])
+        y_filtered = SentenceDataView(y_all.study_ids[y_filter_ids], y_all.data[y_filter_ids])
+
+        return X_filtered, y_filtered
+    
+
+    def X_y_sampled(self, filter_ids, domain=0, negative_sample_ratio=10):
+        """
+        randomly sample negative examples
+        (for when imbalance)
+        N.B. negatives may be oversampled
+        """
+
+        X_filtered, y_filtered = self.X_y_filtered(filter_ids, domain)
+
+
+        # find the positive and negative sentence ids
+        positive_ids = np.nonzero(y_filtered.data==1)[0]
+        negative_ids = np.nonzero(y_filtered.data==-1)[0]
+
+        # sample ratio * no positive ids
+        len_positive_ids = len(positive_ids)
+        sample_size = negative_sample_ratio * len_positive_ids
+
+        negative_sample_ids = np.random.choice(negative_ids, size=sample_size, replace=True) #replace=True is default, here for clarity
+
+        full_sample_ids = np.append(positive_ids, negative_sample_ids)
+
+        X_sampled = SentenceDataView(X_filtered.study_ids[full_sample_ids], X_filtered.data[full_sample_ids])
+        y_sampled = SentenceDataView(y_filtered.study_ids[full_sample_ids], y_filtered.data[full_sample_ids])
+
+        return X_sampled, y_sampled
+
+
+class DocumentVectorizer(SentenceVectorizer):
+    """
+    for predicting the risk of bias
+    as "HIGH", "LOW", or "UNKNOWN" for a document
+    using a binary bag-of-words as features for each document
+    """
+
+
+    def generate_data(self, test_mode=False):
+
+        # map_lbl = lambda lbl: {"YES":2, "NO":0, "UNKNOWN":1}[lbl]
+
+        self.test_mode = test_mode
+        if self.test_mode:
+            print "WARNING - in test mode, using data sample only"
+
+        self.X_list = SentenceDataView([], [])
+        y_list = defaultdict(lambda: SentenceDataView([], []))
+
+        # self.vectorizer = CountVectorizer(max_features=5000)
+        self.vectorizer = ModularCountVectorizer()
+        q = QualityQuoteReader(quotes_only=False) # use studies with or without quotes
+
+        for study_i, study in enumerate(q):
+
+            domains_done_already = []
+
+            self.X_list.study_ids.append(study_i)
+            self.X_list.data.append(study.studypdf)
+
+            
+            for domain in study.cochrane["QUALITY"]:
+
+                domain_title = domain["DOMAIN"]
+
+                # for the moment if multiple ratings per study, just use the first
+                # TODO (eventually) will have to do *per outcome*
+                if domain_title in domains_done_already:
+                    continue # skip to the next one
+
+                domains_done_already.append(domain_title)
+
+                pdf_tokens = study.studypdf
+                quality_rating = domain["RATING"]
+
+            
+                y_list[domain_title].study_ids.append(study_i)
+                y_list[domain_title].data.append(quality_rating)
+            
+
+        self.X = SentenceDataView(np.array(self.X_list.study_ids), self.vectorizer.fit_transform(self.X_list.data))
+
+        # note restricted to CORE_DOMAINS here - no option given to expand since
+        # 
+        self.y = {domain: SentenceDataView(np.array(y_list[domain].study_ids), np.array(y_list[domain].data)) for domain in CORE_DOMAINS}
 
     
 
 
-def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
-    # sample_negative_examples = n: for low rate of positive examples; random sample
-    # of n negative examples if > n negative examples in article; if n=0 then all examples
-    # used
+    def X_y_filtered_remove_unknowns(self, filter_ids, domain=0):
+
+        X, y = self.X_y_filtered(filter_ids, domain=domain)
+
+        yes_no_indices = np.nonzero((y.data != "UNKNOWN"))[0]
+
+        X_filtered = SentenceDataView(X.study_ids[yes_no_indices], X.data[yes_no_indices])
+        y_filtered = SentenceDataView(y.study_ids[yes_no_indices], y.data[yes_no_indices])
+
+        return X_filtered, y_filtered
 
 
-    q = QualityQuoteReader()
-    y = []
-    X_words = []
-    
-    study_sent_indices = [] # list of (start, end) indices corresponding to each study
-    sent_index_counter = 0
 
 
-    domains = q.domains()
-    counter = 0
+class SimpleHybridModel(SentenceVectorizer):
+    """
+    uses interaction of YES (low risk of bias)
+    direct from Cochrane to start with
+    (Uses actual rather than predicted risk of biases)
+    """
 
-    for i, study in enumerate(q):
 
-        # fast forward to the matching domain
-        for domain in study.cochrane["QUALITY"]:
-            if domain["DOMAIN"] == test_domain:
-                break
+    def X_domain_all(self, domain=0):
+        """
+        retrieve X data
+        this version creates a new X matrix for each domain
+        and caches the last one used
+        (since this function may be called a lot)
+        """
+
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+
+        y_study_ids = np.unique(self.y[domain].study_ids)        
+        X_filter = np.nonzero([(X_study_id in y_study_ids) for X_study_id in self.X_list.study_ids])[0]
+
+
+        if self.X_domain_cached != domain:
+            # if the domain isn't cached, need to make a new X
+
+            # first get the sentences corresponding to the y domain vector
+            X_list_filtered = []
+            for i, sent in enumerate(self.X_list.data):
+                if i in X_filter:
+                    X_list_filtered.append(sent)
+
+            
+            # then create new interaction features where we have a judgement of 'LOW' risk only
+            interaction_features = []
+            for sent, judgement_is_yes in zip(X_list_filtered, self.X_interaction_features[domain]):
+                if judgement_is_yes:
+                    interaction_features.append(sent)
+                else:
+                    interaction_features.append("")
+
+            # finally build and fit vectorizer covering both these feature sets
+            self.vectorizer.builder_clear() # start with a new builder list
+            self.vectorizer.builder_add_docs(X_list_filtered)
+            self.vectorizer.builder_add_docs(interaction_features, prefix="LOW-RISK-")
+
+            # then fit/transform the vectorizer
+            self.X = SentenceDataView(np.array(self.y[domain].study_ids), self.vectorizer.builder_fit_transform())
+
+            # and record which domain is in the cache now
+            self.X_domain_cached = domain
+        
+
+        return self.X
+
+
+    def generate_data(self, test_mode=False, restrict_to_core=False):
+
+        self.test_mode = test_mode
+        if self.test_mode:
+            print "WARNING - in test mode, using data sample only"
+
+
+
+        if restrict_to_core:
+            test_domains = CORE_DOMAINS
         else:
-            # if no matching domain continue to the next study
+            test_domains = ALL_DOMAINS
+
+
+        # one feature matrix X
+        self.X_list = SentenceDataView([], [])
+
+        self.X_interaction_features = defaultdict(list) # indexed as per y
+
+        y_list = defaultdict(lambda: SentenceDataView([], []))
+
+
+        q = QualityQuoteReader()
+
+        for study_i, study in enumerate(q):
+
+            matcher = PDFMatcher()
+            matcher.load_pdftext(study.studypdf)
+
+            
+            X_study = matcher.generate_X()
+            self.X_list.data.extend(X_study)
+            self.X_list.study_ids.extend([study_i] * len(X_study))
+
+            domains_done_already = [] # for this particular study
+            # (we're ignoring multiple quotes per domain at the moment and getting the first...)
+
+            for domain in study.cochrane["QUALITY"]:
+
+                matcher.load_quotes(domain["DESCRIPTION"])
+                y_study = matcher.generate_y()
+
+                if domain["DOMAIN"] in domains_done_already:
+                    continue
+                else:
+                    domains_done_already.append(domain["DOMAIN"])
+                    y_list[domain["DOMAIN"]].data.extend(y_study)
+                    y_list[domain["DOMAIN"]].study_ids.extend([study_i] * len(y_study))
+
+                    self.X_interaction_features[domain["DOMAIN"]].extend([(domain["RATING"]=="YES")] * len(y_study)) # add interaction features only for low risk of bias
+
+
+                
+
+
+                
+
+            if self.test_mode and study_i == 75:
+                break
+
+        self.vectorizer = ModularCountVectorizer()
+
+        
+
+
+        
+        self.X = None
+        self.X_domain_cached = None
+        self.y = {domain: SentenceDataView(np.array(y_list[domain].study_ids), np.array(y_list[domain].data)) for domain in test_domains}
+
+
+
+
+class ModularCountVectorizer():
+    """
+    Similar to CountVectorizer from sklearn, but allows building up
+    of feature matrix gradually, and adding prefixes to feature names
+    (to identify interaction terms)
+    """
+
+    def __init__(self, *args, **kwargs):
+        self.data = []
+        self.vectorizer = DictVectorizer(*args, **kwargs)
+
+    def _transform_X_to_dict(self, X, prefix=None):
+        """
+        makes a list of dicts from a document
+        1. word tokenizes
+        2. creates {word1:1, word2:1...} dicts
+        (note all set to '1' since the DictVectorizer we use assumes all missing are 0)
+        """
+        return [self._dict_from_word_list(self._word_tokenize(document, prefix=prefix)) for document in X]
+
+    def _word_tokenize(self, text, prefix=None):
+        """
+        simple word tokenizer using the same rule as sklearn
+        punctuation is ignored, all 2 or more letter characters are a word
+        """
+
+        # print "text:"
+        # print text
+        # print "tokenized words"
+        # print SIMPLE_WORD_TOKENIZER.findall(text)
+
+        if prefix:
+            return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
+        else:
+            return [word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
+
+
+    def _dict_from_word_list(self, word_list):
+        return {word: 1 for word in word_list}
+
+    def _dictzip(self, dictlist1, dictlist2):
+        """
+        zips together two lists of dicts of the same length
+        """
+        # checks lists must be the same length
+        if len(dictlist1) != len(dictlist2):
+            raise IndexError("Unable to combine featuresets with different number of examples")
+
+        output = []
+
+        for dict1, dict2 in zip(dictlist1, dictlist2):
+            output.append(dict(dict1.items() + dict2.items()))
+            # note that this *overwrites* any duplicate keys with the key/value from dictlist2!!
+
+        return output
+
+    def fit(self, X, prefix=None):
+        # X is a list of document strings
+        # word tokenizes each one, then passes to a dict vectorizer
+        dict_list = self._transform_X_to_dict(dict_list, prefix=prefix)
+        return self.vectorizer.fit(X)
+
+    def fit_transform(self, X, prefix=None):
+        # X is a list of document strings
+        # word tokenizes each one, then passes to a dict vectorizer
+        dict_list = self._transform_X_to_dict(X, prefix=prefix)
+        return self.vectorizer.fit_transform(dict_list)
+
+    def get_feature_names(self):
+        return self.vectorizer.get_feature_names()
+
+
+    def builder_clear(self):
+        self.builder = []
+        self.builder_len = 0
+
+    def builder_add_docs(self, X, prefix = None):
+        if not self.builder:
+            self.builder_len = len(X)
+            self.builder = self._transform_X_to_dict(X)
+        else:
+            X_dicts = self._transform_X_to_dict(X, prefix=prefix)
+            self.builder = self._dictzip(self.builder, X_dicts)
+
+    def builder_fit_transform(self):
+        return self.vectorizer.fit_transform(self.builder)
+
+    def builder_fit(self):
+        return self.vectorizer.fit(self.builder)   
+
+
+
+
+
+
+class SamplingSGDClassifier():
+    """
+    SGDClassifier which samples negative examples according to the
+    ratio negative_sample_ratio for imbalanced classes
+    for binary classifier with -1 = False, and 1 = True
+    """
+
+    def __init__(self, *args, **kwargs):
+        self.negative_sample_ratio = kwargs.pop("negative_sample_ratio") # remove this before calling the main function
+        self.no_models = kwargs.pop("no_models") # remove this before calling the main function
+        self.model_args = args
+        self.model_kwargs = kwargs
+        
+        
+
+    def fit(self, X, y):
+        """
+        fits k models (found in self.no_models), and saves all in a list
+        """
+        self.models = []
+
+        
+        for i in range(self.no_models):
+
+            X_sampled, y_sampled = self.Xy_sample(X, y, self.negative_sample_ratio)
+
+
+
+            # clf = SGDClassifier(*self.model_args, **self.model_kwargs)
+            clf = SGDClassifier(**self.model_kwargs)
+            clf.fit(X_sampled, y_sampled)
+            self.models.append(clf)
+
+
+
+
+    def predict(self, X):
+        # returns list of predictions (which numpy interprets as matrix)
+        # for predicted positive or negative
+        y_pred_matrix = [(clf.predict(X)==1) for clf in self.models]
+
+        # print '\n'.join([str(np.bincount((y+1)/2)) for y in y_pred_matrix])
+
+        # mean across vectors = proportion of total votes
+        proportion_of_votes = np.mean(y_pred_matrix,axis=0)
+
+        # predict true if > 50% of the total votes
+        y_preds = (proportion_of_votes >= 0.5)
+
+
+        return y_preds*2-1 # change from True, False to 1, -1
+
+
+    def Xy_sample(self, X, y, negative_sample_ratio):
+
+        # find the positive and negative sentence ids
+        positive_ids = np.nonzero(y==1)[0]
+        negative_ids = np.nonzero(y==-1)[0]
+
+
+
+        # sample ratio * no positive ids
+        len_positive_ids = len(positive_ids)
+        sample_size = negative_sample_ratio * len_positive_ids
+
+        negative_sample_ids = np.random.choice(negative_ids, size=sample_size, replace=True) #may sample same sentence twice
+
+        full_sample_ids = np.append(positive_ids, negative_sample_ids)
+
+
+        X_sampled = X[full_sample_ids]
+        y_sampled = y[full_sample_ids]
+
+        return X_sampled, y_sampled
+
+
+
+        
+
+
+
+
+
+def demo(testfile="testdata/demo.pdf"):
+
+    raw_text = PdfReader(testfile).get_text()
+    text = unidecode(raw_text)
+    text = re.sub('\n', ' ', text)
+    sents = sent_tokenizer.tokenize(text)
+
+    # print sents
+
+    s = SentenceVectorizer()
+    # s.generate_data(test_mode=False)
+    # s.save_data('data/qualitydat.pck')
+    s.load_data('data/qualitydat.pck')
+
+    X_demo = s.vectorizer.transform(sents)
+
+    for domain in s.get_all_domains():
+        
+        clf = SGDClassifier(loss="hinge", penalty="elasticnet", class_weight={1: 5, -1:1})
+
+        # don't bother if fewer than 5 studies
+        if s.len_domain(domain) < 5:
+            print "Fewer than 5 studies in domain: %s --- skipping" % (domain,)
             continue
 
+        all_X = s.X_domain_all(domain=domain)
+        all_y = s.y_domain_all(domain=domain)
 
-        try:
-            quote = QUALITY_QUOTE_REGEX.search(domain["DESCRIPTION"]).group(1)
-        except:
-            print "Unable to extract quote:"
-            print domain["DESCRIPTION"]
-            raise
+        clf.fit(all_X.data, all_y.data)
 
-        quote_words = word_tokenizer.tokenize(quote)
-        pdf_sents = sent_tokenizer.tokenize(study.studypdf)
-
- 
-        quote_sent_bow = set((word.lower() for word in quote_words))
-
-        rankings = []
-
-        for pdf_i, pdf_sent in enumerate(pdf_sents):
-
-            pdf_words = word_tokenizer.tokenize(pdf_sent)
+        y_preds = clf.predict(X_demo)
+        pos_indices = np.nonzero(y_preds==1)[0]
         
-            pdf_sent_bow = set((word.lower() for word in pdf_words))
 
-            if not pdf_sent_bow or not quote_sent_bow:
-                prop_quote_in_sent = 0
-            else:
-                prop_quote_in_sent = 100* (1 - (float(len(quote_sent_bow-pdf_sent_bow))/float(len(quote_sent_bow))))
+        print
+        print
+        print "*********"
+        print domain
+        print "*********"
+        print
+        for i in pos_indices:
+            print sents[i]
 
-            # print "%.0f" % (prop_quote_in_sent,)
-
-            rankings.append((prop_quote_in_sent, pdf_i))
-
-        rankings.sort(key=lambda x: x[0], reverse=True)
-        best_match_index = rankings[0][1]
-        # print quote
-        # print pdf_tokens[best_match_index]
+        
 
 
 
 
-        y_study = np.zeros(len(pdf_sents))
-        y_study[best_match_index] = 1
-        X_words.extend(pdf_sents)
 
 
 
-        sent_end_index = sent_index_counter + len(pdf_sents)
-        study_sent_indices.append((sent_index_counter, sent_end_index))
-        sent_index_counter = sent_end_index
-        y.extend(y_study)
-
-        if i > 500:
-            print "WARNING RETURNING SMALL SUBSET OF DATA!"
-            break
 
 
-                    
-                    
+
+
+def document_prediction_test():
+
+    print "Document level prediction"
+    print "=" * 40
+    print
+
+
+    d = DocumentVectorizer()
+    
+    d.generate_data()
+    d.save_data('data/quality_doc_data.pck')
+    # d.load_data('data/quality_doc_data.pck')
+
+
+    for test_domain in CORE_DOMAINS:
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+        no_studies = d.len_domain(test_domain)
+
+        kf = KFold(no_studies, n_folds=5, shuffle=True)
+
+        clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
+        # removed from above
+       
+        all_X = d.X_domain_all(domain=test_domain)
+        all_y = d.y_domain_all(domain=test_domain)
+
+        
+
+        metrics = []
+
+
+
+        for fold_i, (train, test) in enumerate(kf):
+
+            # X_train, y_train = d.X_y_filtered(np.array(train), domain=test_domain)
+            X_train, y_train = d.X_y_filtered_remove_unknowns(np.array(train), domain=test_domain) #train removing unknowns, test using all
+            X_test, y_test = d.X_y_filtered(np.array(test), domain=test_domain)
+
+            print len(y_train.data), len(y_test.data)
+
+            clf.fit(X_train.data, y_train.data)
+
+            y_preds = clf.predict(X_test.data)
+
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test.data, y_preds))
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            # print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+
+            print collections.Counter(y_test.data)
+            print fold_metric
+            
+
+        # fit on all
+        clf.fit(all_X.data, all_y.data)
+
+        # if not sample and list_features:
+            # not an obvious way to get best features for ensemble
+        # print show_most_informative_features_ynu(d.vectorizer, clf)
+        print show_most_informative_features_ynu(d.vectorizer, clf)
+            
+
+        # summary score
+
+        # summary_metrics = np.mean(metrics, axis=0)
+        # print "=" * 40
+        # print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+
+def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, list_features=False, hybrid=False):
+
+
+    print "Sentence level prediction"
+    print "=" * 40
+    print
+
+    print "sampling=%s, class_weight=%s" % (str(sample), str(class_weight))
+    if sample:
+        print "negative_sample_ratio=%d, no_models=%d" % (negative_sample_ratio, no_models)
+    print
+
+
+    if hybrid:
+        s = SimpleHybridModel()
+    else:
+        s = SentenceVectorizer()
+    
+    s.generate_data(test_mode=True)
+    
+    # s.save_data('data/qualitydat.pck')
+    # s.save_text('data/qualitydat_text.pck')
+
+    # s.load_data('data/qualitydat.pck')
+    # s.load_text('data/qualitydat_text.pck')
+
+
+    for test_domain in CORE_DOMAINS:
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+
+        no_studies = s.len_domain(test_domain)
+
+        kf = KFold(no_studies, n_folds=5, shuffle=True)
+
+
+        if sample:
+            clf = SamplingSGDClassifier(loss="hinge", penalty="elasticnet", class_weight=class_weight, negative_sample_ratio=negative_sample_ratio, no_models=no_models)
+        else:
+            clf = SGDClassifier(loss="hinge", penalty="elasticnet", class_weight=class_weight)
+        
+        all_X = s.X_domain_all(domain=test_domain)
+        all_y = s.y_domain_all(domain=test_domain)
+
+        metrics = []
+
+        for fold_i, (train, test) in enumerate(kf):
+
+            X_train, y_train = s.X_y_filtered(np.array(train), domain=test_domain)
+            X_test, y_test = s.X_y_filtered(np.array(test), domain=test_domain)
+
+            clf.fit(X_train.data, y_train.data)
+
+            y_preds = clf.predict(X_test.data)
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test.data, y_preds))[:,1]
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+            
+
+            if not sample and list_features:
+                # not an obvious way to get best features for ensemble
+                print show_most_informative_features(s.vectorizer, clf)
+            
+
+        # summary score
+
+        summary_metrics = np.mean(metrics, axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+
+
+def main():
+    q = QualityQuoteReader()
+
+    for study in q:
+
+        sm = difflib.SequenceMatcher(None, autojunk=False)
+
+        sm.set_seq2(study.studypdf)
+        pdf_end_i = len(study.studypdf)
+
+        for domain in study.cochrane["QUALITY"]:
+            
+
+
+            for quote_part in domain["DESCRIPTION"]:
+
                 
 
+                
 
-    print len(X_words)
-    print X_words[0]
+                quote_end_i = len(quote_part)
 
-    print "fitting vectorizer"
-    vectorizer = CountVectorizer(max_features=10000)
-    X = vectorizer.fit_transform(X_words)            
-    print "done!"
-    y = np.array(y)
+                if not quote_end_i:
+                    continue
 
-    return X, y, X_words, vectorizer, study_sent_indices
+                sm.set_seq1(quote_part)
 
-    print "Finished! %d studies included domain %s" % (counter, test_domain)
+                longest_match = sm.find_longest_match(0, quote_end_i, 0, pdf_end_i)
 
+                proportion_matched = (100 * float(longest_match.size)) / float(quote_end_i)
 
 
+                print "matched %.2f" % (proportion_matched, )
+                if longest_match.size < MIN_CHAR_MATCH:
+                    print "NOT BIG ENOUGH MATCH - SKIP!"
 
-def test_pdf_cache():
+                print
+                print "Cochrane quote:"
+                print quote_part
+                print
+                print "PDF part"
+                print study.studypdf[longest_match.b-100: longest_match.b] + "..."
+                print study.studypdf[longest_match.b: longest_match.b+longest_match.size]
+                print "..." + study.studypdf[longest_match.b+longest_match.size: longest_match.b+100+longest_match.size] 
+                print
+                print
 
-    pdfviewer = biviewer.PDFBiViewer()
-    pdfviewer.cache_pdfs()
+                
+            # pprint(output)
+
+    
+
+
+
+
 
 
 if __name__ == '__main__':
-    # predict_domains_for_documents()
-    # test_pdf_cache()
-    predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=100, positives_per_pdf=5)
-    # getmapgaps()
+    # sentence_prediction_test(hybrid=True)
+    sentence_prediction_test(sample=True, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={5:1, -1:1}, hybrid=True)
+    # sentence_prediction_test(sample=False, class_weight={1:1.5, -1:1}, list_features=False)
+    # demo('testdata/demo3.pdf')
+    # document_prediction_test()
