@@ -546,7 +546,7 @@ class DocumentVectorizer(SentenceVectorizer):
 
         self.test_mode = test_mode
         if self.test_mode:
-            print "WARNING - in test mode, using data sample only"
+            print "WARNING - in test mode, using data sample only!!!"
 
         self.X_list = SentenceDataView([], [])
         y_list = defaultdict(lambda: SentenceDataView([], []))
@@ -664,6 +664,7 @@ class SimpleHybridModel(SentenceVectorizer):
 
 
     def generate_data(self, test_mode=False, restrict_to_core=False):
+
 
         self.test_mode = test_mode
         if self.test_mode:
@@ -1048,7 +1049,8 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
     print "Sentence level prediction"
     print "=" * 40
     print
-
+    if hybrid:
+        print "HYBRID MODEL 1 - adding in word-judgement interaction features for all LOW risk papers"
     print "sampling=%s, class_weight=%s" % (str(sample), str(class_weight))
     if sample:
         print "negative_sample_ratio=%d, no_models=%d" % (negative_sample_ratio, no_models)
@@ -1060,7 +1062,7 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
     else:
         s = SentenceVectorizer()
     
-    s.generate_data(test_mode=True)
+    s.generate_data(test_mode=False)
     
     # s.save_data('data/qualitydat.pck')
     # s.save_text('data/qualitydat_text.pck')
@@ -1177,7 +1179,7 @@ def main():
 
 if __name__ == '__main__':
     # sentence_prediction_test(hybrid=True)
-    sentence_prediction_test(sample=True, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={5:1, -1:1}, hybrid=True)
+    sentence_prediction_test(sample=False, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={1:5, -1:1}, hybrid=True)
     # sentence_prediction_test(sample=False, class_weight={1:1.5, -1:1}, list_features=False)
     # demo('testdata/demo3.pdf')
     # document_prediction_test()
