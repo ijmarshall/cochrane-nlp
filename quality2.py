@@ -342,7 +342,7 @@ class SentenceModel():
         pass
         
 
-    def generate_data(self, test_mode=False, restrict_to_core=False):
+    def generate_data(self, test_mode=False, restrict_to_core=False, data_filter="quotes_only"):
 
         self.test_mode = test_mode
         if self.test_mode:
@@ -367,7 +367,7 @@ class SentenceModel():
 
 
 
-        q = QualityQuoteReader()
+        q = QualityQuoteReader(data_filter=data_filter)
 
         for study_i, study in enumerate(q):
 
@@ -599,7 +599,7 @@ class DocumentLevelModel(SentenceModel):
 
         self.X = SentenceDataView(np.array(self.X_list.study_ids), self.vectorizer.fit_transform(self.X_list.data))
 
-        # note restricted to CORE_DOMAINS here - no option given to expand since
+        # note restricted to CORE_DOMAINS here
         # 
         self.y = {domain: SentenceDataView(np.array(y_list[domain].study_ids), np.array(y_list[domain].data)) for domain in CORE_DOMAINS}
 
@@ -938,6 +938,101 @@ class FullHybridModel3(SimpleHybridModel2):
         return self.doc_clf.predict(X)[0]
 
 
+class DocumentHybridModel(DocumentLevelModel):
+    """
+    for predicting the risk of bias
+    as "HIGH", "LOW", or "UNKNOWN" for a document
+    using a binary bag-of-words as features for each document
+    - hybrid model; adds in features from predicted *sentences* also as extra features
+    """
+
+    def generate_data(self, *args, **kwargs):
+        DocumentLevelModel.generate_data(self, *args, **kwargs)
+        self.X_domain_cached = None
+
+
+    def X_domain_all(self, domain=0):
+        """
+        retrieve X data
+        this version creates a new X matrix for each domain
+        and caches the last one used
+        (since this function may be called a lot)
+        """
+
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+
+        y_study_ids = np.unique(self.y[domain].study_ids)        
+        X_filter = np.nonzero([(X_study_id in y_study_ids) for X_study_id in self.X_list.study_ids])[0]
+
+
+        if self.X_domain_cached != domain:
+
+            # if the domain isn't cached, need to make a new X
+            self.generate_sentence_level_model(domain=domain) # make new predictive model for this domain
+
+            # first get the sentences corresponding to the y domain vector
+            X_list_filtered = []
+            for i, sent in enumerate(self.X_list.data):
+                if i in X_filter:
+                    X_list_filtered.append(sent)
+
+            interaction_features = []
+
+            for doc_id in self.y[domain].study_ids:
+
+                predicted_text = self.predict_sentences(doc_id)
+                interaction_features.append(predicted_text)
+
+            # finally build and fit vectorizer covering both these feature sets
+
+            self.vectorizer.builder_clear() # start with a new builder list
+            self.vectorizer.builder_add_docs(X_list_filtered)
+
+            self.vectorizer.builder_add_docs(interaction_features, prefix=(judgement_option + '-RoB-tagged-word-'))
+
+            # then fit/transform the vectorizer
+            self.X = SentenceDataView(np.array(self.y[domain].study_ids), self.vectorizer.builder_fit_transform())
+
+            # and record which domain is in the cache now
+            self.X_domain_cached = domain
+        
+
+        return self.X
+
+
+
+    def generate_sentence_level_model(self, domain):
+
+        print "generating sentence-level data..."
+        self.sent_model = SentenceModel()
+        self.sent_model.generate_data(data_filter="quotes_only")
+
+        all_X = self.sent_model.X_domain_all(domain=domain)
+        all_y = self.sent_model.y_domain_all(domain=domain)
+
+        self.sent_clf = SGDClassifier(loss="hinge", penalty="elasticnet", class_weight={1:5, -1:1})
+
+
+        
+        self.sent_clf.fit(all_X.data, all_y.data)
+
+    def predict_sentences(self, doc_id):
+
+        doc_text = self.X_list.data[doc_id]
+        sents = sent_tokenizer.tokenize(text)
+
+        X = self.sent_model.vectorizer.transform(sents)
+        y_preds = clf.predict(X)
+
+        pos_sents = [sent for sent, pred in zip(sents, y_preds) if pred == 1]
+
+        return " ".join(pos_sents)
+
+
+
 
 
 
@@ -1234,10 +1329,13 @@ def document_prediction_test():
 
 
     d = DocumentLevelModel()
-    
-    d.generate_data(data_filter="avoid_quotes")
-    d.save_data('data/quality_doc_data.pck')
-    # d.load_data('data/quality_doc_data.pck')
+    d = d.generate_data()
+
+
+    # d = DocumentHybridModel() # must avoid quotes in this model (since this data is used internally for sentence prediction)
+    # d.generate_data(data_filter="avoid_quotes")
+
+
 
 
     for test_domain in CORE_DOMAINS:
@@ -1264,7 +1362,7 @@ def document_prediction_test():
         for fold_i, (train, test) in enumerate(kf):
 
             # X_train, y_train = d.X_y_filtered(np.array(train), domain=test_domain)
-            X_train, y_train = d.X_y_filtered_remove_unknowns(np.array(train), domain=test_domain) #train removing unknowns, test using all
+            X_train, y_train = d.X_y_filtered(np.array(train), domain=test_domain) #train removing unknowns, test using all
             X_test, y_test = d.X_y_filtered(np.array(test), domain=test_domain)
 
             print len(y_train.data), len(y_test.data)
@@ -1444,6 +1542,6 @@ if __name__ == '__main__':
     # sentence_prediction_test(sample=False, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={1:5, -1:1}, model=FullHybridModel3())
     # sentence_prediction_test(sample=False, class_weight={1:1.5, -1:1}, list_features=False)
     # doc_demo('testdata/demo2.pdf')
-    sentence_demo('testdata/demo2.pdf')
-    # document_prediction_test()
+    # sentence_demo('testdata/demo2.pdf')
+    document_prediction_test()
     # doc_demo()
