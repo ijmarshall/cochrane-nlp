@@ -991,7 +991,7 @@ class DocumentHybridModel(DocumentLevelModel):
             self.vectorizer.builder_clear() # start with a new builder list
             self.vectorizer.builder_add_docs(X_list_filtered)
 
-            self.vectorizer.builder_add_docs(interaction_features, prefix=(judgement_option + '-RoB-tagged-word-'))
+            self.vectorizer.builder_add_docs(interaction_features, prefix=('-RoB-tagged-word-'))
 
             # then fit/transform the vectorizer
             self.X = SentenceDataView(np.array(self.y[domain].study_ids), self.vectorizer.builder_fit_transform())
@@ -1022,10 +1022,10 @@ class DocumentHybridModel(DocumentLevelModel):
     def predict_sentences(self, doc_id):
 
         doc_text = self.X_list.data[doc_id]
-        sents = sent_tokenizer.tokenize(text)
+        sents = sent_tokenizer.tokenize(doc_text)
 
         X = self.sent_model.vectorizer.transform(sents)
-        y_preds = clf.predict(X)
+        y_preds = self.sent_clf.predict(X)
 
         pos_sents = [sent for sent, pred in zip(sents, y_preds) if pred == 1]
 
@@ -1329,7 +1329,7 @@ def document_prediction_test():
 
 
     d = DocumentLevelModel()
-    d = d.generate_data()
+    d.generate_data()
 
 
     # d = DocumentHybridModel() # must avoid quotes in this model (since this data is used internally for sentence prediction)
@@ -1340,6 +1340,8 @@ def document_prediction_test():
 
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+
+        print d
         
         no_studies = d.len_domain(test_domain)
 
