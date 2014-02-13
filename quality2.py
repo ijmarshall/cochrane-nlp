@@ -1321,31 +1321,25 @@ def sentence_demo(testfile="testdata/demo.pdf"):
 
 
 
-def document_prediction_test():
+def document_prediction_test(model=DocumentLevelModel()):
 
     print "Document level prediction"
     print "=" * 40
     print
 
 
-    d = DocumentLevelModel()
-    d.generate_data()
-
-
-    # d = DocumentHybridModel() # must avoid quotes in this model (since this data is used internally for sentence prediction)
-    # d.generate_data(data_filter="avoid_quotes")
-
+    d = model
+    d.generate_data(data_filter="avoid_quotes") # some variations use the quote data internally 
+                                                # for sentence prediction (for additional features)
 
 
 
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
-
-        print d
         
         no_studies = d.len_domain(test_domain)
 
-        kf = KFold(no_studies, n_folds=5, shuffle=True)
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
 
         clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
         # removed from above
@@ -1353,13 +1347,7 @@ def document_prediction_test():
         all_X = d.X_domain_all(domain=test_domain)
         all_y = d.y_domain_all(domain=test_domain)
 
-
-
-        
-
         metrics = []
-
-
 
         for fold_i, (train, test) in enumerate(kf):
 
@@ -1439,7 +1427,7 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
 
         no_studies = s.len_domain(test_domain)
 
-        kf = KFold(no_studies, n_folds=5, shuffle=True)
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
 
 
         if sample:
@@ -1540,10 +1528,12 @@ def main():
 
 
 if __name__ == '__main__':
-    # sentence_prediction_test(hybrid=True)
+
+
+    
     # sentence_prediction_test(sample=False, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={1:5, -1:1}, model=FullHybridModel3())
     # sentence_prediction_test(sample=False, class_weight={1:1.5, -1:1}, list_features=False)
     # doc_demo('testdata/demo2.pdf')
     # sentence_demo('testdata/demo2.pdf')
-    document_prediction_test()
+    # document_prediction_test()
     # doc_demo()
