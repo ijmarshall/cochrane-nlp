@@ -20,7 +20,7 @@ has_colours = has_colours(sys.stdout)
 
 def printout(text, colour=WHITE):
         if has_colours:
-                seq = "\x1b[1;%dm" % (30+colour) + text + "\x1b[0m"
+                seq = "\x1b[1;%dm" % (30+colour) + text + "\x1b[0m\n"
                 sys.stdout.write(seq)
         else:
                 sys.stdout.write(text)

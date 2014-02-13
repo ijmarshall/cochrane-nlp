@@ -123,11 +123,11 @@ class QualityQuoteReader():
     iterates through Cochrane Risk of Bias information for domains where there is a quote only
     """
 
-    def __init__(self, quotes_only=True):
+    def __init__(self, data_filter="all"):
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'studypdf'])
         self.pdfviewer = biviewer.PDFBiViewer()
         self.domain_map = load_domain_map()
-        self.quotes_only = quotes_only
+        self.data_filter = data_filter
 
 
     def __iter__(self):
@@ -151,9 +151,19 @@ class QualityQuoteReader():
 
             for domain in quality_data:
                 
-                
-                if REGEX_QUOTE_PRESENT.match(domain['DESCRIPTION']) or not self.quotes_only:
+                quote_present = (REGEX_QUOTE_PRESENT.match(domain['DESCRIPTION']) is not None)
 
+                if self.data_filter=="all":
+                    use_study = True
+                elif self.data_filter=="avoid_quotes" and (not quote_present):
+                    use_study = True
+                elif self.data_filter=="quotes_only" and quote_present:
+                    use_study = True
+                else:
+                    use_study = False    
+
+
+                if use_study:
                     domain['DESCRIPTION'] = self.preprocess_cochrane(domain['DESCRIPTION'])
                     try:
                         mapped_domain = self.domain_map[domain["DOMAIN"]] # map domain titles to our core categories
@@ -322,9 +332,10 @@ class SentenceDataView():
 
 
 
-class SentenceVectorizer():
+class SentenceModel():
     """
-    for predicting whether sentences relate to a risk of bias domain
+    predicts whether sentences contain risk of bias information
+    - uses data from Cochrane quotes only
     """
 
     def __init__(self):
@@ -354,6 +365,8 @@ class SentenceVectorizer():
 
 
 
+
+
         q = QualityQuoteReader()
 
         for study_i, study in enumerate(q):
@@ -361,6 +374,7 @@ class SentenceVectorizer():
             matcher = PDFMatcher()
             matcher.load_pdftext(study.studypdf)
 
+        
             
             X_study = matcher.generate_X()
             self.X_list.data.extend(X_study)
@@ -532,7 +546,7 @@ class SentenceVectorizer():
         return X_sampled, y_sampled
 
 
-class DocumentVectorizer(SentenceVectorizer):
+class DocumentLevelModel(SentenceModel):
     """
     for predicting the risk of bias
     as "HIGH", "LOW", or "UNKNOWN" for a document
@@ -540,7 +554,7 @@ class DocumentVectorizer(SentenceVectorizer):
     """
 
 
-    def generate_data(self, test_mode=False):
+    def generate_data(self, test_mode=False, data_filter = "all"):
 
         # map_lbl = lambda lbl: {"YES":2, "NO":0, "UNKNOWN":1}[lbl]
 
@@ -553,7 +567,8 @@ class DocumentVectorizer(SentenceVectorizer):
 
         # self.vectorizer = CountVectorizer(max_features=5000)
         self.vectorizer = ModularCountVectorizer()
-        q = QualityQuoteReader(quotes_only=False) # use studies with or without quotes
+        q = QualityQuoteReader(data_filter = data_filter) # use studies with or without quotes
+        # (except should be "avoid_quotes" or "quotes_only")
 
         for study_i, study in enumerate(q):
 
@@ -605,11 +620,14 @@ class DocumentVectorizer(SentenceVectorizer):
 
 
 
-class SimpleHybridModel(SentenceVectorizer):
+class SimpleHybridModel(SentenceModel):
     """
-    uses interaction of YES (low risk of bias)
-    direct from Cochrane to start with
-    (Uses actual rather than predicted risk of biases)
+    predicts whether sentences contain risk of bias information
+    - uses data from Cochrane quotes + interaction features of sentence/study level quality score
+    - note that we use actual quality scores here (the final should use predicted scores)
+
+    this model uses interaction features only for studies at *low* risk
+
     """
 
 
@@ -642,8 +660,8 @@ class SimpleHybridModel(SentenceVectorizer):
             
             # then create new interaction features where we have a judgement of 'LOW' risk only
             interaction_features = []
-            for sent, judgement_is_yes in zip(X_list_filtered, self.X_interaction_features[domain]):
-                if judgement_is_yes:
+            for sent, judgement in zip(X_list_filtered, self.X_interaction_features[domain]):
+                if judgement == "YES":
                     interaction_features.append(sent)
                 else:
                     interaction_features.append("")
@@ -685,6 +703,9 @@ class SimpleHybridModel(SentenceVectorizer):
 
         y_list = defaultdict(lambda: SentenceDataView([], []))
 
+        self.X_doc = [] # save the full pdf docs as text also for other uses
+
+
 
         q = QualityQuoteReader()
 
@@ -692,6 +713,10 @@ class SimpleHybridModel(SentenceVectorizer):
 
             matcher = PDFMatcher()
             matcher.load_pdftext(study.studypdf)
+
+            self.X_doc.append(study.studypdf) # add the full text doc for reference by hybrid models
+            # (note that the indexes will match the study id)
+
 
             
             X_study = matcher.generate_X()
@@ -713,7 +738,7 @@ class SimpleHybridModel(SentenceVectorizer):
                     y_list[domain["DOMAIN"]].data.extend(y_study)
                     y_list[domain["DOMAIN"]].study_ids.extend([study_i] * len(y_study))
 
-                    self.X_interaction_features[domain["DOMAIN"]].extend([(domain["RATING"]=="YES")] * len(y_study)) # add interaction features only for low risk of bias
+                    self.X_interaction_features[domain["DOMAIN"]].extend([domain["RATING"]] * len(y_study)) # add interaction features only for low risk of bias
 
 
                 
@@ -733,6 +758,185 @@ class SimpleHybridModel(SentenceVectorizer):
         self.X = None
         self.X_domain_cached = None
         self.y = {domain: SentenceDataView(np.array(y_list[domain].study_ids), np.array(y_list[domain].data)) for domain in test_domains}
+
+
+
+
+
+class SimpleHybridModel2(SimpleHybridModel):
+    """
+    predicts whether sentences contain risk of bias information
+    - uses data from Cochrane quotes + interaction features of sentence/study level quality score
+    - note that we use actual quality scores here (the final should use predicted scores)
+
+    this model uses interaction features for *all* study quality scores
+
+    """
+
+
+    def X_domain_all(self, domain=0):
+        """
+        retrieve X data
+        this version creates a new X matrix for each domain
+        and caches the last one used
+        (since this function may be called a lot)
+        """
+
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+
+        y_study_ids = np.unique(self.y[domain].study_ids)        
+        X_filter = np.nonzero([(X_study_id in y_study_ids) for X_study_id in self.X_list.study_ids])[0]
+
+
+        if self.X_domain_cached != domain:
+            # if the domain isn't cached, need to make a new X
+
+            # first get the sentences corresponding to the y domain vector
+            X_list_filtered = []
+            for i, sent in enumerate(self.X_list.data):
+                if i in X_filter:
+                    X_list_filtered.append(sent)
+
+            
+            # then create new interaction features where we have a judgement of 'LOW' risk only
+            interaction_features = {judgement: [] for judgement in ["YES", "NO", "UNKNOWN"]}
+
+
+
+            for sent, judgement in zip(X_list_filtered, self.X_interaction_features[domain]):
+
+                for judgement_option in interaction_features.keys():
+
+                    if judgement == judgement_option:
+                        interaction_features[judgement_option].append(sent)
+                    else:
+                        interaction_features[judgement_option].append("")
+
+            # finally build and fit vectorizer covering both these feature sets
+
+            self.vectorizer.builder_clear() # start with a new builder list
+            self.vectorizer.builder_add_docs(X_list_filtered)
+
+            # add in interaction features for all
+            for judgement_option in interaction_features:
+                self.vectorizer.builder_add_docs(interaction_features[judgement_option], prefix=(judgement_option + '-RISK-'))
+
+            # then fit/transform the vectorizer
+            self.X = SentenceDataView(np.array(self.y[domain].study_ids), self.vectorizer.builder_fit_transform())
+
+            # and record which domain is in the cache now
+            self.X_domain_cached = domain
+        
+
+        return self.X
+
+
+class FullHybridModel3(SimpleHybridModel2):
+    """
+    predicts whether sentences contain risk of bias information
+    - uses data from Cochrane quotes + interaction features of sentence/study level quality score
+    - This model uses *predicted* RoB classes to create the interaction features
+
+    """
+
+ 
+
+    def X_domain_all(self, domain=0):
+        """
+        retrieve X data
+        this version creates a new X matrix for each domain
+        and caches the last one used
+        (since this function may be called a lot)
+        """
+
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+
+        y_study_ids = np.unique(self.y[domain].study_ids)        
+        X_filter = np.nonzero([(X_study_id in y_study_ids) for X_study_id in self.X_list.study_ids])[0]
+
+
+        if self.X_domain_cached != domain:
+
+            # if the domain isn't cached, need to make a new X
+            self.generate_doc_level_model(domain=domain) # make new predictive model for this domain
+
+            # first get the sentences corresponding to the y domain vector
+            X_list_filtered = []
+            for i, sent in enumerate(self.X_list.data):
+                if i in X_filter:
+                    X_list_filtered.append(sent)
+
+            
+            
+            last_doc_id = None
+
+            interaction_features = {judgement: [] for judgement in ["YES", "NO", "UNKNOWN"]}
+
+            for sent, doc_id in zip(X_list_filtered, self.y[domain].study_ids):
+
+
+                if last_doc_id != doc_id:
+                    prediction = self.predict_doc_judgement(doc_id)
+                    last_doc_id = doc_id
+
+                
+
+                for judgement_option in interaction_features.keys():
+
+                
+                    if judgement_option == prediction:
+                        interaction_features[judgement_option].append(sent)
+                    else:
+                        interaction_features[judgement_option].append("")
+
+            # finally build and fit vectorizer covering both these feature sets
+
+            self.vectorizer.builder_clear() # start with a new builder list
+            self.vectorizer.builder_add_docs(X_list_filtered)
+
+            # add in interaction features for all
+            for judgement_option in interaction_features:
+                self.vectorizer.builder_add_docs(interaction_features[judgement_option], prefix=(judgement_option + '-RISK-'))
+
+            # then fit/transform the vectorizer
+            self.X = SentenceDataView(np.array(self.y[domain].study_ids), self.vectorizer.builder_fit_transform())
+
+            # and record which domain is in the cache now
+            self.X_domain_cached = domain
+        
+
+        return self.X
+
+
+    def generate_doc_level_model(self, domain):
+
+        self.doc_model = DocumentLevelModel()
+        self.doc_model.generate_data()
+
+        all_X = self.doc_model.X_domain_all(domain=domain)
+        all_y = self.doc_model.y_domain_all(domain=domain)
+
+
+
+        self.doc_clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
+        
+        self.doc_clf.fit(all_X.data, all_y.data)
+
+    def predict_doc_judgement(self, doc_id):
+
+        doc_text = self.X_doc[doc_id]
+        
+
+        X = self.doc_model.vectorizer.transform([doc_text])
+
+        return self.doc_clf.predict(X)[0]
+
 
 
 
@@ -793,11 +997,11 @@ class ModularCountVectorizer():
 
         return output
 
-    def fit(self, X, prefix=None):
+    def transform(self, X, prefix=None):
         # X is a list of document strings
         # word tokenizes each one, then passes to a dict vectorizer
-        dict_list = self._transform_X_to_dict(dict_list, prefix=prefix)
-        return self.vectorizer.fit(X)
+        dict_list = self._transform_X_to_dict(X, prefix=prefix)
+        return self.vectorizer.transform(dict_list)
 
     def fit_transform(self, X, prefix=None):
         # X is a list of document strings
@@ -824,8 +1028,8 @@ class ModularCountVectorizer():
     def builder_fit_transform(self):
         return self.vectorizer.fit_transform(self.builder)
 
-    def builder_fit(self):
-        return self.vectorizer.fit(self.builder)   
+    def builder_transform(self):
+        return self.vectorizer.transform(self.builder)   
 
 
 
@@ -911,11 +1115,63 @@ class SamplingSGDClassifier():
 
         
 
+def doc_demo(testfile="testdata/demo.pdf"):
+
+    import color
+
+    print "Document demo: " + testfile
+    print "=" * 40
+    print
+
+    raw_text = PdfReader(testfile).get_text()
+    text = unidecode(raw_text)
+    text = re.sub('\n', ' ', text)
+
+
+    d = DocumentLevelModel()
+    
+    d.generate_data(data_filter="all")
+    
+
+    for test_domain in CORE_DOMAINS:
+        
+
+
+        
+        clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
+        # removed from above
+       
+        all_X = d.X_domain_all(domain=test_domain)
+        all_y = d.y_domain_all(domain=test_domain)        
+
+        # fit on all
+        clf.fit(all_X.data, all_y.data)
+
+        X = d.vectorizer.transform([text])
+
+        prediction = clf.predict(X)[0]
+
+        print "-" * 30
+        print test_domain
+
+        prediction = {"YES": "Low", "NO": "High", "UNKNOWN": "Unknown"}[prediction]
 
 
 
+        if prediction == "Low":
+            text_color = color.GREEN
+        elif prediction == "High":
+            text_color = color.RED
+        elif prediction == "Unknown":
+            text_color = color.YELLOW
 
-def demo(testfile="testdata/demo.pdf"):
+        color.printout(prediction, text_color)
+
+        print "-" * 30
+
+
+
+def sentence_demo(testfile="testdata/demo.pdf"):
 
     raw_text = PdfReader(testfile).get_text()
     text = unidecode(raw_text)
@@ -924,7 +1180,7 @@ def demo(testfile="testdata/demo.pdf"):
 
     # print sents
 
-    s = SentenceVectorizer()
+    s = SentenceModel()
     # s.generate_data(test_mode=False)
     # s.save_data('data/qualitydat.pck')
     s.load_data('data/qualitydat.pck')
@@ -977,9 +1233,9 @@ def document_prediction_test():
     print
 
 
-    d = DocumentVectorizer()
+    d = DocumentLevelModel()
     
-    d.generate_data()
+    d.generate_data(data_filter="avoid_quotes")
     d.save_data('data/quality_doc_data.pck')
     # d.load_data('data/quality_doc_data.pck')
 
@@ -996,6 +1252,8 @@ def document_prediction_test():
        
         all_X = d.X_domain_all(domain=test_domain)
         all_y = d.y_domain_all(domain=test_domain)
+
+
 
         
 
@@ -1043,24 +1301,28 @@ def document_prediction_test():
 
 
 
-def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, list_features=False, hybrid=False):
+def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, list_features=False, model=SentenceModel()):
 
 
     print "Sentence level prediction"
     print "=" * 40
     print
-    if hybrid:
-        print "HYBRID MODEL 1 - adding in word-judgement interaction features for all LOW risk papers"
+
+
+
+
+    s = model
+
+
+    print "Model name:\t" + s.__class__.__name__
+    print s.__doc__
+
     print "sampling=%s, class_weight=%s" % (str(sample), str(class_weight))
     if sample:
         print "negative_sample_ratio=%d, no_models=%d" % (negative_sample_ratio, no_models)
     print
 
 
-    if hybrid:
-        s = SimpleHybridModel()
-    else:
-        s = SentenceVectorizer()
     
     s.generate_data(test_mode=False)
     
@@ -1179,7 +1441,9 @@ def main():
 
 if __name__ == '__main__':
     # sentence_prediction_test(hybrid=True)
-    sentence_prediction_test(sample=False, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={1:5, -1:1}, hybrid=True)
+    # sentence_prediction_test(sample=False, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={1:5, -1:1}, model=FullHybridModel3())
     # sentence_prediction_test(sample=False, class_weight={1:1.5, -1:1}, list_features=False)
-    # demo('testdata/demo3.pdf')
+    # doc_demo('testdata/demo2.pdf')
+    sentence_demo('testdata/demo2.pdf')
     # document_prediction_test()
+    # doc_demo()
