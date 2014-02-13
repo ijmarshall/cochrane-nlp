@@ -53,6 +53,7 @@ CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blindin
 
 ALL_DOMAINS = CORE_DOMAINS[:] # will be added to later
 
+RoB_CLASSES = ["YES", "NO", "UNKNOWN"]
 
 
 
@@ -802,7 +803,7 @@ class SimpleHybridModel2(SimpleHybridModel):
 
             
             # then create new interaction features where we have a judgement of 'LOW' risk only
-            interaction_features = {judgement: [] for judgement in ["YES", "NO", "UNKNOWN"]}
+            interaction_features = {judgement: [] for judgement in RoB_CLASSES}
 
 
 
@@ -876,7 +877,7 @@ class FullHybridModel3(SimpleHybridModel2):
             
             last_doc_id = None
 
-            interaction_features = {judgement: [] for judgement in ["YES", "NO", "UNKNOWN"]}
+            interaction_features = {judgement: [] for judgement in RoB_CLASSES}
 
             for sent, doc_id in zip(X_list_filtered, self.y[domain].study_ids):
 
@@ -1362,7 +1363,7 @@ def document_prediction_test(model=DocumentLevelModel()):
             y_preds = clf.predict(X_test.data)
 
 
-            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test.data, y_preds))
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test.data, y_preds, labels=RoB_CLASSES))
 
             metrics.append(fold_metric) # get the scores for positive instances
 
@@ -1528,6 +1529,10 @@ def main():
 
 
 if __name__ == '__main__':
+
+    sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel())
+    sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel2())
+    sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=FullHybridModel3())
 
 
     
