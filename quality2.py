@@ -844,7 +844,6 @@ class FullHybridModel3(SimpleHybridModel2):
 
     """
 
- 
 
     def X_domain_all(self, domain=0):
         """
@@ -874,8 +873,6 @@ class FullHybridModel3(SimpleHybridModel2):
                 if i in X_filter:
                     X_list_filtered.append(sent)
 
-            
-            
             last_doc_id = None
 
             interaction_features = {judgement: [] for judgement in RoB_CLASSES}
@@ -933,10 +930,101 @@ class FullHybridModel3(SimpleHybridModel2):
     def predict_doc_judgement(self, doc_id):
 
         doc_text = self.X_doc[doc_id]
-        
-
         X = self.doc_model.vectorizer.transform([doc_text])
 
+        return self.doc_clf.predict(X)[0]
+
+
+
+
+class TrueHybridModel(SimpleHybridModel2):
+    """
+    predicts whether sentences contain risk of bias information
+    - uses data from Cochrane quotes + interaction features of sentence/study level quality score
+    - This model is trained on *real* RoB classes to create the interaction features
+    - but tested on best predicted RoB classes (so not cheating!!)
+    """
+
+
+    def X_domain_all(self, domain=0):
+        """
+        retrieve X data
+        this version creates a new X matrix for each domain
+        and caches the last one used
+        (since this function may be called a lot)
+        """
+
+        # if the index is passed, convert to the string
+        if isinstance(domain, int):
+            domain = ALL_DOMAINS[domain]
+
+
+        y_study_ids = np.unique(self.y[domain].study_ids)        
+        X_filter = np.nonzero([(X_study_id in y_study_ids) for X_study_id in self.X_list.study_ids])[0]
+
+
+        if self.X_domain_cached != domain:
+
+            # if the domain isn't cached, need to make a new X
+            self.generate_doc_level_model(domain=domain) # make new predictive model for this domain
+
+            # first get the sentences corresponding to the y domain vector
+            X_list_filtered = []
+            for i, sent in enumerate(self.X_list.data):
+                if i in X_filter:
+                    X_list_filtered.append(sent)
+
+            last_doc_id = None
+
+            interaction_features = {judgement: [] for judgement in RoB_CLASSES}
+
+            for sent, doc_id in zip(X_list_filtered, self.y[domain].study_ids):
+
+
+                if last_doc_id != doc_id:
+                    prediction = self.predict_doc_judgement(doc_id)
+                    last_doc_id = doc_id
+
+                
+
+                for judgement_option in interaction_features.keys():
+
+                
+                    if judgement_option == prediction:
+                        interaction_features[judgement_option].append(sent)
+                    else:
+                        interaction_features[judgement_option].append("")
+
+            # finally build and fit vectorizer covering both these feature sets
+
+            self.vectorizer.builder_clear() # start with a new builder list
+            self.vectorizer.builder_add_docs(X_list_filtered)
+
+            # add in interaction features for all
+            for judgement_option in interaction_features:
+                self.vectorizer.builder_add_docs(interaction_features[judgement_option], prefix=(judgement_option + '-RISK-'))
+
+            # then fit/transform the vectorizer
+            self.X = SentenceDataView(np.array(self.y[domain].study_ids), self.vectorizer.builder_fit_transform())
+
+            # and record which domain is in the cache now
+            self.X_domain_cached = domain
+
+        return self.X
+
+    def set_doc_level_model(self, doc_clf, vectorizer):
+        """
+        pass a document level model here trained on appropriate visible data
+        (+ vectorizer to go with it)
+        """
+
+        self.doc_clf = doc_clf
+        self.doc_vectorizer(all_X.data, all_y.data)
+
+    def predict_doc_judgement(self, doc_id):
+
+        doc_text = self.X_doc[doc_id]
+        X = self.doc_vectorizer.transform([doc_text])
         return self.doc_clf.predict(X)[0]
 
 
@@ -1331,7 +1419,7 @@ def document_prediction_test(model=DocumentLevelModel()):
 
 
     d = model
-    d.generate_data(data_filter="avoid_quotes") # some variations use the quote data internally 
+    d.generate_data(data_filter="all") # some variations use the quote data internally 
                                                 # for sentence prediction (for additional features)
 
 
@@ -1345,20 +1433,23 @@ def document_prediction_test(model=DocumentLevelModel()):
 
         # clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
         
-        tuned_parameters = {"alpha": [.1, .01, .001, .0001]}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, score_func=sklearn.metrics.f1_score)
 
+        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
        
         all_X = d.X_domain_all(domain=test_domain)
         all_y = d.y_domain_all(domain=test_domain)
+
+        print "Class counts"
+        print collections.Counter(all_y.data)
 
         metrics = []
 
         for fold_i, (train, test) in enumerate(kf):
 
             # X_train, y_train = d.X_y_filtered(np.array(train), domain=test_domain)
-            X_train, y_train = d.X_y_filtered(np.array(train), domain=test_domain) #train removing unknowns, test using all
+            X_train, y_train = d.X_y_filtered(np.array(train), domain=test_domain) 
             X_test, y_test = d.X_y_filtered(np.array(test), domain=test_domain)
 
             
@@ -1402,7 +1493,7 @@ def document_prediction_test(model=DocumentLevelModel()):
         # if not sample and list_features:
             # not an obvious way to get best features for ensemble
         # print show_most_informative_features_ynu(d.vectorizer, clf)
-        print show_most_informative_features_ynu(d.vectorizer, clf)
+        # print show_most_informative_features_ynu(d.vectorizer, clf)
             
 
         # summary score
@@ -1414,7 +1505,9 @@ def document_prediction_test(model=DocumentLevelModel()):
 
 
 def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, list_features=False, model=SentenceModel()):
-
+    print
+    print
+    print
 
     print "Sentence level prediction"
     print "=" * 40
@@ -1457,7 +1550,10 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
         if sample:
             clf = SamplingSGDClassifier(loss="hinge", penalty="l2", alpha=0.1, class_weight=class_weight, negative_sample_ratio=negative_sample_ratio, no_models=no_models)
         else:
-            clf = SGDClassifier(loss="hinge", penalty="l2", alpha=0.1, class_weight=class_weight)
+            
+            # clf = SGDClassifier(loss="hinge", penalty="l2", alpha=0.1, class_weight=class_weight)
+            tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+            clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
         
         all_X = s.X_domain_all(domain=test_domain)
         all_y = s.y_domain_all(domain=test_domain)
@@ -1491,6 +1587,95 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
         print "=" * 40
         print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
 
+
+
+
+def sentence_prediction_hybrid(sample=True, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}):
+    print
+    print
+    print
+
+    print "Hybrid Sentence level prediction"
+    print "=" * 40
+    print
+
+    s = model
+
+    # so several parts here
+    # 1. split into quotes only train/test data (using indices from any model - should be the same)
+    # 2. train a sentence/doc level hybrid model on true labels (SimpleHybridModel)
+    # 3. make a doc level model using all training data
+    # 4. pass doc level model to TrueHybrid model
+
+
+
+    print "Model name:\t" + s.__class__.__name__
+    print s.__doc__
+
+    print "sampling=%s, class_weight=%s" % (str(sample), str(class_weight))
+    if sample:
+        print "negative_sample_ratio=%d, no_models=%d" % (negative_sample_ratio, no_models)
+    print
+
+
+    
+    s.generate_data(test_mode=False)
+    
+    # s.save_data('data/qualitydat.pck')
+    # s.save_text('data/qualitydat_text.pck')
+
+    # s.load_data('data/qualitydat.pck')
+    # s.load_text('data/qualitydat_text.pck')
+
+
+    for test_domain in CORE_DOMAINS:
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+
+        no_studies = s.len_domain(test_domain)
+
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
+
+
+        if sample:
+            clf = SamplingSGDClassifier(loss="hinge", penalty="l2", alpha=0.1, class_weight=class_weight, negative_sample_ratio=negative_sample_ratio, no_models=no_models)
+        else:
+            
+            # clf = SGDClassifier(loss="hinge", penalty="l2", alpha=0.1, class_weight=class_weight)
+            tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+            clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        
+        all_X = s.X_domain_all(domain=test_domain)
+        all_y = s.y_domain_all(domain=test_domain)
+
+        metrics = []
+
+        for fold_i, (train, test) in enumerate(kf):
+
+            X_train, y_train = s.X_y_filtered(np.array(train), domain=test_domain)
+            X_test, y_test = s.X_y_filtered(np.array(test), domain=test_domain)
+
+            clf.fit(X_train.data, y_train.data)
+
+            y_preds = clf.predict(X_test.data)
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test.data, y_preds))[:,1]
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+            
+
+            if not sample and list_features:
+                # not an obvious way to get best features for ensemble
+                print show_most_informative_features(s.vectorizer, clf)
+            
+
+        # summary score
+
+        summary_metrics = np.mean(metrics, axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
 
 
 
@@ -1553,9 +1738,10 @@ def main():
 
 if __name__ == '__main__':
 
-    # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel())
+    # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SentenceModel())
+    # hybrid_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel())
     # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel2())
-    # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=FullHybridModel3())
+
 
     document_prediction_test(model=DocumentLevelModel())
     
