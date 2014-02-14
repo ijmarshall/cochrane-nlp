@@ -28,6 +28,7 @@ from sklearn.linear_model import SGDClassifier
 from collections import defaultdict
 
 from sklearn.metrics import precision_recall_fscore_support
+from sklearn.grid_search import GridSearchCV
 import random
 
 from sklearn.cross_validation import KFold
@@ -876,7 +877,10 @@ class FullHybridModel3(SimpleHybridModel2):
             
             last_doc_id = None
 
+            # BCW -- I wonder if just adding this here would help?
+            #interaction_features = {judgement: [] for judgement in ["YES"]}
             interaction_features = {judgement: [] for judgement in ["YES", "NO", "UNKNOWN"]}
+            
 
             for sent, doc_id in zip(X_list_filtered, self.y[domain].study_ids):
 
@@ -913,7 +917,11 @@ class FullHybridModel3(SimpleHybridModel2):
 
         return self.X
 
-
+    '''
+    @TODO generate a doc level model for all domains, 
+    change predict to accept a target domain 
+    leverage predictions as features in test!
+    '''
     def generate_doc_level_model(self, domain):
 
         self.doc_model = DocumentLevelModel()
@@ -928,6 +936,7 @@ class FullHybridModel3(SimpleHybridModel2):
         
         self.doc_clf.fit(all_X.data, all_y.data)
 
+
     def predict_doc_judgement(self, doc_id):
 
         doc_text = self.X_doc[doc_id]
@@ -938,6 +947,19 @@ class FullHybridModel3(SimpleHybridModel2):
         return self.doc_clf.predict(X)[0]
 
 
+'''
+EM 
+
+Start: predict for all domains for all docs
+while not converged:
+    predict sentences given doc-level predictions
+    make doc-level predictions given sentences
+'''
+
+'''
+A fancier hybrid model would also have terms corresponding to the predictions
+for *other* domains!
+'''
 class DocumentHybridModel(DocumentLevelModel):
     """
     for predicting the risk of bias
@@ -1401,14 +1423,16 @@ def document_prediction_test():
 
 
 
-def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, list_features=False, model=SentenceModel()):
+def sentence_prediction_test(sample=False, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, 
+                list_features=False, model=SentenceModel()):
 
 
     print "Sentence level prediction"
     print "=" * 40
     print
 
-
+    if not sample:
+        no_models = 1
 
 
     s = model
@@ -1423,7 +1447,6 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
     print
 
 
-    
     s.generate_data(test_mode=False)
     
     # s.save_data('data/qualitydat.pck')
@@ -1432,6 +1455,7 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
     # s.load_data('data/qualitydat.pck')
     # s.load_text('data/qualitydat_text.pck')
 
+    tuned_parameters = {"alpha": [.1, .01, .001, .0001]}
 
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
@@ -1439,13 +1463,14 @@ def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10
 
         no_studies = s.len_domain(test_domain)
 
-        kf = KFold(no_studies, n_folds=5, shuffle=True)
+        kf = KFold(no_studies, n_folds=5, shuffle=False) #True)
 
 
         if sample:
             clf = SamplingSGDClassifier(loss="hinge", penalty="elasticnet", class_weight=class_weight, negative_sample_ratio=negative_sample_ratio, no_models=no_models)
         else:
-            clf = SGDClassifier(loss="hinge", penalty="elasticnet", class_weight=class_weight)
+            clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2", class_weight=class_weight),
+                                                tuned_parameters, score_func=sklearn.metrics.f1_score)
         
         all_X = s.X_domain_all(domain=test_domain)
         all_y = s.y_domain_all(domain=test_domain)
