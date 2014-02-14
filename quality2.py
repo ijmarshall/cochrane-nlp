@@ -17,6 +17,7 @@ import difflib
 
 import sklearn
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.grid_search import GridSearchCV
 
 from sklearn.feature_extraction import DictVectorizer
 
@@ -54,6 +55,7 @@ CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blindin
 
 ALL_DOMAINS = CORE_DOMAINS[:] # will be added to later
 
+RoB_CLASSES = ["YES", "NO", "UNKNOWN"]
 
 
 
@@ -803,7 +805,7 @@ class SimpleHybridModel2(SimpleHybridModel):
 
             
             # then create new interaction features where we have a judgement of 'LOW' risk only
-            interaction_features = {judgement: [] for judgement in ["YES", "NO", "UNKNOWN"]}
+            interaction_features = {judgement: [] for judgement in RoB_CLASSES}
 
 
 
@@ -877,10 +879,10 @@ class FullHybridModel3(SimpleHybridModel2):
             
             last_doc_id = None
 
+
             # BCW -- I wonder if just adding this here would help?
             #interaction_features = {judgement: [] for judgement in ["YES"]}
-            interaction_features = {judgement: [] for judgement in ["YES", "NO", "UNKNOWN"]}
-            
+            interaction_features = {judgement: [] for judgement in RoB_CLASSES}
 
             for sent, doc_id in zip(X_list_filtered, self.y[domain].study_ids):
 
@@ -1343,45 +1345,37 @@ def sentence_demo(testfile="testdata/demo.pdf"):
 
 
 
-def document_prediction_test():
+def document_prediction_test(model=DocumentLevelModel()):
 
     print "Document level prediction"
     print "=" * 40
     print
 
 
-    d = DocumentLevelModel()
-    d.generate_data()
-
-
-    # d = DocumentHybridModel() # must avoid quotes in this model (since this data is used internally for sentence prediction)
-    # d.generate_data(data_filter="avoid_quotes")
-
+    d = model
+    d.generate_data(data_filter="avoid_quotes") # some variations use the quote data internally 
+                                                # for sentence prediction (for additional features)
 
 
 
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
-
-        print d
         
         no_studies = d.len_domain(test_domain)
 
-        kf = KFold(no_studies, n_folds=5, shuffle=True)
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
 
-        clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
-        # removed from above
+        # clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
+        
+        tuned_parameters = {"alpha": [.1, .01, .001, .0001]}
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, score_func=sklearn.metrics.f1_score)
+
+
        
         all_X = d.X_domain_all(domain=test_domain)
         all_y = d.y_domain_all(domain=test_domain)
 
-
-
-        
-
         metrics = []
-
-
 
         for fold_i, (train, test) in enumerate(kf):
 
@@ -1389,22 +1383,40 @@ def document_prediction_test():
             X_train, y_train = d.X_y_filtered(np.array(train), domain=test_domain) #train removing unknowns, test using all
             X_test, y_test = d.X_y_filtered(np.array(test), domain=test_domain)
 
-            print len(y_train.data), len(y_test.data)
+            
 
             clf.fit(X_train.data, y_train.data)
 
             y_preds = clf.predict(X_test.data)
 
 
-            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test.data, y_preds))
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test.data, y_preds, labels=RoB_CLASSES))[:3]
+
+            print ('fold %d\t' % (fold_i)) + '\t'.join(RoB_CLASSES)
+
+            for metric_type, scores in zip(["prec.", "recall", "f1"], fold_metric):
+                print "%s\t%.2f\t%.2f\t%.2f" % (metric_type, scores[0], scores[1], scores[2])
+
+            print
+
+
+
+
 
             metrics.append(fold_metric) # get the scores for positive instances
 
             # print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
 
-            print collections.Counter(y_test.data)
-            print fold_metric
-            
+        mean_scores = np.mean(metrics, axis=0)
+
+        print "=" * 40
+        print 'means \t' + '\t'.join(RoB_CLASSES)
+
+        for metric_type, scores in zip(["prec.", "recall", "f1"], fold_metric):
+            print "%s\t%.2f\t%.2f\t%.2f" % (metric_type, scores[0], scores[1], scores[2])
+        print
+
+
 
         # fit on all
         clf.fit(all_X.data, all_y.data)
@@ -1466,11 +1478,13 @@ def sentence_prediction_test(sample=False, negative_sample_ratio=50, no_models=1
         kf = KFold(no_studies, n_folds=5, shuffle=False) #True)
 
 
+
         if sample:
-            clf = SamplingSGDClassifier(loss="hinge", penalty="elasticnet", class_weight=class_weight, negative_sample_ratio=negative_sample_ratio, no_models=no_models)
+            clf = SamplingSGDClassifier(loss="hinge", penalty="l2", alpha=0.1, class_weight=class_weight, negative_sample_ratio=negative_sample_ratio, no_models=no_models)
         else:
             clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2", class_weight=class_weight),
                                                 tuned_parameters, score_func=sklearn.metrics.f1_score)
+
         
         all_X = s.X_domain_all(domain=test_domain)
         all_y = s.y_domain_all(domain=test_domain)
@@ -1565,10 +1579,16 @@ def main():
 
 
 if __name__ == '__main__':
-    # sentence_prediction_test(hybrid=True)
+
+    # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel())
+    # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel2())
+    # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=FullHybridModel3())
+
+    document_prediction_test(model=DocumentLevelModel())
+    
     # sentence_prediction_test(sample=False, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={1:5, -1:1}, model=FullHybridModel3())
     # sentence_prediction_test(sample=False, class_weight={1:1.5, -1:1}, list_features=False)
     # doc_demo('testdata/demo2.pdf')
     # sentence_demo('testdata/demo2.pdf')
-    document_prediction_test()
+    
     # doc_demo()
