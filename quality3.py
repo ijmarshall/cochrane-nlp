@@ -84,7 +84,7 @@ class QualityQuoteReader2():
         self.pdfviewer = biviewer.PDFBiViewer()
         self.domain_map = load_domain_map()
         if test_mode:
-            self.test_mode_break_point = 50
+            self.test_mode_break_point = 250
         else:
             self.test_mode_break_point = None
 
@@ -278,7 +278,6 @@ class SentenceModel():
         for uid, cochrane_data, pdf_data in self.quotereader:
 
             if uid_filter is not None and uid not in uid_filter:
-                print "filtered out"
                 continue        
 
 
@@ -481,6 +480,80 @@ class DocumentLevelModel(SentenceModel):
         self.y_uids = {domain: np.array(self.y_uids[domain]) for domain in test_domains}
 
 
+class HybridDocModel(DocumentLevelModel):
+    """
+    for predicting the risk of bias
+    as "HIGH", "LOW", or "UNKNOWN" for a document
+    using a binary bag-of-words as features for each document
+    """
+
+
+    def vectorize(self, domain=None):
+
+        if domain is None:
+            raise TypeError("this class requires domain specific vectorization")
+
+        self.vectorizer = ModularCountVectorizer()
+        self.vectorizer.builder_clear()
+        X_filter = self.domain_X_filter(domain)
+
+        predictions = self.get_sent_predictions_for_domain(domain)
+
+        self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
+        
+        self.vectorizer.builder_add_docs(predictions, prefix="high-prob-sent-")
+
+        self.X = self.vectorizer.builder_fit_transform()
+
+
+    def get_sent_predictions_for_domain(self, domain):
+
+        uids = self.domain_uids(domain)
+
+        predictions = []
+
+        for uid in uids:
+
+            # get the index of the study with specified uid
+            study_index = np.nonzero(self.X_uids==uid)[0][0]
+
+            # tokenize into sentences
+            sents = sent_tokenizer.tokenize(self.X_list[study_index])
+
+            # vectorize the sentences
+            X_sents = self.sent_vectorizer.transform(sents)
+
+            # get predicted 1 / -1 for the sentences
+            pred_class = self.sent_clf.predict(X_sents)
+
+            # get the sentences which are predicted 1
+            positive_sents = [sent for sent, pred in zip(sents, pred_class) if pred==1]
+
+            # make a single string per doc
+            doc = " ".join(positive_sents)
+            
+            predictions.append(doc)
+        
+        return predictions
+
+    def set_sent_model(self, doc_clf, doc_vectorizer):
+        """
+        set a model which takes in a list of sentences;
+        and returns -1 or 1
+        """
+        self.sent_clf = doc_clf
+        self.sent_vectorizer = doc_vectorizer
+
+    def X_y_uid_filtered(self, uids, domain):
+        X_all = self.X
+        y_all = self.y_domain_all(domain=domain)
+
+        filter_ids = np.nonzero([(y_study_id in uids) for y_study_id in self.y_uids[domain]])[0]
+        X_filtered = X_all[filter_ids]
+        y_filtered = y_all[filter_ids]
+
+        return X_filtered, y_filtered
+
 
 class HybridModel(SentenceModel):
     """
@@ -530,12 +603,16 @@ class HybridModelProbablistic(HybridModel):
     full text document
     """
 
-    def vectorize(self, domain=None, interaction_classes=["YES", "NO"]):
+    def vectorize(self, domain=None, interaction_classes=["YES", "NO"], use_vectorizer=None):
 
         if domain is None:
             raise TypeError("this class requires domain specific vectorization")
 
-        self.vectorizer = ModularCountVectorizer()
+        if use_vectorizer is None:
+            self.vectorizer = ModularCountVectorizer()
+        else:
+            self.vectorizer = use_vectorizer
+
         self.vectorizer.builder_clear()
         X_filter = self.domain_X_filter(domain)
 
@@ -549,7 +626,13 @@ class HybridModelProbablistic(HybridModel):
         for interaction_class in interaction_classes:
             self.vectorizer.builder_add_interaction_features(sents, predictions==interaction_class, prefix="rob-" + interaction_class + "-")
 
-        self.X = self.vectorizer.builder_fit_transform()
+
+        if use_vectorizer is None:
+            self.X = self.vectorizer.builder_fit_transform()
+        else:
+            self.X = self.vectorizer.builder_transform()
+
+
 
 
     def get_doc_predictions_for_domain(self, domain):
@@ -635,6 +718,8 @@ class ModularCountVectorizer():
 
         output = []
 
+
+
         for dict1, dict2 in zip(dictlist1, dictlist2):
             output.append(dict(dict1.items() + dict2.items()))
             # note that this *overwrites* any duplicate keys with the key/value from dictlist2!!
@@ -674,6 +759,7 @@ class ModularCountVectorizer():
             raise TypeError('Prefix is required when adding interaction features')
 
         doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
+
 
         self.builder_add_docs(doc_list, prefix)
 
@@ -725,8 +811,9 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
 
         kf = KFold(no_studies, n_folds=5, shuffle=False, indices=True)
 
-        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        # tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
         
         metrics = []
 
@@ -784,7 +871,7 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
         
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2", class_weight={"YES":1, "UNKNOWN":1, "NO":4}), tuned_parameters, scoring='f1')
 
        
         # clf = SGDClassifier(loss="hinge", penalty="L2")
@@ -864,7 +951,7 @@ def simple_hybrid_prediction_test(model=HybridModel(test_mode=True)):
         kf = KFold(no_studies, n_folds=5, shuffle=False)
 
 
-        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
         clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
 
@@ -905,7 +992,7 @@ def simple_hybrid_prediction_test(model=HybridModel(test_mode=True)):
 
 
 
-def true_hybrid_prediction_test(model):
+def true_hybrid_prediction_test(model, test_mode=False):
 
     print "True Hybrid prediction"
     print "=" * 40
@@ -915,6 +1002,9 @@ def true_hybrid_prediction_test(model):
     s = model
     s.generate_data() # some variations use the quote data internally 
                                                 # for sentence prediction (for additional features)
+
+    s_cheat = HybridModel(test_mode=True)
+    s_cheat.generate_data()
 
 
 
@@ -927,8 +1017,8 @@ def true_hybrid_prediction_test(model):
         domain_uids = s.domain_uids(test_domain)
         no_studies = len(domain_uids)
         kf = KFold(no_studies, n_folds=5, shuffle=False)
-        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7]]}]
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
 
 
         metrics = []
@@ -937,7 +1027,7 @@ def true_hybrid_prediction_test(model):
 
             print "training doc level model with test data, please wait..."
 
-            d = DocumentLevelModel()
+            d = DocumentLevelModel(test_mode=True)
             d.generate_data(uid_filter=domain_uids[train])
             d.vectorize()
             doc_X, doc_y = d.X_domain_all(domain=test_domain), d.y_domain_all(domain=test_domain)
@@ -951,9 +1041,13 @@ def true_hybrid_prediction_test(model):
             s.set_doc_model(doc_clf, d.vectorizer)
 
 
-            s.vectorize(test_domain)
+            s_cheat.vectorize(test_domain)
+            s.vectorize(test_domain, use_vectorizer=s_cheat.vectorizer)
 
-            X_train, y_train = s.X_y_uid_filtered(domain_uids[train], test_domain)
+
+            X_train, y_train = s_cheat.X_y_uid_filtered(domain_uids[train], test_domain)
+            # train on the *true* labels
+
             X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
 
             clf.fit(X_train, y_train)
@@ -981,10 +1075,91 @@ def true_hybrid_prediction_test(model):
 
 
 
+def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
+
+    print "Hybrid doc level prediction"
+    print "=" * 40
+    print
+
+
+    d = model
+    d.generate_data() # some variations use the quote data internally 
+                                                # for sentence prediction (for additional features)
+
+
+    for test_domain in CORE_DOMAINS:
+
+        
+
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+        domain_uids = d.domain_uids(test_domain)
+        no_studies = len(domain_uids)
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
+        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+
+
+        metrics = []
+
+        for fold_i, (train, test) in enumerate(kf):
+
+            
+
+            s = SentenceModel(test_mode=False)
+            s.generate_data(uid_filter=domain_uids[train])
+            s.vectorize()
+            sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
+
+
+
+            sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+            sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
+            sent_clf.fit(sents_X, sents_y)
+            d.set_sent_model(sent_clf, s.vectorizer)
+            d.vectorize(test_domain)
+
+            X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
+
+            clf.fit(X_train, y_train)
+
+            y_preds = clf.predict(X_test)
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds, labels=RoB_CLASSES))[:3]
+
+            print ('fold %d\t' % (fold_i)) + '\t'.join(RoB_CLASSES)
+
+            for metric_type, scores in zip(["prec.", "recall", "f1"], fold_metric):
+                print "%s\t%.2f\t%.2f\t%.2f" % (metric_type, scores[0], scores[1], scores[2])
+
+            print
+
+
+
+
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            # print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+
+
+        mean_scores = np.mean(metrics, axis=0)
+
+        print "=" * 40
+        print 'means \t' + '\t'.join(RoB_CLASSES)
+
+        for metric_type, scores in zip(["prec.", "recall", "f1"], fold_metric):
+            print "%s\t%.2f\t%.2f\t%.2f" % (metric_type, scores[0], scores[1], scores[2])
+        print
+
 
 def main():
-    true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=False))
-    
+    true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=True))
+    # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
+    # sentence_prediction_test(model=SentenceModel(test_mode=False))
+    # hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False))
+    # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
 
 if __name__ == '__main__':
