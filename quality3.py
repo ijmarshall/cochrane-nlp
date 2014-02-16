@@ -102,6 +102,9 @@ class QualityQuoteReader2():
 
         for uid, study in enumerate(self.pdfviewer):
 
+            if self.test_mode_break_point and (uid >= self.test_mode_break_point):
+                break
+
             p.tap()
             quality_data = study.cochrane["QUALITY"]
             for domain in quality_data:
@@ -114,8 +117,6 @@ class QualityQuoteReader2():
                     
             yield self.BiviewerView(uid=uid, cochrane={"QUALITY": quality_data}, studypdf=self.preprocess_pdf(study.studypdf))
 
-            if self.test_mode_break_point and (uid >= self.test_mode_break_point):
-                break
 
     def __len__(self):
         return len(self.pdfviewer) if self.test_mode_break_point is None else self.test_mode_break_point
@@ -276,7 +277,7 @@ class SentenceModel():
         
         for uid, cochrane_data, pdf_data in self.quotereader:
 
-            if uid_filter and uid not in uid_filter:
+            if uid_filter is not None and uid not in uid_filter:
                 print "filtered out"
                 continue        
 
@@ -316,6 +317,7 @@ class SentenceModel():
 
         self.X_uids = np.array(self.X_uids)
         self.y_uids = {domain: np.array(self.y_uids[domain]) for domain in test_domains}
+        self.y_judgements = {domain: np.array(self.y_judgements[domain]) for domain in test_domains}
 
         # self.vectorize()
 
@@ -388,30 +390,29 @@ class SentenceModel():
         """
 
         X_filter = self.domain_X_filter(domain)
-
         return self.X[X_filter]
 
     def y_domain_all(self, domain):
         return self.y[domain]
 
 
-    def X_y_filtered(self, filter_ids, domain):
+    # def X_y_filtered(self, filter_ids, domain):
 
-        X_all = self.X_domain_all(domain=domain)
-        y_all = self.y_domain_all(domain=domain)
+    #     X_all = self.X_domain_all(domain=domain)
+    #     y_all = self.y_domain_all(domain=domain)
 
-        # np.unique always returns ordered ids
-        unique_study_ids = np.unique(self.y_uids[domain])
+    #     # np.unique always returns ordered ids
+    #     unique_study_ids = np.unique(self.y_uids[domain])
 
-        mapped_ids = [unique_study_ids[filter_id] for filter_id in filter_ids]
+    #     mapped_ids = [unique_study_ids[filter_id] for filter_id in filter_ids]
 
-        filter_ids = np.nonzero([(y_study_id in mapped_ids) for y_study_id in self.y_uids[domain]])[0]
+    #     filter_ids = np.nonzero([(y_study_id in mapped_ids) for y_study_id in self.y_uids[domain]])[0]
         
 
-        X_filtered = X_all[filter_ids]
-        y_filtered = y_all[filter_ids]
+    #     X_filtered = X_all[filter_ids]
+    #     y_filtered = y_all[filter_ids]
 
-        return X_filtered, y_filtered
+    #     return X_filtered, y_filtered
     
 
 class DocumentLevelModel(SentenceModel):
@@ -445,7 +446,9 @@ class DocumentLevelModel(SentenceModel):
         
         for uid, cochrane_data, pdf_data in self.quotereader:
 
-            if uid_filter and uid not in uid_filter:
+
+            
+            if uid_filter is not None and uid not in uid_filter:
                 continue        
 
 
@@ -472,6 +475,12 @@ class DocumentLevelModel(SentenceModel):
 
   
 
+        self.y = {domain: np.array(self.y_list[domain]) for domain in test_domains}
+
+        self.X_uids = np.array(self.X_uids)
+        self.y_uids = {domain: np.array(self.y_uids[domain]) for domain in test_domains}
+
+
 
 class HybridModel(SentenceModel):
     """
@@ -480,7 +489,7 @@ class HybridModel(SentenceModel):
     """
 
 
-    def vectorize(self, domain=None):
+    def vectorize(self, domain=None, interaction_classes=["YES", "NO"]):
 
         if domain is None:
             raise TypeError("this class requires domain specific vectorization")
@@ -490,28 +499,17 @@ class HybridModel(SentenceModel):
         self.vectorizer.builder_clear()
 
         X_filter = self.domain_X_filter(domain)
-        self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
 
-        self.vectorizer.builder_add_docs(self.y_judgements[domain])
+        sents = [self.X_list[i] for i in X_filter]
+
+        self.vectorizer.builder_add_docs(sents)
+
+        for interaction_class in interaction_classes:
+
+            self.vectorizer.builder_add_interaction_features(sents, self.y_judgements[domain]==interaction_class, prefix="rob-" + interaction_class + "-")
+
         self.X = self.vectorizer.builder_fit_transform()
 
-
-    # def X_y_filtered(self, filter_ids, domain):
-
-    #     X_all = self.X
-    #     y_all = self.y_domain_all(domain=domain)
-
-    #     # np.unique always returns ordered ids
-    #     unique_study_ids = np.unique(self.y_uids[domain])
-
-    #     mapped_ids = [unique_study_ids[filter_id] for filter_id in filter_ids]
-
-    #     filter_ids = np.nonzero([(y_study_id in mapped_ids) for y_study_id in self.y_uids[domain]])[0]
-        
-    #     X_filtered = X_all[filter_ids]
-    #     y_filtered = y_all[filter_ids]
-
-    #     return X_filtered, y_filtered
 
     def X_y_uid_filtered(self, uids, domain):
         X_all = self.X
@@ -532,44 +530,49 @@ class HybridModelProbablistic(HybridModel):
     full text document
     """
 
-
-
-    def vectorize(self, domain=None):
+    def vectorize(self, domain=None, interaction_classes=["YES", "NO"]):
 
         if domain is None:
             raise TypeError("this class requires domain specific vectorization")
 
         self.vectorizer = ModularCountVectorizer()
-        
         self.vectorizer.builder_clear()
-
         X_filter = self.domain_X_filter(domain)
 
-        self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
+        predictions = self.get_doc_predictions_for_domain(domain)
 
-        self.vectorizer.builder_add_docs(self.y_judgements[domain])
+
+
+        sents = [self.X_list[i] for i in X_filter]
+        self.vectorizer.builder_add_docs(sents)
+
+        for interaction_class in interaction_classes:
+            self.vectorizer.builder_add_interaction_features(sents, predictions==interaction_class, prefix="rob-" + interaction_class + "-")
 
         self.X = self.vectorizer.builder_fit_transform()
 
 
-    def get_doc_predictions_for_domain(self, doc_uid, domain):
+    def get_doc_predictions_for_domain(self, domain):
 
-        X_filter = domain_X_filter(domain)
+        uids = self.domain_uids(domain)
 
+        predictions = []
 
-        # get the uids we're looking for
-        doc_uids = np.unique(self.X_uids[X_filter])
-        doc_texts = []
+        for uid in uids:
 
+            # get the indices of all sentences in the study with specified uid
+            X_filter = np.nonzero(self.X_uids==uid)[0]
 
-        uid_to_doc_list = collections.defaultdict([])
+            # make a single string per doc
+            doc = " ".join([self.X_list[i] for i in X_filter])
+            # vectorize the docs, then predict using the model
+            X_doc = self.doc_vectorizer.transform(doc)
+            prediction = self.doc_clf.predict(X_doc)
 
-        for uid in 
-
-
-
+            # add the same prediction for each sentence
+            predictions.extend([prediction[0]] * len(X_filter))
         
-
+        return np.array(predictions)
 
     def set_doc_model(self, doc_clf, doc_vectorizer):
         """
@@ -666,6 +669,18 @@ class ModularCountVectorizer():
             X_dicts = self._transform_X_to_dict(X, prefix=prefix)
             self.builder = self._dictzip(self.builder, X_dicts)
 
+    def builder_add_interaction_features(self, X, interactions, prefix=None):
+        if prefix is None:
+            raise TypeError('Prefix is required when adding interaction features')
+
+        doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
+
+        self.builder_add_docs(doc_list, prefix)
+
+
+    
+
+
     def builder_fit_transform(self):
         return self.vectorizer.fit_transform(self.builder)
 
@@ -701,9 +716,12 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
 
-        
-        X_domain_filter = s.domain_X_filter(test_domain)
-        no_studies = s.len_domain(test_domain)
+
+        domain_uids = s.domain_uids(test_domain)
+        no_studies = len(domain_uids)
+
+
+
 
         kf = KFold(no_studies, n_folds=5, shuffle=False, indices=True)
 
@@ -716,9 +734,8 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
 
 
 
-
-            X_train, y_train = s.X_y_filtered(train, test_domain)
-            X_test, y_test = s.X_y_filtered(test, test_domain)
+            X_train, y_train = s.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
 
             clf.fit(X_train, y_train)
 
@@ -744,7 +761,7 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
 
 
 
-def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
+def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
     print "Document level prediction"
     print "=" * 40
@@ -755,14 +772,14 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
     d.generate_data() # some variations use the quote data internally 
                                                 # for sentence prediction (for additional features)
 
-
+    d.vectorize()
 
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
-        no_studies = d.len_domain(test_domain)
+        
 
-        kf = KFold(no_studies, n_folds=5, shuffle=False)
+
 
         
 
@@ -772,22 +789,18 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
        
         # clf = SGDClassifier(loss="hinge", penalty="L2")
 
-        X = d.X_domain_all(domain=test_domain)
-        y = d.y_domain_all(domain=test_domain)
+        domain_uids = d.domain_uids(test_domain)
+        no_studies = len(domain_uids)
 
-
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
 
         metrics = []
 
         for fold_i, (train, test) in enumerate(kf):
 
 
-            X_train, y_train = X[train], y[train]
-            X_test, y_test = X[test], y[test]
-
-            print y_train
-            print
-            print X_train
+            X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
 
             
 
@@ -826,7 +839,7 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
 
 
 
-def hybrid_prediction_test(model=HybridModel(test_mode=True)):
+def simple_hybrid_prediction_test(model=HybridModel(test_mode=True)):
 
     print "Hybrid prediction"
     print "=" * 40
@@ -845,15 +858,14 @@ def hybrid_prediction_test(model=HybridModel(test_mode=True)):
 
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
-        no_studies = s.len_domain(test_domain)
+        domain_uids = s.domain_uids(test_domain)
+        no_studies = len(domain_uids)
 
         kf = KFold(no_studies, n_folds=5, shuffle=False)
 
-        # tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        # clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
-       
-        clf = SGDClassifier(loss="hinge", penalty="L2")
+        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
 
 
@@ -865,8 +877,8 @@ def hybrid_prediction_test(model=HybridModel(test_mode=True)):
 
 
 
-            X_train, y_train = s.X_y_filtered(train, test_domain)
-            X_test, y_test = s.X_y_filtered(test, test_domain)
+            X_train, y_train = s.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
 
             clf.fit(X_train, y_train)
 
@@ -893,9 +905,86 @@ def hybrid_prediction_test(model=HybridModel(test_mode=True)):
 
 
 
+def true_hybrid_prediction_test(model):
+
+    print "True Hybrid prediction"
+    print "=" * 40
+    print
+
+
+    s = model
+    s.generate_data() # some variations use the quote data internally 
+                                                # for sentence prediction (for additional features)
+
+
+
+    for test_domain in CORE_DOMAINS:
+
+        
+
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+        domain_uids = s.domain_uids(test_domain)
+        no_studies = len(domain_uids)
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
+        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+
+
+        metrics = []
+
+        for fold_i, (train, test) in enumerate(kf):
+
+            print "training doc level model with test data, please wait..."
+
+            d = DocumentLevelModel()
+            d.generate_data(uid_filter=domain_uids[train])
+            d.vectorize()
+            doc_X, doc_y = d.X_domain_all(domain=test_domain), d.y_domain_all(domain=test_domain)
+
+
+            doc_tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+            doc_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), doc_tuned_parameters, scoring='f1')
+
+            doc_clf.fit(doc_X, doc_y)
+
+            s.set_doc_model(doc_clf, d.vectorizer)
+
+
+            s.vectorize(test_domain)
+
+            X_train, y_train = s.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
+
+            clf.fit(X_train, y_train)
+
+            y_preds = clf.predict(X_test)
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+            
+
+
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+
+
+        # summary score
+
+        summary_metrics = np.mean(metrics, axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+
+
 def main():
-    hybrid_prediction_test()
-    # sentence_prediction_test()
+    true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=False))
+    
 
 
 if __name__ == '__main__':
