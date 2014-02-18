@@ -1,37 +1,42 @@
-var scale = 1.5;
-
 function loadPdf(pdfURI) {
     var pdf = PDFJS.getDocument(pdfURI);
     PDFJS.disableWorker = true; // Must be disabled
     pdf.then(renderPdf);
 }
 
-function highlightStuff(pageIndex) {
-    var nodes = $("#pageContainer-" + pageIndex + " .textLayer div");
-    nodes.each(function(i, node) {
-        var query = "The VAS is thought to be more sensitive for detection of small differences";
-
-        if(node.innerHTML.match(query)) {
-            node.innerHTML = node.innerHTML.replace(query, '<match>$&</match>');
-        } else if (query.match(node.innerHTML)) {
-            console.log(node);
-            $(node).wrap("<match></match>");
+function annotationServerRPC(textContents) {
+    $.ajax({
+        url: '/annotate',
+        type: 'POST',
+        data: JSON.stringify(textContents),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        async: true,
+        success: function(annotations) {
+            console.log(annotations);
         }
     });
 }
 
 function renderPdf(pdf) {
-    for(var pageNr = 0; pageNr < pdf.numPages; ++pageNr) {
-        pdf.getPage(pageNr).then(renderPage);
+    var textContentPromises = [];
+    for(var pageNr = 1; pageNr < pdf.numPages; ++pageNr) {
+        textContentPromises[pageNr] = pdf.getPage(pageNr).then(renderPage);
     }
+
+    Q.all(textContentPromises).then(function(textContents) {
+        annotationServerRPC(textContents);
+    });
 }
 
 function renderPage(page) {
+    var scale = 1.5;
+    var pageIndex = page.pageInfo.pageIndex;
     var viewport = page.getViewport(scale);
     var $canvas = $("<canvas></canvas>");
 
     var $container = $("<div></div>");
-    $container.attr("id", "pageContainer-" + page.pageInfo.pageIndex).addClass("page");
+    $container.attr("id", "pageContainer-" + pageIndex).addClass("page");
 
     //Set the canvas height and width to the height and width of the viewport
     var canvas = $canvas.get(0);
@@ -76,11 +81,12 @@ function renderPage(page) {
     }
 
     $container.append($textLayerDiv);
+    var deferredTextContent = Q.defer();
 
     page.getTextContent().then(function (textContent) {
         var textLayer = new TextLayerBuilder({
             textLayerDiv: $textLayerDiv.get(0),
-            pageIndex: 0
+            pageIndex: pageIndex
         });
 
         textLayer.setTextContent(textContent);
@@ -95,11 +101,11 @@ function renderPage(page) {
         var completeCallback = pageRendering.internalRenderTask.callback;
         pageRendering.internalRenderTask.callback = function (error) {
             completeCallback.call(this, error);
-            highlightStuff(page.pageInfo.pageIndex);
+            deferredTextContent.resolve(textContent);
         };
-
-
     });
+
+    return deferredTextContent.promise;
 }
 
 // from http://stackoverflow.com/questions/12092633/pdf-js-rendering-a-pdf-file-using-a-base64-file-source-instead-of-url
