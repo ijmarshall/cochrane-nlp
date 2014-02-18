@@ -4,7 +4,8 @@ function loadPdf(pdfURI) {
     pdf.then(renderPdf);
 }
 
-function annotationServerRPC(textContents) {
+function annotationRPC(textContents) {
+    console.log(textContents);
     $.ajax({
         url: '/annotate',
         type: 'POST',
@@ -13,7 +14,9 @@ function annotationServerRPC(textContents) {
         dataType: 'json',
         async: true,
         success: function(annotations) {
+            // here be dragons!
             console.log(annotations);
+
         }
     });
 }
@@ -24,8 +27,8 @@ function renderPdf(pdf) {
         textContentPromises[pageNr] = pdf.getPage(pageNr).then(renderPage);
     }
 
-    Q.all(textContentPromises).then(function(textContents) {
-        annotationServerRPC(textContents);
+    Q.all(textContentPromises).then(function(textContents) { // All pages have finished rendering
+        annotationRPC(textContents); // This calls python and asynchronously /should/ return the annotations.
     });
 }
 
