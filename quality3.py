@@ -251,7 +251,7 @@ class SentenceModel():
         self.quotereader = QualityQuoteReader2(test_mode=test_mode) # this now runs through all studies
         
 
-    def generate_data(self, uid_filter=None):
+    def generate_data(self, uid_filter=None, target_domain=None):
         """
         tokenizes and processes the raw text from pdfs and cochrane
         saves in self.X_list and self.y_list (both dicts)
@@ -302,12 +302,14 @@ class SentenceModel():
 
                     self.y_list[domain["DOMAIN"]].extend(y_study)
                     self.y_uids[domain["DOMAIN"]].extend([uid] * len(y_study))
-                    self.y_judgements.extend([domain["RATING"]] * len(y_study))
+                    self.y_judgements[domain["DOMAIN"]].extend([domain["RATING"]] * len(y_study))
 
                     domains_done_already.append(domain["DOMAIN"])
                     
-
-        self.vectorize()
+        if target_domain is not None:
+            self.vectorize(target_domain)
+        else:
+            self.vectorize()
 
     def vectorize(self):
 
@@ -448,6 +450,17 @@ class DocumentLevelModel(SentenceModel):
 
   
 
+
+class HybridModelB(SentenceModel):
+    '''
+    the B is for byron!
+    '''
+    def __init__(self, target_domain="Random sequence generation", test_mode=False):
+        self.quotereader = QualityQuoteReader2(test_mode=test_mode) # this now runs through all studies
+        self.target_domain = target_domain
+
+    def vectorize(self):
+        self.y = self.y_list[self.target_domain]
 
 class HybridModel(SentenceModel):
     """
