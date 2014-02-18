@@ -37,6 +37,7 @@ from journalreaders import PdfReader
 
 import cPickle as pickle
 
+from sklearn.metrics import f1_score, make_scorer
 
 
 REGEX_QUOTE_PRESENT = re.compile("Quote\:")
@@ -812,7 +813,7 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
         kf = KFold(no_studies, n_folds=5, shuffle=False, indices=True)
 
         # tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 1, 5)]}]
         clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
         
         metrics = []
@@ -868,10 +869,10 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
 
 
-        
+        # f1_prefer_nos = make_scorer(f1_score, pos_label="NO")
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2", class_weight={"YES":1, "UNKNOWN":1, "NO":4}), tuned_parameters, scoring='f1')
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
        
         # clf = SGDClassifier(loss="hinge", penalty="L2")
@@ -919,7 +920,7 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
         print "=" * 40
         print 'means \t' + '\t'.join(RoB_CLASSES)
 
-        for metric_type, scores in zip(["prec.", "recall", "f1"], fold_metric):
+        for metric_type, scores in zip(["prec.", "recall", "f1"], mean_scores):
             print "%s\t%.2f\t%.2f\t%.2f" % (metric_type, scores[0], scores[1], scores[2])
         print
 
@@ -951,7 +952,7 @@ def simple_hybrid_prediction_test(model=HybridModel(test_mode=True)):
         kf = KFold(no_studies, n_folds=5, shuffle=False)
 
 
-        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight":  [{1: i, -1: 1} for i in np.logspace(0, 1, 5)]}]
         clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
 
@@ -1003,7 +1004,7 @@ def true_hybrid_prediction_test(model, test_mode=False):
     s.generate_data() # some variations use the quote data internally 
                                                 # for sentence prediction (for additional features)
 
-    s_cheat = HybridModel(test_mode=True)
+    s_cheat = HybridModel(test_mode=False)
     s_cheat.generate_data()
 
 
@@ -1017,8 +1018,8 @@ def true_hybrid_prediction_test(model, test_mode=False):
         domain_uids = s.domain_uids(test_domain)
         no_studies = len(domain_uids)
         kf = KFold(no_studies, n_folds=5, shuffle=False)
-        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7]]}]
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 1, 5)]}]
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
 
         metrics = []
@@ -1027,7 +1028,7 @@ def true_hybrid_prediction_test(model, test_mode=False):
 
             print "training doc level model with test data, please wait..."
 
-            d = DocumentLevelModel(test_mode=True)
+            d = DocumentLevelModel(test_mode=False)
             d.generate_data(uid_filter=domain_uids[train])
             d.vectorize()
             doc_X, doc_y = d.X_domain_all(domain=test_domain), d.y_domain_all(domain=test_domain)
@@ -1096,7 +1097,7 @@ def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
         domain_uids = d.domain_uids(test_domain)
         no_studies = len(domain_uids)
         kf = KFold(no_studies, n_folds=5, shuffle=False)
-        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        tuned_parameters = {"alpha": np.logspace(-4, -1, 5)}
         clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
 
@@ -1113,7 +1114,7 @@ def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
 
 
-            sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+            sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
             sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
             sent_clf.fit(sents_X, sents_y)
             d.set_sent_model(sent_clf, s.vectorizer)
@@ -1149,16 +1150,18 @@ def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
         print "=" * 40
         print 'means \t' + '\t'.join(RoB_CLASSES)
 
-        for metric_type, scores in zip(["prec.", "recall", "f1"], fold_metric):
+        for metric_type, scores in zip(["prec.", "recall", "f1"], mean_scores):
             print "%s\t%.2f\t%.2f\t%.2f" % (metric_type, scores[0], scores[1], scores[2])
         print
 
 
 def main():
-    true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=True))
-    # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
+    # true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=False))
     # sentence_prediction_test(model=SentenceModel(test_mode=False))
-    # hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False))
+    # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
+    
+
+    hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False))
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
 
