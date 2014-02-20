@@ -7,6 +7,8 @@ import string
 from unidecode import unidecode
 import codecs
 
+import collections
+
 import yaml
 from pprint import pprint
 
@@ -351,8 +353,6 @@ class SentenceModel():
         if self.test_mode:
             print "WARNING - in test mode, using data sample only"
 
-
-
         if restrict_to_core:
             test_domains = CORE_DOMAINS
         else:
@@ -364,10 +364,6 @@ class SentenceModel():
         self.X_list = SentenceDataView([], [])
 
         y_list = defaultdict(lambda: SentenceDataView([], []))
-
-
-
-
 
 
         q = QualityQuoteReader(data_filter=data_filter)
@@ -390,6 +386,7 @@ class SentenceModel():
 
                 matcher.load_quotes(domain["DESCRIPTION"])
                 y_study = matcher.generate_y()
+
 
                 if domain["DOMAIN"] in domains_done_already:
                     continue
@@ -1529,16 +1526,14 @@ def document_prediction_test(model=DocumentLevelModel()):
 
 
 
-<<<<<<< HEAD
-def sentence_prediction_test(sample=True, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, list_features=False, model=SentenceModel()):
-    print
-    print
-    print
-=======
+
 def sentence_prediction_test(sample=False, negative_sample_ratio=50, no_models=10, class_weight={1: 1, -1:1}, 
                 list_features=False, model=SentenceModel()):
 
->>>>>>> f69ff651fe841284034c3c665d3bfd58b99be050
+    print
+    print
+    print
+
 
     print "Sentence level prediction"
     print "=" * 40
@@ -1773,12 +1768,12 @@ def main():
 
 if __name__ == '__main__':
 
-    # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SentenceModel())
+    sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SentenceModel())
     # hybrid_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel())
     # sentence_prediction_test(sample=False, class_weight={1:5, -1:1}, list_features=False, model=SimpleHybridModel2())
 
 
-    document_prediction_test(model=DocumentLevelModel())
+    # document_prediction_test(model=DocumentLevelModel())
     
     # sentence_prediction_test(sample=False, negative_sample_ratio=5, no_models=200, list_features=False, class_weight={1:5, -1:1}, model=FullHybridModel3())
     # sentence_prediction_test(sample=False, class_weight={1:1.5, -1:1}, list_features=False)
