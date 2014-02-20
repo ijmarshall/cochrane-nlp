@@ -79,12 +79,12 @@ class QualityQuoteReader2():
     returns list of quotes where they are available, else none
     """
 
-    def __init__(self, test_mode=False):
+    def __init__(self, sent=False, test_mode=False):
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['uid', 'cochrane', 'studypdf'])
         self.pdfviewer = biviewer.PDFBiViewer()
         self.domain_map = load_domain_map()
         if test_mode:
-            self.test_mode_break_point = 200
+            self.test_mode_break_point = 250
         else:
             self.test_mode_break_point = None
 
@@ -102,6 +102,9 @@ class QualityQuoteReader2():
 
         for uid, study in enumerate(self.pdfviewer):
 
+            if self.test_mode_break_point and (uid >= self.test_mode_break_point):
+                break
+
             p.tap()
             quality_data = study.cochrane["QUALITY"]
             for domain in quality_data:
@@ -114,8 +117,6 @@ class QualityQuoteReader2():
                     
             yield self.BiviewerView(uid=uid, cochrane={"QUALITY": quality_data}, studypdf=self.preprocess_pdf(study.studypdf))
 
-            if self.test_mode_break_point and uid > self.test_mode_break_point:
-                break
 
     def __len__(self):
         return len(self.pdfviewer) if self.test_mode_break_point is None else self.test_mode_break_point
@@ -251,7 +252,7 @@ class SentenceModel():
         self.quotereader = QualityQuoteReader2(test_mode=test_mode) # this now runs through all studies
         
 
-    def generate_data(self, uid_filter=None, target_domain=None):
+    def generate_data(self, uid_filter=None):
         """
         tokenizes and processes the raw text from pdfs and cochrane
         saves in self.X_list and self.y_list (both dicts)
@@ -276,7 +277,7 @@ class SentenceModel():
         
         for uid, cochrane_data, pdf_data in self.quotereader:
 
-            if uid_filter and uid not in uid_filter:
+            if uid_filter is not None and uid not in uid_filter:
                 continue        
 
 
@@ -294,11 +295,14 @@ class SentenceModel():
             for domain in cochrane_data["QUALITY"]:
 
                 if domain["DOMAIN"] not in test_domains or domain["DOMAIN"] in domains_done_already:
+                    
                     continue # skip if a domain is repeated in a study (though note that this is likely due to different RoB per *outcome* which is ignored here)
 
-                if "QUOTES" in domain:
+                if domain["QUOTES"]:
                     matcher.load_quotes(domain["QUOTES"])
                     y_study = matcher.generate_y()
+
+
 
                     self.y_list[domain["DOMAIN"]].extend(y_study)
                     self.y_uids[domain["DOMAIN"]].extend([uid] * len(y_study))
@@ -306,20 +310,23 @@ class SentenceModel():
 
                     domains_done_already.append(domain["DOMAIN"])
                     
-        if target_domain is not None:
-            self.vectorize(target_domain)
-        else:
-            self.vectorize()
+
+
+        self.y = {domain: np.array(self.y_list[domain]) for domain in test_domains}
+
+        self.X_uids = np.array(self.X_uids)
+        self.y_uids = {domain: np.array(self.y_uids[domain]) for domain in test_domains}
+        self.y_judgements = {domain: np.array(self.y_judgements[domain]) for domain in test_domains}
+
+        # self.vectorize()
 
     def vectorize(self):
 
         self.vectorizer = ModularCountVectorizer()
 
         self.X = self.vectorizer.fit_transform(self.X_list)
-        self.y = {domain: np.array(self.y_list[domain]) for domain in test_domains}
 
-        self.X_uids = np.array(self.X_uids)
-        self.y_uids = {domain: np.array(self.y_uids[domain]) for domain in test_domains}
+
 
 
     def load_text(self, filename):
@@ -349,6 +356,22 @@ class SentenceModel():
         X_filter = np.nonzero([(X_uid in y_study_uids) for X_uid in self.X_uids])[0]
         return X_filter
 
+    def domain_uids(self, domain):
+        unique_study_ids = np.unique(self.y_uids[domain])
+        return unique_study_ids
+
+    def X_y_uid_filtered(self, uids, domain):
+        X_all = self.X_domain_all(domain=domain)
+        y_all = self.y_domain_all(domain=domain)
+
+        filter_ids = np.nonzero([(y_study_id in uids) for y_study_id in self.y_uids[domain]])[0]
+        X_filtered = X_all[filter_ids]
+        y_filtered = y_all[filter_ids]
+
+        return X_filtered, y_filtered
+
+
+
     def get_all_domains(self):
         return self.y.keys()
 
@@ -366,30 +389,29 @@ class SentenceModel():
         """
 
         X_filter = self.domain_X_filter(domain)
-
         return self.X[X_filter]
 
     def y_domain_all(self, domain):
         return self.y[domain]
 
 
-    def X_y_filtered(self, filter_ids, domain):
+    # def X_y_filtered(self, filter_ids, domain):
 
-        X_all = self.X_domain_all(domain=domain)
-        y_all = self.y_domain_all(domain=domain)
+    #     X_all = self.X_domain_all(domain=domain)
+    #     y_all = self.y_domain_all(domain=domain)
 
-        # np.unique always returns ordered ids
-        unique_study_ids = np.unique(self.y_uids[domain])
+    #     # np.unique always returns ordered ids
+    #     unique_study_ids = np.unique(self.y_uids[domain])
 
-        mapped_ids = [unique_study_ids[filter_id] for filter_id in filter_ids]
+    #     mapped_ids = [unique_study_ids[filter_id] for filter_id in filter_ids]
 
-        filter_ids = np.nonzero([(y_study_id in mapped_ids) for y_study_id in self.y_uids[domain]])[0]
+    #     filter_ids = np.nonzero([(y_study_id in mapped_ids) for y_study_id in self.y_uids[domain]])[0]
         
 
-        X_filtered = X_all[filter_ids]
-        y_filtered = y_all[filter_ids]
+    #     X_filtered = X_all[filter_ids]
+    #     y_filtered = y_all[filter_ids]
 
-        return X_filtered, y_filtered
+    #     return X_filtered, y_filtered
     
 
 class DocumentLevelModel(SentenceModel):
@@ -423,7 +445,9 @@ class DocumentLevelModel(SentenceModel):
         
         for uid, cochrane_data, pdf_data in self.quotereader:
 
-            if uid_filter and uid not in uid_filter:
+
+            
+            if uid_filter is not None and uid not in uid_filter:
                 continue        
 
 
@@ -450,52 +474,196 @@ class DocumentLevelModel(SentenceModel):
 
   
 
+        self.y = {domain: np.array(self.y_list[domain]) for domain in test_domains}
 
-class HybridModelB(SentenceModel):
-    '''
-    the B is for byron!
-    '''
-    def __init__(self, target_domain="Random sequence generation", test_mode=False):
-        self.quotereader = QualityQuoteReader2(test_mode=test_mode) # this now runs through all studies
-        self.target_domain = target_domain
+        self.X_uids = np.array(self.X_uids)
+        self.y_uids = {domain: np.array(self.y_uids[domain]) for domain in test_domains}
 
-    def vectorize(self):
-        self.y = self.y_list[self.target_domain]
 
-class HybridModel(SentenceModel):
+class HybridDocModel(DocumentLevelModel):
     """
-    predicts whether sentences contain risk of bias information
-    - uses data from Cochrane quotes only
+    for predicting the risk of bias
+    as "HIGH", "LOW", or "UNKNOWN" for a document
+    using a binary bag-of-words as features for each document
     """
 
-    def __init__(self, test_mode=False):
-        self.quotereader = QualityQuoteReader2(test_mode=test_mode) # this now runs through all studies
 
     def vectorize(self, domain=None):
 
         if domain is None:
             raise TypeError("this class requires domain specific vectorization")
 
+        self.vectorizer = ModularCountVectorizer()
+        self.vectorizer.builder_clear()
+        X_filter = self.domain_X_filter(domain)
 
-        self.y = {domain: np.array(self.y_list[domain]) for domain in test_domains}
+        predictions = self.get_sent_predictions_for_domain(domain)
 
-        self.X_uids = np.array(self.X_uids)
-        self.y_uids = {domain: np.array(self.y_uids[domain]) for domain in test_domains}
+        self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
+        
+        self.vectorizer.builder_add_docs(predictions, prefix="high-prob-sent-")
+
+        self.X = self.vectorizer.builder_fit_transform()
+
+
+    def get_sent_predictions_for_domain(self, domain):
+
+        uids = self.domain_uids(domain)
+
+        predictions = []
+
+        for uid in uids:
+
+            # get the index of the study with specified uid
+            study_index = np.nonzero(self.X_uids==uid)[0][0]
+
+            # tokenize into sentences
+            sents = sent_tokenizer.tokenize(self.X_list[study_index])
+
+            # vectorize the sentences
+            X_sents = self.sent_vectorizer.transform(sents)
+
+            # get predicted 1 / -1 for the sentences
+            pred_class = self.sent_clf.predict(X_sents)
+
+            # get the sentences which are predicted 1
+            positive_sents = [sent for sent, pred in zip(sents, pred_class) if pred==1]
+
+            # make a single string per doc
+            doc = " ".join(positive_sents)
+            
+            predictions.append(doc)
+        
+        return predictions
+
+    def set_sent_model(self, doc_clf, doc_vectorizer):
+        """
+        set a model which takes in a list of sentences;
+        and returns -1 or 1
+        """
+        self.sent_clf = doc_clf
+        self.sent_vectorizer = doc_vectorizer
+
+    def X_y_uid_filtered(self, uids, domain):
+        X_all = self.X
+        y_all = self.y_domain_all(domain=domain)
+
+        filter_ids = np.nonzero([(y_study_id in uids) for y_study_id in self.y_uids[domain]])[0]
+        X_filtered = X_all[filter_ids]
+        y_filtered = y_all[filter_ids]
+
+        return X_filtered, y_filtered
+
+
+class HybridModel(SentenceModel):
+    """
+    predicts whether sentences contain risk of bias information
+    - uses real RoB judgements
+    """
+
+
+    def vectorize(self, domain=None, interaction_classes=["YES", "NO"]):
+
+        if domain is None:
+            raise TypeError("this class requires domain specific vectorization")
 
         self.vectorizer = ModularCountVectorizer()
         
         self.vectorizer.builder_clear()
 
         X_filter = self.domain_X_filter(domain)
-        self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
 
-        self.vectorizer.builder_add_docs(self.y_judgements[domain])
+        sents = [self.X_list[i] for i in X_filter]
+
+        self.vectorizer.builder_add_docs(sents)
+
+        for interaction_class in interaction_classes:
+
+            self.vectorizer.builder_add_interaction_features(sents, self.y_judgements[domain]==interaction_class, prefix="rob-" + interaction_class + "-")
+
         self.X = self.vectorizer.builder_fit_transform()
 
 
+    def X_y_uid_filtered(self, uids, domain):
+        X_all = self.X
+        y_all = self.y_domain_all(domain=domain)
+
+        filter_ids = np.nonzero([(y_study_id in uids) for y_study_id in self.y_uids[domain]])[0]
+        X_filtered = X_all[filter_ids]
+        y_filtered = y_all[filter_ids]
+
+        return X_filtered, y_filtered
 
 
-    
+
+class HybridModelProbablistic(HybridModel):
+    """
+    predicts whether sentences contain risk of bias information
+    - requires a model to be passed in which can predice RoB judgements from
+    full text document
+    """
+
+    def vectorize(self, domain=None, interaction_classes=["YES", "NO"], use_vectorizer=None):
+
+        if domain is None:
+            raise TypeError("this class requires domain specific vectorization")
+
+        if use_vectorizer is None:
+            self.vectorizer = ModularCountVectorizer()
+        else:
+            self.vectorizer = use_vectorizer
+
+        self.vectorizer.builder_clear()
+        X_filter = self.domain_X_filter(domain)
+
+        predictions = self.get_doc_predictions_for_domain(domain)
+
+
+
+        sents = [self.X_list[i] for i in X_filter]
+        self.vectorizer.builder_add_docs(sents)
+
+        for interaction_class in interaction_classes:
+            self.vectorizer.builder_add_interaction_features(sents, predictions==interaction_class, prefix="rob-" + interaction_class + "-")
+
+
+        if use_vectorizer is None:
+            self.X = self.vectorizer.builder_fit_transform()
+        else:
+            self.X = self.vectorizer.builder_transform()
+
+
+
+
+    def get_doc_predictions_for_domain(self, domain):
+
+        uids = self.domain_uids(domain)
+
+        predictions = []
+
+        for uid in uids:
+
+            # get the indices of all sentences in the study with specified uid
+            X_filter = np.nonzero(self.X_uids==uid)[0]
+
+            # make a single string per doc
+            doc = " ".join([self.X_list[i] for i in X_filter])
+            # vectorize the docs, then predict using the model
+            X_doc = self.doc_vectorizer.transform(doc)
+            prediction = self.doc_clf.predict(X_doc)
+
+            # add the same prediction for each sentence
+            predictions.extend([prediction[0]] * len(X_filter))
+        
+        return np.array(predictions)
+
+    def set_doc_model(self, doc_clf, doc_vectorizer):
+        """
+        set a model which takes in a full text doc;
+        outputs a doc class "YES", "NO", or "UNKNOWN"
+        """
+        self.doc_clf = doc_clf
+        self.doc_vectorizer = doc_vectorizer
 
 
 
@@ -550,6 +718,8 @@ class ModularCountVectorizer():
 
         output = []
 
+
+
         for dict1, dict2 in zip(dictlist1, dictlist2):
             output.append(dict(dict1.items() + dict2.items()))
             # note that this *overwrites* any duplicate keys with the key/value from dictlist2!!
@@ -584,6 +754,19 @@ class ModularCountVectorizer():
             X_dicts = self._transform_X_to_dict(X, prefix=prefix)
             self.builder = self._dictzip(self.builder, X_dicts)
 
+    def builder_add_interaction_features(self, X, interactions, prefix=None):
+        if prefix is None:
+            raise TypeError('Prefix is required when adding interaction features')
+
+        doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
+
+
+        self.builder_add_docs(doc_list, prefix)
+
+
+    
+
+
     def builder_fit_transform(self):
         return self.vectorizer.fit_transform(self.builder)
 
@@ -613,33 +796,33 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
     
     
     s.generate_data()
+    s.vectorize()
     
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
 
-        
-        X_domain_filter = s.domain_X_filter(test_domain)
-        no_studies = s.len_domain(test_domain)
+
+        domain_uids = s.domain_uids(test_domain)
+        no_studies = len(domain_uids)
+
+
+
 
         kf = KFold(no_studies, n_folds=5, shuffle=False, indices=True)
 
-
-        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        # tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
         
-
-        X = s.X_domain_all(domain=test_domain)
-        y = s.y_domain_all(domain=test_domain)
-
-
         metrics = []
 
         for fold_i, (train, test) in enumerate(kf):
 
 
-            X_train, y_train = X[train], y[train]
-            X_test, y_test = X[test], y[test]
+
+            X_train, y_train = s.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
 
             clf.fit(X_train, y_train)
 
@@ -665,7 +848,7 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
 
 
 
-def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
+def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
     print "Document level prediction"
     print "=" * 40
@@ -676,39 +859,35 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
     d.generate_data() # some variations use the quote data internally 
                                                 # for sentence prediction (for additional features)
 
-
+    d.vectorize()
 
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
-        no_studies = d.len_domain(test_domain)
+        
 
-        kf = KFold(no_studies, n_folds=5, shuffle=False)
+
 
         
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2", class_weight={"YES":1, "UNKNOWN":1, "NO":4}), tuned_parameters, scoring='f1')
 
        
         # clf = SGDClassifier(loss="hinge", penalty="L2")
 
-        X = d.X_domain_all(domain=test_domain)
-        y = d.y_domain_all(domain=test_domain)
+        domain_uids = d.domain_uids(test_domain)
+        no_studies = len(domain_uids)
 
-
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
 
         metrics = []
 
         for fold_i, (train, test) in enumerate(kf):
 
 
-            X_train, y_train = X[train], y[train]
-            X_test, y_test = X[test], y[test]
-
-            print y_train
-            print
-            print X_train
+            X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
 
             
 
@@ -734,6 +913,7 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
 
             # print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
 
+
         mean_scores = np.mean(metrics, axis=0)
 
         print "=" * 40
@@ -745,9 +925,158 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=True)):
 
 
 
-def hybrid_prediction_test(model=HybridModel(test_mode=True)):
+
+def simple_hybrid_prediction_test(model=HybridModel(test_mode=True)):
 
     print "Hybrid prediction"
+    print "=" * 40
+    print
+
+
+    s = model
+    s.generate_data() # some variations use the quote data internally 
+                                                # for sentence prediction (for additional features)
+
+
+
+    for test_domain in CORE_DOMAINS:
+
+        s.vectorize(test_domain)
+
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+        domain_uids = s.domain_uids(test_domain)
+        no_studies = len(domain_uids)
+
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
+
+
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+
+
+
+
+
+        metrics = []
+
+        for fold_i, (train, test) in enumerate(kf):
+
+
+
+            X_train, y_train = s.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
+
+            clf.fit(X_train, y_train)
+
+            y_preds = clf.predict(X_test)
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+            
+
+
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+
+
+        # summary score
+
+        summary_metrics = np.mean(metrics, axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+
+def true_hybrid_prediction_test(model, test_mode=False):
+
+    print "True Hybrid prediction"
+    print "=" * 40
+    print
+
+
+    s = model
+    s.generate_data() # some variations use the quote data internally 
+                                                # for sentence prediction (for additional features)
+
+    s_cheat = HybridModel(test_mode=True)
+    s_cheat.generate_data()
+
+
+
+    for test_domain in CORE_DOMAINS:
+
+        
+
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+        domain_uids = s.domain_uids(test_domain)
+        no_studies = len(domain_uids)
+        kf = KFold(no_studies, n_folds=5, shuffle=False)
+        tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7]]}]
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
+        metric_f = lambda x, y: sklearn.metrics.f1_score(x, y, pos_label="YES")
+
+        metrics = []
+
+        for fold_i, (train, test) in enumerate(kf):
+
+            print "training doc level model with test data, please wait..."
+
+            d = DocumentLevelModel(test_mode=True)
+            d.generate_data(uid_filter=domain_uids[train])
+            d.vectorize()
+            doc_X, doc_y = d.X_domain_all(domain=test_domain), d.y_domain_all(domain=test_domain)
+
+
+            doc_tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+            doc_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), doc_tuned_parameters, scoring='f1')
+
+            doc_clf.fit(doc_X, doc_y)
+            s.set_doc_model(doc_clf, d.vectorizer)
+
+
+            s_cheat.vectorize(test_domain)
+            s.vectorize(test_domain, use_vectorizer=s_cheat.vectorizer)
+
+
+            X_train, y_train = s_cheat.X_y_uid_filtered(domain_uids[train], test_domain)
+            # train on the *true* labels
+
+            X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
+            import pdb; pdb.set_trace()
+            clf.fit(X_train, y_train)
+
+            y_preds = clf.predict(X_test)
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+            
+
+
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+
+
+        # summary score
+
+        summary_metrics = np.mean(metrics, axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+
+def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
+
+    print "Hybrid doc level prediction"
     print "=" * 40
     print
 
@@ -757,46 +1086,44 @@ def hybrid_prediction_test(model=HybridModel(test_mode=True)):
                                                 # for sentence prediction (for additional features)
 
 
-
     for test_domain in CORE_DOMAINS:
 
-        d.vectorize(test_domain)
+        
 
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
-        no_studies = d.len_domain(test_domain)
-
+        domain_uids = d.domain_uids(test_domain)
+        no_studies = len(domain_uids)
         kf = KFold(no_studies, n_folds=5, shuffle=False)
-
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
         clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
-
-       
-        # clf = SGDClassifier(loss="hinge", penalty="L2")
-
-        X = d.X
-        y = d.y
-
 
 
         metrics = []
 
         for fold_i, (train, test) in enumerate(kf):
 
-
-            X_train, y_train = X[train], y[train]
-            X_test, y_test = X[test], y[test]
-
-            print y_train
-            print
-            print X_train
-
             
+
+            s = SentenceModel(test_mode=False)
+            s.generate_data(uid_filter=domain_uids[train])
+            s.vectorize()
+            sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
+
+
+
+            sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in [1, 2, 3, 5, 7, 9]]}]
+            sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
+            sent_clf.fit(sents_X, sents_y)
+            d.set_sent_model(sent_clf, s.vectorizer)
+            d.vectorize(test_domain)
+
+            X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
 
             clf.fit(X_train, y_train)
 
             y_preds = clf.predict(X_test)
-
 
             fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds, labels=RoB_CLASSES))[:3]
 
@@ -815,6 +1142,7 @@ def hybrid_prediction_test(model=HybridModel(test_mode=True)):
 
             # print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
 
+
         mean_scores = np.mean(metrics, axis=0)
 
         print "=" * 40
@@ -824,9 +1152,13 @@ def hybrid_prediction_test(model=HybridModel(test_mode=True)):
             print "%s\t%.2f\t%.2f\t%.2f" % (metric_type, scores[0], scores[1], scores[2])
         print
 
+
 def main():
-    hybrid_prediction_test()
-    # document_prediction_test()
+    # true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=True))
+    # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
+    # sentence_prediction_test(model=SentenceModel(test_mode=False))
+    hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False))
+    #document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
 
 if __name__ == '__main__':
