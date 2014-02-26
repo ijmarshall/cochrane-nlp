@@ -1,5 +1,5 @@
 html {
-    color: #111;
+    color: rgba(0,0,0,0.5);
 }
 
 #wrapper {
@@ -41,17 +41,18 @@ html {
 #bias td {
     padding: 0.5em;
 }
-.low {
+
+#bias .low {
     background-color: #d0f1d7;
     color: #3f7a43;
 }
 
-.high {
+#bias .high {
     color: #b13502;
     background-color: #ffc7ce;
 }
 
-.unknown {
+#bias .unknown {
     background-color: #fdddc1;
     color: #fba957;
 }
