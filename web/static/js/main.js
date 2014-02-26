@@ -13,6 +13,17 @@ function drawAnnotations(annotations) {
             $page.find(".textLayer div:nth-child(" + node + ")").addClass("annotated");
         });
     });
+
+    // For the document level
+    console.log(annotations.document);
+    var $biasTable = $("#bias");
+
+    var risks = [{name: "high", icon: '-'}, {name: "unknown", icon: '?'}, {name: "low", icon: "+"}];
+    $.each(annotations.document, function(key, value) {
+        var risk = risks[value + 1];
+        $biasTable.append('<tr><td>' + key + ' </td><td class="' + risk.name + '">' + risk.icon + '</td></tr>');
+    });
+
 }
 
 function annotate(textContents) {
@@ -39,9 +50,10 @@ function renderPdf(pdf) {
 }
 
 function renderPage(page) {
-    var scale = 1.35;
+    var scale = 1;
     var pageIndex = page.pageInfo.pageIndex;
     var viewport = page.getViewport(scale);
+
     var $canvas = $("<canvas></canvas>");
 
     var $container = $("<div></div>");
@@ -71,17 +83,17 @@ function renderPage(page) {
 
     //The following few lines of code set up scaling on the context if we are on a HiDPI display
     var outputScale = getOutputScale(context);
-    // if (outputScale.scaled) {
-    //     var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
-    //             (1 / outputScale.sy) + ')';
-    //     CustomStyle.setProp('transform', canvas, cssScale);
-    //     CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
+    if (outputScale.scaled) {
+        var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
+                (1 / outputScale.sy) + ')';
+        CustomStyle.setProp('transform', canvas, cssScale);
+        CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
 
-    //     if ($textLayerDiv.get(0)) {
-    //         CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
-    //         CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
-    //     }
-    // }
+        if ($textLayerDiv.get(0)) {
+            CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
+            CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
+        }
+    }
 
     context._scaleX = outputScale.sx;
     context._scaleY = outputScale.sy;
@@ -145,6 +157,7 @@ $(document).ready(function() {
 
             reader.onload = function(e) {
                 document.getElementById('pdfContainer').innerHTML = ""; // clear the container
+                document.getElementById('bias').innerHTML = ""; // clear the sidebar
                 loadPdf(convertDataURIToBinary(reader.result));
             };
 
