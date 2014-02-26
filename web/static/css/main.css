@@ -1,4 +1,7 @@
-/* CSS classes used by TextLayerBuilder to style the text layer divs */
+html {
+    color: #111;
+}
+
 #wrapper {
     position: relative;
     width: 100%;

@@ -50,9 +50,14 @@ function renderPdf(pdf) {
 }
 
 function renderPage(page) {
-    var scale = 1;
+    var container = document.getElementById("main");
+
+    var PADDING_AND_MARGIN = 100;
+    var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
+    console.log(pageWidthScale, page);
+
     var pageIndex = page.pageInfo.pageIndex;
-    var viewport = page.getViewport(scale);
+    var viewport = page.getViewport(pageWidthScale);
 
     var $canvas = $("<canvas></canvas>");
 
