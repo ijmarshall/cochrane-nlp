@@ -6,10 +6,10 @@ function loadPdf(pdfURI) {
 
 
 function drawAnnotations(annotations) {
+    console.log(annotations);
     $.each(annotations.annotations, function(idx, ann) {
         var $page = $("#pageContainer-" + ann.page);
         $.each(ann.nodes, function(idx, node) {
-            console.log(node);
             $page.find(".textLayer div:nth-child(" + node + ")").addClass("annotated");
         });
     });
@@ -71,17 +71,17 @@ function renderPage(page) {
 
     //The following few lines of code set up scaling on the context if we are on a HiDPI display
     var outputScale = getOutputScale(context);
-    if (outputScale.scaled) {
-        var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
-                (1 / outputScale.sy) + ')';
-        CustomStyle.setProp('transform', canvas, cssScale);
-        CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
+    // if (outputScale.scaled) {
+    //     var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
+    //             (1 / outputScale.sy) + ')';
+    //     CustomStyle.setProp('transform', canvas, cssScale);
+    //     CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
 
-        if ($textLayerDiv.get(0)) {
-            CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
-            CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
-        }
-    }
+    //     if ($textLayerDiv.get(0)) {
+    //         CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
+    //         CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
+    //     }
+    // }
 
     context._scaleX = outputScale.sx;
     context._scaleY = outputScale.sy;
