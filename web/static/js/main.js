@@ -9,6 +9,8 @@ function loadPdf(pdfURI) {
 }
 
 function annotationRPC(textContents) {
+    // Look here if you are missing something, I'm shifting the array by one because it was null
+    textContents.shift();
     $.ajax({
         url: '/annotate',
         type: 'POST',
