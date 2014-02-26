@@ -42,8 +42,6 @@ class MockPipeline(Pipeline):
 
     def random_annotations(self, nr_simulated, document_length=1000):
         # Mock sentence level predictions by generating random annotations
-        # This is to demonstrate how to go back from sentence bounds to the
-        # expected data format
         def randinterval(start, stop):
             lower = random.randrange(start, stop)
             upper = random.randrange(lower, lower + 70) # 70 = average letters in sentence
@@ -74,7 +72,7 @@ class MockPipeline(Pipeline):
         # Now we need to get /back/ to the page and node indexes
         annotations = []
         for sentence_bound, labels in sentence_predictions.iteritems():
-            page_nr = next(i for i,v in enumerate(page_bounds) if v > sentence_bound[0])
+            page_nr = next(i for i,v in enumerate(page_bounds) if v >= sentence_bound[0])
             page = parsed_pages[page_nr]
             bound = (sentence_bound[0], sentence_bound[1] - 1)
             nodes = [page["ranges"].index(x) for x in page["intervals"].overlap(sentence_bound)]
