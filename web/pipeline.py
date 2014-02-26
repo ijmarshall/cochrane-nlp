@@ -62,7 +62,7 @@ class MockPipeline(Pipeline):
         parsed_pages = self.parse(input)
 
         # we store this because we want per document, not per page
-        def accumulate(x, l=[0]): l[0] += x; return l[0];       
+        def accumulate(x, l=[0]): l[0] += x; return l[0];
         page_lengths = [page["length"] for page in parsed_pages]
         total_length = map(accumulate, [0] + page_lengths)
         print total_length
@@ -79,12 +79,8 @@ class MockPipeline(Pipeline):
             page_nr = next(i for i,v in enumerate(total_length) if v >= sentence_bound[0]) - 1
             page = parsed_pages[page_nr]
             offset = total_length[page_nr]
-
             bound = (sentence_bound[0] - offset, sentence_bound[1] - offset)
-
             nodes = [page["ranges"].index(x) for x in page["intervals"].overlap(bound)]
-
-            print page_nr, offset, sentence_bound, bound, nodes, page["ranges"][0], page["ranges"][-1]
 
             annotations.append({
                 "page": page_nr,
