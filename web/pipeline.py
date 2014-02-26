@@ -52,9 +52,9 @@ class MockPipeline(Pipeline):
         #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
         # This is the expected return format for any sentence /real/ prediction system
         sentence_bounds = [randinterval(0, document_length) for i in range(nr_simulated)]
-        labels = [{"Domain 1": random.randint(-1, 1),
-                   "Domain 2": random.randint(-1, 1),
-                   "Domain 3": random.randint(-1, 1)} for i in range(nr_simulated)]
+        labels = [{"domain_1": random.randint(-1, 1),
+                   "domain_2": random.randint(-1, 1),
+                   "domain_3": random.randint(-1, 1)} for i in range(nr_simulated)]
         return dict(zip(sentence_bounds, labels))
 
     def predict(self, input):
@@ -63,7 +63,7 @@ class MockPipeline(Pipeline):
         page_bounds = [page["total"] for page in parsed_pages]
 
         # Mock document level predictions, this can be done on
-        document_predictions = {"Domain 1": 1, "Domain 2": -1, "Domain 3": 0}
+        document_predictions = {"domain_1": 1, "domain_2": -1, "domain_3": 0}
 
         # Mock sentence level predictions
         sentence_predictions = self.random_annotations(10, document_length=page_bounds[-1])
