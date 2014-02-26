@@ -1,11 +1,14 @@
+$.pluck = function(arr, key) {
+    return $.map(arr, function(e) { return e[key]; });
+};
+
 function loadPdf(pdfURI) {
     var pdf = PDFJS.getDocument(pdfURI);
-    PDFJS.disableWorker = true; // Must be disabled
+    PDFJS.disableWorker = true; // Must be disabled, for now
     pdf.then(renderPdf);
 }
 
 function annotationRPC(textContents) {
-    console.log(textContents);
     $.ajax({
         url: '/annotate',
         type: 'POST',
@@ -16,7 +19,6 @@ function annotationRPC(textContents) {
         success: function(annotations) {
             // here be dragons!
             console.log(annotations);
-
         }
     });
 }
@@ -41,13 +43,13 @@ function renderPage(page) {
     var $container = $("<div></div>");
     $container.attr("id", "pageContainer-" + pageIndex).addClass("page");
 
-    //Set the canvas height and width to the height and width of the viewport
+    // Set the canvas height and width to the height and width of the viewport
     var canvas = $canvas.get(0);
     var context = canvas.getContext("2d");
     canvas.height = viewport.height;
     canvas.width = viewport.width;
 
-    //Append the canvas to the pdf container div
+    // Append the canvas to the pdf container div
     var $pdfContainer = $("#pdfContainer");
     $pdfContainer.css("height", canvas.height + "px").css("width", canvas.width + "px");
     $container.append($canvas);
@@ -126,7 +128,6 @@ function convertDataURIToBinary(dataURI) {
   return array;
 }
 
-
 $(document).ready(function() {
 
     var fileInput = document.getElementById('fileInput');
@@ -135,12 +136,11 @@ $(document).ready(function() {
     submit.addEventListener('click', function(e) {
         var file = fileInput.files[0];
         var textType = /application\/(x-)?pdf|text\/pdf/;
-
         if (file.type.match(textType)) {
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                document.getElementById('pdfContainer').innerHTML = "";
+                document.getElementById('pdfContainer').innerHTML = ""; // clear the container
                 loadPdf(convertDataURIToBinary(reader.result));
             };
 
