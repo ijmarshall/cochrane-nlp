@@ -1,11 +1,4 @@
 /* CSS classes used by TextLayerBuilder to style the text layer divs */
-
-*, *:before, *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 #wrapper {
     position: relative;
     width: 100%;
@@ -31,7 +24,18 @@
     height: 100%;
 }
 
+#side form {
+    border-bottom: 1px solid #ddd;
+    width: 90%;
+    padding-bottom: 1em;
+}
+
 #pdfContainer {
+    margin: 1em;
+}
+
+#pdfContainer .page {
+    border-bottom: 1px solid #ddd;
     margin: 1em;
 }
 
