@@ -37,7 +37,7 @@ function renderPdf(pdf) {
 }
 
 function renderPage(page) {
-    var scale = 1.5;
+    var scale = 1.35;
     var pageIndex = page.pageInfo.pageIndex;
     var viewport = page.getViewport(scale);
     var $canvas = $("<canvas></canvas>");
