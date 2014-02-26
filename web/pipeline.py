@@ -35,9 +35,10 @@ class Pipeline(object):
             else:
                 parsedPages.append({"str" : None, "intervals": None})
 
-        return {"annotations": [x["str"] for x in parsedPages]}
+        return parsedPages
 
 
 class MockPipeline(Pipeline):
     def predict(self, input):
-        return self.parse(input)
+        parsedPages = self.parse(input)
+        return {"annotations": [x["str"] for x in parsedPages]}
