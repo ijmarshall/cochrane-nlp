@@ -57,7 +57,6 @@ class MockPipeline(Pipeline):
                    "Domain 3": random.randint(-1, 1)} for i in range(nr_simulated)]
         return dict(zip(sentence_bounds, labels))
 
-
     def predict(self, input):
         parsed_pages = self.parse(input)
         # we store this because we want per document, not per page

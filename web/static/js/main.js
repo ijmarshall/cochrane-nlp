@@ -1,14 +1,16 @@
-$.pluck = function(arr, key) {
-    return $.map(arr, function(e) { return e[key]; });
-};
-
 function loadPdf(pdfURI) {
     var pdf = PDFJS.getDocument(pdfURI);
     PDFJS.disableWorker = true; // Must be disabled, for now
-    pdf.then(renderPdf);
+    pdf.then(renderPdf).then(annotate);
+}
+
+function annotate(content) {
+    var annotations = annotationRPC(content); // This calls python and asynchronously /should/ return the annotations.
+    annotations.then(function(data) { console.log(data); });
 }
 
 function annotationRPC(textContents) {
+    var deferred = Q.defer();
     // Look here if you are missing something, I'm shifting the array by one because it was null
     textContents.shift();
     $.ajax({
@@ -19,10 +21,10 @@ function annotationRPC(textContents) {
         dataType: 'json',
         async: true,
         success: function(annotations) {
-            // here be dragons!
-            console.log(annotations);
+            deferred.resolve(annotations);
         }
     });
+    return deferred.promise;
 }
 
 function renderPdf(pdf) {
@@ -31,9 +33,7 @@ function renderPdf(pdf) {
         textContentPromises[pageNr] = pdf.getPage(pageNr).then(renderPage);
     }
 
-    Q.all(textContentPromises).then(function(textContents) { // All pages have finished rendering
-        annotationRPC(textContents); // This calls python and asynchronously /should/ return the annotations.
-    });
+    return Q.all(textContentPromises);
 }
 
 function renderPage(page) {
