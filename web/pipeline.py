@@ -47,7 +47,7 @@ class MockPipeline(Pipeline):
         # expected data format
         def randinterval(start, stop):
             lower = random.randrange(start, stop)
-            upper = random.randrange(lower, lower + 70) # average words in sentence
+            upper = random.randrange(lower, lower + 70) # 70 = average letters in sentence
             return (lower, upper)
 
         # Simulate a dict like
@@ -67,6 +67,8 @@ class MockPipeline(Pipeline):
 
         # Mock document level predictions, this can be done on
         document_predictions = {"Domain 1": 1, "Domain 2": -1, "Domain 3": 0}
+
+        # Mock sentence level predictions
         sentence_predictions = self.random_annotations(10, document_length=page_bounds[-1])
 
         # Now we need to get /back/ to the page and node indexes
@@ -74,6 +76,7 @@ class MockPipeline(Pipeline):
         for sentence_bound, labels in sentence_predictions.iteritems():
             page_nr = next(i for i,v in enumerate(page_bounds) if v > sentence_bound[0])
             page = parsed_pages[page_nr]
+            bound = (sentence_bound[0], sentence_bound[1] - 1)
             nodes = [page["ranges"].index(x) for x in page["intervals"].overlap(sentence_bound)]
 
             annotations.append({
