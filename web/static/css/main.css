@@ -30,6 +30,11 @@
     padding-bottom: 1em;
 }
 
+.annotated {
+    border-bottom: 2px solid red;
+    background-color: rgba(255,0,0,0.1);
+}
+
 #pdfContainer {
     margin: 1em;
 }
