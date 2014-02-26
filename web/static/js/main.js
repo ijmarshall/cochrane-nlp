@@ -4,13 +4,18 @@ function loadPdf(pdfURI) {
     pdf.then(renderPdf).then(annotate);
 }
 
-function annotate(content) {
-    var annotations = annotationRPC(content); // This calls python and asynchronously /should/ return the annotations.
-    annotations.then(function(data) { console.log(data); });
+
+function drawAnnotations(annotations) {
+    $.each(annotations.annotations, function(idx, ann) {
+        var $page = $("#pageContainer-" + ann.page);
+        $.each(ann.nodes, function(idx, node) {
+            console.log(node);
+            $page.find(".textLayer div:nth-child(" + node + ")").addClass("annotated");
+        });
+    });
 }
 
-function annotationRPC(textContents) {
-    var deferred = Q.defer();
+function annotate(textContents) {
     // Look here if you are missing something, I'm shifting the array by one because it was null
     textContents.shift();
     $.ajax({
@@ -20,11 +25,8 @@ function annotationRPC(textContents) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: true,
-        success: function(annotations) {
-            deferred.resolve(annotations);
-        }
+        success: drawAnnotations
     });
-    return deferred.promise;
 }
 
 function renderPdf(pdf) {
