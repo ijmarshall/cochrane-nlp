@@ -14,8 +14,7 @@ class Pipeline(object):
     def parse(self, pages):
         # we need to do two things, create a single string for each page
         # and establish a interval-tree to figure out the original nodes
-
-        parsed = [] # stores the text and the interval tree per page
+        parsed = []
         for idx, page in enumerate(pages):
             if page is not None:
                 textNodes = [node["str"] for node in page]
@@ -62,7 +61,8 @@ class MockPipeline(Pipeline):
 
 
     def predict(self, input):
-        parsed_pages = self.parse(input) # we store this because we want per document, not per page
+        parsed_pages = self.parse(input)
+        # we store this because we want per document, not per page
         page_bounds = [page["total"] for page in parsed_pages]
 
         # Mock document level predictions, this can be done on
@@ -78,7 +78,6 @@ class MockPipeline(Pipeline):
             page = parsed_pages[page_nr]
             bound = (sentence_bound[0], sentence_bound[1] - 1)
             nodes = [page["ranges"].index(x) for x in page["intervals"].overlap(sentence_bound)]
-
             annotations.append({
                 "page": page_nr,
                 "nodes": nodes,

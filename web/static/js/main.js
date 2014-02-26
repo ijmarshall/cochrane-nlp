@@ -14,7 +14,7 @@ function annotationRPC(textContents) {
     $.ajax({
         url: '/annotate',
         type: 'POST',
-        data: JSON.stringify(textContents),
+        data: JSON.stringify({pages: textContents}),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: true,
