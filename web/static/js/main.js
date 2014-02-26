@@ -50,6 +50,7 @@ function renderPage(page) {
     // Set the canvas height and width to the height and width of the viewport
     var canvas = $canvas.get(0);
     var context = canvas.getContext("2d");
+
     canvas.height = viewport.height;
     canvas.width = viewport.width;
 
@@ -71,17 +72,23 @@ function renderPage(page) {
 
     //The following few lines of code set up scaling on the context if we are on a HiDPI display
     var outputScale = getOutputScale(context);
-    // if (outputScale.scaled) {
-    //     var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
-    //             (1 / outputScale.sy) + ')';
-    //     CustomStyle.setProp('transform', canvas, cssScale);
-    //     CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
 
-    //     if ($textLayerDiv.get(0)) {
-    //         CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
-    //         CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
-    //     }
-    // }
+
+
+
+    if (outputScale.scaled) {
+        canvas.height = canvas.height * outputScale.sx
+        canvas.width = canvas.width * outputScale.sy
+        var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
+                (1 / outputScale.sy) + ')';
+        CustomStyle.setProp('transform', canvas, cssScale);
+        CustomStyle.setProp('transformOrigin', canvas, '0% 0%');
+
+        if ($textLayerDiv.get(0)) {
+            CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
+            CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
+        }
+    }
 
     context._scaleX = outputScale.sx;
     context._scaleY = outputScale.sy;
