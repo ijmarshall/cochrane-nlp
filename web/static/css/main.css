@@ -33,15 +33,6 @@ html {
     padding-bottom: 1em;
 }
 
-.annotated {
-    border-bottom: 1px solid rgba(255, 255, 0, 0.8);
-    background-color: rgba(255, 255, 0, 0.05);
-}
-
-.annotated:hover {
-    background-color: rgba(255, 255, 0, 0.1);
-}
-
 #bias td {
     padding: 0.5em;
 }
