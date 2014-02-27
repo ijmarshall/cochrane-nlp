@@ -6,7 +6,7 @@ function loadPdf(pdfURI) {
 
 
 function drawAnnotations(annotations) {
-    console.log(annotations);
+    // For the sentence (/node) level
     $.each(annotations.annotations, function(idx, ann) {
         var $page = $("#pageContainer-" + ann.page);
         $.each(ann.nodes, function(idx, node) {
@@ -15,9 +15,7 @@ function drawAnnotations(annotations) {
     });
 
     // For the document level
-    console.log(annotations.document);
     var $biasTable = $("#bias");
-
     var risks = [{name: "high", icon: '-'}, {name: "unknown", icon: '?'}, {name: "low", icon: "+"}];
     $.each(annotations.document, function(key, value) {
         var risk = risks[value + 1];
@@ -54,7 +52,6 @@ function renderPage(page) {
 
     var PADDING_AND_MARGIN = 100;
     var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
-    console.log(pageWidthScale, page);
 
     var pageIndex = page.pageInfo.pageIndex;
     var viewport = page.getViewport(pageWidthScale);
@@ -94,7 +91,7 @@ function renderPage(page) {
     if (outputScale.scaled) {
 
         // fix for shrinking canvas (the canvas dimensions are shrunk by the tranform, not just the contents)
-        canvas.height = canvas.height * outputScale.sx 
+        canvas.height = canvas.height * outputScale.sx
         canvas.width = canvas.width * outputScale.sy
 
         var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
