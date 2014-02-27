@@ -9,8 +9,13 @@ function drawAnnotations(annotations) {
     // For the sentence (/node) level
     $.each(annotations.annotations, function(idx, ann) {
         var $page = $("#pageContainer-" + ann.page);
+        var classes = ["annotated"];
+        $.each(ann.labels, function(label, value) {
+            var className = label.replace(/ /g, "-").toLowerCase() + "_" + value;
+            classes.push(className);
+        });
         $.each(ann.nodes, function(idx, node) {
-            $page.find(".textLayer div:nth-child(" + node + ")").addClass("annotated");
+            $page.find(".textLayer div:nth-child(" + node + ")").addClass(classes.join(" "));
         });
     });
 
