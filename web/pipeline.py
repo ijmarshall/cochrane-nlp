@@ -7,6 +7,10 @@ from tokenizers import word_tokenizer, sent_tokenizer
 # I had to apply this patch: https://code.google.com/p/banyan/issues/detail?id=5
 from banyan import *
 
+CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
+                "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
+
+
 class Pipeline(object):
     __metaclass__ = ABCMeta
 
@@ -51,9 +55,11 @@ class Pipeline(object):
         # get the page lengths, and the page offsets in the whole doc string
         page_lengths = [page["length"] for page in parsed_pages]
         total_length = self.get_page_offsets(page_lengths)
+
+        full_text = ' '.join(page["str"] for page in parsed_pages)
         
         # get the predictions
-        document_predictions, sentence_predictions = self.hybrid_predict(parsed_pages)
+        document_predictions, sentence_predictions = self.hybrid_predict(full_text)
 
         # Now we need to get /back/ to the page and node indexes
         annotations = []
@@ -78,32 +84,41 @@ class Pipeline(object):
 class MockPipeline(Pipeline):
 
     def hybrid_predict(self, parsed_pages):
+
+
         return self.document_predict(parsed_pages), self.sentence_predict(parsed_pages)
 
-    def document_predict(self, parsed_pages):
-        return {"Domain 1": 1, "Domain 2": -1, "Domain 3": 0}
+    def document_predict(self, full_text):
+        return {domain: random.choice([1, 0]) for domain in CORE_DOMAINS}
 
-    def sentence_predict(self, parsed_pages):
-        return self.random_annotations(50, document_length=sum([page["length"] for page in parsed_pages]))
+    def sentence_predict(self, full_text):
+        # first get sentence indices in full text
+        sent_indices = sent_tokenizer.span_tokenize(full_text)
 
-    def random_annotations(self, nr_simulated, document_length):
-        # Mock sentence level predictions by generating random annotations
-        def randinterval(start, stop):
-            lower = random.randrange(start, stop)
-            upper = random.randrange(lower, lower + 100)
-            return (lower, upper)
+        # then the strings (for internal use only)
+        sent_text = [full_text[start:end] for start, end in sent_indices]
 
-        # Simulate a dict like
+        # for this example, randomly assign as relevant or not
+        # with a 1 in 50 chance of being positive for each domain
+        sent_predict = [{domain: random.choice([1] + ([-1] * 300)) for domain in CORE_DOMAINS} for sent in sent_text]
+
+        # return dict like:
         # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
         #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
-        # This is the expected return format for any /real/ sentence prediction system
-        sentence_bounds = [randinterval(0, document_length) for i in range(nr_simulated)]
-        labels = [{"Domain 1": random.randint(-1, 1),
-                   "Domain 2": random.randint(-1, 1),
-                   "Domain 3": random.randint(-1, 1)} for i in range(nr_simulated)]
-        return dict(zip(sentence_bounds, labels))
+
+        print dict(zip(sent_indices, sent_predict))
+
+        return dict(zip(sent_indices, sent_predict))
 
 
+
+# class RoBPipeline(Pipeline):
+#     """
+#     Predicts risk of bias document class + relevant sentences
+#     """
+
+#     def hybrid_predict(self, parsed_pages):
+        
 
 
 
