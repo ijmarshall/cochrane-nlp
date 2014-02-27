@@ -50,7 +50,7 @@ function renderPdf(pdf) {
 function renderPage(page) {
     var container = document.getElementById("main");
 
-    var PADDING_AND_MARGIN = 100;
+    var PADDING_AND_MARGIN = 175;
     var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
 
     var pageIndex = page.pageInfo.pageIndex;
