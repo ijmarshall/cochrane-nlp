@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
-from pipeline import MockPipeline
+from pipeline import MockPipeline, RoBPipeline
 import pprint
 import json
 
 app = Flask(__name__)
-pipeline = MockPipeline()
+# pipeline = MockPipeline()
+pipeline = RoBPipeline()
 
 pp = pprint.PrettyPrinter(indent=4)
 

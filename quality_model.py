@@ -6,6 +6,8 @@ CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blindin
                 # see data/domain_names.txt for various other criteria
                 # all of these are available via QualityQuoteReader
 
+
+
 import cPickle as pickle
 from tokenizer import sent_tokenizer
 from journalreaders import PdfReader
@@ -22,7 +24,7 @@ def load_models(filename):
     return data
 
 
-def doc_demo(models, testfile="testdata/demo.pdf"):
+def doc_demo(models, testfile="testdata/demo.pdf", test_mode=False):
 
     import color
 
@@ -38,8 +40,12 @@ def doc_demo(models, testfile="testdata/demo.pdf"):
     # tokenize into sentences
     sents = sent_tokenizer.tokenize(text)
 
+
+
+    domain_limiter = 1 if test_mode else len(CORE_DOMAINS) # only parse first domain in test mode
+
     
-    for test_domain, doc_model, doc_vec, sent_model, sent_vec in zip(CORE_DOMAINS[:1], *models):
+    for test_domain, doc_model, doc_vec, sent_model, sent_vec in zip(CORE_DOMAINS[:domain_limiter], *models):
         
         ####
         ## PART ONE - get the predicted sentences with risk of bias information
@@ -58,8 +64,6 @@ def doc_demo(models, testfile="testdata/demo.pdf"):
         summary_text = " ".join(positive_sents)
 
 
-
-
         ####
         ##  PART TWO - integrate summarized and full text, then predict the document class
         ####
@@ -68,19 +72,21 @@ def doc_demo(models, testfile="testdata/demo.pdf"):
         doc_vec.builder_add_docs([text])
         doc_vec.builder_add_docs([summary_text], prefix="high-prob-sent-")
 
-        X_doc = doc_vec.builder_fit_transform()
+        X_doc = doc_vec.builder_transform()
 
         prediction = doc_model.predict(X_doc)[0]
         print "-" * 30
         print test_domain
-        prediction = {"YES": "Low", "NO": "High", "UNKNOWN": "Unknown"}[prediction]
+
+
+        prediction = {1: "Low", -1: "Unknown or high"}[prediction]
+
+        print prediction
 
 
         if prediction == "Low":
             text_color = color.GREEN
-        elif prediction == "High":
-            text_color = color.RED
-        elif prediction == "Unknown":
+        elif prediction == "Unknown or high":
             text_color = color.YELLOW
 
         color.printout(prediction, text_color)
@@ -103,10 +109,12 @@ def generate_models(test_mode=False):
     sent_models = []
     sent_vecs = []
 
-    d = HybridDocModel()
+    d = HybridDocModel(test_mode=test_mode)
     d.generate_data(binarize=True)
+    
+    domain_limiter = 1 if test_mode else len(CORE_DOMAINS) # only parse first domain in test mode
 
-    for test_domain in CORE_DOMAINS:
+    for test_domain in CORE_DOMAINS[:domain_limiter]:
 
         print test_domain
 
@@ -146,13 +154,17 @@ def generate_models(test_mode=False):
 def main():
     # from sklearn.linear_model import SGDClassifier
     # from sklearn.feature_extraction import DictVectorizer
-    # models = generate_models()
-    # save_models(models, 'data/quality_models.pck')
 
-    models = load_models('models_test.pck')
-    doc_demo(models)
+    test_mode=True
 
-    # print models
+    models = generate_models(test_mode=test_mode)
+
+    save_models(models, 'data/test_models.pck')
+
+    
+    doc_demo(models, test_mode=test_mode)
+
+    
 
 
 if __name__ == '__main__':
