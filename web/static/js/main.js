@@ -13,6 +13,17 @@ function drawAnnotations(annotations) {
             $page.find(".textLayer div:nth-child(" + node + ")").addClass("annotated");
         });
     });
+
+    // For the document level
+    console.log(annotations.document);
+    var $biasTable = $("#bias");
+
+    var risks = [{name: "high", icon: '-'}, {name: "unknown", icon: '?'}, {name: "low", icon: "+"}];
+    $.each(annotations.document, function(key, value) {
+        var risk = risks[value + 1];
+        $biasTable.append('<tr><td>' + key + ' </td><td class="' + risk.name + '">' + risk.icon + '</td></tr>');
+    });
+
 }
 
 function annotate(textContents) {
@@ -39,9 +50,15 @@ function renderPdf(pdf) {
 }
 
 function renderPage(page) {
-    var scale = 1.35;
+    var container = document.getElementById("main");
+
+    var PADDING_AND_MARGIN = 100;
+    var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
+    console.log(pageWidthScale, page);
+
     var pageIndex = page.pageInfo.pageIndex;
-    var viewport = page.getViewport(scale);
+    var viewport = page.getViewport(pageWidthScale);
+
     var $canvas = $("<canvas></canvas>");
 
     var $container = $("<div></div>");
@@ -74,11 +91,12 @@ function renderPage(page) {
     var outputScale = getOutputScale(context);
 
 
-
-
     if (outputScale.scaled) {
-        canvas.height = canvas.height * outputScale.sx
+
+        // fix for shrinking canvas (the canvas dimensions are shrunk by the tranform, not just the contents)
+        canvas.height = canvas.height * outputScale.sx 
         canvas.width = canvas.width * outputScale.sy
+
         var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
                 (1 / outputScale.sy) + ')';
         CustomStyle.setProp('transform', canvas, cssScale);
@@ -152,6 +170,7 @@ $(document).ready(function() {
 
             reader.onload = function(e) {
                 document.getElementById('pdfContainer').innerHTML = ""; // clear the container
+                document.getElementById('bias').innerHTML = ""; // clear the sidebar
                 loadPdf(convertDataURIToBinary(reader.result));
             };
 
