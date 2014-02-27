@@ -1,3 +1,12 @@
+#
+#   pipeline.py
+#
+#   N.B. predictive modelling requires a trained model in pickle form:
+#   - get `quality_models.pck` from `Dropbox/cochranetech/quality-prediction-results/models`
+#   - put in the `models/` directory
+#
+
+
 from abc import ABCMeta, abstractmethod
 import random
 
@@ -160,6 +169,9 @@ class RoBPipeline(Pipeline):
 
             # get predicted 1 / -1 for the sentences
             pred_sents = sent_model.predict(X_sents)
+
+
+
             sent_preds_by_domain.append(pred_sents) # save them for later highlighting
 
             # for internal feature generation, get the sentences which are predicted 1
@@ -179,7 +191,10 @@ class RoBPipeline(Pipeline):
 
             X_doc = doc_vec.builder_transform()
 
-            doc_preds[test_domain] = doc_model.predict(X_doc)[0]
+            # change the -1s to 0s for now (TODO: improve on this)
+            # done because the viewer has three classes, and we're only predicting two here
+            doc_preds[test_domain] = 1 if doc_model.predict(X_doc)[0] == 1 else 0
+
 
         # rejig to correct output format
         # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
