@@ -50,7 +50,7 @@ class MockPipeline(Pipeline):
         # Simulate a dict like
         # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
         #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
-        # This is the expected return format for any sentence /real/ prediction system
+        # This is the expected return format for any /real/ sentence prediction system
         sentence_bounds = [randinterval(0, document_length) for i in range(nr_simulated)]
         labels = [{"Domain 1": random.randint(-1, 1),
                    "Domain 2": random.randint(-1, 1),
