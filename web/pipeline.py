@@ -1,15 +1,18 @@
 from abc import ABCMeta, abstractmethod
 import random
 
+# custom tokenizers based on NLTK
+from tokenizers import word_tokenizer, sent_tokenizer 
+
 # I had to apply this patch: https://code.google.com/p/banyan/issues/detail?id=5
 from banyan import *
 
+CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
+                "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
+
+
 class Pipeline(object):
     __metaclass__ = ABCMeta
-
-    @abstractmethod
-    def predict(self, input):
-        pass
 
     def parse(self, pages):
         # we need to do two things, create a single string for each page
@@ -37,41 +40,26 @@ class Pipeline(object):
 
         return parsed
 
-
-class MockPipeline(Pipeline):
-
-    def random_annotations(self, nr_simulated, document_length):
-        # Mock sentence level predictions by generating random annotations
-        def randinterval(start, stop):
-            lower = random.randrange(start, stop)
-            upper = random.randrange(lower, lower + 100)
-            return (lower, upper)
-
-        # Simulate a dict like
-        # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
-        #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
-        # This is the expected return format for any /real/ sentence prediction system
-        sentence_bounds = [randinterval(0, document_length) for i in range(nr_simulated)]
-        labels = [{"Domain 1": random.randint(-1, 1),
-                   "Domain 2": random.randint(-1, 1),
-                   "Domain 3": random.randint(-1, 1)} for i in range(nr_simulated)]
-        return dict(zip(sentence_bounds, labels))
-
+    def get_page_offsets(self, page_lengths):
+        " takes list of page lengths, returns cumulative list for offsets "
+        # we store this because we want per document, not per page
+        def accumulate(x, l=[0]):
+            # since list l held by reference, value is stored between function calls!
+            l[0] += x
+            return l[0]
+        return map(accumulate, [0] + page_lengths)
 
     def predict(self, input):
         parsed_pages = self.parse(input)
 
-        # we store this because we want per document, not per page
-        def accumulate(x, l=[0]): l[0] += x; return l[0];
+        # get the page lengths, and the page offsets in the whole doc string
         page_lengths = [page["length"] for page in parsed_pages]
-        total_length = map(accumulate, [0] + page_lengths)
-        print total_length
+        total_length = self.get_page_offsets(page_lengths)
 
-        # Mock document level predictions, this can be done on
-        document_predictions = {"Domain 1": 1, "Domain 2": -1, "Domain 3": 0}
-
-        # Mock sentence level predictions
-        sentence_predictions = self.random_annotations(10, document_length=total_length[-1])
+        full_text = ' '.join(page["str"] for page in parsed_pages)
+        
+        # get the predictions
+        document_predictions, sentence_predictions = self.hybrid_predict(full_text)
 
         # Now we need to get /back/ to the page and node indexes
         annotations = []
@@ -85,7 +73,54 @@ class MockPipeline(Pipeline):
             annotations.append({
                 "page": page_nr,
                 "nodes": nodes,
-                "labels": labels })
+                "labels": labels})
 
-        return { "document": document_predictions,
-                 "annotations": annotations }
+        return {"document": document_predictions,
+                "annotations": annotations}
+
+
+
+
+class MockPipeline(Pipeline):
+
+    def hybrid_predict(self, parsed_pages):
+
+
+        return self.document_predict(parsed_pages), self.sentence_predict(parsed_pages)
+
+    def document_predict(self, full_text):
+        return {domain: random.choice([1, 0]) for domain in CORE_DOMAINS}
+
+    def sentence_predict(self, full_text):
+        # first get sentence indices in full text
+        sent_indices = sent_tokenizer.span_tokenize(full_text)
+
+        # then the strings (for internal use only)
+        sent_text = [full_text[start:end] for start, end in sent_indices]
+
+        # for this example, randomly assign as relevant or not
+        # with a 1 in 50 chance of being positive for each domain
+        sent_predict = [{domain: random.choice([1] + ([-1] * 300)) for domain in CORE_DOMAINS} for sent in sent_text]
+
+        # return dict like:
+        # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
+        #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
+
+        print dict(zip(sent_indices, sent_predict))
+
+        return dict(zip(sent_indices, sent_predict))
+
+
+
+# class RoBPipeline(Pipeline):
+#     """
+#     Predicts risk of bias document class + relevant sentences
+#     """
+
+#     def hybrid_predict(self, parsed_pages):
+        
+
+
+
+
+
