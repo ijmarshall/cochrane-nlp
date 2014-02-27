@@ -1,4 +1,7 @@
-/* CSS classes used by TextLayerBuilder to style the text layer divs */
+html {
+    color: rgba(0,0,0,0.5);
+}
+
 #wrapper {
     position: relative;
     width: 100%;
@@ -9,7 +12,7 @@
 
 #main {
     float: left;
-    width: 70%;
+    width: 65%;
     height: 100%;
 }
 
@@ -31,8 +34,27 @@
 }
 
 .annotated {
-    border-bottom: 2px solid yellow;
+    border: 1px solid yellow;
     background-color: rgba(255, 255, 0, 0.1);
+}
+
+#bias td {
+    padding: 0.5em;
+}
+
+#bias .low {
+    background-color: #d0f1d7;
+    color: #3f7a43;
+}
+
+#bias .high {
+    color: #b13502;
+    background-color: #ffc7ce;
+}
+
+#bias .unknown {
+    background-color: #fdddc1;
+    color: #fba957;
 }
 
 #pdfContainer {
