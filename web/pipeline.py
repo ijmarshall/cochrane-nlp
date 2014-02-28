@@ -139,6 +139,7 @@ class RoBPipeline(Pipeline):
     def __init__(self):
         print "loading models... please wait..."
         self.doc_models, self.doc_vecs, self.sent_models, self.sent_vecs = self.load_models('models/quality_models.pck')
+        
         print "done!!!"
 
     def load_models(self, filename):

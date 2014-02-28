@@ -771,7 +771,6 @@ class ModularCountVectorizer():
     """
 
     def __init__(self, *args, **kwargs):
-        self.data = []
         self.vectorizer = DictVectorizer(*args, **kwargs)
 
     def _transform_X_to_dict(self, X, prefix=None):
@@ -788,11 +787,6 @@ class ModularCountVectorizer():
         simple word tokenizer using the same rule as sklearn
         punctuation is ignored, all 2 or more letter characters are a word
         """
-
-        # print "text:"
-        # print text
-        # print "tokenized words"
-        # print SIMPLE_WORD_TOKENIZER.findall(text)
 
         if prefix:
             return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
@@ -854,8 +848,6 @@ class ModularCountVectorizer():
             raise TypeError('Prefix is required when adding interaction features')
 
         doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
-
-
         self.builder_add_docs(doc_list, prefix)
 
 
