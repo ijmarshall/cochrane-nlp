@@ -18,6 +18,9 @@ import cPickle as pickle
 import quality3
 import sklearn
 
+import logging
+logger = logging.getLogger(__name__)
+
 CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
                 "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
 
@@ -25,7 +28,7 @@ CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blindin
 class MockPipeline(Pipeline):
 
     def predict(self, full_text):
-        print "running hybrid predict!"
+        logger.info("running hybrid predict!")
         return self.document_predict(full_text), self.sentence_predict(full_text)
 
     def document_predict(self, full_text):
@@ -55,9 +58,9 @@ class RoBPipeline(Pipeline):
     """
 
     def __init__(self):
-        print "loading models... please wait..."
+        logger.info("loading models")
         self.doc_models, self.doc_vecs, self.sent_models, self.sent_vecs = self.load_models('models/quality_models.pck')
-        print "done!!!"
+        logger.info("done loading models")
 
     def load_models(self, filename):
         with open(filename, 'rb') as f:
@@ -66,7 +69,7 @@ class RoBPipeline(Pipeline):
 
     def predict(self, full_text):
 
-        print 'starting prediction code'
+        logger.debug("starting prediction code")
         # first get sentence indices in full text
         sent_indices = sent_tokenizer.span_tokenize(full_text)
 
