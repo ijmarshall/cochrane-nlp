@@ -137,6 +137,7 @@ def generate_models(test_mode=False):
         sent_clf.fit(sents_X, sents_y)
 
         sent_models.append(sent_clf.best_estimator_)
+        s.vectorizer.builder = None # clear the cache of the most recent documents
         sent_vecs.append(s.vectorizer)
 
         ### pass the sentence model to the hybrid binary model
@@ -147,6 +148,8 @@ def generate_models(test_mode=False):
         clf.fit(X_all, y_all)
 
         doc_models.append(clf.best_estimator_)
+
+        d.vectorizer.builder = None # clear the cache of the most recent documents
         doc_vecs.append(d.vectorizer)
 
     return doc_models, doc_vecs, sent_models, sent_vecs
@@ -155,11 +158,11 @@ def main():
     # from sklearn.linear_model import SGDClassifier
     # from sklearn.feature_extraction import DictVectorizer
 
-    test_mode=True
+    test_mode=False
 
     models = generate_models(test_mode=test_mode)
 
-    save_models(models, 'data/test_models.pck')
+    save_models(models, 'data/test_models_2.pck')
 
     
     doc_demo(models, test_mode=test_mode)
