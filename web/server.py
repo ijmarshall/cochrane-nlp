@@ -17,7 +17,7 @@ def root():
 def annotate():
     payload = json.loads(request.data)
 
-    result = pipeline.predict(payload["pages"])
+    result = pipeline.run(payload["pages"])
     return jsonify(result);
 
 if __name__ == "__main__":
