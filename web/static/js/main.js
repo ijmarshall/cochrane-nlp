@@ -44,12 +44,10 @@ function annotate(textContents) {
 }
 
 function renderPdf(pdf) {
-    var textContentPromises = [];
-    for(var pageNr = 1; pageNr < pdf.numPages; ++pageNr) {
-        textContentPromises[pageNr] = pdf.getPage(pageNr).then(renderPage);
-    }
+    var jobs =(function(a,b) { while(a--) { b[a]=a+ 1;} return b;})(pdf.numPages,[]);
 
-    return Q.all(textContentPromises);
+    var getText = function(page) { return pdf.getPage(page).then(renderPage); };
+    return Q.all(jobs.map(getText));
 }
 
 function renderPage(page) {
@@ -98,8 +96,6 @@ function renderPage(page) {
                 top: containerOffset.top,
                 left: containerOffset.left
             });
-
-
 
     if (outputScale.scaled) {
 
