@@ -106,7 +106,8 @@ class BiViewer():
                     # (the one indexed 0 in the index deque)
                     # and simultaneously removes from the index (popleft)
 
-            return self.BiviewerView(cr[study['cdsr_refcode']], self.second_view(study))
+            # return self.BiviewerView(cr[study['cdsr_refcode']], self.second_view(study))
+            return self.BiviewerView(dict(cr[study['cdsr_refcode']].items() + {"cdsr_filename": study['cdsr_filename']}.items()), self.second_view(study))
 
 
     def second_view(self, study):

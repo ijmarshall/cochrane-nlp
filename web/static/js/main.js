@@ -1,53 +1,95 @@
 function loadPdf(pdfURI) {
     var pdf = PDFJS.getDocument(pdfURI);
-    PDFJS.disableWorker = true; // Must be disabled
-    pdf.then(renderPdf);
+    PDFJS.disableWorker = true; // Must be disabled, for now
+    pdf.then(renderPdf).then(annotate);
 }
 
-function annotationRPC(textContents) {
-    console.log(textContents);
+
+function drawAnnotations(annotations) {
+    // For the sentence (/node) level
+    $.each(annotations.annotations, function(idx, ann) {
+        var $page = $("#pageContainer-" + ann.page);
+        var classes = ["annotated"];
+        $.each(ann.labels, function(label, value) {
+            var className = label.replace(/ /g, "-").toLowerCase() + "_" + value;
+            classes.push(className);
+        });
+        $.each(ann.nodes, function(idx, node) {
+            $page.find(".textLayer div:nth-child(" + node + ")").addClass(classes.join(" "));
+        });
+    });
+
+    // For the document level
+    var $results = $("#results");
+    $results.empty();
+    $results.append("<h3></h3>");
+    $results.append("<table></table>");
+    $results.find("h3").text(annotations.title);
+
+    var $resultsTable = $results.find("table").addClass("pure-table");
+
+    var risks = [{name: "high", icon: '-'}, {name: "unknown", icon: '?'}, {name: "low", icon: "+"}];
+    $.each(annotations.document, function(key, value) {
+        var risk = risks[value + 1];
+        var klass = key.replace(/ /g, "-").toLowerCase() + "_1";
+        $resultsTable.append('<tr class="'+ klass + '"><td>' + key + ' </td><td class="' + risk.name + '">' + risk.icon + '</td></tr>');
+    });
+
+}
+
+function annotate(textContents) {
+    // Look here if you are missing something, I'm shifting the array by one because it was null
+    textContents.shift();
     $.ajax({
         url: '/annotate',
         type: 'POST',
-        data: JSON.stringify(textContents),
+        data: JSON.stringify({pages: textContents}),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         async: true,
-        success: function(annotations) {
-            // here be dragons!
-            console.log(annotations);
-
-        }
+        success: drawAnnotations
     });
 }
 
 function renderPdf(pdf) {
-    var textContentPromises = [];
-    for(var pageNr = 1; pageNr < pdf.numPages; ++pageNr) {
-        textContentPromises[pageNr] = pdf.getPage(pageNr).then(renderPage);
-    }
+    var jobs =(function(a,b) { while(a--) { b[a]=a+ 1;} return b;})(pdf.numPages,[]);
 
-    Q.all(textContentPromises).then(function(textContents) { // All pages have finished rendering
-        annotationRPC(textContents); // This calls python and asynchronously /should/ return the annotations.
-    });
+    var getText = function(page) { return pdf.getPage(page).then(renderPage); };
+    return Q.all(jobs.map(getText));
 }
 
 function renderPage(page) {
-    var scale = 1.5;
+    var container = document.getElementById("main");
+
+    var PADDING_AND_MARGIN = 175;
+    var pageWidthScale = (container.clientWidth + PADDING_AND_MARGIN) / page.view[3];
+
     var pageIndex = page.pageInfo.pageIndex;
-    var viewport = page.getViewport(scale);
+    var viewport = page.getViewport(pageWidthScale);
+
     var $canvas = $("<canvas></canvas>");
 
     var $container = $("<div></div>");
     $container.attr("id", "pageContainer-" + pageIndex).addClass("page");
 
-    //Set the canvas height and width to the height and width of the viewport
+    // Set the canvas height and width to the height and width of the viewport
     var canvas = $canvas.get(0);
     var context = canvas.getContext("2d");
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
 
-    //Append the canvas to the pdf container div
+    //Checks scaling on the context if we are on a HiDPI display
+    var outputScale = getOutputScale(context);
+
+
+    if (outputScale.scaled) {
+        // scale up canvas (since the -transform reduces overall dimensions and not just the contents)
+        canvas.height = viewport.height * outputScale.sy;
+        canvas.width = viewport.width * outputScale.sx;
+    } else {
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+    }
+
+    // Append the canvas to the pdf container div
     var $pdfContainer = $("#pdfContainer");
     $pdfContainer.css("height", canvas.height + "px").css("width", canvas.width + "px");
     $container.append($canvas);
@@ -56,16 +98,15 @@ function renderPage(page) {
     var containerOffset = $container.offset();
     var $textLayerDiv = $("<div />")
             .addClass("textLayer")
-            .css("height", viewport.height + "px")
-            .css("width", viewport.width + "px")
+            .css("height", canvas.height + "px")
+            .css("width", canvas.width + "px")
             .offset({
                 top: containerOffset.top,
                 left: containerOffset.left
             });
 
-    //The following few lines of code set up scaling on the context if we are on a HiDPI display
-    var outputScale = getOutputScale(context);
     if (outputScale.scaled) {
+
         var cssScale = 'scale(' + (1 / outputScale.sx) + ', ' +
                 (1 / outputScale.sy) + ')';
         CustomStyle.setProp('transform', canvas, cssScale);
@@ -126,7 +167,6 @@ function convertDataURIToBinary(dataURI) {
   return array;
 }
 
-
 $(document).ready(function() {
 
     var fileInput = document.getElementById('fileInput');
@@ -135,12 +175,11 @@ $(document).ready(function() {
     submit.addEventListener('click', function(e) {
         var file = fileInput.files[0];
         var textType = /application\/(x-)?pdf|text\/pdf/;
-
         if (file.type.match(textType)) {
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                document.getElementById('pdfContainer').innerHTML = "";
+                document.getElementById('pdfContainer').innerHTML = ""; // clear the container
                 loadPdf(convertDataURIToBinary(reader.result));
             };
 
