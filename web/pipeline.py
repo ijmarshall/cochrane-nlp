@@ -7,6 +7,7 @@
 #
 
 from abstract_pipeline import Pipeline
+import pdb
 
 import random
 
@@ -46,7 +47,6 @@ class MockPipeline(Pipeline):
         # for this example, randomly assign as relevant or not
         # with a 1 in 50 chance of being positive for each domain
         sent_predict = [{domain: random.choice([1] + ([-1] * 10)) for domain in CORE_DOMAINS} for sent in sent_text]
-
         # return dict like:
         # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
         #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
@@ -91,11 +91,10 @@ class RoBPipeline(Pipeline):
             # vectorize the sentences
             X_sents = sent_vec.transform(sent_text)
 
+
             # get predicted 1 / -1 for the sentences
-            pred_sents = sent_model.predict(X_sents)
-
-
-
+            # bcw -- addint type conversion patch for numpy.int64 weirdness
+            pred_sents = [int(x_i) for x_i in sent_model.predict(X_sents)]
             sent_preds_by_domain.append(pred_sents) # save them for later highlighting
 
             # for internal feature generation, get the sentences which are predicted 1
