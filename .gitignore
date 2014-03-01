@@ -39,6 +39,7 @@ nbproject
 CNLP.INI
 confused.txt
 pmccorpusdownload.py
+data/*
 testdata/
 old/
 results/
@@ -60,6 +61,8 @@ log3.txt
 
 log4.txt
 
+*.log
 *.pdf
 
-*.log
+
+pmids.txt

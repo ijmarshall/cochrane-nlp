@@ -40,6 +40,10 @@ import cPickle as pickle
 from sklearn.metrics import f1_score, make_scorer, fbeta_score
 
 
+import pylab as pl
+from sklearn.metrics import roc_curve, auc
+
+
 REGEX_QUOTE_PRESENT = re.compile("Quote\:")
 REGEX_QUOTE = re.compile("\"(.*?)\"") # retrive blocks of text in quotes
 REGEX_ELLIPSIS = re.compile("\s*[\[\(]?\s?\.\.+\s?[\]\)]?\s*") # to catch various permetations of "..." and "[...]"
@@ -57,7 +61,7 @@ ALL_DOMAINS = CORE_DOMAINS[:] # will be added to later
 RoB_CLASSES = ["YES", "NO", "UNKNOWN"]
 
 
-def show_most_informative_features(vectorizer, clf, n=100):
+def show_most_informative_features(vectorizer, clf, n=20):
     ###
     # note that in the multi-class case, clf.coef_ will
     # have k weight vectors, which I believe are one per
@@ -78,7 +82,7 @@ def show_most_informative_features(vectorizer, clf, n=100):
     return feature_str
 
 
-def show_most_informative_features_ynu(vectorizer, clf, n=10):
+def show_most_informative_features_ynu(vectorizer, clf, n=20):
     ###
     # note that in the multi-class case, clf.coef_ will
     # have k weight vectors, which I believe are one per
@@ -767,7 +771,6 @@ class ModularCountVectorizer():
     """
 
     def __init__(self, *args, **kwargs):
-        self.data = []
         self.vectorizer = DictVectorizer(*args, **kwargs)
 
     def _transform_X_to_dict(self, X, prefix=None):
@@ -784,11 +787,6 @@ class ModularCountVectorizer():
         simple word tokenizer using the same rule as sklearn
         punctuation is ignored, all 2 or more letter characters are a word
         """
-
-        # print "text:"
-        # print text
-        # print "tokenized words"
-        # print SIMPLE_WORD_TOKENIZER.findall(text)
 
         if prefix:
             return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
@@ -850,8 +848,6 @@ class ModularCountVectorizer():
             raise TypeError('Prefix is required when adding interaction features')
 
         doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
-
-
         self.builder_add_docs(doc_list, prefix)
 
 
@@ -959,7 +955,7 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
 
 
 
-def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
+def binary_doc_prediction_test(model=DocumentLevelModel, test_mode=False):
     print
     print
     print
@@ -968,7 +964,7 @@ def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
     print "=" * 40
     print
 
-    s = model
+    s = model(test_mode=test_mode)
 
 
     
@@ -996,7 +992,7 @@ def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
         # print "making scorer"
         # ftwo_scorer = make_scorer(fbeta_score, beta=2)
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10), "class_weight": [{1: i, -1: 1} for i in np.logspace(-1, 1, 10)]}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring="f1")
+        clf = GridSearchCV(SGDClassifier(loss="log", penalty="L2"), tuned_parameters, scoring="precision")
 
 
         metrics = []
@@ -1018,13 +1014,29 @@ def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
             print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
             
+            if fold_i == 0:
+                # make a plot of the first curve
+                probas_ = clf.best_estimator_.predict_proba(X_test)
+
+                # Compute ROC curve and area the curve
+                fpr, tpr, thresholds = roc_curve(y_test, probas_[:, 1])
+                roc_auc = auc(fpr, tpr)
+                print("Area under the ROC curve : %f" % roc_auc)
+
+                # Plot ROC curve
+                pl.clf()
+                pl.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
+                pl.plot([0, 1], [0, 1], 'k--')
+                pl.xlim([0.0, 1.0])
+                pl.ylim([0.0, 1.0])
+                pl.xlabel('False Positive Rate')
+                pl.ylabel('True Positive Rate')
+                pl.title(test_domain)
+                pl.legend(loc="lower right")
+                pl.show()
 
 
-            # if not sample and list_features:
-            #     # not an obvious way to get best features for ensemble
-            #     print show_most_informative_features(s.vectorizer, clf)
-            
-            print show_most_informative_features(s.vectorizer, clf.best_estimator_)
+
 
         # summary score
 
@@ -1032,6 +1044,12 @@ def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
         print "=" * 40
         print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
 
+
+        
+        X_all, y_all = s.X_y_uid_filtered(domain_uids, test_domain)
+        clf.fit(X_all, y_all)
+
+        print show_most_informative_features(s.vectorizer, clf.best_estimator_)
 
 
 
@@ -1442,14 +1460,16 @@ def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
 
 
-def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
-    print "Binary hybrid doc level prediction"
+
+def binary_hybrid_doc_prediction_test(model=HybridDocModel, test_mode=False):
+
+    print "Binary hybrid doc level prediction version 2 (maybe quicker!!)"
     print "=" * 40
     print
 
 
-    d = model
+    d = model(test_mode=test_mode)
     d.generate_data(binarize=True) # some variations use the quote data internally 
                                                 # for sentence prediction (for additional features)
 
@@ -1464,22 +1484,19 @@ def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
         no_studies = len(domain_uids)
         kf = KFold(no_studies, n_folds=5, shuffle=False)
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10), "class_weight": [{1: i, -1: 1} for i in np.logspace(-1, 1, 10)]}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
-
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='precision')
 
         metrics = []
 
+        s = SentenceModel(test_mode=test_mode)
+        s.generate_data(uid_filter=domain_uids)
+        s.vectorize()
+
+
         for fold_i, (train, test) in enumerate(kf):
 
-            
 
-            s = SentenceModel(test_mode=False)
-            s.generate_data(uid_filter=domain_uids[train])
-            s.vectorize()
-            sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
-
-
-
+            sents_X, sents_y = s.X_y_uid_filtered(domain_uids[test], test_domain)
             sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
             sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
             sent_clf.fit(sents_X, sents_y)
@@ -1503,117 +1520,35 @@ def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
             metrics.append(fold_metric) # get the scores for positive instances
 
+            if fold_i == 0:
+                # make a plot of the first curve
+                probas_ = clf.best_estimator_.predict_proba(X_test)
+
+                # Compute ROC curve and area the curve
+                fpr, tpr, thresholds = roc_curve(y_test, probas_[:, 1])
+                roc_auc = auc(fpr, tpr)
+                print("Area under the ROC curve : %f" % roc_auc)
+
+                # Plot ROC curve
+                pl.clf()
+                pl.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
+                pl.plot([0, 1], [0, 1], 'k--')
+                pl.xlim([0.0, 1.0])
+                pl.ylim([0.0, 1.0])
+                pl.xlabel('False Positive Rate')
+                pl.ylabel('True Positive Rate')
+                pl.title(test_domain)
+                pl.legend(loc="lower right")
+                pl.show()
 
 
 
-            # print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
 
         summary_metrics = np.mean(metrics, axis=0)
         print "=" * 40
         print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
 
 
-
-
-
-
-        # then train all for most informative features
-
-        s = SentenceModel(test_mode=False)
-        s.generate_data(uid_filter=domain_uids)
-        s.vectorize()
-        sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
-
-        sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
-        sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
-        sent_clf.fit(sents_X, sents_y)
-        d.set_sent_model(sent_clf, s.vectorizer)
-        d.vectorize(test_domain)
-
-        clf = SGDClassifier(loss="hinge", penalty="L2", alpha=0.1, class_weight={1: 1, -1: 1})
-        X_all, y_all = d.X_y_uid_filtered(domain_uids, test_domain)
-
-        clf.fit(X_all, y_all)
-
-        print show_most_informative_features(s.vectorizer, clf)
-
-
-
-
-def binary_hybrid_doc_prediction_test2(model=HybridDocModel(test_mode=False)):
-
-    print "Binary hybrid doc level prediction version 2 (maybe quicker!!)"
-    print "=" * 40
-    print
-
-
-    d = model
-    d.generate_data(binarize=True) # some variations use the quote data internally 
-                                                # for sentence prediction (for additional features)
-
-
-    for test_domain in CORE_DOMAINS:
-
-        
-
-        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
-        
-        domain_uids = d.domain_uids(test_domain)
-        no_studies = len(domain_uids)
-        kf = KFold(no_studies, n_folds=5, shuffle=False)
-        tuned_parameters = {"alpha": np.logspace(-4, -1, 10), "class_weight": [{1: i, -1: 1} for i in np.logspace(-1, 1, 10)]}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
-
-
-        metrics = []
-
-        s = SentenceModel(test_mode=False)
-        s.generate_data(uid_filter=domain_uids)
-        s.vectorize()
-
-
-        # for fold_i, (train, test) in enumerate(kf):
-
-            
-
-        #     sents_X, sents_y = s.X_y_uid_filtered(domain_uids[test], test_domain)
-        #     sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
-        #     sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
-        #     sent_clf.fit(sents_X, sents_y)
-        #     d.set_sent_model(sent_clf, s.vectorizer)
-        #     d.vectorize(test_domain)
-
-
-        #     X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
-        #     X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
-
-        #     clf.fit(X_train, y_train)
-
-        #     y_preds = clf.predict(X_test)
-
-        #     fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
-
-        #     metrics.append(fold_metric) # get the scores for positive instances
-
-        #     print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
-            
-
-        #     metrics.append(fold_metric) # get the scores for positive instances
-
-
-
-
-
-
-        # summary_metrics = np.mean(metrics, axis=0)
-        # print "=" * 40
-        # print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
-
-
-
-
-
-
         # then train all for most informative features
 
         sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
@@ -1626,11 +1561,11 @@ def binary_hybrid_doc_prediction_test2(model=HybridDocModel(test_mode=False)):
         d.set_sent_model(sent_clf, s.vectorizer)
         d.vectorize(test_domain)
 
-        clf = SGDClassifier(loss="hinge", penalty="L2", alpha=0.5, class_weight={1: 1, -1: 1})
+        
         X_all, y_all = d.X_y_uid_filtered(domain_uids, test_domain)
         clf.fit(X_all, y_all)
 
-        print show_most_informative_features(s.vectorizer, clf)
+        print show_most_informative_features(d.vectorizer, clf.best_estimator_)
 
 
 
@@ -1638,9 +1573,12 @@ def main():
     # true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=False))
     # sentence_prediction_test(model=SentenceModel(test_mode=False))
     # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
-    binary_doc_prediction_test()
+    
+    binary_doc_prediction_test(test_mode=False)
+
+
     # binary_hybrid_doc_prediction_test2()
-    # binary_hybrid_doc_prediction_test()
+    # binary_hybrid_doc_prediction_test(test_mode=False)
 
     # hybrid_doc_prediction_test(model=HybridDocModel2(test_mode=False))
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
