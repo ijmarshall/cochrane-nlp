@@ -20,11 +20,19 @@ function drawAnnotations(annotations) {
     });
 
     // For the document level
-    var $biasTable = $("#bias");
+    var $results = $("#results");
+    $results.empty();
+    $results.append("<h3></h3>");
+    $results.append("<table></table>");
+    $results.find("h3").text(annotations.title);
+
+    var $resultsTable = $results.find("table").addClass("pure-table");
+
     var risks = [{name: "high", icon: '-'}, {name: "unknown", icon: '?'}, {name: "low", icon: "+"}];
     $.each(annotations.document, function(key, value) {
         var risk = risks[value + 1];
-        $biasTable.append('<tr><td>' + key + ' </td><td class="' + risk.name + '">' + risk.icon + '</td></tr>');
+        var klass = key.replace(/ /g, "-").toLowerCase() + "_1";
+        $resultsTable.append('<tr class="'+ klass + '"><td>' + key + ' </td><td class="' + risk.name + '">' + risk.icon + '</td></tr>');
     });
 
 }
@@ -172,7 +180,6 @@ $(document).ready(function() {
 
             reader.onload = function(e) {
                 document.getElementById('pdfContainer').innerHTML = ""; // clear the container
-                document.getElementById('bias').innerHTML = ""; // clear the sidebar
                 loadPdf(convertDataURIToBinary(reader.result));
             };
 
