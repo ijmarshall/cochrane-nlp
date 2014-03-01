@@ -57,7 +57,7 @@ ALL_DOMAINS = CORE_DOMAINS[:] # will be added to later
 RoB_CLASSES = ["YES", "NO", "UNKNOWN"]
 
 
-def show_most_informative_features(vectorizer, clf, n=100):
+def show_most_informative_features(vectorizer, clf, n=1000):
     ###
     # note that in the multi-class case, clf.coef_ will
     # have k weight vectors, which I believe are one per
@@ -553,13 +553,12 @@ class HybridDocModel(DocumentLevelModel):
 
         self.vectorizer = ModularCountVectorizer()
         self.vectorizer.builder_clear()
-        X_filter = self.domain_X_filter(domain)
 
+        X_filter = self.domain_X_filter(domain)
         predictions = self.get_sent_predictions_for_domain(domain)
 
         self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
-        
-        self.vectorizer.builder_add_docs(predictions, prefix="high-prob-sent-")
+        self.vectorizer.builder_add_docs(predictions, prefix="high-prob-sent-", weighting=10)
 
         self.X = self.vectorizer.builder_fit_transform()
 
@@ -616,30 +615,30 @@ class HybridDocModel(DocumentLevelModel):
 
 
 
-class HybridDocModel2(HybridDocModel):
-    """
-    for predicting the risk of bias
-    as "HIGH", "LOW", or "UNKNOWN" for a document
-    using a binary bag-of-words as features for each document
-    """
+# class HybridDocModel2(HybridDocModel):
+#     """
+#     for predicting the risk of bias
+#     as "HIGH", "LOW", or "UNKNOWN" for a document
+#     using a binary bag-of-words as features for each document
+#     """
 
 
-    def vectorize(self, domain=None):
+#     def vectorize(self, domain=None):
 
-        if domain is None:
-            raise TypeError("this class requires domain specific vectorization")
+#         if domain is None:
+#             raise TypeError("this class requires domain specific vectorization")
 
-        self.vectorizer = ModularCountVectorizer()
-        self.vectorizer.builder_clear()
-        X_filter = self.domain_X_filter(domain)
+#         self.vectorizer = ModularCountVectorizer()
+#         self.vectorizer.builder_clear()
+#         X_filter = self.domain_X_filter(domain)
 
-        predictions = self.get_sent_predictions_for_domain(domain)
+#         predictions = self.get_sent_predictions_for_domain(domain)
 
-        # self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
+#         # self.vectorizer.builder_add_docs([self.X_list[i] for i in X_filter])
         
-        self.vectorizer.builder_add_docs(predictions, prefix="high-prob-sent-")
+#         self.vectorizer.builder_add_docs(predictions, prefix="high-prob-sent-")
 
-        self.X = self.vectorizer.builder_fit_transform()
+#         self.X = self.vectorizer.builder_fit_transform()
 
 
 
@@ -770,14 +769,14 @@ class ModularCountVectorizer():
         self.data = []
         self.vectorizer = DictVectorizer(*args, **kwargs)
 
-    def _transform_X_to_dict(self, X, prefix=None):
+    def _transform_X_to_dict(self, X, prefix=None, weighting=1):
         """
         makes a list of dicts from a document
         1. word tokenizes
         2. creates {word1:1, word2:1...} dicts
         (note all set to '1' since the DictVectorizer we use assumes all missing are 0)
         """
-        return [self._dict_from_word_list(self._word_tokenize(document, prefix=prefix)) for document in X]
+        return [self._dict_from_word_list(self._word_tokenize(document, prefix=prefix), weighting=1) for document in X]
 
     def _word_tokenize(self, text, prefix=None):
         """
@@ -796,8 +795,8 @@ class ModularCountVectorizer():
             return [word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
 
 
-    def _dict_from_word_list(self, word_list):
-        return {word: 1 for word in word_list}
+    def _dict_from_word_list(self, word_list, weighting=1):
+        return {word: weighting for word in word_list}
 
     def _dictzip(self, dictlist1, dictlist2):
         """
@@ -837,12 +836,12 @@ class ModularCountVectorizer():
         self.builder = []
         self.builder_len = 0
 
-    def builder_add_docs(self, X, prefix = None):
+    def builder_add_docs(self, X, prefix = None, weighting=1):
         if not self.builder:
             self.builder_len = len(X)
-            self.builder = self._transform_X_to_dict(X)
+            self.builder = self._transform_X_to_dict(X, prefix=prefix, weighting=weighting)
         else:
-            X_dicts = self._transform_X_to_dict(X, prefix=prefix)
+            X_dicts = self._transform_X_to_dict(X, prefix=prefix, weighting=weighting)
             self.builder = self._dictzip(self.builder, X_dicts)
 
     def builder_add_interaction_features(self, X, interactions, prefix=None):
@@ -850,12 +849,9 @@ class ModularCountVectorizer():
             raise TypeError('Prefix is required when adding interaction features')
 
         doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
-
-
         self.builder_add_docs(doc_list, prefix)
 
 
-    
 
 
     def builder_fit_transform(self):
@@ -1019,12 +1015,10 @@ def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
             print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
             
 
-
             # if not sample and list_features:
             #     # not an obvious way to get best features for ensemble
             #     print show_most_informative_features(s.vectorizer, clf)
             
-            print show_most_informative_features(s.vectorizer, clf.best_estimator_)
 
         # summary score
 
@@ -1033,8 +1027,14 @@ def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
         print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
 
 
+        # then train all for most informative features
+        clf = SGDClassifier(loss="hinge", penalty="L2", alpha=0.01, class_weight={1: 5, -1: 1})
+        X_all = s.X_domain_all(test_domain)
+        y_all = s.y_domain_all(test_domain)
 
+        clf.fit(X_all, y_all)
 
+        print show_most_informative_features(s.vectorizer, clf)
 
 
 def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
@@ -1442,7 +1442,7 @@ def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
 
 
-def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
+def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=True)):
 
     print "Binary hybrid doc level prediction"
     print "=" * 40
@@ -1473,7 +1473,7 @@ def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
             
 
-            s = SentenceModel(test_mode=False)
+            s = SentenceModel(test_mode=True)
             s.generate_data(uid_filter=domain_uids[train])
             s.vectorize()
             sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
@@ -1519,7 +1519,7 @@ def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
         # then train all for most informative features
 
-        s = SentenceModel(test_mode=False)
+        s = SentenceModel(test_mode=True)
         s.generate_data(uid_filter=domain_uids)
         s.vectorize()
         sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
@@ -1540,7 +1540,7 @@ def binary_hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
 
 
-def binary_hybrid_doc_prediction_test2(model=HybridDocModel(test_mode=False)):
+def binary_hybrid_doc_prediction_test2(model=HybridDocModel(test_mode=True)):
 
     print "Binary hybrid doc level prediction version 2 (maybe quicker!!)"
     print "=" * 40
@@ -1563,31 +1563,44 @@ def binary_hybrid_doc_prediction_test2(model=HybridDocModel(test_mode=False)):
         kf = KFold(no_studies, n_folds=5, shuffle=False)
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10), "class_weight": [{1: i, -1: 1} for i in np.logspace(-1, 1, 10)]}
         clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
-
+        
 
         metrics = []
 
-        s = SentenceModel(test_mode=False)
+        s = SentenceModel(test_mode=True)
         s.generate_data(uid_filter=domain_uids)
         s.vectorize()
 
+        
 
-        # for fold_i, (train, test) in enumerate(kf):
+        for fold_i, (train, test) in enumerate(kf):
 
             
 
-        #     sents_X, sents_y = s.X_y_uid_filtered(domain_uids[test], test_domain)
-        #     sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
-        #     sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
-        #     sent_clf.fit(sents_X, sents_y)
-        #     d.set_sent_model(sent_clf, s.vectorizer)
-        #     d.vectorize(test_domain)
+            sents_X, sents_y = s.X_y_uid_filtered(domain_uids[test], test_domain)
+            # sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
+            # sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
 
 
-        #     X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
-        #     X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
+            sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}]
+            sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2", class_weight={1:5, -1:1}), sent_tuned_parameters, scoring='recall')
 
-        #     clf.fit(X_train, y_train)
+
+            sent_clf.fit(sents_X, sents_y)
+            d.set_sent_model(sent_clf, s.vectorizer)
+            d.vectorize(test_domain)
+
+
+            X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
+            X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
+
+
+
+            clf.fit(X_train, y_train)
+
+        
+            # print show_most_informative_features(s.vectorizer, clf.best_estimator_)
+            print show_most_informative_features(s.vectorizer, clf)
 
         #     y_preds = clf.predict(X_test)
 
@@ -1614,23 +1627,23 @@ def binary_hybrid_doc_prediction_test2(model=HybridDocModel(test_mode=False)):
 
 
 
-        # then train all for most informative features
+        # # then train all for most informative features
 
-        sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
+        # sents_X, sents_y = s.X_domain_all(domain=test_domain), s.y_domain_all(domain=test_domain)
 
-        sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
-        sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
-        sent_clf.fit(sents_X, sents_y)
+        # sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
+        # sent_clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
+        # sent_clf.fit(sents_X, sents_y)
 
 
-        d.set_sent_model(sent_clf, s.vectorizer)
-        d.vectorize(test_domain)
+        # d.set_sent_model(sent_clf, s.vectorizer)
+        # d.vectorize(test_domain)
 
-        clf = SGDClassifier(loss="hinge", penalty="L2", alpha=0.5, class_weight={1: 1, -1: 1})
-        X_all, y_all = d.X_y_uid_filtered(domain_uids, test_domain)
-        clf.fit(X_all, y_all)
+        # clf = SGDClassifier(loss="hinge", penalty="L2", alpha=0.5, class_weight={1: 1, -1: 1})
+        # X_all, y_all = d.X_y_uid_filtered(domain_uids, test_domain)
+        # clf.fit(X_all, y_all)
 
-        print show_most_informative_features(s.vectorizer, clf)
+        
 
 
 
@@ -1638,8 +1651,9 @@ def main():
     # true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=False))
     # sentence_prediction_test(model=SentenceModel(test_mode=False))
     # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
-    binary_doc_prediction_test()
-    # binary_hybrid_doc_prediction_test2()
+    # binary_doc_prediction_test()
+    print "Try weighting sentences better"
+    binary_hybrid_doc_prediction_test2()
     # binary_hybrid_doc_prediction_test()
 
     # hybrid_doc_prediction_test(model=HybridDocModel2(test_mode=False))
