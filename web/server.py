@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from pipeline import MockPipeline, RoBPipeline
 import pprint
 import json
+import pickle
 import logging
 
 DEBUG_MODE = True
@@ -24,6 +25,9 @@ def annotate():
     payload = json.loads(request.data)
 
     result = pipeline.run(payload["pages"])
+    with open("result.pck", 'wb') as outf:
+        pickle.dump(result, outf)
+
     return jsonify(result);
 
 if __name__ == "__main__":
