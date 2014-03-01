@@ -7,6 +7,8 @@ from abc import ABCMeta, abstractmethod
 class Pipeline(object):
     __metaclass__ = ABCMeta
 
+    pipeline_title = ""
+
     def __preprocess(self, pages):
         # we need to do two things, create a single string for each page
         # and establish a interval-tree to figure out the original nodes
@@ -73,5 +75,7 @@ class Pipeline(object):
 
         annotations = self.__postprocess_annotations(parsed_pages, sentence_predictions)
 
-        return {"document": document_predictions,
-                "annotations": annotations}
+        return {
+            "title": self.pipeline_title,
+            "document": document_predictions,
+            "annotations": annotations}
