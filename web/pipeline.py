@@ -25,7 +25,9 @@ CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blindin
                 "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting"]
 
 
+
 class MockPipeline(Pipeline):
+    pipeline_title = "Dummy predictions"
 
     def predict(self, full_text):
         logger.info("running hybrid predict!")
@@ -56,6 +58,7 @@ class RoBPipeline(Pipeline):
     """
     Predicts risk of bias document class + relevant sentences
     """
+    pipeline_title = "Risk of Bias"
 
     def __init__(self):
         logger.info("loading models")
