@@ -54,6 +54,31 @@ class MockPipeline(Pipeline):
         return dict(zip(sent_indices, sent_predict))
 
 
+class RegularPipeline(Pipeline):
+    pipeline_title = "Predict every 20th div; start on div 0"
+
+    def predict(self, full_text):
+        logger.info("running hybrid predict!")
+        return self.document_predict(full_text), self.sentence_predict(full_text)
+
+    def document_predict(self, full_text):
+        return {domain: random.choice([1, 0]) for domain in CORE_DOMAINS}
+
+    def sentence_predict(self, full_text):
+        # first get sentence indices in full text
+        sent_indices = sent_tokenizer.span_tokenize(full_text)
+
+        # then the strings (for internal use only)
+        sent_text = [full_text[start:end] for start, end in sent_indices]
+
+        # for this example, assign every 20th div as being positive
+        # sentence 0 with domain 0 (Random sequence generation) should be positive
+        sent_predict = [{domain: ((((sent_i + domain_i) % 20 == 0) * 2) - 1) for domain_i, domain in enumerate(CORE_DOMAINS)} for sent_i, sent in enumerate(sent_text)]
+
+        return dict(zip(sent_indices, sent_predict))
+
+
+
 class RoBPipeline(Pipeline):
     """
     Predicts risk of bias document class + relevant sentences
@@ -102,6 +127,15 @@ class RoBPipeline(Pipeline):
 
             # make a single string per doc
             summary_text = " ".join(positive_sents)
+
+
+            print
+            print
+            print test_domain
+            print "=" * 60
+            print
+            print '\n\n'.join(positive_sents)
+
 
 
             ####
