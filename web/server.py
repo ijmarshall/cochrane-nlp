@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from pipeline import MockPipeline, RoBPipeline, RegularPipeline
+from pipeline import MockPipeline, RoBPipeline
 import pprint
 import json
 import pickle
