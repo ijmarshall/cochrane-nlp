@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from pipeline import MockPipeline, RoBPipeline
+from pipeline import MockPipeline, RoBPipeline, RegularPipeline
 import pprint
 import json
 import pickle
@@ -11,7 +11,7 @@ logging.basicConfig(level= (logging.DEBUG if DEBUG_MODE else logging.INFO))
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-# pipeline = MockPipeline()
+# pipeline = RegularPipeline()
 pipeline = RoBPipeline()
 
 pp = pprint.PrettyPrinter(indent=4)
