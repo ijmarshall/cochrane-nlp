@@ -129,15 +129,6 @@ class RoBPipeline(Pipeline):
             summary_text = " ".join(positive_sents)
 
 
-            print
-            print
-            print test_domain
-            print "=" * 60
-            print
-            print '\n\n'.join(positive_sents)
-
-
-
             ####
             ##  PART TWO - integrate summarized and full text, then predict the document class
             ####
@@ -158,6 +149,10 @@ class RoBPipeline(Pipeline):
         #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
         sent_preds_values = [{domain: rating for domain, rating in zip(CORE_DOMAINS, sent_ratings)} for sent_ratings in zip(*sent_preds_by_domain)]
 
-        sent_preds = dict(zip(sent_indices, sent_preds_values))
+        
+        # make a dict; filter only rows with at least one positive prediction
+        sent_preds = dict([row for row in zip(sent_indices, sent_preds_values) if (1 in row[1].values())])
+
+
 
         return doc_preds, sent_preds
