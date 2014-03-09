@@ -4,7 +4,7 @@
 # from banyan import *
 from abc import ABCMeta, abstractmethod
 
-class MiniBanyan():
+class RangeList():
     """
     to duplicate the minimal function needed of an interval-tree
     maintains a list of start, end tuples
@@ -62,7 +62,7 @@ class Pipeline(object):
                     total += 1  # to account for extra space between *nodes*
 
                 # interval_tree = SortedSet(ranges, key_type = (int, int), updator = OverlappingIntervalsUpdator)
-                interval_tree = MiniBanyan(ranges)
+                interval_tree = RangeList(ranges)
                 page_str = " ".join(textNodes)
 
                 parsed.append({"str": page_str,
@@ -98,14 +98,10 @@ class Pipeline(object):
 
         for sentence_bound, labels in predictions.iteritems():
 
-            
+
             page_nr = next((i for i, v in enumerate(total_length) if (v + i) > sentence_bound[0])) - 1
-
-            print
-            print sentence_bound
-            print total_length
-            print page_nr
-
+            # the (v + i) bit is to account for the extra spaces *between* pages which we inserted
+            # on page n there will be n-1 extra spaces (conveniently equal to i)
 
 
             page = parsed_input[page_nr]
@@ -114,11 +110,6 @@ class Pipeline(object):
             bound = (sentence_bound[0] - offset, sentence_bound[1] - offset)
 
             nodes = page["intervals"].overlap_indices(bound)
-
-
-
-            
-
 
             annotations.append({
                 "page": page_nr,
