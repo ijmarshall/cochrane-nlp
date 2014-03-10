@@ -54,6 +54,34 @@ class MockPipeline(Pipeline):
         return dict(zip(sent_indices, sent_predict))
 
 
+
+class RegularPipeline(Pipeline):
+    pipeline_title = "Predict every 20th div; start on div 0"
+
+    def predict(self, full_text):
+        logger.info("running hybrid predict!")
+        return self.document_predict(full_text), self.sentence_predict(full_text)
+
+    def document_predict(self, full_text):
+        return {domain: random.choice([1, 0]) for domain in CORE_DOMAINS}
+
+    def sentence_predict(self, full_text):
+        # first get sentence indices in full text
+        sent_indices = sent_tokenizer.span_tokenize(full_text)
+
+        # then the strings (for internal use only)
+        sent_text = [full_text[start:end] for start, end in sent_indices]
+
+        # for this example, assign every 20th div as being positive
+        # sentence 0 with domain 0 (Random sequence generation) should be positive
+        sent_predict = [{domain: ((((sent_i + domain_i) % 20 == 0) * 2) - 1) for domain_i, domain in enumerate(CORE_DOMAINS)} for sent_i, sent in enumerate(sent_text)]
+
+        return dict(zip(sent_indices, sent_predict))
+
+
+
+
+
 class RoBPipeline(Pipeline):
     """
     Predicts risk of bias document class + relevant sentences
@@ -104,6 +132,14 @@ class RoBPipeline(Pipeline):
             # make a single string per doc
             summary_text = " ".join(positive_sents)
 
+            print test_domain
+            print "=" *60
+            print
+            print "\n\n".join(positive_sents)
+            print
+            print
+
+
 
             ####
             ##  PART TWO - integrate summarized and full text, then predict the document class
@@ -125,7 +161,8 @@ class RoBPipeline(Pipeline):
         #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
         sent_preds_values = [{domain: rating for domain, rating in zip(CORE_DOMAINS, sent_ratings)} for sent_ratings in zip(*sent_preds_by_domain)]
 
-        sent_preds = dict(zip(sent_indices, sent_preds_values))
+        # make a dict; filter only rows with at least one positive prediction
+        sent_preds = dict([row for row in zip(sent_indices, sent_preds_values) if (1 in row[1].values())])
 
         #pdb.set_trace()
         return doc_preds, sent_preds, sent_text_dict

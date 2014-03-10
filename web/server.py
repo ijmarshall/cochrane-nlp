@@ -13,7 +13,7 @@ logging.basicConfig(level= (logging.DEBUG if DEBUG_MODE else logging.INFO))
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-# pipeline = MockPipeline()
+# pipeline = RegularPipeline()
 pipeline = RoBPipeline()
 
 pp = pprint.PrettyPrinter(indent=4)
