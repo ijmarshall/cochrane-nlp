@@ -78,6 +78,7 @@ class RoBPipeline(Pipeline):
 
         # then the strings (for internal use only)
         sent_text = [full_text[start:end] for start, end in sent_indices]
+        sent_text_dict = dict(zip(sent_indices, sent_text))
 
         sent_preds_by_domain = [] # will rejig this later to make a list of dicts
         doc_preds = {}
@@ -126,4 +127,5 @@ class RoBPipeline(Pipeline):
 
         sent_preds = dict(zip(sent_indices, sent_preds_values))
 
-        return doc_preds, sent_preds
+        #pdb.set_trace()
+        return doc_preds, sent_preds, sent_text_dict
