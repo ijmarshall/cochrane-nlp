@@ -21,11 +21,15 @@ class Pipeline(object):
                 total = 0
                 ranges = []
                 for txt in textNodes:
+
                     start = total
-                    total += len(txt) + 1 # we're adding an extra space
+                    total += len(txt)
+
                     ranges.append((start, total))
-                interval_tree = SortedSet(ranges, 
-                        key_type = (int, int), updator = OverlappingIntervalsUpdator)
+
+                    total += 1  # we're adding an extra space
+                
+                interval_tree = SortedSet(ranges, key_type = (int, int), updator = OverlappingIntervalsUpdator)
                 page_str = " ".join(textNodes)
 
                 parsed.append({"str": page_str,
@@ -57,7 +61,9 @@ class Pipeline(object):
             page_nr = next(i for i,v in enumerate(total_length) if v >= sentence_bound[0]) - 1
             page = parsed_input[page_nr]
             offset = total_length[page_nr]
+
             bound = (sentence_bound[0] - offset, sentence_bound[1] - offset)
+
             nodes = [page["ranges"].index(x) for x in page["intervals"].overlap(bound)]
 
             annotations.append({

@@ -15,7 +15,12 @@ function drawAnnotations(annotations) {
             classes.push(className);
         });
         $.each(ann.nodes, function(idx, node) {
-            $page.find(".textLayer div:nth-child(" + node + ")").addClass(classes.join(" "));
+            
+            $page.find(".textLayer div:eq(" + node + ")").addClass(classes.join(" "));
+            // IM: changed to :eq() rather than :nth-child since the latter
+            // counts *any* element in the indexing regardless of whether a div, then returns next div
+            // whereas :eq() should behave as expected
+
         });
     });
 
@@ -59,7 +64,7 @@ function renderPdf(pdf) {
             }
 
     return Q.all(textContentPromises);
-    
+
 }
 
 function renderPage(page) {
