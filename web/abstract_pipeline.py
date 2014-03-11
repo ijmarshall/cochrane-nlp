@@ -18,7 +18,7 @@ class Pipeline(object):
 
         for idx, page in enumerate(pages):
             if page is not None:
-                textNodes = [node["str"] for node in page]
+                textNodes = [node["str"].encode("utf8") for node in page]
 
                 total = 0
                 ranges = []
@@ -40,7 +40,7 @@ class Pipeline(object):
                                "ranges": ranges,
                                "intervals": interval_tree})
             else:
-                log.debug("Attempted to parse empty page ..." + str(idx))
+                log.debug("Attempted to parse empty page:" + str(idx))
                 continue
         return parsed
 
