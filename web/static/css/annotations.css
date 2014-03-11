@@ -1,37 +1,24 @@
-.allocation-concealment_positive,
-.allocation-concealment_unknown,
-.allocation-concealment_negative {
+.allocation-concealment_positive {
     border-bottom: 1px solid rgba(228, 026, 028, 1.0);
     background-color: rgba(228, 026, 028, 0.1);
 }
-.blinding-of-outcome-assessment_positive,
-.blinding-of-outcome-assessment_unknown,
-.blinding-of-outcome-assessment_negative {
+.blinding-of-outcome-assessment_positive {
     border-bottom: 1px solid rgba(055, 126, 184, 1.0);
     background-color: rgba(055, 126, 184, 0.1);
 }
-.blinding-of-participants-and-personnel_positive,
-.blinding-of-participants-and-personnel_unknown,
-.blinding-of-participants-and-personnel_negative {
+.blinding-of-participants-and-personnel_positive {
     border-bottom: 1px solid rgb(091, 189, 138);
     background-color: rgba(091, 189, 138, 0.1);
 }
-.incomplete-outcome-data_positive
-.incomplete-outcome-data_unknown
-.incomplete-outcome-data_negative {
+.incomplete-outcome-data_positive {
     border-bottom: 1px solid rgba(152, 078, 163, 1.0);
     background-color: rgba(152, 078, 163, 0.1);
 }
-.random-sequence-generation_positive,
-.random-sequence-generation_unknown,
-.random-sequence-generation_negative {
+.random-sequence-generation_positive {
     border-bottom: 1px solid rgba(255, 127, 000, 1.0);
     background-color: rgba(255, 127, 000, 0.1);
 }
-.selective-reporting_positive,
-.selective-reporting_unknown,
-.selective-reporting_negative
-{
+.selective-reporting_positive {
     border-bottom: 1px solid rgba(255, 255, 051, 1.0);
     background-color: rgba(255, 255, 051, 0.1);
 }
