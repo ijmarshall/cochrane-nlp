@@ -8,7 +8,9 @@ function drawAnnotations(annotations) {
     var decorateAnnotation = function(label, level) {
         var levels = [{name: "negative", icon: '-'}, {name: "unknown", icon: '?'}, {name: "positive", icon: "+"}];
         level = levels[level + 1];
-        return { className: label.replace(/ /g, "-").toLowerCase() + "_" + level.name, level: level };
+        var klass = label.replace(/ /g, "-").toLowerCase();
+        var annotation = klass + "_" + level.name;
+        return { className: klass, annotation: annotation , level: level };
     };
 
     // For the sentence (/node) level
@@ -16,7 +18,7 @@ function drawAnnotations(annotations) {
         var $page = $("#pageContainer-" + ann.page);
         var classes = ["annotated"];
         $.each(ann.labels, function(label, level) {
-            classes.push(decorateAnnotation(label, level).className);
+            classes.push(decorateAnnotation(label, level).annotation);
         });
         $.each(ann.nodes, function(idx, node) {
             /* Using :eq() rather than :nth-child since the latter

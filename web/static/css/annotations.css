@@ -1,23 +1,29 @@
+.allocation-concealment,
 .allocation-concealment_positive {
     border-bottom: 1px solid rgba(228, 026, 028, 1.0);
     background-color: rgba(228, 026, 028, 0.1);
 }
+.blinding-of-outcome-assessment,
 .blinding-of-outcome-assessment_positive {
     border-bottom: 1px solid rgba(055, 126, 184, 1.0);
     background-color: rgba(055, 126, 184, 0.1);
 }
+.blinding-of-participants-and-personnel,
 .blinding-of-participants-and-personnel_positive {
     border-bottom: 1px solid rgb(091, 189, 138);
     background-color: rgba(091, 189, 138, 0.1);
 }
+.incomplete-outcome-data,
 .incomplete-outcome-data_positive {
     border-bottom: 1px solid rgba(152, 078, 163, 1.0);
     background-color: rgba(152, 078, 163, 0.1);
 }
+.random-sequence-generation,
 .random-sequence-generation_positive {
     border-bottom: 1px solid rgba(255, 127, 000, 1.0);
     background-color: rgba(255, 127, 000, 0.1);
 }
+.selective-reporting,
 .selective-reporting_positive {
     border-bottom: 1px solid rgba(255, 255, 051, 1.0);
     background-color: rgba(255, 255, 051, 0.1);
