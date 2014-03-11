@@ -148,14 +148,15 @@ function renderPage(page) {
             viewport: viewport,
             textLayer: textLayer
         };
-
         // from http://stackoverflow.com/questions/12693207/how-to-know-if-pdf-js-has-finished-rendering
         var pageRendering = page.render(renderContext);
         var completeCallback = pageRendering.internalRenderTask.callback;
         pageRendering.internalRenderTask.callback = function (error) {
             completeCallback.call(this, error);
-            var isWhitespace = function(str) { return !/\S/.test(str); };
-            var content = _.filter(textContent, function(node) { return !isWhitespace(node.str); });
+            var isWhitespace = function(str, context) {
+                return !/\S/.test(str) || (renderContext && context.measureText(str).width == 0);
+            };
+            var content = _.filter(textContent, function(node) { return !isWhitespace(node.str, context); });
             deferredTextContent.resolve(content);
         };
     });
