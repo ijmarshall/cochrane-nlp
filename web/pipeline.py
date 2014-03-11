@@ -140,12 +140,19 @@ class RoBPipeline(Pipeline):
             # make a single string per doc
             summary_text = " ".join(positive_sents)
 
+
+            #
+            #   START DEBUG CODE
+            #
             print test_domain
             print "=" *60
             print
             print "\n\n".join(positive_sents)
             print
             print
+            #
+            #   END DEBUG CODE
+            #
 
 
 
