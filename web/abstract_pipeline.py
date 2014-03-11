@@ -1,8 +1,7 @@
 # I had to apply this patch: https://code.google.com/p/banyan/issues/detail?id=5
 from banyan import *
 from abc import ABCMeta, abstractmethod
-import logging
-log = logging.getLogger(__name__)
+import pdb
 
 class Pipeline(object):
     __metaclass__ = ABCMeta
@@ -13,6 +12,7 @@ class Pipeline(object):
         # we need to do two things, create a single string for each page
         # and establish a interval-tree to figure out the original nodes
         parsed = []
+
         for idx, page in enumerate(pages):
             if page is not None:
                 textNodes = [node["str"] for node in page]
@@ -79,8 +79,7 @@ class Pipeline(object):
         # get the predictions
         full_text = ' '.join(page["str"] for page in parsed_pages)
 
-        document_predictions, sentence_predictions = self.predict(full_text)
-
+        document_predictions, sentence_predictions, sentences = self.predict(full_text)
         annotations = self.__postprocess_annotations(parsed_pages, sentence_predictions)
 
         return {

@@ -4,6 +4,8 @@ import pprint
 import json
 import pickle
 import logging
+import pdb
+
 
 DEBUG_MODE = True
 
@@ -24,6 +26,7 @@ def annotate():
     payload = json.loads(request.data)
     result = pipeline.run(payload["pages"])
     return jsonify(result)
+
 
 if __name__ == "__main__":
     app.run(debug=DEBUG_MODE)
