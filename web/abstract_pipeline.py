@@ -2,6 +2,9 @@
 from banyan import *
 from abc import ABCMeta, abstractmethod
 import pdb
+import logging
+
+log = logging.getLogger(__name__)
 
 class Pipeline(object):
     __metaclass__ = ABCMeta
