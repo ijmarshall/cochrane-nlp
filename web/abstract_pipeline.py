@@ -59,7 +59,10 @@ class Pipeline(object):
                     start = total
                     total += len(txt)
                     ranges.append((start, total))
-                    total += 1  # to account for extra space between *nodes*
+
+                    total += 1 
+                    # note that this +=1 aligns both for spaces added later between nodes *and* pages
+                    # (since the ' '.join(nodes) does not leave a trailing space, but we add one anyway)
 
                 # interval_tree = SortedSet(ranges, key_type = (int, int), updator = OverlappingIntervalsUpdator)
                 interval_tree = RangeList(ranges)
@@ -99,11 +102,7 @@ class Pipeline(object):
         for sentence_bound, labels in predictions.iteritems():
 
 
-            page_nr = next((i for i, v in enumerate(total_length) if (v + i) > sentence_bound[0])) - 1
-            # the (v + i) bit is to account for the extra spaces *between* pages which we inserted
-            # on page n there will be n-1 extra spaces (conveniently equal to i)
-
-
+            page_nr = next((i for i, v in enumerate(total_length) if v > sentence_bound[0])) - 1
             page = parsed_input[page_nr]
             offset = total_length[page_nr]
 
