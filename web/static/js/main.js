@@ -6,16 +6,21 @@ function loadPdf(pdfURI) {
 
 
 function drawAnnotations(annotations) {
+    var decorateAnnotation = function(label, level) {
+        var levels = [{name: "negative", icon: '-'}, {name: "unknown", icon: '?'}, {name: "positive", icon: "+"}];
+        level = levels[level + 1];
+        return { className: label.replace(/ /g, "-").toLowerCase() + "_" + level.name, level: level };
+    };
+
     // For the sentence (/node) level
     $.each(annotations.annotations, function(idx, ann) {
         var $page = $("#pageContainer-" + ann.page);
         var classes = ["annotated"];
-        $.each(ann.labels, function(label, value) {
-            var className = label.replace(/ /g, "-").toLowerCase() + "_" + value;
-            classes.push(className);
+        $.each(ann.labels, function(label, level) {
+            classes.push(decorateAnnotation(label, level).className);
         });
         $.each(ann.nodes, function(idx, node) {
-            
+
             $page.find(".textLayer div:eq(" + node + ")").addClass(classes.join(" "));
             // IM: changed to :eq() rather than :nth-child since the latter
             // counts *any* element in the indexing regardless of whether a div, then returns next div
@@ -33,18 +38,14 @@ function drawAnnotations(annotations) {
 
     var $resultsTable = $results.find("table").addClass("pure-table");
 
-    var risks = [{name: "high", icon: '-'}, {name: "unknown", icon: '?'}, {name: "low", icon: "+"}];
     $.each(annotations.document, function(key, value) {
-        var risk = risks[value + 1];
-        var klass = key.replace(/ /g, "-").toLowerCase() + "_1";
-        $resultsTable.append('<tr class="'+ klass + '"><td>' + key + ' </td><td class="' + risk.name + '">' + risk.icon + '</td></tr>');
+        var decorated = decorateAnnotation(key, value);
+        $resultsTable.append('<tr class="'+ decorated.className + '"><td>' + key + ' </td><td class="' + decorated.level.name + '">' + decorated.level.icon + '</td></tr>');
     });
 
 }
 
 function annotate(textContents) {
-    // Look here if you are missing something, I'm shifting the array by one because it was null
-    textContents.shift();
     $.ajax({
         url: '/annotate',
         type: 'POST',
