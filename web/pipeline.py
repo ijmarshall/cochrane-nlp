@@ -14,10 +14,15 @@ import random
 # custom tokenizers based on NLTK
 from tokenizers import word_tokenizer, sent_tokenizer
 
+import collections
+
 import cPickle as pickle
 
 import quality3
 import sklearn
+
+
+from pprint import pprint
 
 import logging
 logger = logging.getLogger(__name__)
@@ -39,7 +44,7 @@ class MockPipeline(Pipeline):
 
     def sentence_predict(self, full_text):
         # first get sentence indices in full text
-        sent_indices = sent_tokenizer.span_tokenize(full_text)
+        sent_indices = self._sent_spans(full_text)
 
         # then the strings (for internal use only)
         sent_text = [full_text[start:end] for start, end in sent_indices]
@@ -51,19 +56,15 @@ class MockPipeline(Pipeline):
         # {(13, 33): {'Domain 1': 1, 'Domain 2': -1, 'Domain 3': -1},
         #  (27, 77): {'Domain 1': 1, 'Domain 2': 0, 'Domain 3': 1}}
 
-        return dict(zip(sent_indices, sent_predict))
+        return collections.OrderedDict(zip(sent_indices, sent_predict))
+
+    def _sent_spans(self, text):
+        return sent_tokenizer.span_tokenize(text)
 
 
 
-class RegularPipeline(Pipeline):
-    pipeline_title = "Predict every 20th div; start on div 0"
-
-    def predict(self, full_text):
-        logger.info("running hybrid predict!")
-        return self.document_predict(full_text), self.sentence_predict(full_text)
-
-    def document_predict(self, full_text):
-        return {domain: random.choice([1, 0]) for domain in CORE_DOMAINS}
+class RegularPipeline(MockPipeline):
+    pipeline_title = "Predict everything as randomization - true sent tokenizing"
 
     def sentence_predict(self, full_text):
         # first get sentence indices in full text
@@ -72,12 +73,20 @@ class RegularPipeline(Pipeline):
         # then the strings (for internal use only)
         sent_text = [full_text[start:end] for start, end in sent_indices]
 
-        # for this example, assign every 20th div as being positive
+        # for this example, assign every 7th div as being positive
         # sentence 0 with domain 0 (Random sequence generation) should be positive
-        sent_predict = [{domain: ((((sent_i + domain_i) % 20 == 0) * 2) - 1) for domain_i, domain in enumerate(CORE_DOMAINS)} for sent_i, sent in enumerate(sent_text)]
+        sent_predict = [{domain: rating for domain, rating in zip(CORE_DOMAINS, [1, 0, 0, 0, 0, 0])} for sent in sent_text]
+    
+        return collections.OrderedDict(zip(sent_indices, sent_predict))
 
-        return dict(zip(sent_indices, sent_predict))
 
+class RegularFakeSentPipeline(RegularPipeline):
+    pipeline_title = "Predict everything as randomization - fake sent tokenizing"
+    def _sent_spans(self, text):
+        """
+        returns fake sentence spans starting at zero, sentence boundary every 50 chars
+        """
+        return [(start, start + 50) for start in range(len(text), 50)] + [(len(text) - (len(text) % 50), len(text))]
 
 
 
@@ -132,12 +141,19 @@ class RoBPipeline(Pipeline):
             # make a single string per doc
             summary_text = " ".join(positive_sents)
 
+
+            #
+            #   START DEBUG CODE
+            #
             print test_domain
             print "=" *60
             print
             print "\n\n".join(positive_sents)
             print
             print
+            #
+            #   END DEBUG CODE
+            #
 
 
 
