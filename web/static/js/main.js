@@ -104,9 +104,6 @@ function renderPage(page) {
     var $pdfContainer = $("#pdfContainer");
     $pdfContainer.css("height", viewport.height + "px").css("width", viewport.width + "px");
 
-
-
-
     $container.append($canvas);
     $pdfContainer.append($container);
 
@@ -131,10 +128,6 @@ function renderPage(page) {
             CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
             CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
         }
-
-
-
-
     }
 
     context._scaleX = outputScale.sx;
@@ -164,7 +157,9 @@ function renderPage(page) {
         var completeCallback = pageRendering.internalRenderTask.callback;
         pageRendering.internalRenderTask.callback = function (error) {
             completeCallback.call(this, error);
-            deferredTextContent.resolve(textContent);
+            var isWhitespace = function(str) { return !/\S/.test(str); };
+            var content = _.filter(textContent, function(node) { return !isWhitespace(node.str); });
+            deferredTextContent.resolve(content);
         };
     });
 
