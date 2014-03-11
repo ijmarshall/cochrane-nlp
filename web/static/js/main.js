@@ -88,7 +88,6 @@ function renderPage(page) {
     //Checks scaling on the context if we are on a HiDPI display
     var outputScale = getOutputScale(context);
 
-
     if (outputScale.scaled) {
         // scale up canvas (since the -transform reduces overall dimensions and not just the contents)
         canvas.height = viewport.height * outputScale.sy;
@@ -98,9 +97,15 @@ function renderPage(page) {
         canvas.width = viewport.width;
     }
 
+    $container.css("height", viewport.height + "px").css("width", viewport.width + "px");
+
     // Append the canvas to the pdf container div
     var $pdfContainer = $("#pdfContainer");
-    $pdfContainer.css("height", canvas.height + "px").css("width", canvas.width + "px");
+    $pdfContainer.css("height", viewport.height + "px").css("width", viewport.width + "px");
+
+
+
+
     $container.append($canvas);
     $pdfContainer.append($container);
 
@@ -125,6 +130,10 @@ function renderPage(page) {
             CustomStyle.setProp('transform', $textLayerDiv.get(0), cssScale);
             CustomStyle.setProp('transformOrigin', $textLayerDiv.get(0), '0% 0%');
         }
+
+
+
+
     }
 
     context._scaleX = outputScale.sx;
