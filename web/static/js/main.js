@@ -4,7 +4,6 @@ function loadPdf(pdfURI) {
     pdf.then(renderPdf).then(annotate);
 }
 
-
 function drawAnnotations(annotations) {
     var decorateAnnotation = function(label, level) {
         var levels = [{name: "negative", icon: '-'}, {name: "unknown", icon: '?'}, {name: "positive", icon: "+"}];
@@ -20,12 +19,10 @@ function drawAnnotations(annotations) {
             classes.push(decorateAnnotation(label, level).className);
         });
         $.each(ann.nodes, function(idx, node) {
-
+            /* Using :eq() rather than :nth-child since the latter
+             counts *any* element in the indexing regardless of whether a div, then returns next div
+             whereas :eq() should behave as expected  */
             $page.find(".textLayer div:eq(" + node + ")").addClass(classes.join(" "));
-            // IM: changed to :eq() rather than :nth-child since the latter
-            // counts *any* element in the indexing regardless of whether a div, then returns next div
-            // whereas :eq() should behave as expected
-
         });
     });
 
@@ -58,14 +55,12 @@ function annotate(textContents) {
 }
 
 function renderPdf(pdf) {
-
     var textContentPromises = [];
         for(var pageNr = 1; pageNr < pdf.numPages; ++pageNr) {
                 textContentPromises[pageNr] = pdf.getPage(pageNr).then(renderPage);
             }
 
     return Q.all(textContentPromises);
-
 }
 
 function renderPage(page) {
