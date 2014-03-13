@@ -1132,7 +1132,7 @@ def multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=Fa
                                         test_domain=CORE_DOMAINS[0]):
     print "multitask!"
     d = model
-    d.generate_data() # some variations use the quote data internally 
+    d.generate_data(binarize=True) # some variations use the quote data internally 
                       # for sentence prediction (for additional features)
 
     # d.X_uids contains all the UIds.
@@ -1161,9 +1161,9 @@ def multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=Fa
 
         y_preds = clf.predict(X_test)
             
-        fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(
-                            y_test, y_preds, labels=RoB_CLASSES))[:3]
-        pdb.set_trace()
+        fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+
+        print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
 
 
 def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
@@ -1778,7 +1778,7 @@ def main():
     # hybrid_doc_prediction_test(model=HybridDocModel2(test_mode=False))
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
-    document_prediction_test(model=MultiTaskDocumentModel(test_mode=True))
+    multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=True))
 
 if __name__ == '__main__':
     main()
