@@ -1,5 +1,6 @@
 from tokenizer import sent_tokenizer, word_tokenizer
 import biviewer
+import pdb
 import re
 import progressbar
 import collections
@@ -55,6 +56,9 @@ CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blindin
 ALL_DOMAINS = CORE_DOMAINS[:] # will be added to later
 
 RoB_CLASSES = ["YES", "NO", "UNKNOWN"]
+
+# @TODO move me
+domain_str = lambda d: d.lower().replace(" ", "_")
 
 
 def show_most_informative_features(vectorizer, clf, n=1000):
@@ -489,18 +493,11 @@ class DocumentLevelModel(SentenceModel):
         self.X_uids = []
         self.y_uids = {domain: [] for domain in test_domains}
 
-
-        
-        
         for uid, cochrane_data, pdf_data in self.quotereader:
 
-
-            
             if uid_filter is not None and uid not in uid_filter:
                 continue        
 
-
-                    
             X_study = [pdf_data] # this time the X is the whole pdf data
 
             self.X_list.extend(X_study)
@@ -514,8 +511,6 @@ class DocumentLevelModel(SentenceModel):
                 if domain["DOMAIN"] not in test_domains or domain["DOMAIN"] in domains_done_already:
                     continue # skip if a domain is repeated in a study (though note that this is likely due to different RoB per *outcome* which is ignored here)
 
-
-
                 if binarize:
                     y_study = 1 if domain["RATING"]=="YES" else -1 # binarize
                 else:
@@ -527,7 +522,6 @@ class DocumentLevelModel(SentenceModel):
                 domains_done_already.append(domain["DOMAIN"])
 
   
-
         self.y = {domain: np.array(self.y_list[domain]) for domain in test_domains}
 
         self.X_uids = np.array(self.X_uids)
@@ -535,7 +529,105 @@ class DocumentLevelModel(SentenceModel):
 
 
 
+class MultiTaskDocumentModel(DocumentLevelModel):
+    '''
+    The idea here is to train a single model across all domains. Basically:
 
+        y_ij = sign{(w0 + w_j) * x_i}
+
+    for document x_i, where a w_j is learned for each domain and w0 is a shared
+    weight vector (across domains).
+    '''
+
+    def vectorize(self):
+
+        self.vectorizer = ModularCountVectorizer()
+        self.vectorizer.builder_clear()
+
+        self.X_mt_labels = [] # which rows correspond to which doc/interactions? 
+        self.y_mt = []
+        self.uids_to_row_indices = {}
+        self.row_indices_to_uids, self.row_indices_to_domains = [], []
+        # number of rows in the 'multi-task' matrix, which
+        # will vary depending on how many docs have labels
+        # for how many domains
+        n_rows = 0 # (equal to len(self.X_mt_labels)
+
+        '''
+        the vectorizer wants all the documents at once,
+        so here we are going to build them up. we're only
+        going to add interaction copies for a given document
+        for those domains that we have an associated label.
+        '''
+        docs = []
+        # which indices in docs correspond to copies for 
+        # which domains?
+        domains_to_interaction_doc_indices = defaultdict(list)
+        for i, doc in enumerate(self.X_list):
+            # `intercept' document
+            uid = self.X_uids[i]
+
+            # add |CORE_DOMAINS| copies for each instance.
+            for domain in CORE_DOMAINS:
+                d_str = domain_str(domain)
+                if uid in self.domain_uids(domain):
+                    # get the label (note that we match up the
+                    # uid to do this)
+                    uids_to_lbls = dict(zip(self.y_uids[domain], 
+                                        self.y_domain_all(domain=domain)))
+                    #y_index = self.y_uids(domain).index(uid)
+                    #domain_ys = self.y_domain_all(domain=domain)
+                    #self.y_mt.append(domain_ys[y_index])
+                    self.y_mt.append(uids_to_lbls[uid])
+
+                    # append interaction copy of doc
+                    docs.append(doc)
+                    self.row_indices_to_uids.append(uid)
+                    self.row_indices_to_domains.append(domain)
+                    self.X_mt_labels.append("%s-%s" % (i, d_str))
+                    domains_to_interaction_doc_indices[d_str].append(n_rows)
+
+                    n_rows += 1
+
+        '''
+        now actually ad documents and interaction copies to 
+        the vectorizer. 
+        '''
+        #for i, doc in enumerate(self.X_list):
+        # `intercept' document
+        self.vectorizer.builder_add_docs(docs)
+
+        for domain in CORE_DOMAINS:
+            d_str = domain_str(domain)
+            interaction_list = []
+            for i in xrange(len(docs)):
+                if i in domains_to_interaction_doc_indices[d_str]:
+                    interaction_list.append(docs[i])
+                else:
+                    interaction_list.append("")
+            self.vectorizer.builder_add_docs(interaction_list, prefix=d_str+"-")
+
+
+        self.X = self.vectorizer.builder_fit_transform()
+   
+
+    def X_y_uid_filtered(self, uids, domain=None):
+        X_indices, y = [], []
+        for i in xrange(self.X.shape[0]):
+            if domain is None and self.row_indices_to_uids[i] in uids:
+                # if domain is None, return big multi-task design matrix
+                # -- you'll want to do this, e.g., for training
+                X_indices.append(i)
+                y.append(self.y_mt[i])
+            elif domain == self.row_indices_to_domains[i] and self.row_indices_to_uids[i] in uids:
+                # otherwise (when domain is not None), return 
+                # instances for only the target domain
+                # (e.g., for testing)
+                X_indices.append(i)
+                y.append(self.y_mt[i])
+
+        return self.X[X_indices], y
+      
 
 
 class HybridDocModel(DocumentLevelModel):
@@ -561,7 +653,6 @@ class HybridDocModel(DocumentLevelModel):
         self.vectorizer.builder_add_docs(predictions, prefix="high-prob-sent-", weighting=10)
 
         self.X = self.vectorizer.builder_fit_transform()
-
 
     def get_sent_predictions_for_domain(self, domain):
 
@@ -837,6 +928,7 @@ class ModularCountVectorizer():
         self.builder_len = 0
 
     def builder_add_docs(self, X, prefix = None, weighting=1):
+        #pdb.set_trace()
         if not self.builder:
             self.builder_len = len(X)
             self.builder = self._transform_X_to_dict(X, prefix=prefix, weighting=weighting)
@@ -1036,13 +1128,50 @@ def binary_doc_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
         print show_most_informative_features(s.vectorizer, clf)
 
+def multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=False), 
+                                        test_domain=CORE_DOMAINS[0]):
+    print "multitask!"
+    d = model
+    d.generate_data() # some variations use the quote data internally 
+                      # for sentence prediction (for additional features)
+
+    # d.X_uids contains all the UIds.
+    # d.y_uids contains a dictionary mapping domains to the UIds for
+    # which we have labels (in said domain)
+    #pdb.set_trace()
+    all_uids = d.X_uids
+    d.vectorize()
+
+    ####
+    # the major change here is we don't loop through the domains!
+    tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+    clf = GridSearchCV(SGDClassifier(loss="log", penalty="L2"), 
+                                tuned_parameters, scoring='f1')
+
+    kf = KFold(len(all_uids), n_folds=5, shuffle=False) ### TODO 250 is totally random
+    metrics = []
+
+    for fold_i, (train, test) in enumerate(kf):
+        # note that we do *not* pass in a domain here, because
+        # we use *all* domain training data
+        X_train, y_train = d.X_y_uid_filtered(all_uids[train])
+        X_test, y_test = d.X_y_uid_filtered(all_uids[test], test_domain)
+
+        clf.fit(X_train, y_train)
+
+        y_preds = clf.predict(X_test)
+            
+        fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(
+                            y_test, y_preds, labels=RoB_CLASSES))[:3]
+        pdb.set_trace()
+
 
 def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
     print "Document level prediction"
+    pdb.set_trace()
     print "=" * 40
     print
-
 
     d = model
     d.generate_data() # some variations use the quote data internally 
@@ -1053,10 +1182,6 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
     for test_domain in CORE_DOMAINS:
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
-        
-
-
-
         # f1_prefer_nos = make_scorer(f1_score, pos_label="NO")
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
@@ -1075,11 +1200,8 @@ def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
         for fold_i, (train, test) in enumerate(kf):
 
-
             X_train, y_train = d.X_y_uid_filtered(domain_uids[train], test_domain)
             X_test, y_test = d.X_y_uid_filtered(domain_uids[test], test_domain)
-
-            
 
             clf.fit(X_train, y_train)
 
@@ -1362,7 +1484,7 @@ def true_hybrid_prediction_test(model, test_mode=False):
 
 
 
-def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
+def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=True)):
 
     print "Hybrid doc level prediction"
     print "=" * 40
@@ -1375,9 +1497,6 @@ def hybrid_doc_prediction_test(model=HybridDocModel(test_mode=False)):
 
 
     for test_domain in CORE_DOMAINS:
-
-        
-
         print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
         
         domain_uids = d.domain_uids(test_domain)
@@ -1652,13 +1771,14 @@ def main():
     # sentence_prediction_test(model=SentenceModel(test_mode=False))
     # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
     # binary_doc_prediction_test()
-    print "Try weighting sentences better"
-    binary_hybrid_doc_prediction_test2()
+    #print "Try weighting sentences better"
+    #binary_hybrid_doc_prediction_test2()
     # binary_hybrid_doc_prediction_test()
 
     # hybrid_doc_prediction_test(model=HybridDocModel2(test_mode=False))
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
+    document_prediction_test(model=MultiTaskDocumentModel(test_mode=True))
 
 if __name__ == '__main__':
     main()
