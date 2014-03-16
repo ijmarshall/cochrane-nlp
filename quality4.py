@@ -31,6 +31,7 @@ from collections import defaultdict
 
 from sklearn.metrics import precision_recall_fscore_support
 import random
+import operator 
 
 from sklearn.cross_validation import KFold
 
@@ -39,7 +40,8 @@ from journalreaders import PdfReader
 import cPickle as pickle
 
 from sklearn.metrics import f1_score, make_scorer, fbeta_score
-
+import nltk
+from nltk.corpus import stopwords
 
 REGEX_QUOTE_PRESENT = re.compile("Quote\:")
 REGEX_QUOTE = re.compile("\"(.*?)\"") # retrive blocks of text in quotes
@@ -607,8 +609,11 @@ class MultiTaskDocumentModel(DocumentLevelModel):
                     interaction_list.append("")
             self.vectorizer.builder_add_docs(interaction_list, prefix=d_str+"-")
 
-
-        self.X = self.vectorizer.builder_fit_transform()
+        # BCW -- attempting to upper bound features!
+        # note that this will keep the <max_features> most common
+        # features, regardless of whether or not they are 'interaction'
+        # features
+        self.X = self.vectorizer.builder_fit_transform(max_features=50000)
    
 
     def X_y_uid_filtered(self, uids, domain=None):
@@ -987,9 +992,10 @@ class ModularCountVectorizer():
         2. creates {word1:1, word2:1...} dicts
         (note all set to '1' since the DictVectorizer we use assumes all missing are 0)
         """
-        return [self._dict_from_word_list(self._word_tokenize(document, prefix=prefix), weighting=1) for document in X]
+        return [self._dict_from_word_list(
+            self._word_tokenize(document, prefix=prefix), weighting=1) for document in X]
 
-    def _word_tokenize(self, text, prefix=None):
+    def _word_tokenize(self, text, prefix=None, stopword=True):
         """
         simple word tokenizer using the same rule as sklearn
         punctuation is ignored, all 2 or more letter characters are a word
@@ -999,11 +1005,14 @@ class ModularCountVectorizer():
         # print text
         # print "tokenized words"
         # print SIMPLE_WORD_TOKENIZER.findall(text)
+        stop_word_list = stopwords.words('english') if stopword else []
 
         if prefix:
-            return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
+            return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text) 
+                        if not word.lower() in stop_word_list]
         else:
-            return [word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
+            return [word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text) 
+                        if not word.lower() in stop_word_list]
 
 
     def _dict_from_word_list(self, word_list, weighting=1):
@@ -1064,9 +1073,21 @@ class ModularCountVectorizer():
         self.builder_add_docs(doc_list, prefix)
 
 
+    def _cap_features(self, n=50000):
+        token_counts_d = defaultdict(int)
+        for x_d in self.builder:
+            for t in x_d:
+                token_counts_d[t] += 1
 
+        sorted_d = sorted(
+            token_counts_d.iteritems(), key=operator.itemgetter(1), reverse=True)
+        
+        return sorted_d[:n]
 
-    def builder_fit_transform(self):
+    def builder_fit_transform(self, max_features=None):
+        if max_features is not None:
+            self._cap_features(n=max_features)
+
         return self.vectorizer.fit_transform(self.builder)
 
     def builder_transform(self):
@@ -1410,7 +1431,6 @@ def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel
 def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
     print "Document level prediction"
-    pdb.set_trace()
     print "=" * 40
     print
 
