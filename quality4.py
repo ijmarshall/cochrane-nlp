@@ -137,7 +137,7 @@ class QualityQuoteReader2():
         self.pdfviewer = biviewer.PDFBiViewer()
         self.domain_map = load_domain_map()
         if test_mode:
-            self.test_mode_break_point = 250
+            self.test_mode_break_point = 500
         else:
             self.test_mode_break_point = None
 
@@ -681,11 +681,11 @@ class MultiTaskHybridDocumentModel(MultiTaskDocumentModel):
                     docs.append(doc)
 
 
-                    high_prob_sents[domain].append(get_sent_predictions_for_doc(doc))
+                    high_prob_sents[domain].append(self.get_sent_predictions_for_doc(doc, domain))
 
                     for high_prob_domain in CORE_DOMAINS:
                         if high_prob_domain != domain:
-                            high_prob_sents.append("")
+                            high_prob_sents[high_prob_domain].append("")
 
 
 
@@ -698,7 +698,7 @@ class MultiTaskHybridDocumentModel(MultiTaskDocumentModel):
                     n_rows += 1
 
         '''
-        now actually ad documents and interaction copies to 
+        now actually add documents and interaction copies to 
         the vectorizer. 
         '''
         #for i, doc in enumerate(self.X_list):
@@ -707,11 +707,11 @@ class MultiTaskHybridDocumentModel(MultiTaskDocumentModel):
 
         for domain in CORE_DOMAINS:
             d_str = domain_str(domain)
-            interaction_list, sent_interaction_list= []
+            interaction_list, sent_interaction_list = [], []
             for i in xrange(len(docs)):
                 if i in domains_to_interaction_doc_indices[d_str]:
                     interaction_list.append(docs[i])
-                    sent_interaction_list.append(high_prob_sents[domain])
+                    sent_interaction_list.append(high_prob_sents[domain][i])
                 else:
                     interaction_list.append("")
                     sent_interaction_list.append("")
@@ -1339,20 +1339,20 @@ def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel
 
 
 
+    print "...generating sentence data,,,",
+    s = SentenceModel(test_mode=False)
+    s.generate_data()
+    s.vectorize()
+    print "done!"
+
+    sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
+
 
     for fold_i, (train, test) in enumerate(kf):
 
 
         
 
-        print "...creating internal sentence prediction models for this fold",
-        s = SentenceModel(test_mode=True)
-        # s.generate_data(uid_filter=domain_uids[train])
-        s.generate_data()
-        s.vectorize()
-
-        
-        sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
 
         sent_clfs = defaultdict(list)
 
@@ -1367,14 +1367,11 @@ def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel
         print "Training on fold", fold_i,
 
         d.set_sent_model(sent_clfs, s.vectorizer)
-        d.vectorize(test_domain)
+        d.vectorize()
 
         # note that we do *not* pass in a domain here, because
         # we use *all* domain training data
         X_train, y_train = d.X_y_uid_filtered(all_uids[train])
-
-
-
 
         clf.fit(X_train, y_train)
         print "done!"
@@ -2023,7 +2020,7 @@ def main():
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
     # multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=True))
-    multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=True))
+    multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=False))
 
 if __name__ == '__main__':
     main()
