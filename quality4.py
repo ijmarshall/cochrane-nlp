@@ -1082,7 +1082,19 @@ class ModularCountVectorizer():
         sorted_d = sorted(
             token_counts_d.iteritems(), key=operator.itemgetter(1), reverse=True)
         
-        return sorted_d[:n]
+        keep_these = [t[0] for t in sorted_d[:n]]
+
+        builder_filtered = []
+        for x_d in self.builder:
+            filtered_d = {}
+            for token in keep_these:
+                if token in x_d:
+                    filtered_d[token] = x_d[token]
+            builder_filtered.append(filtered_d)
+        #pdb.set_trace()
+        self.builder = builder_filtered
+
+        
 
     def builder_fit_transform(self, max_features=None):
         if max_features is not None:
