@@ -31,6 +31,7 @@ from collections import defaultdict
 
 from sklearn.metrics import precision_recall_fscore_support
 import random
+import operator 
 
 from sklearn.cross_validation import KFold
 
@@ -39,7 +40,8 @@ from journalreaders import PdfReader
 import cPickle as pickle
 
 from sklearn.metrics import f1_score, make_scorer, fbeta_score
-
+import nltk
+from nltk.corpus import stopwords
 
 REGEX_QUOTE_PRESENT = re.compile("Quote\:")
 REGEX_QUOTE = re.compile("\"(.*?)\"") # retrive blocks of text in quotes
@@ -137,7 +139,7 @@ class QualityQuoteReader2():
         self.pdfviewer = biviewer.PDFBiViewer()
         self.domain_map = load_domain_map()
         if test_mode:
-            self.test_mode_break_point = 250
+            self.test_mode_break_point = 500
         else:
             self.test_mode_break_point = None
 
@@ -607,8 +609,11 @@ class MultiTaskDocumentModel(DocumentLevelModel):
                     interaction_list.append("")
             self.vectorizer.builder_add_docs(interaction_list, prefix=d_str+"-")
 
-
-        self.X = self.vectorizer.builder_fit_transform()
+        # BCW -- attempting to upper bound features!
+        # note that this will keep the <max_features> most common
+        # features, regardless of whether or not they are 'interaction'
+        # features
+        self.X = self.vectorizer.builder_fit_transform(max_features=50000)
    
 
     def X_y_uid_filtered(self, uids, domain=None):
@@ -628,6 +633,126 @@ class MultiTaskDocumentModel(DocumentLevelModel):
 
         return self.X[X_indices], y
       
+
+class MultiTaskHybridDocumentModel(MultiTaskDocumentModel):
+    '''
+    same as the MultiTaskDocumentModel, except takes in sentence
+    level modelling too into the mix
+    '''
+
+    def vectorize(self):
+
+        self.vectorizer = ModularCountVectorizer()
+        self.vectorizer.builder_clear()
+
+        self.X_mt_labels = [] # which rows correspond to which doc/interactions? 
+        self.y_mt = []
+        self.uids_to_row_indices = {}
+        self.row_indices_to_uids, self.row_indices_to_domains = [], []
+        # number of rows in the 'multi-task' matrix, which
+        # will vary depending on how many docs have labels
+        # for how many domains
+        n_rows = 0 # (equal to len(self.X_mt_labels)
+
+        '''
+        the vectorizer wants all the documents at once,
+        so here we are going to build them up. we're only
+        going to add interaction copies for a given document
+        for those domains that we have an associated label.
+        '''
+        docs = []
+        high_prob_sents = defaultdict(list)
+        # which indices in docs correspond to copies for 
+        # which domains?
+        domains_to_interaction_doc_indices = defaultdict(list)
+        for i, doc in enumerate(self.X_list):
+            # `intercept' document
+            uid = self.X_uids[i]
+
+            # add |CORE_DOMAINS| copies for each instance.
+            for domain in CORE_DOMAINS:
+                d_str = domain_str(domain)
+                if uid in self.domain_uids(domain):
+                    # get the label (note that we match up the
+                    # uid to do this)
+                    uids_to_lbls = dict(zip(self.y_uids[domain], 
+                                        self.y_domain_all(domain=domain)))
+                    #y_index = self.y_uids(domain).index(uid)
+                    #domain_ys = self.y_domain_all(domain=domain)
+                    #self.y_mt.append(domain_ys[y_index])
+                    self.y_mt.append(uids_to_lbls[uid])
+
+                    # append interaction copy of doc
+                    docs.append(doc)
+
+
+                    high_prob_sents[domain].append(self.get_sent_predictions_for_doc(doc, domain))
+
+                    for high_prob_domain in CORE_DOMAINS:
+                        if high_prob_domain != domain:
+                            high_prob_sents[high_prob_domain].append("")
+
+
+
+
+                    self.row_indices_to_uids.append(uid)
+                    self.row_indices_to_domains.append(domain)
+                    self.X_mt_labels.append("%s-%s" % (i, d_str))
+                    domains_to_interaction_doc_indices[d_str].append(n_rows)
+
+                    n_rows += 1
+
+        '''
+        now actually add documents and interaction copies to 
+        the vectorizer. 
+        '''
+        #for i, doc in enumerate(self.X_list):
+        # `intercept' document
+        self.vectorizer.builder_add_docs(docs)
+
+        for domain in CORE_DOMAINS:
+            d_str = domain_str(domain)
+            interaction_list, sent_interaction_list = [], []
+            for i in xrange(len(docs)):
+                if i in domains_to_interaction_doc_indices[d_str]:
+                    interaction_list.append(docs[i])
+                    sent_interaction_list.append(high_prob_sents[domain][i])
+                else:
+                    interaction_list.append("")
+                    sent_interaction_list.append("")
+
+            self.vectorizer.builder_add_docs(interaction_list, prefix=d_str+"-doc-")
+            self.vectorizer.builder_add_docs(sent_interaction_list, prefix=d_str+"-sent-")
+
+        self.X = self.vectorizer.builder_fit_transform()
+
+    def get_sent_predictions_for_doc(self, doc, domain):
+
+        # tokenize into sentences
+        sents = sent_tokenizer.tokenize(doc)
+
+        # vectorize the sentences
+        X_sents = self.sent_vectorizer.transform(sents)
+
+        # get predicted 1 / -1 for the sentences
+        pred_class = self.sent_clfs[domain].predict(X_sents)
+
+        # get the sentences which are predicted 1
+        positive_sents = [sent for sent, pred in zip(sents, pred_class) if pred==1]
+
+        # make a single string per doc
+        rob_sents = " ".join(positive_sents)
+
+        return rob_sents
+
+    def set_sent_model(self, sent_clfs, sent_vectorizer):
+        """
+        set a model which takes in a list of sentences;
+        and returns -1 or 1
+        """
+        self.sent_clfs = sent_clfs
+        self.sent_vectorizer = sent_vectorizer
+
 
 
 class HybridDocModel(DocumentLevelModel):
@@ -867,9 +992,10 @@ class ModularCountVectorizer():
         2. creates {word1:1, word2:1...} dicts
         (note all set to '1' since the DictVectorizer we use assumes all missing are 0)
         """
-        return [self._dict_from_word_list(self._word_tokenize(document, prefix=prefix), weighting=1) for document in X]
+        return [self._dict_from_word_list(
+            self._word_tokenize(document, prefix=prefix), weighting=1) for document in X]
 
-    def _word_tokenize(self, text, prefix=None):
+    def _word_tokenize(self, text, prefix=None, stopword=True):
         """
         simple word tokenizer using the same rule as sklearn
         punctuation is ignored, all 2 or more letter characters are a word
@@ -879,11 +1005,14 @@ class ModularCountVectorizer():
         # print text
         # print "tokenized words"
         # print SIMPLE_WORD_TOKENIZER.findall(text)
+        stop_word_list = stopwords.words('english') if stopword else []
 
         if prefix:
-            return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
+            return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text) 
+                        if not word.lower() in stop_word_list]
         else:
-            return [word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text)]
+            return [word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text) 
+                        if not word.lower() in stop_word_list]
 
 
     def _dict_from_word_list(self, word_list, weighting=1):
@@ -944,9 +1073,33 @@ class ModularCountVectorizer():
         self.builder_add_docs(doc_list, prefix)
 
 
+    def _cap_features(self, n=50000):
+        token_counts_d = defaultdict(int)
+        for x_d in self.builder:
+            for t in x_d:
+                token_counts_d[t] += 1
 
+        sorted_d = sorted(
+            token_counts_d.iteritems(), key=operator.itemgetter(1), reverse=True)
+        
+        keep_these = [t[0] for t in sorted_d[:n]]
 
-    def builder_fit_transform(self):
+        builder_filtered = []
+        for x_d in self.builder:
+            filtered_d = {}
+            for token in keep_these:
+                if token in x_d:
+                    filtered_d[token] = x_d[token]
+            builder_filtered.append(filtered_d)
+        #pdb.set_trace()
+        self.builder = builder_filtered
+
+        
+
+    def builder_fit_transform(self, max_features=None):
+        if max_features is not None:
+            self._cap_features(n=max_features)
+
         return self.vectorizer.fit_transform(self.builder)
 
     def builder_transform(self):
@@ -1149,27 +1302,147 @@ def multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=Fa
                                 tuned_parameters, scoring='f1')
 
     kf = KFold(len(all_uids), n_folds=5, shuffle=False) ### TODO 250 is totally random
-    metrics = []
+    metrics = defaultdict(list)
+
+
+
 
     for fold_i, (train, test) in enumerate(kf):
+
+        print "Training on fold", fold_i,
         # note that we do *not* pass in a domain here, because
         # we use *all* domain training data
         X_train, y_train = d.X_y_uid_filtered(all_uids[train])
-        X_test, y_test = d.X_y_uid_filtered(all_uids[test], test_domain)
+        print "done!"
+        
 
         clf.fit(X_train, y_train)
 
-        y_preds = clf.predict(X_test)
-            
-        fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+        print "Testing on fold", fold_i,
+        for domain in CORE_DOMAINS:
+            # multitask uses same trained model for all domains, but test on separate test data
+            X_test, y_test = d.X_y_uid_filtered(all_uids[test], domain)
 
-        print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+            y_preds = clf.predict(X_test)
+                
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+            metrics[domain].append(fold_metric) # get the scores for positive instances (save them up since all in the wrong order here!)
+        print "done!"
+
+    # then recreate in the right order for printout
+    for domain in CORE_DOMAINS:
+
+        print
+        print domain
+        print "*" * 60
+        print
+
+        for fold_i, fold_metric in enumerate(metrics[domain]):
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+        # summary score
+
+        summary_metrics = np.mean(metrics[domain], axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+
+def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=False)):
+    
+    print "multitask! and hybrid! :)"
+    d = model
+    d.generate_data(binarize=True) # some variations use the quote data internally 
+                      # for sentence prediction (for additional features)
+
+    # d.X_uids contains all the UIds.
+    # d.y_uids contains a dictionary mapping domains to the UIds for
+    # which we have labels (in said domain)
+    #pdb.set_trace()
+    all_uids = d.X_uids
+    # d.vectorize()
+
+    ####
+    # the major change here is we don't loop through the domains!
+    tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+    clf = GridSearchCV(SGDClassifier(loss="log", penalty="L2"), 
+                                tuned_parameters, scoring='f1')
+
+    kf = KFold(len(all_uids), n_folds=5, shuffle=False) ### TODO 250 is totally random
+    metrics = defaultdict(list)
+
+
+
+    print "...generating sentence data,,,",
+    s = SentenceModel(test_mode=False)
+    s.generate_data()
+    s.vectorize()
+    print "done!"
+
+    sent_tuned_parameters = [{"alpha": np.logspace(-4, -1, 5)}, {"class_weight": [{1: i, -1: 1} for i in np.logspace(0, 2, 10)]}]
+
+
+    for fold_i, (train, test) in enumerate(kf):
+
+
+        
+
+
+        sent_clfs = defaultdict(list)
+
+        for domain in CORE_DOMAINS:
+            sents_X, sents_y = s.X_domain_all(domain=domain), s.y_domain_all(domain=domain)
+
+            sent_clfs[domain] = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
+            sent_clfs[domain].fit(sents_X, sents_y)
+
+
+
+        print "Training on fold", fold_i,
+
+        d.set_sent_model(sent_clfs, s.vectorizer)
+        d.vectorize()
+
+        # note that we do *not* pass in a domain here, because
+        # we use *all* domain training data
+        X_train, y_train = d.X_y_uid_filtered(all_uids[train])
+
+        clf.fit(X_train, y_train)
+        print "done!"
+
+        print "Testing on fold", fold_i,
+        for domain in CORE_DOMAINS:
+            # multitask uses same trained model for all domains, but test on separate test data
+            X_test, y_test = d.X_y_uid_filtered(all_uids[test], domain)
+
+            y_preds = clf.predict(X_test)
+                
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+            metrics[domain].append(fold_metric) # get the scores for positive instances (save them up since all in the wrong order here!)
+        print "done!"
+
+    # then recreate in the right order for printout
+    for domain in CORE_DOMAINS:
+
+        print
+        print domain
+        print "*" * 60
+        print
+
+        for fold_i, fold_metric in enumerate(metrics[domain]):
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+        # summary score
+
+        summary_metrics = np.mean(metrics[domain], axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+
 
 
 def document_prediction_test(model=DocumentLevelModel(test_mode=False)):
 
     print "Document level prediction"
-    pdb.set_trace()
     print "=" * 40
     print
 
@@ -1778,7 +2051,8 @@ def main():
     # hybrid_doc_prediction_test(model=HybridDocModel2(test_mode=False))
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
-    multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=True))
+    # multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=True))
+    multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=False))
 
 if __name__ == '__main__':
     main()
