@@ -1074,11 +1074,13 @@ class ModularCountVectorizer():
 
 
     def _cap_features(self, n=50000):
+        # count up each token.
         token_counts_d = defaultdict(int)
         for x_d in self.builder:
             for t in x_d:
                 token_counts_d[t] += 1
 
+        # sort by frequency
         sorted_d = sorted(
             token_counts_d.iteritems(), key=operator.itemgetter(1), reverse=True)
         
@@ -1100,6 +1102,7 @@ class ModularCountVectorizer():
         if max_features is not None:
             self._cap_features(n=max_features)
 
+        pdb.set_trace()
         return self.vectorizer.fit_transform(self.builder)
 
     def builder_transform(self):
