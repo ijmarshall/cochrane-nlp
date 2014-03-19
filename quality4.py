@@ -59,6 +59,8 @@ ALL_DOMAINS = CORE_DOMAINS[:] # will be added to later
 
 RoB_CLASSES = ["YES", "NO", "UNKNOWN"]
 
+STOP_WORDS = set(stopwords.words('english'))
+
 # @TODO move me
 domain_str = lambda d: d.lower().replace(" ", "_")
 
@@ -378,9 +380,9 @@ class SentenceModel():
     def vectorize(self):
 
         self.vectorizer = ModularCountVectorizer()
-
+        # self.X = self.vectorizer.fit_transform(self.X_list, max_features=50000)
         self.X = self.vectorizer.fit_transform(self.X_list)
-
+    
 
 
 
@@ -613,7 +615,8 @@ class MultiTaskDocumentModel(DocumentLevelModel):
         # note that this will keep the <max_features> most common
         # features, regardless of whether or not they are 'interaction'
         # features
-        self.X = self.vectorizer.builder_fit_transform(max_features=50000)
+        # self.X = self.vectorizer.builder_fit_transform(max_features=50000)
+        self.X = self.vectorizer.builder_fit_transform()
    
 
     def X_y_uid_filtered(self, uids, domain=None):
@@ -725,6 +728,7 @@ class MultiTaskHybridDocumentModel(MultiTaskDocumentModel):
             self.vectorizer.builder_add_docs(sent_interaction_list, prefix=d_str+"-sent-")
 
         self.X = self.vectorizer.builder_fit_transform()
+        # self.X = self.vectorizer.builder_fit_transform(max_features=50000)
 
     def get_sent_predictions_for_doc(self, doc, domain):
 
@@ -1001,11 +1005,8 @@ class ModularCountVectorizer():
         punctuation is ignored, all 2 or more letter characters are a word
         """
 
-        # print "text:"
-        # print text
-        # print "tokenized words"
-        # print SIMPLE_WORD_TOKENIZER.findall(text)
-        stop_word_list = stopwords.words('english') if stopword else []
+
+        stop_word_list = STOP_WORDS if stopword else set()
 
         if prefix:
             return [prefix + word.lower() for word in SIMPLE_WORD_TOKENIZER.findall(text) 
@@ -1042,10 +1043,14 @@ class ModularCountVectorizer():
         dict_list = self._transform_X_to_dict(X, prefix=prefix)
         return self.vectorizer.transform(dict_list)
 
-    def fit_transform(self, X, prefix=None):
+    def fit_transform(self, X, prefix=None, max_features=None):
         # X is a list of document strings
         # word tokenizes each one, then passes to a dict vectorizer
         dict_list = self._transform_X_to_dict(X, prefix=prefix)
+
+        if max_features is not None:
+            dict_list = self._cap_features(dict_list, n=max_features)
+
         return self.vectorizer.fit_transform(dict_list)
 
     def get_feature_names(self):
@@ -1073,34 +1078,26 @@ class ModularCountVectorizer():
         self.builder_add_docs(doc_list, prefix)
 
 
-    def _cap_features(self, n=50000):
-        # count up each token.
-        token_counts_d = defaultdict(int)
-        for x_d in self.builder:
-            for t in x_d:
-                token_counts_d[t] += 1
+    def _cap_features(self, X, n=50000):
+        token_counts = collections.Counter()
 
-        # sort by frequency
-        sorted_d = sorted(
-            token_counts_d.iteritems(), key=operator.itemgetter(1), reverse=True)
-        
-        keep_these = [t[0] for t in sorted_d[:n]]
+        for x_d in X:
+            token_counts.update(x_d)
 
-        builder_filtered = []
-        for x_d in self.builder:
-            filtered_d = {}
-            for token in keep_these:
-                if token in x_d:
-                    filtered_d[token] = x_d[token]
-            builder_filtered.append(filtered_d)
-        #pdb.set_trace()
-        self.builder = builder_filtered
+        keep_these = set([t[0] for t in token_counts.most_common(n)])
+
+        X_filtered = []
+
+        for x_d in X:
+            X_filtered.append({k: v for k, v in x_d.iteritems() if k in keep_these})
+
+        return X_filtered
 
         
 
     def builder_fit_transform(self, max_features=None):
         if max_features is not None:
-            self._cap_features(n=max_features)
+            self.builder = self._cap_features(self.builder, n=max_features)
 
         pdb.set_trace()
         return self.vectorizer.fit_transform(self.builder)
@@ -1385,9 +1382,6 @@ def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel
 
 
     for fold_i, (train, test) in enumerate(kf):
-
-
-        
 
 
         sent_clfs = defaultdict(list)
@@ -2054,8 +2048,8 @@ def main():
     # hybrid_doc_prediction_test(model=HybridDocModel2(test_mode=False))
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
-    # multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=True))
-    multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=False))
+    multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=False))
+    # multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=False))
 
 if __name__ == '__main__':
     main()
