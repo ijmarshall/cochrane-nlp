@@ -1054,14 +1054,18 @@ class ModularCountVectorizer():
         dict_list = self._transform_X_to_dict(X, prefix=prefix)
         return self.vectorizer.transform(dict_list)
 
-    def fit_transform(self, X, prefix=None, max_features=None):
+    def fit_transform(self, X, prefix=None, max_features=None, low=None):
         # X is a list of document strings
         # word tokenizes each one, then passes to a dict vectorizer
         dict_list = self._transform_X_to_dict(X, prefix=prefix)
-
-        #if max_features is not None:
-        #    dict_list = self._cap_features(dict_list, n=max_features)
         X = self.vectorizer.fit_transform(dict_list)
+
+        if max_features is not None or low is not None:
+            X, removed = self._limit_features(X.tocsc(), 
+                        self.vectorizer.vocabulary_, low=low, limit=max_features)
+            print "pruned %s features!" % len(removed)
+            X = X.tocsc()
+
         return self.vectorizer.fit_transform(dict_list)
 
     def get_feature_names(self):
@@ -1088,28 +1092,13 @@ class ModularCountVectorizer():
         doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
         self.builder_add_docs(doc_list, prefix)
 
-
-    def _cap_features(self, X, n=50000):
-        token_counts = collections.Counter()
-
-        for x_d in X:
-            token_counts.update(x_d)
-
-        keep_these = set([t[0] for t in token_counts.most_common(n)])
-
-        X_filtered = []
-
-        for x_d in X:
-            X_filtered.append({k: v for k, v in x_d.iteritems() if k in keep_these})
-
-        return X_filtered
-
         
     def builder_fit_transform(self, max_features=None, low=2):
         X = self.vectorizer.fit_transform(self.builder)
-        if max_features is not None:
+        if max_features is not None or low is not None:
             X, removed = self._limit_features(X.tocsc(), 
                         self.vectorizer.vocabulary_, low=low, limit=max_features)
+            print "pruned %s features!" % len(removed)
             X = X.tocsc()
 
         return X #self.vectorizer.fit_transform(self.builder)
