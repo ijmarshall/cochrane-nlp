@@ -26,6 +26,7 @@ from sklearn import cross_validation
 from sklearn import metrics
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
+from sklearn.externals import six
 
 from collections import defaultdict
 
@@ -546,6 +547,7 @@ class MultiTaskDocumentModel(DocumentLevelModel):
     def vectorize(self):
 
         self.vectorizer = ModularCountVectorizer()
+
         self.vectorizer.builder_clear()
 
         self.X_mt_labels = [] # which rows correspond to which doc/interactions? 
@@ -616,7 +618,7 @@ class MultiTaskDocumentModel(DocumentLevelModel):
         # features, regardless of whether or not they are 'interaction'
         # features
         # self.X = self.vectorizer.builder_fit_transform(max_features=50000)
-        self.X = self.vectorizer.builder_fit_transform()
+        self.X = self.vectorizer.builder_fit_transform(low=3)
    
 
     def X_y_uid_filtered(self, uids, domain=None):
@@ -727,8 +729,14 @@ class MultiTaskHybridDocumentModel(MultiTaskDocumentModel):
             self.vectorizer.builder_add_docs(interaction_list, prefix=d_str+"-doc-")
             self.vectorizer.builder_add_docs(sent_interaction_list, prefix=d_str+"-sent-")
 
-        self.X = self.vectorizer.builder_fit_transform()
+        self.X = self.vectorizer.builder_fit_transform(max_features=200000, low=3)
         # self.X = self.vectorizer.builder_fit_transform(max_features=50000)
+
+        ####
+        # maybe record the feature indices here that are to receive
+        # different 'amounts' of regularization
+        ####
+
 
     def get_sent_predictions_for_doc(self, doc, domain):
 
@@ -889,7 +897,8 @@ class HybridModel(SentenceModel):
 
         for interaction_class in interaction_classes:
 
-            self.vectorizer.builder_add_interaction_features(sents, self.y_judgements[domain]==interaction_class, prefix="rob-" + interaction_class + "-")
+            self.vectorizer.builder_add_interaction_features(
+                sents, self.y_judgements[domain]==interaction_class, prefix="rob-" + interaction_class + "-")
 
         self.X = self.vectorizer.builder_fit_transform()
 
@@ -977,6 +986,10 @@ class HybridModelProbablistic(HybridModel):
 
 
 
+def _document_frequency(X):
+    """Count the number of non-zero values for each feature in csc_matrix X."""
+    return np.diff(X.indptr)
+
 
 class ModularCountVectorizer():
     """
@@ -1029,8 +1042,6 @@ class ModularCountVectorizer():
 
         output = []
 
-
-
         for dict1, dict2 in zip(dictlist1, dictlist2):
             output.append(dict(dict1.items() + dict2.items()))
             # note that this *overwrites* any duplicate keys with the key/value from dictlist2!!
@@ -1048,9 +1059,9 @@ class ModularCountVectorizer():
         # word tokenizes each one, then passes to a dict vectorizer
         dict_list = self._transform_X_to_dict(X, prefix=prefix)
 
-        if max_features is not None:
-            dict_list = self._cap_features(dict_list, n=max_features)
-
+        #if max_features is not None:
+        #    dict_list = self._cap_features(dict_list, n=max_features)
+        X = self.vectorizer.fit_transform(dict_list)
         return self.vectorizer.fit_transform(dict_list)
 
     def get_feature_names(self):
@@ -1094,20 +1105,58 @@ class ModularCountVectorizer():
         return X_filtered
 
         
-
-    def builder_fit_transform(self, max_features=None):
+    def builder_fit_transform(self, max_features=None, low=2):
+        X = self.vectorizer.fit_transform(self.builder)
         if max_features is not None:
-            self.builder = self._cap_features(self.builder, n=max_features)
+            X, removed = self._limit_features(X.tocsc(), 
+                        self.vectorizer.vocabulary_, low=low, limit=max_features)
+            X = X.tocsc()
 
-        pdb.set_trace()
-        return self.vectorizer.fit_transform(self.builder)
+        return X #self.vectorizer.fit_transform(self.builder)
 
     def builder_transform(self):
         return self.vectorizer.transform(self.builder)   
 
 
+    def _limit_features(self, cscmatrix, vocabulary, high=None, low=None,
+                        limit=None):
+        """Remove too rare or too common features.
 
+        Prune features that are non zero in more samples than high or less
+        documents than low, modifying the vocabulary, and restricting it to
+        at most the limit most frequent.
 
+        This does not prune samples with zero features.
+        """
+        if high is None and low is None and limit is None:
+            return cscmatrix, set()
+
+        # Calculate a mask based on document frequencies
+        dfs = _document_frequency(cscmatrix)
+        mask = np.ones(len(dfs), dtype=bool)
+        if high is not None:
+            mask &= dfs <= high
+        if low is not None:
+            mask &= dfs >= low
+        if limit is not None and mask.sum() > limit:
+            # backward compatibility requires us to keep lower indices in ties!
+            # (and hence to reverse the sort by negating dfs)
+            mask_inds = (-dfs[mask]).argsort()[:limit]
+            new_mask = np.zeros(len(dfs), dtype=bool)
+            new_mask[np.where(mask)[0][mask_inds]] = True
+            mask = new_mask
+
+        new_indices = np.cumsum(mask) - 1  # maps old indices to new
+        removed_terms = set()
+        for term, old_index in list(six.iteritems(vocabulary)):
+            if mask[old_index]:
+                vocabulary[term] = new_indices[old_index]
+            else:
+                del vocabulary[term]
+                removed_terms.add(term)
+        kept_indices = np.where(mask)[0]
+
+        return cscmatrix[:, kept_indices], removed_terms
 
 def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test_mode=True)):
     print
@@ -1315,8 +1364,8 @@ def multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=Fa
         X_train, y_train = d.X_y_uid_filtered(all_uids[train])
         print "done!"
         
-
         clf.fit(X_train, y_train)
+      
 
         print "Testing on fold", fold_i,
         for domain in CORE_DOMAINS:
@@ -1347,7 +1396,7 @@ def multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=Fa
 
 
 
-def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=False)):
+def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=True)):
     
     print "multitask! and hybrid! :)"
     d = model
@@ -1367,12 +1416,12 @@ def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel
     clf = GridSearchCV(SGDClassifier(loss="log", penalty="L2"), 
                                 tuned_parameters, scoring='f1')
 
-    kf = KFold(len(all_uids), n_folds=5, shuffle=False) ### TODO 250 is totally random
+    kf = KFold(len(all_uids), n_folds=5, shuffle=False) 
     metrics = defaultdict(list)
 
 
 
-    print "...generating sentence data,,,",
+    print "...generating sentence data...",
     s = SentenceModel(test_mode=False)
     s.generate_data()
     s.vectorize()
@@ -1389,8 +1438,8 @@ def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel
         for domain in CORE_DOMAINS:
             sents_X, sents_y = s.X_domain_all(domain=domain), s.y_domain_all(domain=domain)
 
-            sent_clfs[domain] = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='recall')
-            sent_clfs[domain].fit(sents_X, sents_y)
+            sent_clfs[domain] = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), 
+                                                tuned_parameters, scoring='recall')
 
 
 
@@ -1402,6 +1451,7 @@ def multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel
         # note that we do *not* pass in a domain here, because
         # we use *all* domain training data
         X_train, y_train = d.X_y_uid_filtered(all_uids[train])
+        sent_clfs[domain].fit(sents_X, sents_y)
 
         clf.fit(X_train, y_train)
         print "done!"
