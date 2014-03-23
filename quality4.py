@@ -40,7 +40,7 @@ from journalreaders import PdfReader
 
 import cPickle as pickle
 
-from sklearn.metrics import f1_score, make_scorer, fbeta_score
+from sklearn.metrics import f1_score, make_scorer, fbeta_score, accuracy_score
 import nltk
 from nltk.corpus import stopwords
 
@@ -618,7 +618,7 @@ class MultiTaskDocumentModel(DocumentLevelModel):
         # features, regardless of whether or not they are 'interaction'
         # features
         # self.X = self.vectorizer.builder_fit_transform(max_features=50000)
-        self.X = self.vectorizer.builder_fit_transform(low=3)
+        self.X = self.vectorizer.builder_fit_transform(low=3, max_features=10)
    
 
     def X_y_uid_filtered(self, uids, domain=None):
@@ -1235,6 +1235,80 @@ def sentence_prediction_test(class_weight={1: 5, -1:1}, model=SentenceModel(test
         print show_most_informative_features(s.vectorizer, clf)
 
 
+def stupid_sentence_prediction_test(model=SentenceModel(test_mode=False)):
+    print
+    print
+    print
+
+    print "Sentence level prediction"
+    print "=" * 40
+    print
+
+    s = model
+
+
+    print "Model name:\t" + s.__class__.__name__
+    print s.__doc__
+
+    # print "class_weight=%s" % (str(class_weight),)
+    
+    
+    s.generate_data()
+    s.vectorize()
+    
+    for test_domain in CORE_DOMAINS:
+        print ("*"*40) + "\n\n" + test_domain + "\n\n" + ("*" * 40)
+        
+
+
+        domain_uids = s.domain_uids(test_domain)
+        no_studies = len(domain_uids)
+
+
+
+
+        kf = KFold(no_studies, n_folds=5, shuffle=False, indices=True)
+
+        
+
+        print "making scorer"
+
+
+        
+
+        metrics = []
+
+        for fold_i, (train, test) in enumerate(kf):
+
+
+
+            
+            X_test, y_test = s.X_y_uid_filtered(domain_uids[test], test_domain)
+
+            
+
+            y_preds = np.array([1] * len(y_test)) 
+
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+
+            fold_metric = np.append(fold_metric, accuracy_score(y_test, y_preds))
+
+            metrics.append(fold_metric) # get the scores for positive instances
+
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f, precision %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2], fold_metric[3])
+            
+
+            # if not sample and list_features:
+            #     # not an obvious way to get best features for ensemble
+            #     print show_most_informative_features(s.vectorizer, clf)
+            
+
+        # summary score
+
+        summary_metrics = np.mean(metrics, axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f, precision %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2], summary_metrics[3])
+
 
 
 
@@ -1382,6 +1456,58 @@ def multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=Fa
         summary_metrics = np.mean(metrics[domain], axis=0)
         print "=" * 40
         print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
+
+def dummy_document_prediction():
+    
+    print "dummy!"
+    
+
+    d = DocumentLevelModel(test_mode=False)
+    d.generate_data(binarize=True) # some variations use the quote data internally 
+                      # for sentence prediction (for additional features)
+
+    d.vectorize()
+    all_uids = d.X_uids
+
+
+
+    kf = KFold(len(all_uids), n_folds=5, shuffle=False) ### TODO 250 is totally random
+    metrics = defaultdict(list)
+
+
+    for fold_i, (train, test) in enumerate(kf):
+
+      
+
+        print "Testing on fold", fold_i,
+        for domain in CORE_DOMAINS:
+            # multitask uses same trained model for all domains, but test on separate test data
+
+            X_test, y_test = d.X_y_uid_filtered(all_uids[test], domain)
+
+            y_preds = np.array(([1] * len(y_test))) # everything gets marked low risk of bias
+                
+            fold_metric = np.array(sklearn.metrics.precision_recall_fscore_support(y_test, y_preds))[:,1]
+            metrics[domain].append(fold_metric) # get the scores for positive instances (save them up since all in the wrong order here!)
+        print "done!"
+
+    # then recreate in the right order for printout
+    for domain in CORE_DOMAINS:
+
+        print
+        print domain
+        print "*" * 60
+        print
+
+        for fold_i, fold_metric in enumerate(metrics[domain]):
+            print "fold %d:\tprecision %.2f, recall %.2f, f-score %.2f" % (fold_i, fold_metric[0], fold_metric[1], fold_metric[2])
+        # summary score
+
+        summary_metrics = np.mean(metrics[domain], axis=0)
+        print "=" * 40
+        print "mean score:\tprecision %.2f, recall %.2f, f-score %.2f" % (summary_metrics[0], summary_metrics[1], summary_metrics[2])
+
 
 
 
@@ -2076,6 +2202,8 @@ def binary_hybrid_doc_prediction_test2(model=HybridDocModel(test_mode=True)):
 
 
 def main():
+    # dummy_document_prediction()
+    stupid_sentence_prediction_test()
     # true_hybrid_prediction_test(model=HybridModelProbablistic(test_mode=False))
     # sentence_prediction_test(model=SentenceModel(test_mode=False))
     # simple_hybrid_prediction_test(model=HybridModel(test_mode=False))
@@ -2087,7 +2215,7 @@ def main():
     # hybrid_doc_prediction_test(model=HybridDocModel2(test_mode=False))
     # document_prediction_test(model=DocumentLevelModel(test_mode=False))
 
-    multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=False))
+    # multitask_document_prediction_test(model=MultiTaskDocumentModel(test_mode=False))
     # multitask_hybrid_document_prediction_test(model=MultiTaskHybridDocumentModel(test_mode=False))
 
 if __name__ == '__main__':
