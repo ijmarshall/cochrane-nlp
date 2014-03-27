@@ -617,6 +617,7 @@ def simple_model_test(data_filter=DocFilter):
 
         docs = data_filter(dat, domain=domain)
         uids = np.array(docs.available_ids)
+        print "%d docs obtained for domain: %s" % (len(uids), domain)
 
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
@@ -644,7 +645,7 @@ def simple_model_test(data_filter=DocFilter):
 
             stupid_metrics.add_preds_test([1] * len(y_test), y_test, domain=domain)
 
-    metrics.save_csv('test_output.csv')
+    metrics.save_csv('test_output_full.csv')
 
     stupid_metrics.save_csv('stupid_output.csv')
             
