@@ -4,6 +4,37 @@ Random sequence generation:
   - Random sequence generation
   - Adequate sequence generation?
   - Randomisation
+  - Sequence generation.
+  - Randomization
+  - Randomisation adequately described/protected?
+  - Consecutive patients in the control group?
+  - Was a consecutive or random sample of patients enrolled?
+  - Randomization?
+  - Randomized design? If cross-over design, order of presentation of the different
+    formats randomized?
+  - Blinding (RCT / CCT)
+  - Randomisation Method
+  - Subjects randomised to intervention groups?
+  - Consecutive patients in the study group?
+  - A) Adequate randomisation
+  - Allocation sequence generation
+  - Sequence generation
+  - Randomisation method
+  - Method of Randomisation described?
+  - Randomisation method reported
+  - Randomization method
+  - Random sequence generation (Trials)
+  - Randomisation?
+  - Random sequence generation?
+  - 23. Randomization
+  - Free of blocked randomisation bias
+  - Order of treatments randomized?
+  - Free from bias due to blocked randomisation
+  - 'Allocation: sequence generation'
+  - Selection method random or consecutive
+  - Is it clear that the order of receiving treatment was randomised?
+
+
 
 Allocation concealment:
   - Adequate sequence generation
@@ -15,6 +46,16 @@ Allocation concealment:
   - Concealment of allocation (RCT / CCT)
   - Knowledge of the allocation adequately prevented(ITS)?
   - Selective recruitment of participants
+  - Concealment of allocation (RCT / CCT)
+  - Randomized intervention assignment concealed?
+  - Allocation bias
+  - Adequate concealment of allocation
+  - Randomised intervention assignment concealed?
+  - 'Allocation: sequence concealment'
+  - 24. Allocation concealment
+  - Concealment of Allocation
+  - Allocation concealment (Trials)
+  - B) Allocation concealment (selection bias)
 
 Blinding of participants and personnel:
   - Blinding (participant)
@@ -55,6 +96,91 @@ Blinding of participants and personnel:
   - Blinding, quality assessment
   - Knowledge of the interventions adequately prevented during the study?
   - Blinding (RCT / CCT)
+  - Ascertainment of intervention
+  - Free of performance bias?
+  - Blinding of care providers?
+  - Patient blinding
+  - Provider blinding
+  - Free from performance bias?
+  - Awareness of monitored usage?
+  - Described as double-blind?
+  - Physicians blinded
+  - Credible placebo
+  - Blinding of participants and personnel (LABA+TIO versus LABA) (performance bias)
+  - Knowledge of the interventions adequately prevented during the study?
+  - Blinding of care provider
+  - Adequate blinding of patients?
+  - D) Blinding (care provider)
+  - Blinding method
+  - Was the patient blinded?
+  - "Blinding of intervention \_providers"
+  - Masking of participants (performance bias)
+  - Blinding of personnel (performance bias)
+  - Blinding of anaesthesiologists?
+  - Knowledge of the allocation adequately prevented(ITS)?
+  - Performance bias (care programme discrepancies)?
+  - Identical care programmes?
+  - Performance bias
+  - Blinding? patients
+  - 'Performance: blinding during study'
+  - Personnel blinding?
+  - Blinding (performance bias) - participants
+  - Blinding of participants and personnel
+  - Masking of study participants (performance bias)
+  - Vitamin C and placebo indistinguishable?
+  - Patient blinding?
+  - Participant blinding?
+  - Blinding? providers
+  - Knowledge of the allocated interventions adequately prevented during the study
+  - 'Performance and detection: blinding'
+  - Blinding of health care providers (performance bias)
+  - Blinding of patients
+  - Blinding of participants and personnel (LABA+TIO versus TIO) (performance bias)
+  - Blinding clinicians
+  - Blinding - Patient
+  - Masking study personnel (performance bias)
+  - Care providers blinded?
+  - Blinding of patients (performance bias)
+  - Blinding of the participant
+  - Blinding of investigators that implemented the intervention
+  - Care provider blinding?
+  - Free of performance bias (from non-trial differences in care provision)?
+  - Adequate blinding of physicians/physical therapists?
+  - Double-dummy technique used?
+  - Provider blinded?
+  - Blinding - participants?
+  - Blinding of participants?
+  - Blinding of care providers
+  - Blinding of carers?
+  - Credible Placebo
+  - Blinding (performance bias) - care givers
+  - Method of Blinding described?
+  - 'Attention bias: equal amounts of attention to all groups (obligatory treatment
+    components)?'
+  - Use of blinding
+  - 14. Blinding (subjects)
+  - Blinding (participant)
+  - Clinician blinding
+  - Knowledge of allocated interventions adequately prevented during the study
+  - Blinding of personnel?
+  - Masking of participants and personnel (performance bias)
+  - Blinding of participants (objective outcomes)
+  - Extra performance bias (care programmes and surgical experience, etc.)
+  - Blinding participants
+  - Blinding of healthcare providers
+  - Blinding - Operator/sedationist
+  - Blinding of participants and investigators.
+  - Blinding of healthcare provider?
+  - Blinding of participants/personnel (efficacy outcomes);performance bias
+  - Blinding of physicians
+  - Blinding of participants/personnel (safety outcomes);performance bias
+  - Blinding of participants
+  - Blinding of the patient?
+  - C) Blinding (patient)
+  - Blinding of study subjects?
+  - Blinding of participants (subjective outcomes)
+  - Blinding (Participant)
+  - Blinding of investigators?
 
 
 Blinding of outcome assessment:
@@ -107,6 +233,103 @@ Blinding of outcome assessment:
   - Outcome assessors blinded to treatment allocation
   - Blinding outcome assessor
   - Blinding pathologist
+  - Measurement bias
+  - Blinding of outcome assessors (detection bias)
+  - Masking of periodontal outcome assessor
+  - Reference standard results blinded?
+  - Blinding of assessor?
+  - 'Detection: blind outcome assessment'
+  - Blinding of outcome assessment (efficacy outcomes);detection bias
+  - Independent Assessment of causation (detection bias)
+  - 'Blinding of outcome assessor (detection bias): quality of life'
+  - Blinded review of CT/MRI-scans?
+  - E) Blinding (outcome assessor)
+  - Blinding of assessment of subjective outcomes
+  - Were the reference standard results for TB detection interpreted without knowledge
+    of the results of the index test?
+  - Blinding (assessor)
+  - 15. Blinding (outcome assessors)
+  - Blinded assessment of primary outcomes
+  - Blinded to assessors
+  - 'Blinding (subjective outcomes: use of substances as measured by self report, side
+    effects)'
+  - Index test results blinded?
+  - Blinding outcome assessors?
+  - Blinding of the investigator
+  - Blinding - Outcome assessor
+  - 'Blinding of outcome assessors (detection bias): duration of empirical antibiotics
+    or antimycotics'
+  - Free of detection bias?
+  - Masking of outcome assessors (detection bias)
+  - Blinding pathologist
+  - Detection bias (biochemical validation of smoking outcomes)
+  - Masking of study personnel (performance bias)
+  - Masking of data analyzers
+  - PCS/RCS-Assessment of Oucome
+  - Blinding of subjective outcomes?
+  - Baseline outcome measurement
+  - Assessor blinding?
+  - Blinded clinical operator
+  - Outcome assessment blinded?
+  - Blinding of Outcome Assessment
+  - Blinding of outcome assessment (detection bias) (reoperation, treatment failure,
+    range of motion)
+  - Free of detection bias (from e.g. differences in follow-up procedures)?
+  - Blinding (detection bias) - outcome assessor
+  - Was the outcome assessor blinded?
+  - Blinding of data analysers?
+  - Protection against Detection Bias
+  - Were the index test results interpreted without knowledge of the results of the
+    reference standard?
+  - Blinded assessors
+  - 'Blinding of outcome assessors (detection bias): time to first febrile episode'
+  - Blinding of outcome assessors (detection bias) - ITS
+  - Blinding - Outcome Assessors
+  - Outcome assessment
+  - Blinding of outcome assessment (detection bias) (Patient satisfaction, health status).
+  - Blinding of data assessors?
+  - Blinding? outcome assessors
+  - Outcome assessor blinding
+  - Scans read blind to clinical information?
+  - Were the reference standard results for rifampicin resistance detection interpreted
+    without knowledge of the results of the index test?
+  - Blinding (subjective outcomes)?
+  - Assessments of outcomes
+  - Blinding of the outcome assessor
+  - Blinded assessment of outcomes (CBA)
+  - Risk of detection bias?
+  - Blinding (objective outcomes)?
+  - Detection bias
+  - Masking of laboratory assessment (Primary outcome)
+  - Blinding outcome assessor
+  - Masking of outcome assessment (detection bias)
+  - Blinding of analysts
+  - Outcome assessors blinded to treatment allocation
+  - Blinding - outcome assessors?
+  - Blinding of outcome assessor?
+  - Blinded assessment of primary outcome
+  - 'Blinding (objective outcomes: drop out, use of substances measured by urine analysis)'
+  - Assessment blinding
+  - Blinding of outcome assessors
+  - Blinded Assessors
+  - Blinded assessment of outcomes (ITS)
+  - Low risk of detection bias?
+  - Blinded outcome assessor
+  - Assessment of outcome
+  - Detection Bias
+  - 'Blinding of outcome assessor (detection bias): diet acceptability'
+  - Masking outcome assessors (detection bias)
+  - Detection adequate?
+  - Blinding of outcome assessment (safety outcomes);detection bias
+  - Blinded outcome assessment (healing)
+  - Outcome assessor blinding?
+  - Blinded assessment of primary outcome(s) (protection against detection bias)
+  - Blinded assessor
+  - Exposure ascertainment, including same method for cases and controls
+  - Ascertainment of exposure
+  - 'Blinding of outcome assessors (detection bias): infections'
+  - Blinding of assessors?
+  - Blinding (Outcome Assessor)
 
 
 Incomplete outcome data:
@@ -146,6 +369,130 @@ Incomplete outcome data:
   - Losses to follow-up less than 20%
   - Incomplete outcome data (attrition bias) - ITS
   - Completeness of data set (ITS)
+  - Non-response rate
+  - F) Incomplete outcome data (attrition bias)
+  - Complete follow-up assessment
+  - Incomplete outcome data (attrition bias) - ITS
+  - 'Incomplete outcome data (attrition bias): quality of life'
+  - Adequacy of follow-up of the cohorts
+  - Were all patients included in the analysis?
+  - 26. Incomplete outcome data
+  - Non response rate
+  - Loss to follow up
+  - Drop rate described and acceptable?
+  - Intention to Treat analysis?
+  - Incomplete outcome data adequately addressed (attrition bias)
+  - Adjustment for non-response
+  - Intention-to-treat/Drop-outs
+  - ITT-analysis
+  - Follow up of patients
+  - Incomplete outcome data addressed? (Post-treatment)
+  - 'Incomplete outcome data (attrition bias): infections'
+  - Was the drop-out rate described and acceptable?
+  - Adequacy of follow up of cohorts?
+  - Intention-to-treat analysis - was it performed?
+  - Loss to follow-up
+  - Was the withdrawal/drop-out rate described, acceptable (<20%), and comparable in
+    both groups?
+  - Follow-up of patients/caregivers (CBA)
+  - Analysis by intention-to-treat
+  - Completeness of (follow up) data?
+  - Follow-up of patients
+  - Attrition Bias
+  - Incomplete follow-up outcome data addressed?
+  - ITT analysis?
+  - Free of attrition bias?
+  - Reporting of losses of follow-up
+  - Addressing incomplete data <20%
+  - ITT analysis
+  - Low risk of attrition bias?
+  - Losses to follow up taken into account?
+  - 'Incomplete outcome reporting: intention-to-treat analysis performed?'
+  - Losses to follow-up taken into account?
+  - Withdrawals and drop-outs
+  - Complete follow up?
+  - Completeness of follow-up
+  - Adequate follow-up response
+  - Adequate follow-up?
+  - Loss to Follow-up explained?
+  - Intention-to-treat (ITT) analysis
+  - 'Incomplete outcome data (attrition bias): time to first febrile episode'
+  - Completeness of follow-up?
+  - Reporting of participants by allocation group?
+  - Intention-to-treat analysis (function)?
+  - Less than 25% lost to follow-up?
+  - Missing data
+  - Withdrawals or dropouts?
+  - Intention-to-treat-analysis?
+  - ITT - was it performed?
+  - Incomplete outcome data?
+  - Incomplete outcome data assessed?
+  - Drop-outs
+  - ITT analysis or 100% follow-up?
+  - Follow-up for live birth rate
+  - Intention-to-treat analysis (pain)?
+  - Drop outs (%) > 10
+  - Risk of attrition bias?
+  - Completeness of follow up
+  - Withdrawals & dropouts
+  - Attrition
+  - Dropout acceptable?
+  - Attrition and right censoring less than 15% (continuous data)
+  - Attrition bias
+  - intention to treat analysis?
+  - Incomplete data
+  - Protocol Deviation balanced?
+  - 'Incomplete outcome data (attrition bias): duration of empirical antibiotics and
+    antimycotics'
+  - Description of Withdrawals and Drop outs?
+  - Incomplete outcome data addressed?(adverse outcomes)
+  - Incomplete data outcome reported?
+  - Adequate follow up?
+  - Rates of follow up
+  - Adherence to the intention-to-treat principle
+  - Missing values > 10%
+  - Withdrawals explained?
+  - Withdrawals >10%
+  - 'Incomplete outcome data (attrition bias): overall survival'
+  - Intention-to-treat-analysis
+  - Protection against exclusion or selection bias
+  - 'Attrition: incomplete outcome data'
+  - Incomplete Outcome Assessment
+  - ITT Analysis?
+  - Absence of large or differential losses to follow up?
+  - Follow up of participants
+  - analysis of intention-to-treat
+  - Missing values >10%
+  - Intention-to-treat analysis performed?
+  - 'Cohort: follow-up length and adequacy (including loss to follow up)'
+  - Withdrawals > 10%
+  - Intention to treat
+  - Intention to treat analysis
+  - Incomplete outcome data addressed? ITT
+  - Did the study avoid inappropriate exclusions?
+  - Intention-to-treat/Drop-outs?
+  - Intention-to-treat
+  - 17. Follow-up
+  - Intention to Treat Analysis
+  - Follow-up?
+  - Intention to treat Analysis
+  - Dropouts reported
+  - Intention-to-treat?
+  - Follow up and exclusions
+  - Free from follow up bias?
+  - Intention to treat?
+  - Free attrition bias?
+  - Incomplete outcome data addressed (ITS) ?
+  - Incomplete outcome data (ITT analysis)
+  - Incomplete outcome data addressed (ITS)?
+  - Losses to follow-up
+  - Intention-to-treat (ITT) analysis?
+  - Complete follow up of all trials?
+  - 'Incomplete outcome data (attrition bias): diet acceptability'
+  - Intention-to-Treat Analysis
+  - Incomplete outcome data addressed? - dropouts
+  - Incomple outcome assessment
+  - Intent to treat analysis
 
 
 Selective reporting:
@@ -158,6 +505,26 @@ Selective reporting:
   - Selective reporting (reporting bias) - ITS
   - Outcome Reporting
   - Outcomes reported
+  - 'Reporting: unreported outcomes'
+  - Selective outcome reporting
+  - Missing data on primary interventions/outcomes
+  - Outcomes reported
+  - Outcome Reporting
+  - G) Randomised participants analysed in their groups (reporting bias)
+  - Free of selected reporting (ITS) ?
+  - Reporting bias
+  - Selective reporting (reporting bias) - ITS
+  - Selective Outcome Reporting
+  - Study free from selective outcome reporting? (reporting bias)
+  - Bias due to missing data
+  - Free of selective reporting
+  - Selective outcome reporting?
+  - H) Selective reporting (reporting bias)
+  - Selective reporting?
+  - Free of selective reporting (adverse outcomes)
+  - Selective reporting and other sources of bias
+  - Free of selective outcome reporting?
+  - Selective reporting
 
 
 Other sources of bias - General:
@@ -383,3 +750,670 @@ Inseparable combinations of other criteria:
   - Random sequence generation/allocation concealment (selection bias)
   - Summary Assessment of Bias?
   - Extra performance bias (care programmes and surgical experience, etc.)
+
+Uncategorised other:
+  - PCS/RCS-Comparability
+  - Explicit in-/exclusion criteria
+  - Treatment adherence?
+  - Specification of primary outcome?
+  - Data collection methods
+  - Diagnostic criteria
+  - Severity of AD
+  - Protection against contamination (intervention and controls)
+  - Washout?
+  - Early stopping of trial
+  - Are there concerns that the index test, its conduct, or interpretation differ from
+    the review question?
+  - Free of recruitment bias
+  - 'Exposed cohort: representativeness'
+  - Baseline outcome measurements similar (selection bias)
+  - Imbalance of outcome measures at baseline
+  - 'Other bias: Selection of non-exposed cohort?'
+  - Validity of outcomes for context
+  - Comparability of cohorts on the basis of the design or analysis
+  - Reliable primary outcome measure
+  - Appropriate Analysis
+  - Adequate baseline response
+  - Baseline outcome measurement similar?
+  - Representative intervention group
+  - Differential verification avoided?
+  - Baseline comparability?
+  - Similar baseline characteristics
+  - Groups similar at baseline?
+  - Overall assessment of risk of bias
+  - Control for bias
+  - Follow-up of professionals (protection against exclusion bias)
+  - No bias due to early stopping?
+  - Unlikely to affect data collection (ITS)?
+  - Objective outcome?
+  - Certainty of AD
+  - power calculation
+  - Index test execution described?
+  - 20. Outcome measures
+  - Are there concerns that the included patients and setting do not match the review
+    question?
+  - Data collection unaffected?
+  - Reliable outcome measurement (CBA)
+  - Placebo washout
+  - Timing of outcome assessment similar in all groups?
+  - "Baseline profile: \u03B22 agonist use"
+  - Baseline characteristics
+  - The shape of intervention pre-specified?
+  - Was use of a cross over design appropriate?
+  - Overall bias
+  - Free of other bias - were groups similar at baseline regarding the most important
+    prognostic indicators?
+  - Free of incorrect analysis
+  - Baseline equality
+  - Groups comparable at baseline?
+  - 'Other bias: Ascertainment of exposure'
+  - Comparability?
+  - Source of funding bias
+  - Baseline data reported?
+  - Number of points specified
+  - Acceptable reference standard?
+  - Attempts to balance groups
+  - Duration of Follow-up 6 months or more
+  - Shape of Intervention effect pre-specified - ITS
+  - Free of source of funding bias
+  - Equal treatment of different groups
+  - Well defined risk estimation
+  - Main problems with the trial as perceived by this analysis
+  - Timing of outcome assessments similar?
+  - Risk of bias due to confounding (For non randomised and CBA studies)
+  - Well defined outcome
+  - Free of systematic difference in care?
+  - Control for clinical differences in the interventions
+  - Reasons given for number of points pre and post (ITS)
+  - Baseline characteristics similar (selection bias)
+  - Second site comparable?
+  - Sample calculation?
+  - L) Similar outcome assessment
+  - Summary Assessment of Bias?
+  - Sufficient description of index tests?
+  - Baseline assessment of the participants
+  - Free of baseline imbalance
+  - Free from financial conflict of interest
+  - Other Bias
+  - Definition of controls
+  - Selective recruitment of participants (cluster RCTs)
+  - Timing of the outcome assessment across groups
+  - Confounding
+  - 18. Statistical tests
+  - Specification of inclusion and exclusion criteria?
+  - Sample size calculation
+  - Compliance/ adherence assessed?
+  - Study adequately protected against contamination? (performance bias)
+  - Low risk of performance bias?
+  - Protection against changes
+  - Definition of abstinence
+  - Large Cohort
+  - Overall low risk of bias?
+  - Contamination protection (contamination bias)
+  - Was there an appropriate interval between index test and reference standard?
+  - 'Grading: AAO-HNS outcome measurement'
+  - Baseline response
+  - Selection criteria described?
+  - Representative palliative surgery group?
+  - Shape of the intervention
+  - Free of early stopping bias?
+  - Shape of the intervention effect pre-specified?
+  - Intervention dependent of other changes (protection against secular trends) (ITS)
+  - Free of other bias? - as specified in the description
+  - Cramp diary (recall bias)
+  - Free of contamination?
+  - Intervention compliance?
+  - Two or more agreed on inclusion
+  - Control for clinical differences in the participants
+  - Prospective
+  - Prospective design?
+  - Assignment of patients to treatment groups
+  - Allocated intervention
+  - Comparability of intervention and comparison group
+  - Timing of outcome
+  - Balanced baseline characteristics?
+  - Pharmaceutical company involvement
+  - Accurate classifications of outcomes?
+  - Characteristics for studies using second site as control
+  - Adequate protection against contamination
+  - Can it be assumed that the trial was not biased from carry over effects?
+  - 'Other bias: Selection of comparison cohort'
+  - Important prognostic indicators at baseline
+  - Baseline similarity?
+  - No loss of cluster bias
+  - Representativeness of the exposed cohort
+  - Selection of the non-exposed cohort
+  - Free of academic bias
+  - Knowledge of allocated intervention adequate (Process variables)
+  - Global risk of bias?
+  - Baseline imbalances addressed?
+  - Analysed appropriately (ITS)?
+  - Is the case definition adequate?
+  - Eligibility Criteria
+  - Were the treatment and control group comparable at entry?
+  - Validity/reliability of outcome measures
+  - Comparability of cohorts
+  - Data collection methods valid and reliable?
+  - Reason for number of points pre- and post-intervention (ITS)
+  - Free of other bias? - was the timing of the outcome assessment similar in all groups?
+  - No funding by commercial organisation?
+  - Other causes for high risk of bias
+  - Control for confounding
+  - Free of early stopping
+  - Free from financial conflict of interest?
+  - Appropriate statistics
+  - Ethics committee approval and informed consent for participation?
+  - Washout
+  - PCS/RCS-Selection Non Exposed cohort
+  - Intervention independent (ITS) ?
+  - Free from academic bias (assessed from primary author)?
+  - Could the patient flow have introduced bias?
+  - Use of non-inferiority design and methods
+  - Reliable primary outcome measures?
+  - Comparability of groups at baseline
+  - Representative standard surgery group?
+  - Other bias - ITS
+  - Reliable primary outcome
+  - Selection bias (imbalance in baseline characteristics)
+  - Implementation integrity
+  - Other risks of bias
+  - Baseline measurements comparable?
+  - Explicit inclusion criteria
+  - Trials according to risk of bias
+  - Baseline factors comparable
+  - "Follow-up \u2267 1 year"
+  - Inclusion criteria
+  - Appropriateness of duration of surveillance
+  - Trial sponsorship
+  - Timing outcome assessments similar?
+  - 'Internal validity: confounding and selection bias'
+  - Overall assessment of bias risk
+  - Analyses adjust for different lengths of follow-up of workers?
+  - Funding source
+  - Characteristics for studies using second site as control (CBA) or Concealment of
+    allocation(CCTs)
+  - Groups received same intervention?
+  - Independent intervention?
+  - Free of other bias
+  - 'Other bias: representativeness of exposed cohort'
+  - Sample size calculation reported
+  - Power calculations
+  - Adequate matching of intervention / control groups?
+  - Complete sample of trials
+  - External validity
+  - Low risk of selection bias?
+  - Treatment/control groups comparative at entry
+  - Definitions and measurements of outcomes
+  - Group similar at baseline
+  - Adequate length follow-up?
+  - Other sources of bias?
+  - Baseline outcome characteristics similar
+  - CC-Control Selection
+  - Discontinuation of previous treatments
+  - Adequate selection criteria
+  - Power calculation?
+  - Other changes
+  - Comparability with individually randomised trials
+  - Reliability/quality of Outcome Measures
+  - High risk of bias?
+  - Reliability of outcome measurement (RCT / CCT)
+  - Intervention integrity
+  - Sample characteristics
+  - Well defined study group
+  - 'Grading: AAO-HNS diagnosis'
+  - Treatment arm size
+  - Influence of co-interventions
+  - similar outcome timing
+  - Appropriate choice of controls (CBA studies only)?
+  - Confounders?
+  - Was the study free of potential bias from the funding source?
+  - Similar follow-up time?
+  - Reliability and sensitivity
+  - Intervention unlikely to affect data collection (ITS only)
+  - Inception cohort?
+  - Timing of outcome assessment similar?
+  - Co-interventions (All studies)
+  - Baseline differences
+  - Reliable outcome measurement (ITS)
+  - Funding source? (was the trial funding independent and not likely to influence trial
+    results).
+  - Comparability of groups
+  - Study protected against contamination
+  - Free drug company bias?
+  - Free of Sponsorship bias?
+  - Data on observer variation reported and within acceptable range?
+  - Intervention independent of other changes
+  - Specified eligibility criteria
+  - Timing of outcome assessments
+  - Validated score used
+  - Summary assessments
+  - Free of baseline imbalance?
+  - Shape of the intervention prespecified (ITS only)
+  - Intervention unlikely to affect data collection - ITS
+  - Baseline Characteristics?
+  - Evidence that the criteria has been met
+  - Co-interventions
+  - Similar timing of outcome assessment?
+  - Shape of intervention effect specified (ITS)
+  - Planned analysis
+  - Allegiance effect improbable?
+  - OVERALL RISK OF BIAS
+  - Use and appropriateness of statistical analyses where tabulated data could not be
+    extracted from the original publication
+  - Summary Assessment?
+  - 'Total risk of bias: A (low), B (moderate/unclear), or C (high)'
+  - Groups balanced at baseline
+  - Comparability of exercise and control group at entry
+  - Compliance with recommendation reliable?
+  - Was the surveillance active, and of clinically appropriate duration (i.e. at least
+    3 months post intervention)?
+  - Free from academic bias?
+  - Data collection methods?
+  - Orbit classification
+  - Randomised controlled trial?
+  - Control for co-interventions
+  - Randomized design? If cross over design, order of presentation of the different
+    formats randomized?
+  - Baseline Characteristics
+  - Baseline characteristic measurements
+  - Free of other sources of bias?
+  - 'Baseline profile: Anticholingeric use'
+  - Compliance to treatment assessed
+  - Baseline measures
+  - I) Baseline similarities
+  - Outcome measures validated?
+  - How allocation occurred
+  - Objective outcomes?
+  - Implementation Integrity
+  - Study selection
+  - Unbiased data available?
+  - Presence of power calculation
+  - Was the timing of the outcome assessment comparable in all groups?
+  - Sample size
+  - co-interventions avoided or similar?
+  - Unlikely to affect data collection (ITS) ?
+  - Timing of the outcome assessment similar in all groups?
+  - Representative comparison group?
+  - Rationale for sample size
+  - Similarity at Baseline
+  - Multi-level data structure dealt with?
+  - Free of early stopping?
+  - 21. Selection bias (population)
+  - Treatment groups comparable?
+  - Intervention independent of other changes (ITS only)
+  - Co-interventions avoided?
+  - Independent Funding Source
+  - Was the study reported according to CONSORT guidelines?
+  - Characteristics at baseline similar?
+  - Assessment of compliance?
+  - Adequate classification of outcomes
+  - No contamination?
+  - Similar groups at baseline?
+  - Selection of controls
+  - Surgeon's experience reported
+  - Were MUPS assessed with validated instruments?
+  - Did all patients receive the same reference standard?
+  - Sufficient sample
+  - 'Other bias: Representativeness of exposed cohort'
+  - Characteristics similar at baseline?
+  - Other potential sources of bias
+  - M) Study acceptable or flawed
+  - Study duration
+  - Overall assessment
+  - 'Outcome assessment (cohort study): method and evidence outcome not present at study
+    start'
+  - Certainty of diagnosis
+  - Control selection and definition; nonexposed cohort selection
+  - compliance with intervention
+  - Funding
+  - Additional information from authors?
+  - Was the follow-up long enough for the outcomes to occur?
+  - Free of extreme baseline imbalance?
+  - Free of conflicts of interest
+  - Baseline similar?
+  - From from early stopping bias?
+  - Measure against contamination
+  - Complete description of baseline characteristics?
+  - Comparability of treatment groups?
+  - Adherence to treatment
+  - Acceptable delay between tests?
+  - Financial support for trial or trialists?
+  - Reliable primary outcome?
+  - Free of baseline imbalance bias?
+  - Free from sponsor bias?
+  - Recruitments of participants from the same population?
+  - Appropriate design?
+  - Free of selection bias?
+  - Patient compliance monitored and reported at at least 85%?
+  - Ethical approval obtained?
+  - Intervention independent
+  - Treatment withheld until both index test and reference standard were performed?
+  - Protection against contamination (CBA)
+  - Comparanility of intervention and control group characteristics at baseline
+  - Aims/interventions and outcomes clear
+  - PCS/RCS-Selection Exposed cohort
+  - Comparative care?
+  - Outcome
+  - 16. Retrospective unplanned subgroup analyses
+  - Co-interventions avoided or similar
+  - No signs of variance inequality or skewness?
+  - Adequate study inclusion process
+  - Recruitments of participants over the same time period?
+  - Were co-interventions avoided or similar?
+  - Baseline assessments
+  - Analysed appropriately (ITS) ?
+  - Correct analyses for cross-over design used
+  - Same method of ascertainment for cases and controls
+  - Free of loss of clusters
+  - Baseline measurement
+  - Drug identity, source, dose, duration of treatments, and adequacy of instructions
+  - Reliable outcome measures?
+  - Co-intervention avoided or similar?
+  - Free of other sources of bias (performance bias)
+  - Partial verification avoided?
+  - Representativeness of study cohort
+  - Reliable outcome measure
+  - Reliability of outcome measures
+  - Baseline outcome measurements similar?
+  - Risk of bias overall?
+  - Total
+  - Analyses adjust for different lengths of follow up of workers?
+  - Free of other potential confounders?
+  - Permission or standardisation of concomitant treatments
+  - Duration
+  - Demonstration that outcome of interest was not present at start of study
+  - Adequate adjustment for confounding in the analyses?
+  - Co interventions avoided or similar?
+  - Clear definition of positive result?
+  - Free from baseline imbalance bias?
+  - Timing of outcome assessment
+  - Patient selection bias (Cohorts)
+  - Relevant assignment criteria
+  - Baseline comparability
+  - Recruitment bias
+  - Baseline outcome measures similar
+  - Sponsor bias
+  - Academic bias
+  - Verification of smoking cessation?
+  - Free of differential verification bias
+  - groups similar at baseline
+  - Other Potential Threats to Validity
+  - Matched characteristics for control study sites
+  - Summary Assessment of Bias
+  - Similar baseline outcome measures?
+  - Baseline imbalance?
+  - Other
+  - Were the groups similar at baseline regarding the most important prognostic factors?
+  - Valid outcomes
+  - Could the selection of patients have introduced bias?
+  - Group equivalence
+  - Comparability of patients at baseline and follow-up (continuous data)
+  - Was the case definition adequate?
+  - Individuals as unit of analysis?
+  - Follow-up (RCT / CCT)
+  - Source of funding stated?
+  - Appropriate statistical test use?
+  - Similar at baseline
+  - Protection from contamination
+  - Intervention unlikely to affect data collection
+  - Results based on "data dredging"?
+  - Methods of analysis adequate for cluster-randomised trials
+  - No baseline imbalance between groups
+  - Shape of intervention effect pre-specified
+  - Free of dietary differences other than fat?
+  - Assessment of adherence to intervention?
+  - CC-Exposure
+  - Baseline measurement (CBA)
+  - Free of other bias? Funding
+  - Study adequately protected against contamination?
+  - Multicentre study?
+  - Similarity of baseline characteristics
+  - No loss of clusters bias
+  - Shape of effect pre-specified (ITS)?
+  - Data collection
+  - 19. Compliance
+  - Comparability of groups?
+  - Free of partial verification bias
+  - Intervention independent of other changes - ITS
+  - Funding by non-profit organisation?
+  - Data collection (Cohorts)
+  - Adequate adjustment for confounders
+  - Case definition and representativeness
+  - Intervention unlikely to affect / bias data collection?
+  - Comparability of cases and controls
+  - Sample criteria
+  - Free from other bias?
+  - Comparability of intervention and control group characteristics at baseline addressed?
+  - Inappropiate influence of sponsor prevented?
+  - Adequacy of HIT monitoring
+  - Reliability of primary outcome measurements
+  - Baseline imbalance? (Was the study free of baseline imbalance?)
+  - Expertise of imaging tests readers reported?
+  - Clear inclusion and exclusion criteria?
+  - Intervention shape?
+  - Groups measured at baseline?
+  - Funding from a source without financial conflict of interest?
+  - Sponsoring precluded?
+  - Conflict of interest
+  - Non-industry funded
+  - ethical approval
+  - Protection against contamination (RCT / CCT)
+  - Was the trial free of source of funding bias?
+  - Conclusions substantiated
+  - Reliable Primary outcome measure
+  - Definition of the controls
+  - Reporting of timing of patients that relapsed?
+  - Carry-over effect?
+  - co-interventions
+  - Overall risk of bias
+  - Bilateral knee replacements included
+  - Intervention likely to affect data collection (protection against detection bias)
+    (ITS)
+  - Details of assignment of patients reported?
+  - Shape of the intervention effects pre-specified
+  - Overall risk of bias?
+  - Funding for the screening test
+  - Other quality indicators
+  - Method of analysis
+  - Trial size > 49?
+  - Surgeons were experienced with trial operations?
+  - Contamination
+  - Baseline characteristics similar
+  - Incorporation avoided?
+  - Concurrent control
+  - Comprehensive search
+  - Was compliance acceptable in all groups?
+  - Co-intervention or contamination?
+  - No pharma sponsorshiip
+  - J) Similar or avoided co-interventions
+  - Protection against contamination - Studies using second site as control
+  - K) Acceptable compliance
+  - Appropriate analysis (secular trends taken into account)
+  - Eligibility criteria
+  - Baseline measurement of outcome measures
+  - No contamination between treatment groups?
+  - Reliability of outcome measures used
+  - Publication ascertained through personal contact with investigators or sponsor?
+  - Imbalance of outcome measures at baseline addressed?
+  - Demonstration that the outcome of interest was not present at start of study
+  - High quality study?
+  - Free of systematic differences in baseline characteristics of groups compared?
+  - Free of conflict of interest?
+  - Representative spectrum?
+  - Allocation to intervention/control (selection bias)(For non randomised and CBA studies)
+  - Comparable groups?
+  - Groups balanced at baseline?
+  - Intervention independent (ITS)?
+  - Balanced at baseline?
+  - Prospective study?
+  - Baseline measurement?
+  - Comparability of cases and controls on the basis of the design or analysis
+  - 2 control and 2 intervention groups
+  - Selection of exposure (and comparison) groups for non randomised studies (selection
+    bias)
+  - Compliance
+  - Similar baseline outcome measurements
+  - Free of academic bias?
+  - Free of selection bias (from imbalances at baseline)?
+  - 'Case-control: nonresponse rate'
+  - Selective recruitment of participants addressed?
+  - Was there an acceptable pre-randomisation dropout?
+  - Adequate patient description
+  - Duration of follow-up
+  - Was the diagnosis of heart failure defined and appropriate?
+  - Was a case-control design avoided?
+  - Baseline outcomes
+  - Free of Incorporation Bias
+  - Representative comparison group
+  - Relevant clinical information?
+  - Selection of the non exposed cohort
+  - Baseline measurements
+  - Co-intervention
+  - Masking (performance bias and detection bias)
+  - Free of other bias? - were groups similar at baseline regarding the most important
+    prognostic factors?
+  - Could the reference standard, its conduct, or its interpretation have introduced
+    bias?
+  - Compliance with interventions
+  - CC-Case Selection
+  - Similar outcome timing
+  - Baseline comparability demonstrated
+  - CC-Comparability
+  - Reliable ascertainment of falls/fallers outcome
+  - Baseline measurement (RCT / CCT)
+  - Assessment of carry-over effects?
+  - OVERALL
+  - Reliable primary outcome measures
+  - Incorrect analysis
+  - Free of Academic bias?
+  - Outcome description
+  - Well defined follow-up
+  - Intervention is independent of other changes?
+  - Representative ultra-radical surgery group?
+  - 'Other: anything else'
+  - Cointerventions Constant
+  - Two or more assessed quality and conducted data extraction
+  - Adequate control group
+  - Free of source of funding
+  - Similar outcomes measured
+  - Pharmaceutical funding?
+  - Protection from contamination?
+  - 'Baseline profile: Corticosteroid use'
+  - AAO-HNS criteria used for the diagnosis of Meniere's disease?
+  - Shape of effect pre-specified
+  - 25. Adjustment for confounding
+  - Duration of follow-up?
+  - Reliable primary outcome measure?
+  - Baseline Outcomes similar?
+  - Intervention independent of other changes?
+  - Appropriate control
+  - Care program identical
+  - Outcome measures used valid and reliable?
+  - Access to individual patient data
+  - Follow-up of professionals
+  - Component study identification
+  - Contemporaneous data collection (CBA studies only)?
+  - Comparability of groups on different prognostic characteristics
+  - Free from confounding treatment(s)
+  - Confounders
+  - Free of retrospective selection bias?
+  - Baseline similarity
+  - Compliance with primary intervention
+  - Selection of the controls
+  - Adjustment important confounders
+  - Early stopping
+  - Were the study groups comparable at baseline?
+  - Shape of effect pre-specified (ITS) ?
+  - Methods of analysis adequate for cluster randomised trials
+  - Timing of outcome assessment similar in all groups
+  - Equivalent Control Site
+  - Representative sample?
+  - Free of other bias - was the timing of the outcome assessment similar in all groups?
+  - Did authors adjust for baseline differences in their analyses?
+  - Representativeness of the cases
+  - Baseline outcomes measurements
+  - Similar baseline characteristics?
+  - Appropriate Sampling (clustering)
+  - MERGE Criteria Score
+  - Contamination of experimental groups
+  - Baseline outcome measurements similar
+  - Baseline CD4 count (All studies)
+  - Controlled clinical trial?
+  - Protected from contamination?
+  - IS THE STUDY AT LOW RISK OF BIAS?
+  - Reference test execution described?
+  - Could the conduct or interpretation of the index test have introduced bias?
+  - Homogeneous at baseline?
+  - Control for methodological differences, i.e. double-blinding
+  - Group similarity at baseline
+  - Comparable baseline characteristics
+  - Comparability of groups on basis of design or analysis
+  - Sufficient description of reference test?
+  - Control for methodological differences, i.e. completeness of follow up
+  - Baseline data
+  - sample size
+  - Free of differential expertise bias?
+  - Reliable primary outcome measure(s)
+  - Early stopping?
+  - Degree of certainty that the participants have LS
+  - Size
+  - Intervention had no effect on data collection
+  - Completeness of data set (ITS)
+  - Intervention unlikely to affect data collection?
+  - Recruitment bias addressed?
+  - Representative study group
+  - Selective recruitment of participants
+  - Is the reference standards likely to correctly classify the target condition?
+  - Adequate validity and reliability of outcome measures?
+  - Cross-over design suitable for condition?
+  - Implementation of intervention
+  - Contamination protection (Trials)
+  - Selection bias
+  - Population based study?
+  - Selection bias (baseline imbalances)?
+  - Statistics reporting
+  - Free of surgical learning curve bias?
+  - Baseline outcome measurements
+  - Clearly concealed allocation + trial size > 49 + drop-out max 15%
+  - Relevant inclusion criteria (FSS score entry criteria)
+  - Balance in baseline characteristics?
+  - Loss of clusters
+  - If a threshold was used, was it pre-specified?
+  - 22. Selection bias (time)
+  - Powercalculation performed?
+  - Free of other bias (ITS) ?
+  - Data analysed appropriately (ITS)
+  - Compliance acceptable in all groups?
+  - Definition of positive and negative findings clearly defined?
+  - Adequate protection against contamination?
+  - Inclusion/exclusion criteria clearly defined
+  - Sequence of tests determined at random?
+  - Possible confounders controlled for in the analysis
+  - Comparability of groups at pre-test
+  - Comparability of intervention and control group characteristics at baseline
+  - Identical care
+  - Selection criteria reported?
+  - Justification of outcomes
+  - No bias due to source of funding?
+  - Free from baseline imbalance?
+  - No bias due to baseline comparability of treatment and control groups
+  - Sponsoring precluded
+  - Other baseline variables (All studies)
+  - Funding by commercial organisation avoided?
+  - Susceptibility to bias reduced?
+  - Timing of the outcome assessment similar?
+  - Reliable primary outcomes
+  - Representative intervention group?
+  - Study size
+  - Treatment fidelity
+  - Intervention effect specified
+  - Was the study powered to detect differences in outcomes.
+  - Are there concerns that the target condition as defined by the reference standard
+    does not match the question?
+  - Standardised protocols for information delivery?
+  - Description and standardisation of outcome measures
+  - Baseline imbalance
+  - Cointerventions constant
+  - Other sources of bias
+  - Internal validity
+  
