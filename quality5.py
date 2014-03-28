@@ -592,6 +592,35 @@ class ModularCountVectorizer():
 ############################################################
 
 
+class ExperimentBase(object):
+
+    def __init__(self, dat):
+        self.metrics = BinaryMetricsRecorder(dat.CORE_DOMAINS)
+
+    def run(self):
+        pass
+
+    def _process_fold(self):
+        pass
+
+
+class SimpleModel(ExperimentBase):
+    """
+    Models each domain separately
+    (produces 6 independent models)
+    """
+    pass
+
+
+class MultitaskModel(ExperimentBase):
+    """
+    Models all domains together, and uses interaction
+    features to predict with domain specific information
+    """
+    pass
+
+
+
 
 
 
@@ -613,7 +642,7 @@ def simple_model_test(data_filter=DocFilter):
 
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="log", penalty="L2"), tuned_parameters, scoring='f1')
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
         no_studies = len(uids)
 
@@ -656,7 +685,7 @@ def multitask_test():
     train_uids = np.array(train_docs.available_ids)
 
     tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-    clf = GridSearchCV(SGDClassifier(loss="log", penalty="L2"), tuned_parameters, scoring='f1')
+    clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
     no_studies = len(train_uids)
 
@@ -714,7 +743,7 @@ def multitask_test():
             metrics.add_preds_test(y_preds, y_test, domain=domain)
 
 
-    metrics.save_csv('multitask_test.csv')
+    metrics.save_csv('multitask.csv')
 
 
             
@@ -730,8 +759,8 @@ def multitask_test():
 
 
 if __name__ == '__main__':
-    simple_model_test(data_filter=DocFilter)
-    # multitask_test()
+    # simple_model_test(data_filter=DocFilter)
+    multitask_test()
     
 
 
