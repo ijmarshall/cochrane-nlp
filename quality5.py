@@ -62,18 +62,12 @@ class RoBData:
         simultaneously generate document and sentence data
         (though for simple models may not need sentence data)
         """
-
-        
-
-
         if self.show_progress:
                 p = progressbar.ProgressBar(self.max_studies, timer=True)
 
         self.data = []
 
         matcher = PDFMatcher() # for matching Cochrane quotes with PDF sentences
-
-        
 
 
         for study_id, study in enumerate(self.pdfviewer):
@@ -257,8 +251,6 @@ class PDFMatcher():
 #   data filters
 #
 ############################################################
-
-
 
 class DataFilter(object):
 
@@ -494,7 +486,7 @@ class ModularCountVectorizer():
         dict_list = self._transform_X_to_dict(X, prefix=prefix)
         return self.vectorizer.transform(dict_list)
 
-    def fit_transform(self, X, prefix=None, max_features=None, low=None):
+    def fit_transform(self, X, prefix=None, max_features=None, low=2):
         # X is a list of document strings
         # word tokenizes each one, then passes to a dict vectorizer
         dict_list = self._transform_X_to_dict(X, prefix=prefix)
