@@ -618,7 +618,7 @@ class MultiTaskDocumentModel(DocumentLevelModel):
         # features, regardless of whether or not they are 'interaction'
         # features
         # self.X = self.vectorizer.builder_fit_transform(max_features=50000)
-        self.X = self.vectorizer.builder_fit_transform(low=3)
+        self.X = self.vectorizer.builder_fit_transform(low=2)
    
 
     def X_y_uid_filtered(self, uids, domain=None):
