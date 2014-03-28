@@ -71,6 +71,24 @@ class BiViewer():
         if test_mode:
             # get the first 2500 studies only (more since now per study, not per review)
             self.index_data = self.index_data[:2500]
+
+        # TEMPORARY - limit index to first instance of any PDF 
+        # TODO make this better
+        filtered = []
+        pmids_already_encountered = set()
+
+        for study in self.index_data:
+            if study["pmid"] not in pmids_already_encountered:
+                filtered.append(study)
+                pmids_already_encountered.add(study["pmid"])
+
+        print "skipped %d (from the whole of Cochrane)" % (len(self.index_data) - len(filtered))
+        self.index_data = filtered
+        # END TEMPORARY CODE
+
+
+        # end temporary code
+
                     
 
     def __len__(self):
@@ -145,6 +163,8 @@ class PDFBiViewer(BiViewer):
         self.index_data = [item for item in self.index_data if item["pmid"] in self.pdf_index]
 
 
+
+
     def get_pdf_index(self):
     	"""
     	Makes an index (dict) of pdfs by pubmed id
@@ -162,8 +182,6 @@ class PDFBiViewer(BiViewer):
     		if pmids:
     			pdf_index[pmids.group(1)] = filename
     	return pdf_index
-
-
 
 
     def second_view(self, study, cachepath="data/cache/"):
