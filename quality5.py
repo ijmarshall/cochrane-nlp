@@ -340,16 +340,36 @@ class MultiTaskDocFilter(DataFilter):
 #   metrics
 #
 ############################################################
-class MetricsAggregator(object):
-    """ aggregates results from independently run folds,
-    i.e., when folds have been run in parallel
+
+def aggregate_fold_results(pickled_fold_metrics_dir, nfolds=5, 
+                base_metrics_str="metrics_<FOLD>.pickle", out_file="aggregated_metrics.csv"):
     """
-    def __init__(self, fold_binary_metrics):
-        """
-        fold_binary_metrics should be a list of BinaryMetricsRecorder
-        objects
-        """
-        pass
+    Aggregates results from independently run folds,
+    i.e., when folds have been run in parallel. returns
+
+    Reads in all nfolds sets of metrics (assumed to be located
+    in the pickled_fold_metrics_dir directory) and returns
+    an aggregated BinaryMetricsRecorder object.
+    """
+    aggregated_metrics = None
+    for fold_number in xrange(nfolds):
+        with open(os.path.join(pickled_fold_metrics_dir,
+                base_metrics_str.replace("<FOLD>", str(fold_number)))) as fold_metrics_f:
+            fold_binary_metrics = pickle.load(fold_metrics_f)
+
+            if fold_number == 0:
+                # instantiate aggregate metrics using info from 
+                # the first fold; we will assume that this information 
+                # is constant across the folds!
+                aggregated_metrics = BinaryMetricsRecorder(domains=fold_binary_metrics.fold_metrics.keys())
+                aggregated_metrics.title = fold_binary_metrics.title
+            for domain in fold_binary_metrics.domains:
+                #pdb.set_trace()
+                aggregated_metrics.fold_metrics[domain].extend(
+                    fold_binary_metrics.fold_metrics[domain])
+                
+    aggregated_metrics.save_csv(os.path.join(pickled_fold_metrics_dir, out_file))
+    return aggregated_metrics
 
 class BinaryMetricsRecorder(object):
     """
@@ -405,8 +425,6 @@ class BinaryMetricsRecorder(object):
             output.extend(self.fold_metrics[domain])
             output.append(self._means(domain))
             output.append({}) # blank line
-
-
 
         with open(filename, 'wb') as f:
             w = csv.DictWriter(f, ["domain", "fold"] + self.METRIC_NAMES)
