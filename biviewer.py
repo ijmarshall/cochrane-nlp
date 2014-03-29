@@ -72,19 +72,19 @@ class BiViewer():
             # get the first 2500 studies only (more since now per study, not per review)
             self.index_data = self.index_data[:2500]
 
-        # TEMPORARY - limit index to first instance of any PDF 
-        # TODO make this better
-        filtered = []
-        pmids_already_encountered = set()
+        # # TEMPORARY - limit index to first instance of any PDF 
+        # # TODO make this better
+        # filtered = []
+        # pmids_already_encountered = set()
 
-        for study in self.index_data:
-            if study["pmid"] not in pmids_already_encountered:
-                filtered.append(study)
-                pmids_already_encountered.add(study["pmid"])
+        # for study in self.index_data:
+        #     if study["pmid"] not in pmids_already_encountered:
+        #         filtered.append(study)
+        #         pmids_already_encountered.add(study["pmid"])
 
-        print "skipped %d (from the whole of Cochrane)" % (len(self.index_data) - len(filtered))
-        self.index_data = filtered
-        # END TEMPORARY CODE
+        # print "skipped %d (from the whole of Cochrane)" % (len(self.index_data) - len(filtered))
+        # self.index_data = filtered
+        # # END TEMPORARY CODE
 
 
         # end temporary code
@@ -192,11 +192,11 @@ class PDFBiViewer(BiViewer):
             # try to read first as plain text from the cache if exists
             with open(cachepath + os.path.splitext(os.path.basename(self.pdf_index[study['pmid']]))[0] + '.txt', 'rb') as f:
                 text = f.read()
-            return text
+            return {"text": text, "pmid": study['pmid']}
         except:
             # otherwise run through pdftotext
             pm = PdfReader(self.pdf_index[study['pmid']])
-            return pm.get_text()
+            return {"text": pm.get_text(), "pmid": study['pmid']}
 
     def cache_pdfs(self, cachepath="data/cache/", refresh=False):
 
