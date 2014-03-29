@@ -24,7 +24,7 @@ import sklearn.metrics
 
 import pprint
 
-
+import collections
 import csv
 
 import difflib
@@ -50,7 +50,6 @@ class RoBData:
 
         self.domain_map = self._load_domain_map()
         self.pdfviewer = biviewer.PDFBiViewer()
-
         self.max_studies = 200 if test_mode else len(self.pdfviewer)
 
         self.show_progress= show_progress
@@ -69,6 +68,7 @@ class RoBData:
 
         matcher = PDFMatcher() # for matching Cochrane quotes with PDF sentences
 
+        pmids_encountered = collections.Counter()
 
         for study_id, study in enumerate(self.pdfviewer):
 
@@ -78,7 +78,11 @@ class RoBData:
             if self.show_progress:
                 p.tap()
 
-            pdf_text = self._preprocess_pdf(study.studypdf)
+
+            current_pmid = study.studypdf["pmid"]
+            pmids_encountered[current_pmid] += 1
+
+            pdf_text = self._preprocess_pdf(study.studypdf["text"])
 
             if not doc_level_only:
                 matcher.load_pdftext(pdf_text) # load the PDF once
@@ -108,11 +112,10 @@ class RoBData:
                         matcher.load_quotes(domain["QUOTES"])
                         sent_y[mapped_domain] = matcher.generate_y()
 
+            study_data = {"doc-text": pdf_text, "doc-y": doc_y, "pmid": current_pmid, "pmid_counter": pmids_encountered[current_pmid]}
+
             if not doc_level_only:
-                study_data = {"doc-text": pdf_text, "doc-y": doc_y,
-                          "sent-spans": matcher.sent_indices, "sent-y": sent_y}
-            else:
-                study_data = {"doc-text": pdf_text, "doc-y": doc_y}
+                study_data.update({"sent-spans": matcher.sent_indices, "sent-y": sent_y})
 
             self.data.append(study_data)
 
@@ -258,13 +261,14 @@ class DataFilter(object):
         self.data_instance = data_instance
         self.available_ids = self._get_available_ids()
 
-    def _get_available_ids(self):
+    def _get_available_ids(self, pmid_instance=1):
         """
         subclass this to obtain the subset of ids available
+        pmid_instance = the count of the current pmid (allowing for repetitions)
         """
 
         # in the base class return *all* ids
-        return [i for i, doc in enumerate(self.data_instance.data)]
+        return [i for i, doc in enumerate(self.data_instance.data) if doc["pmid_counter"]==pmid_instance]
 
 
     def Xy(self, doc_indices):
@@ -595,10 +599,16 @@ class ModularCountVectorizer():
 class ExperimentBase(object):
 
     def __init__(self, dat):
+        self.dat = RoBData(test_mode=False)
+        self.dat.generate_data()
         self.metrics = BinaryMetricsRecorder(dat.CORE_DOMAINS)
+        self.stupid_metrics = BinaryMetricsRecorder(dat.CORE_DOMAINS) # record a baseline
 
     def run(self):
         pass
+
+    def save(self, filename):
+        self.metrics.save_csv(filename)
 
     def _process_fold(self):
         pass
