@@ -2,17 +2,22 @@
 #   experiments
 #
 
+import pickle
+import re
+import pdb
+import csv
+import os
+import sys
+
 from tokenizer import sent_tokenizer, word_tokenizer
 import sklearn
 import numpy as np
 import progressbar
-import re
 import biviewer
 import codecs
 import yaml
 from unidecode import unidecode
 from nltk.corpus import stopwords
-
 from sklearn.externals import six
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -165,9 +170,6 @@ class RoBData:
 #   match quotes from Cochrane to PDF
 #
 ############################################################
-
-
-
 class PDFMatcher():
     """
     matches and generates sent tokens from pdf text
@@ -254,7 +256,6 @@ class PDFMatcher():
 #   data filters
 #
 ############################################################
-
 class DataFilter(object):
 
     def __init__(self, data_instance):
@@ -341,16 +342,41 @@ class MultiTaskDocFilter(DataFilter):
         return X, y, interactions
 
 
-
-
 ############################################################
 #   
 #   metrics
 #
 ############################################################
 
+def aggregate_fold_results(pickled_fold_metrics_dir, nfolds=5, 
+                base_metrics_str="metrics_<FOLD>.pickle", out_file="aggregated_metrics.csv"):
+    """
+    Aggregates results from independently run folds,
+    i.e., when folds have been run in parallel. returns
 
+    Reads in all nfolds sets of metrics (assumed to be located
+    in the pickled_fold_metrics_dir directory) and returns
+    an aggregated BinaryMetricsRecorder object.
+    """
+    aggregated_metrics = None
+    for fold_number in xrange(nfolds):
+        with open(os.path.join(pickled_fold_metrics_dir,
+                base_metrics_str.replace("<FOLD>", str(fold_number)))) as fold_metrics_f:
+            fold_binary_metrics = pickle.load(fold_metrics_f)
 
+            if fold_number == 0:
+                # instantiate aggregate metrics using info from 
+                # the first fold; we will assume that this information 
+                # is constant across the folds!
+                aggregated_metrics = BinaryMetricsRecorder(domains=fold_binary_metrics.fold_metrics.keys())
+                aggregated_metrics.title = fold_binary_metrics.title
+            for domain in fold_binary_metrics.domains:
+                #pdb.set_trace()
+                aggregated_metrics.fold_metrics[domain].extend(
+                    fold_binary_metrics.fold_metrics[domain])
+                
+    aggregated_metrics.save_csv(os.path.join(pickled_fold_metrics_dir, out_file))
+    return aggregated_metrics
 
 class BinaryMetricsRecorder(object):
     """
@@ -407,8 +433,6 @@ class BinaryMetricsRecorder(object):
             output.append(self._means(domain))
             output.append({}) # blank line
 
-
-
         with open(filename, 'wb') as f:
             w = csv.DictWriter(f, ["domain", "fold"] + self.METRIC_NAMES)
             w.writeheader()
@@ -421,9 +445,6 @@ class BinaryMetricsRecorder(object):
 #   Vectorizer
 #
 ############################################################
-
-
-
 class ModularCountVectorizer():
     """
     Similar to CountVectorizer from sklearn, but allows building up
@@ -513,7 +534,6 @@ class ModularCountVectorizer():
         self.builder_len = 0
 
     def builder_add_docs(self, X, prefix = None, weighting=1):
-        #pdb.set_trace()
         if not self.builder:
             self.builder_len = len(X)
             self.builder = self._transform_X_to_dict(X, prefix=prefix, weighting=weighting)
@@ -594,8 +614,6 @@ class ModularCountVectorizer():
 #   experiments
 #
 ############################################################
-
-
 class ExperimentBase(object):
 
     def __init__(self, dat):
@@ -629,11 +647,11 @@ class MultitaskModel(ExperimentBase):
     """
     pass
 
-
-
-
-
-
+##################################################
+#
+# helper methods to setup/run experiments.
+#
+##################################################
 def simple_model_test(data_filter=DocFilter):
 
     dat = RoBData(test_mode=False)
@@ -677,17 +695,18 @@ def simple_model_test(data_filter=DocFilter):
             stupid_metrics.add_preds_test([1] * len(y_test), y_test, domain=domain)
 
     metrics.save_csv('test_output_full.csv')
-
     stupid_metrics.save_csv('stupid_output.csv')
             
-    
 
+def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False, 
+                                metrics_out_dir=None):
+    """run multitask experiment.
 
-def multitask_test():
+    if fold a fold is specified, run only that fold. 
+    """
 
     dat = RoBData(test_mode=False)
     dat.generate_data(doc_level_only=True)
-
 
     metrics = BinaryMetricsRecorder(domains=dat.CORE_DOMAINS)
 
@@ -699,10 +718,13 @@ def multitask_test():
 
     no_studies = len(train_uids)
 
-    kf = KFold(no_studies, n_folds=5, shuffle=False)
+    kf = KFold(no_studies, n_folds=n_folds_total, shuffle=False)
+    if fold is not None:
+        kf = [list(kf)[fold]]
+        metrics_out_path = os.path.join(
+                metrics_out_dir, "metrics_%s.pickle" % fold)
 
     for train, test in kf:
-
         print "new fold!"
 
         X_train_d, y_train, i_train = train_docs.Xyi(train_uids[train])
@@ -752,25 +774,29 @@ def multitask_test():
 
             metrics.add_preds_test(y_preds, y_test, domain=domain)
 
-
-    metrics.save_csv('multitask.csv')
-
-
-            
+            if pickle_metrics:
+                with open(metrics_out_path, 'wb') as out_f:
+                    pickle.dump(metrics, out_f)
 
 
-
-
-
-    
-
-
+    if fold is not None:
+        metrics.save_csv('multitask.csv')
+    else:
+        metrics.save_csv(os.path.join(metrics_out_path, 'multitask.csv'))
 
 
 
 if __name__ == '__main__':
-    # simple_model_test(data_filter=DocFilter)
-    multitask_test()
+    if len(sys.argv) > 1:
+        fold_to_run = int(sys.argv[1])
+        metrics_out_dir = sys.argv[2]
+        print "running fold %s and pickling output to %s" % (
+                fold_to_run, metrics_out_dir)
+        multitask_test(fold=fold_to_run, pickle_metrics=True, 
+                metrics_out_dir=metrics_out_dir)
+    else:
+        # simple_model_test(data_filter=DocFilter)
+        multitask_test()
     
 
 
