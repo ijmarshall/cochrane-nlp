@@ -69,7 +69,7 @@ class RoBData:
         if self.show_progress:
                 p = progressbar.ProgressBar(self.max_studies, timer=True)
 
-        self.data = []
+        self.data = collections.defaultdict(list) # indexed by PMID, list of data entries
 
         matcher = PDFMatcher() # for matching Cochrane quotes with PDF sentences
 
@@ -84,8 +84,7 @@ class RoBData:
                 p.tap()
 
 
-            current_pmid = study.studypdf["pmid"]
-            pmids_encountered[current_pmid] += 1
+            
 
             pdf_text = self._preprocess_pdf(study.studypdf["text"])
 
@@ -117,12 +116,12 @@ class RoBData:
                         matcher.load_quotes(domain["QUOTES"])
                         sent_y[mapped_domain] = matcher.generate_y()
 
-            study_data = {"doc-text": pdf_text, "doc-y": doc_y, "pmid": current_pmid, "pmid_counter": pmids_encountered[current_pmid]}
+            study_data = {"doc-text": pdf_text, "doc-y": doc_y}
 
             if not doc_level_only:
                 study_data.update({"sent-spans": matcher.sent_indices, "sent-y": sent_y})
 
-            self.data.append(study_data)
+            self.data[study.studypdf["pmid"]].append(study_data)
 
     def _preprocess_pdf(self, pdftext):
         pdftext = unidecode(pdftext)
@@ -262,15 +261,13 @@ class DataFilter(object):
         self.data_instance = data_instance
         self.available_ids = self._get_available_ids()
 
-    def _get_available_ids(self, pmid_instance=1):
+    def _get_available_ids(self, pmid_instance=0):
         """
         subclass this to obtain the subset of ids available
         pmid_instance = the count of the current pmid (allowing for repetitions)
         """
-
         # in the base class return *all* ids
-        return [i for i, doc in enumerate(self.data_instance.data) if doc["pmid_counter"]==pmid_instance]
-
+        return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance]
 
     def Xy(self, doc_indices):
         pass
@@ -288,14 +285,15 @@ class DomainFilter(DataFilter):
 
 class DocFilter(DomainFilter):
 
-    def _get_available_ids(self):
-        return [i for i, doc_i in enumerate(self.data_instance.data) if doc_i["doc-y"][self.domain] != 0]
+    def _get_available_ids(self, pmid_instance=0):
+        return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance and v[pmid_instance]["doc-y"][self.domain] != 0]
+        
 
-    def Xy(self, doc_indices):
+    def Xy(self, doc_indices, pmid_instance=0):
         X = []
         y = []
         for i in doc_indices:
-            doc_i = self.data_instance.data[i]
+            doc_i = self.data_instance.data[i][pmid_instance]
             X.append(doc_i["doc-text"])
             y.append(doc_i["doc-y"][self.domain])
         return X, y
@@ -303,14 +301,15 @@ class DocFilter(DomainFilter):
 
 class SentFilter(DomainFilter):
 
-    def _get_available_ids(self):
-        return [i for i, doc_i in enumerate(self.data_instance.data) if doc_i["sent-y"][self.domain]]
+    def _get_available_ids(self, pmid_instance=0):
+        return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance and v[pmid_instance]["sent-y"][self.domain]]
 
-    def Xy(self, doc_indices):
+
+    def Xy(self, doc_indices, pmid_instance=0):
         X = []
         y = []
         for i in doc_indices:
-            doc_i = self.data_instance.data[i]
+            doc_i = self.data_instance.data[i][pmid_instance]
             X.append(doc_i["doc-text"])
             y.append(doc_i["doc-y"][self.domain])
         return X, y
@@ -326,13 +325,13 @@ class MultiTaskDocFilter(DataFilter):
     def Xy(self, doc_indices):
         raise NotImplemented("Xy not used in MultiTaskDocFilter - you probably want Xyi() for interaction terms")
 
-    def Xyi(self, doc_indices):
+    def Xyi(self, doc_indices, pmid_instance=0):
         X = []
         y = []
         interactions = []
 
         for i in doc_indices:
-            doc_i = self.data_instance.data[i]
+            doc_i = self.data_instance.data[i][pmid_instance]
             for domain, judgement in doc_i["doc-y"].iteritems():                
                 if judgement == 0: # skip the blanks
                     continue 
