@@ -16,11 +16,13 @@ import string
 import pdb
 import random 
 import re
+import cPickle as pickle
 
 # sklearn, &etc
 import sklearn
 from sklearn.feature_extraction import DictVectorizer
-from sklearn.svm import SVC
+from sklearn.svm import SVC, LinearSVC
+from sklearn.grid_search import GridSearchCV
 from sklearn import cross_validation
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
@@ -37,7 +39,17 @@ from tokenizer import MergedTaggedAbstractReader
 import progressbar
 
 # a useful helper.
-punctuation_only = lambda s: s.strip(string.punctuation).strip() == ""
+def punctuation_only(s):
+    return s.strip(string.punctuation).strip() == ""
+
+def integer_filter(w):
+    return w['num'] == True
+
+def is_sample_size(w):
+    return "n" in w["tags"]
+
+def is_target(w):
+    return self.target in w["tags"]
 
 class SupervisedLearner:
     def __init__(self, abstract_reader, target="n", 
@@ -143,6 +155,9 @@ class SupervisedLearner:
         print "test set of size {0} out of {1} total citations".format(
                                     test_size, self.n_citations)
 
+    @staticmethod
+    def max_index(self, a):
+        return max((v, i) for i, v in enumerate(a))[1]
 
     def train_and_test_sample_size(self, test_size=.2, train_p=None):
         '''
@@ -177,7 +192,6 @@ class SupervisedLearner:
                 if not i in test_citation_indices and is_a_training_instance:
                     # we flatten these for training.
                     X_train.extend(self.X_fv[i])
-                    pdb.set_trace()
                     y_train.extend(self.y[i])
 
                 elif i in test_citation_indices:
@@ -198,7 +212,7 @@ class SupervisedLearner:
         TPs, FPs, N_pos = 0, 0, 0
         for test_citation_i, citation_fvs in enumerate(X_test):
             true_lbls_i = y_test[test_citation_i]
-            preds_i = [p[1] for p in clf.predict_log_proba(citation_fvs)]
+            preds_i = clf.best_estimator_.decision_function(citation_fvs)
             # we set the index corresponding to the max 
             # val (most likely entry) to 1; all else are 0
             preds_i_max = max_index(preds_i)
@@ -241,7 +255,9 @@ class SupervisedLearner:
 
     @staticmethod 
     def _get_SVM():
-        return SVC(probability=True, kernel='linear', C=3)
+        tune_params = [{"C":[1,5,10,100,1000]}]
+        return GridSearchCV(LinearSVC(), tune_params, scoring="f1")
+
 
     def train(self):
         features, y = self.features_from_citations()
@@ -290,15 +306,16 @@ class SupervisedLearner:
                 ###
                 # restrict to integers only
                 ###
-                X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
+
+                #X_i = p.get_features(flatten=True, filter=lambda w: w['num']==True)
+                X_i = p.get_features(flatten=True, filter=integer_filter)
                 y_i = p.get_answers(flatten=True, 
-                        answer_key=lambda w: "n" in w["tags"], 
-                        filter=lambda x: x['num']==True)
+                        answer_key=is_sample_size, 
+                        filter=integer_filter)
             else: 
                 X_i = p.get_features(flatten=False)
                 y_i = p.get_answers(flatten=False, 
-                        answer_key=lambda w: self.target in w["tags"])
-                pdb.set_trace()
+                        answer_key=is_target)
 
             if flatten_abstracts:
                 X.extend(X_i)
@@ -312,7 +329,24 @@ class SupervisedLearner:
 
         return X, y
 
-        
+    def train_on_all_data(self):
+        X_train, y_train = [], []
+        for i in xrange(self.n_citations):
+            if self.X_fv[i] is not None:            
+                # we flatten these for training.
+                X_train.extend(self.X_fv[i])
+                y_train.extend(self.y[i])
+
+        clf = SupervisedLearner._get_SVM()
+        X_train = scipy.sparse.vstack(X_train)
+        print "fitting...."
+        clf.fit(X_train, y_train)
+        print "success!"
+
+        return clf, self.vectorizer
+        #print "ok -- testing!"
+        #max_index = lambda a: max((v, i) for i, v in enumerate(a))[1]
+
 
 
 
@@ -376,13 +410,31 @@ def learning_curve():
     return [int(sl.n_citations*p) for p in train_ps], average_fs, lows, highs
 
 
+def train_and_pickle():
+    """ intended to be plugged into SPA, eventually. note that we
+        pickle the actual clf model (and vectorizer) rather than 
+        the SupervisedLearner class, in part because this is arguably
+        cleaner, and in part because python kept yelling at me about
+        pickling functions, and I didn't get to the bottom of it.
+    """
+    target = "n"
+    reader = MergedTaggedAbstractReader()
+    sl = SupervisedLearner(reader, target=target)
+    sl.generate_features()
+    clf, vectorizer = sl.train_on_all_data()
+    with open("sample_size_predictor.pickle", "wb") as out_f:
+        pickle.dump(clf, out_f)
+
+    with open("sample_size_vectorizer.pickle", "wb") as out_f:
+        pickle.dump(vectorizer, out_f)
+
 
 if __name__ == "__main__":
 
     # @TODO make these args.
-    nruns = 10
+    nruns = 1
     predict_probs = False
-    target = "tx1"
+    target = "n"
 
     reader = MergedTaggedAbstractReader()
 
@@ -411,7 +463,7 @@ if __name__ == "__main__":
         pb.tap()
 
     avg = lambda x: x / float(nruns)
-
+ 
     if predict_probs:
         print "averages\nAUC: {0}\nArea under precision-recall curve {1}".format(avg(auc), avg(apr))
     else:
