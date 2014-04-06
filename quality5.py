@@ -20,7 +20,8 @@ from unidecode import unidecode
 from nltk.corpus import stopwords
 from sklearn.externals import six
 
-from modvec2 import ModularVectorizer
+from modvec2 import ModularVectorizer, InteractionHashingVectorizer
+from sklearn.feature_extraction.text import HashingVectorizer
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction import DictVectorizer
@@ -607,9 +608,9 @@ class BinaryMetricsRecorder(object):
 
 #         return cscmatrix[:, kept_indices], removed_terms
 
-#     def _document_frequency(self, X):
-#         """Count the number of non-zero values for each feature in csc_matrix X."""
-#         return np.diff(X.indptr)
+     # def _document_frequency(self, X):
+     #     """Count the number of non-zero values for each feature in csc_matrix X."""
+     #     return np.diff(X.indptr)
 
 ModularCountVectorizer = ModularVectorizer
 
@@ -666,6 +667,12 @@ def simple_model_test(data_filter=DocFilter):
 
     stupid_metrics = BinaryMetricsRecorder(domains=dat.CORE_DOMAINS)
 
+
+    multitask_docs = MultiTaskDocFilter(dat) # use the same ids as the multitask model
+    multitask_uids = np.array(multitask_docs.available_ids)
+    no_studies = len(multitask_uids)
+    kf = KFold(no_studies, n_folds=5, shuffle=False)
+
     for domain in dat.CORE_DOMAINS:
 
         docs = data_filter(dat, domain=domain)
@@ -674,20 +681,21 @@ def simple_model_test(data_filter=DocFilter):
 
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='accuracy')
 
         no_studies = len(uids)
 
-        kf = KFold(no_studies, n_folds=5, shuffle=False)
+        
 
         for train, test in kf:
 
-            X_train_d, y_train = docs.Xy(uids[train])
-            X_test_d, y_test = docs.Xy(uids[test])
+            X_train_d, y_train = docs.Xy(np.intersect1d(uids, multitask_uids[train]))
+            X_test_d, y_test = docs.Xy(np.intersect1d(uids, multitask_uids[test]))
 
-            vec = CountVectorizer()
+            # vec = CountVectorizer(min_df=2)
+            vec = InteractionHashingVectorizer(norm=None, non_negative=True, binary=True)
 
-            X_train = vec.fit_transform(X_train_d)
+            X_train = vec.fit_transform(X_train_d, low=2)
             X_test = vec.transform(X_test_d)
 
             clf.fit(X_train, y_train)
@@ -698,9 +706,12 @@ def simple_model_test(data_filter=DocFilter):
 
             stupid_metrics.add_preds_test([1] * len(y_test), y_test, domain=domain)
 
-    metrics.save_csv('test_output_full.csv')
+    metrics.save_csv('new_simple_test.csv')
     stupid_metrics.save_csv('stupid_output.csv')
             
+
+
+
 
 def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False, 
                                 metrics_out_dir=None):
@@ -725,7 +736,7 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
     logging.info('setting model parameters')
     tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-    clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+    clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='accuracy')
 
     no_studies = len(train_uids)
     logging.info('calculating folds')
@@ -754,11 +765,12 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
         vec.builder_clear()
 
         logging.info('adding base features')
-        vec.builder_add_docs(X_train_d) # add base features
+        vec.builder_add_docs(X_train_d, low=10) # add base features
 
         for domain in dat.CORE_DOMAINS:
             logging.info('adding interactions for domain %s' % (domain,))
-            vec.builder_add_interaction_features(X_train_d, interactions[domain], prefix=domain+"-i-") # then add interactions
+            print np.sum(interactions[domain]), "/", len(interactions[domain]), "added for", domain
+            vec.builder_add_interaction_features(X_train_d, interactions=interactions[domain], prefix=domain+"-i-", low=2) # then add interactions
 
         logging.info('fitting vectorizer')
         X_train = vec.builder_fit_transform()
@@ -794,13 +806,15 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
 
     if fold is None:
-        metrics.save_csv('multitask.csv')
+        metrics.save_csv('new_multitask.csv')
     else:
         metrics.save_csv(os.path.join(metrics_out_path, 'multitask.csv'))
 
 
 
 if __name__ == '__main__':
+    # simple_model_test()
+
     if len(sys.argv) > 1:
         fold_to_run = int(sys.argv[1])
         metrics_out_dir = sys.argv[2]
@@ -809,8 +823,8 @@ if __name__ == '__main__':
         multitask_test(fold=fold_to_run, pickle_metrics=True, 
                 metrics_out_dir=metrics_out_dir)
     else:
-        # simple_model_test(data_filter=DocFilter)
-        multitask_test()
+        simple_model_test(data_filter=DocFilter)
+        # multitask_test()
     
 
 
