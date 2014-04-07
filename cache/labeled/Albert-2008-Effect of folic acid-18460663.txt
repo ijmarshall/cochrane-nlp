@@ -1,0 +1,1687 @@
+ORIGINAL CONTRIBUTION
+
+Effect of Folic Acid and B Vitamins on Risk
+of Cardiovascular Events and Total Mortality
+Among Women at High Risk
+for Cardiovascular Disease
+A Randomized Trial
+Christine M. Albert, MD, MPH
+Nancy R. Cook, ScD
+J. Michael Gaziano, MD, MPH
+Elaine Zaharris, BA
+Jean MacFadyen, BA
+Eleanor Danielson, MIA
+Julie E. Buring, ScD
+JoAnn E. Manson, MD, DrPH
+
+H
+
+OMOCYSTEINE LEVELS HAVE
+
+been directly associated with
+cardiovascular risk in observational studies1; and daily
+supplementation with folic acid, vitamin B6, vitamin B12, or a combination
+have been shown to reduce homocysteine levels to varying degrees in intervention studies. 2 Based on these
+data, several randomized trials were
+designed to test the hypothesis that
+supplementation with folic acid or B vitamins or both would prevent cardiovascular disease (CVD). However, published trials on patients with preexisting
+vascular disease have not demonstrated a benefit of folic acid or B vitamins on CVD risk.3 Participants in
+observational studies were followed up
+for longer durations then participants
+in randomized trials1; therefore, it is
+plausible that homocysteine lowering
+may have had a greater effect if participants were treated and observed
+for longer periods of time. Metaanalyses of randomized trials sugFor editorial comment see p 2086.
+
+Context Recent randomized trials among patients with preexisting cardiovascular disease (CVD) have failed to support benefits of B-vitamin supplementation on cardiovascular risk. Observational data suggest benefits may be greater among women, yet
+women have been underrepresented in published randomized trials.
+Objective To test whether a combination of folic acid, vitamin B6, and vitamin B12
+lowers risk of CVD among high-risk women with and without CVD.
+Design, Setting, and Participants Within an ongoing randomized trial of antioxidant vitamins, <n>5442</n> women who were US health professionals aged 42 years or
+older, with either a history of CVD or 3 or more coronary risk factors, were enrolled in
+a randomized, double-blind, placebo-controlled trial to receive a combination pill containing folic acid, vitamin B6, and vitamin B12 or a matching placebo, and were treated
+for 7.3 years from April 1998 through July 2005.
+Intervention Daily intake of a combination pill of 2.5 mg of folic acid, 50 mg of
+vitamin B6, and 1 mg of vitamin B12.
+Main Outcome Measures A composite outcome of myocardial infarction, stroke,
+coronary revascularization, or CVD mortality.
+Results Compared with placebo, a total of 796 women experienced a confirmed CVD
+event (406 in the active group and 390 in the placebo group). Patients receiving active vitamin treatment had similar risk for the composite CVD primary end point (226.9/10 000
+person-years vs 219.2/10 000 person-years for the active vs placebo group; relative risk
+[RR], 1.03; 95% confidence interval [CI], 0.90-1.19; P=.65), as well as for the secondary
+outcomes including myocardial infarction (34.5/10 000 person-years vs 39.5/10 000 personyears; RR, 0.87; 95% CI, 0.63-1.22; P=.42), stroke (41.9/10 000 person-years vs 36.8/
+10 000 person-years; RR, 1.14; 95% CI, 0.82-1.57; P=.44), and CVD mortality (50.3/10 000
+person-years vs 49.6/10 000 person-years; RR, 1.01; 95% CI, 0.76-1.35; P=.93). In a blood
+substudy, geometric mean plasma homocysteine level was decreased by 18.5% (95% CI,
+12.5%-24.1%; PϽ.001) in the active group (n=150) over that observed in the placebo
+group (n=150), for a difference of 2.27 µmol/L (95% CI, 1.54-2.96 µmol/L).
+Conclusion After 7.3 years of treatment and follow-up, a combination pill of folic
+acid, vitamin B6, and vitamin B12 did not reduce a combined end point of total cardiovascular events among high-risk women, despite significant homocysteine lowering.
+Trial Registration clinicaltrials.gov Identifier: NCT00000541
+www.jama.com
+
+JAMA. 2008;299(17):2027-2036
+Author Affiliations: Divisions of Preventive Medicine
+(Drs Albert, Cook, Gaziano, Buring, and Manson and
+Mss Zaharris, MacFadyen, and Danielson), Cardiovascular Medicine (Drs Albert and Gaziano), and Aging (Drs Gaziano and Buring), Department of Medicine, Brigham and Women’s Hospital, Harvard Medical
+School, Boston, Massachusetts; Veterans Affairs Boston Healthcare System, Boston, Massachusetts (Dr
+
+©2008 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+Gaziano); Department of Ambulatory Care and Prevention, Harvard Medical School (Dr Buring); and Department of Epidemiology, Harvard School of Public
+Health, Boston (Drs Cook, Buring, and Manson).
+Corresponding Author: Christine M. Albert, MD, MPH,
+Division of Preventive Medicine, Brigham and Women’s Hospital, 900 Commonwealth Ave E, Boston, MA
+02215-1204 (calbert@partners.org).
+
+(Reprinted) JAMA, May 7, 2008—Vol 299, No. 17
+
+2027
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+
+gest that benefits may be greater with
+longer treatment durations,4 but the majority of published trials have 2 years
+or less of follow-up,3 with only 1 trial
+having 5 years of follow-up.5
+Women have been underrepresented both in observational studies and
+in randomized trials of homocysteine
+lowering, and limited data from metaanalyses of observational studies suggest that women may benefit from homocysteine lowering to a greater extent.
+In the most recent meta-analysis of
+these observational studies, a 25%lower homocysteine level was associated with a 32% (95% confidence in-
+
+terval [CI], 15%-45%) lower risk of
+coronary heart disease in women as
+compared with a 15% lower risk (95%
+CI, 8%-21%) in men.1 Although women
+have been included in meta-analyses of
+randomized trials,3,6 the relative risks
+(RRs) for women have not been separately estimated. Given the paucity of
+data on women and the known influences of estrogen on homocysteine levels,7,8 adequately powered randomized trials of homocysteine lowering in
+women are still needed.9
+The present study, the Women’s Antioxidant and Folic Acid Cardiovascular Study (WAFACS), tested whether
+
+Figure 1. Flow Diagram of the Folic Acid, Vitamin B6, and Vitamin B12 Component of
+WAFACS
+53 788 Potentially eligible women invited
+to participate in WACS trial
+
+42 508 Excluded
+26 391 Incomplete respondents or
+nonrespondents to invitation
+9295 Unwilling to participate
+6822 Ineligible
+
+11 280 Enrolled in run-in phase
+(November 1994-October 1996)
+
+3109 Excluded for nonadherence, unwillingness
+to participate, or ineligibility
+
+8171 Randomized in the antioxidant
+groups of WACS trial
+
+2729 Excluded
+2584 Unwilling or ineligible to
+participate in WAFACS trial
+145 Died
+
+5442 Randomized in WAFACS
+trial (April 1998)
+
+2721 Randomized to receive
+combination pill of folic
+acid, vitamin B6, vitamin B12
+
+2721 Randomized to receive
+placebo
+
+Status on July 31, 2005
+2277 Alive
+250 Dead
+194 Unknown vital statusa
+
+Status on July 31, 2005
+2258 Alive
+256 Dead
+207 Unknown vital statusa
+
+2721 Included in primary analysis
+
+2721 Included in primary analysis
+
+WACS indicates Women’s Antioxidant Cardiovascular Study; WAFACS, Women’s Antioxidant and Folic Acid
+Cardiovascular Study.
+aMortality and morbidity information was complete for 98.9% and 98.0% of person-years of follow-up,
+respectively.
+2028
+
+JAMA, May 7, 2008—Vol 299, No. 17 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+a combination of folic acid, vitamin B6,
+and vitamin B12 would reduce total cardiovascular events among women at
+high risk for the development of CVD
+over 7.3 years of follow-up.
+METHODS
+Study Design
+
+WAFACS was a randomized, doubleblind, placebo-controlled trial that
+evaluated whether a combination pill
+of folic acid (2.5 mg/d), vitamin B6
+(50 mg/d), and vitamin B12 (1 mg/d)
+reduces the risk of important vascular events among high-risk women
+with either a history of CVD or at
+least 3 cardiovascular risk factors.
+The WAFACS trial began in 1998,
+when the folic acid, vitamin B6, and
+vitamin B12 component was added to
+the Women’s Antioxidant Cardiovascular Study (WACS), an ongoing
+2 ϫ 2 ϫ 2 factorial trial of 3 antioxidant vitamins (C, E, and beta carotene), which expanded it to a
+4-group factorial trial. The factorial
+design allowed an examination not
+only of the main effects of each agent
+but also of potential interactions
+between agents. Interactions between
+antioxidant vitamins and folic acid
+were plausible because homocysteine
+lowering might have antioxidant
+effects.10 Details of the overall trial
+design11 and the results for the antioxidant group have been reported
+previously. 12 This report describes
+the CVD results of the folic acid,
+vitamin B6, and vitamin B12 combination pill treatment group (FIGURE 1).
+The study was sponsored by the National Heart, Lung, and Blood Institute of the National Institutes of Health.
+The study vitamins and matching placebo were provided by BASF Corporation, Mount Olive, New Jersey. The trial
+was approved by the institutional review board of the Brigham and Women’s Hospital, Boston, Massachusetts,
+and all patients provided written informed consent. An external independent data and safety monitoring board
+monitored the safety of the participants and the overall quality and scientific integrity of the study.
+
+©2008 American Medical Association. All rights reserved.
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+Study Population
+
+In the WACS parent trial, 8171 female
+health professionals throughout the
+United States were randomized in a
+2ϫ2ϫ2 factorial design between June
+1995 and October 1996 to receive vitamin C (500 mg/d), vitamin E (600 IU
+every other day), and beta carotene (50
+mg every other day) vs respective
+matching placebos, yielding 8 treatment groups. Of these women, 5922
+(72.5%) returned a blood sample at the
+beginning of the trial, prior to the initiation of folic acid fortification; and
+98.8% completed a semiquantitative
+food-frequency questionnaire, which
+was used to assess baseline dietary intake including folate.
+Women were eligible for WACS if
+they were aged 40 years or older, postmenopausal or had no intention of becoming pregnant, and had a reported
+history of CVD or had at least 3 cardiac risk factors. CVD was defined as
+a reported history of myocardial infarction (MI), stroke, coronary or peripheral revascularization, angina pectoris, or transient ischemic attack.
+Qualifying cardiac risk factors were diagnosed hypertension, high cholesterol, diabetes mellitus, parental history of premature MI (ie, younger than
+60 years), obesity (body mass index
+Ն30 kg [calculated as weight in kilograms divided by height in meters
+squared]), and current cigarette use.12
+Women were excluded if they had a history of cancer (excluding nonmelanoma skin cancer) within the past 10
+years, any serious non-CVD illness, or
+were currently using warfarin or other
+anticoagulants.
+To be eligible for the folic acid, vitamin B6, and vitamin B12 component,
+potential participants in the ongoing
+8-group trial had to be additionally willing to forgo individual supplements of
+folic acid, vitamin B6, and vitamin B12
+at levels beyond the US recommended
+daily allowance (RDA) of 400 µg of folic acid, 2 mg of vitamin B6, or 6 µg of
+vitamin B12 during the trial.2 Multivitamin use at or below these RDA levels was allowed. In April 1998, 5442 of
+these women were additionally ran-
+
+domized to receive a combination pill
+containing 2.5 mg of folic acid, 50 mg
+of vitamin B6, and 1 mg of vitamin B12
+(active treatment) or a matching placebo daily, thus creating a total of 16
+distinct treatment groups. All study investigators, personnel, and participants were unaware of the participants’ treatment assignments.
+Follow-up Procedures
+
+Following randomization and annually thereafter, participants were mailed
+monthly calendar packs containing active agents or placebos. The participants were followed up annually with
+questionnaires on adherence, use of
+nonstudy supplements, and occurrence of major illnesses or adverse
+events. Written permission for medical records was sought from participants who reported cardiovascular end
+points or from the next of kin in case
+of death. Death certificates were also obtained. An end points committee of
+physicians who were blinded to randomized treatment assignment adjudicated all primary and secondary cardiovascular outcome events.
+Study medications and end point ascertainment were continued in a
+blinded fashion until the scheduled end
+of the trial, July 31, 2005. Follow-up
+and validation of reported end points
+were completed in July 2006 for a follow-up duration of 7.3 years. At the
+scheduled end of the trial on July 31,
+2005, morbidity and mortality follow-up was 92.6% complete. If counted
+in terms of person-time, mortality and
+morbidity information was complete for
+98.9% and 98.0% of person-years of follow-up, respectively.
+Blood Substudy
+
+Women in WAFACS who provided a
+baseline blood sample in 1996, prior to
+the initiation of background dietary folic acid fortification in the US food supply in 1998, were eligible for this preplanned substudy. From the 2596
+eligible participants, 300 (150 in the active treatment and 150 in the placebo
+group) provided a blood sample at the
+end of randomized treatment. These
+
+©2008 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+women were randomly selected from
+participants who were adherent with
+study medications. Plasma levels of folate (chemiluminescence method using
+the 2010 Elecsys autoimmunoanalyzer, Roche Diagnostics, Basel, Switzerland) and homocysteine (enzymatic assay using the Hitachi 917
+analyzer, Roche Diagnostics, Basel,
+Switzerland) were measured in baseline and follow-up samples in a blinded
+fashion in the same analytical run.
+Study Outcomes
+
+The primary outcome was a combined
+end point of cardiovascular morbidity
+and mortality, which included incident MI, stroke, coronary revascularization procedures (coronary artery bypass grafting or percutaneous coronary
+intervention), and cardiovascular mortality. The individual components of
+total MI, total stroke, and total coronary heart disease events (MI, coronary revascularization, and death from
+coronary heart disease) were prespecified secondary end points.
+An MI was confirmed if symptoms
+met World Health Organization criteria and if the event was associated with
+either diagnostic electrocardiogram
+changes or elevated cardiac enzymes.
+Coronary revascularization was confirmed by medical record review. Confirmed stroke was defined as a new neurologic deficit of sudden onset that
+persisted for more than 24 hours or until death within 24 hours. Clinical information, computed tomographic
+scans, and magnetic resonance images
+were used to distinguish hemorrhagic
+from ischemic events. Coronary revascularization was confirmed if a coronary artery bypass grafting or percutaneous coronary intervention was
+documented in the medical record.
+Death due to cardiovascular cause was
+confirmed by examination of autopsy
+reports, death certificates, medical records, and information obtained from the
+next of kin or other family members.
+Death from any cause was confirmed
+by the end points committee on the basis of a death certificate. Only confirmed end points were included in
+
+(Reprinted) JAMA, May 7, 2008—Vol 299, No. 17
+
+2029
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+
+these analyses, except for total mortality, which included an additional 43 reported deaths.
+Power Calculations
+
+Power calculations were performed
+under the assumption that all 4
+agents would have beneficial effects
+on CVD, which would be additive
+(on the log scale) when used in combination. This method affects the
+power calculations by reducing the
+incidence in all exposed groups and
+provides a conservative estimate of
+the study’s power to detect the effects
+of each agent. We assumed additive
+
+10% risk reductions for each of the
+antioxidant vitamins and the folic
+acid, vitamin B 6 , and vitamin B 12
+combination pill. It was estimated
+that the 5442 women who were randomized would provide 82% power
+to detect an observed 20% reduction
+in the primary end point.
+Statistical Analysis
+
+Baseline characteristics were compared by randomized groups using t
+tests, ␹2 tests for proportions, and tests
+for trend for ordinal categories. Primary analyses were performed on an intent-to-treat basis, including all 2721
+
+Table 1. Baseline Characteristics of WAFACS and Blood Substudy Participants
+Active Group,
+No. (%)
+(n = 2721) a
+62.8 (8.8)
+
+Placebo Group,
+No. (%)
+(n = 2721) a
+62.8 (8.8)
+
+582 (21.4)
+990 (36.4)
+
+584 (21.5)
+970 (35.6)
+
+Ն 65
+Prior cardiovascular disease b
+Risk factors
+Hypertension c
+Elevated cholesterol d
+Body mass index Ն30 e
+Parental history of myocardial infarction f
+Alcohol intake, Ն1 glass/wk g
+Diabetes
+Current smoking
+Current medication use
+Aspirin h
+Hormone therapy
+Lipid-lowering drugs
+␤-Blockers
+
+1149 (42.2)
+1764 (64.8)
+
+1167 (42.9)
+1728 (63.5)
+
+2360 (86.7)
+2118 (77.8)
+1341 (49.3)
+1056 (38.9)
+897 (33.0)
+570 (21.0)
+311 (11.4)
+
+2335 (85.8)
+2150 (79.0)
+1349 (49.6)
+1097 (40.5)
+889 (32.7)
+574 (21.1)
+334 (12.3)
+
+1446 (51.1)
+1320 (48.5)
+914 (33.6)
+684 (26.6)
+
+1385 (48.9)
+1329 (48.8)
+938 (34.5)
+697 (27.0)
+
+Angiotensin-converting enzyme inhibitors
+Multivitamins i
+Median dietary intake
+(25th-75th percentiles) j
+Folic acid, µg/d
+Vitamin B6, mg/d
+Vitamin B12, µg/d
+
+627 (24.3)
+616 (22.6)
+
+668 (25.8)
+631 (23.2)
+
+Characteristic
+Age, mean (SD), y
+Age, y
+40-54
+55-64
+
+424.4 (308.6-664.4)
+2.48 (1.81-3.81)
+7.10 (4.62-10.9)
+
+438.7 (309.7-666.8)
+2.54 (1.81-3.87)
+6.98 (4.69-11.0)
+
+Abbreviation: WAFACS: Women’s Antioxidant and Folic Acid Cardiovascular Study.
+a Column shows No. (%) for all categories except age.
+b Reported history of myocardial infarction, stroke, coronary revascularization, angina pectoris, transient ischemic attack,
+carotid endarterectomy, or peripheral artery surgery.
+c Denotes self-reported systolic blood pressure of 140 mm Hg or greater, diastolic blood pressure of 90 mm Hg or
+greater, self-reported physician-diagnosed hypertension, or reported treatment with medication for hypertension.
+d Denotes self-reported high cholesterol level of 240 mg/dL or greater, self-reported physician-diagnosed high cholesterol levels, or reported treatment with cholesterol-lowering medication.
+e Body mass index is calculated as weight in kilograms divided by height in meters squared.
+f Parental history of myocardial infarction in father younger than 60 years of age or mother younger than 65 years
+of age.
+g Denotes beer, wine, or liquor.
+h Aspirin use at least 4 times per month.
+i Any multivitamin use in the past month.
+j Estimated from the semiquantitative food-frequency questionnaire.
+
+2030
+
+JAMA, May 7, 2008—Vol 299, No. 17 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+randomized participants in each treatment group, as randomized. For both
+the primary and secondary analyses,
+person-time was calculated until the
+first confirmed end point specified by
+the analysis or to the end of the trial if
+no end point occurred. Kaplan-Meier
+curves were used to estimate cumulative incidence over time by randomized treatment group, and the logrank test was used to compare survival
+curves. Cox proportional hazards models were used to calculate RRs expressed as hazard ratios and 95% CIs,
+after adjustment for age and other randomized treatment assignments (vitamin E, vitamin C, and beta carotene).
+The proportionality assumption was
+tested using an interaction term for
+treatment with log time, and was met
+for each of the primary and secondary
+analyses. To examine the effect of nonadherence, a post hoc sensitivity analysis censored participants when they
+stopped taking at least two-thirds of
+their study medications, reported taking outside supplements, or were missing adherence information.
+Prespecified subgroup analyses according to antioxidant treatment assignment(s), presence or absence of
+prior CVD, dietary folic acid intake,
+smoking, diabetes, aspirin, hormone
+therapy, and multivitamin use were performed using stratified Cox proportional hazards models. These analyses
+used baseline exposure assessments and
+were restricted to participants with nonmissing subgroup data at baseline. Additional exploratory subgroup analyses were conducted to evaluate the
+consistency of the results. Tests for
+effect modification by subgroup used
+interaction terms between subgroup indicators and randomized assignment,
+with a test for trend for ordinal subgroup categories. The raw distributions and median values of plasma homocysteine and folate levels in the
+blood substudy were compared using
+the nonparametric Wilcoxon rank sum
+test. For homocysteine, geometric
+means were compared after natural
+logarithmic transformation to compare differences between treatment
+
+©2008 American Medical Association. All rights reserved.
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+
+groups. Analyses were conducted using
+SAS version 9 (SAS Institute, Cary,
+North Carolina), using 2-sided tests
+with a significance level of .05.
+
+Figure 2. Cumulative Incidence of Major Cardiovascular Disease by Randomized Folic Acid
+and B-Vitamin Intervention in WAFACS
+0.20
+Active treatment
+Placebo
+
+RESULTS
+Characteristics of the Participants
+
+Adherence and Adverse Events
+
+Adherence was assessed through selfreport on annual study questionnaires
+and was defined as taking at least twothirds of the study pills. Average adherence over the course of follow-up
+was approximately 83% for active and
+placebo agents with no significant difference between active and placebo
+groups. Use of open-label folic acid
+supplements, vitamin B6, or vitamin B12
+supplements containing more than the
+RDA for at least 4 days per month
+ranged from 2% to 11% in the active
+group to 2% to 13% in the placebo
+group over the course of the study.
+There were no serious adverse events
+reported that were conclusively related to study interventions.
+
+0.15
+
+Cumulative Incidence
+
+In April 1998, 2721 female health professionals participating in the WACS
+trial were randomly assigned to active
+treatment with folic acid, vitamin B6,
+and vitamin B12 and 2721 participants
+were assigned to placebo. Baseline characteristics at the time of randomization in 1998 and responses to the dietary questionnaire administered prior
+to randomization in 1996 are displayed in TABLE 1. The mean age of the
+population was 62.8 years and 64.2%
+of women had a history of CVD. There
+were no statistically significant differences in baseline characteristics or in
+dietary intake of study vitamins between the randomized groups (Table 1).
+The median daily dietary intake of folic acid including supplements was 432
+µg, of which approximately 15% (63
+µg) was estimated to be derived from
+dietary intake of folic acid–fortified
+grains. The use of permitted multivitamins with less than the RDA of folic
+acid, vitamin B6, and vitamin B12 at least
+4 days per month ranged from 19% at
+the beginning to 31% at the end of the
+trial.
+
+0.10
+
+0.05
+
+Log-rank P = .63
+
+0
+
+2
+
+4
+
+6
+
+8
+
+2363
+2328
+
+2200
+2198
+
+Follow-up, y
+No. at risk
+Active treatment 2721
+2721
+Placebo
+
+2649
+2636
+
+2503
+2494
+
+WAFACS indicates Women’s Antioxidant and Folic Acid Cardiovascular Study. Major cardiovascular disease
+denotes myocardial infarction, stroke, coronary revascularization, or cardiovascular death.
+
+Primary Analysis
+
+During the 7.3 years of follow-up, 796
+participants (14.6%) experienced a confirmed CVD event included in the primary end point, with some individuals
+experiencing more than 1 event. Overall, 139 MIs, 148 strokes, 508 coronary
+revascularization procedures, and 190
+cardiovascular deaths occurred in the
+population over the course of the study.
+There was no difference in the cumulative incidence of the primary combined end point in the active vs placebo treatment groups at any time
+during study follow-up (FIGURE 2). A
+total of 406 women (14.9%) in the active treatment group and 390 (14.3%)
+in the placebo group experienced at
+least 1 cardiovascular event included in
+the primary end point (226.9/10 000
+person-years vs 219.2/10 000 personyears). This corresponded to an overall RR of 1.03 (95% CI, 0.90-1.19;
+P=.65) after controlling for age and antioxidant treatment assignment
+(TABLE 2). There remained no evidence for a treatment effect in sensitivity analysis censoring at nonadherence (RR, 1.05; 95% CI, 0.90-1.23;
+P = .53) or if coronary revascularization procedures were excluded from the
+
+©2008 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+primary end point (RR, 0.96; 95% CI,
+0.80-1.17; P=.72).
+Secondary and Other Outcomes
+
+Among the prespecified secondary
+cardiovascular outcomes, total coronary heart disease events occurred in
+283 participants (156.5/10 000 person-years) in the active treatment
+group and in 280 participants (155.8/
+10 000 person-years) in the placebo
+group (RR, 1.00; 95% CI, 0.85-1.18;
+P = .96; Table 2). When analyzed
+separately, there were no significant
+differences for each of the components of the primary outcome including MI (34.5/10 000 person-years vs
+39.5/10 000 person-years; RR, 0.87;
+95% CI, 0.63-1.22; P = .42), stroke
+(41.9/10 000 person-years vs 36.8/
+10 000 person-years; RR, 1.14; 95%
+CI, 0.82-1.57; P = .44), and CVD
+mortality (50.3/10 000 person-years
+vs 49.6/10 000 person-years; RR,
+1.01; 95% CI, 0.76-1.35; P = .93)
+between the active treatment and
+placebo groups. Also, the risk of
+death from any cause was similar
+between the active and placebo treatment groups (RR, 0.97; 95% CI,
+0.81-1.15; P =.73).
+
+(Reprinted) JAMA, May 7, 2008—Vol 299, No. 17
+
+2031
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+
+Table 2. Relative Risk of Clinical Outcomes According to Treatment Assignment With Folic
+Acid, Vitamin B6, and Vitamin B12 vs Placebo
+No. of Patients (%)
+Outcome
+Combined major
+cardiovascular disease b
+Myocardial infarction
+Stroke
+Ischemic c
+Hemorrhagic c
+Coronary revascularization d
+Coronary artery bypass
+grafting e
+Percutaneous coronary
+intervention e
+Cardiovascular death
+Myocardial infarction, stroke,
+and cardiovascular death
+Total coronary heart disease f
+Total mortality
+
+Active
+(n = 2721)
+406 (14.9)
+
+Placebo
+(n = 2721)
+390 (14.3)
+
+Relative Risk
+(95% Confidence
+Interval) a
+1.03 (0.90-1.19)
+
+P
+Value
+.65
+
+65 (2.4)
+79 (2.9)
+69 (2.5)
+
+74 (2.7)
+69 (2.5)
+62 (2.3)
+
+0.87 (0.63-1.22)
+1.14 (0.82-1.57)
+1.10 (0.78-1.56)
+
+.42
+.44
+.57
+
+10 (0.4)
+253 (9.3)
+87 (3.2)
+
+6 (0.2)
+255 (9.4)
+98 (3.6)
+
+1.65 (0.60-4.53)
+0.99 (0.83-1.17)
+0.88 (0.66-1.17)
+
+.33
+.87
+.38
+
+192 (7.1)
+
+177 (6.5)
+
+1.08 (0.88-1.33)
+
+.46
+
+96 (3.5)
+205 (7.5)
+
+94 (3.5)
+211 (7.8)
+
+1.01 (0.76-1.35)
+0.96 (0.80-1.17)
+
+.93
+.72
+
+283 (10.4)
+250 (9.2)
+
+280 (10.3)
+256 (9.4)
+
+1.00 (0.85-1.18)
+0.97 (0.81-1.15)
+
+.96
+.73
+
+a Estimated from Cox proportional hazards models that adjusted for age and randomized treatment assignment to vitamin
+
+E, vitamin C, and beta carotene.
+
+b The primary outcome is defined as a composite end point comprising the first of any of these events: nonfatal myocardial
+
+infarction, stroke, coronary revascularization procedures (coronary artery bypass grafting or percutaneous coronary intervention), and cardiovascular mortality.
+
+c Stroke type was unknown for 1 woman in the placebo group.
+d Composite end point comprised the first coronary artery bypass grafting or percutaneous coronary intervention.
+e Includes all incident coronary artery bypass grafting operations and percutaneous coronary intervention, respectively.
+f Composite end point comprised the first of any of these events: nonfatal myocardial infarction, coronary revascularization
+
+procedures (coronary artery bypass grafting or percutaneous coronary intervention), and coronary heart disease death.
+
+Subgroup Analyses
+
+There were no significant treatment effects with respect to the primary outcome in any of the prespecified or
+exploratory subgroups evaluated
+(TABLE 3). Of particular interest, there
+was a similar lack of benefit among participants without prior CVD as compared with those with prior CVD
+(P=.93 for interaction), although the
+trial was not powered to detect a specific benefit in this subgroup. Also, there
+was no evidence that either dietary folate intake or multivitamin use modified the treatment effect, although
+power was limited for these subgroups as well. The test for interaction was significant for treatment with
+angiotensin-converting enzyme inhibitors (P=.03); however, this was not a
+prespecified subgroup analysis.
+With respect to the antioxidant vitamins, there was evidence for an interaction between randomized treatment assignment to vitamin C and the
+combination therapy with folic acid, vitamin B6, and vitamin B12 on the pri2032
+
+mary end point (Table 3). As compared with those randomized to both
+placebos, RR for folic acid was lower
+among those receiving placebo vs active vitamin C (P = .03 for interaction). There were no other significant
+2-way or 3-way interactions among the
+agents for the primary end point.
+Effect of Supplementation
+vs Fortification on Folate
+and Homocysteine Levels
+
+The 300 participants in the blood substudy were similar with respect to all the
+clinical characteristics outlined in
+Table 1, except that smokers (8.0% in the
+blood group vs 12.1% in the nonblood
+group; P=.003) and participants with a
+history of diabetes (16.7% in the blood
+group vs 21.3% in the nonblood group;
+P=.06) were underrepresented among
+the adherent participants in the blood
+substudy. The distributions of baseline
+and follow-up folate and homocysteine
+levels among 150 participants in the placebo group and 150 participants in the
+active group are displayed
+
+JAMA, May 7, 2008—Vol 299, No. 17 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+in TABLE 4. Prior to the initiation of fortification and randomization, median folate levels were similar in the active treatment group (8.9 ng/mL; interquartile
+range, 6.0-13.4 ng/mL) and the placebo
+group (8.8 ng/mL; interquartile range,
+6.4-12.8 ng/mL; P=.94), with 34% of the
+study population having levels considered inadequate (Ͻ7 ng/mL). Median
+plasma homocysteine levels were also
+similar at baseline in the active treatment group (12.1 µmol/L; interquartile
+range, 10.2-15.0 µmol/L) as compared
+to the placebo group (12.5 µmol/L; interquartile range, 9.6-15.5 µmol/L;
+P=.96), with 27.7% of the study population having a level greater than 15.0
+µmol/L; Table 4).
+At the end of study follow-up, the
+median folate level increased significantly in the placebo group to 15.4
+ng/mL (interquartile range, 11.5-22.6
+ng/mL; P Ͻ .001); however, the relative increase in folate level was greater
+in the active treatment group, in which
+49.3% of participants had a folate level
+greater than 40 ng/mL (the upper limit
+of the assay) as compared to 4.7% in the
+placebo group (Table 4). Despite significant increases in folate levels among
+the placebo group, there was no apparent reduction in homocysteine levels at
+the end of the study as compared with
+participants measured at the beginning of the study in the placebo group
+(median = 11.8 µmol/L; interquartile
+range, 9.8-14.9 µmol/L; P=.99). In comparison, homocysteine levels were significantly reduced in the active treatment group (median level, 9.8 µmol/L;
+interquartile range, 7.9-12.4 µmol/L;
+P = .001), and the number of participants with significantly elevated homocysteine levels of greater than 15
+µmol/L was reduced to 10%.
+In order to directly compare the degree of additional homocysteine lowering observed in the active over the placebo group, we computed the difference
+between treatment groups in the change
+in the natural logarithm of homocysteine level from baseline to follow-up,
+adjusting for baseline levels. The geometric mean homocysteine level was
+decreased by 18.5% (95% CI, 12.5%-
+
+©2008 American Medical Association. All rights reserved.
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+
+24.1%; P Ͻ .001) in the active group
+over that observed in the placebo group
+for a difference of 2.27 µmol/L (95% CI,
+1.54 -2.96) from the placebo geometric mean homocysteine level of 12.28
+µmol/L.
+
+COMMENT
+
+In this large-scale, placebo-controlled,
+randomized trial among high-risk
+women participants, we found no overall effects of a combination of folic acid,
+vitamin B6, and vitamin B12 on the pri-
+
+mary outcome of total CVD events over
+the largest number of person-years and
+the longest follow-up period reported to
+our knowledge (7.3 years). In subgroup analyses, there was no heterogeneity of treatment effect among those
+
+Table 3. Effect of Randomized Treatment Assignment on the Primary Outcome in Prespecified and Exploratory Subgroups
+No. of Patients a
+Characteristic
+Overall
+Age, y
+40-54
+55-64
+Ն65
+Prior cardiovascular disease b
+Yes
+No
+Diabetes
+Yes
+No
+Hypertension c
+Yes
+No
+Elevated cholesterol d
+Yes
+No
+Current smoking
+Yes
+No
+Parental history of myocardial infarction e
+Yes
+No
+Body mass index f
+Ͻ25
+25-Ͻ30
+Ն30
+Alcohol intake, glass/mo g
+Յ1
+Ͼ1
+Folate intake h
+Below median, Յ432 µg/d
+Above median, Ͼ432 µg/d
+Aspirin i
+Yes
+No
+␤-Blockers
+Yes
+No
+Lipid-lowering drugs
+Yes
+No
+Angiotensin-converting enzyme inhibitors
+Yes
+No
+Hormone therapy
+Yes
+No
+
+No. of Events (%) a
+Relative Risk
+(95% Confidence Interval)
+1.03 (0.90-1.19)
+
+P Value
+for Interaction
+
+Active
+2721
+
+Placebo
+2721
+
+Active
+406 (14.9)
+
+Placebo
+390 (14.3)
+
+582
+990
+1149
+
+584
+970
+1167
+
+50 (8.6)
+119 (12.0)
+237 (20.6)
+
+43 (7.4)
+133 (13.7)
+214 (18.3)
+
+1.17 (0.78-1.76)
+0.85 (0.67-1.09)
+1.12 (0.93-1.34)
+
+.55
+
+1764
+957
+
+1728
+993
+
+329 (18.7)
+77 (8.1)
+
+314 (18.2)
+76 (7.65)
+
+1.03 (0.89-1.21)
+1.01 (0.73-1.39)
+
+.93
+
+570
+2151
+
+574
+2147
+
+142 (24.9)
+264 (12.3)
+
+143 (24.9)
+247 (11.5)
+
+0.99 (0.78-1.24)
+1.06 (0.89-1.26)
+
+.67
+
+2360
+361
+
+2335
+386
+
+373 (15.8)
+33 (9.1)
+
+363 (15.6)
+27 (7.0)
+
+1.01 (0.87-1.16)
+1.32 (0.80-2.20)
+
+.30
+
+2118
+603
+
+2150
+571
+
+340 (16.1)
+66 (11.0)
+
+331 (15.4)
+59 (10.3)
+
+1.03 (0.88-1.19)
+1.07 (0.76-1.52)
+
+.77
+
+311
+2410
+
+334
+2387
+
+56 (18.0)
+350 (14.5)
+
+70 (21.0)
+320 (13.4)
+
+0.87 (0.61-1.24)
+1.07 (0.92-1.25)
+
+.34
+
+1056
+1656
+
+1097
+1610
+
+165 (15.6)
+238 (14.4)
+
+167 (15.2)
+219 (13.6)
+
+1.03 (0.83-1.27)
+1.04 (0.87-1.26)
+
+.90
+
+616
+764
+1341
+
+566
+806
+1349
+
+100 (16.2)
+126 (16.5)
+180 (13.4)
+
+82 (14.5)
+127 (15.8)
+181 (13.4)
+
+1.12 (0.84-1.50)
+1.07 (0.84-1.37)
+0.97 (0.79-1.20)
+
+.41
+
+1494
+1227
+
+1499
+1222
+
+247 (16.5)
+159 (13.0)
+
+234 (15.6)
+156 (12.8)
+
+1.05 (0.88-1.26)
+1.00 (0.80-1.25)
+
+.73
+
+1322
+1263
+
+1263
+1323
+
+207 (15.7)
+181 (14.3)
+
+183 (14.5)
+183 (13.8)
+
+1.07 (0.87-1.30)
+1.04 (0.85-1.28)
+
+.88
+
+1446
+1274
+
+1385
+1336
+
+270 (18.7)
+136 (10.7)
+
+244 (17.6)
+146 (10.9)
+
+1.07 (0.90-1.28)
+0.93 (0.73-1.17)
+
+.37
+
+684
+1887
+
+697
+1883
+
+125 (18.3)
+263 (13.9)
+
+123 (17.7)
+249 (13.2)
+
+1.04 (0.81-1.34)
+1.03 (0.87-1.23)
+
+.93
+
+914
+1807
+
+938
+1783
+
+178 (19.5)
+228 (12.6)
+
+171 (18.2)
+219 (12.3)
+
+1.05 (0.85-1.30)
+1.02 (0.85-1.23)
+
+.83
+
+627
+1957
+
+668
+1920
+
+102 (16.3)
+287 (14.7)
+
+125 (18.7)
+247 (12.9)
+
+0.81 (0.63-1.06)
+1.15 (0.97-1.36)
+
+.03
+
+1320
+1401
+
+1329
+1392
+
+172 (13.0)
+234 (16.7)
+
+191 (14.4)
+199 (14.3)
+
+0.89 (0.72-1.09)
+1.18 (0.97-1.42)
+
+.05
+(continued)
+
+©2008 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+(Reprinted) JAMA, May 7, 2008—Vol 299, No. 17
+
+2033
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+
+Table 3. Effect of Randomized Treatment Assignment on the Primary Outcome in Prespecified and Exploratory Subgroups (cont)
+No. of Patients a
+Characteristic
+
+No. of Events (%) a
+Relative Risk
+(95% Confidence Interval)
+
+P Value
+for Interaction
+
+Active
+
+Active
+
+Placebo
+
+616
+2105
+
+631
+2088
+
+94 (15.3)
+312 (14.8)
+
+87 (13.8)
+302 (14.5)
+
+1.09 (0.81-1.46)
+1.02 (0.87-1.19)
+
+.67
+
+1349
+1372
+
+1356
+1365
+
+213 (15.8)
+193 (14.1)
+
+177 (13.1)
+213 (15.6)
+
+1.21 (0.99-1.48)
+0.89 (0.73-1.08)
+
+.03
+
+1364
+1357
+
+1356
+1365
+
+190 (13.9)
+216 (15.9)
+
+198 (14.6)
+192 (14.1)
+
+0.94 (0.77-1.15)
+1.12 (0.93-1.37)
+
+.22
+
+1358
+1363
+
+Multivitamins j
+Yes
+No
+Vitamin C
+Active
+Placebo
+Vitamin E
+Active
+Placebo
+Beta carotene
+Active
+Placebo
+
+Placebo
+
+1349
+1372
+
+199 (14.7)
+207 (15.2)
+
+203 (15.1)
+187 (13.6)
+
+0.96 (0.79-1.17)
+1.11 (0.91-1.35)
+
+.32
+
+a Numbers do not always sum to group totals due to missing information for some subgroup variables.
+b Denotes reported history of myocardial infarction, stroke, coronary revascularization, angina pectoris, transient ischemic attack, carotid endarterectomy, or peripheral artery surgery.
+c Denotes self-reported systolic blood pressure of 140 mm Hg or greater, diastolic blood pressure of 90 mm Hg or greater, self-reported physician-diagnosed hypertension, or reported
+
+treatment with medication for hypertension.
+
+d Denotes self-reported high cholesterol, cholesterol level of 240 mg/dL or greater, self-reported physician-diagnosed high cholesterol levels, or reported treatment with cholesterol-
+
+lowering medication.
+e Parental history of myocardial infarction in father younger than age 60 years or mother younger than age 65 years.
+f Body mass index is calculated as weight in kilograms divided by height in meters squared.
+g Denotes beer, wine, or liquor.
+h Estimated from the semiquantitative food-frequency questionnaire.
+i Aspirin use at least 4 times per month.
+j Any multivitamin use in the past month.
+
+Table 4. Distribution of Plasma Levels of Folate and Homocysteine in 300 Participants in the
+Blood Substudy at Baseline Prior to Randomization and at the End of Treatment and
+Follow-up
+Baseline, No. (%)
+Characteristic
+Folate, ng/mL
+Ͻ7
+7-Ͻ15
+15-Ͻ25
+25-40
+Ͼ40
+Homocysteine, µmol/L b
+Ͻ9
+9-Ͻ12
+12-Ͻ15
+Ն15
+
+Follow-up, No. (%)
+
+Placebo
+(n = 150)
+
+Active
+(n = 150)
+
+Placebo
+(n = 150)
+
+Active
+(n = 150)
+
+52 (34.7)
+71 (47.3)
+22 (14.7)
+
+49 (32.7)
+80 (53.3)
+19 (12.7)
+
+2 (1.33)
+69 (46.0)
+54 (36.0)
+
+0
+1 (0.67)
+21 (14.0)
+
+4 (2.67)
+1 (0.67)
+
+2 (1.33)
+0
+
+18 (12.0)
+7 (4.67)
+
+54 (36.0)
+74 (49.3)
+
+30 (20.0)
+40 (26.7)
+35 (23.3)
+45 (30.0)
+
+21 (14.0)
+52 (34.7)
+39 (26.0)
+38 (25.3)
+
+21 (14.0)
+57 (38.0)
+35 (23.3)
+37 (24.7)
+
+64 (42.7)
+43 (28.7)
+28 (18.7)
+15 (10.0)
+
+SI conversion: for folate, multiply by 2.266 for nmol/L units.
+
+above or below the median of folate intake and among women with or without prior vascular disease. A possible
+interaction with randomized vitamin C
+and with nonrandomized angiotensinconverting enzyme inhibitor treatment on the primary outcome was observed; however, due to the large
+number of comparisons, these results
+could have been due to chance.
+These null results for women are consistent with those previously reported
+in randomized trials composed primar2034
+
+ily of men with preexisting vascular disease.3 In the Heart Outcomes Prevention Evaluation Trial (HOPE) 2,5 the
+same regimen of folic acid, vitamin B6,
+and vitamin B12 failed to significantly
+lower the risk of a combined outcome
+of death from cardiovascular causes, MI,
+and stroke among 5522 patients with
+prior vascular disease over an average
+of 5 years. Although there was a significant reduction in the secondary end
+point of stroke in this trial (RR, 0.75;
+95% CI, 0.59-0.97), a reduction in
+
+JAMA, May 7, 2008—Vol 299, No. 17 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+stroke was not found with a similar
+B-vitamin regimen in the Vitamins
+Intervention for Stroke Prevention
+(VISP) trial,13 in which stroke was the
+primary end point. The HOPE-2 trial
+also reported an increased risk of
+hospitalization for unstable angina
+(RR, 1.24; 95% CI, 1.04-1.49) among
+participants randomized to active
+treatment.
+In the Norwegian Vitamin (NORVIT)
+Trial,14 a 2ϫ2 factorial trial of vitamin
+B6 and a combination pill of folic acid
+and vitamin B12 among recent post MI
+patients, a marginally significant 22%
+(95% CI, 0%-50%; P = .05) increased
+risk of recurrent MI, stroke, and sudden death was found among participants assigned to the combination of
+folic acid, B12 and vitamin B6 over a
+median follow-up of 40 months. Smaller
+studies among patients postcoronary
+intervention have found both decreased15 and increased16 rates of restenosis among patients treated with
+B-vitamin regimens. In the present
+study, we found no evidence for a benefit on stroke or any evidence for harm
+regarding the primary composite end
+point or any of the individual secondary end points including coronary revascularization.
+
+©2008 American Medical Association. All rights reserved.
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+
+Concerns have been raised regarding the power of this trial and other current trials to adequately test the homocysteine hypothesis17,18; especially in
+countries where folic acid fortification of the food supply has taken
+place. 19 Observational studies suggested that fortification of grain products with 140 µg of folic acid per 100
+g, which began in 1996 and became
+mandatory in the United States and
+Canada by 1998, significantly reduced mean plasma homocysteine concentrations among middle-aged individuals, and decreased the prevalence
+of high homocysteine levels (Ͼ13
+µmol/L) from 29.8% to 18.7%.20 Based
+on these data, it has been estimated that
+additional B-vitamin supplementation in such a fortified population
+would only lower homocysteine levels by about 10%.21 In the present trial,
+a greater but still somewhat modest
+lowering of homocysteine (18.5% reduction) was observed. Although almost complete elimination of low folate concentrations was observed (Ͻ7
+ng/mL) in the placebo group after fortification, there was no apparent reduction over time on homocysteine concentrations or on the prevalence of
+elevated homocysteine levels (Ն15
+µmol/L) in this population. Although
+homocysteine levels were unchanged in
+the placebo group, folic acid fortification likely prevented further elevations in homocysteine levels that would
+have otherwise taken place due to the
+aging of the population.
+Initially, epidemiologic studies,
+which were primarily retrospective and
+cross-sectional, suggested that reducing plasma homocysteine by 5 µmol/L
+would decrease vascular risk by onethird.22 However, a more recent metaanalysis of prospective observational
+studies suggested that risk reductions
+associated with homocysteine lowering would be much more modest.1 In
+these studies, a 25%-lower homocysteine level, approximately 3 µmol/L, was
+associated with 11% reduction in coronary heart disease risk and a 19% lower
+stroke risk.1 The expected reductions
+in cardiovascular events may have been
+
+even lower in this trial where the reduction in homocysteine levels was only
+18.5% (2.3 µmol/L) among adherent
+patients. Although this trial was not initially powered to detect such modest reductions in cardiovascular events, the
+95% CIs for the primary end point excludes with reasonable certainty reductions as low as 10% in the combined end
+point of total cardiovascular events.
+However, such modest plausible reductions in the individual secondary end
+points of stroke, MI, and cardiovascular death cannot be excluded even in a
+trial of this size.
+There are several caveats and/or limitations to this study, which warrant
+consideration. First, the study was conducted in a population of health professionals, who were at a relatively low
+risk of folate deficiency. These participants were allowed to take the RDA of
+folic acid and B-vitamins and were also
+exposed to folic acid–fortified grain
+products during the course of the trial.
+Although the blood study suggests that
+a significant proportion of the participants were folate deficient at the beginning of the trial, this was virtually
+eliminated over the course of study.
+Therefore, we cannot rule out the possibility that this same regimen may have
+resulted in an even greater reduction in
+homocysteine levels in a more folatedeficient population, which might have
+translated into an observable benefit on
+cardiovascular events. Alternatively, the
+optimal dose of these vitamins may actually be lower than the dose tested in
+this and other trials, and the potential
+for harm at higher doses has been raised
+by other studies.14 Also, since homocysteine levels were only measured in
+5% of the sample, we were unable to
+determine whether women with high
+homocysteine levels at baseline may
+have benefited to a greater extent both
+with respect to homocysteine lowering and cardiovascular events.
+Although this trial was the first to include a significant number of participants without prior cardiovascular disease (n=1950), power is still insufficient
+to exclude moderate treatment effects
+in primary prevention. Also, morbid-
+
+©2008 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+ity and mortality follow-up rates in this
+high-risk population were lower than
+in other trials of primary prevention
+using similar methodology23; and it is
+thus plausible that a larger primary prevention population with higher rates of
+follow-up might have demonstrated a
+benefit. However, since the lost to follow-up rates did not differ between the
+2 treatment groups in this study, they
+are unlikely to account for the null findings observed. These remaining issues, along with the hypotheses regarding possible novel drug interactions
+with vitamin C and angiotensin enzyme-converting inhibitors raised by
+the subgroup analyses of this study,
+warrant further investigation in future studies.
+In summary, in the WAFACS trial,
+a combination pill of 2.5 mg of folic
+acid, 50 mg of vitamin B6, and 1 mg vitamin B12 had no beneficial or adverse
+effects on a combined outcome of total
+major cardiovascular events in a highrisk population of women with prior
+cardiovascular disease or 3 or more
+coronary risk factors over 7.3 years of
+follow-up. Our results are consistent
+with prior randomized trials performed primarily among men with established vascular disease3 and do not
+support the use of folic acid and B vitamin supplements as preventive interventions for CVD in these high-risk–
+fortified populations.
+Author Contributions: Dr Albert had full access to all
+of the data in the study and takes responsibility for
+the integrity of the data and the accuracy of the data
+analysis.
+Study concept and design: Albert, Gaziano, Manson.
+Acquisition of data: Albert, Gaziano, Zaharris,
+MacFadyen, Danielson, Buring, Manson.
+Analysis and interpretation of data: Albert, Cook,
+Manson.
+Drafting of the manuscript: Albert.
+Critical revision of the manuscript for important intellectual content: Albert, Cook, Gaziano, Zaharris,
+MacFadyen, Danielson, Buring, Manson.
+Statistical expertise: Cook.
+Obtained funding: Albert, Gaziano, Manson.
+Administrative, technical, or material support: Zaharris,
+MacFadyen, Danielson, Manson.
+Study supervision: Albert, MacFadyen, Danielson,
+Manson.
+Financial Disclosures: Dr Gaziano reports receiving investigator-initiated study support of vitamin pills and
+packaging from Wyeth. Dr Buring reports receiving
+investigator-initiated study support of vitamin pills and
+packaging from Natural Source Vitamin E Association. Dr Manson reports receiving investigatorinitiated study support of vitamin pills and packaging
+
+(Reprinted) JAMA, May 7, 2008—Vol 299, No. 17
+
+2035
+
+EFFECT OF FOLIC ACID AND B VITAMINS ON RISK OF CARDIOVASCULAR EVENTS
+from Cognis and BASF. The other authors reported
+no disclosures.
+Disclaimer: Dr Gaziano, a JAMA Contributing Editor, was not involved in the editorial review of or decision to publish this article.
+Funding/Support: This study was supported by
+investigator-initiated grant HL47959 from the
+National Heart, Lung, and Blood Institute of the
+National Institutes of Health. Vitamin E and its placebo were supplied by Cognis Corporation (LaGrange, Illinois). All other agents and their placebos
+were supplied by BASF Corporation (Mount Olive,
+New Jersey). Pill packaging was provided by Cognis
+and BASF.
+Role of the Sponsor: Cognis, BASF, and the National
+
+Heart, Lung, and Blood Institute did not participate
+in the design and conduct of the study; collection, management, analysis, and interpretation of the data; and
+preparation, review, or approval of the manuscript.
+Data and Safety Monitoring Board: L. Cohen, R. Collins, T. Colton, D. DeMets, I.C. Henderson, A. La Croix,
+R. Prentice, and N. Wenger (chair) and M.F. Cotch, F.
+Ferris, L. Friedman, P. Greenwald, N. Kurinij, M. Perloff, E. Schron, and A. Zonderman (ex-officio members).
+Additional Contributions: We are indebted to the 5442
+participants in the Women’s Antioxidant and Folic Acid
+Cardiovascular Study for their dedicated and conscientious collaboration; to the entire staff of the Women’s Antioxidant and Folic Acid Cardiovascular Study:
+including Marilyn Chown, BS, MPH, Shamikhah Curry,
+
+Margarette Haubourg, Felicia Zangi, Tony Laurinaitis, Geneva McNair, Philomena Quinn, Harriet
+Samuelson, MA, Ara Sarkissian, MM, and Martin Van
+Denburgh, BA; and to the following individuals for their
+assistance in conducting this trial: Michelle Albert, MD,
+MPH, Tobias Kurth, MD, ScD, I-Min Lee, MBBS, ScD,
+Aruna Pradhan, MD, MPH, Paul Ridker, MD, MPH,
+and Jacqueline H. Suk, MD, MPH, Brigham and Women’s Hospital, Boston, Massachusetts; Gavin Blake,
+MBBS, Mater Misericordiae University Hospital, Dublin, Ireland; Claudia Chae, MD, MPH, Massachusetts
+General Hospital, Boston; Carlos Kase, MD, Boston University Medical Center, Boston, Massachusetts; and
+James O. Taylor, MD, East Boston Neighborhood
+Health Center, Boston, Massachusetts.
+
+11. Bassuk SS, Albert CM, Cook NR, et al. The Women’s Antioxidant Cardiovascular Study: design and
+baseline characteristics of participants. J Womens
+Health (Larchmt). 2004;13(1):99-117.
+12. Cook NR, Albert CM, Gaziano JM, et al. A randomized factorial trial of vitamins C and E and beta
+carotene in the secondary prevention of cardiovascular events in women: results from the Women’s Antioxidant Cardiovascular Study. Arch Intern Med. 2007;
+167(15):1610-1618.
+13. Toole JF, Malinow MR, Chambless LE, et al. Lowering homocysteine in patients with ischemic stroke
+to prevent recurrent stroke, myocardial infarction, and
+death: the Vitamin Intervention for Stroke Prevention (VISP) randomized controlled trial. JAMA. 2004;
+291(5):565-575.
+14. Bønaa KH, Njolstad I, Ueland PM, et al. Homocysteine lowering and cardiovascular events after acute
+myocardial infarction. N Engl J Med. 2006;354
+(15):1578-1588.
+15. Schnyder G, Roffi M, Pin R, et al. Decreased rate
+of coronary restenosis after lowering of plasma homocysteine levels. N Engl J Med. 2001;345(22):
+1593-1600.
+16. Lange H, Suryapranata H, De Luca G, et al. Folate therapy and in-stent restenosis after coronary
+stenting. N Engl J Med. 2004;350(26):26732681.
+17. B-vitamin Treatment Trialists’ Collaboration. Homocysteine-lowering trials for prevention of cardio-
+
+vascular events: a review of the design and power of
+the large randomized trials. Am Heart J. 2006;
+151(2):282-287.
+18. Wald DS, Wald NJ, Morris JK, Law M. Folic acid,
+homocysteine, and cardiovascular disease: judging causality in the face of inconclusive trial evidence. BMJ.
+2006;333(7578):1114-1117.
+19. Bostom AG, Selhub J, Jacques PF, Rosenberg IH.
+Power shortage: clinical trials testing the “homocysteine hypothesis” against a background of folic acidfortified cereal grain flour. Ann Intern Med. 2001;
+135(2):133-137.
+20. Jacques PF, Selhub J, Bostom AG, Wilson PW,
+Rosenberg IH. The effect of folic acid fortification on
+plasma folate and total homocysteine concentrations.
+N Engl J Med. 1999;340(19):1449-1454.
+21. Bostom AG, Jacques PF, Liaugaudas G, Rogers
+G, Rosenberg IH, Selhub J. Total homocysteine lowering treatment among coronary artery disease patients in the era of folic acid-fortified cereal grain flour.
+Arterioscler Thromb Vasc Biol. 2002;22(3):488491.
+22. Boushey CJ, Beresford SA, Omenn GS, Motulsky
+AG. A quantitative assessment of plasma homocysteine as a risk factor for vascular disease: probable benefits of increasing folic acid intakes. JAMA. 1995;
+274(13):1049-1057.
+23. Lee IM, Cook NR, Gaziano JM, et al. Vitamin E
+in the primary prevention of cardiovascular disease and
+cancer. JAMA. 2005;294(1):56-65.
+
+REFERENCES
+1. Homocysteine Studies Collaboration. Homocysteine and risk of ischemic heart disease and stroke: a
+meta-analysis. JAMA. 2002;288(16):2015-2022.
+2. Homocysteine Lowering Trialists’ Collaboration.
+Lowering blood homocysteine with folic acid based
+supplements: meta-analysis of randomised trials. BMJ.
+1998;316(7135):894-898.
+3. Bazzano LA, Reynolds K, Holder KN, He J. Effect
+of folic acid supplementation on risk of cardiovascular diseases: a meta-analysis of randomized controlled trials. JAMA. 2006;296(22):2720-2726.
+4. Carlsson CM. Lowering homocysteine for stroke
+prevention. Lancet. 2007;369(9576):1841-1842.
+5. Lonn E, Yusuf S, Arnold MJ, et al. Homocysteine
+lowering with folic acid and B vitamins in vascular
+disease. N Engl J Med. 2006;354(15):1567-1577.
+6. Wang X, Qin X, Demirtas H, et al. Efficacy of folic
+acid supplementation in stroke prevention: a
+meta-analysis. Lancet. 2007;369(9576):1876-1882.
+7. Hak AE, Polderman KH, Westendorp IC, et al. Increased plasma homocysteine after menopause.
+Atherosclerosis. 2000;149(1):163-168.
+8. Lobo RA. Homocysteine in women’s health.
+Menopause. 2003;10(4):271-273.
+9. Ioannidis JP, Cappelleri JC, Lau J. Issues in comparisons between meta-analyses and large trials. JAMA.
+1998;279(14):1089-1093.
+10. Welch GN, Loscalzo J. Homocysteine and
+atherothrombosis. N Engl J Med. 1998;338(15):
+1042-1050.
+
+2036
+
+JAMA, May 7, 2008—Vol 299, No. 17 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/04/2014
+
+©2008 American Medical Association. All rights reserved.

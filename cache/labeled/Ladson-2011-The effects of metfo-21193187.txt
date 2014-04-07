@@ -1,0 +1,2868 @@
+The effects of metformin with lifestyle therapy in
+polycystic ovary syndrome: a randomized double-blind
+study
+Gwinnett Ladson, M.D.,a William C. Dodson, M.D.,b Stephanie D. Sweet, M.D.,a Anthony E. Archibong, Ph.D.,a
+Allen R. Kunselman, M.A.,c Laurence M. Demers, Ph.D.,d Nancy I. Williams, Sc.D.,e Ponjola Coney, M.D.,f
+and Richard S. Legro, M.D.b
+a
+Department of Obstetrics and Gynecology, Meharry Medical College, Nashville, Tennessee; b Department of Obstetrics and
+Gynecology, c Department of Public Health Sciences, and d Department of Pathology, Penn State College of Medicine,
+Hershey, Pennsylvania; e Department of Kinesiology, Penn State College of Health and Human Development, University
+Park, Pennsylvania; and f Department of Obstetrics and Gynecology, Virginia Commonwealth University, Richmond, Virginia
+
+Objective: To determine if the combination of lifestyle (caloric restriction and exercise) and metformin (MET)
+would be superior to lifestyle and placebo (PBO) in improving the polycystic ovary syndrome (PCOS) phenotype.
+Design: Double-blind randomized 6-month trial of MET versus PBO.
+Setting: Two academic medical centers.
+Patient(s): <n>One hundred fourteen</n> subjects with PCOS were randomized to MET (N ¼ 55) or PBO (N ¼ 59).
+Intervention(s): Subjects collected urine daily for ovulation monitoring, had monthly monitoring of hormones and
+weight and determination of body composition by dual-energy x-ray absorptiometry, glucose tolerance, and were
+evaluated for quality of life at baseline and completion.
+Main Outcome Measure(s): Ovulation rates and testosterone levels.
+Result(s): Dropout rates were high. There was no signiﬁcant difference in ovulation rates. Testosterone levels were
+signiﬁcantly lower compared with baseline in the MET group at 3 mos but not at 6 mos. There were no differences
+in weight loss between groups, but MET showed a signiﬁcant decline at 6 months compared with baseline (À3.4 kg,
+95% conﬁdence interval À5.3 to À1.5 kg). We noted divergent effects of MET versus PBO on oral glucose tolerance test indices of insulin sensitivity (increased) and secretion (worsened). Total bone mineral density increased
+signiﬁcantly in MET. There were no differences in quality of life measures between the groups. The MET group had
+increased diarrhea and headache, but fewer bladder infections and musculoskeletal complaints.
+Conclusion(s): The addition of metformin to lifestyle therapy produced little reproductive or glycemic beneﬁt in
+women with PCOS, although our study had limited power owing to a high dropout rate. It is not possible at baseline
+to identify women likely to drop out. (Fertil SterilÒ 2011;95:1059–66. Ó2011 by American Society for Reproductive Medicine.)
+Key Words: Ovarian function, insulin action, nutrition, exercise, androgen
+
+There are multiple treatment options for obese women with polycystic ovary syndrome (PCOS). Although PCOS is diagnosed primarily
+on reproductive abnormalities, i.e., chronic anovulation, hyperandrogenism, and polycystic ovaries, it is associated with metabolic
+disturbances, including insulin resistance, dyslipidemia, and an increased risk for type 2 diabetes, that are exacerbated by obesity
+(1). Therapies used for the treatment and prevention of type 2
+Received September 5, 2010; revised December 1, 2010; accepted
+December 2, 2010; published online December 30, 2010.
+Trial Registration: Clinicaltrials.gov identiﬁcation no. NCT00151411.
+A.R.K. reports ownership of Merck stock. R.S.L. reports a paid lecture fee
+from Serono. G.L. has nothing to disclose. W.C.D. has nothing to disclose. S.D.S. has nothing to disclose. A.E.A. has nothing to disclose.
+L.M.D. has nothing to disclose. N.I.W. has nothing to disclose. P.C.
+has nothing to disclose.
+Supported by grant no. PHS U54 HD044315 from the Meharry Medical College/Penn State Cooperative Reproductive Science Center and by grant
+no. MO1 RR 10732 and construction grant no. C06 RR016499 to Pennsylvania State University from the General Clinical Research Center.
+Presented in part at the 92nd Annual Meeting of the Endocrine Society,
+San Diego, California, June 18–22, 2010.
+Reprint requests: Richard S. Legro, M.D., Department of Obstetrics and
+Gynecology, Penn State College of Medicine, 500 University Drive,
+Hershey, PA 17033 (E-mail: RSL1@psu.edu).
+
+0015-0282/$36.00
+doi:10.1016/j.fertnstert.2010.12.002
+
+diabetes, including diabetic medications and lifestyle changes, are
+also used in PCOS (2, 3). Diabetes prevention trials are often
+conducted in populations that overlap with obese PCOS women,
+and their results are often extrapolated to treatment of PCOS.
+Large-scale trials are now testing the beneﬁt of combination therapy
+for diabetes prevention (4). The combination of lifestyle and metformin therapies has had additive beneﬁts at preventing weight gain in
+other populations (5).
+Lifestyle modiﬁcation in obese women with PCOS has become,
+at least based on expert opinion, the cornerstone of therapy for
+PCOS (6, 7). The results of similar combination lifestyle/
+metformin trials, although on a smaller scale, have shown more
+modest results in PCOS, often with minimal or mixed effects on
+the reproductive abnormalities of chronic anovulation and
+hyperandrogenism (8–10). We hypothesized that the combination
+of lifestyle and metformin therapies would be superior to lifestyle
+alone in improving ovulatory frequency, hyperandrogenism, and
+insulin sensitivity in women with PCOS.
+
+MATERIALS AND METHODS
+Subjects
+The Institutional Review Boards of the Meharry Medical College and Penn
+Sate College of Medicine approved the study. Subjects were randomized
+
+Fertility and Sterilityâ Vol. 95, No. 3, March 1, 2011
+Copyright ª2011 American Society for Reproductive Medicine, Published by Elsevier Inc.
+
+1059
+
+between 2004 and 2007 and each of them gave written informed consent. We
+used the 1990 National Institutes of Health/National Institute of Child Health
+and Human Development PCOS diagnostic criteria to identify subjects (11):
+chronic anovulation, deﬁned as spontaneous intermenstrual periods of R45
+days or a total of %8 menses per year, and hyperandrogenism deﬁned as an
+elevated total testosterone (>50 ng/dL) or a free androgen index [ratio of testosterone/SHBG (100)] >1.5 (12). Other causes of anovulation and hyperandrogenism were excluded by appropriate tests. Subjects were aged 21–39
+years, in good general health and currently off confounding medications
+(e.g., hormonal contraceptives, diabetic medications, etc.).
+
+and closed comedones (noninﬂammatory lesions) were obtained from the forehead, left and right cheeks, nose, and chin by trained study personnel (15).
+
+Power Analysis and Randomization
+
+Serum reproductive hormones (baseline, 3 months, and end of
+study) LH, FSH, DHEAS, and SHBG were determined by chemilumines-
+
+The primary outcome was the ovulation rate as determined by urinary progestin.
+We proposed an absolute difference of 25% between the two treatment arms
+assuming the number of observed ovulations follows a Poisson process and projected a 15% dropout rate for this trial. The ovulation rate in a double-blind, placebo controlled trial of troglitazone in PCOS was 32% (13). Based on a projected
+ovulation rate of 30% in the lifestyle/placebo arm and 55% in the combined lifestyle/metformin arm, the study required a total of 58 subjects per treatment arm to
+have a two-sided test having 80% power with a type I error of 5%.
+Subjects were randomized in a 1:1 allocation ratio to the two treatment arms
+each lasting 6 mos using a computer generated random number table using
+permuted blocks and stratiﬁed by center and prior metformin exposure status
+after a baseline visit. The block schedule was blinded to the investigators and
+research subjects. Subjects were advised to use barrier contraception and avoid
+pregnancy during the study in order to encourage study completion.
+
+Study Interventions
+More complete details can be found in the Supplemental Materials and
+Methods section (available online at www.fertstert.org). A combined intervention of diet and exercise was used with the goal of achieving an average
+weight loss of R7% of initial body weight over 6 months with a prescription
+of 150 min/wk exercise combined with a low-calorie diet (2).
+
+Dietary interventions The number of calories to maintain current body
+weight was assessed by combining the analysis of three day diet records obtained during screening (Nutritionist V, First Databank, Sunnyvale, CA) with
+the results of the Harris Benedict Equation multiplied by an activity factor of
+1.3. The target level of calorie intake was calculated as the daily calories
+required to maintain weight minus 500 kcal.
+Exercise training The exercise program consisted of supervised and nonsupervised components to maximize ﬂexibility and acceptance of the intervention. Subjects were given the opportunity to attend R2 sessions per
+week at a ﬁtness facility run by the research team. Because logistics precluded frequent visits to the training facility, subjects were responsible for
+performing aerobic activity on their own to achieve a total exercise time of
+150 min/wk (including supervised sessions). Subjects completed a daily
+physical activity log once per month.
+
+Medication arm Metformin hydrochloride was obtained as a powder
+(Spectrum Chemical Manufacturing, New Brunswick, NJ) and formulated
+with the appropriate dose of drug (500 mg/capsule) into capsules with
+identical-appearing placebo capsules (9). Drug and placebo were packaged
+and labeled according to subject number by the Investigational Pharmacy
+laboratory in a double-blind fashion. Medication was initiated in a step-up
+fashion every 5 days, from one tablet per day to four. This dose was maintained as tolerated throughout the remainder of the study.
+
+Study Procedures
+Urine collections (daily) Subjects collected a ﬁrst morning void urine specimen (10 mL) and refrigerated it. Pregnanediol-3 alpha-glucuronide (PdG) was
+determined in an aliquot of diluted human urine by competitive ELISA [Immunometrics (UK), London, UK]. Results were normalized to urine creatinine.
+Physical exam (monthly) Hirsutism was assessed by trained study personnel using the modiﬁed Ferriman-Galwey score (14). Facial lesion counts of open
+
+1060
+
+Ladson et al.
+
+Exercise testing (monthly) Before beginning the exercise program and at
+each monthly visit during the study, subjects underwent a submaximal test of
+aerobic capacity to determine ﬁtness levels (16).
+Dual-energy x-ray absorptiometry (baseline and end of
+study) Body composition data were determined by dual-energy x-ray absorptiometry (DXA; QDR-4500W; Hologic, Bedford, MA). Subregion analyses of visceral and central abdominal fat were modeled (17).
+
+cence using the Siemens (Los Angeles, CA) Immulite platform. Testosterone
+was measured by RIA (18).
+
+Serum metabolic hormones (baseline and end of study) A 75-g oral
+glucose tolerance test (OGTT) with glucose and insulin levels obtained at 0 ,
+30, 60, 90, and 120 minutes after challenge was performed after an overnight
+fast (19). Fasting glucose (FBG), insulin (FI), and lipids were determined as
+previously reported (18). The insulinogenic index, a measure of early-phase
+insulin secretion, was deﬁned as (30-minute glucose À FBG) divided by
+(30-minute insulin À FI) (20). The insulin sensitivity index was calculated
+using the formula 10,000/square root of [(FBG)(FI)][(mean OGTT
+glucose)(mean OGTT insulin)] (21).
+
+Ultrasound scan (baseline and end of study) A transvaginal or transabdominal (in adolescents) ultrasound of the pelvis was performed (18). Volume of the ovary was calculated by using the formula for a prolate ellipsoid:
+length Â height Â width Â (p/6) (18).
+
+PCOS quality of life survey (baseline and end of study) The validated
+PCOS Health-Related Quality of Life (HR-QOL) questionnaire includes ﬁve
+domains: emotional, body hair, infertility, weight, and menstrual problems
+(22). Each domain score is graded on a scale of 1 (poorest function) to 7
+(optimal), with a change of 0.5 approximating the minimal important difference,
+i.e., the smallest change in score that women feel is important in their daily lives.
+Determination of the number of ovulations A modiﬁed version of the
+Kassam et al. (23) urinary PdG ratio algorithm was used to estimate the number of ovulations. For this study, the modiﬁcations presented by O’Connor
+et al. (24) to the Kassam algorithm were sampling every other day with
+a baseline calculated using a 3-day rather than a 5-day running average
+and the threshold of ratio >3 exceeded for 2, not 3, days.
+
+Data Analyses
+Because there were a large number of women with no ovulations in this study,
+a zero-altered negative binomial model was ﬁt to compare the number of ovulations (25). Linear mixed-effects models were ﬁt to continuous outcomes to
+compare metformin and placebo regarding the change from baseline measurement (26). Adverse event rates were compared between the two treatment arms using Poisson regression models.
+All analyses followed the intention-to-treat principle, whereby data from
+all participants were analyzed according to the assigned treatment group.
+All analyses were adjusted for center, prior metformin use, baseline age,
+and baseline body mass index (BMI). For change from baseline outcomes,
+the models also adjusted for the baseline value of the outcome. No adjustments for multiple hypothesis testing were performed, because all outcomes
+other than the primary were considered to be exploratory. All statistical tests
+are two sided, and all analyses were performed with SAS software (version
+9.1; SAS Institute, Cary, NC) with graphics constructed using S-plus (version
+8.0; TIBCO Software, Palo Alto, CA).
+
+RESULTS
+Baseline Characteristics and Subject Retention
+The two treatment groups were similar at baseline (Table 1). We
+experienced a high dropout rate without group differences [MET:
+
+Metformin and lifestyle therapy in PCOS
+
+Vol. 95, No. 3, March 1, 2011
+
+TABLE 1
+Baseline characteristics of treatment groups.
+Metformin (n [ 55)
+Characteristic
+Race, n (%)
+Black
+White
+Other
+Biometrics
+Age (y)
+Weight (kg)
+BMI (kg/m2) [<25]
+Waist (in) [<35]
+Ferriman-Gallwey score [<6]
+Total acne lesion count
+Systolic blood pressure (mm Hg) [<130]
+Diastolic blood pressure (mm Hg) [<85]
+Hormones
+T (ng/dL) [<50]
+SHBG (nmol/L) [20–130]
+Free androgen index [<1.5]
+E2 (pg/mL) [20–350]
+LH (mIU/mL) [0.6–16.3]
+FSH (mIU/mL) [1.09–10.0]
+Lipid parameters
+Cholesterol (mg/dL) [<200]
+HDL (mg/dL) [>50]
+LDL (mg/dL) [<100]
+Triglycerides (mg/dL) [<150]
+Glycemic parameters from OGTT
+Fasting glucose (mg/dL) [<100]
+Fasting insulin (mU/mL) [<35]
+AUC glucose (mU $ min/mL)
+AUC insulin (mg $ min/dL)
+Insulinogenic Index
+Insulin sensitivity index
+Ultrasound parameters
+Left ovarian volume (cm3) [<10]
+Right ovarian volume (cm3) [<10]
+Largest follicle diameter (mm)
+DXA parameters
+BMD (g/cm2) [1.00–1.17]
+Total lean (g)
+Total fat (g)
+Central abdominal fat (g)
+Abdominal fat (g)
+Central-to-total body fat ratio
+% body fat [25–31]
+Submaximal exercise testing
+Estimated VO2 max mL/kg/min [31–43]
+PCOS QOL parameters
+Emotion mean score
+Body hair mean score
+Weight mean score
+Menstrual problems mean score
+Overall physical well-being
+Overall emotional well-being
+Overall general well-being
+
+n
+
+Mean (SD)
+
+20 (36)
+33 (60)
+2 (4)
+
+Placebo (n [ 59)
+n
+
+Mean (SD)
+
+21 (36)
+38 (64)
+0 (0)
+
+55
+55
+55
+54
+55
+43
+55
+55
+
+29.0 (4.5)
+102.7 (22.7)
+38.0 (7.8)
+42.7 (6.9)
+17.7 (8.3)
+4.4 (7.4)
+122.1 (17.6)
+79.5 (11.7)
+
+59
+59
+59
+59
+59
+46
+59
+59
+
+28.8 (4.6)
+104.1 (23.2)
+38.3 (8.0)
+42.2 (7.3)
+19.1 (8.9)
+2.6 (4.1)
+120.0 (14.9)
+76.8 (10.2)
+
+54
+54
+53
+50
+54
+53
+
+73.6 (36.9)
+28.1 (25.4)
+13.7 (14.5)
+45.7 (33.5)
+8.7 (4.0)
+5.0 (1.9)
+
+59
+56
+56
+57
+58
+58
+
+77.3 (36.9)
+26.5 (12.9)
+12.5 (8.8)
+45.2 (32.2)
+9.4 (8.3)
+5.0 (2.0)
+
+53
+53
+52
+54
+
+187.4 (55.4)
+37.1 (15.8)
+123.9 (45.7)
+128.5 (87.4)
+
+55
+55
+55
+55
+
+173.0 (32.6)
+36.7 (13.2)
+114.8 (32.2)
+107.8 (48.1)
+
+55
+51
+54
+51
+50
+50
+
+89.4 (11.0)
+12.9 (9.4)
+15,808 (4,089)
+11,242 (6,395)
+2.2 (2.0)
+4.9 (4.5)
+
+55
+49
+55
+50
+43
+44
+
+88.4 (8.6)
+16.6 (13.9)
+15,754 (3,354)
+11,030 (6,565)
+2.0 (3.2)
+5.5 (5.6)
+
+54
+53
+50
+
+10.3 (4.8)
+12.0 (6.6)
+8.2 (3.9)
+
+53
+54
+52
+
+11.7 (5.7)
+13.0 (7.8)
+9.8 (5.9)
+
+49
+49
+49
+47
+47
+47
+49
+
+1.22 (0.12)
+55,867 (8,340)
+40,923 (12,082)
+3,188 (1,061)
+7,208 (2,299)
+0.08 (0.01)
+41.4 (6.0)
+
+53
+53
+53
+52
+52
+52
+53
+
+1.21 (0.12)
+56,455 (8,122)
+40,165 (11,523)
+3,051 (952)
+6,985 (2,072)
+0.08 (0.01)
+40.8 (5.8)
+
+49
+
+24.3 (4.7)
+
+54
+
+23.8 (5.8)
+
+55
+55
+55
+55
+55
+55
+55
+
+4.30 (1.25)
+3.47 (1.87)
+2.32 (1.43)
+3.69 (1.07)
+3.75 (1.48)
+4.16 (1.58)
+4.31 (1.33)
+
+59
+59
+59
+59
+59
+59
+59
+
+3.63 (1.17)
+2.98 (1.55)
+1.98 (1.16)
+3.36 (1.08)
+3.46 (1.33)
+3.61 (1.33)
+3.88 (1.22)
+
+Note: Normal ranges are given in square brackets and values are represented as n, mean (SD) or n (%). AUC ¼ area under the curve; BMD ¼ bone mineral
+density; BMI ¼ body mass index; DXA ¼ dual-energy x-ray absorptiometry; HDL ¼ high-density lipoprotein; LDL ¼ low-density lipoprotein; OGTT ¼ oral
+glucose tolerance test; PCOS ¼ polycystic ovary syndrome; QOL ¼ quality of life; VO2 max ¼ maximal oxygen uptake.
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+Fertility and Sterilityâ
+
+1061
+
+FIGURE 1
+Flow chart of study participants.
+
+CONSENTED AND SCREENED (n=187)
+Reasons for Exclusion:
+22 Ineligible
+21 Withdrawn consent
+30 Lost to follow-up
+
+Exclusions (n=73)
+
+Randomized (n=114)
+
+Metformin (n=55)
+
+9 Dropped:
+Medication Side effects (n=2)
+Lost interest/unable to comply (n=1)
+Personal constraints/health issues (n=2)
+Lost to follow-up (n=4)
+
+Placebo (n=59)
+
+Month 1
+
+12 Dropped:
+Lost interest/unable to comply (n=3)
+Personal constraints/health issues (n=3)
+Pregnancy (n=1)
+Lost to follow-up (n=5)
+
+Month 2
+
+15 Dropped:
+Personal constraints/health issues (n=5)
+Pregnancy (n=1)
+Lost to follow-up (n=9)
+
+Month 3
+
+7 Dropped:
+Lost interest/unable to comply (n=1)
+Personal constraints/health issues (n=1)
+Pregnancy (n=2)
+Lost to follow-up (n=3)
+
+6 Dropped:
+Lost interest/unable to comply (n=2)
+Personal constraints/health issues (n=2)
+Lost to follow-up (n=2)
+
+Month 4
+
+4 Dropped:
+Lost interest/unable to comply (n=1)
+Personal constraints/health issues (n=2)
+Lost to follow-up (n=1)
+
+2 Dropped:
+Medication Side effects (n=1)
+Lost to follow-up (n=1)
+
+Month 5
+
+1 Dropped:
+Lost interest/unable to comply (n=1)
+
+Month 6
+
+4 Dropped:
+Lost interest/unable to comply (n=1)
+Personal constraints/health issues (n=2)
+Lost to follow-up (n=1)
+
+12 Dropped:
+Medication Side effects (n=3)
+Lost interest/unable to comply (n=1)
+Personal constraints/health issues (n=1)
+Lost to follow-up (n=7)
+
+3 Dropped:
+Personal constraints/health issues (n=2)
+Lost to follow-up (n=1)
+
+1 Dropped:
+Personal constraints/health issues (n=1)
+
+Completed the Study n=22
+Total Dropout n=33
+
+Completed the Study n=16
+Total Dropout n=43
+
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+n ¼ 33 (60%); PBO: n ¼ 43 (73%); P¼.14; Fig. 1]. The most
+common reason for subject dropout was being lost to follow-up
+(MET: n ¼ 15 and PBO: n ¼ 19). The drop out rate for Blacks
+was 76% versus 62% for Whites (P¼.14). We performed a stratiﬁcation by baseline variables into study completers (n ¼ 38), late
+1062
+
+Ladson et al.
+
+dropouts completing 3–6 months of the study (n ¼ 28), and early
+dropouts completing 1–3 months of the study (n ¼ 48) to look for
+factors that would predict dropouts. We found no signiﬁcant
+trends in baseline variables (Supplemental Table 1, available
+online).
+
+Metformin and lifestyle therapy in PCOS
+
+Vol. 95, No. 3, March 1, 2011
+
+FIGURE 2
+(A) Primary outcome: frequency of the number of ovulations by urinary pregnanediol-3 alpha-glucuronide per treatment arm. There was no
+difference between groups. This model adjusted for the covariates of prior metformin use, center, baseline age, and baseline body mass index
+in addition to use of the logarithm of the number of days on the trial as on offset to help account for subject dropout. Secondary outcomes: (B)
+change in testosterone levels at baseline, 3 months, and study completion at 6 months per treatment arm; (C) change in weight (kg) by month
+per treatment arm. *P< .05 for the change from baseline within the metformin group.
+2
+
+Metformin
+Placebo
+
+0
+
+-15
+
+-4
+
+-2
+
+Weight (kg)
+
+0
+
+5
+0
+-5
+
+Testosterone (ng/dl)
+
+-10
+
+20
+15
+10
+5
+
+Number of Subjects
+
+Metformin
+Placebo
+
+10
+
+Metformin
+Placebo
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+0
+
+Number of Ovulations
+
+3
+
+Month
+
+6
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+Month
+
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+Primary and Secondary Outcomes
+There was no difference in ovulation rates between groups (Fig. 2A).
+The ovulation rate ratio comparing MET and PBO was 2.5 (95%
+conﬁdence interval [CI] 0.9–6.6; P¼.07) regarding whether
+a woman ovulated or not; the ovulation rate ratio comparing MET
+and PBO was 1.2 (95% CI 0.7–1.9; P¼.51) regarding the number
+of ovulations if a woman actually had ovulated. Testosterone levels,
+however, were only signiﬁcantly less at 3 months in MET compared
+with baseline (Fig. 2B) Weight declined signiﬁcantly from baseline
+at all points after the ﬁrst month in MET, but the decrease was not
+signiﬁcantly different compared with PBO (Fig. 2C).
+
+Other Outcomes at 6 Months
+Exercise parameters were not signiﬁcantly different between treatment groups (Supplemental Materials and Methods). There was
+a signiﬁcant decrease in systolic blood pressure at 6 months compared with baseline for PBO only, but no change in diastolic blood
+pressure or hirsutism or acne scores within either group (Table 2).
+There was a signiﬁcant improvement in the area-under-the-curve
+glucose in PBO compared with baseline and with MET (P<.001
+and P¼.002, respectively) (Supplemental Fig. 1, available online).
+Although there were favorable changes compared with baseline in
+individual domains in the QOL questionnaire, such as for emotion
+and weight within each treatment group, there were no signiﬁcant
+differences in the overall well-being scores between treatment
+arms at 6 months. There were also no changes in ovarian volume
+or size of the largest follicle compared with baseline or between
+treatment groups (data not shown).
+
+Side Effects and Adverse Events
+There were six dropouts in MET for medication side effects and
+none in PBO. In MET, diarrhea and headaches were signiﬁcantly
+more common, whereas bladder infections and musculoskeletal
+complaints were less common (Supplemental Table 2, available onFertility and Sterilityâ
+
+line). There were no differences in the average percentage of days of
+vaginal bleeding during the study: 15 Æ 11% for MET versus 11 Æ
+11% for PBO. There were four pregnancies, all in PBO. These resulted in one ﬁrst-trimester miscarriage, one elective abortion, and
+one full-term birth of a healthy boy without maternal or fetal pregnancy complications. The fourth pregnancy was lost to follow-up.
+
+DISCUSSION
+We found that the addition of metformin to lifestyle had no signiﬁcant beneﬁt on ovulation and circulating androgen levels. However,
+owing to a high dropout rate, the present study had limited power to
+detect differences between the treatment arms. Nevertheless, we
+noted beneﬁcial effects of the addition of metformin to lifestyle, including improved insulin sensitivity and increased bone mineral
+density. There was no beneﬁt to either treatment on QOL or skin parameters (acne or hirsutism), though our trial may have been too
+short to detect these. With the exception of increased diarrhea and
+fewer bladder infections in MET, the therapies were equally well tolerated and safe.
+The strengths of the present study include the relatively large
+numbers of subjects recruited into a combination lifestyle study, their
+racial and socioeconomic diversity, and the detailed study of reproductive and metabolic effects of treatment, including QOL measures
+(27). We found no improvement in our primary outcome of ovulation
+rates by adding metformin to lifestyle, similarly to the larger study by
+Tang et al. (8), which reported change in self-reported menstrual
+frequency and did not quantify ovulation. Similarly, a smaller study
+in PCOS adolescents showed no change in ovulation, based on
+urinary PdG levels, after lifestyle/metformin therapy (10). These
+studies also did not detect any additional beneﬁt of lifestyle/
+metformin.
+Our study demonstrated a signiﬁcant beneﬁt in weight loss with
+metformin, at least compared with baseline ($3 kg). This is consistent with the largest trial of metformin alone (with no lifestyle
+
+1063
+
+TABLE 2
+Mean change in key parameters in the polycystic ovary syndrome (PCOS) phenotype: each treatment group compared with
+baseline and difference between treatment groups.
+
+Metformin
+Mean change
+(95% CI)
+
+Parameter
+
+Difference
+(metformin L placebo)
+
+Placebo
+P
+value
+
+Mean change
+(95% CI)
+
+P
+value
+
+Mean Change
+(95% CI)
+
+P
+value
+
+Biometrics
+Waist (in)
+À2.1 (À3.0, À1.2)
+< .001
+À1.6 (À2.6, À0.7)
+.001
+À0.5 (À1.8, 0.8)
+.47
+Ferriman-Gallwey score
+1.2 (À1.1, 3.6)
+.30
+À0.2 (À2.8, 2.3)
+.86
+1.5 (À2.0, 4.9)
+.40
+Total acne lesion count
+À1.1 (À2.5, 0.4)
+.14
+À0.7 (À2.1, 0.8)
+.38
+À0.4 (À2.4, 1.6)
+.68
+Systolic blood pressure (mm Hg)
+À2.9 (À6.7, 0.8)
+.12
+À4.1 (À8.2, À0.02)
+.05
+1.2 (À4.3, 6.7)
+.66
+Diastolic blood pressure (mm Hg)
+À1.2 (À4.6, 2.1)
+.47
+À3.4 (À7.1, 0.4)
+.08
+2.2 (À2.8, 7.1)
+.39
+Hormones
+T (ng/dL)
+À2.1 (À12.1, 7.9)
+.67
+À6.4 (À16.9, 4.1)
+.23
+4.3 (À9.9, 18.4)
+.54
+.07
+À2.1 (À7.4, 3.2)
+.43
+SHBG (nmol/L)
+1.7 (À1.9, 5.2)
+.35
+3.8 (À0.3, 7.8)
+Free androgen index
+À2.3 (À5.1, 0.6)
+.12
+À1.6 (À4.9, 1.6)
+.32
+À0.6 (À4.8, 3.6)
+.76
+8.1 (À17.1, 33.4)
+.52
+15.6 (À10.3, 41.5)
+.23
+À7.5 (À43.4, 28.5)
+.68
+E2 (pg/mL)
+LH (mIU/mL)
+1.0 (À1.3, 3.4)
+.37
+À0.5 (À3.2, 2.3)
+.73
+1.5 (À2.0, 5.0)
+.38
+FSH (mIU/mL)
+À0.2 (À1.0, 0.7)
+.70
+À0.1 (À1.1, 0.9)
+.88
+À0.1 (À1.4, 1.2)
+.89
+Lipid parameters
+Cholesterol (mg/dL)
+À7.8 (À19.0, 3.3)
+.16
+À4.2 (À16.8, 8.4)
+.50
+À3.7 (À20.0, 12.6)
+.65
+HDL (mg/dL)
+5.2 (1.7, 8.7)
+.005
+7.4 (3.5, 11.4)
+< .001
+À2.2 (À7.1, 2.6)
+.35
+LDL (mg/dL)
+À7.5 (À17.7, 2.6)
+.14
+À8.1 (À19.4, 3.3)
+.16
+0.5 (À14.2, 15.3)
+.94
+Triglycerides (mg/dL)
+À14.0 (À31.1, 3.0)
+.10
+À3.9 (À23.5, 15.7)
+.69
+À10.2 (À35.0, 14.7)
+.41
+Glycemic parameters from OGTT
+Fasting glucose (mg/dL)
+À2.9 (À7.8, 2.1)
+.25
+2.8 (À3.1, 8.7)
+.34
+À5.7 (À13.0, 1.6)
+.12
+Fasting insulin (mU/mL)
+2.7 (À6.0, 11.4)
+.52
+5.1 (À6.5, 16.7)
+.38
+À2.3 (À17.0, 12.3)
+.75
+.83
+À2109 (À3293, À925)
+.001
+2004 (566, 3441)
+.008
+À105 (À1110, 899)
+AUC glucose (mU $ min/mL)
+AUC insulin (mg $ min/dL)
+À626 (À2433, 1182)
+.48
+725 (À1551, 3002)
+.52 À1351 (À4121, 1418)
+.32
+Insulinogenic index
+À0.5 (À0.9, À0.1)
+.01
+0.8 (0.3, 1.2)
+.003
+À1.3 (À1.9, À0.7)
+< .001
+Insulin sensitivity index
+1.9 (À1.0, 4.8)
+.19
+À2.7 (À6.2, 0.9)
+.13
+4.6 (0.1, 9.0)
+.05
+DXA
+0.016 (0.005, 0.027)
+.007 À0.008 (À0.019, 0.004)
+.17
+0.023 (0.009, 0.037)
+.002
+Total BMD (g/cm2)
+Total lean (g)
+À431 (À1732, 870)
+.50
+À53 (À1463, 1358)
+.94
+À378 (À2106, 1349)
+.65
+Total fat (g)
+À3603 (À5879, À1326)
+.003 À1369 (À3742, 1004)
+.24 À2234 (À5195, 727)
+.13
+Central abdominal fat (g)
+À201 (À451, 50)
+.11
+À307 (À606, À8)
+.04
+106 (À232, 444)
+.52
+Abdominal fat (g)
+À255 (À773, 263)
+.32
+À579 (À1180, 22)
+.06
+324 (À361, 1009)
+.34
+Central-to-total body fat ratio
+0.001 (À0.002, 0.005)
+.34 À0.005 (À0.009, À0.001)
+.02
+0.006 (0.002, 0.011)
+.007
+% body fat
+À2.2 (À3.3, À1.0)
+< .001
+À0.8 (À2.0, 0.4)
+.18
+À1.4 (À2.9, 0.1)
+.07
+PCOS QOL
+Emotion mean score
+0.41 (À0.06, 0.87)
+.09
+0.75 (0.22, 1.29)
+.008 À0.35 (À1.03, 0.33)
+.31
+Body hair mean score
+0.41 (À0.25, 1.08)
+.21
+0.64 (À0.11, 1.38)
+.09
+À0.23 (À1.16, 0.71)
+.62
+.21
+.06
+1.42 (0.56, 2.27)
+.002 À0.68 (À1.75, 0.39)
+Weight mean score
+0.74 (À0.04, 1.51)
+Menstrual problems mean score
+0.41 (À0.07, 0.90)
+.09
+0.32 (À0.22, 0.85)
+.23
+0.10 (À0.58, 0.77)
+.77
+Overall physical well-being
+0.33 (À0.25, 0.90)
+.26
+0.61 (À0.03, 1.24)
+.06
+À0.28 (À1.08, 0.51)
+.47
+Overall emotional well-being
+À0.13 (À0.82, 0.57)
+.71
+0.01 (À0.74, 0.77)
+.97
+À0.14 (À1.10, 0.82)
+.77
+Overall general well-being
+0.09 (À0.46, 0.65)
+.73
+0.62 (0.01, 1.23)
+< .05
+À0.53 (À1.30, 0.25)
+.18
+Note: Abbreviations as in Table 1.
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+modiﬁcation) in PCOS, where the 6-month weight loss was $2
+kg (28), and with the Diabetes Prevention Program, where metformin was compared with placebo ($2 kg at 6 months). Other
+studies have shown similar modest decreases in weight with combination or lifestyle therapy (8–10). However, there are studies of
+lifestyle therapy alone in women with PCOS that have shown
+signiﬁcantly more weight loss, as much as 8–10 kg, over
+a similar period (29).
+Metformin may have multiple metabolic beneﬁts in women with
+PCOS (30). Metformin signiﬁcantly decreased body fat and also
+
+1064
+
+Ladson et al.
+
+raised circulating high-density lipoprotein cholesterol. Fasting or
+glucose-challenged glucose levels and the insulinogenic index
+were unaltered (31). Improvements in the insulinogenic index lower
+diabetes risk, so the relative beneﬁt of lifestyle alone on this parameter is probably small. The relatively small impact of combination
+therapy on glycemic parameters is supported by other studies in
+women with PCOS with metformin added to oral contraceptives
+(32) or to lifestyle (9, 10). Given the absence of glycemic
+improvement, weight loss may be the primary metabolic beneﬁt of
+metformin in the present study (31).
+
+Metformin and lifestyle therapy in PCOS
+
+Vol. 95, No. 3, March 1, 2011
+
+Increased bone mineral density in MET, after such a short period,
+has been seen after prolonged metformin treatment in girls with premature pubarche (33), perhaps due to favorable effects on circulating sex steroids. The impact of this ﬁnding in our older group is
+probably minor. We noted no effect of treatment on the hip, and
+women with PCOS have generally been noted to have normal or increased bone mineral density, without increased risk for osteoporosis and hip fractures. (34) Although pregnancy was considered to be
+an adverse event, we note that all pregnancies occurred in the PBO
+arm, further challenging the reproductive beneﬁts of metformin (28)
+and supporting lifestyle alone as a treatment for infertility in these
+women.
+The present study has limitations. Recruitment was slow and
+dropout was high. It is possible that with more subjects and a higher
+retention rate, we would have demonstrated more beneﬁt with metformin. However, other lifestyle trials in PCOS have had high dropout rates: in adolescents (10) and in an Australian trial of adults (29).
+The present project included an urban minority medical center that
+focused on recruiting Blacks. The difﬁculty in recruiting and retaining minority women in clinical trials is well known (35). Our study
+completion rate of 47% in Whites was similar to that in the Australian trial (50%) which lasted 20 weeks versus our longer 24-week
+trial. We further examined factors at baseline and could not identify
+factors that predicted dropout. We conclude that it is difﬁcult to individualize lifestyle therapy to those likely to complete all or part of
+it.
+Our trial also enrolled many subjects who were severely or
+morbidly obese, subjects with the most difﬁculty complying and
+
+responding to lifestyle changes. Because of these drawbacks,
+some lifestyle studies in PCOS exclude subjects in this BMI range
+(36). Our subjects’ predicted maximal oxygen uptake did not change
+during the trial, indicating that even the subjects who stayed in the
+protocol did not increase their aerobic capacity. Aerobic capacity
+and muscle strength has been noted to be similar in PCOS as in
+weight-matched control subjects, such that PCOS per se is unlikely
+to limit physical activity (37).
+Overall, although the effects of lifestyle/metformin, alone or in
+combination, are generally beneﬁcial, the absolute changes are quite
+modest. Many women with PCOS are unwilling to participate in
+such interventions, or lose motivation, and dropout early in the process. Therefore, the external validity of such studies, given the low
+rate of study completion, is questionable. These results bring into
+doubt routine recommendations that lifestyle is effective therapy
+for severely obese women with PCOS (6, 7). More meaningful
+reproductive and metabolic changes in women with PCOS may be
+achieved in this weight group with massive weight loss, such as
+from bariatric surgery (38).
+Acknowledgments: The authors acknowledge the excellent coordination and
+oversight of this long-term study provided by Barbara Dailey and Joy Vassel
+at Meharry Medical College, Patsy Rawa at Penn State College of Medicine,
+and the nursing staff of the General Clinical Research Center at Penn State
+Hershey Medical Center, who were all part of the Meharry–Penn State
+U54 Reproductive Center. They also acknowledge the contributions to the
+analyses of Christy Stetter in the Department of Public Health Sciences at
+Penn State College of Medicine. Finally, they are grateful to the subjects
+who chose to participate in the study.
+
+REFERENCES
+1. Ehrmann DA. Polycystic ovary syndrome. N Engl J
+Med 2005;352:1223–36.
+2. Knowler WC, Barrett-Connor E, Fowler SE,
+Hamman RF, Lachin JM, Walker EA, et al. Reduction
+in the incidence of type 2 diabetes with lifestyle intervention or metformin. N Engl J Med 2002;346:
+393–403.
+3. Tuomilehto J, Lindstrom J, Eriksson JG, Valle TT,
+Hamalainen H, Ilanne-Parikka P, et al. Prevention
+of type 2 diabetes mellitus by changes in lifestyle
+among subjects with impaired glucose tolerance.
+N Engl J Med 2001;344:1343–50.
+4. Zinman B, Harris SB, Gerstein HC, Young TK,
+Raboud JM, Neuman J, et al. Preventing type 2 diabetes using combination therapy: design and methods of
+the Canadian Normoglycaemia Outcomes Evaluation
+(CANOE) trial. Diabetes Obes Metab 2006;8:531–7.
+5. Wu RR, Zhao JP, Jin H, Shao P, Fang MS,
+Guo XF, et al. Lifestyle intervention and metformin for treatment of antipsychotic-induced weight
+gain: a randomized controlled trial. JAMA
+2008;299:185–93.
+6. Thessalonki ESHRE/ASRM Sponsored Consensus
+Workshop Group. Consensus on infertility treatment
+related to polycystic ovary syndrome. Fertil Steril
+2008;89:505–22.
+7. Moran LJ, Pasquali R, Teede HJ, Hoeger KM,
+Norman RJ. Treatment of obesity in polycystic ovary
+syndrome: a position statement of the Androgen Excess and Polycystic Ovary Syndrome Society. Fertil
+Steril 2009;92:1966–82.
+8. Tang T, Glanville J, Hayden CJ, White D, Barth JH,
+Balen AH. Combined lifestyle modiﬁcation and
+metformin in obese patients with polycystic ovary
+syndrome. A randomized, placebo-controlled, doubleblind multicentre study. Hum Reprod 2006;21:80–9.
+
+Fertility and Sterilityâ
+
+9. Hoeger KM, Kochman L, Wixom N, Craig K,
+Miller RK, Guzick DS. A randomized, 48-week,
+placebo-controlled trial of intensive lifestyle modiﬁcation and/or metformin therapy in overweight
+women with polycystic ovary syndrome: a pilot
+study. Fertil Steril 2004;82:421–9.
+10. Hoeger K, Davidson K, Kochman L, Cherry T,
+Kopin L, Guzick DS. The impact of metformin,
+oral contraceptives, and lifestyle modiﬁcation on
+polycystic ovary syndrome in obese adolescent
+women in two randomized, placebo-controlled
+clinical trials. J Clin Endocrinol Metab
+2008;93:4299–306.
+11. Zawadski JK, Dunaif A. Diagnostic criteria for polycystic ovary syndrome; toward a rational approach.
+In: Dunaif A, Givens JR, Haseltine FP,
+Merriam GR, editors. Polycystic ovary syndrome.
+Boston: Blackwell Scientiﬁc; 1992. p. 377–84.
+12. Katcher HI, Kunselman AR, Dmitrovic R,
+Demers LM, Gnatuk CL, Kris-Etherton PM, et al.
+Comparison of hormonal and metabolic markers after
+a high-fat, Western meal versus a low-fat, high-ﬁber
+meal in women with polycystic ovary syndrome. Fertil Steril 2009;91:1175–82.
+13. Azziz R, Ehrmann D, Legro RS, Whitcomb RW,
+Hanley R, Fereshetian AG, et al. Troglitazone improves ovulation and hirsutism in the polycystic ovary
+syndrome: a multicenter, double blind, placebocontrolled trial. J Clin Endocrinol Metab
+2001;86:1626–32.
+14. Hatch R, Rosenﬁeld RL, Kim MH, Tredway D. Hirsutism: implications, etiology, and management.
+Am J Obstet Gynecol 1981;140:815–30.
+15. Thiboutot D, Zaenglein A, Weiss J, Webster G,
+Calvarese B, Chen D. An aqueous gel ﬁxed combination of clindamycin phosphate 1.2% and benzoyl peroxide 2.5% for the once-daily treatment of moderate
+
+16.
+
+17.
+
+18.
+
+19.
+
+20.
+
+21.
+
+22.
+
+to severe acne vulgaris: assessment of efﬁcacy and
+safety in 2813 patients. J Am Acad Dermatol
+2008;59:792–800.
+Golding LA, Myers CR, Sinning WE. Y’s way to ﬁtness: the complete guide to ﬁtness testing and instruction. Champaign, IL: Human Kinetics; 1989.
+Carey DG, Jenkins AB, Campbell LV, Freund J,
+Chisholm DJ. Abdominal fat and insulin resistance
+in normal and overweight women: direct measurements reveal a strong relationship in subjects at
+both low and high risk of NIDDM. Diabetes
+1996;45:633–8.
+Legro RS, Chiu P, Kunselman AR, Bentley CM,
+Dodson WC, Dunaif A. Polycystic ovaries are common in women with hyperandrogenic chronic anovulation but do not predict metabolic or reproductive
+phenotype. J Clin Endocrinol Metab 2005;90:
+2571–9.
+Legro RS, Kunselman AR, Dodson WC, Dunaif A.
+Prevalence and predictors of risk for type 2 diabetes
+mellitus and impaired glucose tolerance in polycystic
+ovary syndrome: a prospective, controlled study in
+254 affected women. J Clin Endocrinol Metab
+1999;84:165–9.
+Phillips DI, Clark PM, Hales CN, Osmond C. Understanding oral glucose tolerance: comparison of glucose or insulin measurements during the oral
+glucose tolerance test with speciﬁc measurements of
+insulin resistance and insulin secretion. Diabet Med
+1994;11:286–92.
+Matsuda M, DeFronzo RA. Insulin sensitivity indices
+obtained from oral glucose tolerance testing: comparison with the euglycemic insulin clamp. Diabetes
+Care 1999;22:1462–70.
+Cronin L, Guyatt G, Grifﬁth L, Wong E, Azziz R,
+Futterweit W, et al. Development of a health-related
+
+1065
+
+23.
+
+24.
+
+25.
+26.
+
+27.
+
+28.
+
+quality-of-life questionnaire (PCOSQ) for women
+with polycystic ovary syndrome (PCOS). J Clin Endocrinol Metab 1998;83:1976–87.
+Kassam A, Overstreet JW, Snow-Harter C, de
+Souza MJ, Gold EB, Lasley BL. Identiﬁcation of anovulation and transient luteal function using a urinary
+pregnanediol-3-glucuronide ratio algorithm. Environ
+Health Perspect 1996;104:408–13.
+O’Connor KA, Brindle E, Miller RC, Shofer JB,
+Ferrell RJ, Klein NA, et al. Ovulation detection
+methods for urinary hormones: precision, daily and
+intermittent sampling and a combined hierarchical
+method. Hum Reprod 2006;21:1442–52.
+Hilbe JM. Negative binomial regression. New York:
+Cambridge University Press; 2007.
+Field AE, Coakley EH, Must A, Spadano JL, Laird N,
+Dietz WH, et al. Impact of overweight on the risk of
+developing common chronic diseases during
+a 10-year period. Arch Intern Med 2001;161:1581–6.
+Jones GL, Hall JM, Balen AH, Ledger WL. Healthrelated quality of life measurement in women with
+polycystic ovary syndrome: a systematic review.
+Hum Reprod Update 2008;14:15–25.
+Legro RS, Barnhart HX, Schlaff WD, Carr BR,
+Diamond MP, Carson SA, et al. Clomiphene, metformin, or both for infertility in the polycystic ovary syndrome. N Engl J Med 2007;356:551–66.
+
+1066
+
+Ladson et al.
+
+29. Thomson RL, Buckley JD, Noakes M,
+Clifton PM, Norman RJ, Brinkworth GD. The effect of a hypocaloric diet with and without exercise
+training
+on
+body
+composition,
+cardiometabolic risk proﬁle, and reproductive
+function in overweight and obese women with
+polycystic ovary syndrome. J Clin Endocrinol
+Metab 2008;93:3373–80.
+30. Nestler JE. Metformin for the treatment of the polycystic ovary syndrome. N Engl J Med 2008;358:
+47–54.
+31. Lachin JM, Christophi CA, Edelstein SL,
+Ehrmann DA, Hamman RF, Kahn SE, et al. Factors
+associated with diabetes onset during metformin versus placebo therapy in the diabetes prevention program. Diabetes 2007;56:1153–9.
+32. Morin-Papunen L, Rautio K, Ruokonen A, Hedberg P,
+Puukka M, Tapanainen JS. Metformin reduces serum
+C-reactive protein levels in women with polycystic
+ovary syndrome. J Clin Endocrinol Metab
+2003;88:4649–54.
+33. Ibanez L, Lopez-Bermejo A, Diaz M, Marcos MV, de
+Zegher F. Metformin treatment for four years to reduce total and visceral fat in low birth weight girls
+with precocious pubarche. J Clin Endocrinol Metab
+2008;93:1841–5.
+
+Metformin and lifestyle therapy in PCOS
+
+34. Zborowski JV, Cauley JA, Talbott EO, Guzick DS,
+Winters SJ. Clinical review 116: bone mineral density, androgens, and the polycystic ovary: the complex
+and controversial issue of androgenic inﬂuence in female bone. J Clin Endocrinol Metab 2000
+Oct;85:3496–506.
+35. Brown DR, Fouad MN, Basen-Engquist K, TortoleroLuna G. Recruitment and retention of minority
+women in cancer screening, prevention, and treatment trials. Ann Epidemiol 2000;10:S13–21.
+36. Palomba S, Giallauria F, Falbo A, Russo T,
+Oppedisano R, Tolino A, et al. Structured exercise
+training programme versus hypocaloric hyperproteic
+diet in obese polycystic ovary syndrome patients
+with anovulatory infertility: a 24-week pilot study.
+Hum Reprod 2008;23:642–50.
+37. Thomson RL, Buckley JD, Moran LJ, Noakes M,
+Clifton PM, Norman RJ, et al. Comparison of aerobic
+exercise capacity and muscle strength in overweight
+women with and without polycystic ovary syndrome.
+BJOG 2009;116:1242–50.
+38. Escobar-Morreale HF, Botella-Carretero JI, Alvarez-Blasco F, Sancho J, San Millan JL. The
+polycystic ovary syndrome associated with morbid
+obesity may resolve after weight loss induced by
+bariatric surgery. J Clin Endocrinol Metab
+2005;90:6364–9.
+
+Vol. 95, No. 3, March 1, 2011
+
+SUPPLEMEMENTAL MATERIALS AND METHODS
+Lifestyle Interventions
+
+sensitivity of this PdG assay is 2.5 nmol/L, and intra- and interassay
+imprecision averaged 5% and 7%, respectively, at mean concentrations of
+$125 nmol/L. Results were normalized to urine creatinine.
+
+All subjects received the lifestyle intervention. A combined intervention of
+diet and exercise was used with the goal of achieving an average weight
+loss of R7% of initial body weight over 6 months. This weight loss target
+echoed that of the Diabetes Prevention Program (1) with a prescription of
+150 min/wk exercise combined with a low-calorie diet.
+
+Physical exam (monthly) Hirsutism was assessed by trained study
+personnel using the modiﬁed Ferriman-Galwey score (4). Facial lesion
+counts of open and closed comedones (noninﬂammatory lesions) were
+obtained from the forehead, left, and right cheeks, nose, and chin by
+trained study personnel (5).
+
+Dietary intervention Before beginning the dietary intervention, subjects were instructed to maintain a 3-day food log. The number of calories
+to maintain current body weight was assessed by combining the analysis
+of the 3-day diet records (Nutritionist V; First Databank, Sunnyvale, CA)
+with the results of the Harris-Benedict equation multiplied by an activity
+factor of 1.3. The target level of calorie intake was calculated as the daily
+calories required to maintain weight minus 500 kcal. The food exchange
+system was used to attain this target intake. The target macronutrient
+composition was 55% carbohydrate, 30% fat, and 15% protein. This
+system was implemented and monitored with monthly meetings between
+the subjects and a registered dietitian.
+
+Exercise testing (monthly) Before beginning the exercise program and
+
+Exercise training The exercise program consisted of supervised and nonsupervised components to maximize ﬂexibility and acceptance of the intervention. Subjects were given the opportunity to attend R2 sessions per week at
+a ﬁtness facility run by the research team. Workouts consisted of a 5-minute
+warm-up period followed by a 30–45-minute workout at 60%–75% of
+predicted maximal heart rate using one of several modes, i.e., stair stepper,
+stationary bike, elliptical machine, treadmill, or dancing to music. During
+all workouts, subjects wore a Polar heart rate monitor (S610; Polar Electro,
+Woodbury, NY) that recorded heart rate, duration, and caloric expenditure
+during the exercise. A personal trainer trained in ﬁtness assessment
+supervised workouts and performed monthly reviews with the subjects.
+Problems of compliance were addressed by the study coordinator.
+No exercise records were available for ﬁve subjects. The number of workout
+sessions per week averaged 2.5 Æ 1.2 (metformin group [MET]) and 2.5 Æ 1.8
+(placebo group [PBO]) workouts per week. Average duration for each workout
+was 39 Æ 17 minutes (MET) and 39 Æ 9 (PBO) minutes, and the average heart
+rate was 138 Æ 19 beats/min (MET) and 146 Æ 12 (PBO) beats/min or overall
+74% of age-predicted maximal heart rate. There was no signiﬁcant change in
+maximal oxygen uptake between groups. The average rating of perceived exertion (2) was 13 Æ 2 (MET) and 15 Æ 3 (PBO)m indicating that subjects rated
+the exercise as ‘‘somewhat hard’’ to ‘‘hard.’’ The most common exercise modes
+were walking, treadmill running and walking, elliptical machine use, and stationary cycling. Subjects also self-reported a signiﬁcant increase in the days
+per week of exercise from an average of 2.0 Æ 1.3 to 3.0 Æ 1.4 (MET;
+P¼.01) and 1.5 Æ 1.7 to 3.1 Æ 1.4 (PBO; P<.001).
+Because logistics precluded frequent visits to the training facility, subjects
+were responsible for performing aerobic activity on their own to achieve a total exercise time of 150 min/wk (including supervised sessions). Subjects
+completed a daily physical activity log once per month. Subjects were counseled monthly about ways to increase their nonpurposeful activity and to
+corroborate the records of workouts from the heart rate monitor.
+
+Medication arm Metformin hydrochloride was obtained as a powder
+(Spectrum Chemical Manufacturing, New Brunswick, NJ) and formulated
+with the appropriate dose of drug into capsules with identical-appearing
+placebo capsules (3). Drug and placebo were packaged and labeled according
+to subject number by the Investigational Pharmacy laboratory in a doubleblind fashion. Medication was initiated in a step-up fashion every 5 days,
+from one tablet per day to four. This dose was maintained as tolerated
+throughout the remainder of the study.
+
+Study Procedures
+Urine collections (daily) Subjects collected a ﬁrst morning void urine
+specimen (10 mL) and refrigerated it. Pregnanediol-3 alpha-glucuronide
+(PdG) was determined in an aliquot of diluted human urine by competitive
+ELISA (Immunometrics (UK), London, UK). The low-end functional
+
+Fertility and Sterilityâ
+
+at each monthly visit during the study, subjects underwent a submaximal test of
+aerobic capacity to determine ﬁtness levels (6). This test involved riding
+a stationary bike at several different workloads for a total of 6–12 minutes while
+the heart rate was monitored with a Polar heart rate monitor at regular intervals.
+
+Dual energy x-ray absorptiometry (baseline and end of
+study) Body composition data were determined by dual-energy x-ray
+absorptiometry using QDR-4500W (Hologic, Bedford, MA). Each
+participant underwent a total-body scan and dual hip scans using the fanbeam mode at baseline and at the completion of the study. Subregion
+analyses of visceral and central abdominal fat were modeled (7).
+
+Serum reproductive hormones (baseline, 3 months, and end
+of study) LH, FSH, DHEAS, and SHBG were determined by chemiluminescence using the Siemens (Los Angeles, CA) Immulite platform. Testosterone was measured by RIA (8).
+
+Serum metabolic hormones (baseline and end of study) A
+75-g oral glucose tolerance test (OGTT) with glucose and insulin levels obtained at 0, 30, 60, 90, and 120 minutes after challenge was performed after
+an overnight fast (9). Fasting glucose (FBG), insulin (FI), and lipids were
+determined as previously reported (8). The insulinogenic index, a measure
+of early-phase insulin secretion, was deﬁned as (30-minute glucose À FBG)
+divided by (30-minute insulin À FI) (12). The insulin sensitivity index was
+calculated using the formula of Matsuda and DeFronzo (11): 10,000/square
+root of [(FBG)(FI)][(mean OGTT glucose)(mean OGTT insulin)].
+Ultrasound scan (baseline and end of study) A transvaginal or
+transabdominal (in adolescents) ultrasound of the pelvis was performed
+(8). Volume of the ovary was calculated using the formula for a prolate
+ellipsoid: length Â height Â width Â (p/6) (8).
+PCOS quality of life survey (baseline and end of study) The
+validated PCOS Health-Related Quality of Life (HR-QOL) questionnaire
+includes ﬁve domains: emotional, body hair, infertility, weight, and
+menstrual problems (12). Each domain score is graded on a scale of 1
+(poorest function) to 7 (optimal), with a change of 0.5 approximating the
+minimal important difference, i.e., the smallest change in score that
+women feel is important in their daily lives.
+
+Determination of the number of ovulations A modiﬁed version of
+the Kassam et al. (13) urinary PdG ratio algorithm was used to estimate the
+number of ovulations. For the present study, the modiﬁcations presented by
+O’Connor et al. (14) to the Kassam algorithm were sampling every other
+day with a baseline calculated using a 3-day rather than a 5-day running
+average and the threshold of ratio >3 exceeded for 2, not 3, days.
+Data Analyses
+Because there were a large number of women with no ovulations in the present study, a zero-altered negative binomial model was ﬁt to compare the number of ovulations (15). The zero-altered negative binomial model allowed us to
+examine if there was a difference between treatment arms whether a woman
+ovulated or not; it also allowed us to examine if there was a difference between
+treatment arms regarding the number of ovulations a woman had.
+Linear mixed-effects models were ﬁt to continuous outcomes, such as
+total testosterone or the free androgen index, to compare metformin and
+placebo regarding the change from baseline measurement (16). The linear
+mixed-effects model is an extension of multiple linear regression and allowed for estimation of the within-subject and between-subject correlations
+
+1066.e1
+
+in this longitudinal trial. Contrasts were constructed to compare metformin
+and placebo for the change in an outcome from the randomization visit to
+the end of therapy. Adverse event rates were compared between the two
+treatment arms by using Poisson regression models.
+All analyses followed the intention-to-treat principles, whereby data from
+all participants were analyzed according to the assigned treatment group. All
+analyses were adjusted for center, prior metformin use, baseline age, and
+
+baseline body mass index. For change from baseline outcomes, the models
+also adjusted for the baseline value of the outcome. No adjustments for multiple hypothesis testing were performed, because all outcomes other than the
+primary were considered to be exploratory. All statistical tests are two sided,
+and all analyses were performed using SAS software (version 9.1; SAS Institute, Cary, NC) with graphics constructed using S-plus (version 8.0; Tibco
+Software, Palo Alto, CA).
+
+REFERENCES
+1. Knowler WC, Barrett-Connor E, Fowler SE,
+Hamman RF, Lachin JM, Walker EA, et al. Reduction
+in the incidence of type 2 diabetes with lifestyle intervention or metformin. N Engl J Med 2002;346:393–403.
+2. Borg G. Perceived exertion as an indicator of somatic
+stress. Scand J Rehabil Med 1970;2:92–8.
+3. Hoeger KM, Kochman L, Wixom N, Craig K,
+Miller RK, Guzick DS. A randomized, 48-week,
+placebo-controlled trial of intensive lifestyle modiﬁcation and/or metformin therapy in overweight
+women with polycystic ovary syndrome: a pilot
+study. Fertil Steril 2004;82:421–9.
+4. Hatch R, Rosenﬁeld RL, Kim MH, Tredway D. Hirsutism: implications, etiology, and management.
+Am J Obstet Gynecol 1981;140:815–30.
+5. Thiboutot D, Zaenglein A, Weiss J, Webster G,
+Calvarese B, Chen D. An aqueous gel ﬁxed combination of clindamycin phosphate 1.2% and benzoyl peroxide 2.5% for the once-daily treatment of moderate
+to severe acne vulgaris: assessment of efﬁcacy and
+safety in 2813 patients. J Am Acad Dermatol
+2008;59:792–800.
+6. Golding LA, Myers CR, Sinning WE. Y’s way to ﬁtness: the complete guide to ﬁtness testing and instruction. Champaign, IL: Human Kinetics; 1989.
+7. Carey DG, Jenkins AB, Campbell LV, Freund J,
+Chisholm DJ. Abdominal fat and insulin resistance
+
+1066.e2
+
+Ladson et al.
+
+8.
+
+9.
+
+10.
+
+11.
+
+in normal and overweight women: direct measurements reveal a strong relationship in subjects at
+both low and high risk of NIDDM. Diabetes
+1996;45:633–8.
+Legro RS, Chiu P, Kunselman AR, Bentley CM,
+Dodson WC, Dunaif A. Polycystic ovaries are common in women with hyperandrogenic chronic anovulation but do not predict metabolic or reproductive
+phenotype. J Clin Endocrinol Metab 2005;90:
+2571–9.
+Legro RS, Kunselman AR, Dodson WC, Dunaif A.
+Prevalence and predictors of risk for type 2 diabetes
+mellitus and impaired glucose tolerance in polycystic
+ovary syndrome: a prospective, controlled study in
+254 affected women. J Clin Endocrinol Metab
+1999;84:165–9.
+Phillips DI, Clark PM, Hales CN, Osmond C.
+Understanding oral glucose tolerance: comparison of glucose or insulin measurements during
+the oral glucose tolerance test with speciﬁc
+measurements of insulin resistance and insulin
+secretion. Diabet Med 1994;11:286–92.
+Matsuda M, DeFronzo RA. Insulin sensitivity indices
+obtained from oral glucose tolerance testing: comparison with the euglycemic insulin clamp. Diabetes
+Care 1999;22:1462–70.
+
+Metformin and lifestyle therapy in PCOS
+
+12. Cronin L, Guyatt G, Grifﬁth L, Wong E, Azziz R,
+Futterweit W, et al. Development of a health-related
+quality-of-life questionnaire (PCOSQ) for women
+with polycystic ovary syndrome (PCOS). J Clin Endocrinol Metab 1998;83:1976–87.
+13. Kassam A, Overstreet JW, Snow-Harter C, de
+Souza MJ, Gold EB, Lasley BL. Identiﬁcation of anovulation and transient luteal function using a urinary
+pregnanediol-3-glucuronide ratio algorithm. Environ
+Health Perspect 1996;104:408–13.
+14. O’Connor KA, Brindle E, Miller RC, Shofer JB,
+Ferrell RJ, Klein NA, et al. Ovulation detection
+methods for urinary hormones: precision, daily and
+intermittent sampling and a combined hierarchical
+method. Hum Reprod 2006;21:1442–52.
+15. Hilbe JM. Negative binomial regression. New York:
+Cambridge University Press; 2007.
+16. Field AE, Coakley EH, Must A, Spadano JL, Laird N,
+Dietz WH, et al. Impact of overweight on the risk of
+developing common chronic diseases during
+a 10-year period. Arch Intern Med 2001;161:1581–6.
+
+Vol. 95, No. 3, March 1, 2011
+
+SUPPLEMENTAL FIGURE 1
+Glucose and insulin levels during 2-hour oral glucose tolerance test at baseline and study completion per treatment arm. There were no
+differences between groups at any timepoints.
+
+Placebo
+
+80
+
+120
+
+Glucose (mg/dl)
+
+120
+80
+
+Glucose (mg/dl)
+
+160
+
+160
+
+Metformin
+
+0
+
+30
+
+60
+
+90
+
+120
+
+0
+
+30
+
+Time (minutes)
+
+90
+
+120
+
+90
+
+120
+
+Baseline
+Month 6
+
+0
+
+80
+40
+0
+
+40
+
+80
+
+Insulin (µU/ml)
+
+120
+
+120
+
+Baseline
+Month 6
+
+Insulin (µU/ml)
+
+60
+
+Time (minutes)
+
+0
+
+30
+
+60
+
+90
+
+Time (minutes)
+
+120
+
+0
+
+30
+
+60
+
+Time (minutes)
+
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+Fertility and Sterilityâ
+
+1066.e3
+
+1066.e4
+
+SUPPLEMENTAL TABLE 1
+Comparison of baseline data between completers, late dropouts (months 3–6), and early dropouts (months 1–2).
+
+Ladson et al.
+
+Completer
+
+Late dropout
+
+Early dropout
+
+n
+
+Mean (SD)
+
+n
+
+Mean (SD)
+
+n
+
+Mean (SD)
+
+38
+
+30.2 (4.4)
+
+28
+
+28.3 (4.6)
+
+48
+
+28.1 (4.6)
+
+BMI (kg/m2)
+
+38
+
+37.1 (6.5)
+
+28
+
+39.3 (8.1)
+
+48
+
+38.3 (8.7)
+
+Waist (cm)
+
+38
+
+41.9 (5.8)
+
+28
+
+44.2 (7.6)
+
+47
+
+41.8 (7.6)
+
+Ferriman-Gallwey score
+
+38
+
+18.5 (8.1)
+
+28
+
+20.0 (9.8)
+
+48
+
+17.4 (8.3)
+
+Total acne score
+
+35
+
+3.3 (3.8)
+
+22
+
+2.7 (3.7)
+
+32
+
+4.3 (8.6)
+
+38
+
+120.9 (15.2)
+
+28
+
+123.3 (15.8)
+
+48
+
+119.8 (17.4)
+
+38
+
+77.4 (11.0)
+
+28
+
+79.7 (12.2)
+
+48
+
+77.8 (10.4)
+
+38
+
+76.6 (34.0)
+
+28
+
+65.1 (30.1)
+
+47
+
+80.9 (41.6)
+
+Elevated FAI (%)
+
+36
+
+13.2 (7.3)
+
+28
+
+14.9 (19.6)
+
+45
+
+11.9 (8.1)
+
+SHBG (nmol/L)
+
+36
+
+23.5 (10.0)
+
+28
+
+25.1 (15.5)
+
+46
+
+31.5 (26.6)
+
+E2 (pg/mL)
+
+35
+
+49.3 (37.7)
+
+27
+
+32.1 (12.0)
+
+45
+
+50.3 (35.2)
+
+LH (mIU/mL)
+
+37
+
+9.1 (4.9)
+
+28
+
+7.7 (3.3)
+
+47
+
+9.8 (8.8)
+
+FSH (mIU/mL)
+
+37
+
+4.8 (2.0)
+
+28
+
+5.0 (1.3)
+
+46
+
+5.2 (2.2)
+
+36
+
+178.1 (35.8)
+
+26
+
+171.7 (34.6)
+
+46
+
+186.3 (56.6)
+
+HDL (mg/dL)
+
+36
+
+34.2 (14.6)
+
+26
+
+39.5 (13.4)
+
+46
+
+37.5 (14.8)
+
+LDL (mg/dL)
+
+35
+
+115.5 (30.7)
+
+26
+
+111.3 (31.4)
+
+46
+
+126.5 (48.0)
+
+Triglycerides (mg/dL)
+
+37
+
+136.1 (97.9)
+
+26
+
+105.1 (40.8)
+
+46
+
+111.0 (54.9)
+
+Biometrics
+Age (y)
+
+Metformin and lifestyle therapy in PCOS
+
+Systolic blood pressure
+(mm Hg)
+Diastolic blood pressure
+(mm Hg)
+Hormones
+T (ng/dL)
+
+Vol. 95, No. 3, March 1, 2011
+
+Lipid parameters
+Cholesterol (mg/dL)
+
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+Completer L late
+dropout
+
+Completer L early
+dropout
+
+Late dropout L early
+dropout
+
+Difference in means
+(95% CI)
+[P value]
+
+Difference in means
+(95% CI)
+[P value]
+
+Difference in means
+(95% CI)
+[P value]
+
+1.8 (À0.4, 4.0)
+[.10]
+À2.2 (À5.9, 1.5)
+[.24]
+À2.3 (À5.7, 1.1)
+[.19]
+À1.5 (À6.0, 3.0)
+[.50]
+0.6 (À1.4, 2.7)
+[.54]
+À2.4 (À10.0, 5.3)
+[.54]
+À2.3 (À8.1, 3.5)
+[.44]
+
+2.0 (0.1, 4.0)
+[.04]
+À1.2 (À4.4, 2.1)
+[.48]
+0.1 (À2.8, 3.0)
+[.93]
+1.1 (À2.4, 4.7)
+[.52]
+À0.9 (À4.2, 2.4)
+[.57]
+1.1 (À5.9, 8.1)
+[.76]
+À0.4 (À5.0, 4.2)
+[.87]
+
+0.2 (À1.9, 2.4)
+[.85]
+1.0 (À2.9, 5.0)
+[.60]
+2.4 (À1.2, 6.0)
+[.19]
+2.7 (À1.7, 7.1)
+[.23]
+À1.6 (À5.0, 1.9)
+[.37]
+3.5 (À4.3, 11.2)
+[.38]
+1.9 (À3.5, 7.4)
+[.49]
+
+11.6 (À4.2, 27.3)
+[.15]
+À1.7 (À9.4, 6.0)
+[.67]
+À1.7 (À8.3, 5.0)
+[.62]
+17.2 (3.8, 30.7)
+[.01]
+1.4 (À0.7, 3.4)
+[.18]
+À0.2 (À1.0, 0.6)
+[.58]
+
+À4.2 (À20.5, 12.0)
+[.61]
+1.3 (À2.0, 4.7)
+[.43]
+À8.1 (À16.5, 0.4)
+[.06]
+À1.0 (À17.4, 15.4)
+[.90]
+À0.7 (À3.7, 2.3)
+[.65]
+À0.4 (À1.3, 0.5)
+[.43]
+
+À15.8 (À32.3, 0.7)
+[.06]
+3.0 (À4.7, 10.8)
+[.44]
+À6.4 (À16.1, 3.3)
+[.19]
+À18.2 (À29.6, À6.8)
+[.002]
+À2.0 (À4.9, 0.8)
+[.15]
+À0.1 (À0.9, 0.7)
+[.74]
+
+6.4 (À11.5, 24.3)
+[.48]
+À5.3 (À12.4, 1.8)
+[.14]
+4.3 (À11.7, 20.2)
+[.60]
+31.0 (À4.7, 66.6)
+[.09]
+
+À8.2 (À28.5, 12.2)
+[.43]
+À3.3 (À9.8, 3.2)
+[.31]
+À11.0 (À28.4, 6.4)
+[.21]
+25.1 (À10.6, 60.8)
+[.17]
+
+À14.5 (À35.9, 6.8)
+[.18]
+2.0 (À4.8, 8.8)
+[.56]
+À15.2 (À33.8, 3.4)
+[.11]
+À5.9 (À28.4, 16.7)
+[.61]
+
+Fertility and Sterilityâ
+
+SUPPLEMENTAL TABLE 1
+Continued.
+
+Completer
+
+n
+Glycemic parameters from OGTT
+Fasting glucose (mg/dL) 38
+
+Late dropout
+
+Early dropout
+
+Mean (SD)
+
+n
+
+Mean (SD)
+
+n
+
+Mean (SD)
+
+88.2 (7.2)
+
+26
+
+93.7 (12.8)
+
+46
+
+86.8 (9.1)
+
+Fasting insulin (mU/mL)
+
+34
+
+12.1 (9.1)
+
+26
+
+19.5 (17.1)
+
+40
+
+13.9 (8.9)
+
+AUC glucose
+
+38
+
+16048 (3551)
+
+26
+
+16988 (4646)
+
+45
+
+14858 (3047)
+
+AUC insulin
+
+35
+
+10655 (5807)
+
+27
+
+11858 (6987)
+
+39
+
+11072 (6728)
+
+Beta-cell function
+
+33
+
+1.5 (1.3)
+
+23
+
+1.9 (2.4)
+
+37
+
+2.8 (3.4)
+
+34
+
+5.6 (5.4)
+
+23
+
+4.8 (5.3)
+
+37
+
+5.1 (4.5)
+
+36
+
+11.7 (4.9)
+
+26
+
+10.8 (6.0)
+
+45
+
+10.5 (5.3)
+
+34
+
+13.2 (7.6)
+
+27
+
+12.3 (7.1)
+
+46
+
+12.2 (7.1)
+
+37
+
+23.5 (11.0)
+
+27
+
+22.7 (10.9)
+
+46
+
+22.4 (10.4)
+
+32
+
+8.6 (3.4)
+
+27
+
+10.3 (6.7)
+
+43
+
+8.5 (4.9)
+
+36
+
+2011 (140)
+
+25
+
+2019 (152)
+
+41
+
+1978 (135)
+
+BMC (g)
+
+36
+
+2447 (378)
+
+25
+
+2489 (337)
+
+41
+
+2410 (327)
+
+BMD (g/cm2)
+
+36
+
+1.2 (0.1)
+
+25
+
+1.2 (0.1)
+
+41
+
+1.2 (0.1)
+
+Total mass (g)
+
+36
+
+97591 (16877)
+
+25
+
+100104 (18794)
+
+41
+
+93847 (19199)
+
+Total lean (g)
+
+36
+
+56381 (7280)
+
+25
+
+57697 (8280)
+
+41
+
+55061 (8898)
+
+Total fat (g)
+
+36
+
+41210 (10626)
+
+25
+
+42407 (12627)
+
+41
+
+38786 (12163)
+
+Central abdominal fat (g)
+
+35
+
+3290 (1022)
+
+24
+
+3160 (1056)
+
+40
+
+2937 (946)
+
+Matsuda insulin
+sensitivity index (ISI)
+Ultrasound parameters
+Left ovarian volume
+(cm3)
+Right ovarian volume
+(cm3)
+Total ovarian volume
+(cm3)
+Largest follicle diameter
+(mm)
+DXA parameters
+Total area (cm2)
+
+1066.e5
+
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+Completer L late
+dropout
+
+Completer L early
+dropout
+
+Late dropout L early
+dropout
+
+Difference in means
+(95% CI)
+[P value]
+
+Difference in means
+(95% CI)
+[P value]
+
+Difference in means
+(95% CI)
+[P value]
+
+À5.5 (À11.0, 0.0)
+[.05]
+À7.4 (À14.7, À0.0)
+[.05]
+À940 (À3077, 1197)
+[.39]
+À1203 (À4506, 2101)
+[.47]
+À0.4 (À1.4, 0.7)
+[.52]
+0.8 (À2.1, 3.7)
+[.60]
+
+1.4 (À2.1, 4.9)
+[.44]
+À1.8 (À5.9, 2.4)
+[.40]
+1189 (À265, 2644)
+[.11]
+À417 (À3309, 2475)
+[.78]
+À1.3 (À2.5, À0.1)
+[.03]
+0.5 (À1.9, 2.8)
+[.71]
+
+6.9 (1.2, 12.5)
+[.02]
+5.6 (À1.6, 12.8)
+[.13]
+2129 (111, 4148)
+[.04]
+786 (À2633, 4205)
+[.65]
+À0.9 (À2.4, 0.5)
+[.21]
+À0.3 (À3.0, 2.3)
+[.81]
+
+0.9 (À1.9, 3.7)
+[.52]
+0.9 (À2.9, 4.6)
+[.64]
+0.8 (À4.7, 6.3)
+[.77]
+À1.7 (À4.6, 1.1)
+[.22]
+
+1.3 (À1.0, 3.5)
+[.27]
+1.0 (À2.3, 4.3)
+[.56]
+1.1 (À3.6, 5.8)
+[.65]
+0.1 (À1.8, 2.0)
+[.94]
+
+0.3 (À2.5, 3.1)
+[.81]
+0.1 (À3.3, 3.5)
+[.96]
+0.3 (À4.9, 5.4)
+[.92]
+1.8 (À1.2, 4.8)
+[.23]
+
+À9 (À85, 67)
+[.82]
+À42 (À225, 141)
+[.65]
+À0.0 (À0.1, 0.0)
+[.56]
+À2513 (À11828, 6803)
+[.59]
+À1316 (À5390, 2758)
+[.52]
+À1197 (À7317, 4924)
+[.70]
+129 (À419, 678)
+[.64]
+
+33 (À30, 95)
+[.30]
+36 (À125, 197)
+[.65]
+À0.0 (À0.1, 0.1)
+[.89]
+3744 (À4414, 11902)
+[.36]
+1320 (À2341, 4980)
+[.48]
+2424 (À2729, 7578)
+[.35]
+353 (À101, 806)
+[.13]
+
+41 (À32, 115)
+[.27]
+78 (À89, 246)
+[.36]
+0.0 (À0.0, 0.1)
+[.64]
+6257 (À3284, 15798)
+[.20]
+2636 (À1654, 6925)
+[.23]
+3621 (À2649, 9892)
+[.25]
+223 (À297, 744)
+[.40]
+
+1066.e6
+
+SUPPLEMENTAL TABLE 1
+Continued.
+
+Ladson et al.
+
+Completer
+
+Late dropout
+
+Early dropout
+
+Mean (SD)
+
+n
+
+Mean (SD)
+
+n
+
+Mean (SD)
+
+Abdominal fat (g)
+
+35
+
+7465 (2033)
+
+24
+
+7254 (2455)
+
+40
+
+6666 (2097)
+
+Central-to-total body fat
+ratio
+Central-to-abdominal fat
+ratio
+% Body fat
+
+35
+
+0.08 (0.01)
+
+24
+
+0.08 (0.02)
+
+40
+
+0.07 (0.01)
+
+35
+
+0.44 (0.04)
+
+24
+
+0.44 (0.03)
+
+40
+
+0.44 (0.04)
+
+36
+
+41.6 (4.9)
+
+25
+
+41.6 (6.3)
+
+41
+
+40.4 (6.5)
+
+Submaximal testing
+Estimated VO2 max
+
+35
+
+23.3 (3.9)
+
+25
+
+23.3 (5.9)
+
+43
+
+PCOS QOL parameters
+Emotion mean score
+
+38
+
+4.2 (1.2)
+
+28
+
+3.8 (1.2)
+
+Body hair mean score
+
+38
+
+3.3 (1.7)
+
+28
+
+Weight mean score
+
+38
+
+2.1 (1.1)
+
+Menstrual problems
+mean score
+Overall physical wellbeing
+Overall emotional wellÀ
+being
+Overall general wellbeing
+
+Metformin and lifestyle therapy in PCOS
+
+n
+
+38
+
+Completer L late
+dropout
+
+Completer L early
+dropout
+
+Late dropout L early
+dropout
+
+Difference in means
+(95% CI)
+[P value]
+
+Difference in means
+(95% CI)
+[P value]
+
+Difference in means
+(95% CI)
+[P value]
+
+210 (À996, 1417)
+[.73]
+0.00 (À0.00, 0.01)
+[.33]
+À0.00 (À0.02, 0.02)
+[.96]
+0.0 (À2.9, 3.0)
+[.98]
+
+799 (À149, 1747)
+[.10]
+0.00 (À0.00, 0.01)
+[.17]
+À0.00 (À0.02, 0.02)
+[.73]
+1.2 (À1.4, 3.8)
+[.37]
+
+589 (À604, 1781)
+[.33]
+0.00 (À0.01, 0.01)
+[.88]
+À0.00 (À0.02, 0.01)
+[.75]
+1.1 (À2.1, 4.3)
+[.48]
+
+25.0 (5.8)
+
+0.0 (À2.7, 2.7)
+[1.00]
+
+À1.7 (À3.9, 0.5)
+[.12]
+
+À1.7 (À4.6, 1.2)
+[.24]
+
+48
+
+3.8 (1.3)
+
+2.8 (1.5)
+
+48
+
+3.4 (1.9)
+
+28
+
+2.1 (1.3)
+
+48
+
+2.2 (1.4)
+
+3.8 (1.2)
+
+28
+
+3.4 (1.1)
+
+48
+
+3.3 (0.9)
+
+38
+
+3.8 (1.4)
+
+28
+
+3.3 (1.3)
+
+48
+
+3.6 (1.5)
+
+38
+
+4.2 (1.3)
+
+28
+
+3.5 (1.5)
+
+48
+
+3.8 (1.6)
+
+38
+
+4.2 (1.3)
+
+28
+
+3.8 (1.2)
+
+48
+
+4.2 (1.3)
+
+0.4 (À0.2, 1.0)
+[.21]
+0.4 (À0.3, 1.2)
+[.28]
+0.1 (À0.5, 0.7)
+[.81]
+0.4 (À0.2, 0.9)
+[.18]
+0.5 (À0.1, 1.2)
+[.11]
+0.7 (0.0, 1.4)
+[.04]
+0.3 (À0.3, 0.9)
+[.28]
+
+0.3 (À0.2, 0.9)
+[.21]
+À0.2 (À0.9, 0.6)
+[.69]
+À0.0 (À0.6, 0.5)
+[.86]
+0.5 (0.0, 1.0)
+[.03]
+0.2 (À0.4, 0.8)
+[.49]
+0.4 (À0.2, 1.0)
+[.18]
+À0.0 (À0.6, 0.5)
+[.92]
+
+À0.0 (À0.6, 0.5)
+[.90]
+À0.6 (À1.3, 0.2)
+[.14]
+À0.1 (À0.8, 0.5)
+[.70]
+0.1 (À0.4, 0.6)
+[.59]
+À0.3 (À1.0, 0.3)
+[.33]
+À0.3 (À1.0, 0.4)
+[.38]
+À0.4 (À1.0, 0.2)
+[.22]
+
+Note: AUC ¼ area under the curve; BMD ¼ bone mineral density; CI - conﬁdence interval; BMI ¼ body mass index; DXA ¼ dual-energy x-ray absorptiometry; FAI ¼ free androgen index; HDL ¼ high-density lipoprotein; LDL ¼ low-density lipoprotein; OGTT ¼ oral glucose tolerance test; PCOS ¼ polycystic ovary syndrome; QOL ¼ quality of life; VO2 max ¼ maximal oxygen uptake.
+
+Vol. 95, No. 3, March 1, 2011
+
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+SUPPLEMENTAL TABLE 2
+Summary of adverse events.
+Total events (unique subjects)
+Organ system/category
+Gastrointestinal
+Stomach/abdominal
+pain or discomfort
+Flu
+Nausea and/or vomiting
+Diarrhea
+Constipation
+Flatulence
+Heartburn/acid reﬂux
+Abdominal distention/
+bloating
+Impaired sense of taste
+Decreased appetite
+Respiratory
+Common cold/
+respiratory tract
+infections
+Chest pain
+Allergies
+Central Nervous System
+Dizziness
+Headache/migraine
+Fatigue
+Altered mood/mood
+swings
+Genitourinary
+Vaginal bleeding/
+spotting
+Dysmenorrhea or
+cramps
+Vaginal infection
+Bladder infection
+Musculoskeletal
+Other
+Hair loss
+Breast tenderness/lump
+Dehydrated
+Allergic reaction
+Dental issues
+Other
+
+Metformin
+
+Placebo
+
+9 (6)
+
+16 (7)
+
+12 (8)
+27 (9)
+78 (19)a
+1 (1)
+5 (2)
+2 (1)
+3 (2)
+
+4 (4)
+18 (7)
+22 (6)
+0 (0)
+3 (3)
+0 (0)
+2 (2)
+
+3 (2)
+3 (2)
+
+1 (1)
+3 (2)
+
+23 (12)
+
+19 (13)
+
+0 (0)
+2 (2)
+
+5 (2)
+0 (0)
+
+5 (3)
+42 (12)b
+2 (2)
+0 (0)
+
+3 (3)
+16 (11)
+4 (4)
+6 (5)
+
+3 (2)
+
+1 (1)
+
+14 (7)
+
+19 (9)
+
+3 (3)
+2 (1)c
+7 (5)d
+
+3 (3)
+9 (3)
+17 (9)
+
+3 (3)
+1 (1)
+1 (1)
+0 (0)
+4 (3)
+8 (6)
+
+0 (0)
+2 (2)
+0 (0)
+3 (3)
+2 (1)
+2 (2)
+
+Metformin vs. placebo; P<0.001 (rate ratio¼3.2; 95% CI 2.0, 5.2).
+Metformin vs. placebo; P¼0.003 (rate ratio¼2.4; 95% CI 1.3, 4.2).
+Metformin vs. placebo; P¼0.04 (rate ratio¼0.2; 95% CI 0.0, 0.9).
+d
+Metformin vs. placebo; P¼0.03 (rate ratio¼0.4; 95% CI 0.2, 0.9).
+a
+
+b
+c
+
+Ladson. Metformin and lifestyle therapy in PCOS. Fertil Steril 2011.
+
+Fertility and Sterilityâ
+
+1066.e7

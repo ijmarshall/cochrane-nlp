@@ -120,7 +120,7 @@ class bilearnPipeline(pipeline.Pipeline):
                           )
 
         self.answer_key = "w"
-        self.w_pos_window = 6 # set 0 for no w_pos window features
+        self.w_pos_window = 4 # set 0 for no w_pos window features
  
     def run_functions(self, show_progress=False):
 

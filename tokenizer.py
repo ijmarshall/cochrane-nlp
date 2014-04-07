@@ -1,5 +1,6 @@
 import re
 import pdb
+import os 
 
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
 from nltk.metrics.agreement import AnnotationTask
@@ -81,20 +82,27 @@ class newPunktWordTokenizer(TokenizerI):
     def tokenize(self, text):
         return self._lang_vars.word_tokenize(text)
 
-    def span_tokenize(self, text):
+    def span_tokenize(self, text, words_too=False):
         """
         Given a text, returns a list of the (start, end) spans of words
         in the text.
         """
-        return [(sl.start, sl.stop) for sl in self._slices_from_text(text)]
+        if words_too:
+            for w, (sl.start, sl.stop) in self._slices_from_text(text, words_too=True):
+                import pdb; pdb.set_trace()
+        else:
+            return [(sl.start, sl.stop) for sl in self._slices_from_text(text)]
 
-    def _slices_from_text(self, text):
+    def _slices_from_text(self, text, words_too=False):
         last_break = 0
         contains_no_words = True
         for match in self._lang_vars._word_tokenizer_re().finditer(text):
             contains_no_words = False
             context = match.group()
-            yield slice(match.start(), match.end())
+            if words_too:
+                yield [match, slice(match.start(), match.end())]
+            else:
+                yield slice(match.start(), match.end())
         if contains_no_words:
             yield slice(0, 0) # matches PunktSentenceTokenizer's functionality
 
@@ -365,6 +373,35 @@ def merge_annotations(a, b, strategy = lambda a,b: a & b, preprocess = lambda x:
         result.append(result_sent)
     return result
 
+# for full texts, obviously
+class FullTextReader:
+   
+    # implement length (len)
+    # get(cit)
+    def __init__(self, path_to_articles="cache/labeled/"):
+        self._load_articles(path_to_articles)
+
+    def _load_articles(self, path):
+        files = [os.path.join(path, f) for f in os.listdir(path) if f.endswith(".txt")]
+        self.articles = [open(f, 'rb').read() for f in files]
+        print "loaded %s full-text articles" % len(self.articles)
+
+    def __len__(self):
+        return len(self.articles)
+    
+    def __iter__(self):
+        self.article_index = 0
+        return self
+
+    def get(self, article_index):
+        return self.articles[article_index]
+
+    def next(self):
+        if self.article_index >= len(self):
+            raise StopIteration
+        else:
+            self.article_index += 1
+            return self.get(self.article_index-1)
 
 class MergedTaggedAbstractReader:
 

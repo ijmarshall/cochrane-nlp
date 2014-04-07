@@ -16,6 +16,7 @@ import string
 import pdb
 import random 
 import re
+import os
 import cPickle as pickle
 
 # sklearn, &etc
@@ -35,8 +36,10 @@ from indexnumbers import swap_num
 import bilearn
 from taggedpipeline import TaggedTextPipeline
 from journalreaders import LabeledAbstractReader
-from tokenizer import MergedTaggedAbstractReader
+import tokenizer
+from tokenizer import MergedTaggedAbstractReader, FullTextReader
 import progressbar
+
 
 # a useful helper.
 def punctuation_only(s):
@@ -280,7 +283,7 @@ class SupervisedLearner:
             # abstract text (X)
 
             merged_tags = self.abstract_reader.get(cit_id)     
-
+            #pdb.set_trace()
             p = TaggedTextPipeline(merged_tags, window_size=4)
             p.generate_features()
 
@@ -325,7 +328,6 @@ class SupervisedLearner:
                 y.append(y_i)
 
             pb.tap()
-
 
         return X, y
 
@@ -410,6 +412,21 @@ def learning_curve():
     return [int(sl.n_citations*p) for p in train_ps], average_fs, lows, highs
 
 
+def train_and_pickle_full_text(path="cache/labeled/"):
+    # get full text reader here, 
+    #tagged_texts = [tokenizer.tag_words(text) for text in texts]
+
+    reader = FullTextReader()   
+    sl = SupervisedLearner(reader, target="n")
+    sl.generate_features()
+    clf, vectorizer = sl.train_on_all_data()
+    with open("sample_size_predictor_ft.pickle", "wb") as out_f:
+        pickle.dump(clf, out_f)
+
+    with open("sample_size_vectorizer_ft.pickle", "wb") as out_f:
+        pickle.dump(vectorizer, out_f)
+    return clf, vectorizer
+
 def train_and_pickle():
     """ intended to be plugged into SPA, eventually. note that we
         pickle the actual clf model (and vectorizer) rather than 
@@ -427,7 +444,7 @@ def train_and_pickle():
 
     with open("sample_size_vectorizer.pickle", "wb") as out_f:
         pickle.dump(vectorizer, out_f)
-
+    return clf, vectorizer
 
 if __name__ == "__main__":
 
@@ -436,7 +453,8 @@ if __name__ == "__main__":
     predict_probs = False
     target = "n"
 
-    reader = MergedTaggedAbstractReader()
+    #reader = MergedTaggedAbstractReader()
+    reader = FullTextReader()
 
     sl = SupervisedLearner(reader, target=target)
     sl.generate_features()

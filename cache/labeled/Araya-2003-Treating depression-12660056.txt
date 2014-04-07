@@ -1,0 +1,979 @@
+ARTICLES
+
+Treating depression in primary care in low-income women in
+Santiago, Chile: a randomised controlled trial
+
+Ricardo Araya, Graciela Rojas, Rosemarie Fritsch, Jorge Gaete, Maritza Rojas, Greg Simon, Tim J Peters
+
+Summary
+Background Depression in women is one of the commonest
+problems encountered in primary care. We aimed to
+compare the effectiveness of a stepped-care programme
+with usual care in primary-care management of depression
+in low-income women in Santiago, Chile.
+Methods In a randomised controlled trial, in three primarycare clinics in Chile, <n>240</n> adult female primary-care patients
+with major depression were allocated stepped care or usual
+care. Stepped care was a 3-month, multicomponent
+intervention led by a non-medical health worker, which
+included a psychoeducational group intervention, structured
+and systematic follow-up, and drug treatment for patients
+with severe depression. Data were analysed on an intentionto-treat basis. The primary outcome measure was the
+Hamilton depression rating scale (HDRS) administered at
+baseline and at 3 and 6 months after randomisation.
+Findings About 90% of randomised patients completed
+outcome assessments. There was a substantial betweengroup difference in all outcome measures in favour of the
+stepped-care programme. The adjusted difference in mean
+HDRS score between the groups was –8·89 (95% CI –11·15
+to –6·76; p<0·0001). At 6-months’ follow-up, 70% (60–79)
+of the stepped-care compared with 30% (21–40) of the
+usual-care group had recovered (HDRS score <8).
+Interpretation Despite few resources and marked
+deprivation, women with major depression responded well to
+a structured, stepped-care treatment programme, which is
+being introduced across Chile. Socially disadvantaged
+patients might gain the most from systematic improvements
+in treatment of depression.
+Lancet 2003; 361: 995–1000
+
+Division of Psychiatry (R Araya PhD), and Division of Primary Health
+Care (Prof T J Peters PhD), University of Bristol, Bristol, UK; Hospital
+Clinico, Facultad de Medicina, Universidad de Chile, Santiago,
+Chile (G Rojas MD, R Fritsch MD, J Gaete MD, M Rojas MD); and Group
+Health Co-operative Puget Sound, Seattle, WA, USA
+(G Simon MD)
+Correspondence to: Dr R Araya, Division of Psychiatry, University of
+Bristol, Cotham House, Cotham Hill, Bristol BS6 6UJ, UK
+(e-mail: R.Araya@bris.ac.uk)
+
+THE LANCET • Vol 361 • March 22, 2003 • www.thelancet.com
+
+Introduction
+Depression is a major public health problem in rich and
+poor countries, and is especially common in women, and
+in particular in women who are socially disadvantaged.1–4
+In primary care, depression is highly prevalent and
+almost twice as common in women as in men.5 Access to
+mental-health specialists in developing countries is
+inadequate, especially for the poorest sectors of society,
+so most depression is treated in primary care. However,
+management of depression in primary care is
+disorganised and often ineffective in rich and in poor
+countries. Depression is often unrecognised, and
+initiation and adherence to effective treatment is usually
+poor.5–9 Results of clinical trials and comparative studies
+have shown the potential effectiveness of drug treatment
+or brief structured psychotherapy.10–13 Unfortunately, this
+potential is seldom realised. Treatment of depression
+often consists of more than one therapeutic component
+used as part of a complex sequence of management
+decisions with the ultimate goal of overall improvement.
+Thus, in sequential, multicomponent programmes
+(stepped-care model), patients without severe depression
+receive low-intensity treatment, which is followed-up
+with intensive management if they do not respond.14
+Some components, such as systematic monitoring and
+brief psychological interventions, can be effectively
+delivered by trained non-medical personnel, reducing
+costs and demands on family practitioners.15,16
+Primary-care clinics are the main source of care for
+almost every poor person in Chile. These clinics are
+underfunded and insufficiently resourced, but most have
+nurses, social workers, auxiliary nurses, midwives, and
+doctors. Primary-care physicians are in short supply and
+most have little formal training in primary care. These
+doctors typically see six-to-ten patients per hour. Most
+clinics have established programmes, usually led by
+nurses, for chronic medical conditions, but not for
+depression. Most primary-care physicians spend less than
+2 years in primary-care posts, whereas nurses and social
+workers stay much longer. Specialty mental health care is
+available on referral, but waiting times for an initial
+consultation typically exceed 2 months.
+We designed a multicomponent, stepped-care programme to improve treatment practices for depression
+and the efficiency with which resources are used. In
+keeping with these goals, the programme was led by a
+trained non-medical health worker; a doctor was involved
+only if medication was needed for patients with severe
+depression. We aimed to compare the effectiveness of this
+stepped-care programme with usual care in primary-care
+management of depression in low-income women.
+
+Methods
+Participants
+We enrolled participants in three primary-care clinics in
+deprived urban areas of Santiago, Chile, between March,
+
+995
+
+For personal use. Only reproduce with permission from The Lancet Publishing Group.
+
+ARTICLES
+
+2000, and November, 2001. The clinics were representative of Santiago primary-care clinics in terms of
+resources and of clinical and sociodemographic
+characteristics of patients.17 We used a two-stage
+screening process to identify female primary-care
+patients aged 18–70 years with current major depressive
+illness. Consecutive female patients were approached
+while they were waiting for consultation. All eligible and
+consenting patients were asked to complete the general
+health questionnaire (GHQ-12). All women with a score
+of 5 or more were asked to return for another GHQ-12
+assessment 2 weeks later. Those scoring 5 or more at the
+second screening were invited for a baseline assessment
+within 1 week. The double screening was part of the
+stepped-care strategy to direct resources toward patients
+with persistent depression.
+Ethics approval was granted by Comite Etica,
+Hospital Clinico, University of Chile. Patients gave
+written informed consent before being invited to
+participate.
+Procedures
+At baseline, a clinician administered three assessments:
+the mini international neuropsychiatric interview
+(MINI)18 to ascertain a Diagnostic and Statistical Manual
+of Mental Disorders—Fourth Edition (DSM-IV) diagnosis
+of major depression, manic or psychotic episode, or
+alcohol abuse; the Hamilton depression rating scale
+(HDRS);19 and the short form 36 questionnaire (SF-36).
+HDRS, the primary outcome measure, has been shown
+to give reliable and valid results in primary-care
+patients,20 as has the Spanish-language version.21 SF-36
+is used to assess functional impairment across a range of
+mental and physical domains.22 Four aspects of SF-36
+were selected as secondary outcomes: mental health,
+emotional role, social functioning, and vitality (selected
+because of responsiveness to change in depression). In
+primary-care populations similar to ours it has shown
+good reliability and sensitivity to change with severity of
+depression. A Spanish-language version has been used
+successfully in studies of depression in Spanish-speaking
+primary-care patients.23
+All patients with current DSM-IV major depression
+were eligible. Patients with current psychotic symptoms,
+serious suicidal risk, history of mania, or current alcohol
+abuse were excluded and referred back to their primarycare physician. Patients who had had a psychiatric
+consultation or admission to hospital in the 3 months
+before the interview were also excluded.
+Patients were randomly assigned the stepped-care
+improvement programme or usual care. Randomisation
+was stratified by clinic and done in blocks of 20 by use of
+computer-generated random numbers; individuals who
+recruited patients were neither involved in nor aware of
+the procedure used to generate allocations. Allocations
+were kept in numbered sealed envelopes in each clinic,
+and were opened by an individual who had not recruited
+patients. The method of randomisation was chosen to
+obtain groups of equal size.
+The stepped-care improvement programme was a
+multicomponent programme consisting of a structured
+psychoeducational group, systematic monitoring of
+clinical progress, and a structured pharmacotherapy
+programme for patients with severe or persistent
+depression. Figure 1 shows an overview of the
+programme. The psychoeducational intervention group
+consisted of seven weekly sessions and two booster
+sessions at weeks 9 and 12; each session lasted 75 min.
+Each group included about 20 participants. Topics
+
+996
+
+Baseline assessment
+
+HDRS score р19
+
+HDRS score >19
+
+Psychoeducational group
+7 weekly sessions
+
+Psychoeducational group
+and assessment
+for pharmacotherapy
+
+6-week reassessment
+HDRS score р12
+
+HDRS score >12
+Refer for primary-care
+physician reassessment:
+initiate pharmacotherapy
+or
+adjust pharmacotherapy
+Booster sessions
+weeks 9 and 12
+
+Figure 1: The stepped-care intervention programme
+
+covered included information on symptoms and causes
+of depression, available treatment options, scheduling
+positive activities, problem-solving techniques, and basic
+cognitive and relapse-prevention techniques. Patients
+were given a manual with detailed information of the
+contents of each session accompanied by examples and
+exercises. Group leaders were social workers and nurses
+who received 12 h of training and 8 h of supervision
+from the principal investigators. Most group leaders
+were employed in local primary-care clinics. Patients
+were discouraged from contacting the group leader
+outside the sessions unless essential.
+Patients with severe depression (HDRS score >19) at
+baseline or persistent depression (HDRS score >12)
+after 6 weeks of group treatment were referred back to
+their primary-care physician for a structured
+pharmacotherapy programme.24 Primary-care physicians
+received 4 h of training to enable them to deliver a brief
+pharmacotherapy protocol that included structured
+assessment at initial and follow-up visits and the use of a
+standard medication algorithm to ensure adequate dose
+and duration of treatment (fluoxetine, amitriptyline, or
+imipramine). Group leaders monitored medication
+adherence and attendance at follow-up visits for patients
+receiving pharmacotherapy (figure 1).
+Patients assigned usual care received all services
+normally available in the primary-care clinic, including
+antidepressant medication or referral for specialty
+treatment. Before the initiation of the study, primarycare physicians in the control group received guidelines
+on how to treat depression in primary care. No
+services normally available were restricted or withheld,
+and primary-care physicians received no information
+from study workers about patients in the usual-care
+group.
+All participants were invited to attend the primarycare clinics for outcome assessments at 3 and 6 months
+after randomisation. Follow-up interviews were done by
+an independent clinician blinded to treatment
+assignment. Patients attending outcome assessments
+received a small payment to cover travel expenses.
+
+THE LANCET • Vol 361 • March 22, 2003 • www.thelancet.com
+
+For personal use. Only reproduce with permission from The Lancet Publishing Group.
+
+ARTICLES
+
+Group
+
+3560 completed GHQ-12
+
+Stepped-care
+
+96 dropped out
+1635 completed second
+GHQ-12
+913 scored Ͻ5
+722 scored у5
+44 dropped out
+678 completed baseline
+assessment
+303 not interviewed
+375 approached for
+recruitment
+
+240 randomised
+
+120 assigned
+stepped care
+
+120 assigned
+usual care
+
+102 completed
+3 months’
+follow-up
+
+109 completed
+3 months’
+follow-up
+
+104 completed
+6 months'
+follow-up
+
+135 not randomised
+25 refused
+110 excluded
+78 no depression
+12 psychosis
+9 psychiatric
+consultation in
+last 3 months
+8 current alcohol
+abuse
+3 previous mania
+
+107 completed
+6 months’
+follow-up
+
+Figure 2: Trial profile
+
+Statistical analysis
+On the basis of data from other primary-care studies, we
+anticipated that follow-up HDRS scores would have an
+SD of about 7 points. Thus, a sample size of 120 patients
+per group would have 80% power for detection of a
+difference of 2·5 points in mean HDRS score between
+groups with two-sided significance of 5%.
+Data were analysed in accordance with CONSORT
+guidelines; between-group comparisons were by
+intention-to-treat. We obtained descriptive statistics for
+the primary outcome measure (HDRS score) as a
+continuous and categorical (proportion of patients
+improved [defined as a 50% score reduction] and
+recovered [score <8]) variable. Primary comparison
+between groups was by repeated measures analysis of
+covariance25 with adjustment for baseline and clinic in a
+random effects model. Interaction between time and
+group were assessed (for changes in group effects with
+time) and, in the absence of such an interaction, the
+overall difference between groups across the two followup assessments was calculated (95% CIs and p values).
+To investigate the effect of loss to follow-up on the
+intention-to-treat analysis, we did a sensitivity analysis
+using the last-observation-carried-forward approach.
+Secondary analyses included adjustment for baseline
+characteristics. Secondary outcomes were analysed with
+
+THE LANCET • Vol 361 • March 22, 2003 • www.thelancet.com
+
+Age, years (mean, SD)
+43·0 (12·8)
+Marital status
+Single
+19 (16%)
+Married
+67 (56%)
+Cohabiting
+6 (5%)
+Previously married*
+28 (23%)
+Occupation
+Housewife
+102 (85%)
+Student
+2 (2%)
+Employed
+16 (13%)
+Number of children
+3·0 (1·7)
+(mean [SD])
+GHQ-12 score (mean, SD)
+10·0 (2·3)
+HDRS score (mean, SD)
+19·8 (3·4)
+SF-36 mental health score
+14·7 (12·7)
+(mean, SD)
+SF-36 emotional role score
+8·6 (19·1)
+(mean, SD)
+SF-36 social functioning score
+33·9 (25·2)
+(mean, SD)
+SF-36 vitality score (mean, SD) 14·2 (13·5)
+Disability
+None
+4 (3%)
+Mild
+20 (17%)
+Moderate
+7 (6%)
+Severe
+89 (74%)
+Chronic illness
+26 (22%)
+Previous depression
+65 (54%)
+
+42·1 (14·3)
+13 (11%)
+61 (51%)
+10 (8%)
+36 (30%)
+98 (82%)
+2 (2%)
+20 (17%)
+2·7 (1·9)
+10·0 (2·2)
+19·7 (4·0)
+15·6 (14·8)
+8·9 (20·6)
+36·4 (24·9)
+16·1 (16·7)
+6 (5%)
+24 (20%)
+3 (3%)
+87 (73%)
+36 (30%)
+71 (59%)
+
+Data are number (%) unless otherwise indicated. *Separated and widowed.
+
+Table 1: Baseline characteristics
+
+the same procedures. All analysis was done with Stata
+(version 7.0).
+Role of the funding source
+The sponsors of the study had no role in study design,
+data collection, data analysis, data interpretation, or
+writing of the report.
+
+Results
+Figure 2 shows the trial profile. 3560 consecutive female
+patients completed initial screening. 1731 (49%) scored
+at least 5 in the GHQ-12. 1635 (94%) returned for the
+second GHQ-12, but only 722 (44%) were still above the
+threshold. All patients received an appointment for a
+baseline assessment within 48 h, but only 375 were
+interviewed before a sufficient number of women had
+been recruited. Recruited and non-recruited patients had
+similar GHQ-12 scores. Of those interviewed, 240 (64%)
+were eligible and agreed to be randomised (figure 2).
+Among patients excluded, most were women who did not
+meet DSM-IV criteria for major depression. For practical
+25
+
+SC observed data
+UC observed data
+
+SC LOCF
+UC LOCF
+
+20
+HDRS score
+
+1731 scored у5
+
+Usual-care
+
+15
+10
+5
+0
+0
+
+3
+Time (months)
+Figure 3: HDRS score over time
+
+6
+
+SC=stepped care. UC=usual care. LOCF=last observation carried forward.
+Bars are 95% CIs.
+
+997
+
+For personal use. Only reproduce with permission from The Lancet Publishing Group.
+
+ARTICLES
+
+Difference in mean scores (95% CI)
+HDRS score
+SF-36 mental
+health score
+SF-36 emotional
+role score
+SF-36 social
+functioning score
+SF-36 vitality score
+
+p
+
+Group
+
+–8·89 (–11·15 to –6·76)
+22·78 (16·80 to 28·77)
+
+<0·0001
+<0·0001
+
+Usual-care
+(n=109)
+
+Stepped-care
+(n=104)
+
+20·72 (12·31 to 29·13)
+
+<0·0001
+
+19·32 (13·11 to 25·53)
+
+<0·0001
+
+35·0 (25·5)
+42·8 (25·4)*
+
+57·4 (25·2)*
+66·2 (26·7)
+
+21·23 (15·10 to 27·37)
+
+<0·0001
+
+28·4 (35·1)
+34·6 (40·9)*
+
+47·4 (41·0)*
+57·1 (41·2)
+
+44·0 (26·9)
+51·2 (28·9)*
+
+63·8 (30·2)*
+70·1 (26·7)
+
+34·8 (26·1)
+38·8 (27·0)*
+
+53·7 (28·5)*
+62·8 (25·7)
+
+Analysis based on observed data only. *From repeated measures analysis of
+covariance, adjusting for baseline and clinic in a random effects model.
+
+Table 2: Adjusted difference in mean scores for stepped-care
+minus usual-care programmes*
+
+reasons the number of patients recruited varied: 40, 80,
+and 120 were recruited in each clinic, respectively. The
+number not completing blinded outcome assessments
+were similar in the stepped-care and usual-care groups at
+3 months (18 vs 11, respectively) and 6 months (16 vs
+13, respectively).
+Mean age of participants was 42·6 years (SD 13·6),
+128 (53%) were married, and 200 (83%) were
+housewives. A previous depressive episode was reported
+by 136 (57%), five women had a previous psychiatric
+admission, and 62 (26%) had been diagnosed with a
+chronic medical illness. Mean GHQ-12 and HDRS
+scores were 10·0 (2·2) and 19·7 (3·7), respectively.
+Groups were similar with respect to demographic and
+baseline clinical characteristics (table 1). These
+characteristics were also similar across clinics—for
+example, mean HDRS scores at baseline in the three
+clinics were 19·5 (3·6), 19·3 (4·2), and 20·0 (3·7),
+respectively.
+104 (87%) women in the stepped-care group attended
+at least one group session: ten attended one-to-two
+sessions; five attended three-to-four; 11, five-to-six; 34,
+seven-to-eight; and 44 attended nine sessions. Mean
+number of sessions attended was 6·26 (3·28). Nonattendance at group sessions was not always
+accompanied by loss to follow-up; of 16 women who
+never attended a group session, six underwent both
+outcome assessments and seven had at least one
+assessment. In the stepped-care group, 95 (79%) women
+were on antidepressant medication at some time during
+the study, compared with 41 (34%) in the usual-care
+group.
+Mean HDRS score of the stepped-care group was
+about 10 points lower than that of the usual-care group at
+3 and 6 months, with either missing values replaced by
+the last observation carried forward or exclusion of
+missing values and use of observed data only (figure 3).
+With observed data, in a repeated measures analysis of
+covariance adjusting for baseline HDRS score and clinic,
+there was no significant interaction between time and
+treatment allocation (–0·12; 95% CI –2·52 to 2·76;
+p=0·93), but the main effect of treatment allocation
+across both follow-up points was large and significant, in
+favour of the intervention (table 2). We repeated the
+
+SF-36 scores, mean (SD)
+Mental health
+3 months
+6 months
+Emotional role
+3 months
+6 months
+Social functioning
+3 months
+6 months
+Vitality
+3 months
+6 months
+
+Analysis comparing treatment groups as allocated with observed data only.
+*Data missing for two women.
+
+Table 4: SF-36 outcomes according to treatment group and
+follow-up assessments
+
+analysis after adjusting for the large differences in the
+proportions prescribed antidepressants in the two groups.
+The estimate, 95% CIs, and p value for HDRS score was
+not much changed by either this adjustment or by
+controlling for the small baseline imbalance in chronic
+medical conditions. Likewise, a sensitivity analysis had
+almost no effect on the results, which was as expected on
+the basis of the data presented in figure 3. To aid
+interpretation of the primary analyses in table 2,
+descriptive statistics for the binary versions of HDRS
+scores are presented in table 3. For example, the
+proportion of women who recovered (HDRS <8) by
+6-months’ follow-up was 73 (70%) of 104 in the steppedcare group compared with 32 (30%) of 107 in the usualcare group (table 3).
+We did similar analyses for secondary outcome
+measures (tables 2 and 4); between-group differences
+were large and significant in favour of the stepped-care
+group (table 2). Adjustment for antidepressants and
+baseline imbalance in chronic medical conditions did not
+alter the results for any of the SF-36 sub-scales that we
+analysed.
+
+Discussion
+Our results show a large and significant difference in
+favour of the stepped-care programme compared with
+usual care, consistent across all assessed outcomes, and
+stable during 6 months of follow-up. Rates of participation
+in the intervention programme were high, and
+participation in blinded outcome assessments exceeded
+85% in both groups. The programme widened the role and
+responsibilities of non-medical workers and increased the
+participation of patients in their own treatment. These
+features are all important to modern service development
+in developing and developed countries.
+For obvious reasons, participants could not be blinded
+to treatment, and we cannot rule out the possibility that
+
+Group
+Usual-care (n=109), n (% [95% CI])
+Outcome
+Improved (р50% HDRS baseline score)
+3 months
+6 months
+Recovered (HDRS<8)
+3 months
+6 months
+
+Stepped-care (n=104), n (% [95% CI])
+
+Odds ratios (95% CIs)
+
+19 (17% [11–26])
+34 (32% [23–42])*
+
+55 (54% [44–64])*
+81 (78% [69–85])
+
+ND
+7·56 (4·08–14·01)
+
+16 (15% [9–23])
+32 (30% [21–40])*
+
+50 (49% [39–59])*
+73 (70% [60–79])
+
+ND
+5·52 (3·06–9·95)
+
+Analysis comparing groups as allocated with observed data only. ND=not done. *Data missing for two women.
+
+Table 3: Outcome according to HDRS score
+
+998
+
+THE LANCET • Vol 361 • March 22, 2003 • www.thelancet.com
+
+For personal use. Only reproduce with permission from The Lancet Publishing Group.
+
+ARTICLES
+
+the clinicians who did outcome assessments learned of
+treatment allocation. However, we obtained similar
+results using a self-reported measure, the SF-36 mental
+health dimension. It is therefore unlikely that an
+assessment bias had much effect on our results.
+Patients in the stepped-care programme received
+several treatment components (patients’ education,
+behavioural activation, problem-solving techniques,
+systematic
+and
+structured
+follow-up,
+and/or
+pharmacotherapy). We did not aim to establish the
+effectiveness of isolated components of treatment, but
+rather to assess a programme that included components
+shown to be effective, available locally, and that could be
+used in an efficient stepped-care programme. In other
+words, our programme was intended to be as close as
+possible to what should be an adequate, efficient, and
+more importantly, feasible treatment programme in our
+particular setting. Even though there were large
+differences in the proportion of people in each group who
+were prescribed antidepressants, we think it is unlikely
+this could account for the significant differences in
+outcomes between the groups since adjusting our results
+for medication did not alter our main findings.
+We did not design the programme to introduce radical
+changes to established practices. We aimed to improve
+existing care with structured protocols and rationalise the
+use of available resources. Often, innovative programmes
+are introduced that involve changes impossible to
+assimilate in the day-to-day delivery of care. The main
+innovative element was role enhancement for the nonmedical group leaders, most of whom were available in
+the clinics and were often closely connected to local
+neighbourhoods. These workers were given the time and
+training to deliver the group psychological intervention
+effectively, monitor treatment progress, and act as
+advocates or care managers. They also acted as brokers
+between patients and doctors without interfering with
+doctors’ work. On the contrary, doctors appreciated the
+help and information. We decided to concentrate our
+intervention in a high-risk group, poor women, so that
+the psychoeducational group intervention could focus on
+topics relevant for that group. This strategy seems to have
+worked because attendance rates and overall satisfaction
+with the programme were reasonably good.
+Our results have some limitations. First, research has
+shown that benefits gained early during treatment tend to
+decline after 1 year or longer.11,26,27 Unfortunately, we
+were unable to do a 1-year assessment, but our 6-month
+results compare favourably with those of other
+programmes.11–13,26 Second, the usual-care group did
+worse than in other studies from developed countries, an
+unsurprising finding in view of the deficiencies in primary
+health care and the characteristics of patients in the
+Chilean sample. Third, our intervention was designed for
+ease of implementation in other primary-care settings,
+but we cannot be certain that our results are generally
+applicable. Finally, our psychological intervention
+included nine group sessions, which could be thought
+unrealistically intense in some settings. However,
+psychological interventions of similar intensity had
+already been tried with success in primary-care settings in
+Chile and the costs were acceptable to services and
+patients. Our main aim was to show that organised,
+improved treatment, as a first step, could effectively make
+a difference in a setting of socioeconomic disadvantage.
+Future interventions should test the effectiveness of lessintensive and costly psychological interventions.
+Clinics and patients were representative of primary
+care in Santiago, Chile,5,17 with high rates of morbidity,
+
+THE LANCET • Vol 361 • March 22, 2003 • www.thelancet.com
+
+severe resource limitations, and socioeconomically
+deprived populations. These factors are common barriers
+to effective care in most public-sector clinics in
+developing countries. Thus, we think our results could be
+applicable in similar settings to ours, but also that similar
+strategies can be equally cost effective to manage
+depression or other chronic illnesses in more advantaged
+or organised practice settings. Contrary to some
+expectations, developed countries can learn much from
+developing countries in how best to rationalise resources
+when working with deprived populations under tight
+budgetary conditions.
+The combination of high rates of depressive illness,
+poverty, and scarce resources can easily induce nihilism
+in physicians and policy-makers. Our findings should
+offer hope that modest interventions can have a
+substantial effect on depressive symptoms and functional
+impairment. The benefits of our programme exceed those
+seen with similar interventions in settings with lessdeprived patients and more treatment resources. Unlike
+results from many other successful treatment studies, our
+results were well received by local policy-makers who
+have now launched a national pilot programme for the
+treatment of depression in primary care based on this
+intervention. Socially disadvantaged patients, especially
+in the developing world, might have the most to gain
+from modest investments in organised treatment of
+depression.
+Contributors
+R Araya and G Simon wrote the grant proposal. R Araya and T J Peters
+analysed data and wrote the final manuscript. G Rojas was the study
+coordinator and obtained data, assessed patients, and edited
+manuscripts. R Fritsch obtained data, assessed patients, entered and
+analysed data, and edited early versions of the manuscript. J Gaete was
+an independent outcome assessor and revised manuscripts. M Rojas was
+the site coordinator and collected data and edited manuscripts. G Simon
+provided advice on fieldwork and edited all versions of the manuscript.
+
+Conflict of interest statement
+R Araya received payment from Wyeth for a workshop. G Rojas received
+payment from Wyeth and Servier and R Fritsch received payment from
+Wyeth for participation in clinical trials. G Simon has received research
+grants from Eli Lilly and Solvay Pharmaceuticals. None of the other
+authors has declared any conflict of interest.
+
+Acknowledgments
+We thank the staff from the participating primary-care clinics. We also
+thank all the members of our team, in particular, C Valera, N Parra,
+M E Romero, E Lebrini, P Gonzalez, and J Espinola. Our thanks to
+Prof Glyn Lewis who read the manuscript and made useful comments.
+We thank the US National Institute of Mental Health for funding this
+project.
+
+References
+1
+
+2
+
+3
+
+4
+
+5
+6
+
+7
+
+Murray C, Lopez A. Alternative projections of mortality and
+disability by cause 1900–2020: Global Burden of Disease Study.
+Lancet 1997; 349: 1498–504.
+Patel V, Araya R, Ludemir A, Todd C, Lima M. Women, poverty
+and common mental disorders in four restructuring societies.
+Soc Sci Med 1999; 49: 1461–71.
+Jenkins R, Lewis G, Bebbington P, et al. The national psychiatric
+morbidity surveys of Great Britain: initial findings from the household
+survey. Psychol Med 1997; 27: 775–90.
+Araya R, Rojas G, Fritsch R, Acuna J, Lewis G. Common mental
+disorders in Santiago, Chile: prevalence and socio-demographic
+correlates. Br J Psychiatry 2001; 178: 228–33.
+Ustun B, Sartorius N. Mental illness in general health care: an
+international study. London: John Wiley and Sons, 1995.
+Araya R, Lewis G, Rojas G, Mann A. Patient knows best: detection
+of common mental disorders in Santiago, Chile: cross-sectional study.
+BMJ 2001; 322: 79–81.
+Simon G, von Korff M, Barlow W. Health care costs of primary care
+patients with recognized depression. Arch Gen Psychiatry 1995; 52:
+850–56.
+
+999
+
+For personal use. Only reproduce with permission from The Lancet Publishing Group.
+
+ARTICLES
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+Schulberg H, Block M, Madonia M, et al. The “usual care” of major
+depression in primary care practice. J Arch Fam Med 1997; 6:
+334–39.
+Tylee A, Freeling P. The recognition, diagnosis and
+acknowledgement of depressive disorders by general practitioners. In:
+Paykel E, Herbst K, eds. Depression: an integrative approach.
+London: Heinemann, 1989: 216–31.
+Mynors-Wallis LM, Gath DH, Day A, Baker F. Randomised
+controlled trial of problem solving treatment, antidepressant
+medication, and combined treatment for major depression in primary
+care. BMJ 2000; 320: 26–30.
+Ward E, King M, Lloyd M, et al. Randomised controlled trial on
+non-directive counselling, cognitive-behaviour therapy, and usual
+general practitioner care for patients with depression. I: clinical
+effectiveness. BMJ 2000; 321: 1383–88.
+Chilvers C, Dewey M, Fielding K, et al. Antidepressant drugs and
+generic counselling for treatment of major depression in primary care:
+randomised trial with patient preference arms. BMJ 2001; 322:
+772–75.
+Malt UF, Robak H, Madsbu HP, Bakke O, Loeb M. The Norwegian
+naturalistic treatment study of depression in general practice
+(NORDEP) I: randomised double blind study. BMJ 1999; 318:
+1180–84.
+Katon W, Robinson P, von Korff M, et al. A multifaceted
+intervention to improve treatment of depression in primary care. Arch
+Gen Psychiatry 1996; 53: 924–32.
+Mynors-Wallis LM, Davies I, Gray A, Barbour F, Gath D. A
+randomised controlled trial and cost analysis of problem-solving
+treatment for emotional disorders given by community nurses in
+primary care. Br J Psychiatry 1997; 170: 113–19.
+Simon G, von Korff M, Rutter C, Wagner EH. Randomised trial of
+monitoring, feedback, and management of care by telephone to
+
+17
+18
+
+19
+20
+21
+22
+
+23
+
+24
+
+25
+26
+
+27
+
+improve treatment of depression in primary care. BMJ 2000; 320:
+550–54.
+Araya R. Common mental disorders and detection by primary care
+physicians. PhD thesis, University of London, 2000.
+Sheehan DV, LeCrubier Y, Janrs J, et al. Mini international
+neuropsychiatric interview (MINI). Florida: University of South
+Florida Institute for Research on Psychiatry and INSERM-Hôpital
+Pitié Salpêtrière, 1994.
+Hamilton M. A rating scale for depression. J Neurol Neurosurg
+Psychiatry 1960; 23: 56–62.
+Simon G, VonKorff M, Revicki D. Telephone assessment of
+depression severity. J Psychiatr Res 1993; 27: 247–52.
+Ramos-Brieva J, Cordero-Villafalia A. A new validation of the
+Hamilton rating scale for depression. J Psychiatr Res 1988; 22: 21–28.
+Ware J, Kosinski M, Keller SD. SF-36 physical and mental
+component summary scales: a user’s manual. Boston: The Health
+Institute, New England Medical Center, 1993.
+Williams J, Kerber C, Mulrow C, Medina-Aguilar ME. Depressive
+disorders in primary care: Prevalence, functional disability, and
+identification. J Gen Int Med 1995; 10: 7–12.
+Katon W, von Korff M, Lin E, et al. Collaborative management to
+achieve treatment guidelines: the impact on depression in primary
+care. JAMA 1995; 273: 1026–31.
+Armitage P, Berry G, Matthews JNS. Statistical methods in medical
+research, 4th edn. Oxford: Blackwell Science, 2002.
+Dowrick C, Dunn G, Ayuso-Mateos JL, et al, and the Outcomes
+of Depression International Network (ODIN) Group. Problem
+solving treatment and group psychoeducation for depression:
+multicentre randomised controlled trial. BMJ 2000; 321: 1450–54.
+Sherbourne C, Wells K, Duan N, et al. Long-term effectiveness of
+disseminating quality improvement for depression in primary care.
+Arch Gen Psychiatry 2001; 58: 696–703.
+
+Clinical picture
+Wernicke’s encephalopathy
+Markus Ploner, Alfons Schnitzler
+A 36-year-old man was admitted to the emergency ward
+in a global confusional state. Apart from the patient’s
+name and age no further information on the history
+was obtainable. Neurological examination revealed
+intermittent upbeat nystagmus, convergent strabismus,
+horizontal gaze palsy, and a severe ataxia of stance and
+gait. Laboratory findings showed an elevation of
+gamma-glutamyl transpeptidase, serum amylase and
+serum lipase, and a macrocytic anaemia. Drug and
+alcohol testing was negative. Based on the classical
+triad of clinical features—ophthalmoplegia, ataxia, and
+confusion—Wernicke’s encephalopathy was diagnosed
+and thiamine was administered immediately. A fluidattenuated inversion recovery (FLAIR) magnetic
+resonance-scan showed hyperintense signals around
+the third ventricle, in the fornix, and around the fourth
+ventricle, the hypothalamus, and the mamillary bodies
+(figure): findings characteristic of Wernicke’s encephalopathy. Cerebrospinal fluid showed a small elevation of
+protein content. Within the first days ocular palsies nearly
+completely recovered while ataxia and confusion
+remained unchanged. A history of chronic alcohol abuse
+was confirmed.
+Department of Neurology, Heinrich-Heine-University, 40225 Düsseldorf, Germany (M Ploner MD, A Schnitzler MD)
+
+1000
+
+THE LANCET • Vol 361 • March 22, 2003 • www.thelancet.com
+
+For personal use. Only reproduce with permission from The Lancet Publishing Group.

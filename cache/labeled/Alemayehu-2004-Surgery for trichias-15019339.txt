@@ -1,0 +1,883 @@
+Surgery for Trichiasis by Ophthalmologists
+versus Integrated Eye Care Workers
+A Randomized Trial
+Wondu Alemayehu, MD, MPH,1 Muluken Melese, MD, MPH,1 Abebe Bejiga, MD,2 Alemayehu Worku, PhD,3
+Workayehu Kebede, MD,4 Demeke Fantaye, ON1
+Objective: To study the outcome of bilamellar tarsal rotation (BTR) trichiasis surgery performed by ophthalmologists versus that done by integrated eye care workers (IECWs).
+Design: Randomized prospective interventional trial.
+Participants: Nine hundred eighty-two patients with various degrees of trachomatous trichiasis in central
+Ethiopia.
+Methods: Trachomatous trichiasis patients in 3 woredas (districts) in central Ethiopia were enrolled. Trichiasis severity was graded. Patients were randomly assigned to surgery by 2 ophthalmologists and 2 IECWs. On
+the seventh day postoperatively, patients were evaluated for undercorrection or other complications. If trichiasis
+was present, it was considered a failure of surgery (technical failure), and patients were excluded from the
+follow-up study, but repeat surgery was performed. Those patients with good correction at the seventh day were
+examined again on the third and sixth months. Further follow-up evaluation is planned for the ﬁrst, second, and
+third years postoperatively.
+Main Outcome Measures: Recurrence rate, recurrence difference in the various grades, and difference
+between surgeries done by ophthalmic surgeons and those done by IECWs.
+Results: In the third month of follow-up, it was possible to locate 713 (73.0%) of the operated patients.
+Eighty-one of 713 (11.4%) individuals and 94 of 1286 (5.4%) operated lids developed recurrent trichiasis in this
+period. There was a linear trend of recurrence with grading (severity) at baseline (␹2 ϭ 22.017, PϽ0.001), but there
+was no difference in recurrence by age (␹2 ϭ1.53, P ϭ 0.9 at the third month; ␹2 ϭ 1.43, P ϭ 0.9 at the sixth
+month). There was also no difference with regard to gender (0.38 Ͻ odds ratio Ͻ 1.14, P ϭ 0.1). The recurrence
+observed in the group of individuals operated on by ophthalmologists at the 3-month follow-up was 47 (12.1%)
+lids, and the recurrence observed in the group operated on by the IECWs was 34 (9.9%) lids, with no statistically
+signiﬁcant difference (␹2 ϭ1.38, P ϭ 0.24, 95% conﬁdence interval [CI], Ϫ18% to 74%). At the 6-month
+follow-up, 43 (6.2%) persons had recurrence (95% CI, 4.4%– 8%). There was no statistically signiﬁcant difference
+between the 2 groups of surgeons at the 6-month point of follow-up examination (␹2 ϭ 4.46, P ϭ 0.2). The overall
+recurrence was 124 (14.3%) lids within the ﬁrst 6 months.
+Conclusion: Recurrent trichiasis is common, especially in cases where the degree of trichiasis is severe at
+baseline. This suggests that these patients may need surgical overcorrection to decrease the recurrence rate.
+The outcome of BTR surgery done by IECWs is similar to that of the ophthalmic surgeons. Because of these
+ﬁndings, we recommend that training of IECWs in trichiasis surgery may help to ameliorate the effects of the eye
+care worker shortage in developing countries. Ophthalmology 2004;111:578 –584 © 2004 by the American
+Academy of Ophthalmology.
+
+Trachoma is an ancient disease, ﬁrst described clinically in
+the Ebers Papyrus (1500 BC) and given the name trachoma
+by Dioscorides.1 It is the second leading cause of blindness
+worldwide, after cataracts.2 Trachoma is conﬁned to devel-
+
+oping countries, where poor living conditions prevail, water
+supply is meager, and sanitation is poor3–12.
+Trachoma is caused by Chlamydia trachomatis, an obligate intracellular bacterium. The disease begins with in-
+
+Originally received: April 26, 2002.
+Accepted: June 6, 2003.
+
+4
+
+Manuscript no. 220300.
+
+1
+
+ORBIS International Ethiopia, Addis Ababa, Ethiopia.
+2
+Department of Ophthalmology, Medical Faculty, Addis Ababa University, Addis Ababa, Ethiopia.
+3
+
+Department of Community Health, Medical Faculty, Addis Ababa University, Addis Ababa, Ethiopia.
+
+578
+
+© 2004 by the American Academy of Ophthalmology
+Published by Elsevier Inc.
+
+People to People USA–Ethiopia ofﬁce, Addis Ababa, Ethiopia.
+
+This research was supported by Pﬁzer, New York, New York.
+The authors have no property or commercial interest to disclose.
+Reprint requests to Wondu Alemayehu, MD, MPH, ORBIS International
+Ethiopia, P.O. Box 23508 code 1000, Addis Ababa, Ethiopia. E-mail:
+wondu@telecom.net.et.
+ISSN 0161-6420/04/$–see front matter
+doi:10.1016/j.ophtha.2003.06.030
+
+Alemayehu et al ⅐ Comparative Trachomatous Trichiasis Recurrence
+ﬂammation of the conjunctiva, associated with the formation of lymphoid follicles and diffuse papillary inﬁltration.
+Chronic inﬂammation eventually results in conjunctival
+scarring, which in turn may lead to trichiasis/entropion.
+Finally, due to the repeated brushing effect of the eyelashes,
+the cornea becomes opaque. The resultant corneal opacity is
+the ultimate cause of blindness in trachoma.13 In a longitudinal study on the incidence and risk factors for trichiasis
+development in Gambia, 6.4% of subjects were found to
+have trichiasis 12 years after the initial examination.14 Active trachoma usually starts early in life, but patients do not
+develop blinding trachoma until later in adulthood.3 However, trichiasis is common in children younger than 10 years
+in Ethiopia.
+The prevalence of blindness in Ethiopia is estimated to
+be 1.5% (Buden, report to the World Health Organization,
+1981). The major causes of blindness in the adult population
+are, in descending order of frequency, cataract, trachoma,
+and glaucoma. Corneal blindness, conversely, is the leading
+cause in the adolescent and child populations. The prevalence of active trachoma in children aged 1 to 10 years in
+central Ethiopia was found to be 51%.15 In the same study,
+the prevalence of trichiasis in the general community was
+found to be 3.3%. In a similar study conducted in the
+Gurage Zone of central Ethiopia, the prevalence of active
+trachoma was found to be 56.3% (ranging from as low as
+13.1% in the highlands [altitude greater than 2500 m above
+sea level] to more than 70% in the lowlands [altitude less
+than 2000 m above sea level]) among children 1 to 6 years
+old (ORBIS, unpublished data). In this area, trachoma was
+found to be the second leading cause of blindness after
+cataracts.11 In another study in southwestern Ethiopia, corneal opacity secondary to trachoma accounted for 20.6% of
+blindness and 10.4% of low vision.16 The World Health
+Organization recommends that if the trachomatous inﬂammation (follicular) and trachomatous inﬂammation (intense)
+are above 20% and 5%, respectively, in children 1 to 10
+years old, and trichiasis 1% and above, trachoma should be
+considered a signiﬁcant problem in the area. A mass treatment for trachoma is recommended.17
+The currently accepted strategy for controlling trachoma
+is SAFE (surgery, antibiotics for treating the active disease,
+face washing, and environmental hygiene practice). The
+combined efforts of these primary and secondary prevention
+strategies are important in the control of trachoma and its
+complications.
+The prevalence of trachoma declined in developed countries, even before the advent of antibiotics, due to improvements in socioeconomic status, water supply, and levels of
+awareness regarding environmental sanitation and personal
+hygiene. Developing nations, where poor socioeconomic
+conditions prevail, are still suffering from the effects of
+trachoma.18 The long-term solution for controlling trachoma is working to address the F and E components of the
+SAFE strategy. In the meantime, however, the surgical
+management for trichiasis and treatment for the active cases
+are the mainstay of management, combined with the implementation of the F and E components.
+Surgery and epilation are the current modalities of treatment for trichiasis/entropion. Epilation is often performed at
+
+the community level, usually by the patients themselves.
+However, the new, regrowing sharp lashes are often more
+damaging than the nonepilated ones (the authors’ unpublished data). Although it has a high recurrence rate, surgery
+is the method advocated by the medical world.
+Several studies examining the outcome of surgery have
+been undertaken, but their ﬁndings are inconsistent. A study
+in Oman concluded that tarsal rotation was successful in
+80% of minor cases (Յ5 lashes touching the globe); for
+major cases (Ͼ5 lashes touching the globe), however, tarsal
+rotation was successful in 77% of cases, compared with
+41% with tarsal advance and rotation (1-year follow-up).19
+In another 3-year follow-up study in Oman, the recurrence
+of trichiasis after surgery was found to be 40% to 50%.20 In
+a 1-year follow-up study in central Ethiopia, the recurrence
+rate was 17.8% (Assefa Y. Comparison of postoperative
+outcome of upper eye lid surgery for trachomatous trichiasis, in central rural Ethiopia. Abstract presented at: Ethiopian Medical Association XXXVth Annual Conference,
+May 19 –21, 1999; Addis Ababa).
+These results are difﬁcult to interpret because of the
+variation in surgical techniques, selection criteria for surgery, postoperative care, surgeons’ skills, and the possible
+presence of active trachoma infection. The studies also had
+a short follow-up period (except for the 3-year study in
+Oman20), and all were retrospective.
+In a country like Ethiopia where the prevalence of trachoma and trichiasis is high, the health service coverage is
+meager, and trained manpower is in short supply, a good
+strategy must be designed to reach the population in a
+cost-effective manner without compromising the quality of
+service. The purpose of this study is to determine the
+recurrence rate of trichiasis after bilamellar tarsal rotation
+(BTR) performed by integrated eye care workers (IECWs)
+versus the rate after it is done by ophthalmic surgeons. To
+our knowledge, there is no other information on the effectiveness of trichiasis surgery performed by nonophthalmologists, except for one report on the success of surgery
+done by nurses in Tanzania.21 This study addresses the need
+to investigate the effectiveness of this strategy for wider use
+and application.
+
+Materials and Methods
+Operational Deﬁnitions
+We employ the operational deﬁnitions of Melese and coworkers.22
+The interobserver agreement level was high for the modiﬁed
+grading.
+Simple Trichiasis (TT1). At least 1 lash is inwardly deviated
+or epilated, but there is no deviation of the lid margin at primary
+gaze. If all of the turned-in lashes are medial to the nasal limbus of
+the cornea, the trichiasis is nasal (TT1.1). If all of the turned-in
+lashes directly touch the cornea, it is graded as central (TT1.2), and
+if all are turned lateral to the limbus of the cornea, it is graded as
+temporal (TT1.3). If the trichiasis involves Ն2 of the above
+segments of the lid margin, then the case is classiﬁed as combined
+trichiasis (TT1.4).
+TT1.1. Nasal (medial to nasal limbus of the cornea).
+TT1.2. Central (touching the cornea directly).
+
+579
+
+Ophthalmology Volume 111, Number 3, March 2004
+
+Figure 1. Summary of the 3-year activities.
+
+TT1.3. Temporal (lateral to the temporal limbus of the cornea).
+TT1.4. Combined (involving more than one segment of the
+above lid margin), but not all rows of lashes touching
+the globe.
+
+TT2.2. There is inward deviation of the upper eyelid margin,
+all of the deviated lashes are deeply buried against the
+eyeball, and the bases of the eyelashes are not visible
+on primary gaze.
+
+Entropion (TT2). Evidence of inward deviation of the upper
+eyelid margin. All rows of lashes of the deviated margin should
+touch the eyeball to be classiﬁed as entropion. The deviation may
+be localized or involve the entire length of the upper eyelid margin.
+
+Eyelid
+Shortening
+or
+Defective
+Lid
+Closure
+(TT3). Evaluated with the eyes closed gently, as in sleep. A lid
+defect is present if the examiner observes a gap between the upper
+and lower lid margins.
+Failure of Surgery. Deﬁned as the presence of turned-in eyelashes within the ﬁrst 7 days of surgery. It is most likely as a result
+of technical failure.
+Recurrence. Deﬁned as at least one inwardly deviated eyelash
+
+TT2.1. There is segmental or total inward deviation of the
+upper eyelid margin, and all rows of the lashes of the
+deviated margin touch the globe, but the bases of the
+lashes are visible on primary gaze.
+
+580
+
+Alemayehu et al ⅐ Comparative Trachomatous Trichiasis Recurrence
+Table 1. Trichiasis Grading by Lid and Age at Baseline, Gurage Zone
+Age (yrs)
+Grade
+
+Ͻ15
+
+15–29
+
+30–44
+
+45–59
+
+60–74
+
+Ն75
+
+Total
+
+TT1.1
+TT1.2
+TT1.3
+TT1.4
+TT2.1
+TT2.2
+TT3.0
+Total
+
+1 (1.9%)
+26 (50.0%)
+9 (17.3%)
+10 (19.2%)
+5 (9.6%)
+1 (1.9%)
+—
+52 (2.8%)
+
+1 (0.09%)
+43 (41.7%)
+12 (11.6%)
+31 (30.1%)
+12 (11.7%)
+4 (3.9%)
+—
+103 (5.9%)
+
+8 (1.3%)
+275 (43.9%)
+35 (5.6%)
+186 (29.7%)
+72 (11.5%)
+50 (8.0%)
+—
+626 (35.8%)
+
+8 (1.3%)
+231 (37.5%)
+30 (4.9%)
+216 (35.1%)
+59 (9.6%)
+72 (11.7%)
+—
+616 (35.2%)
+
+3 (1.0%)
+98 (32.8%)
+13 (4.3%)
+117 (39.1%)
+31 (10.4%)
+37 (12.4%)
+—
+299 (17.1%)
+
+1 (1.9%)
+15 (27.8%)
+4 (7.4%)
+20 (37.0%)
+4 (7.4%)
+8 (14.8%)
+2 (3.7%)
+54 (3.1%)
+
+22 (1.3%)
+688 (39.3%)
+103 (5.9%)
+580 (33.1%)
+183 (10.5%)
+172 (9.8%)
+2 (0.01%)
+1750 (100%)
+
+touching the eyeball in all positions of gaze or inward rotation
+(conjunctivalization) of the lid margin after the seventh postoperative day.
+Integrated Eye Care Workers. Nurses or health assistants
+who currently work in primarily rural government health institutions and who are trained for 1 month in primary eye care,
+including trichiasis surgery. The nurses are high school graduates
+trained for 3 years in general nursing. Health assistants are a health
+workers who have completed the 12th grade level of schooling and
+have received 1 year and 6 months’ training in basic health care.
+Integrated eye care workers should do a minimum of 60 trichiasis
+surgeries under the supervision of a trainer before certiﬁcation to
+work independently. Integrated eye care workers’ training is approved by the Ethiopian Ministry of Health.
+Woreda. A district with an average population of 150 000
+inhabitants.
+
+Study Design
+The present study was conducted in the Lanfero, Eza, and Enemore districts of the Gurage Zone, in the Southern Nations,
+Nationalities and Peoples Region. The 3 districts have a population
+of nearly half a million. The baseline data surgery and data were
+collected in December 2000. All of the study subjects are subsistence farmers, trachoma prevalence in children 1 to 6 years old in
+both areas was 56%, face-washing practices were similar, and
+latrine use is almost nonexistent in the study areas (ORBIS International Ethiopia, unpublished baseline data).
+Estimating the recurrence rate of trichiasis in the ophthalmologist group to be 15% and that in the IECW group to be 20% at
+1-year follow-up, with a conﬁdence interval (CI) of 95% and a
+power of 80%, and using a formula for 2 proportions, a sample size
+of 1000 was determined.
+Two IECWs and 2 ophthalmologists were involved in the
+study. Both groups were trained in the modiﬁed grading of trichiasis, the various registration forms, and the study procedures.
+Patients were then given code numbers, their trichiasis graded
+according to the modiﬁed grading system; consent was requested
+for the surgery and follow-up; and, ﬁnally, their visual acuity (VA)
+was measured. The patients were then randomized to each group of
+
+surgeons. Both groups of surgeons performed the surgeries using
+the BTR technique following the procedure recommended in the
+World Health Organization manual.23 The patients went home
+after surgery and returned the next morning to have the eyepatches
+removed. They were then advised to wash their eyes with warm
+water every morning and apply tetracycline eye ointment twice
+daily until the entire tube was ﬁnished. On the seventh day all
+patients came to the health center for re-evaluation and stitch
+removal. The team member who was not involved in the surgery
+determined if there was undercorrection or overcorrection on the
+seventh day. If there was a surgical error, a correction was made.
+If the correction was properly performed, the patient was given an
+appointment for the 3-month follow-up examination. If there was
+undercorrection, the same surgeon made a correction, but the
+patient was excluded from follow-up. For the follow-up examinations, community health agents were given the names of patients
+operated on and were instructed to assemble them in the health
+post of their local Peasant Association. Ophthalmologists who did
+not do the surgery evaluated patients on the 3- and 6-month
+recurrence follow-up schedules. To minimize bias, these ophthalmologists were masked as to the qualiﬁcation of surgeons—that is,
+they had no information as to which patients were operated upon
+by ophthalmic surgeons and which were operated upon by IECWs.
+Operated patients will be examined again at the ﬁrst, second, and
+third years.
+Data were entered and analyzed using the Epi Info program
+(Centers for Disease Control and Prevention, Division of Public
+Health Surveillance and Informatics, Atlanta, GA). In this interim
+report, rates, ratios, chi-square tests, and other appropriate statistics are used. To see if there is a difference in recurrence with age,
+the analysis is also stratiﬁed by age. At the ﬁnal 3-year follow-up,
+an in-depth analysis will be performed.
+All self-reported trichiasis patients, irrespective of age and
+gender, residing in the 3 woredas and consenting verbally to the
+surgery and follow-up were enrolled in the study. Exclusion criteria included patients with physical ﬁndings of raised jugular
+venous pressure, irregular pulse, sign of cardiac disease, severe
+hypertension, history of uncontrolled diabetes, history suggestive
+of bleeding disorders, and allergy to local anesthetic. Patients who
+declined to comply with the follow-up schedules received the
+
+Table 2. Visual Acuity (VA) of Trichiasis Patients by Age, Gurage Zone
+Age (yrs)
+VA
+
+Ͻ15
+
+15–29
+
+30–44
+
+45–59
+
+60–74
+
+Ն75
+
+Total
+
+Ն6/18
+6/24–3/60
+Ͻ3/60
+Total
+
+20 (71.4%)
+6 (21.4%)
+2 (7.1%)
+28 (2.9%)
+
+37 (66.1%)
+15 (26.8%)
+4 (7.1%)
+56 (5.8%)
+
+195 (57.5%)
+118 (34.8%)
+26 (7.7%)
+339 (35.5%)
+
+152 (44.6%)
+162 (47.5%)
+27 (7.9%)
+341 (35.7%)
+
+62 (38.0%)
+66 (40.5%)
+35 (21.5%)
+163 (17.1%)
+
+10 (34.5%)
+12 (41.4%)
+7 (24.1%)
+29 (3.0%)
+
+476 (49.8%)
+379 (39.6%)
+101 (10.6%)
+956 (100%)
+
+581
+
+Ophthalmology Volume 111, Number 3, March 2004
+Table 3. Recurrence by Age and Person at 3-Month Follow-up,
+Gurage Zone
+Age
+(yrs)
+Ͻ15
+15–29
+30–44
+45–59
+60–74
+Ն75
+Total
+
+Recurrence
+
+No
+Recurrence
+
+3 (13.6%)
+6 (15.4%)
+27 (10.2%)
+28 (11.0%)
+15 (13.2%)
+2 (11.8%)
+81 (11.4%)
+
+19 (86.4%)
+33 (84.6%)
+239 (89.8%)
+227 (89.0%)
+99 (86.8%)
+15 (88.2%)
+632 (88.6%)
+
+Total
+22 (3.1%)
+39 (5.5%)
+266 (37.3%)
+255 (35.8%)
+114 (15.9%)
+17 (2.4%)
+713 (100%)
+
+surgical service, the seventh day postoperative examination, stitch
+removal, and the standard care, but were excluded from the study.
+Patients who had previous trichiasis surgery were excluded from
+the study.
+All adult patients 18 years or older were informed about the
+study procedure and were asked to give verbal consent. For young
+adults and children younger than 18 years, who cannot give consent by law, a parent or guardian gave the informed verbal consent
+(see Fig 1 -for the summary of the study procedure). The trichiasis
+surgery has been approved by the Zonal Health Department, and
+the Ophthalmology Department of the Medical Faculty of Addis
+Ababa University has given ethical approval.
+
+Results
+Nine hundred eighty-two trichiasis patients were operated on;
+90.6% were over 30 years of age, 3.2% were children younger than
+15, and 77.2% were female. Out of the total of 1750 lids with
+trichiasis, based on the modiﬁed grading system, 1393 (79.6%)
+accounted for simple trichiasis (TT1); 355 (20.3%), entropion
+(TT2); and only 2 (0.001%), eyelid shortening or defective lid
+closure (TT3) (Table 1).
+It was possible to measure VA in 956 (97.3%) of the patients
+from the total of 982 operated on. Four hundred seventy-six
+(49.8%) had a VA of Ն6/18; 379 (39.6%), between 6/24 and 3/60;
+and the rest of the patients (101 [10.6%]) had a VA of Ͻ3/60
+(Table 2).
+During the 3-month follow-up, of the total of 982 operated
+patients, 713 (73.0%), with a total of 1286 operated lids, came for
+the examination. Out of 1286 operated lids followed at the third
+month, 94 (7.3%) had recurrence. In terms of persons, 81 of the
+713 (11.4%) individuals developed recurrence. There were 13
+(16.0%) patients with bilateral recurrence from the total of 81
+persons having recurrence (Table 3).
+Among the lids with recurrence, 39 (41.5%) were graded as
+TT1.4 preoperatively, and at recurrence only 10 (10.6%) were
+
+Figure 2. Relationship between baseline grading and recurrence within 3
+months, Gurage Zone.
+
+TT1.4. Eighteen (19.1%) of the lids had a TT2.2 grade preoperatively, and the same number had a TT1.2 grade. Postoperatively,
+there were no TT2.2 cases, and 30 (31.9%) had a TT1.2 grade
+(Table 4). At recurrence, there were almost no severe grades
+(TT2.1 or TT2.2).
+There was a linear trend of increased recurrence as the trichiasis grading increased from a less severe to a more severe degree
+(␹2 ϭ 22.017, PϽ0.001; Fig 2). There was no difference in
+recurrence between genders (0.38 Ͻ odds ratio Ͻ 1.14, P ϭ 0.1).
+Two ophthalmologists and 2 IECWs conducted the surgeries.
+From the total of 713 individuals who came for the 3-month
+follow-up, 370 (51.9%) persons were operated on by ophthalmologists, and 343 (48.1%) by IECWs. The number of individuals
+with recurrence in the group operated on by the ophthalmologists
+was 47 (12.7%), and that in the IECW group was 34 (9.9%), with
+no statistically signiﬁcant difference (␹2 ϭ 1.38, P ϭ 0.24; 95% CI
+for the difference, Ϫ18% to 74%) (Table 5). Granuloma was
+diagnosed in 100 (14.0%) of the operated patients, and 44 (6.2%)
+had minor irregularities at the lid margins.
+During the 6-month follow-up, excluding those with recurrence
+at the third month, 901 operated patients were expected to come
+for the follow-up examination. Six hundred ninety-four (77.0%)
+came for the examination; 43 of them (6.2%) had recurrence (95%
+CI, 4.4%– 8%). In terms of lids, from the total of 1553 lids
+examined at the sixth month, 46 (3.0%) lids had recurrence (95%
+CI, 2.1%–3.8%). Only 3 individuals had bilateral recurrence of
+trichiasis during this period. In total, in the 2 follow-up periods,
+140 (9.0%) of the 1553 lids examined had recurrence. In terms of
+individuals, of 982 operated on, 865 (88.1%) came for the 2
+follow-up periods (123 did not appear for the 6-month follow-up
+and were assumed to have no recurrence); a total of 124 (14.3%)
+had recurrence within 6 months. It is not expected that those who
+did not appear for follow-up differed from those examined; however, this was not able to be substantiated, as it was impossible to
+trace the patients on 2 attempts. The grading of the recurred
+
+Table 4. Baseline Trichiasis Grade Level and Grade by Lid at 3-Month Recurrence, Gurage Zone
+Baseline
+Grade
+TT1.1
+TT1.2
+TT1.3
+TT1.4
+TT2.1
+TT2.2
+TT3.0
+Total
+
+582
+
+Grade at Recurrence
+TT1.1
+
+TT1.2
+
+TT1.3
+
+TT1.4
+
+TT2.1
+
+TT2.2
+
+—
+6 (33.3%)
+—
+13 (33.3%)
+4 (25.0%)
+6 (33.3%)
+—
+29 (30.9%)
+
+—
+12 (66.7%)
+—
+11 (28.2%)
+5 (31.2%)
+2 (11.1%)
+—
+30 (31.9%)
+
+—
+—
+3 (100%)
+8 (20.5%)
+5 (31.2%)
+3 (16.7%)
+—
+19 (20.2%)
+
+—
+—
+—
+5 (12.8%)
+1 (6.2%)
+4 (22.2%)
+—
+10 (10.6%)
+
+—
+—
+
+—
+—
+—
+—
+—
+—
+—
+—
+
+1 (2.6%)
+—
+2 (11.1%)
+—
+3 (3.2%)
+
+TT3.0
+
+Total Lids Recurred
+
+1 (2.6%)
+1 (6.2%)
+1 (5.6%)
+—
+3 (3.2%)
+
+—
+18 (19.1%)
+3 (3.2%)
+39 (41.2%)
+16 (17.0%)
+18 (19.1%)
+—
+94 (100%)
+
+Alemayehu et al ⅐ Comparative Trachomatous Trichiasis Recurrence
+Table 5. Recurrence by Surgeon and Person at 3 Months, Gurage Zone
+
+Type of Surgeon
+
+No. of
+Patients with
+Recurrence
+
+No.
+without
+Recurrence
+
+Total No.
+Who Came for
+Follow-up
+
+Ophthalmologist 1
+Ophthalmologist 2
+IECW 1
+IECW 2
+Total
+
+20 (10.9%)
+27 (14.4%)
+12 (6.5%)
+22 (13.8%)
+81 (11.4%)
+
+163 (89.1%)
+160 (85.6%)
+172 (93.5%)
+137 (86.2%)
+632 (88.6%)
+
+183 (25.7%)
+187 (26.2%)
+184 (25.8%)
+159 (22.3%)
+713 (100%)
+
+IECW ϭ integrated eye care worker.
+
+trichiasis cases at the sixth month were 17 (36.9%) with a TT1.1
+grade; 13 (28.3%), TT1.2; 12 (26.1%), TT1.3; and 4 (8.7%),
+TT1.4. There were no TT2.1 and TT2.2 grades at recurrence. The
+recurrence at 6 months involved an increase from TT1.2 to TT1.3,
+stayed high at TT1.4, declined at TT2.1, and increased sharply at
+TT2.2. Generally, there is a linear pattern of recurrence at 6
+months similar to that of the third month: the more severe the
+grade at baseline, the higher the recurrence; (␹2 ϭ 14.475,
+PϽ0.0001; Fig 3). There is no difference in recurrence by age (␹2
+ϭ 1.43, P ϭ 0.9). Recurrences in the ophthalmologist- and IECWoperated patients were 5.2% and 7.5%, respectively (␹2 ϭ 4.46, P
+ϭ 0.2)
+
+Discussion
+Eighty-eight percent of patients who came for surgery were
+between 30 and 74 years old. Other studies have also
+conﬁrmed that the blinding complication of trachoma increases after middle age.3,6,4,12 Women accounted for
+77.2% of the patients. Different studies have revealed that
+women are affected more by blinding trachoma.3,4,8,24,25
+We have not looked into the exact causes of low VA and
+blindness in these patients, but 39.6% of the patients had
+low VA (Ͻ6/18 to Ն3/60), and 10.6% were blind (VAϽ3/
+60). In our study in the same area of Ethiopia, among adults
+40 years and older, prevalences of low VA and blindness
+were 12.1% and 7.9%, respectively.11 The high blindness
+and low vision in our study subjects may be attributed
+mainly to the trichiasis effect.
+Within the ﬁrst 3 postoperative months, 81 (11.4%) of
+those examined had recurrence, and 7.3% of the operated
+lids had recurrence. Between the third and sixth months,
+
+Figure 3. Relationship between baseline grading and recurrence within 6
+months, Gurage Zone.
+
+another 43 (6.2%) persons had recurrence. In general, in the
+ﬁrst 6 months, 124 (14.3%) of the followed cases were
+found to have recurrence. In terms of the operated lids, of
+1553 examined, 140 (9.0%) had recurrence. Even though
+the surgical procedure is not speciﬁed, in Tanzania, 19% at
+24 months and 21% at 36 months were found to have
+recurrence.21 There was no statistically signiﬁcant difference in recurrence by age at both 3- and 6-month follow-ups
+(␹2 ϭ 1.53, P ϭ 0.9 at the third month; ␹2 ϭ 1.43, P ϭ 0.9
+at the sixth month). However, the rate of recurrence increases as the severity of the preoperative grade of trichiasis
+increases from TT1.1 to TT2.2 (linear trend, ␹2 ϭ 22.017,
+PϽ0.001 at the third month; at the sixth month there is the
+trend still, except for a decline at the TT2.1 grade [␹2 ϭ
+14.475, PϽ0.0001]). This indicates that overcorrection is
+probably indicated in the severe forms of trachomatous
+trichiasis, as determined by the grading at baseline. There
+was no single TT2 case that remained the same at recurrence. That means the severity of trachomatous trichiasis
+decreases after surgery, even if there is recurrence. Grades
+of TT1.1 and TT1.3 do not directly touch the cornea. There
+is a chance of touching the cornea when the eye moves, but
+the pressure it exerts is less as compared with lashes originating in the central area (TT1.2). The recurrence is also
+low for TT1.1 and TT1.3 cases at baseline. Therefore, there
+is a need for further study of patients with these 2 grades to
+determine the corneal damage effects, which will help with
+the decision whether to operate in these types of cases.
+Except for a single study conducted in Tanzania that
+observed nurse-operated trichiasis patients,21 there is no
+study on the outcome of surgery comparing surgeons. In the
+3-month follow-up among the patients operated on by the
+ophthalmologists, 12.7% developed recurrence, compared
+with 9.9% of those operated on by IECWs (the difference
+was not signiﬁcant). There also is no statistical difference in
+recurrence between the 2 kinds of surgeons at 6 months.
+The results of this study have demonstrated that trichiasis
+surgery can be done by IECWs with the same outcome as
+that of ophthalmic surgeons. Training of IECWs at the
+district and subdistrict level helps to avoid the costs of
+transport, food, and accommodation for the patient and
+accompanying person/second. The other advantage of providing local surgery is that mothers usually will not travel
+for eye care because there may be neither a person to look
+after the children and their property nor someone to accompany them. A study on barriers to eye care in the same area
+has shown that costs related to transport, food, and accom-
+
+583
+
+Ophthalmology Volume 111, Number 3, March 2004
+modation for the patient and accompanying person/second
+came ﬁrst, followed by the medical cost, lack of an accompanying person, and no one to look after their property and
+children when they are away for more than a day (ORBIS,
+unpublished data). A study in Gambia also has shown that
+providing village-level surgery increased the acceptance
+rate of surgery and decreased costs and journey time, as well
+as the patient’s fear of the surgery.26
+In conclusion, the recurrence of trichiasis after BTR is
+very high, and therefore, there is need for research to
+develop a more effective surgical procedure. Finally, the
+outcome of surgery done by IECWs does not differ from
+that of surgery done by highly skilled and experienced
+ophthalmologists. We therefore recommend training of
+IECWs in trichiasis surgery to address the shortage of
+trained professionals in our country and to reduce the huge
+burden of blinding complications of trachoma.
+Acknowledgment. The authors are grateful for the Gurage
+Zone Health Department’s facilitation of the study.
+
+11.
+12.
+13.
+14.
+15.
+16.
+17.
+
+References
+
+18.
+
+1. Thygeson P. Trachoma virus: historical background and review of isolates. Ann N Y Acad Sci 1962;98:6 –13.
+2. Thylefors B, Negrel AD, Pararajasegaram R, Dadzie KY.
+Global data on blindness. Bull World Health Organ 1995;73:
+115–21.
+3. West SK, Munoz B, Turner VM, et al. The epidemiology of
+trachoma in central Tanzania. Int J Epidemiol 1991;20:1088 –
+92.
+4. Treharne JD. The community epidemiology of trachoma. Rev
+Infect Dis 1985;7:760 – 4.
+5. Taylor HR, Sommer A. Risk-factor studies as an epidemiologic tool. Rev Infect Dis 1985;7:765–7.
+6. West SK, Munoz B, Lynch M, et al. Risk factors for constant,
+severe trachoma among preschool children in Kongwa, Tanzania. Am J Epidemiol 1996;143:73– 8.
+7. West SK, Munoz B, Lynch M, et al. Impact of face washing
+on trachoma in Kongwa, Tanzania. Lancet 1995;345:155– 8.
+8. Schwab L, Whitﬁeld R Jr, Ross-Degnan D, et al. The epidemiology of trachoma in rural Kenya: variation in prevalence
+with lifestyle and environment. Study Survey Group. Ophthalmology 1995;102:475– 82.
+9. Bailey R, Downes B, Downe R, Mabey D. Trachoma and
+water use; a case control study in a Gambian village. Trans R
+Soc Trop Med Hyg 1991;85:824 – 8.
+10. Esrey SA, Potash JB, Roberts L, Shiff C. Effects of improved
+water supply and sanitation on ascariasis, diarrhoea, dracun-
+
+19.
+
+584
+
+20.
+21.
+22.
+23.
+
+24.
+25.
+26.
+
+culiasis, hookworm infection, schistosomiasis and trachoma.
+Bull World Health Organ 1991;69:609 –21.
+Melese M, Alemayehu W, Bayu S, et al. Low vision and
+blindness in adults in Gurage Zone, Central Ethiopia. Br J
+Ophthalmol 2003;87:677– 80.
+Sahlu T, Larson C. The prevalence and environmental risk
+factors for moderate and sever trachoma in southern Ethiopia.
+J Trop Med Hyg 1992;95:36 – 41.
+Dawson CR, Jones BR, Tarizzo ML. Guide to Trachoma
+Control in Program for the Prevention of Blindness. Albany,
+NY: WHO Publications Center; 1981.
+Bowman RJ, Jatta B, Cham B, et al. Natural history of
+trachomatous scarring in The Gambia: results of a 12-year
+longitudinal follow up. Ophthalmology 2001;108:2219 –24.
+Bejiga A, Alemayehu W. Prevalence of trachoma and its
+determinants in Dalocha District, Central Ethiopia. Ophthalmic Epidemiol 2001;8:119 –25.
+Zerihun N, Mabey D. Blindness and low vision in Jimma
+Zone, Ethiopia: result of a population-based survey. Ophthalmic Epidemiol 1997;4:19 –26.
+Negrel AD, Taylor HR, West S. Guidelines for rapid assessment for blinding trachoma. WHO publication WHO/PBD/
+GET/00.8. Geneva: World Health Organization; 2000.
+Schachter J, Dawson CR. The epidemiology of trachoma
+predicts more blindness in the future. Scand J Infect Dis Suppl
+1990;69:55– 62.
+Reacher MH, Munoz B, Alghassany A, et al. A controlled trial
+of surgery for trachomatous trichiasis of the upper lid. Arch
+Ophthalmol 1992;110:667–74.
+Khandekar R, Mohammed AJ, Courtright P. Recurrence of
+trichiasis: a long term follow-up study in the Sultanate of
+Oman. Ophthalmic Epidemiol 2001;8:155– 61.
+Bog H, Yorston D, Foster A. Results of community-based
+eyelid surgery for trichiasis due to trachoma. Br J Ophthalmol
+1993;77:81–3.
+Melese M, Alemayehu W, Bejiga A, et al. Modiﬁed grading
+system of upper eyelid trachomatous trichiasis. Ophthalmic
+Epidemiol 2003;10:75– 80.
+Reacher M, Foster A, Huber J. Trichiasis surgery for trachoma: the Bilamellar Tarsal Rotation procedure. WHO publication number WHO/PBL/93.29. Geneva: World Health Organization; 1993.
+Turner VM, West S, Munoz B, et al. Risk factors for trichiasis
+in women in Kongwa, Tanzania: a case-control study. Int J
+Epidemiol 1993;22:341–7.
+Congdon N, West S, Vitale S, et al. Exposure to children and
+risk of active trachoma in Tanzanian women. Am J Epidemiol
+1993;137:366 –72.
+Bowman RJ, Soma OS, Alexander N, et al. Should trichiasis
+surgery be offered in the village? A community randomized
+trial of village vs health centre based surgery. Trop Med Int
+Health 2000;5:528 –33.

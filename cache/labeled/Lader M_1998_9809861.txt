@@ -1,0 +1,519 @@
+Psychopharmacology (1998) 139 : 402406
+
+© Springer-Verlag 1998
+
+O R I G I NA L I N V E S T I G AT I O N
+
+Malcolm Lader · Jean-Claude Scotto
+
+A multicentre double-blind comparison of hydroxyzine, buspirone
+and placebo in patients with generalized anxiety disorder
+
+Received : 26 January 1998 / Final version : 15 May 1998
+
+Abstract The e¦cacy of hydroxyzine and buspirone,
+controlled by placebo, was investigated in a doubleblind, parallel group, multicentre study conducted in
+France and the UK. A total of <n>244</n> patients with
+generalised anxiety disorder in primary care was
+allocated randomly to treatments with hydroxyzine
+(12.5 mg morning and mid-day, 25 mg evening), buspirone (5 mg morning and mid-day, 10 mg evening) or
+placebo (three capsules / day) for 4 weeks, preceded by
+a 1-week single-blind placebo run-in and followed by
+1-week single-blind placebo administration. Rating
+scales were applied on days -7, 0, 7, 14, 12, 28 and 35.
+Seventy percent of the patients were female; the average age was 41 ± 11 years, and the mean Hamilton
+Anxiety Score at day 0 was 26.5 ± 4.2. Only 31 of the
+<n>244</n> patients dropped out, but equally in the three
+groups. Intention-to-treat LOCF analyses on the primary variable showed a signiÞcant di¤erence only
+between hydroxyzine and placebo with respect to
+improvement on the Hamilton Anxiety Scale (10.75
+versus 7.23 points, respectively). Secondary variables
+such as CGI and self-ratings (HAD scale) showed both
+hydroxyzine and buspirone to be more e¦cacious than
+placebo. Thus, hydroxyzine is a useful treatment for
+GAD.
+Key words Hydroxyzine · Buspirone ·
+Generalized anxiety disorder
+
+M. Lader (*)
+Institute of Psychiatry, De Crespigny Park,
+London SE5 8AF, UK
+e-mail : spklmhl@iop.kcl.ac.uk, Fax : +44-171-252-5437
+J.-C. Scotto
+Hôpital Sainte Marguerite, Service de Psychiatrie,
+270 Boulevard de Sainte Marguerite,
+F-133274 Marseille Cedex 9, France
+
+Introduction
+Hydroxyzine acts as an antagonist at H1 receptors and
+to a lesser extent at muscarinic receptors and 5-HT2
+receptors and with even less binding to alpha1 and
+dopamine2 receptors (Kubo et al. 1987; Snyder and
+Snowman 1987). It has anxiety-allaying properties in
+doses of 50 mg / day and was introduced to the French
+market as long ago as 1955. It is licenced throughout
+most countries in the world to treat patients with anxiety, often in conjuction with bodily symptoms such as
+pruritus (Cambazard and Chambefort 1987), dyspepsia and irritable bowel (Grimaldi 1987) and brochospasm (Ramon 1987). Over its many years of usage,
+there have been no documented reports of dependency,
+abuse, or memory disturbances. The commonest
+unwanted e¤ect is sedation, which is clinically expressed
+by somnolence, but this usually wanes with continuing
+treatment.
+In the treatment of anxiety, the benzodiazepines have
+been extensively used, often on a long-term basis.
+Concern has been mounting in many countries with
+regard to such wide usage as the adverse e¤ects of these
+drugs have emerged (Hallström 1993). Normal dose
+dependence, abuse potential, neuropsychiatric reactions and e¤ects on memory have led to calls to restrict
+the use of the benzodiazepines (British Committee on
+Safety of Medicines 1988). In many countries, prescriptions of benzodiazepines have fallen markedly and
+a switch has been made to using non-benzodiazepines
+without these disadvantages. Among the newer compounds are buspirone, a 5-HT1A partial agonist
+(Gelenberg 1994) and its congeners.
+Hydroxyzine has a favourable risk / beneÞt and its
+role in the management of patients with GAD has been
+re-examined. In a recent study of 110 GAD patients,
+hydroxyzine (50 mg / day for 4 weeks) was signiÞcantly
+better than placebo in ameliorating anxiety (Darcis
+et al. 1995). No rebound and no withdrawal syndrome
+were detected following discontinuation of the drug;
+
+403
+
+somnolence, although reported in 28 % of patients on
+hydroxyzine versus 14 % of those on placebo (NS), led
+to drop-out in only one.
+In this publication, we report a large-scale doubleblind, randomised study comparing hydroxyzine with
+placebo and buspirone in the treatment of patients with
+GAD according to DSM-IV criteria. Many of the
+instruments used were the same as those in the previous study, thus facilitating comparison.
+
+Materials and methods
+The study was multi-centre (62 centres, 48 in France, 14 in the UK);
+the patients were seen by primary care doctors with a particular interest in psychiatric disorders under the coordination of hospital psychiatrists. The participating doctors were trained in the use of the
+various rating instruments. The study was approved by the appropriate ethics committees and all participants gave informed consent.
+This study was carried out following the GCP-ICH guidelines.
+Patient selection
+Out patients of either sex aged between 18 and 65 years presenting
+with GAD according to DSM-IV criteria were eligible for inclusion, providing their initial Hamilton Anxiety Rating Score was 20
+or more. Depressive disorders according to DSM-IV criteria were
+excluded, but low levels of depressive symptoms did not exclude
+patients who met GAD criteria. Exclusion criteria included pregnancy or inadequate contraceptive precautions, major depressive
+disorder or alcohol abuse, organic or psychotic disorders, undergoing long-term psychotherapy, or intake of psychotropic medication during the previous 4 weeks.
+Patients gave a urine sample and were placed single-blind on
+placebo for 1 week (day -7 to day 0). On day, 0 they were reassessed
+and placebo responders (more than 7-point improvement on the
+Hamilton) or anyone proving positive for urinary benzodiazepines
+were excluded.
+Power calculations showed that 180 evaluable patients were
+needed to allow the detection with a 90 % probability of a drugplacebo di¤erence of 5 points on the Hamilton scale. To allow for
+20 % withdrawals, a target of at least 228 patients was aimed at.
+Drugs and dosages
+Patients were allocated randomly to receive over 4 weeks (days
+028) Þxed doses of: hydroxyzine 50 mg / day (12.5 morning, 12.5
+mid-day, 25 evening), buspirone 20 mg / day (5, 5, 10) or placebo
+three capsules (1, 1, 1).
+The dose of hydroxyzine is that usually used to treat anxiety
+(Darcis et al. 1995). That for buspirone is in the mid-range of the
+recommended dosage schedule. Compliance was estimated by a capsule count every visit. There were no di¤erences between the groups
+with respect to compliance. No concomitant psychotropic medication was allowed; beta-blockers and clonidine were also excluded.
+Following the active treatment phase, patients were placed on
+placebo single-blind for 7 days (days 2835) to investigate possible
+discontinuation e¤ects.
+Clinical assessments
+The investigator carried out the following assessments :
+Hamilton Anxiety Rating Scale (Hamilton 1959) (main outcome
+variable);
+
+Montgomery-Åsberg Depression Rating Scale (Montgomery
+and Åsberg 1979);
+Clinical Global Impression (Ecdeu 1976);
+Ferreri Anxiety Rating Diagram (Ferreri et al. 1988) (France
+only).
+These ratings were carried out on days 0, 7, 28 and 35. The
+patients rated themselves on :
+Echelle Dyscontrole Comportemental (EDC) (Hantouche et al.
+1992) (France only);
+Hospital Anxiety and Depression Scale (Zigmund and Snaith 1983);
+Tyrer Withdrawal Symptom Scale (Tyrer et al. 1990).
+The Þrst two were carried out weekly, the last on days 28 and
+35. Urinary benzodiazepine screening was performed on days -7,
+28 and 35.
+Clinical examinations were carried out weekly (except days 14
+and 21).
+Adverse events were recorded whether or not attributed to the
+medication.
+
+Statistical analysis
+This followed standard procedures with analysis of intent-to-treat
+population with last observation carried forward (LOCF) to deal
+with premature discontinuations. All tests were two-tailed and the
+0.05 probability was accepted as the signiÞcance level. Analysis of
+variance was used for parametric data, Kruskal-Wallis for nonparametric quantitative data, and chi-square for qualitative data.
+The double-blind was not broken until after data analysis was completed.
+The primary outcome variable was pre-set as change in Ham-A
+from day 0 to day 28.
+
+Results
+Patient characteristics
+Patients were recruited from November, 1995 until
+April 1996 by 62 general practitioners organised into
+six groups, each coordinated by a psychiatrist. A total
+of 266 patients was recruited, of whom 20 failed to
+meet inclusion criteria after the placebo run-in (day
+-7 to day 0). Thus, 246 patients meeting DSM-IV GAD
+criteria were allocated randomly to hydroxyzine, buspirone or placebo (82 in each group). However, two
+patients (one hydroxyzine; one placebo) dropped out
+before taking any medication.
+Demographic and baseline data are presented in
+Table 1. There were no statistically signiÞcant
+di¤erences between the groups for any of the variables.
+E¦cacy
+The primary outcome variable is shown in
+Fig. 1. Null hypothesis of equal e¦cacy between
+treatments was rejected (P = 0.015); from pairwise
+comparisons
+(Buspirone-Placebo,
+HydroxyzinePlacebo, Hydroxyzine-Buspirone), only the di¤erence
+in improvement between placebo and hydroxyzine was
+
+404
+Table 1 Demographic and
+baseline data (ITT).
+Means (SD)
+
+Variable
+
+Hydroxyzine
+n = 81
+
+Buspirone
+n = 82
+
+Placebo
+n = 81
+
+Sex F / M
+Mean age
+Number of previous episodes of anxiety
+Hamilton Anxiety Rating Scale
+Montgomery - Åsberg Depression Rating Scale
+Clinical Global Impression
+Hospital Anxiety and Depression Scale
+Anxiety
+Depression
+Echelle Dyscontrole
+Comportemental
+Ferreri Anxiety Rating
+Diagram
+
+56 / 25
+42 (11)
+4.3 (3.6)
+26.6 (4.3)
+17.0 (7.4)
+4.4 (0.7)
+
+62 / 20
+41 (12)
+5.7 (11.8)
+26.7 (4.1)
+17.7 (7.1)
+4.4 (0.7)
+
+51 / 30
+40 (11)
+4.7 (5.0)
+26.2 (4.2)
+15.7 (7.0)
+4.3 (0.7)
+
+8.7 (3.5)
+13.2 (2.8)
+35.2 (10.6)
+(n = 53)
+31.1 (7.8)
+(n = 60)
+
+8.8 (3.6)
+12.9 (2.9)
+31.4 (10.8)
+(n = 53)
+30.3 (7.4)
+(n = 59)
+
+8.5 (3.1)
+12.5 (2.9)
+34.2 (10.5)
+(n = 52)
+29.5 (7.1)
+(n = 60)
+
+Fig. 2 SigniÞcance of drug e¤ects on change in Hamilton. Score
+over 28 days. HO, P = 0.015. * Statistically signiÞcant; ns not
+signiÞcant
+Fig. 1 Mean e¤ects of hydroxyzine, buspirone and placebo on
+Hamilton Anxiety Rating Scale over 28 days of treatment. This was
+followed by 7 days placebo substitution to day 35. u Placebo,
+n buspirone, v hydroxyzine
+
+statistically signiÞcant (Fig. 2). The somatic and psychic subscales showed similar patterns. Because hydroxyzine might have shown e¦cacy predominantly because
+of sedative e¤ects on sleep, the data were re-analysed
+omitting the sleep item : the patterns of signiÞcance were
+unchanged. Another way of judging e¦cacy is to count
+the number of patients whose total HAM-A score
+halved with treatment. These were 42% with hydroxyzine, 36% for buspirone, and 29 % for placebo (NS).
+The Clinical Global Severity Scale showed an
+improvement over the 28 days of treatment of 1.53
+points in the hydroxyzine patients, 1.27 in the buspirone
+patients and 0.95 in the placebo-treated patients (P <
+0.02; hydroxyzine signiÞcantly di¤erent from placebo)
+(Table 2). On the Clinical Global Improvement Scale,
+signiÞcantly (P < 0.005) more patients were improved
+on hydroxyzine (50 %) than on placebo (30 %).
+With respect to the MADRS Scale, both hydroxyzine
+and buspirone patients were signiÞcantly better than
+placebo (P < 0.001) (Table 2). Similarly, in the self-rating of depression (HAD-Dep scale), both active drugs
+were signiÞcantly superior to placebo (P < 0.01);
+
+di¤erences were also found on the anxiety scale (P <
+0.001) (Table 2).
+The EDC scores continued this latter pattern with
+both hydroxyzine and buspirone e¤ecting greater
+improvements than placebo. This was repeated for the
+FARD total score (Table 2).
+E¤ects of symptomatic depression
+Only one-quarter of the patients were judged to have
+pure GAD, the rest su¤ering an admixture of symptomatic depression, as is typical in general practice.
+This is shown by the appreciable initial MADRS scores
+(Table 1). The mixed group were signiÞcantly more anxious and impulsive than the uncomplicated group but
+there were no other baseline di¤erences. Some di¤erential drug e¤ects were detected : hydroxyzine tended to
+be just as e¤ective in the pure as in the mixed group,
+whereas buspirone appeared more e¤ective than
+placebo only in the mixed group (trend only).
+E¤ects of discontinuation
+As Fig. 1 shows, there was no rebound with respect to
+HAM-scores following placebo substitution at day 28.
+
+405
+Table 2 E¤ects of treatments
+on some secondary e¦cacy
+variables : change over 28 days
+(ITT)
+
+Variable
+
+Hydroxyzine
+
+Buspirone
+
+Placebo
+
+Hamilton Anxiety Rating Scale
+Clinical Global Impression
+Montgomery-Åsberg Rating Depression Rating Scale
+Hospital Anxiety and Depression Scale
+Depression
+Anxiety
+Echelle Dyscontrole Comportemental
+Ferreri Anxiety Rating Diagram - Total
+
+10.8 (7.5)*
+1.53(1.3)*
+6.64 (6.9)***
+
+8.8 (7.8)
+1.27 (1.2)
+6.35 (7.5)***
+
+7.2 (7.7)
+0.95 (1.1)
+2.97 (6.0)
+
+2.05(3.8)*
+4.01 (3.9)***
+12.8 (12.5)*
+14.3 (11.5)***
+
+1.89(4.2)**
+3.31 (4.0)***
+10.0 (15.5)*
+12.1 (11.1)***
+
+0.11 (3.1)
+1.41 (3.0)
+4.0 (8.4)
+6.8 (7.7)
+
+*vs placebo P < 0.02; **vs placebo P < 0.01; ***vs placebo P < 0.001
+
+Indeed, both the hydroxyzine and the buspirone
+patients continue to improve. Similar patterns were seen
+with the other e¦cacy variables. No signiÞcant withdrawal symptoms for either active drug were detected
+on the Tyrer Scale.
+Adverse events
+Of the 244 patients given medication, 10 / 81 hydroxyzine, 10 / 82 buspirone and 11 / 81 placebo dropped out
+prematurely, a total of only 31 (12.7 %). The commonest reason (six, seven, six respectively) was protocol violation, the second (two, two, two) lack of e¦cacy.
+No serious ADRs were recorded.
+In the three groups, 32 / 81 hydroxyzine-treated
+patients (39.5 %) reported one or more side e¤ects, as
+compared with 31 / 82 buspirone (38 %) and 23 / 81
+placebo (28 %) patients. The only side e¤ects a¤ecting
+more than 5 % of the exposed patients were somnolence in the hydroxyzine group (9.9 %) as compared
+with 4.9 % in the buspirone and none in the placebo
+group; headache and migraine (6.1 %) in the buspirone
+group (4.9 % and 1.2 % in hydroxyzine and placebo
+groups); dizziness (6.1 %) in buspirone-treated patients
+(cf. 0 in hydroxyzine and 2.5 % in placebo patients). No
+changes in cardiovascular measures (pulse, BP) or in
+weight were detected. The somnolence associated with
+hydroxyzine was transient and had largely disappeared
+by day 10 except for one patient.
+Thus, both active treatments were very well tolerated.
+
+Discussion
+This study was designed to conÞrm the results of an
+earlier study (Darcis et al. 1995) that hydroxyzine was
+an e¤ective drug in the treatment of patients with the
+carefully deÞned primary diagnosis of generalised anxiety disorder. The main di¤erence between the two studies was the incorporation of an active comparator,
+buspirone, in the present study. The study followed the
+usual format with placebo control, random allocation
+to treatment, double-blind procedures, and moreover,
+the following points are worthy of note.
+
+The patients studied were fairly typical of those participating in GAD trials (e.g. Power et al. 1990; Ansseau
+et al. 1991), with a 2:1 ratio of females/males and a
+mean age in the early 40s. The condition was generally
+a chronic or relapsing one with about Þve previous
+episodes, during which a wide range of treatments had
+been used. The typical patient had anxiety of moderate
+secerity. The groups were well matched (see Table 1).
+Recruitment for the study was rapid, few responded
+to initial placebo, the running of the study was uneventful and the drop-out rate was gratifyingly low (less than
+15 %). This reßects the interest and experience of the
+investigators, and careful training by the psychiatrists
+of their groups of general practitioners. Many of these
+GPs had a particular interest in psychiatric problems.
+In view of the consistently positive results for hydroxyzine, less so for buspirone, it must be assumed that
+the rating procedures were both reliable and valid.
+The primary e¦cacy variable, the Hamilton Anxiety
+Score showed di¤erences between hydroxyzine and
+placebo but not between buspirone and placebo.
+However, hydroxyzine was not signiÞcantly di¤erent
+from buspirone. The e¦cacy of hydroxyzine was not
+due to sedative actions on sleep. Some sub-analyses
+suggested that buspirone showed better e¦cacy in
+patients with an admixture of depression than in those
+with pure anxiety. By contrast, hydroxyzine was
+equally e¤ective in both groups. The secondary variables mostly showed both hydroxyzine and buspirone
+to be superior to placebo (Table 2). Some apparent
+e¦cacy was seen on measures of depressive symptoms.
+However, these results should be interpreted with caution, as these rating scales have not been validated in
+patients other than those su¤ering from primary
+depressive disorders. Thus, hydroxyzine is conÞrmed as
+having e¦cacy in GAD, across a fairly wide spectrum
+of assessment instruments, both investigator- and selfrated. In terms of numbers improved (CGI rating),
+about half of those treated showed major improvement
+as compared with 30 % on placebo.
+Comparison with the Darcis et al. (1995) study shows
+that e¦cacy was a little less in the present study. For
+example, di¤erence in number of responders on the
+HAM-A on hydroxyzine (41 %) versus placebo (18 %)
+was signiÞcant (P < 0.01) in the earlier study but not
+in the present one (42 % versus 29 %).
+
+406
+
+Despite the known sedative e¤ects of centrally acting
+antihistaminic compounds, adverse e¤ects were not a
+major problem with hydroxyzine. Somnolence was
+reported in about 10% of patients, but this was a Þxed
+dose study and dosage adjustment would be expected
+to lessen this Þgure. A study is currently in progress to
+evaluate the e¤ects of hydroxyzine on psychological performance. The side-e¤ect proÞle with buspirone was as
+expected with headache and dizziness at fairly low rates.
+One of the main reasons for re-evaluating the
+risk / beneÞts of hydroxyzine in GAD is the concern
+over the dependence potential of the benzodiazepines
+(Hallström 1993). Although 4 weeks is a relatively short
+term for the induction of dependence, no discontinuation phenomena were noted with hydroxyzine (or with
+buspirone). There are no reports in the literature of any
+such problems with hydroxyzine, even in longer-term
+use (Shalowitz 1961), and it is highly probable that this
+drug has a low or absent dependence potential
+(Barrance and Bridger 1977). A study is ongoing to
+address this question. The present study conÞrms previous open-label and controlled studies (Garber 1958;
+Breslow 1968; Lipton 1961; Goldberg and Finnerty
+1974). It also very closely replicates the data in the
+Ferreri et al. (1995) study with respect to baseline characteristics of the patients studied, improvements
+attained and signiÞcance levels achieved. Like them, we
+conclude that hydroxyzine o¤ers the possibility of
+e¤ective relief of generalised anxiety and is a useful
+and safer alternative to the benzodiazepines.
+Acknowledgements We would like to acknowledge the invaluable
+help of the following psychiatric co-ordinators, together with the
+numerous general practitioners who participated : Dr. Thierry
+Bougerol, Marseille, France; Dr. Elie Hantouche, Paris, France; Dr.
+Dominique Servant, Lille, France; Dr. Jean Paul Macher, Rou¤ach,
+France; Dr. Michel Faruch, Toulouse, France; Professor George
+Beaumont, Poynton, Cheshire, UK. This study was supported by
+UCB S.A.
+
+References
+Ansseau M, Olié J-P, von Frenckell R, Jourdain G, Stehle B, Guillet
+P (1991) Controlled comparison of the e¦cacy and safety of
+four doses of suriclone, diazepam, and placebo in generalized
+anxiety disorder. Psychopharmacology 104 : 439443
+Barranco SF, Bridger W (1977) Treatment of anxiety with oral
+hydroxyzine : an overview. Curr Ther Res 22 : 217227
+
+Breslow IH (1968) Evaluation of hydroxyzine pamoate concentrate
+as an ataractic : double-blind cross-over study in a neurotic
+prison male group. Curr Ther Res 10 : 421427
+British Committee on Safety of Medicines (1988) Benzodiazepines
+and dependence. Bull R Coll Psychiatr 12 : 205
+Cambazard F, Chambefort A (1987) ModiÞcations par lhydroxyzine chez les sujets anxieux de la grille de Hamilton et des
+manifestations cliniques du prurit. Agressologie 28 : 9597
+Ecdeu GW (1976) Assessment manual psychopharmacology,
+revised. DHEW, Washington, pp 217222
+Darcis T, Ferreri M, Natens J, Burtin B, Deram P and the French
+GP Study Group for Hydroxyzine (1995) A multicentre double-blind placebo-controlled study investigating the anxiolytic
+e¦cacy of hydroxyzine in patients with generalized anxiety.
+Hum Psychopharmacol 10 : 181187 and Erratum in Hum
+Psychopharmacol (1996) 11 : 149
+Ferreri M, von Frenckell R, MiraDel V, Tawil S (1988) Une nouvelle échelle d évaluation quantitative et qualitative de l anxiété, le F.A.R.D. Encéphale 14 : 385393
+Garber R (1958) Management of tension and anxiety states with
+hydroxyzine hydrochloride. J Florida Med Assoc 45 : 549552
+Gelenberg AJ (1994) Buspirone : seven-year update. J Clin
+Psychiatry 55 : 222229
+Goldberg L, Finnerty RJ (1973) The use of hydroxyzine in the treatment of anxiety neurosis. Psychosomatics 14 : 3841
+Grimaldi Ch (1987) Synthèse de l atelier de gastro-entérologie.
+Agressologie 28 : 9193
+Hallström C (ed) (1993) Benzodiazepine dependence. Oxford
+University Press, Oxford
+Hamilton M (1959) The assessment of anxiety state by ratings. Br
+J Med Psychol 32 : 5055
+Hantouche EG, Chignon JM, Ades J (1992) Echelle de dyscontrôle
+comportemental. Validation
+et
+résultats
+préliminaires.
+Encéphale XVIII : 163170
+Kubo N, Shirakawa T, Kuno T, Tanaka C (1987) Antimuscarinic
+e¤ects of antihistamines : quantitative evaluation by receptorbinding assay. Jpn J Pharmacol 43 : 277282
+Lipton M (1961) High dosages of hydroxyzine in outpatient treatment of severe neurosis and psychosis. Penn Med J 64 : 6062
+Montgometry SA, Åsberg M (1979) A new depression scale
+designed to be sensitive to change. Br J Psychiatry 134 : 382389
+Power KG, Simpson RJ, Swanson V, Wallace LA, Feistner ATC,
+Sharp D (1990) A controlled comparison of cognitive-behaviour therapy, diazepam, and placebo, alone and in combination, for the treatment of generalised anxiety disorder. J Anxiety
+Disord 4 : 267292
+Ramon P (1987) Résultats de l atelier pneumologie de l utilisation
+de l hydroxyzine chez les sujets anxieux. Agressologie 28 : 8790
+Shalowitz M (1961) Evaluation of an ataraxic : (hydroxyzine in long
+term therapy). Int Rec Med 174 : 357361
+Snyder SH, Snowman AM (1987) Receptor e¤ects of cetirizine. Ann
+Allergy 59 : 48
+Tyrer P, Murphy S, Riley P (1990) The benzodiazepine withdrawal
+symptom scale. J A¤ect Dis 19 : 5361
+Zigmund AS, Snaith RP (1983) The Hospital Anxiety and
+Depression Scale. Acta Psychiatr Scand 67 : 361370

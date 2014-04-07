@@ -1,0 +1,953 @@
+ARTICLE
+
+Effects of a Life Skills Intervention for Increasing
+Physical Activity in Adolescent Girls
+Deborah Rohm Young, PhD; Jennie A. Phillips, MS; Tao Yu, MS; Jennifer A. Haythornthwaite, PhD
+
+Background: Although adolescence is a time when
+physical activity levels decline, few interventions have
+targeted high school–aged girls in the school setting.
+Objective: To evaluate the effects of a life skills–
+
+oriented physical activity intervention for increasing overall physical activity in high school–aged girls.
+Design: Randomized controlled trial.
+Setting: Baltimore magnet high school.
+Participants: A total of <n>221</n> ninth-grade girls, 83.0% of
+whom were African American.
+Intervention: Participants were randomized to an
+8-month physical intervention conducted in physical
+education class or to a standard physical education class
+(control).
+Main Outcome Measures: Self-reported estimated daily
+energy expenditure (physical activity), self-reported sedentary activities (television viewing and computer or In-
+
+ternet use), cardiorespiratory fitness, and selected cardiovascular disease risk factors.
+Results: Intervention classes spent 46.9% of physical education class time in moderate to vigorous activity compared with 30.5% of time for control classes (PϽ.001).
+There were no significant between-treatment group differences for mean daily energy expenditure (P=.93), moderate-intensity energy expenditure (P =.77), or hard to
+very hard energy expenditure (P=.69). The proportion
+of participants who spent 3 or more hours viewing television during school days declined from 22.3% to 17.0%
+in the intervention group, but remained at 26.7% for the
+control group (P =.03). Both groups improved their cardiorespiratory fitness (PϽ.001).
+Conclusion: A life skills–oriented physical education curriculum may need to be combined with other approaches to increase the magnitude of effects on physical activity behavior in predominantly African American
+high school–aged girls.
+
+Arch Pediatr Adolesc Med. 2006;160:1255-1261
+
+P
+
+Author Affiliations:
+Department of Kinesiology,
+University of Maryland, College
+Park (Dr Young and
+Mss Phillips and Yu); and
+Department of Psychiatry,
+The Johns Hopkins School
+of Medicine, Baltimore, Md
+(Dr Haythornthwaite).
+
+HYSICAL ACTIVITY PARTICIPAtion in the United States is insufficient to provide protection from adverse health
+consequences; hence, national recommendations were formulated to increase awareness and to encourage people of all ages to increase physical
+activity.1-3 Healthy People 2010 guidelines recommend that adolescents participate in moderate physical activity for at
+least 30 minutes on 5 or more days per
+week and engage in at least 20 minutes of
+vigorous activity at least 3 times per week.4
+The 2003 National Youth Risk Behavior
+Survey indicated that 40% of high school
+girls and 27% of high school boys had insufficient physical activity to meet these
+recommendations.5 Participation was even
+lower for African American girls.5 Thus,
+the high school years represent a life stage
+in which girls, particularly African American girls, are not engaging in sufficient
+physical activity.
+
+(REPRINTED) ARCH PEDIATR ADOLESC MED/ VOL 160, DEC 2006
+1255
+
+Physical education (PE) class provides an opportunity to participate in
+physical activity and learn relevant skills
+to be physically active.6 Progressing from
+traditional PE, which emphasizes team
+sports–related skills, to a model in which
+lifestyle-oriented physical activity skills are
+taught is feasible.7 In recent years, the Centers for Disease Control and Prevention6
+and the American Heart Association8 recommended that PE instruction emphasize enjoyable participation in physical activity to help students develop knowledge,
+skills, and confidence needed to adopt and
+maintain active lifestyles.
+While physical activity interventions
+have been previously conducted in PE
+class, most worked with elementary
+school–aged children,9-11 with less focus
+on middle and high school students. Few
+school-based interventions were tested
+with high school students,12-17 and fewer
+still solely focused on promoting physical activity.16,17 This stage of adolescence
+
+WWW.ARCHPEDIATRICS.COM
+
+©2006 American Medical Association. All rights reserved.
+Downloaded From: http://archpedi.jamanetwork.com/ by a Brown University User on 03/20/2014
+
+is critical to establish health attitudes and behaviors that
+are likely to be carried into adulthood. Interventions focused at this age group can reduce the burden of physical inactivity–related chronic diseases that begin in adolescence and typically present in adulthood.
+This trial tests the effectiveness of a life skills–
+oriented physical activity intervention, conducted in PE
+class by a teacher hired by the project, for increasing physical activity and fitness in ninth-grade girls. We hypothesized that participants in the intervention would increase physical activity and fitness compared with control
+subjects. The trial extends previous work17 by providing an intervention that targeted all students regardless
+of risk factor status.
+METHODS
+
+PARTICIPANTS
+Ninth-grade girls enrolled in an all-girl public magnet high school
+and who were also enrolled in 2 consecutive semesters of required PE were eligible to participate. Of the entering ninthgrade class, approximately two thirds were eligible based on
+their PE class schedules. Exclusion criteria were as follows: (1)
+being excused from meeting Maryland state PE requirements,
+(2) being pregnant or breastfeeding, (3) planning to leave the
+geographic area, and (4) having a sister enrolled in the trial.
+Participants were recruited using multiple strategies, such as
+presentations at parent and student orientation meetings, mass
+mailings to parents, and classroom presentations to students.
+Students were recruited over 3 successive years. Informed consent was obtained from a parent or legal guardian, and child
+assent was provided. The study was approved by the institutional review boards at The Johns Hopkins University and the
+University of Maryland.
+
+MEASURES
+Assessments were made by trained study staff over a 4- to 5-week
+period before randomization in a dedicated classroom that was
+refitted as a project office. Measurements were obtained primarily during PE class, although assessments were also made
+before and after school and during lunch. Measurements were
+obtained in September (baseline) and, for follow-up, during the
+last 2 months of the spring semester (April and May). Selfreport physical activity, clinical assessments, submaximal fitness, and questionnaires composed the measurement protocol. After baseline data collection was completed, participants
+were randomized into intervention or control PE classes. This
+required some participants to transfer from their current PE
+class to the alternate one occurring at the same time.
+
+Estimated Daily Energy Expenditure
+Daily energy expenditure, the trial’s primary outcome, was determined from the 7-day Physical Activity Recall.18,19 The instrument is widely used to determine change in physical activity interventions.18,20-22 The 7-day Physical Activity Recall is
+an interviewer-administered instrument that estimates daily expenditure by asking participants to estimate the amount of time
+spent sleeping and doing physical activities of moderate (eg,
+brisk walk), hard, and very hard (eg, run) intensity over the
+previous 7 days. The survey was designed for adults, but it has
+been validated and used with children.23 Test-retest reliability
+was 0.59 for a sample of eighth graders and 0.81 for eleventh-
+
+grade students, and it correlated with another self-report instrument (r =0.76 for girls), time spent with a heart rate of at
+least a moderate intensity, and skinfold thicknesses.23 The daily
+time frame in which physical activity was recalled was modified to allow for recall to be prompted by the school-day schedule. Weekend days were separated by meals, as suggested by
+the instrument developers.24
+
+Cardiorespiratory Fitness
+Cardiorespiratory fitness was assessed with a submaximal 3-stage
+step test designed for adolescents.25 The protocol was designed for participants to exercise successively at 50%, 59%,
+and 70% of estimated maximal heart rate reserve by stepping
+up and down on 3 steps whose heights were calculated to meet
+the required energy expenditure.25 Participants stepped up and
+down at progressive step heights until the test was completed
+or until the participant reached the target heart rate (70% of
+estimated heart rate reserve).
+Participants’ exercise heart rate was recorded at 2:30, 2:45,
+and 3:00 of each 3-minute stage. If a student’s average heart
+rate did not exceed the target heart rate, she proceeded to the
+next stage. If the target heart rate was achieved, the test was
+terminated.
+A decrease in average heart rate from baseline to follow-up
+at a given stage was used to assess fitness improvement. A 1to 2-week test-retest reliability of 21 participants indicated that
+heart rate was 1 to 3 beats/min lower at the end of a stage during the second administration of the test (difference not significant). Thus, a significant decrease in heart rate indicated
+fitness improvement rather than familiarity with testing procedures.
+
+Sedentary Activities
+Time spent in sedentary activities was assessed using selected
+items from a questionnaire.26 Participants were asked to estimate how much time they spent (1) watching television, movies, or videotapes (ie, television time); and (2) playing video
+games, surfing the Internet, e-mailing, or participating in chat
+rooms (ie, computer time). School days and weekends were queried. Response options were 0 minutes, less than 30 minutes,
+30 minutes to less than 1 hour, 1 to 3 hours, and more than
+3 hours.
+
+Anthropometric and Clinical Variables
+Height, weight, and waist and hip circumferences were determined using standard methods. Height was measured to the
+nearest 0.1 cm and weight to the nearest 0.11 kg. Waist circumference was measured from the horizontal plane at 1 cm
+above the navel. Hip circumference was measured in a horizontal plane at the site of maximum extension of the buttocks.
+Four waist and hip circumferences were measured in consecutive order and averaged. Body mass index was calculated as
+weight in kilograms divided by the square of height in meters.
+Waist-hip ratio was calculated by dividing the mean waist circumference by the mean hip circumference. Adolescent body
+mass index,27,28 waist circumference,27,28 and waist-hip ratio29-31 are associated with childhood cardiovascular risk factors and adult overweight or obesity and risk factor status.32
+Resting blood pressure was measured in the nondominant
+arm using an automated blood pressure monitor (Dinamap)
+in a seated position after 5 minutes of rest. Three blood pressure measurements were made, with a 1-minute interval between measures. Three 30-second peripheral pulse rates were
+also obtained. Measures were averaged.
+
+(REPRINTED) ARCH PEDIATR ADOLESC MED/ VOL 160, DEC 2006
+1256
+
+WWW.ARCHPEDIATRICS.COM
+
+©2006 American Medical Association. All rights reserved.
+Downloaded From: http://archpedi.jamanetwork.com/ by a Brown University User on 03/20/2014
+
+Plasma total cholesterol, high-density lipoprotein cholesterol, and low-density lipoprotein cholesterol levels were obtained from a venous blood sample drawn after a 12-hour fast.
+Blood samples were analyzed by a local commercial laboratory (Quest Diagnostics, Lyndhurst, NJ).
+
+ALTERNATIVE PE INTERVENTION
+The intervention was designed to be congruent with the Social Action Theory, which emphasizes social interdependence, environmental factors, and problem-solving skills.33 It
+was taught by a teacher hired by the project. Intervention content included information to make an informed decision about
+the personal benefits of a physically active lifestyle, develop problem-solving skills, and obtain support from others. Specific strategies that were taught and reinforced included goal setting, problem-solving barriers, communication skills, reinforcement of
+goal achievement through internal and external rewards, and
+learning from relevant role models. Skills were taught using class
+lectures and discussions, small-group discussions, and homework activities. Physical activity self-monitoring was given a
+strong focus. Students were encouraged to keep weekly exercise logs from which the teacher provided feedback on progress
+toward goal attainment and reward strategies. All students in
+class received the intervention, irrespective of whether they were
+trial participants.
+The intervention was also designed to maximize physical
+activity during PE class. The format was congruent with the
+school’s PE curriculum—1 semester of individual sports and
+1 semester of team sports—taught 5 days per week. Classes were
+optimized for physical activity by teaching units that were active in nature (eg, soccer instead of softball [personal fitness
+unit]), breaking skills training into small-group activities, and
+playing games in small groups (eg, 3-on-3 basketball). Skills
+training was limited to that needed for competency rather than
+proficiency. Written tests focused on health-related physical
+activity and fitness concepts and behavioral skills.
+The family support component consisted of a family workshop, monthly newsletters, and adult-child homework assignments. A 2-hour family workshop, scheduled shortly after randomization, featured tips on how parents could provide support
+to their daughters. As an in-class activity, students worked on
+skits illustrating support strategies that were videotaped and
+viewed at the workshop. Families who did not attend were
+mailed copies. Families also received a 2-page family support
+newsletter each month that contained an article on ways families can support physical activity with their daughter.
+
+STANDARD PE (CONTROL)
+Standard PE class was a curriculum in which students were
+taught skills in individual and team sports. For example, during the basketball unit, students were taught how to dribble,
+shoot, and pass, and were tested on concepts such as game rules
+and defense strategies. Similar to the intervention structure,
+1 semester focused on individual sports and the other on team
+sports. Classes were taught by certified PE teachers employed
+by the school.
+Parents of participants in the standard PE class also received monthly newsletters. Topics were of general health interests and included an article about PE class content that month.
+
+INTERVENTION FIDELITY
+The percentage of PE class time spent in physical activity was
+assessed in intervention and control classes using a modification of the System for Observing Fitness Instruction Time.34
+
+This was used to determine fidelity to the intervention goal of
+optimizing physical activity in class. Trained assessors determined physical activity levels of selected students in all quadrants of the activity area at 5-minute intervals. Physical activity level was recorded as (1) lying down, (2) sitting, (3) standing,
+(4) walking, and (5) active. At the class start time, observers
+mentally divided the activity area into quadrants, identified a
+student in the northeast quadrant, observed for 10 seconds, then
+identified another student in the northwest quadrant, observed for 10 seconds, and so on. The process was repeated every 5 minutes. In a 45-minute class period, there were 36 student observations recorded. Thus, there was an opportunity for
+each student to be observed. The percentage of time in class
+spent in physical activity was calculated as the number of observations of the categories “walking” and “active” relative to
+the total number of observations.34
+
+STATISTICAL ANALYSES
+Means and standard deviations were calculated at baseline and
+follow-up for continuous physical activity, fitness, and secondary outcome variables. Baseline means were examined for comparability between intervention and control groups using unpaired t tests. Mean change and standard errors from baseline to
+follow-up were calculated after controlling for baseline values and
+race (African American vs other). To determine the effects of the
+intervention, an analysis of covariance was used, with change in
+physical activity as the dependent variable, intervention group
+as the independent variable, and baseline physical activity and
+race as the covariates. The same approach was used for secondary outcome variables. Initial models tested for treatmentϫrace
+interactions; none were significant, so they were not included in
+the final models. Race was a significant covariate and, thus, was
+retained. Within-treatment group change was assessed by paired
+t tests, after controlling for baseline values and race.
+For the sedentary activities’ variables, the proportion of participants who reported 3 or more hours per day of television
+viewing or video game or Internet use during school days and
+weekends was computed. To test for intervention effects, between-group differences in the reduction of high prevalence of
+sedentary activities (Ն3 hours) were tested using the Fisher
+exact test. Within-intervention group differences were assessed using the McNemar test. Initial analyses indicated no
+differences by race, so data were not stratified to test for race
+differences.
+All analyses were conducted using SAS statistical software,
+version 9.1 (SAS Institute Inc, Cary, NC). Significance was set
+at a 2-tailed ␣ of .05.
+RESULTS
+
+The study flow is displayed in the Figure. Of the 442
+students eligible to participate across 3 successive school
+years, 221 (50.0%) agreed to participate and were randomized. There was greater than 90% power to detect a
+1.7-kcal/kg per day treatment group difference (5%
+change) in daily energy expenditure at follow-up. Common reasons for nonparticipation were the following: did
+not want to miss PE class to undergo baseline measurements, did not want to provide a blood sample, and did
+not want to be randomized and risk moving to the alternate class. The sample was a mean±SD age of 13.8±0.5
+years. Most (83.0%) were African American, with the remainder predominantly white, consistent with the demographics of the school. More than half of the partici-
+
+(REPRINTED) ARCH PEDIATR ADOLESC MED/ VOL 160, DEC 2006
+1257
+
+WWW.ARCHPEDIATRICS.COM
+
+©2006 American Medical Association. All rights reserved.
+Downloaded From: http://archpedi.jamanetwork.com/ by a Brown University User on 03/20/2014
+
+pants’ mothers (56.3%) had greater than a high school
+education. We report mother’s education because of the
+many participants (29.2%) who did not know their father’s educational level. Follow-up data were obtained
+for 210 (95.0%) of the participants.
+Observations occurred in 81 (40 intervention and 41
+control) PE classes. Interrater reliability of physical activity level (active [walking or active categories] vs in-
+
+442 Adolescent Girls Assessed for Eligibility
+
+12 Not Eligible
+3 Schedule Changed
+8 Planning to Leave Area
+1 Sister in Study
+430 Refused to Participate
+
+221 Adolescent Girls Randomized
+
+116 Participants in the
+Intervention Group
+116 Had Physical Activity
+Measured
+116 Had Body Composition
+Measured
+113 Had Fitness Measured
+99 Had Lipoprotein Cholesterol
+Levels Measured
+
+105 Participants in the
+Control Group
+105 Had Physical Activity
+Measured
+105 Had Body Composition
+Measured
+103 Had Fitness Measured
+94 Had Lipoprotein Cholesterol
+Levels Measured
+
+5 Participants Unavailable for
+Follow-up
+4 Left School
+1 Refused Follow-up
+
+6 Participants Unavailable for
+Follow-up
+5 Left School
+1 Refused Follow-up
+
+111 Participants Underwent Follow-up
+111 Had Physical Activity
+Measured
+109 Had Body Composition
+Measured
+109 Had Fitness Measured
+72 Had Lipoprotein Cholesterol
+Levels Measured
+
+99 Participants Underwent Follow-up
+99 Had Physical Activity
+Measured
+97 Had Body Composition
+Measured
+92 Had Fitness Measured
+72 Had Lipoprotein Cholesterol
+Levels Measured
+
+Figure. Participant study flow diagram.
+
+active) was ␬ = 0.83. Intervention PE classes spent significantly more time (46.9%) walking or active than
+control PE classes (30.5%) (PϽ.001). Most of this difference was for the walking category (28.1% vs 18.8%,
+respectively), with less difference for the active category
+(16.6% vs 13.9%, respectively).
+The results of the physical activity and sedentary activity measures are displayed in Table 1 and Table 2.
+At baseline, groups were comparable for mean daily energy expenditure. Based on the previously established cut
+point for sedentary behavior of 35 kcal/kg per day,22 most
+participants were sedentary, although daily energy expenditure ranged from 30.2 to 50.7 kcal/kg per day. Baseline sedentary activity prevalence did not differ between
+treatment groups.
+There were no significant between-treatment group
+differences for mean daily energy expenditure, moderate energy expenditure, or hard to very hard energy expenditure (Table 1). The results of additional analyses’
+testing for possible treatment group differences for those
+who increased (n=92) or decreased (n=113) their physical activity also were not statistically significant.
+Both treatment groups significantly increased in fitness, as assessed by reduction in submaximal heart rate
+(Table 1).
+The proportion of participants who reported 3 or more
+hours per day of television viewing or video game or Internet use declined in the intervention group, with minimal change in the control group (Table 2). For high television viewing during school days, the intervention group
+declined by 5.3%, with no change in the controls (P=.03).
+The proportion of participants who reported 3 or more
+hours per day in at least 1 of the sedentary variables of interest declined from 44.1% to 36.0% in the intervention
+group, but remained at 45.5% in the control group (P=.06).
+Mean body mass index, waist-hip ratio, waist circumference, blood pressure, total cholesterol level, or lipoprotein level did not differ from baseline to follow-up by
+treatment status (Table 3). However, there were improvements in waist-hip ratio, blood pressure, and highdensity lipoprotein cholesterol level in both groups that
+either were statistically significant or approached significance.
+
+Table 1. Baseline, Follow-up, and Change in Estimated Daily Energy Expenditure, Its Subcomponents,
+and Submaximal Heart Rate by Randomized Treatment Group*
+Intervention Group
+Baseline†
+
+Variable
+Estimated daily energy
+expenditure, kcal/kg
+Total
+Moderate
+Hard or very hard
+Change in submaximal
+heart rate (fitness)
+
+Follow-up†
+
+Within-Group
+Change‡
+
+34.6 (3.2)
+2.0 (1.9)
+1.9 (3.6)
+NA
+
+34.2 (2.9)
+1.8 (3.0)
+1.5 (2.7)
+−6.2 (16.4)
+
+−0.1 (0.3)
+0.0 (0.3)
+−0.1 (0.3)
+−7.1 (1.8)
+
+Control Group
+P
+Value*
+
+Baseline†
+
+.79
+.94
+.70
+Ͻ.001
+
+34.9 (2.7)
+2.4 (2.1)
+2.0 (3.0)
+NA
+
+Follow-up†
+
+Within-Group
+Change‡
+
+P
+Value*
+
+BetweenGroup
+P Value*
+
+34.2 (2.1)
+2.0 (1.4)
+1.4 (2.4)
+−3.5 (18.3)
+
+−0.1 (0.3)
+0.1 (0.3)
+−0.0 (0.3)
+−7.4 (2.0)
+
+.72
+.68
+.92
+Ͻ.001
+
+.93
+.77
+.69
+.91
+
+Abbreviation: NA, data not applicable.
+*Values are given for analysis of covariance testing for within-group change and difference of change between treatment groups for a given variable, with
+baseline physical activity and race as covariates.
+†Data are given as unadjusted mean (SD).
+‡Data are given as mean change (SE), adjusted for baseline value and race.
+
+(REPRINTED) ARCH PEDIATR ADOLESC MED/ VOL 160, DEC 2006
+1258
+
+WWW.ARCHPEDIATRICS.COM
+
+©2006 American Medical Association. All rights reserved.
+Downloaded From: http://archpedi.jamanetwork.com/ by a Brown University User on 03/20/2014
+
+Table 2. Baseline, Follow-up, and Change in Prevalence of Sedentary Activities
+Intervention Group
+
+Control Group
+
+Ն3 h of watching television
+School day
+Weekend
+Ն3 h of playing video games
+or using the Internet
+School day
+Weekend
+
+Baseline*
+
+Follow-up*
+
+P
+Value†
+
+BetweenGroup
+P Value‡
+
+Baseline*
+
+Variable
+
+P
+Value†
+
+Within-Group
+Change
+
+Follow-up*
+
+Within-Group
+Change
+
+22.3
+34.2
+
+17.0
+27.0
+
+−5.3
+−7.2
+
+.27
+.16
+
+26.7
+35.6
+
+26.7
+35.6
+
+0
+0
+
+.99
+.99
+
+.03
+.25
+
+4.4
+11.4
+
+1.8
+9.9
+
+−2.6
+−1.5
+
+.18
+.62
+
+7.6
+13.2
+
+5.0
+16.8
+
+−2.6
+3.6
+
+.32
+.47
+
+.99
+.44
+
+*Data are given as percentage of the group.
+†Value for the McNemar test comparing baseline with follow-up change of prevalence of sedentary activities.
+‡Value for the Fisher exact test determining the treatment group difference in change of prevalence of sedentary activities.
+
+Table 3. Baseline, Follow-up, and Change in Anthropometric and Cardiovascular Risk Factors by Randomized Treatment Group
+Intervention Group
+
+Control Group
+
+Risk Factor
+
+Baseline*
+
+Follow-up*
+
+Within-Group
+Change†
+
+P
+Value‡
+
+Baseline*
+
+Follow-up*
+
+Within-Group
+Change†
+
+P
+Value‡
+
+Between-Group
+P Value‡
+
+Body mass index§
+Waist-hip ratio
+Waist circumference, cm
+Blood pressure, mm Hg
+Systolic
+Diastolic
+Cholesterol level, mg/dL
+Total
+LDL
+HDL
+
+25.0 (6.9)
+0.79 (0.08)
+77.6 (14.9)
+
+25.3 (7.1)
+0.77 (0.06)
+77.9 (15.0)
+
+0.3 (0.2)
+−0.02 (0.006)
+−0.1 (0.5)
+
+.20
+.001
+.83
+
+25.2 (6.7)
+0.78 (0.07)
+77.6 (14.3)
+
+25.6 (6.5)
+0.77 (0.06)
+78.6 (14.5)
+
+0.2 (0.2)
+−0.01 (0.006)
+0.2 (0.5)
+
+.34
+.05
+.77
+
+.81
+.20
+.67
+
+109.4 (10.4)
+59.5 (5.9)
+
+108.3 (11.1)
+57.7 (7.2)
+
+−1.6 (0.9)
+−1.4 (0.7)
+
+.09
+.05
+
+110.3 (12.0)
+58.8 (7.4)
+
+106.8 (10.0)
+56.8 (5.8)
+
+−3.7 (1.0)
+−2.0 (0.8)
+
+.001
+.008
+
+.06
+.49
+
+154.9 (27.6)
+90.3 (23.8)
+52.2 (12.0)
+
+155.4 (28.3)
+88.7 (22.4)
+54.0 (12.4)
+
+−0.3 (2.2)
+−2.6 (1.9)
+2.3 (1.0)
+
+.91
+.18
+.02
+
+161.0 (25.5)
+95.2 (23.7)
+52.7 (10.7)
+
+162.8 (29.0)
+94.4 (27.4)
+55.7 (10.3)
+
+1.8 (2.2)
+−2.3 (1.9)
+4.2 (1.0)
+
+.42
+.24
+Ͻ.001
+
+.43
+.90
+.10
+
+Abbreviations: HDL, high-density lipoprotein; LDL, low-density lipoprotein.
+SI conversion factor: To convert HDL, LDL, and total cholesterol to millimoles per liter, multiply by 0.0259.
+*Data are given as unadjusted mean (SD).
+†Data are given as mean change (SE), adjusted for baseline value and race.
+‡Values are given for analysis of covariance testing for within-group change and difference of change between groups for a given variable, with baseline physical
+activity and race as covariates.
+§Calculated as weight in kilograms divided by height in meters squared.
+
+COMMENT
+
+Study results indicate that the life skills physical activity
+intervention, while successful in increasing physical activity in PE class, did not result in total increased physical activity. That is, there was no change in overall daily,
+moderate, or hard to very hard mean energy expenditure in either the intervention or the control group. The
+intervention did demonstrate, however, a decline in prevalence of high participation in sedentary activities, particularly school-day television viewing. Thus, to our
+knowledge, it is the first to report a reduction in sedentary activities among high school girls.
+The prevalence of 3 or more hours per day of television viewing on school days declined in the intervention group, but did not change in controls. Although the
+intervention targeted moderate to vigorous physical activity, it did include inferences as to how sedentary activities could be replaced with more active pursuits. The
+reduction in television viewing may have resulted in an
+
+increase in light physical activity, which the 7-day Physical Activity Recall is not designed to assess. Previous
+school-based interventions aimed at reducing the prevalence of sedentary activities among elementary and middle
+school–aged children did not find a concomitant increase in physical activity,26,35 confirming our findings.
+Most previous work12-15,17 with high school–aged adolescents separated study participants into specialized targeted PE and/or health education classes. While interventions targeting students with particular characteristics
+have greater potential for positive results, they are limited in generalizability. We reduced this limitation by conducting a trial with generous eligibility criteria and implemented an intervention that was applied within the
+school’s existing PE curriculum. Pate et al16 used the same
+approach, but augmented the intervention by promoting physical activity schoolwide. Their results demonstrated an increase in vigorous physical activity.16 Thus,
+while integrating physical activity promotion in PE class
+enhances reach and generalizability, efforts may need to
+
+(REPRINTED) ARCH PEDIATR ADOLESC MED/ VOL 160, DEC 2006
+1259
+
+WWW.ARCHPEDIATRICS.COM
+
+©2006 American Medical Association. All rights reserved.
+Downloaded From: http://archpedi.jamanetwork.com/ by a Brown University User on 03/20/2014
+
+extend beyond PE class for sufficient potency to increase out-of-class physical activity.
+To our knowledge, our study is the first to report results of participants who were overwhelmingly minority (83.0%), which may have contributed to our mixed
+results. While intervention materials and discussions were
+designed to be appropriate for African American and white
+students, there may not have been sufficient cultural targeting to result in substantial out-of-class physical activity participation.
+We hypothesized that the intervention would result
+in an increase in physical activity relative to the control
+group, a hypothesis that was optimistic in retrospect.
+Cross-sectional and longitudinal studies document a decline in physical activity in girls throughout adolescence. From a recent longitudinal cohort study of black
+and white girls, Kimm et al36 found an annual mean decline of 4.1 metabolic equivalent times per week for black
+girls and 3.5 metabolic equivalent times per week for white
+girls at similar ages as our participants. In contrast, the
+predominantly African American participants reported
+no change in physical activity over an 8-month period,
+irrespective of treatment assignment. Although PE class
+did not result in increased daily energy expenditure, perhaps it provided sufficient stimulus to blunt the ageexpected decline.
+Fitness, assessed by reduction in submaximal heart
+rate, improved in both groups. While the intervention
+PE classes resulted in greater physical activity compared with the control classes, the difference was largely
+because of more class time spent walking, rather than more
+active (vigorous), activity. The vigorous physical activity that occurred in PE class may have been sufficient to
+improve fitness. These results provide additional evidence for national groups that advocate PE requirements for all ages.6,8
+We found improvements in waist-hip ratio, blood pressure, and high-density lipoprotein cholesterol level in both
+groups, without a decline in weight, waist circumference, or body mass index or an improvement in overall
+physical activity. These improvements are important,
+given the high risk of hypertension and cardiovascular
+disease that African American women carry.37 In another report,38 we found that, at baseline, almost 20% of
+our sample met the criteria for metabolic syndrome. Thus,
+these adolescent girls are at high risk for future cardiovascular and metabolic diseases. Perhaps the combination of vigorous activity in PE class and improved fitness
+resulted in favorable physiologic variables. Future work
+should continue to explore public health strategies to improve cardiovascular risk factors in adolescents.
+The trial had several limitations, most of which limit
+generalizability. The study was conducted in 1 high
+school, although the high school was a magnet that enrolls students from most Baltimore neighborhoods. Only
+about 50% of eligible participants chose to enroll. The
+intervention was delivered by a teacher who was hired
+by the project. While this approach maximizes the intervention fidelity, it is less generalizable than if the
+school’s PE teachers were the implementers. And finally, our primary outcome, physical activity, was assessed by self-report. Although the instrument we used
+
+is valid for high school–aged populations, it may not have
+been sensitive enough to detect the change in physical
+activity we were able to produce.
+In conclusion, a physical activity intervention conducted in PE class targeting ninth-grade girls increased
+in-class physical activity and reduced high prevalence of
+school-day television viewing, but did not result in an
+increase in overall daily energy expenditure. Given the
+alarming decline in physical activity during adolescence and the associated increase in prevalence of adolescent obesity, future work should continue to identify
+potentially effective intervention strategies.
+Accepted for Publication: July 5, 2006.
+Correspondence: Deborah Rohm Young, PhD, Department of Kinesiology, University of Maryland, 2312 Health
+and Human Performance Building, College Park, MD
+20742 (dryoung@umd.edu).
+Author Contributions: All authors had full access to all
+the data in the study and take responsibility for the integrity of the data and the accuracy of the data analysis.
+Study concept and design: Young, Phillips, and Haythornthwaite. Acquisition of data: Young, Phillips, and Haythornthwaite. Analysis and interpretation of data: Young,
+Yu, and Haythornthwaite. Drafting of the manuscript:
+Young. Critical revision of the manuscript for important intellectual content: Phillips, Yu, and Haythornthwaite. Statistical analysis: Yu. Obtained funding: Young and Haythornthwaite. Administrative, technical, and material
+support: Phillips. Study supervision: Young and Haythornthwaite.
+Financial Disclosure: None reported.
+Funding/Support: This study was supported by grant RO1
+HL063861 from the National Heart, Lung, and Blood Institute, National Institutes of Health.
+Role of the Sponsor: The funding body had no role in
+data extraction and analyses, in the writing of the manuscript, or in the decision to submit the manuscript for
+publication.
+Acknowledgment: We thank Jeanette Harris, Sue Shang,
+MS, Tavon English, Jie Li, PhD, and Marcella Sapun, MS,
+for their contributions to this study; and the administration of the high school for allowing us to conduct the
+trial.
+REFERENCES
+1. US Department of Health and Human Services. Physical Activity and Health:
+A Report of the Surgeon General. Atlanta, Ga: Centers for Disease Control and
+Prevention; 1996.
+2. Pate RR, Pratt M, Blair SN, et al. Physical activity and public health: a recommendation from the Centers for Disease Control and Prevention and the American College of Sports Medicine. JAMA. 1995;273:402-407.
+3. NIH Consensus Development Panel on Physical Activity and Cardiovascular Health.
+Physical activity and cardiovascular health. JAMA. 1996;276:241-246.
+4. US Department of Health and Human Services. Healthy People 2010: Understanding and Improving Health. 2nd ed. Washington, DC: US Dept of Health and
+Human Services; 2000.
+5. Grunbaum JA, Kann L, Kinchen S, et al. Youth risk behavior surveillance: United
+States, 2003. MMWR Surveill Summ. 2004;53:1-96.
+6. National Center for Chronic Disease Prevention and Health Promotion; Centers
+for Disease Control and Prevention. Guidelines for school and community programs to promote lifelong physical activity among young people. J Sch Health.
+1997;67:202-219.
+
+(REPRINTED) ARCH PEDIATR ADOLESC MED/ VOL 160, DEC 2006
+1260
+
+WWW.ARCHPEDIATRICS.COM
+
+©2006 American Medical Association. All rights reserved.
+Downloaded From: http://archpedi.jamanetwork.com/ by a Brown University User on 03/20/2014
+
+7. Sallis JF, McKenzie TL. Physical education’s role in public health. Res Q Exerc
+Sport. 1991;62:124-137.
+8. Gidding SS, Deckelbaum RJ, Strong W, Moller JH. Improving children’s heart
+health: a report from the American Heart Association’s Children’s Heart Health
+Conference. J Sch Health. 1995;65:129-132.
+9. Sallis JF, McKenzie TL, Alcaraz JE, Kolody B, Faucette N, Hovell MF. The effects
+of a 2-year physical education program (SPARK) on physical activity and fitness
+in elementary school students: Sports, Play and Active Recreation for Kids. Am
+J Public Health. 1997;87:1328-1334.
+10. McKenzie TL, Nader PR, Strikmiller PK, et al. School physical education: effect
+of the Child and Adolescent Trial for Cardiovascular Health. Prev Med. 1996;
+25:423-431.
+11. Caballero B, Clay T, Davis SM, et al; Pathways Study Research Group. Pathways: a school-based, randomized controlled trial for the prevention of obesity
+in American Indian schoolchildren. Am J Clin Nutr. 2003;78:1030-1038.
+12. Bayne-Smith M, Fardy PS, Azzollini A, Magel J, Schmitz KH, Agin D. Improvements in heart health behaviors and reduction in coronary artery disease risk
+factors in urban teenaged girls through a school-based intervention: the PATH
+program. Am J Public Health. 2004;94:1538-1543.
+13. Killen JD, Telch MJ, Robinson TN, Maccoby N, Taylor CB, Farquhar JW. Cardiovascular disease risk reduction for tenth graders: a multiple-factor schoolbased approach. JAMA. 1988;260:1728-1733.
+14. Fardy PS, White RE, Clark LT, et al. Health promotion in minority adolescents: a
+Healthy People 2000 pilot study. J Cardiopulm Rehabil. 1995;15:65-72.
+15. Neumark-Sztainer D, Story M, Hannan PJ, Rex J. New Moves: a school-based
+obesity prevention program for adolescent girls. Prev Med. 2003;37:41-51.
+16. Pate RR, Ward DS, Saunders RP, Felton G, Dishman RK, Dowda M. Promotion
+of physical activity among high-school girls: a randomized controlled trial. Am J
+Public Health. 2005;95:1582-1587.
+17. Ewart CK, Young DR, Hagberg JM. Effects of school-based aerobic exercise on
+blood pressure in adolescent girls at risk for hypertension. Am J Public Health.
+1998;88:949-951.
+18. Blair SN, Haskell WL, Ho P, et al. Assessment of habitual physical activity by a
+seven-day recall in a community survey and controlled experiments. Am J
+Epidemiol. 1985;122:794-804.
+19. Sallis JF, Haskell WL, Wood PD, et al. Physical activity assessment methodology in the Five-City Project. Am J Epidemiol. 1985;121:91-106.
+20. Dunn AL, Marcus BH, Kampert JB, Garcia ME, Kohl HW III, Blair SN. Comparison of lifestyle and structured interventions to increase physical activity and cardiorespiratory fitness: a randomized trial. JAMA. 1999;281:327-334.
+21. Albright CL, Pruitt L, Castro C, Gonzalez A, Woo S, King AC. Modifying physical
+activity in a multiethnic sample of low-income women: one-year results from the
+IMPACT (Increasing Motivation for Physical ACTivity) project. Ann Behav Med.
+2005;30:191-200.
+22. Writing Group for the Activity Counseling Trial Research Group. Effects of physical activity counseling in primary care: the Activity Counseling Trial: a randomized controlled trial. JAMA. 2001;286:677-687.
+23. Sallis JF, Buono MJ, Roby JJ, Micale FG, Nelson JA. Seven-day recall and other
+
+24.
+
+25.
+
+26.
+27.
+
+28.
+
+29.
+
+30.
+
+31.
+
+32.
+
+33.
+34.
+35.
+
+36.
+37.
+
+38.
+
+physical activity self-reports in children and adolescents. Med Sci Sports Exerc.
+1993;25:99-108.
+Pereira MA, FitzerGerald SJ, Gregg EW, et al. A collection of Physical Activity
+Questionnaires for health-related research. Med Sci Sports Exerc. 1997;29
+(suppl):S1-S205.
+Ewart CK. School-based exercise to lower blood pressure in high-risk AfricanAmerican girls: project design and baseline findings. J Health Educ. 1995;26
+(suppl):S99-S105.
+Robinson TN. Reducing children’s television viewing to prevent obesity: a randomized controlled trial. JAMA. 1999;282:1561-1567.
+Duncan GE, Li SM, Zhou XH. Prevalence and trends of a metabolic syndrome
+phenotype among US adolescents, 1999-2000. Diabetes Care. 2004;27:24382443.
+Katzmarzyk PT, Srinivasan SR, Chen W, Malina RM, Bouchard C, Berenson GS.
+Body mass index, waist circumference, and clustering of cardiovascular disease risk factors in a biracial sample of children and adolescents. Pediatrics. 2004;
+114:e198-e205. http://pediatrics.aappublications.org/cgi/content/full/114/2
+/e198. Accessed September 7, 2006.
+Freedman DS, Serdula MK, Srinivasan SR, Berenson GS. Relation of circumferences and skinfold thicknesses to lipid and insulin concentrations in children and
+adolescents: the Bogalusa Heart Study. Am J Clin Nutr. 1999;69:308-317.
+Gillum RF. Distribution of waist-to-hip ratio, other indices of body fat distribution and obesity and associations with HDL cholesterol in children and young
+adults aged 4-19 years: the Third National Health and Nutrition Examination Survey.
+Int J Obes Relat Metab Disord. 1999;23:556-563.
+Huang KC, Lin RC, Kormas N, et al. Plasma leptin is associated with insulin resistance independent of age, body mass index, fat mass, lipids, and pubertal development in nondiabetic adolescents. Int J Obes Relat Metab Disord. 2004;
+28:470-475.
+Janssen I, Katzmarzyk PT, Srinivasan SR, et al. Utility of childhood BMI in the
+prediction of adulthood disease: comparison of national and international
+references. Obes Res. 2005;13:1106-1115.
+Ewart CK. Social action theory for a public health psychology. Am Psychol. 1991;
+46:931-946.
+McKenzie TL, Sallis JF, Nader PR. SOFIT: System for Observing Fitness Instruction Time. J Teach Phys Educ. 1991;11:195-205.
+Gortmaker SL, Peterson K, Wiecha J, et al. Reducing obesity via a school-based
+interdisciplinary intervention among youth: Planet Health. Arch Pediatr Adolesc
+Med. 1999;153:409-418.
+Kimm SY, Glynn NW, Kriska AM, et al. Decline in physical activity in black girls
+and white girls during adolescence. N Engl J Med. 2002;347:709-715.
+Centers for Disease Control and Prevention. Public health focus: physical activity and the prevention of coronary heart disease. MMWR Morb Mortal Wkly Rep.
+1993;42:669-672.
+Camhi S, Kuo J, Young DR. Evaluating BMI and waist circumference cutpoints
+to identify urban female adolescents at risk for metabolic syndrome [abstract].
+Med Sci Sports Exerc. 2005;37(suppl):S69.
+
+Announcement
+Topic Collections. The Archives offers collections of
+articles in specific topic areas to make it easier for physicians to find the most recent publications in a field.
+These are available by subspecialty, study type, disease,
+or problem. In addition, you can sign up to receive a
+Collection E-Mail Alert when new articles on specific
+topics are published. Go to http://archpedi.ama-assn.org
+/collections to see these collections of articles.
+
+(REPRINTED) ARCH PEDIATR ADOLESC MED/ VOL 160, DEC 2006
+1261
+
+WWW.ARCHPEDIATRICS.COM
+
+©2006 American Medical Association. All rights reserved.
+Downloaded From: http://archpedi.jamanetwork.com/ by a Brown University User on 03/20/2014

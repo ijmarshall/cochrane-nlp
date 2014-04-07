@@ -1,0 +1,737 @@
+n ¡ 3 FAT T Y ACID S A ND SUD D EN D EATH
+
+BLOOD LEVELS OF LONG-CHAIN n–3 FATTY ACIDS
+AND THE RISK OF SUDDEN DEATH
+CHRISTINE M. ALBERT, M.D., M.P.H., HANNIA CAMPOS, PH.D., MEIR J. STAMPFER, M.D., DR.P.H.,
+PAUL M. RIDKER, M.D., M.P.H., JOANN E. MANSON, M.D., DR.P.H., WALTER C. WILLETT, M.D., DR.P.H.,
+AND JING MA, M.D., PH.D.
+
+ABSTRACT
+Background Experimental data suggest that longchain n¡3 polyunsaturated fatty acids found in fish
+have antiarrhythmic properties, and a randomized trial
+suggested that dietary supplements of n¡3 fatty acids
+may reduce the risk of sudden death among survivors
+of myocardial infarction. Whether long-chain n¡3 fatty acids are also associated with the risk of sudden
+death in those without a history of cardiovascular disease is unknown.
+Methods We conducted a prospective, nested case–
+control analysis among apparently healthy men who
+were followed for up to 17 years in the Physicians’
+Health Study. The fatty-acid composition of previously
+collected blood was analyzed by gas–liquid chromatography for 94 men in whom sudden death occurred
+as the first manifestation of cardiovascular disease and
+for 184 controls matched with them for age and smoking status.
+Results Base-line blood levels of long-chain n¡3
+fatty acids were inversely related to the risk of sudden
+death both before adjustment for potential confounders (P for trend=0.004) and after such adjustment
+(P for trend=0.007). As compared with men whose
+blood levels of long-chain n¡3 fatty acids were in the
+lowest quartile, the relative risk of sudden death was
+significantly lower among men with levels in the third
+quartile (adjusted relative risk, 0.28; 95 percent confidence interval, 0.09 to 0.87) and the fourth quartile
+(adjusted relative risk, 0.19; 95 percent confidence interval, 0.05 to 0.71).
+Conclusions The n¡3 fatty acids found in fish are
+strongly associated with a reduced risk of sudden
+death among men without evidence of prior cardiovascular disease. (N Engl J Med 2002;346:1113-8.)
+Copyright © 2002 Massachusetts Medical Society.
+
+W
+
+E previously reported that fish consumption was associated with a reduced
+risk of sudden death from cardiac causes, but not a reduced risk of myocardial infarction, in the Physicians’ Health Study.1 It is
+hypothesized that the long-chain n¡3 polyunsaturated fatty acids found in fish, primarily eicosapentaenoic
+acid and docosahexaenoic acid, may be responsible for
+this association. Experimental data from studies in animals and at the cellular level suggest that these n¡3
+
+fatty acids have antiarrhythmic properties,2,3 and a recent randomized trial testing supplements of these
+n¡3 fatty acids in survivors of myocardial infarction
+found a statistically significant 45 percent reduction in
+the risk of sudden death, with no effect on nonfatal
+myocardial infarction.4 However, prospective data on
+blood levels of long-chain n¡3 fatty acids and sudden
+death from cardiac causes are sparse, and there have
+been no randomized trials of the effects of long-chain
+n¡3 fatty acids in the diet or as supplements among
+persons without a history of cardiovascular disease,
+who represent over half of all cases of sudden death
+from cardiac causes.5
+To address the hypothesis that the long-chain n¡3
+fatty acids found in fish are associated with a reduced
+risk of sudden death from cardiac causes in those without known cardiovascular disease, we performed a prospective, nested case–control analysis of the fatty-acid
+composition of whole blood in men without a confirmed history of cardiovascular disease who were participants in the Physicians’ Health Study.
+METHODS
+Study Population and Collection of Whole-Blood Samples
+The methods of the Physicians’ Health Study have been described
+in detail elsewhere.6,7 Briefly, 22,071 male physicians, who were 40
+to 84 years old in 1982 and had no history of myocardial infarction,
+stroke, transient ischemic attacks, or cancer, were assigned at random according to a two-by-two factorial design to receive aspirin,
+beta carotene, both active drugs, or both placebos. Informed consent was obtained from all subjects, and the research protocol was
+approved by the institutional review board at Brigham and Women’s Hospital in Boston. At base line, the physicians completed
+questions on their health status and risk factors for cardiovascular
+disease. Dietary intake of fish was ascertained at 12 months with
+an abbreviated, semiquantitative food-frequency questionnaire,8 as
+described previously.1 Information on cardiovascular events was updated every six months for the first year and annually thereafter with
+follow-up questionnaires.
+Before randomization, which occurred between August 1982 and
+December 1984, potential participants were asked to provide base-
+
+From the Division of Preventive Medicine (C.M.A., P.M.R., J.E.M.), the
+Channing Laboratory (M.J.S., J.E.M., W.C.W., J.M.), and the Division of
+Cardiovascular Medicine (P.M.R.), Department of Medicine, Brigham and
+Women’s Hospital; the Cardiovascular Division, Department of Medicine,
+Massachusetts General Hospital (C.M.A.); and the Departments of Nutrition (H.C., M.J.S., W.C.W.) and Epidemiology (M.J.S., J.E.M., W.C.W.),
+Harvard School of Public Health — all in Boston. Address reprint requests
+to Dr. Albert at the Division of Preventive Medicine, Brigham and Women’s Hospital, 900 Commonwealth Ave. East, Boston, MA 02215-1204, or
+at calbert@partners.org.
+
+N Engl J Med, Vol. 346, No. 15 · April 11, 2002 · www.nejm.org · 1113
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+line blood samples, which were collected in EDTA and processed
+for long-term storage at ¡80°C. Of the randomized study participants, 14,916 (68 percent) provided base-line blood samples. More
+than 70 percent of these specimens were received between September and November 1982.
+Confirmation of End Points and Selection of Controls
+The end point of sudden death from cardiac causes was ascertained by a two-step process. First, deaths from any cause were generally reported by postal authorities or next of kin, and an end-point
+review committee confirmed deaths from cardiovascular causes by
+examining medical records obtained from hospitals and attending
+physicians. A participant’s next of kin was interviewed about the circumstances of the death if they were not adequately documented
+in the medical record.
+Second, to ascertain the specific end point of sudden death from
+cardiac causes, two cardiologists who were unaware of the subject’s
+exposure status reviewed medical records and reports from the next
+of kin of all deaths from cardiovascular causes (excluding strokes).
+In this second review, sudden death from cardiac causes was defined
+as death within one hour after the onset of symptoms or a witnessed
+cardiac arrest or abrupt collapse that occurred within one hour after the onset of symptoms and that resulted in death. For all these
+deaths, no probable noncardiac cause was suggested by the history
+or autopsy. To increase specificity for death from cardiac arrhythmia, we excluded any death for which there was evidence of collapse
+of the circulation (hypotension, exacerbation of congestive heart failure, or altered mental status) before the disappearance of the pulse.9
+Unwitnessed deaths with no information on timing but with an autopsy report consistent with death from cardiac arrhythmia (i.e.,
+acute coronary thrombosis or severe coronary artery disease without myocardial necrosis or other pathological findings to explain
+death) were considered possible sudden deaths from cardiac causes.
+Analyses were performed both including and excluding these deaths,
+with similar results.
+Over the 17 years of study follow-up, 201 sudden deaths from
+cardiac causes were documented; for 119 of these, an adequate baseline blood sample was available for analysis. Ninety-four of these
+subjects had been free of confirmed cardiovascular disease before
+death. Each of these subjects was matched with two control subjects, who had also provided an adequate base-line blood sample
+and who were alive and remained free of confirmed cardiovascular
+disease at the time of case ascertainment. A diagnosis of confirmed
+cardiovascular disease required a report of angina with a positive
+stress-test result or coronary angiography documenting clinically
+significant coronary artery disease, myocardial infarction confirmed
+according to World Health Organization criteria, or stroke confirmed by a typical neurologic deficit lasting longer than 24 hours.
+Using a risk-set sampling method, we randomly selected controls
+from among study participants who met the matching criteria for
+age (within one year), smoking status (formerly, currently, or never), and length of time since randomization (in six-month intervals).
+For four case subjects, only one adequate control could be found.
+Laboratory Analysis
+Whole blood collected and stored at base line was thawed. Although there are no data on their long-term storage in blood, longchain n¡3 fatty acids have been documented to have high reliability
+coefficients (0.64 to 0.66) and minimal oxidation in serum samples
+stored at ¡80°C for up to 12 years.10 The fatty acids from whole
+blood were extracted11,12 and quantitated by gas–liquid chromatography on a fused silica capillary cis–trans column (SP2560, Supelco,
+Bellefonte, Pa.). We identified the peak retention times from 47
+peaks and the percentage of total fatty-acid peak area representing
+95.2 percent of the total peak area by injecting known standards
+(NuCheck Prep, Elysian, Minn.), with the use of ChemStation
+A.08.03 software for analysis (Agilent Technologies). Blood spec-
+
+imens were analyzed in groups of three blinded samples, with the
+position of the case subject’s specimen varied at random within the
+groups to reduce the possibility of systemic bias and to decrease variability between assays. Coefficients of variation for all fatty-acid peaks
+were measured by analyzing quality-control samples (indistinguishable from other study samples) randomly distributed throughout
+the study samples. The major peaks of long-chain n¡3 fatty acids
+included docosahexaenoic acid (C22:6n¡3), eicosapentaenoic acid
+(C20:5n¡3), and docosapentaenoic acid (C22:5n¡3). The coefficients
+of variation for these major long-chain n–3 fatty acids were 7.7,
+13.7, and 9.2, respectively. These three peaks were summed for each
+participant to arrive at the total long-chain n¡3 fatty acid level.
+Statistical Analysis
+For base-line risk factors, means or proportions were calculated
+for men who died suddenly (case subjects) and controls. The significance of associations was tested with the chi-square statistic for categorical variables and with Student’s t-test for continuous variables.
+Associations between base-line risk factors and levels of long-chain
+n¡3 fatty acids, expressed as percentages of total fatty acids, were
+tested with Student’s t-test. The Spearman rank-correlation coefficient was used to test the association between base-line levels of
+long-chain n¡3 fatty acids and fish consumption, measured at 12
+months.
+Means (expressed as percentage of total fatty acids) for each fattyacid peak were calculated for case and control subjects, and the
+significance of differences was tested by Student’s t-test for those
+that were normally distributed and the Wilcoxon rank-sum test for
+those that were not normally distributed. To estimate the relative
+risk of sudden death according to the blood level of long-chain n¡3
+fatty acids, we first categorized each subject according to quartiles
+determined by the distribution of fatty acid levels in the controls.
+We then performed logistic-regression analysis, conditioned on the
+matching variables of age and smoking. Adjusted estimates of risk
+were obtained with multivariate models that also controlled for
+body-mass index; presence or absence of a history of diabetes, hypertension, or hyperlipidemia; presence or absence of a parental
+history of premature myocardial infarction; alcohol intake; frequency of physical activity; and random assignment to aspirin and beta
+carotene or placebo. After the quartile analysis suggested a linear
+relation, tests for trend were performed by entering a continuous
+variable in the conditional-regression model.
+In secondary analyses, to assess for confounding by other fatty
+acids, each fatty-acid group (saturated, monounsaturated, n¡6 polyunsaturated, and trans unsaturated fatty acids) was entered separately according to quartile into the multivariate model, and the
+change in the parameter estimate for the continuous value of longchain n–3 fatty acid was observed. If a change of more than 15 percent was noted, the fatty acid remained in this multivariate model.
+All P values were two-tailed, and all confidence levels were computed at the 95 percent level.
+
+RESULTS
+
+Table 1 shows the base-line characteristics of the 94
+subjects in whom sudden death was the first manifestation of cardiovascular disease and the 184 matched
+controls. The mean time from study enrollment to
+sudden death was 8.7 years (range, 0.7 to 16.9). In this
+sample, the men who died suddenly were significantly more likely to have a history of hypertension, significantly more likely to have a parental history of early
+coronary artery disease (i.e., before 60 years of age),
+and significantly less likely to have been randomly assigned to receive aspirin. The relation with alcohol intake was U-shaped: men who died suddenly were more
+
+1114 · N Engl J Med, Vol. 346, No. 15 · April 11, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+n ¡ 3 FAT T Y ACID S A ND SUD D EN D EATH
+
+TABLE 1. BASE-LINE CHARACTERISTICS
+GROUP
+
+Age — yr
+Body-mass index†
+Vigorous exercise less than once weekly
+— no. (%)‡
+Smoking status — no. (%)
+Current smoker
+Former smoker
+Never smoked
+Medical history — no. (%)
+Diabetes
+High cholesterol level§
+Hypertension¶
+Parental history of myocardial infarction
+before 60 yr — no. (%)
+Alcohol intake — no. (%)
+Less than weekly
+1–6 Drinks weekly
+Daily
+Aspirin assignment — no. (%)
+
+STUDY PARTICIPANTS.
+
+SUDDEN DEATH
+CARDIAC CAUSES
+(N=94)
+
+CONTROL
+GROUP*
+(N=184)
+
+P VALUE
+
+58.5±9.2
+25.4±2.9
+23 (24.7)
+
+58.3±9.1
+25.1±3.3
+55 (30.1)
+
+Matching factor
+0.33
+0.19
+
+13 (13.8)
+42 (44.7)
+39 (41.5)
+
+25 (13.6)
+83 (45.1)
+76 (41.3)
+
+5
+8
+44
+14
+
+(5.3)
+(9.2)
+(48.4)
+(15.6)
+
+6
+24
+54
+8
+
+(3.3)
+(15.5)
+(30.0)
+(4.4)
+
+0.41
+0.73
+0.003
+0.002
+
+34
+29
+30
+40
+
+(36.6)
+(31.2)
+(32.3)
+(42.6)
+
+42
+96
+44
+105
+
+(23.1)
+(52.8)
+(24.2)
+(57.1)
+
+0.004
+
+WITH
+
+FROM
+
+CHARACTERISTIC
+
+OF THE
+
+Matching factor
+
+0.02
+
+*Plus–minus values are means ±SD. Percentages are based on the numbers of subjects for whom
+data were available.
+†The body-mass index is the weight in kilograms divided by the square of the height in meters.
+‡Vigorous exercise was defined as “exercise vigorous enough to work up a sweat.”
+§The self-reported total cholesterol level was at least 240 mg per deciliter (6.2 mmol per liter), or
+the subject was taking cholesterol-lowering medication.
+¶The self-reported blood pressure was at least 140/90 mm Hg, or the subject was taking antihypertensive medication.
+
+likely to drink less than once a week or daily, and less
+likely to drink one to six drinks per week. Of the risk
+factors listed in Table 1, significantly lower levels of
+long-chain n¡3 fatty acids were found among current
+smokers than among former smokers or those who
+had never smoked (mean [±SD], 4.47±1.31 vs. 5.20±
+1.30 percent of total fatty acids; P=0.002). In addition, the base-line blood level of long-chain n¡3 fatty
+acids was significantly correlated with fish intake at 12
+months (R2=0.24, P=0.001) (data not shown).
+The base-line blood levels of each major fatty acid
+among men who died suddenly and controls are
+shown in Table 2. The mean level of total long-chain
+n¡3 fatty acids was significantly lower among the men
+who died suddenly than among the controls (4.82±
+1.31 vs. 5.24±1.32 percent of total fatty acids, P=
+0.01). In contrast, the levels of the other fatty acids, including the short-chain n¡3 polyunsaturated fatty acid
+(a-linolenic acid), saturated fatty acids, monounsaturated fatty acids, n¡6 polyunsaturated fatty acids, and
+trans unsaturated fatty acids, did not differ significantly
+between men who died suddenly and control subjects.
+Table 3 shows the relation of base-line blood levels
+of long-chain n¡3 fatty acids to the risk of sudden
+
+death. The level of long-chain n¡3 fatty acids was significantly inversely related to the risk of sudden death
+in both the analysis adjusted for age and smoking status (P for trend=0.004) and the multivariate analysis
+(P for trend=0.007). As compared with the men with
+levels of long-chain n¡3 fatty acids in the lowest quartile (mean, 3.58 percent of total fatty acids), those with
+levels in the highest quartile (mean, 6.87 percent) had
+a relative risk of sudden death of 0.19 (95 percent confidence interval, 0.05 to 0.71) after known confounders were controlled for (multivariate model 1). These
+results were not materially affected when 15 possible sudden deaths were excluded from the analysis
+(relative risk for highest vs. lowest quartile, 0.14;
+95 percent confidence interval, 0.03 to 0.75; P for
+trend=0.01).
+Since the level of long-chain n¡3 fatty acids was
+significantly associated with levels of other fatty acids
+(inversely with saturated, trans unsaturated, and monounsaturated fatty acids and directly with n¡6 polyunsaturated fatty acids), each fatty-acid group was entered
+in the multivariate model to evaluate the independent
+association of long-chain n¡3 fatty acids with the risk
+of sudden death. Adjustment for saturated and n¡6
+
+N Engl J Med, Vol. 346, No. 15 · April 11, 2002 · www.nejm.org · 1115
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+TABLE 2. BASE-LINE BLOOD FATTY-ACID LEVELS OF STUDY PARTICIPANTS WHO DIED
+SUDDENLY FROM CARDIAC CAUSES WITHOUT EVIDENCE OF CARDIOVASCULAR DISEASE
+AND CONTROLS MATCHED FOR AGE AND SMOKING STATUS.*
+GROUP
+
+SUDDEN DEATH
+CARDIAC CAUSES
+(N=94)
+
+WITH
+
+FROM
+
+FATTY ACID
+
+CONTROL
+GROUP
+(N=184)
+
+P VALUE
+
+percentage of total fatty acids
+
+Total saturated
+Palmitic
+Stearic
+Total monounsaturated
+Oleic
+Total n¡6 polyunsaturated
+Linoleic
+Arachidonic
+Total long-chain n¡3 polyunsaturated
+Eicosapentaenoic
+Docosahexaenoic
+Docosapentaenoic
+Short-chain n¡3 polyunsaturated
+a-Linolenic
+Total trans unsaturated
+18:1 trans isomers
+18:2 trans isomers
+
+31.6±1.88
+19.2±2.16
+10.6±1.02
+19.8±3.25
+17.2±2.69
+38.1±3.81
+24.0±3.31
+10.6±1.88
+4.82±1.31
+1.72±0.59
+2.12±0.65
+0.98±0.23
+
+31.3±1.80
+18.8±2.00
+10.6±0.91
+19.5±2.69
+17.0±2.28
+38.3±3.49
+24.2±3.61
+10.6±1.75
+5.24±1.32
+1.84±0.53
+2.38±0.78
+1.01±0.21
+
+0.21
+0.16
+0.75
+0.72
+0.89
+0.65
+0.56
+0.93
+0.01
+0.06
+0.005
+0.25
+
+0.39±0.16
+1.77±0.63
+1.17±0.48
+0.41±0.16
+
+0.37±0.15
+1.79±0.55
+1.18±0.46
+0.41±0.11
+
+0.28
+0.55
+0.67
+0.17
+
+*Plus–minus values are means ±SD.
+
+TO
+
+TABLE 3. RELATIVE RISK OF SUDDEN DEATH FROM CARDIAC CAUSES ACCORDING
+BASE-LINE BLOOD LEVEL OF LONG-CHAIN n¡3 POLYUNSATURATED FATTY ACIDS.*
+
+VARIABLE
+
+QUARTILE
+
+OF
+
+n¡3 POLYUNSATURATED FATTY ACID
+
+P VALUE
+TREND
+
+FOR
+
+1
+
+Fatty acid level (%)†
+Mean
+Range
+Model adjusted for age
+   and smoking status
+Relative risk
+95% confidence interval
+Multivariate model 1‡
+Relative risk
+95% confidence interval
+Multivariate model 2§
+Relative risk
+95% confidence interval
+
+2
+
+3
+
+4
+
+3.58
+2.12–4.32
+
+4.76
+4.33–5.19
+
+5.63
+5.20–6.07
+
+6.87
+6.08–10.2
+
+1.0
+
+0.47
+0.22–1.00
+
+0.37
+0.17–0.83
+
+0.31
+0.13–0.75
+
+0.004
+
+1.0
+
+0.55
+0.18–1.70
+
+0.28
+0.09–0.87
+
+0.19
+0.05–0.71
+
+0.007
+
+1.0
+
+0.52
+0.16–1.72
+
+0.19
+0.05–0.69
+
+0.10
+0.02–0.48
+
+0.001
+
+*Long-chain n¡3 polyunsaturated fatty acids found in fish include docosahexaenoic acid, eicosapentaenoic acid, and docosapentaenoic acid.
+†Levels are expressed as a percentage of total fatty acids.
+‡Multivariate model 1 controlled for assignment to aspirin and beta carotene treatment or placebo,
+body-mass index (subjects were classified as having values of less than 25, 25 to 30, or more than
+30), history of diabetes, history of hypertension, history of hypercholesterolemia, alcohol consumption (monthly or less, one to six drinks per week, or daily), frequency of vigorous exercise (less than
+weekly, or at least once weekly), and parental history of myocardial infarction before the age of 60 years.
+§Multivariate model 2 included the variables in multivariate model 1 and the quartile of trans unsaturated fatty acid and monounsaturated fatty acid levels.
+
+1116 · N Engl J Med, Vol. 346, No. 15 · April 11, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+n ¡ 3 FAT T Y ACID S A ND SUD D EN D EATH
+
+polyunsaturated fatty acids did not appreciably alter
+the association between long-chain n¡3 polyunsaturated fatty acids and the risk of sudden death. Adjustment for monounsaturated and trans unsaturated fatty acids resulted in a further strengthening of
+the relation (Table 3, multivariate model 2). With this
+adjustment, the relative risk of sudden death among
+men with levels of long-chain n¡3 fatty acids in the
+highest quartile as compared with the lowest quartile
+was 0.10 (95 percent confidence interval, 0.02 to 0.48;
+P for trend=0.001).
+DISCUSSION
+
+In this prospective, nested case–control study of
+healthy male physicians without evidence of cardiovascular disease at enrollment, the base-line blood level of long-chain n¡3 fatty acids was inversely associated with the subsequent risk of sudden death, even
+after known confounders had been controlled for. The
+association was linear, with a statistically significant inverse trend across quartiles of levels of long-chain
+n¡3 fatty acids. As compared with men with levels
+of long-chain n¡3 fatty acids in the lowest quartile,
+those with levels in the highest quartile had an 81 percent lower risk of sudden death. This relation persisted when blood levels of other fatty-acid groups were
+controlled for in the model. Therefore, the association
+did not appear to depend on compensatory changes
+in the levels of other fatty acids.
+These prospective findings are remarkably similar
+to those reported in a population-based case–control
+study involving 82 cases of primary cardiac arrest.13
+That study found a strong inverse association between
+red-cell n–3 fatty-acid composition at the time of the
+arrest and the risk of primary cardiac arrest among
+subjects with no history of clinically recognized cardiac disease. Taken together, these data support the
+hypothesis that long-chain n¡3 fatty acids are responsible for the observed inverse association between fish
+consumption and sudden death.1,13 There was no evidence of a threshold effect for blood levels of longchain n¡3 fatty acids, although a threshold effect was
+previously reported for fish intake in this cohort.1
+Because the present study did not examine other
+cardiovascular end points or death from other causes,
+we cannot present direct data on the selectivity of the
+association between long-chain n¡3 fatty acids and
+sudden death. However, previous studies of this cohort found no association between plasma levels of
+long-chain n¡3 fatty acids14 or fish intake1 and the
+risk of myocardial infarction. In addition, a selective
+beneficial effect on the risk of sudden death was found
+in a randomized trial.4 In that trial, men with a history
+of myocardial infarction who were assigned to a fishoil supplement had a statistically significant 45 percent
+reduction in the risk of sudden death, which translat-
+
+ed into an overall significant reduction in total mortality. However, there was no reduction in the risk of
+nonfatal cardiovascular events or in other causes of
+mortality.
+The apparent beneficial effect on the risk of sudden
+death from cardiac causes in observational studies and
+randomized trials could be due in part to the antiarrhythmic effects of n¡3 fatty acids, as reported from
+experimental models.3,15,16 Plausible mechanisms for
+these antiarrhythmic effects include modulation of sodium, potassium, and L-type calcium channels 2,17,18;
+inhibition of thromboxane production19,20; and beneficial effects on heart-rate variability.21,22 Other indirect effects of long-chain n¡3 fatty acids include lowering of the nonesterified fatty-acid concentration in
+plasma and cell membranes. Nonesterified fatty acids
+have multiple proarrhythmic properties and have recently been associated with an increased risk of sudden
+death, but not of fatal myocardial infarction, among
+men enrolled in the Paris Prospective Study I.23
+The limitations of these data merit consideration.
+First, our analyses are based on a single base-line measurement and therefore may not accurately reflect levels
+of long-chain n–3 fatty acids over long periods. Furthermore, although the coefficients of variation were
+low, misclassification due to laboratory error cannot be
+ruled out. It is important to note, however, that neither of these sources of variability can account for the
+strong inverse association we observed between longchain n¡3 fatty acid levels and sudden death, since
+any random misclassification would bias results toward
+the null hypothesis. The use of a single base-line measurement does, however, limit our ability to assess accurately the relation between the shorter-chain n¡3
+fatty acid, a-linolenic acid, and sudden death, since this
+fatty acid is largely metabolized,24 and if it is stored,
+it is elongated to docosahexaenoic acid. Therefore,
+blood levels of a-linolenic acid would be more dependent on what foods were eaten recently and less
+likely to reflect average dietary intake.
+The use of whole blood is a possible limitation, because it combines two different pools of long-chain
+n¡3 fatty acids, the plasma and the stored red-cell
+pools. Alternatively, this composite measure may be
+viewed as a strength, since these pools have different
+half-lives and provide complementary information.
+Finally, as with any observational study, the inverse
+association between blood levels of long-chain n¡3
+fatty acids and sudden death could be due, at least in
+part, to residual confounding by other dietary and lifestyle factors. However, control for major known confounders and other fatty-acid groups had little effect
+on the estimates of relative risk.
+In summary, taken together with previous data from
+observational studies and randomized trials, these prospective data suggest that the long-chain n¡3 fatty ac-
+
+N Engl J Med, Vol. 346, No. 15 · April 11, 2002 · www.nejm.org · 1117
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+ids found in fish may reduce the risk of sudden death
+from cardiac causes, even among men without a history of cardiovascular disease. Because more than 50
+percent of all sudden deaths from cardiac causes occur
+in people with no history of cardiac disease,5 preventive efforts must address this segment of the population to have a substantial effect on the overall incidence
+of sudden death from cardiac causes. If the observed
+association is causal, increasing the intake of n¡3 fatty
+acids by eating more fish or by taking supplements is
+an intervention that could be applied to this segment
+of the population at low cost and little risk.
+Supported by grants from the National Institutes of Health (CA-34944,
+CA-40360, HL-26490, and HL-34595) and by a Mentored Clinical Scientist Development Award (1-K08-HL-03783) from the National Heart,
+Lung, and Blood Institute (to Dr. Albert).
+
+REFERENCES
+1. Albert CM, Hennekens CH, O’Donnell CJ, et al. Fish consumption
+and risk of sudden cardiac death. JAMA 1998;279:23-8.
+2. Kang JX, Leaf A. Antiarrhythmic effects of polyunsaturated fatty acids:
+recent studies. Circulation 1996;94:1774-80.
+3. Billman GE, Kang JX, Leaf A. Prevention of sudden cardiac death by
+dietary pure v-3 polyunsaturated fatty acids in dogs. Circulation 1999;99:
+2452-7.
+4. GISSI-Prevenzione Investigators (Gruppo Italiano per lo Studio della
+Sopravvivenza nell’Infarto Miocardico). Dietary supplementation with n-3
+polyunsaturated fatty acids and vitamin E after myocardial infarction: results of the GISSI-Prevenzione trial. Lancet 1999;354:447-55. [Erratum,
+Lancet 2000;357:642.]
+5. Kannel WB, Schatzkin A. Sudden death: lessons from subsets in population studies. J Am Coll Cardiol 1985;5:Suppl B:141B-149B.
+6. The Steering Committee of the Physicians’ Health Study Research
+Group. Preliminary report: findings from the aspirin component of the ongoing Physicians’ Health Study. N Engl J Med 1988;318:262-4.
+7. Idem. Final report on the aspirin component of the ongoing Physicians’
+Health Study. N Engl J Med 1989;321:129-35.
+8. Willett WC, Sampson L, Stampfer MJ, et al. Reproducibility and validity of a semiquantitative food frequency questionnaire. Am J Epidemiol
+1985;122:51-65.
+9. Hinkle KE, Thaler HT. Clinical classification of cardiac deaths. Circulation 1982;65:457-64.
+
+10. Zeleniuch-Jacquotte A, Chajes V, Van Kappel AL, Riboli E, Toniolo
+P. Reliability of fatty acid composition in human serum phospholipids. Eur
+J Clin Nutr 2000;54:367-72.
+11. Zock P, Gerristen J, Katan M. Partial conservation of the sn-2 position
+of dietary triglycerides in fasting plasma lipids in humans. Eur J Clin Invest
+1996;26:141-50.
+12. Zock PL, Mensink RP, Harryvan J, de Vries JH, Katan MB. Fatty acids
+in serum cholesteryl esters as quantitative biomarkers of dietary intake in
+humans. Am J Epidemiol 1997;145:1114-22.
+13. Siscovick DS, Raghunathan TE, King I, et al. Dietary intake and cell
+membrane levels of long-chain n-3 polyunsaturated fatty acids and the risk
+of primary cardiac arrest. JAMA 1995;274:1363-7.
+14. Guallar E, Hennekens CH, Sacks FM, Willett WC, Stampfer MJ. A
+prospective study of plasma fish oil levels and incidence of myocardial infarction in U.S. male physicians. J Am Coll Cardiol 1995;25:387-94.
+15. Billman GE, Hallaq H, Leaf A. Prevention of ischemia-induced ventricular fibrillation by v3 fatty acids. Proc Natl Acad Sci U S A 1994;91:
+4427-30.
+16. McLennan PL, Bridle TM, Abeywardena MY, Charnock JS. Dietary
+lipid modulation of ventricular fibrillation threshold in the marmoset monkey. Am Heart J 1992;123:1555-61.
+17. Xiao YF, Gomez AM, Morgan JP, Lederer WJ, Leaf A. Suppression of
+voltage-gated L-type Ca2+ currents by polyunsaturated fatty acids in adult
+and neonatal rat ventricular myocytes. Proc Natl Acad Sci U S A 1997;94:
+4182-7.
+18. Xiao Y-F, Wright SN, Wang GK, Morgan JP, Leaf A. Fatty acids suppress voltage-gated Na+ currents in HEK293t cells transfected with the alpha-subunit of the human cardiac Na+ channel. Proc Natl Acad Sci U S A
+1998;95:2680-5.
+19. Nair SSD, Leitch JW, Falconer J, Garg ML. Prevention of cardiac arrhythmia by dietary (n-3) polyunsaturated fatty acids and their mechanism
+of action. J Nutr 1997;127:383-93.
+20. Li Y, Kang JX, Leaf A. Differential effects of various eicosanoids on
+the production or prevention of arrhythmias in cultured neonatal rat cardiac myocytes. Prostaglandins 1997;54:511-30.
+21. Christensen JH, Korup E, Aaroe J, et al. Fish consumption, n-3 fatty
+acids in cell membranes, and heart rate variability in survivors of myocardial infarction with left ventricular dysfunction. Am J Cardiol 1997;79:
+1670-3.
+22. Christensen JH, Skou HA, Fog L, et al. Marine n-3 fatty acids, wine
+intake, and heart rate variability in patients referred for coronary angiography. Circulation 2001;103:651-7.
+23. Jouven X, Charles MA, Desnos M, Ducimetiere P. Circulating nonesterified fatty acid level as a predictive risk factor for sudden death in the
+population. Circulation 2001;104:756-61.
+24. Cunnane SC, Anderson MJ. The majority of dietary linoleate in growing rats is b-oxidized or stored in visceral fat. Nutrition 1997;127:146-52.
+Copyright © 2002 Massachusetts Medical Society.
+
+1118 · N Engl J Med, Vol. 346, No. 15 · April 11, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.

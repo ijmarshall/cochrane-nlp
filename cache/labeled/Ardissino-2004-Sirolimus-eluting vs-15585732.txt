@@ -1,0 +1,1347 @@
+ORIGINAL CONTRIBUTION
+
+Sirolimus-Eluting vs Uncoated Stents
+for Prevention of Restenosis
+in Small Coronary Arteries
+A Randomized Trial
+Diego Ardissino, MD
+Claudio Cavallini, MD
+Ezio Bramucci, MD
+Ciro Indolfi, MD
+Antonio Marzocchi, MD
+Antonio Manari, MD
+Giulia Angeloni, MD
+Giuseppe Carosio, MD
+Erminio Bonizzoni, BSc, PhD
+Stefania Colusso, RN
+Monica Repetto, BSc
+Piera Angelica Merlini, MD
+for the SES-SMART Investigators
+
+A
+
+THEROSCLEROTIC LESIONS OF
+
+small coronary arteries are
+frequently found in patients
+undergoing revascularization.1-5 However, the revascularization of small coronary arteries is a problem for bypass surgery because it is
+technically difficult and associated with
+a high failure and mortality rate6,7 and
+for percutaneous coronary revascularization because it is associated with high
+rates of acute complications and restenosis after standard balloon angioplasty1-3 and stent implantation.4,5
+It has been shown that sirolimuseluting stents reduce angiographic restenosis and improve the rate of eventfree survival in patients who have
+coronary artery disease and are at low
+risk of restenosis.8 More recent reports
+For editorial comment see p 2777.
+
+Context Percutaneous coronary revascularization of small vessels is associated with
+a high restenosis rate. Sirolimus-eluting stents reduce restenosis in simple and previously untreated lesions of large coronary arteries, but their outcomes in small vessels
+have not been adequately investigated.
+Objective To determine whether sirolimus-eluting stents are associated with a reduced 8-month rate of angiographic restenosis in comparison with an uncoated stent.
+Design, Setting, and Patients This was a randomized, multicenter, single-blind,
+prospective trial performed with <n>257</n> patients undergoing percutaneous coronary revascularization for ischemic heart disease, and who had a previously untreated atherosclerotic lesion located in a small segment with a diameter of 2.75 mm or less, in
+20 Italian centers between August 2002 and December 2003.
+Intervention Patients were randomly assigned to receive a sirolimus-eluting stent
+(129 patients) or an uncoated stent having an identical architecture and radiographic
+appearance (128 patients).
+Main Outcome Measures The primary end point was the 8-month binary insegment restenosis rate; secondary end points included procedural success and the
+8-month rate of major adverse cardiac and cerebrovascular events.
+Results The mean (SD) reference diameter of the treated segment was 2.2(0.28)
+mm; the lesion length, 11.84(6.15) mm. After 8 months, the binary in-segment restenosis rate was 53.1% (60/113) in the patients receiving an uncoated stent and 9.8%
+(12/123) in those receiving a sirolimus-eluting stent (relative risk [RR], 0.18; 95% confidence interval [CI], 0.10-0.32; PϽ.001). Fewer patients randomized to sirolimuseluting stents experienced major adverse cardiac events (12/129 [9.3%] vs 40/128
+[31.3%]; RR, 0.30; 95% CI, 0.15-0.55; PϽ.001) mainly because of a reduction in target lesion revascularization (9/129 [7%] vs 27/128 [21.1%]; RR, 0.33; 95% CI, 0.140.70; P = .002) and myocardial infarction (2/129 [1.6%] vs 10/129 [7.8%]; RR, 0.20;
+95% CI, 0.01-0.93; P=.04).
+Conclusion The use of sirolimus-eluting stents to treat atherosclerotic lesions in small
+coronary arteries reduces restenosis and may also reduce major adverse cardiac events.
+www.jama.com
+
+JAMA. 2004;292:2727-2734
+Author Affiliations: Division of Cardiology, Ospedale Maggiore, University of Parma (Dr Ardissino); Division of Cardiology, Ospedale Ca’ Foncello, Treviso
+(Dr Cavallini); Division of Cardiology, Policlinico San
+Matteo, Istituto di Ricovero e Cura a Carattere Scientifico, University of Pavia (Dr Bramucci); Division of
+Cardiology, University of Magna Grecia, Catanzaro (Dr
+Indolfi); Division of Cardiology, Ospedale Sant’Orsola,
+University of Bologna (Dr Marzocchi); Division of Cardiology, Ospedale Santa Maria Nuova, Reggio Emilia
+(Dr Manari); Division of Cardiology, Policlinico A. Gemelli, University of Sacro Cuore, Rome (Dr Angeloni); Division of Cardiology, Ospedale SS Antonio
+
+©2004 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+e Biagio e Cesare Arrigo, Alessandria (Dr Carosio); Mediolanum Cardio Research (Mss Colusso and Repetto); Institute of Medical Statistics and Biometry, University of Milan (Dr Bonizzoni); and Division of
+Cardiology, Ospedale Niguarda, Milan (Dr Merlini), Italy.
+A List of the Sirolimus-Eluting Stent in the Prevention
+of Restenosis in Small Coronary Arteries (SES-SMART)
+Investigators appears at the end of this article.
+Corresponding Author: Diego Ardissino, MD, Dipartimento del Cuore, Divisione di Cardiologia, Ospedale Maggiore di Parma, Università degli Studi di Parma,
+Via Gramsci 14, 43100 Parma, Italy (cardiologia.parma
+@ao.pr.it).
+
+(Reprinted) JAMA, December 8, 2004—Vol 292, No. 22 2727
+
+DRUG-ELUTING VS UNCOATED STENTS TO PREVENT RESTENOSIS
+
+Figure 1. Trial Profile
+260 Patients Assessed for Eligibility
+
+3 Excluded (Did Not Meet Inclusion Criteria)
+
+257 Randomized
+
+129 Assigned to Receive Sirolimus-Eluting Stent
+128 Received Intervention as Assigned
+1 Did Not Receive Assigned Intervention
+(Stent Could Not Be Deployed)
+
+128 Assigned to Receive Uncoated Stent
+125 Received Intervention as Assigned
+3 Did Not Receive Assigned Intervention
+1 Stent Could Not Be Deployed
+1 Received Stent Other Than the
+Study Stent
+1 Procedure Could Not Be Performed
+
+6 Did Not Undergo Follow-up Angiography
+1 Developed Renal Insufficiency
+5 Refused to Undergo Follow-up Angiography
+
+15 Did Not Undergo Follow-up Angiography
+2 Died Before Follow-up Angiography
+12 Refused to Undergo Follow-up Angiography
+1 Developed Renal Insufficiency
+
+123 Had Follow-up Angiography and Were
+Included in the Primary Analysis
+
+113 Had Follow-up Angiography and Were
+Included in the Primary Analysis
+
+have also shown the efficacy of drugeluting stents under more challenging
+conditions such as long and complex lesions, and post hoc analyses of trial subpopulations suggest that drug-eluting
+stents may also effectively prevent restenosis in small vessels.9-11
+This randomized, multicenter, prospective trial was designed to test the
+hypothesis that the implantation of a
+sirolimus-eluting stent in small coronary arteries is associated with a reduced 8-month rate of angiographic
+restenosis in comparison with the implantation of an uncoated stent having an identical architecture.
+METHODS
+
+tients could have had single-vessel or
+multivessel disease but, in the latter
+case, had to have the nonrandomized
+lesion located in other coronary vessels.
+Major exclusion criteria were recent ST-segment elevation acute coronary syndrome (within the previous 15
+days), severe calcifications or thrombuscontaining lesions, a left ventricular
+ejection fraction less than 30%, and
+known allergies to aspirin, clopidogrel, ticlopidine, heparin, stainless steel,
+contrast agents, or sirolimus. The study
+protocol was approved by the ethics
+committee of each participating center, and all patients gave written informed consent.
+
+Patients
+
+Randomization and Interventions
+
+Eligible patients had to be aged 18 years
+or older, with a documented diagnosis of acute coronary syndrome (without persistent ST-segment elevation),
+stable angina pectoris, or silent myocardial ischemia as shown by exercise
+stress test. Additional eligibility criteria were the presence of a single, previously untreated 50% to 99% target lesion in a native coronary artery 2.75
+mm in diameter or less, which could be
+completely covered by a single stent
+(maximum length, 33 mm). The pa-
+
+Online quantitative coronary angiography confirming vessel diameter and
+lesion-length enrollment criteria was
+performed before randomization. An
+automated telephone randomization
+system was used to assign the patients
+to treatment with a sirolimus-eluting
+stent (Cypher balloon-expandable stent;
+Cordis, Miami Lakes, Fla) or an uncoated stent of identical architecture
+and radiographic appearance (Bx Sonic
+balloon-expandable stent; Cordis), in
+a 1:1 ratio according to a centralized list.
+
+2728
+
+JAMA, December 8, 2004—Vol 292, No. 22 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+The randomization list was generated
+for a completely randomized design, ie,
+without blocks or stratification factors, using the SAS PLAN (SAS Institute Inc, Cary, NC) procedure. The investigators had to digitize patient date
+of birth, site number, vessel size, and
+stent length by means of an interactive voice recording system to obtain the
+assigned treatment. Data were confirmed by fax, which was included in
+the case report form.
+Diameters of both types of stents
+were 2.25, 2.50, and 2.75 mm, and
+lengths were 8, 13, 18, 23, 28, and 33
+mm. The 2 types of stents were visually and angiographically indistinguishable. The lesions were treated by using standard interventional techniques,
+including mandatory balloon dilatation before stent placement.
+Before the index procedure, all patients received oral aspirin once daily and
+clopidogrel (a loading dose of 300 mg at
+least 2 hours before the procedure). Patients who had been pretreated with ticlopidine (250 mg twice a day) or clopidogrel (75 mg once daily) for at least 72
+hours did not receive a clopidogrel loading dose. During the procedure, heparin was given as a bolus at 70 U/kg, with
+additional boluses to maintain an activated clotting time of more than 250 seconds. The use of glycoprotein IIb/IIIa inhibitors was encouraged but left to the
+discretion of the attending physician.
+Heparin administration was discontinued immediately after the procedure.
+A 12-lead electrocardiogram was obtained before the procedure, immediately afterward, and 24 hours later or
+at discharge if earlier. Cardiac enzymes creatine kinase (CK) and CK-MB
+were evaluated twice within 8 to 16 and
+18 to 24 hours of the procedure or at
+hospital discharge if earlier. Discharged patients received a regimen of
+aspirin (100 mg once daily indefinitely) and clopidogrel (75 mg once
+daily for at least 2 months). All patients were clinically followed up after
+1 and 8 months by the trial coordinator at each site. Follow-up coronary angiography was performed after a mean
+(SD) of 8(0.5) months.
+
+©2004 American Medical Association. All rights reserved.
+
+DRUG-ELUTING VS UNCOATED STENTS TO PREVENT RESTENOSIS
+Quantitative Coronary
+Angiography
+
+Coronary angiograms obtained at baseline, on completion of the stenting procedure, and after 8 months were analyzed with a computer-based algorithm
+developed by MEDIS (version 5.1)
+(MEDIS, Medical Imaging System,
+Leiden, the Netherlands). The projection that best showed the stenosis in its
+tightest view was used for all angiograms; all details of the angiographic procedure were recorded in the case report
+forms. For standardization, each angiogram sequence was preceded by an intracoronary injection of 200 µg of nitroglycerin. Quantitative angiographic
+analyses were performed by 1 experienced cardiologist who was blinded to
+the patient’s identity, type of stent used,
+outcome, and film sequence. The minimal luminal diameter (MLD) and the
+nearest normal reference diameter
+(RVD) were measured in millimeters by
+using the catheter as a scaling factor. Percentage of stenosis was calculated as 100
+(1 − MLD/RVD). Binary restenosis was
+defined as a stenosis of more than 50%
+of the MLD in the target lesion at angiographic follow-up. Acute gain was
+defined as the difference between the
+MLD after stent implantation and baseline MLD. Late luminal loss was defined
+as the difference between the MLD at the
+end of the stenting procedure and that
+measured during follow-up. The late loss
+index was defined as late loss divided by
+acute gain. Quantitative angiographic
+measurements of the target lesion were
+obtained in the “in-stent” zone (including only the stent segment) and in the
+“in-segment” zone (including the stented
+segment and the 5-mm margins proximal and distal to the stent); intraobserver and interobserver variabilities of
+the quantitative assessments have been
+previously reported.12
+Outcomes
+
+The primary end point of the study was
+the 8-month angiographic binary insegment restenosis rate. Secondary end
+points were procedural success,
+8-month in-segment MLD, late luminal loss, late loss index, and major ad-
+
+verse cardiac and cerebrovascular
+events. Procedural success was defined as the achievement of a residual
+in-stent stenosis of less than 30% associated with thrombolysis in myocardial infarction 3 flow, in the absence of
+a dissection of more than D1, a grade
+according to the National Heart, Lung,
+and Blood Institute classification,
+without the occurrence of death, myocardial infarction, or repeated target lesion revascularization during hospitalization. Major adverse cardiac and
+cerebrovascular events were defined as
+
+cardiac death, myocardial infarction (Q
+wave and non–Q wave), cerebrovascular accident, emergency or elective coronary artery bypass grafting, or emergency or elective repeated percutaneous
+transluminal coronary intervention of
+the target lesion. All deaths were considered cardiac unless an unequivocal
+noncardiac cause could be established. Q-wave myocardial infarction
+was defined as the occurrence of prolonged chest pain with an increase in the
+CK-MB fraction of more than 3 times the
+upper normal limit and the develop-
+
+Table 1. Clinical and Angiographic Characteristics of the Patients
+All Patients
+(n = 257)
+Demographics, No. (%)
+Age, mean (SD), y
+Male sex, No. (%)
+Risk factors, No. (%)
+Diabetes mellitus
+Hypertension
+Hyperlipidemia*
+Current smoking
+History, No. (%)
+Acute coronary syndromes without
+ST-segment elevation
+Chronic stable angina pectoris
+Silent myocardial ischemia
+Previous myocardial infarction
+Previous percutaneous coronary
+intervention
+Previous coronary artery bypass
+surgery
+Diseased vessels
+1
+2
+3
+Target artery, No. (%)
+Left anterior descending
+coronary artery
+Diagonal coronary artery
+Left circumflex coronary artery
+Obtuse marginal coronary artery
+Right coronary artery
+Type of lesion (ACC/AHA class), No. (%)
+A
+B1
+B2
+C
+Diameter of reference vessel,
+mean (SD), mm
+Interpolated
+Lesion length
+
+Sirolimus
+Stent Group
+(n = 129)
+
+63.6 (11.27)
+184 (71.6)
+
+Uncoated
+Stent Group
+(n = 128)
+
+P
+Value
+
+63.2 (11.5)
+99 (76.7)
+
+63.7 (10.9)
+85 (66.4)
+
+.68
+.07
+
+64 (24.9)
+165 (64.7)
+162 (63)
+42 (16.3)
+
+25 (19.4)
+84 (65.1)
+79 (61.2)
+24 (18.6)
+
+39 (29.7)
+81 (64.3)
+83 (64.8)
+18 (14.1)
+
+.06
+.85
+.54
+.32
+
+109 (42.3)
+
+63 (48.8)
+
+46 (35.8)
+
+119 (46.4)
+29 (11.3)
+74 (28.8)
+55 (21.5)
+
+56 (43.4)
+10 (8.0)
+38 (29.5)
+26 (20.3)
+
+63 (49.6)
+19 (14.6)
+36 (28.1)
+29 (22.7)
+
+.81
+.65
+
+21 (8.2)
+
+13 (10.2)
+
+8 (6.3)
+
+.26
+
+90 (35.2)
+93 (36.3)
+73 (28.4)
+
+47 (36.4)
+46 (35.7)
+36 (27.9)
+
+43 (33.9)
+47 (37.3)
+37 (29.1)
+
+.91
+
+71 (27.5)
+
+41 (31.5)
+
+30 (23.6)
+
+23 (9.2)
+
+13 (10.3)
+
+10 (7.9)
+
+77 (29.9)
+45 (17.7)
+40 (15.7)
+
+32 (24.4)
+23 (18.6)
+20 (15.7)
+
+45 (35.4)
+22 (17.3)
+20 (15.8)
+
+63 (24.6)
+120 (46.7)
+52 (24.5)
+11 (4.3)
+
+30 (23.3)
+60 (46.5)
+31 (24.2)
+8 (6.2)
+
+33 (25.8)
+60 (46.9)
+32 (25.0)
+3 (2.3)
+
+2.20 (0.28)
+11.84 (6.15)
+
+2.22 (0.29)
+13.01 (6.53)
+
+2.17 (0.26)
+10.66 (5.51)
+
+.06
+
+.32
+
+.48
+
+.15
+.002
+
+Abbreviations: ACC, American College of Cardiology; AHA, American Heart Association.
+*Hyperlipidemia was defined as a low-density lipoprotein cholesterol level above 130 mg/dL (3.7 mmol/L).
+
+©2004 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+(Reprinted) JAMA, December 8, 2004—Vol 292, No. 22 2729
+
+DRUG-ELUTING VS UNCOATED STENTS TO PREVENT RESTENOSIS
+
+ment of new abnormal Q waves: non–
+Q-wave myocardial infarction was defined as the absence of the latter. Target
+lesion revascularization was defined as
+repeated emergency or elective percutaneous transluminal coronary intervention or emergency or elective coronary artery bypass grafting performed
+because of restenosis of the target lesion in association with angina, objective evidence of myocardial ischemia, or
+both. A cerebrovascular accident was defined as the sudden onset of vertigo,
+numbness, aphasia, or dysarthria persisting for more than 24 hours.
+Stent thrombosis was defined as an
+angiographic thrombus within the
+stented vessel at a clinically driven angiographic restudy for documented
+myocardial ischemia.
+All major adverse cardiac and cerebrovascular events and stent thrombosis were determined for the in-
+
+hospital period, from hospital discharge
+up to 8 months, and cumulatively for
+all of the 8-month follow-up period;
+they were assessed by an independent
+clinical events committee unaware of
+treatment assignment.
+Statistical Methods
+
+On the basis of the available data concerning the restenosis rate in small arteries, it was calculated that the sample
+size required to demonstrate a 66% reduction in restenosis (from 30% to 10%)
+by means of a 2-sided test with an ␣ error of .05 and a ␤ error of .10 was 103
+patients per group. To compensate for
+unsuccessful interventions and losses to
+follow-up, the sample size was increased by 25% to 128 patients per group.
+The continuous variables were compared between groups by using the t test.
+Categorical variables were compared using the ␹2 test. The binary study end
+
+Table 2. Characteristics of the Procedures
+All Patients
+(n = 257)
+Pharmacological intervention, No. (%)
+Pretreatment with thienopyridines
+Clopidogrel loading dose
+Glycoprotein IIb/IIIa antagonists
+Balloon predilatation, mean (SD)
+Diameter, mm
+Length, mm
+Balloon-artery ratio
+Stent implantation, mean (SD)
+Diameter, mm
+Length, mm
+Stent length/lesion length ratio
+Maximal inflation pressure, atm
+
+Sirolimus
+Stent Group
+(n = 129)
+
+Uncoated
+Stent Group
+(n = 128)
+
+167 (65.1)
+90 (34.9)
+19 (7.4)
+
+78 (61.8)
+49 (38.2)
+11 (8.5)
+
+88 (68.5)
+40 (31.5)
+8 (6.3)
+
+.25
+.25
+.48
+
+2.13 (0.26)
+17.264
+0.98 (0.15)
+
+2.12 (0.26)
+17.63 (3.96)
+0.97 (0.15)
+
+2.14 (0.27)
+16.88 (4.02)
+1.00 (0.16)
+
+.52
+.13
+.09
+
+2.48 (0.17)
+15.87 (5.13)
+1.58 (0.64)
+
+2.50 (0.18)
+16.99 (5.71)
+1.55 (0.64)
+
+2.47 (0.16)
+14.73 (4.2)
+1.61 (0.64)
+
+.14
+Ͻ.001
+.45
+
+13.53 (2.26)
+
+13.38 (2.08)
+
+13.67 (2.43)
+
+.39
+
+P
+Value
+
+points were analyzed using the Fisher
+exact test; the relative risks or odds ratios and their 95% confidence intervals
+(CIs) are also reported. All of the statistical analyses were performed using SAS
+software (version 6.12; SAS Institute) on
+the basis of the intention-to-treat principle, ie, the primary analysis included
+all of the patients randomized to 1 of the
+2 treatments and for whom follow-up
+coronary angiography was available, regardless of treatment actually received.
+Because of some imbalances in baseline characteristics, the main study results were confirmed by means of stratified analyses and by multivariable
+logistic regression analysis. Differences were considered statistically significant at PϽ.05 (2 tailed).
+RESULTS
+The trial profile is shown in FIGURE 1.
+Between August 2002 and February
+2003, 260 patients were enrolled in 20
+Italian centers. Three patients were not
+randomized because of the discovery of
+exclusion criteria that became apparent
+only after enrollment. The final patient
+cohort therefore included 257 patients:
+129 in the sirolimus-eluting stent group
+and 128 in the uncoated stent group.
+Characteristics of the patients, lesions, and procedures are reported in
+T ABLES 1 and 2. The groups were
+generally well matched in terms of patient and lesion characteristics; however, the patients treated with sirolimuseluting stents had longer target lesions
+and therefore received longer stents.
+Procedural success rates were excel-
+
+Table 3. Results of Quantitative Coronary Angiography
+In-Stent Zone
+
+In-Segment Zone
+Variable
+
+Sirolimus Stent
+
+Binary restenosis, No. (%)
+Minimal luminal diameter, mean (SD), mm
+Before procedure
+After procedure
+After 8 mo
+Stenosis, luminal diameter, mean (SD), %
+Before procedure
+After procedure
+After 8 mo
+
+12 (9.8)
+
+Late luminal loss, mean (SD), mm
+Loss index, mean (SD)
+2730
+
+Uncoated Stent
+
+P Value
+
+60 (53.1)
+
+Ͻ.001
+
+0.73 (0.23)
+1.84 (0.36)
+1.70 (0.48)
+
+0.71 (0.23)
+1.79 (0.34)
+1.09 (0.6)
+
+.48
+.21
+Ͻ.001
+
+66.88 (9.52)
+22.39 (9.62)
+29.26 (15.84)
+
+66.83 (10.35)
+22.93 (10.32)
+50.78 (25.83)
+
+0.16 (0.46)
+0.11 (0.5)
+
+0.69 (0.61)
+0.68 (0.68)
+
+JAMA, December 8, 2004—Vol 292, No. 22 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+Sirolimus Stent
+
+Uncoated Stent
+
+P Value
+
+55 (49.1)
+
+Ͻ.001
+
+0.73 (0.23)
+2.16 (0.24)
+2.01 (0.43)
+
+0.71 (0.23)
+2.14 (0.24)
+1.20 (0.64)
+
+.48
+.39
+Ͻ.001
+
+.96
+.66
+Ͻ.001
+
+66.88 (9.52)
+11.33 (6.53)
+17.22 (14.79)
+
+66.83 (10.35)
+10.53 (5.6)
+46.49 (27.73)
+
+.96
+.29
+Ͻ.001
+
+Ͻ.001
+Ͻ.001
+
+0.16 (0.38)
+0.11 (0.29)
+
+0.9 (0.62)
+0.68 (0.49)
+
+Ͻ.001
+Ͻ.001
+
+6 (4.9)
+
+©2004 American Medical Association. All rights reserved.
+
+DRUG-ELUTING VS UNCOATED STENTS TO PREVENT RESTENOSIS
+
+0.04-0.22; PϽ.001). Cumulative frequency curves of in-segment percentage of the diameter of stenosis at base-
+
+line, after stent implantation, and at 8
+months of follow-up are shown in
+FIGURE 2. In stratified analyses, the re-
+
+Figure 2. Cumulative Frequency of Stenosis
+Sirolimus
+Group
+
+Uncoated
+Stent Group
+
+8 Months After Stent Implantation
+Immediately After Stent Implantation
+Baseline
+100
+90
+
+Cumulative Frequency, %
+
+lent (Ͼ95%) and similar in both groups.
+The patients in both groups had small
+vessels, with a mean reference diameter of only 2.2 (SD, 0.28) mm.
+Minimal luminal diameter and percentage of stenosis diameter at baseline
+and after stent implantation were similar in the 2 groups (TABLE 3). Follow-up angiographic data were available for 123 patients treated with
+sirolimus-eluting stents (95.3%) and 113
+of those receiving uncoated stents
+(88.3%). After 8 months, the MLD, percentage of the stenosis diameter, late luminal loss, and the late loss index in the
+in-segment and in-stent zones improved more in the sirolimus-eluting
+stent group (PϽ.001 for all comparisons). The frequency of binary insegment restenosis was 9.8% in the patients receiving sirolimus-eluting stents
+and 53.1% in those receiving uncoated
+stents (relative risk, 0.18; 95% CI, 0.100.32; PϽ.001); the frequency of binary
+in-stent restenosis was 4.9% and 49.1%,
+respectively (relative risk, 0.10; 95% CI,
+
+80
+70
+60
+50
+40
+30
+20
+10
+0
+
+10
+
+20
+
+30
+
+40
+
+50
+
+60
+
+70
+
+80
+
+90
+
+100
+
+Stenosis Diameter (Percent of Luminal Diameter)
+
+The cumulative frequency of the percentage of stenosis diameter at baseline, immediately after stent implantation, and after 8 months for patients receiving a sirolimus-eluting stent (solid lines) or an uncoated stent
+(dashed lines). Dotted line indicates threshold for restenosis.
+
+Figure 3. Rates of Binary In-Segment Restenosis, Odds Ratios After 8 Months in the Patient Subgroups
+Binary In-Segment Restenosis
+No. of
+Patients
+
+Sirolimus Stent,
+No./Total, %
+
+Uncoated Stent,
+No./Total, %
+
+Odds Ratio
+(95% CI)
+
+All
+
+236
+
+12/123 (9.8)
+
+60/113 (53.1)
+
+0.10 (0.05-0.19)
+
+Sex
+Men
+Women
+
+168
+68
+
+6/94 (6.4)
+6/29 (20.7)
+
+41/74 (55.4)
+19/39 (48.7)
+
+0.05 (0.02-0.14)
+0.27 (0.03-0.82)
+
+Diabetes
+No
+Yes
+
+167
+69
+
+5/95 (5.3)
+7/28 (25)
+
+34/72 (47.2)
+26/41 (63.4)
+
+0.06 (0.02-0.17)
+0.19 (0.07-0.56)
+
+Clinical Presentation
+Chronic Stable Angina or Silent Ischemia
+Acute Coronary Syndrome Without ST Elevation
+
+136
+100
+
+6/65 (9.2)
+6/58 (10.3)
+
+34/71 (47.9)
+26/42 (61.9)
+
+0.11 (0.04-0.29)
+0.06 (0.02-0.20)
+
+Target Lesion in LAD Coronary Artery
+No
+Yes
+
+149
+87
+
+9/71 (11.3)
+4/52 (7.7)
+
+37/78 (47.4)
+23/35 (65.7)
+
+0.14 (0.06-0.33)
+0.04 (0.01-0.15)
+
+Stent Diameter, mm
+2.25
+2.50
+2.75
+
+61
+128
+46
+
+1/28 (3.6)
+7/65 (10.8)
+4/29 (13.8)
+
+17/33 (51.5)
+32/63 (50.8)
+11/17 (64.7)
+
+0.03 (0.00-0.29)
+0.12 (0.05-0.30)
+0.09 (0.02-0.37)
+
+Stent Length, mm
+8, 13, 18
+23, 28, 33
+
+203
+33
+
+7/97 (7.2)
+5/26 (19.2)
+
+53/106 (50.0)
+7/7 (100.0)
+
+0.08 (0.03-0.18)
+0.28 (0.00-0.71)∗
+
+Group
+
+Favors
+Sirolimus Stent
+
+0.0
+
+0.5
+
+Favors
+Uncoated Stent
+
+1.0
+
+1.5
+
+2.0
+
+Odds Ratio
+(95% CI)
+
+CI indicates confidence interval; LAD, left anterior descending. The size of the data markers is proportional to the number of patients.
+*Median unbiased exact odds ratio.
+
+©2004 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+(Reprinted) JAMA, December 8, 2004—Vol 292, No. 22 2731
+
+DRUG-ELUTING VS UNCOATED STENTS TO PREVENT RESTENOSIS
+
+duction of risk of restenosis with the
+sirolimus-eluting stent in comparison
+with the uncoated stent was independent of sex, diabetes mellitus status,
+clinical presentation (acute coronary
+syndrome vs chronic stable angina or
+silent myocardial ischemia), epicardial vessel location, stent diameter, and
+stent length (FIGURE 3). Similarly, in
+a multivariable logistic regression
+model, treatment with a sirolimuseluting stent was associated with a
+markedly lower rate of restenosis (adjusted odds ratio, 0.11; 95% CI, 0.050.24; PϽ.001).
+The major in-hospital, out-ofhospital, and cumulative 8-month adverse cardiac and cerebrovascular event
+rates are listed in TABLE 4. There were 2
+deaths in the uncoated stent group (one
+caused by pneumonia and the other by
+stroke followed by pneumonia) and none
+in the sirolimus stent group. The cumulative frequency of myocardial infarction was lower in the sirolimus stent
+group (relative risk, 0.20; 95% CI, 0.010.93; P=.04). Target lesion revascularization was performed less frequently in
+the patients receiving sirolimus-eluting
+stents (relative risk, 0.33; 95% CI, 0.140.70; P=.002). Major adverse cardiac and
+cerebrovascular events were less frequently observed in the sirolimus stent
+group (relative risk, 0.30; 95% CI, 0.150.55; PϽ.001). Stent thrombosis was infrequent and occurred in 2 patients dur-
+
+ing hospital stay, 1 in the sirolimus stent
+group and 1 in the uncoated stent group;
+out-of-hospital stent thrombosis occurred in 3 of the patients receiving the
+uncoated stents and in none of the sirolimus stent group (relative risk, 0.26;
+95% CI, 0.1-2.3). One of the non–Qwave myocardial infarctions that occurred during hospitalization in the sirolimus stent group was clearly unrelated
+to the target lesion, as was the related
+stent thrombosis.
+COMMENT
+Percutaneous coronary revascularization by means of balloon angioplasty has
+a lower primary success rate and a higher
+restenosis rate in small coronary arteries than in large vessels.1-3 Restenosis in
+small coronary arteries may be as high
+as 50%, as an inverse relationship between vessel size and angiographic restenosis has reported.4,5 Stenting has become the major means of percutaneous
+coronary revascularization because it has
+been demonstrated to be superior to balloon angioplasty in preventing restenosis of new focal lesions in large coronary arteries,13,14 but conflicting results
+have been reported about efficacy in
+small vessels.15-20 Potential explanations for the lack of efficacy of coronary
+angioplasty with or without stent implantation in preventing restenosis in
+small vessels may be related to characteristics of patients harboring athero-
+
+sclerotic small-vessel lesions, ie, women,
+diabetic patients, the elderly, and patients with peripheral vascular disease,
+all of whom are associated with a higher
+risk of restenosis.21,22 Another possible
+explanation may be related to the narrow diameter of the vessels, which cannot accommodate even minimal neointimal hyperplasia after angioplasty or
+stent deployment without becoming restenotic.
+Given their ability to deliver prolonged and sufficient intramural drug
+concentrations to target coronary segments, drug-eluting stents are able to dramatically reduce neointimal hyperplasia,23,24 and this specific mechanism may
+be particularly useful in reducing restenosis in small coronary arteries.
+The results of the present study demonstrate that the implantation of a sirolimus-eluting stent to treat atherosclerotic lesions of small coronary arteries
+is safe, effective, and associated with a
+lower incidence of angiographic restenosis in comparison with an uncoated
+stent. Because the 2 stents had an identical architecture, the only difference between them was the release of sirolimus, which reduced the rate of
+angiographic restenosis from 53.1% to
+9.8%, with a relative risk reduction of
+82%. The high restenosis rate observed
+in the uncoated stent group may partially account for the high absolute and
+relative risk reduction; however, this rate
+
+Table 4. Major Adverse Cardiac and Cerebrovascular Events in and Outside Hospital and Cumulatively During the 8 Months of Follow-up
+No. (%)
+From Discharge to 8 mo
+
+In-Hospital
+Variable
+Death
+Myocardial infarction
+Q wave
+Non–Q wave
+Target lesion revascularization
+Surgical revascularization
+Percutaneous revascularization
+Cerebrovascular accident
+Any major adverse cardiac or
+cerebrovascular event
+Stent thrombosis
+
+Cumulative
+
+Sirolimus Stent Uncoated Stent Sirolimus Stent Uncoated Stent Sirolimus Stent Uncoated Stent
+P
+(n = 129)
+(n = 128)
+(n = 129)
+(n = 128)
+(n = 129)
+(n = 128)
+Value*
+0
+2 (1.6)
+0
+2 (1.6)
+0
+0
+0
+0
+2 (1.6)
+
+0
+3 (2.3)
+0
+3 (2.3)
+0
+0
+0
+0
+3 (2.3)
+
+0
+0
+0
+0
+9 (7)
+0
+9 (7)
+1 (0.8)
+10 (7.8)
+
+2 (1.6)
+7 (5.5)
+2 (1.6)
+5 (3.9)
+27 (21.1)
+2 (1.6)
+25 (19.5)
+1 (0.8)
+37 (28.9)
+
+0
+2 (1.6)
+0
+2 (1.6)
+9 (7)
+0
+9 (7)
+1 (0.8)
+12 (9.3)
+
+2 (1.6)
+10 (7.8)
+2 (1.6)
+8 (6.3)
+27 (21.1)
+2 (1.6)
+25 (19.5)
+1 (0.8)
+40 (31.3)
+
+.24
+.04
+.24
+.06
+.002
+.24
+.005
+Ͼ.99
+Ͻ.001
+
+1 (0.8)
+
+1 (0.8)
+
+0
+
+3 (2.4)
+
+1 (0.8)
+
+4 (3.1)
+
+.21
+
+*P values refer to cumulative events from index procedure to 8 months of follow-up.
+
+2732
+
+JAMA, December 8, 2004—Vol 292, No. 22 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+©2004 American Medical Association. All rights reserved.
+
+DRUG-ELUTING VS UNCOATED STENTS TO PREVENT RESTENOSIS
+
+of restenosis is not all that surprising,
+given the high-risk population and highrisk lesions treated. Nevertheless, the
+9.8% restenosis rate in the sirolimuseluting stent group is also remarkably
+low. Previous post hoc analyses of the
+effect of overlapping sirolimus-eluting
+stents in small vessels revealed less satisfactory results (18.4% of restenosis in
+vessels with an average diameter of 2.32
+mm).9 The use of adequately sized single
+stents that were almost 60% longer than
+the lesion may explain the remarkably
+low restenosis rate.
+Not only was there a reduction in the
+risk of angiographic restenosis but also
+a lower rate of major adverse cardiovascular events, mainly because of the
+decreased incidence of ischemia-driven
+target-lesion revascularization and myocardial infarction. Why the implantation of a sirolimus-eluting stent may prevent the development of myocardial
+infarction remains unclear and needs to
+be confirmed. The beneficial effects of the
+sirolimus-eluting stent were achieved
+without any increase in complications,
+including stent thrombosis, which is a
+feared event, particularly in patients receiving stents in small vessels.
+This was a single-blind, randomized
+trial, and therefore the cardiologists performing the procedure knew whether the
+patients were receiving a drug-eluting or
+an uncoated stent. However, the risk of
+a selection bias was minimized by the
+completely randomized design. Furthermore, because patients and the angiographic core laboratory personnel were
+blinded to the assigned treatment, symptom reporting and the angiographic results should not have been influenced by
+the open-label design.
+Another possible limitation is related to the comparator bare-metal stent
+used. A different comparator with thinner struts might have led to a lower incidence of restenosis in the uncoated
+stent group. However, our purpose was
+to compare 2 angiographically indistinguishable stents with the same architecture to verify the effect of the eluting drug.
+Despite these limitations, we found
+that in a highly challenging condition,
+
+namely, revascularization of small coronary arteries in patients with stable angina pectoris or acute coronary syndrome without ST-segment elevation,
+the use of sirolimus-eluting stents likely
+represents an advance in the prevention of angiographic restenosis and the
+short-term recurrence of adverse cardiac events. To establish their longterm efficacy and cost-effectiveness in
+the treatment of small coronary arteries, extended follow-up is required.
+Author Contributions: Dr Ardissinio had full access to
+all of the data in the study and takes responsibility for
+the integrity of the data and the accuracy of the data
+analysis.
+Study concept and design: Ardissino, Cavallini,
+Marzocchi, Merlini.
+Acquisition of data: Ardissino, Bramucci, Indolfi,
+Marzocchi, Manari, Angeloni, Carosio, Repetto, Merlini.
+Analysis and interpretation of data: Ardissino, Cavallini,
+Bonizzoni, Repetto, Merlini.
+Drafting of the manuscript: Ardissino, Cavallini,
+Bonizzoni, Marzocchi, Colusso, Merlini.
+Critical revision of the manuscript for important intellectual content: Ardissino, Bramucci, Indolfi, Manari,
+Angeloni, Carosio, Bonizzoni, Merlini.
+Statistical analysis: Ardissino, Bonizzoni, Repetto,
+Merlini.
+Obtained funding: Ardissino.
+Administrative, technical, or material support:
+Ardissino, Merlini.
+Study supervision: Ardissino.
+Investigators and Institutions in the SirolimusEluting Stent in the Prevention of Restenosis in Small
+Coronary Arteries (the SES-SMART Study)
+Chairmen: Diego Ardissino, MD, Ospedale Maggiore
+di Parma, Universita’ degli Studi di Parma, Parma; Claudio Cavallini, MD, Ospedale Ca’ Foncello, Treviso.
+Executive Committee: Ezio Bramucci, MD, Policlinico San Matteo, Universita’ degli Studi di Pavia, Pavia; Ciro Indolfi, MD, Universita’ degli Studi della
+Magna Grecia, Catanzaro; Antonio Marzocchi, MD,
+Policlinico Sant’Orsola, Universita’ degli Studi di Bologna, Bologna; Nello Becco, Cordis Italia, Milano.
+Steering Committee: Antonio Manari, MD, Ospedale
+S. Maria Nuova, Reggio Emilia; Giulia Angeloni, MD,
+Università Cattolica Sacro Cuore di Roma, Policlinico
+A. Gemelli, Roma; Giuseppe Carosio, MD, Azienda Ospedaliera SS Antonio e Biagio e Cesare Arrigo, Alessandria; Enrico Aurier, MD, Ospedale Maggiore di
+Parma, Universita’ degli Studi di Parma, Parma; Luigi
+Piatti, MD, Ospedale A. Manzoni, Lecco; Roberto Violini, MD, Azienda Ospedaliera S. Camillo Forlanini,
+Roma; Pasquale Lisanti, MD, Azienda Ospedaliera S.
+Carlo, Potenza; Mauro De Benedictis, MD, Ospedale
+Mauriziano Umberto I, Torino; Giancarlo Piovaccari, MD,
+Ospedale Infermi, Rimini; Arturo Bande, MD, Azienda
+Ospedaliera G. Brotzu, Cagliari; Carmelo Cernigliaro,
+MD, Unità Operativa di Cardiologia Novara, Novara;
+Zoran Olivari, MD, Ospedale Cà Foncello, Treviso; Antonio Montinaro, MD, Azienda Unità Sanitaria Locale
+Lecce 1, Lecce; Roberto Bonmassari, MD, Ospedale S.
+Chiara, Trento; Enrico Magagnini, MD, Azienda Ospedaliera Universitaria Pisana Ospedale S. Chiara, Pisa;
+Giuseppe Steffenino, MD, Azienda Ospedaliera S. Croce
+e Carle, Cuneo; Stefano Tonioni, MD, Ospedale S. Pietro Fatebenefratelli, Roma.
+Angiographic Core Laboratory: Maria Antonietta Bonardi, BSc, Monica Repetto, BSc, Mediolanum Cardio Research, Milano.
+Statistical Analysis: Erminio Bonizzoni, BSc, Silvano
+
+©2004 American Medical Association. All rights reserved.
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+Milani, BSc, University of Milan, Italy; Fabio Bravi, MD,
+Mediolanum Cardio Research, Milano.
+Clinical Events Committee: Giuseppe Sangiorgi, MD,
+Ospedale Columbus, Milano; Flavio Airoldi, MD, Ospedale San Raffaele, Milano.
+Principal Investigators or Study Coordinators: Roberta Rosso, MD, Policlinico San Matteo, Universita’ degli Studi di Pavia, Pavia (30 patients); Paola Giacometti, MD, Ospedale S. Maria Nuova, Reggio Emilia (28
+patients); Paolo Ortolani, MD, Policlinico S. Orsola Malpighi, Bologna (26 patients); Rocco Mongiardo, MD,
+Università Cattolica Sacro Cuore di Roma, Policlinico
+A. Gemelli, Roma (20 patients); Giorgio Taverna, MD,
+Azienda Ospedaliera SS Antonio e Biagio e Cesare Arrigo, Alessandria (18 patients); Emilia Solinas, MD, Ospedale Maggiore di Parma, Universita’ degli Studi di
+Parma, Parma (16 patients); Mario Bossi, MD, Ospedale A. Manzoni, Lecco (14 patients); Francesco De
+Felice, MD, Azienda Ospedaliera S. Camillo Forlanini, Roma (14 patients); Gaetano Quaranta, MD,
+Azienda Ospedaliera S. Carlo, Potenza (12 patients);
+Mauro De Benedictis, MD, Ospedale Mauriziano Umberto I, Torino (11 patients); Andrea Santarelli, MD,
+Ospedale Infermi, Rimini (10 patients); Bruno Loi, MD,
+Azienda Ospedaliera G. Brotzu, Cagliari (9 patients);
+Angelo Sante Bongo, MD, Unità Operativa di Cardiologia Novara site 15, Novara (8 patients); Alessandro Daniotti, MD, Ospedale Cà Foncello, Treviso (8
+patients); Giuseppe Colonna, MD, Azienda Unità Sanitaria Locale Lecce 1, Lecce (7 patients); Carmen Spaccorotella, MD, Policlinico Mater Domini, Catanzaro (6
+patients); Massimiliano Marini, MD, Ospedale S. Chiara, Trento (5 patients); Andrea Pieroni, MD, Azienda
+Ospedaliera Universitaria Pisana Ospedale S. Chiara,
+Pisa (5 patients); Eugenio La Scala, MD, Azienda Ospedaliera S. Croce e Carle, Cuneo (5 patients); Roberto Serdoz, MD, Ospedale S. Pietro Fatebenefratelli, Roma (3 patients).
+Funding/Support: This study was largely supported
+through institutional funds of the participating centers. There was complementary funding from Cordis
+Italia, Milan, Italy.
+Role of the Sponsor: The sponsor provided free stents
+to the participating sites and was responsible for the
+logistics of the trial. The sponsor had no role in the
+study design, data analysis, and manuscript writing.
+Independent Statistical Analysis: Drs Ardissino and
+Cavallini and the contract research organization (CRO)
+Mediolanum Cardiovascular Research had direct access to the raw data. The statistical analysis was performed by Erminio Bonizzoni, who is an academic statistician at the University of Milan. For this project he
+worked with Fabio Bravi (another independent statistician) as consultants for Mediolanum Cardiovascular Research. The statistical analyses were made independently of the sponsor, which had no access to
+the data. However, another academic statistician,
+Silavano Milani, not employed by the sponsor and without any relationship with the CRO, repeated the statistical analyses and provided written confirmation that
+the results are correct.
+Acknowledgment: We thank Silvano Milani, Scuola
+di Specializzazione in Statistica Sanitaria, University of
+Milan, who performed an independent statistical analysis and confirmed our results.
+
+REFERENCES
+1. Foley DP, Melkert R, Serruys PW; and the
+CARPORT, MERCATOR, MARCATOR, and PARK
+Investigators. Influence of vessel size on renarrowing
+process and late angiographic outcome after successful balloon angioplasty. Circulation. 1994;90:
+1239-1251.
+2. Schunkert H, Harrel L, Palacios IF. Implications of
+small reference vessel diameter in patients undergoing percutaneous coronary revascularization. J Am Coll
+Cardiol. 1999;34:40-48.
+
+(Reprinted) JAMA, December 8, 2004—Vol 292, No. 22 2733
+
+DRUG-ELUTING VS UNCOATED STENTS TO PREVENT RESTENOSIS
+3. Hirshfeld JW, Schwartz JS, Jugo R, et al; and the
+M-HEART Investigators. Restenosis after coronary angioplasty: a multivariate statistical model to relate lesion and procedure variables to restenosis. J Am Coll
+Cardiol. 1991;18:647-656.
+4. Elezi S, Kastrati A, Neumann FJ, et al. Vessel size
+and long-term outcome after coronary stent placement.
+Circulation. 1998;98:1875-1880.
+5. Akiyama T, Moussa I, Reimers B, et al. Angiographic and clinical outcome following coronary stenting of small vessels: a comparison with coronary
+stenting in large vessels. J Am Coll Cardiol. 1998;32:
+1610-1618.
+6. Crosby IK, Wellons HAJ, Taylor GJ, Maffeo CJ, Beller
+GA, Muller WH. Critical analysis of the preoperative
+and operative predictors of aortocoronary bypass
+patency. Ann Surg. 1981;193:743-751.
+7. O’Connor NJ, Morton JR, Birkmeyer JD, Olmstead EM, O’Connor JT; Northern New England Cardiovascular Disease Study Group. Effect of coronary
+artery diameter in patients undergoing coronary bypass surgery. Circulation. 1996;93:652-655.
+8. Morice MC, Serruys PW, Sousa JE, et al; RAVEL
+Study Group. A randomized comparison of a sirolimuseluting stent with a standard stent for coronary
+revascularization. N Engl J Med. 2002;346:1773-1780.
+9. Moses JW, Leon MB, Popma JJ, et al; SIRIUS
+Investigators. Sirolimus-eluting stents versus standard
+stents in patients with stenosis in a native coronary artery.
+N Engl J Med. 2003;349:1315-1323.
+10. Schofer J, Schluter M, Gershlick AH, et al; for the
+E-SIRIUS Investigators. Sirolimus eluting stents for treat-
+
+ment of patients with long atherosclerotic lesions in
+small coronary arteries: double-blind, randomised controlled trial (E-SIRIUS). Lancet. 2003;362:1093-1099.
+11. Stone GW, Ellis SG, Cox DA, et al; for the TAXUS
+IV Investigators. A polymer-based, paclitaxel-eluting
+stent in patients with coronary artery disease. N Engl
+J Med. 2004;350:221-231.
+12. Ardissino D, Barberis P, De Servi S, et al. Abnormal coronary vasoconstriction as a predictor of restenosis after successful coronary angioplasty in patients with unstable angina pectoris. N Engl J Med.
+1991;325:1053-1057.
+13. Serruys PW, de Jaegere P, Kiemeneij F, et al; Benestent Study Group. A comparison of balloonexpandable implantation with balloon angioplasty in
+patients with coronary artery disease. N Engl J Med.
+1994;331:489-495.
+14. Fischman DL, Leon MB, Baim DS, et al. A randomized comparison of coronary-stent placement and
+balloon angioplasty in the treatment of coronary artery disease. N Engl J Med. 1994;331:496-501.
+15. Savage MP, Fishman DL, Rake R, et al; Stent Restenosis Study (STRESS) Investigators. Efficacy of coronary stenting versus balloon angioplasty in small coronary arteries. J Am Coll Cardiol. 1998;31:307-311.
+16. Kastrati A, Schoming A, Dirshinger J, et al; ISARSMART Study Investigators. A randomized trial comparing stenting with balloon angioplasty in small vessels in patients with symptomatic coronary artery
+disease: Intracoronary Stenting or Angioplasty for Restenosis Reduction in Small Arteries. Circulation. 2000;
+102:2593-2598.
+
+17. Moer R, Myreng Y, Molstad P, et al. Stenting in
+small coronary arteries (SISCA trial). J Am Coll Cardiol.
+2001;38:1598-1603.
+18. Doucet S, Schalij MJ, Vrolix MCM, et al. Stent
+placement to prevent restenosis after angioplasty in
+small coronary arteries. Circulation. 2001;104:20292033.
+19. Koning R, Eltchaninoff H, Commeau P, et al;
+BESMART Group. Stents placement compared with
+balloon angioplasty for small coronary arteries: inhospital and 6-month clinical and angiographic results.
+Circulation. 2001;104:1604-1608.
+20. Briguori C, Nishida T, Adamian M, et al. Coronary stenting versus balloon angioplasty in small coronary artery with complex lesions. Catheter Cardiovasc Interv. 2000;50:390-397.
+21. Mehilli J, Kastrati A, Dirschinger J, Bollwein H, Neumann FJ, Schomig A. Differences in prognostic factors and outcomes between women and men undergoing coronary artery stenting. JAMA. 2000;284:17991805.
+22. Al Suwaidi J, Berger PB, Holmes DR. Coronary artery stents. JAMA. 2000;284:1828-1836.
+23. Heitman J, Movva NR, Hall MN. Target for cell
+cycle arrest by the immunosuppressant rapamycine in
+yeast. Science. 1991;253:905-909.
+24. Sousa JE, Costa MA, Abizaid AC, et al. Lack of
+neointimal proliferation after implantation of sirolimuscoated stents in human coronary arteries: a quantitative coronary angiography and three-dimensional intravascular ultrasound study. Circulation. 2001;103:
+192-195.
+
+Probably . . . the larger part of the labour of an author in composing his work is critical labour; the labour of sifting, combining, constructing, expunging,
+correcting, testing: this frightful toil is as much critical as creative.
+—T. S. Eliot (1888-1965)
+
+2734
+
+JAMA, December 8, 2004—Vol 292, No. 22 (Reprinted)
+
+Downloaded From: http://jama.jamanetwork.com/ by a Brown University User on 03/05/2014
+
+©2004 American Medical Association. All rights reserved.

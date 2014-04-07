@@ -1,0 +1,624 @@
+Comparison of High Frequency Chest Compression
+and Conventional Chest Physiotherapy in Hospitalized
+Patients with Cystic Fibrosis
+RAANAN ARENS, DAVID GOZAl, KENNETH J. OMlIN, JEFF VEGA, KOZET P. BOYD, THOMAS G. KEENS,
+and MARLYN S. WOO
+Division of Neonatology and Pediatric Pulmonology, Respiratory Care Department, Childrens Hospital Los Angeles, and Department
+of Pediatrics, lJniversity of Southern California School of Medicine, Los Angeles, California
+
+Clearance of bronchial secretions is essential in the management of cystic fibrosis (CF) patients admitted
+for acute pulmonary exacerbation. Conventional physiotherapy (CPT) is labor-intensive, time-consuming,
+expensive, and may not be available as frequently as desired during hospitalization. High frequency chest
+compression (HFCC), which uses an inflatable vest linked to an air-pulse delivery system, may offer an
+attractive alternative. To study this, we prospectively studied <n>50</n> CF patients admitted for acute pulmonary
+exacerbation who were randomly allocated to receive either HFCC or CPT three times a day. On admission,
+clinical status and pulmonary function tests (PFT) in the HFCC group were not significantly different from
+those measured in the CPT group. Significant improvements in clinical status and PFT were observed after
+7 and 14 d of treatment, and were similar in the two study groups, leading to patient discharge after similar
+periods of hospitalization. We conclude that HFCC and CPT are equally safe and effective when used during acute pulmonary exacerbations in CF patients. We speculate that HFCC may provide an adequate alternative in management of CF patients in a hospital setting. Arens R, Gozal D, Omlin KJ, Vega J, Boyd
+Kp, Keens TG, Woo MS. Comparison of high frequency chest compression and conventional chest
+physiotherapy in hospitalized patients with cystic fibrosis. Am J Respir Crit Care Med 1994;150:1154-7.
+
+Chest physiotherapy is an essential component in the daily
+management of cystic fibrosis (CF) patients and has been shown
+repeatedly to enhance clearance of bronchial secretions (1-3).
+Although various techniques for increasing mucociliary clearance
+have been proposed over the years (3-7), conventional physiotherapy (CPT) using manual percussion and postural drainage remains
+the standard method of choice (8-10). However, quality of homeadministered CPT,accessibility, compliance, and cost issues are
+significant limitations to reqular and effective administration of CPT,
+leading to the search for appropriate alternatives.
+A method designed for self-administration of chest physiotherapy, high frequency chest compression (HFCC), was developed
+recently. This method consists of a mechanical device that generates air pulsating waves at varying frequencies, which are exter-
+
+(Received in original form November 3, 1993 and in revised form March I, 1994)
+
+Partially supported by a grant from American Biosystems, Inc. Dr. Arens is
+the recipient of a Will Rogers Foundation Fellowship and an American Physician Fellowship for Medicine in Israel, Inc. Dr. Gozal was supported by a Parker B. Francis Fellowship for Pulmonary Research and by an H.N. fit Frances
+C. Berger Foundation Grant.
+Correspondence and requests for reprints should be addressed to Marlyn S.
+Woo, M.D., Division of Neonatology and Pediatric Pulmonology, Childrens
+Hospital los Angeles, 4650 Sunset Boulevard, los Angeles, CA 90027.
+Am
+
+J Respir
+
+Crit Care Med
+
+Vol 150. pp 1154-1157, 1994
+
+nally transmitted to the patient's chest. Increased clearance of
+tracheal secretions has been demonstrated with HFCC, both in
+animals (11-14) and in humans (15-17). However, comparison of
+HFCC and CPT during an acute pulmonary exacerbation has not
+been critically assessed in hospitalized CF patients. Thus, we conducted the present study to compare the efficacy of HFCC and
+CPT, with respect to serial changes in clinical status, pulmonary
+function, sputum production, and to assess for potential complications.
+
+METHODS
+Fifty CF patients admitted for acute pulmonary exacerbation participated
+in this study, which was approved by the institutional review board at Childrens Hospital Los Angeles. After informed consent was obtained, patients were randomly allocated to receive either HFCC or CPT. Diagnosis
+of CF was based on elevated sweat chloride levels (18)and characteristic
+clinical findings.
+Acute pulmonary exacerbation was defined as an increase in cough,
+sputum production, shortness of breath, weight loss, hypoxia, increased
+white blood count, worsening chest X-ray, and/or deterioration in pulmonary tests, which were unresponsive to outpatient therapy inclUding oral,
+intravenous, and/or aerosolized antibiotics, CPT, and aerosolized bronchodilator therapy. Patients were admitted to the hospital based on the
+treating physician'sbest clinical judgment. Study physicians were not involved in admission decisions, medical management, or discharge. Exclusion criteria were: (1) Inability to perform forced expiratory maneuvers;
+
+Brief Communication
+
+1155
+
+(2) Recent placement of central intravenous catheter devices (at least 3
+wk postplacement); (3) Recent (3 mo prior to admission) episode of significant hemoptysis; (4)Pneumothorax or chest tube placement in the 6
+mo preceding admission. Patientsalready actively participating in the study
+who developed acute respiratory distress, hemoptysis, pneumothorax, or
+who became noncompliant with study protocol requirements were also
+excluded.
+All CF patients enrolled in this study were treated with intravenous
+antibiotics (according to sputum cultures and susceptibilities), inhaled
+bronchodilators, and nutritional support. Supplemental oxygen via nasal
+cannula was administered if oxygen saturation by pulse oximetry (Sp02)
+was ~ 90%. Patients were discharged from the hospital after a minimum
+of 14d of hospitalization, return of PFT to baseline, and improvement and
+stabilization of clinical respiratory status.
+
+HFCC Group
+Patients receiving HFCC were fitted with appropriate-size vests. The vest
+was attached via two flexible plastic tubes to an air-pulse delivery system
+(ThAIRapy Bronchial Drainage System; American Biosystems, Inc., St.
+Paul, MN). The patient received HFCC treatments for approximately 30
+min, 3 times/d, while receiving aerosolized bronchodilators (albuterol 0.5
+ml diluted in 5 ml of normal saline). Patients were seated upright during
+the entire session. The HFCC treatment consisted of six frequency periods
+(4 to 5 min each), ranging from 6 to 19 Hz (16, 17). Between each frequency period, the device was stopped. The patient was instructed to perform a maximal inspiratory maneuver and then the pulsating device was
+reactivated at 25 Hz for the duration of an expiratory maneuver. The
+tient was instructed to actively cough between each of these expiratory
+maneuvers, which were repeated three times.
+
+Sputum was collected for 24 h after beginning HFCC or CPT.The firsthour and 24-h wet sputum collection samples were measured. The dry
+sputum weight was measured after slow desiccation in a commercial microwave for a period of 10 to 60 min.
+
+Data Analysis
+Clinical data were expressed as mean ± SEM. Pulmonary function test
+data were expressed as percent predicted for normal using previously
+established normative data (20) so that subjects of different height and
+sex could be compared. Moreover, each patient was used as his/her own
+control, and changes in PFT measurements were expressed as a percentage of admission values. Using the general linear model procedure
+we applied separate one-way (group) x two-way (values corresponding
+to admission, 1-wk, and 2-wk after admission) ANOVA for repeated measures (21).Dependent variables entered included all measured parameters.
+An alpha level of 0.05 was used to determine the significance of F-ratios.
+A post hoc procedure was used to ascertain significant differences.
+
+RESULTS
+Fifty CF patients completed the study, 25 in each treatment group.
+Demographic characteristics and clinical measures on admission
+were similar in both groups (Table 1). In addition, no significant
+differences in admission PFT were found among HFCC- and CPTallocated patients (Table 2).
+Clinical assessment after 7 and 14 d of hospitalization showed
+
+pa-
+
+CPT Group
+Patients in the CPT group were treated for a period of 30 min, 3 times/d,
+by a respiratory therapist using conventional methods of percussion and
+postural drainage. Inhalations of aerosolized bronchodilator (albuterol 0.5
+ml diluted in 5 ml normal saline) were performed 10 to 15 min before CPT
+administration. Postural drainage was performed in six positions (four lying and two sitting), and percussion was administered for 4 min in every
+position.
+
+Clinical Assessment
+To obtain objective clinical and laboratory measures of improvement in
+the two different treatment categories, weight, respiratory rate, and Sp02
+were recorded at regular intervals throughout hospitalization. In addition,
+hemoglobin, white blood cell count (WBC), absolute neutrophil count
+(ANC), serum protein, and albumin concentrations were drawn on admission and at Days 7 and 14 of hospitalization.
+
+Pulmonary Function Tests
+Pulmonary function tests were performed on admission and immediately
+before physiotherapy treatment at weekly intervals. Testswere performed
+in the pulmonary function laboratory of Childrens Hospital Los Angeles,
+located near sea level (mean atmospheric pressure 751 mm Hg), using
+the recommended methods (19). Vital capacity (VC) and its subdivisions
+were measured from a slow exhalation with a wedge spirometer (Model
+3000; MedScience, St. Louis, MO) Forced vital capacity, FEY" and
+FEV 2s-7s% were obtained from forced expiration into the wedge spirometer. Functional residual capacity was measured with a body pressure plethysmograph (Sensormedics 2800 Autobox; Sensormedics, Yorba Linda,
+CAl. Individual PFT results were analyzed and considered abnormal if
+greater than ± 2 SO from available reference values appropriate for age,
+height, and gender (20). As a measure of uniformity of ventilation distribution, the slope of Phase III of the single breath nitrogen washout test
+(SP3N 2) was measured. The upper limit of the normative values for children used in our laboratory is 2.5% N2 Oxygen saturation (~02) was
+/L.
+measured on each occasion, before PFT, with a pulse oximeter (Nellcor
+200; Nellcor Corporation; Hayward, CAl while patients were breathing room
+air. In addition, ~02 was measured in all patients during both types of
+physiotherapy treatments and .5 hand 1 h following treatments.
+
+TABLE 1
+DEMOGRAPHIC, CLINICAL, AND LABORATORY CHARACTERISTICS
+OF 50 CF PATIENTS ON ADMISSION
+HFCC
+Male/Female
+'Age, yr
+Weight, kg
+BMI (kg/m')
+Respiratory rate, /min
+SpO" %
+Hematocrit, %
+WBC, /!1L
+ANC, /!1L
+Protein, g%
+Albumin, g%
+Staphylococcus aureus
+Pseudomonas aeruginosa
+Pseudomonas
+(mucoid strains)
+Pseudomonas cepacia
+Pseudomonas ma/tophilia
+
+CPT
+
+14/11
+18.0 ± 1.3
+43.5 ± 2.1
+17.5 ± 0.5
+25.9 ± 0.7
+94.2 ± 0.7
+42 ± 1
+12407 ± 709
+8592 ± 551
+7.5 ± 0.1
+3.9 ± 0.1
+7/25
+23/25
+
+18/7
+22.9 ± 2.0
+47.0 ± 1.8
+17.8 ± 0.5
+25.7 ± 0.6
+93.9 ± 0.5
+42 ± 1
+11897 ± 481
+8439 ± 427
+7.6 ± 0.1
+3.9 ± 0.1
+5/25
+24/25
+24/25
+0/25
+1/25
+
+Definition of abbreviations: SpO, = oxygen saturation; ANC
+8MI = body mass index.
+Mean ± SEM; HFCC versus CPT: p = NS.
+
+23/25
+1/25
+2/25
+
+=
+
+absolute neutrophil count;
+
+TABLE 2
+PULMONARY FUNCTION TESTS IN 50 CF PATIENTS ON ADMISSION,
+BEFORE THERAPY WITH HFCC OR CPT
+HFCC
+VC, % pred
+FEV" % pred
+FEF,._,., Oro pred
+RV, % pred
+RVITLC, actual
+SP3N" % pred
+SpO" %
+
+51.7
+33.8
+13.5
+318.2
+0.647
+601
+93.9
+
+2.9
+2.4
+2.0
+19.6
+0.018
+± 75
+± 0.5
+
+±
+±
+±
+±
+±
+
+CPT
+
+57.4
+38.5
+17.7
+328.0
+0.623
+937
+94.2
+
+± 3.1
+± 2.8
+
+± 2.4
+± 16.7
+± 0.017
+± 157
+± 0.7
+
+Definition of abbreviations: SP,N, = slope of Phase III of single breath nitrogen washout
+curve.
+Mean ± SEM; HFCC versus CPT: p = NS.
+
+1156
+
+AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE
+
+VOL 150
+
+1994
+
+TABLE 3
+MEAN CHANGES IN CLINICAL MEASURES IN HFCC AND CPT TREATMENT GROUPS AFTER
+7 AND 14 D OF HOSPITAL TREATMENT
+HFCC
+7d
+Weight gain, GAl
+Respiratory rate, min
+SpO" GAl change
+WBC, ~L
+ANC,~L
+
+2.9
+22.8
+1.2
+9149
+6061
+
+CPT
+14 d
+
+± 1.0
+
+± 1.0
+
+4.4
+20.8
+1.5
+8890
+5253
+
+± 0.5
+± 0.3
+± 639
+
+± 443
+
+7d
+1.8
+23.2
+1.4
+9414
+5842
+
+± 0.4
+± 0.4
+± 514
+± 309
+
+±
+±
+±
+±
+±
+
+14 d
+0.9
+0.7
+0.6
+594
+446
+
+3.3
+21.4
+1.6
+9200
+5526
+
+± 1.1
+
+± 0.3
+± 0.6
+± 456
+± 376
+
+p Value"
+NS
+NS
+NS
+NS
+NS
+
+• HFCC versus CPT. Mean ± SEM.
+
+TABLE 4
+MEAN CHANGES IN PFT IN HFCC AND CPT TREATMENT GROUPS AFTER
+7 AND 14 D OF HOSPITAL TREATMENT
+HFCC
+14 d
+
+7d
+VC, % change
+FEV" GAl change
+FEF,._,., GAl change
+RV, % change
+RVfTLC, GAl change
+SP.N" GAl change
+
+CPT
+
+19.7 ± 3.7
+21.2±4.7
+17.4 ± 5.8
+-9.8 ± 2.5
+-10.1 ± 1.7
+-17.5 ± 7.7
+
+27.3
+31.0
+23.8
+-15.2
+-14.4
+-15.2
+
+7d
+
+± 4.0
+± 5.6
+± 11.0
+± 2.8
+± 1.8
+± 7.5
+
+10.9
+13.9
+25.8
+-12.7
+-12.4
+-18.2
+
+± 2.9
+± 2.4
+± 3.7
+± 4.9
+± 4.4
+± 6.2
+
+14 d
+19.2
+23.9
+35.3
+-12.5
+-11.4
+-27.9
+
+± 5.2
+± 5.8
+± 9.1
+± 3.3
+± 2.6
+:!: 5.7
+
+p Value"
+NS
+NS
+NS
+NS
+NS
+NS
+
+• HFCC versus CPT. Mean ± SEM.
+
+a significant improvement in weight gain, respiratory rate, SP02'
+WBC, and ANC in both HFCC and CPT groups (p = HFCC versus
+CPT: NS, Table 3). Serum protein and albumin evolved similarly
+in both groups over time. Duration of hospitalization was similar
+for both groups; HFCC (16.0 ± 0.9 d) and CPT (16.2 ± 0.6 d, p =
+NS).
+Evolution of PFT during hospitalization showed significant improvement after 7 and 14 d in both groups (Table 4). In the HFCC
+group, significant increases in VC, FE~, and FEF25-75% , as well
+as decreases in RV, RVfTLC, and SP3N2were observed (p < 0.001).
+Similar improvements were observed in the CPT group.
+There was a significant increase in wet sputum production during the first hour after treatment with HFCC compared with CPT
+(Table 5). However, these differences were not observed in dry
+sputum weight after 1 h. Sputum production (wet or dry weight)
+was also similar in HFCC and CPT after 24-h collection (Table 5).
+We could not find a significant change in oxygen saturation
+during or following both types of treatments. One patient in the
+HFCC group and two in the CPT group developed mild hemoptysis during the study. Treatments were discontinued for 24 hand
+then continued with no further hemoptysis. Some patients in the
+HFCC group reported occasional mild chest pain and nausea,
+particularly during the first 2 to 3 d of treatment, which resolved
+
+TABLE 5
+WET AND DRY SPUTA WEIGHTS AFTER 1-H AND 24-H COLLECTION
+IN 50 CF PATIENTS TREATED WITH HFCC OR CPT
+Sputum
+1-h wet weight, g
+24-h wet weight, gJd
+1-h dry weight, g
+24-h dry weight, g/d
+Mean:!: SEM.
+
+HFCC
+14.6
+51.3
+1.4
+5.3
+
+± 2.9
+:!: 6.4
+± 0.4
+± 0.9
+
+CPT
+6.0:!:
+30.6 :!:
+0.8 ±
+3.4 ±
+
+1.8
+9.4
+0.2
+0.9
+
+p Value
+
+< 0.035
+NS
+NS
+NS
+
+thereafter. Three additional patients originally assigned to receive
+HFCC, and one patient assigned to the CPT regimen, did not comply to the chest physiotherapy schedules and were excluded from
+the study. Twenty-twopatients (88%) in the HFCC group expressed
+satisfaction with this technique of chest physiotherapy administration and requested HFCC therapy in the management of future acute pulmonary exacerbations.
+
+DISCUSSION
+This study shows that HFCC and CPT have similar effects on clinical status, improvement of PFT, and sputum clearance during
+acute pulmonary exacerbation in CF patients. A significant improvement in the above parameters was noted in both groups after 7 d of hospitalization, with further improvement by 14 d. However,the two treatment modalities could not be differentiated based
+upon clinical, laboratory, or pulmonary function measures.
+Various self-applied techniques for increasing mucociliary
+clearance were shown to be effective (3, 5-7). However, these
+studies evaluated the effect of a single session only, and their influence on clinical and respiratory status during acute pulmonary
+exacerbation has not been determined (3, 5-7). In the present
+study, improvement of clinical measures found in the HFCC group
+was similar to that found in the CPT group, and these results are
+consistent with those found in previous studies (8-10,22-24). In
+addition, the HFCC and CPT groups had similar durations of hospitalization, suggesting that the clinical course is not adversely
+affected by HFCC administration.
+A significantly increased wet sputum production was found during the first hour after administration of HFCC therapy, although
+dry weights of these collected sputa were similar to those obtained
+from patients receiving CPT. These findings suggest that HFCC
+may be initially more efficient in increasing mucociliary fluid clearance or in mobilizing tracheobronchial secretions. HFCC studies
+employing animal models have demonstrated enhanced clear-
+
+Brief Communication
+
+ance of secretions from peripheral airways as well as from central airways (11-14), whereas only central airways mobilization
+could be demonstrated with the use of CPT (2, 3, 5-7). King and
+colleagues suggested that HFCC enhances tracheobronchial
+secretions by the effect of chest wall vibration of variable amplitude and frequency, and by increased mucus-air flow interaction,
+causing a reduction in the crosslink density and viscosity properties of mucus (11). However, different modes of administration of
+aerosolized bronchodilators in HFCC and CPT may have also affected the immediate, first-hour wet sputum production, without
+affecting the total daily wet sputum, or dry sputum weights. A single study on 13 stable CF patients showed that HFCC was as effective as CPT in production of wet sputum but was significantly
+superior when the dry sputum weight was measured (15). We could
+not confirm these results, except for the similar efficacy of both
+methods when comparing the wet sputum production of 24 h.
+In this study, serial measurements of PFT in HFCC and CPT
+groups showed significant but similar improvements at both 7 and
+14 d. The magnitude of PFT improvement in HFCC and CPT is
+in close agreement with other reports assessing changes in pulmonary function during the management of acute exacerbations
+in CF patients undergoing in-hospital CPT treatment (8-10, 22,
+24, 25), including a previous study on 71 admissions managed
+with CPT in our institution (26).
+The HFCC device was not associated with significant side ef<'
+fects during the study period. Mild hemoptysis, whenever present, was easily controlled by 24-h interruption of chest physiotherapy, and no further bleeding occurred upon resumption of
+treatment. Thus, HFCC seems to be a safe alternative to CPT.
+We conclude that HFCC and CPT are equally safe and effective in the management of acute pulmonary exacerbations in CF
+patients. Although our study is the first report on the efficacy of
+HFCC in a hospital setting, the long term efficacy of HFCC as
+an outpatient option has also been suggested (17). Further studies
+are required to establish the efficacy of HFCC and CPT in the longterm care of CF patients.
+Acknowledgment: The writers thank Michael W. Stabile, Adriana B. Rachal,
+and Beverly Chin for measurement of pulmonary function; and Carla E. Rother
+for assistance in statistical analysis.
+
+References
+1. Bateman JRM, Newman SP, Daunt KM, Pavia D, Clarke SW. Regional
+lung clearance of excessive bronchial secretions during chest physiotherapy in patients with stable chronic airway obstruction. Lancet
+1979;1 :294-7.
+2. Wong JW, Keens TG, Wannamaker EM, Crozier DN, Levison H, Aspin
+N. Effects of gravity on tracheal mucus transport rates in normal subjects and in patients with cystic fibrosis. Pediatrics 1977;60:146-52.
+3. Rossman CM, Waldes R, Sampson D, Newhouse MT. Effect of chest physiotherapy on the removal of mucus in patients with cystic fibrosis. Am
+Rev Respir Dis 1982;126:131-5.
+4. Oberwaldner B, Evans JC, Zach MS. Forced expirations against a van-
+
+1157
+able resistance: a new chest physiotherapy method in cystic fibrosis.
+Pediatr Pulmonol 1986;2:358-67.
+5. Hofmeyr JL, Webber BA, Hodson ME. Evaluation of positive expiratory
+pressure as an adjunct to chest physiotherapy in the treatment of cystic fibrosis. Thorax 1986;41:951-4.
+6. van Hengstum M, Festen J, Beurskens C, Hankel M, Beekman F, Corstens f. Conventional physiotherapy and forced expiration manoeuvres
+have similar effects on tracheobronchial clearance. Eur Respir J
+1988;1:758-61.
+7. van der Schans CP, van der Mark TW, de Varies G, Piers DA, Beekhuis
+H, Dankert-Roelse JE, Postma DS, Koeter GH. Effect of positive expiratory pressure breathing in patients with cystic fibrosis. Thorax
+1991;46:252-6.
+8. Desmond KJ, SChwenkWF, Thomas E, Beaudry PH, Coates AL. Immediate
+and long-term effects of chest physiotherapy in patients with cystic fibrosis. J Pediatr 1983;103:538-42.
+9. Cerny FJ, Cropp GJA, Bye MR. Hospital therapy improves exercise tolerance and lung function in cystic fibrosis. AJDC 1984;138:261-5.
+10. Reisman JJ, Rivington-Law B, Corey M, Marcotte J, Wannamaker E, Harcourt D, Levision H. Role of conventional physiotherapy in cystic fibrosis. J Pediatr 1988;113:632-6.
+11. King M, Phillips DM, Gross D, Varian V, Chang HK, ZidulkaA. Enhanced
+tracheal mucus clearance with high frequency chest wall compression.
+Am Rev Respir Dis 1983;128:511-5.
+12. King M, Phillips DM, Zidulka A, Chang HK. Tracheal mucus clearance
+in high-frequency oscillation. Am Rev Respir Dis 1984;130:703-6.
+13. Gross D, Zidulka A, O'Brien C, Wight D, Fraser R, Rosenthal L, King M.
+Peripheral mucociliary clearance with high-frequency chest wall compression. J Appl Physiol 1985;58:(4):1157-63.
+14. Chartrand DA, Maarek JM, Ye TH, Chang HK. Lung and chest wall
+mechanics in rabbits during high-frequency body-surface oscillation.
+J Appl Physiol 1990;68(4):1722-6.
+15. Warwick WJ, Wielinski CI. Matched pair comparison of manual chest physical therapy (CPT) and the Thairapy bronchial drainage vest (ThBCV)
+system. Pediatr Pulmonol 1990;suppl 5:236(A177).
+16. Hansen LG, Warwick WJ. High-frequency chest compression system to
+aid in clearance of mucus from the lung. Biomed Instr Techn 1990;
+24:289-94.
+17. Warwick WJ, Hansen LG. The long-term effect of high frequency chest
+compression therapy on pulmonary complications of cystic fibrosis. Pediatr PulmonoI1991;11:265-71.
+18. Gibson LE, Cooke RE. A test for concentration of electrolytes in sweat
+in cystic fibrosis of the pancreas utilizing pilocarpine by iontophoresis.
+Pediatr 1959;23:545-9.
+19. Crapo R, Morris A, Gardner R. Reference spirometric values using techniques and equipment that meet the ATS recommendations. Am Rev
+Respir Dis 1981;123:659-64.
+20. Platzker ACG, Keens TG. Pulmonary function testing in pediatric patients.
+In: Wilson AF, ed. Pulmonary function testing: indications and interpretations. New York: Grune and Stratton, 1985;275-92.
+21. Dixon WJ, Brown NMB, Engelman L, Jennrich RI. BMDP Statistical Software Manual. Berkeley, CA: University of California Press, 1990.
+22. Redding GJ, Restuccia R, Cotton EK, Brooks JG. Serial changes in pulmonary functions in children hospitalized with cystic fibrosis. Am Rev
+Respir Dis 1982;126:31-6.
+23. Sutton PP, Lopez-Vidriero MT,yavia D, Newman SP, Clarke SW. Effect
+of chest physiotherapy on the removal of mucus in patients with cystic
+fibrosis (correspondence). Am Rev Respir Dis 1983;127:390-1.
+24. Naon H, Hack S, Shelton MT, Gotthoffer RC, Gozal D. Resting energy
+expenditure; evolution during antibiotic treatment for pulmonary exacerbation in cystic fibrosis. Chest 1993;103:1819-25.
+25. Rosenberg SM, Schramm CM. Predictive value of pulmonary function
+testing during pulmonary exacerbations in cystic fibrosis. Pediatr Pulmonol 1993;16:227-35.
+26. Gozal D, Bailey SL, Keens TG. Serial pulmonary function during hospital
+admissions for cystic fibrosis. Pediatr Pulmonol 1993;16:347-53.
