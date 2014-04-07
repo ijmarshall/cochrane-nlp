@@ -1,0 +1,953 @@
+Clinica Chimica Acta 393 (2008) 119–124
+
+Contents lists available at ScienceDirect
+
+Clinica Chimica Acta
+j o u r n a l h o m e p a g e : w w w. e l s e v i e r. c o m / l o c a t e / c l i n c h i m
+
+Atorvastatin effects on SREBF1a and SCAP gene expression in mononuclear cells and
+its relation with lowering-lipids response
+Simone Sorkin Arazi a,⁎, Fabiana Dalla Vecchia Genvigir a, Maria Alice Vieira Willrich a,
+Mario Hiroyuki Hirata a, Egidio Lima Dorea b, Marcia Bernik b, Rosario Dominguez Crespo Hirata a
+a
+b
+
+School of Pharmaceutical Sciences – University of Sao Paulo, Sao Paulo, SP, Brazil
+University Hospital – University of São Paulo, Sao Paulo, SP, Brazil
+
+A R T I C L E
+
+I N F O
+
+Article history:
+Received 7 January 2008
+Received in revised form 24 March 2008
+Accepted 25 March 2008
+Available online 8 April 2008
+Keywords:
+SREBF1a
+SCAP
+Gene expression
+Statins
+Pharmacogenomics
+Mononuclear cells
+
+A B S T R A C T
+Background: The transcription factors SREBP1 and SCAP are involved in intracellular cholesterol homeostasis.
+Polymorphisms of these genes have been associated with variations on serum lipid levels and response to
+statins that are potent cholesterol-lowering drugs. We evaluated the effects of atorvastatin on SREBF1a and
+SCAP mRNA expression in peripheral blood mononuclear cells (PBMC) and a possible association with gene
+polymorphisms and lowering-cholesterol response.
+Methods: <n>Fifty-nine</n> hypercholesterolemic patients were treated with atorvastatin (10 mg/day for 4 weeks).
+Serum lipid proﬁle and mRNA expression in PBMC were assessed before and after the treatment. Gene
+expression was quantiﬁed by real-time PCR using GAPD as endogenous reference and mRNA expression in
+HepG2 cells as calibrator. SREBF1 -36delG and SCAP A2386G polymorphisms were detected by PCR-RFLP.
+Results: Our results showed that transcription of SREBF1a and SCAP was coordinately regulated by
+atorvastatin (r = 0.595, p b 0.001), and that reduction in SCAP transcription was associated with the 2386AA
+genotype (p = 0.019). Individuals who responded to atorvastatin with a downregulation of SCAP had also a
+lower triglyceride compared to those who responded to atorvastatin with an upregulation of SCAP.
+Conclusion: Atorvastatin has differential effects on SREBF1a and SCAP mRNA expression in PBMC that are
+associated with baseline transcription levels, triglycerides response to atorvastatin and SCAP A2386G
+polymorphism.
+© 2008 Elsevier B.V. All rights reserved.
+
+1. Introduction
+Sterol regulatory element binding proteins (SREBPs) are transcription factors that play important roles in lipid metabolism and homeostasis mainly by activation of fatty acid and cholesterol synthesis in
+liver [1,2]. SREBPs belong to the basic helix-loop-helix-leucine zipper
+family and are encoded by SREBP1 and SREBP2 genes (SREBF1 and
+SREBF2, respectively) that share 47% homology [3]. SREBF1 contains 2
+promoters that generate 2 transcripts, SREBF1a and SREBF1c, by
+alternative splicing at the ﬁrst exon [4].
+SREBP1a is a potent activator of all SREBP-responsive genes, including those that mediate the synthesis of cholesterol, fatty acids,
+and triglycerides. The roles of SREBP1c and SREBP2 are more restricted
+than that of SREBP1a. SREBP1c preferentially enhances transcription
+of genes required for fatty acid synthesis, while SREBP2 activates
+cholesterol synthesis [1].
+SREBPs are bound to endoplasmic reticulum membrane and remain
+inactive when the intracellular cholesterol content is high. Reduction of
+⁎ Corresponding author. Av. Prof. Lineu Prestes 580, B17, CEP 05508-900, São Paulo,
+SP, Brazil. Tel.: +55 11 30913660; fax: +55 11 38132197.
+E-mail address: sisorkin@usp.br (S.S. Arazi).
+0009-8981/$ – see front matter © 2008 Elsevier B.V. All rights reserved.
+doi:10.1016/j.cca.2008.03.031
+
+intracellular cholesterol by sterol starvation or treatment with lowering-cholesterol drugs triggers the translocation of the SREBPs from
+the endoplasmic reticulum to the Golgi by the SREBP cleavage activating protein (SCAP), a sensor of the cholesterol intracellular concentration [5]. This displacement is escorted by 2 chaperons Insig-1 and
+Insig-2 that are proteins tightly bound to the endoplasmic reticulum [6,7].
+SREBPs are further sequentially cleaved by Site-1 (SP1) and Site-2
+(SP2) proteases and its NH2-terminal domain (bHLH-Zip) is released
+and translocated into the nucleus where it binds to sterol regulatory
+elements (SREs) at the promoter region of target genes and activates
+their transcription. SREBPs act coordinately with additional transcription factors to achieve full activation of target genes [2,8].
+The primary targets of the SREBP1 are genes encoding for enzymes
+involved in lipid metabolism, such as 3-hydroxy-3-methyl-glutaryl
+coenzyme A reductase (HMGCR), low-density lipoprotein receptor
+(LDLR) [9] and others [1].
+HMGCR has a key role in cholesterol synthesis and its activity is
+inhibited by statins that are potent cholesterol-lowering-drugs [10]. It
+has been shown that the response to statins are highly variable and
+affected by several factors including polymorphisms in genes involved
+in drug metabolizing enzymes and transporters as well as in proteins
+related to the lipid metabolism [11–15].
+
+120
+
+S.S. Arazi et al. / Clinica Chimica Acta 393 (2008) 119–124
+
+Despite the increasing number of pharmacogenetic studies on
+statins, only few investigations have addressed the involvement of
+gene polymorphism in the intracellular homeostasis of cholesterol.
+SREBF1 gene has an indel polymorphism in the promoter region
+(-36del/G) that was associated with an atherogenic lipid proﬁle and
+increased risk for cardiovascular disease [16]. SREBF1 -36delG variant
+was also related to variation on plasma apoA-I in response to ﬂuvastatin [17] but not simvastatin [18]. A common polymorphism of the
+SCAP gene (A2386G, Ile796Val), located at its carboxyl terminal domain that interacts with SREBP1 [19], was found to be a signiﬁcant
+predictor of cholesterol and triglyceride responses to simvastatin [18],
+but not to pravastatin therapy [20].
+Besides the evidences of these pharmacogenetic studies, the
+pharmacogenomic mechanisms of response to statins are yet unclear. It has been demonstrated that atorvastatin regulates gene
+expression in blood leukocytes before changes in the lipid proﬁle
+are detectable in serum [21]. Recently, we have demonstrated that
+atorvastatin inhibits ABCB1 (ATP-binding cassette B1) expression in
+blood mononuclear cells from hypercholesterolemic individuals with
+hypercholesterolemia and in HepG2 cells [22]. Moreover, freshly
+isolated blood mononuclear cells have been used as a surrogate for
+the cardiovascular tissue to study the correlation between gene expression and atherosclerosis severity [23]. Therefore blood leukocytes seem to be an interesting model to study the statin effects
+on gene expression in vivo, and may be useful as a biomarker to
+evaluate pharmacological response. In the present study, we investigated the effects of atorvastatin on expression of SREBF1a and
+SCAP transcripts in peripheral blood mononuclear cells and their
+possible association with gene polymorphisms and loweringcholesterol response.
+2. Materials and methods
+2.1. Subjects and blood samples
+We selected 59 unrelated Brazilian outpatients (18 men and 41 women, aged 31 to
+77 y) with primary hypercholesterolemia (HC) from those admitted to the University
+Hospital of the University of Sao Paulo (Sao Paulo City, Brazil) between January 2005
+and December 2006. Subjects were European (67.8%) and African descent (32.2%),
+inhabitants of the Sao Paulo city (Southern Brazil).
+Individuals with gastrointestinal, thyroid, liver or renal disease, diabetes, familial dyslipidemia, triglycerides N 4.4 mmol/l or under treatment with lipid-lowering
+drugs, hormone replacement therapy or oral contraceptives were not included in this
+study.
+The HC patients were oriented to follow a low fat diet according to American Heart
+Association step one diet [24] during 4 weeks. Those with LDL cholesterol N4 mmol/l
+were treated with atorvastatin 10 mg orally once daily during 4 weeks. Before and after
+atorvastatin therapy, all patients were evaluated for serum concentrations of lipids,
+alanine aminotransferase (ALT) and creatine kinase (CK). No signiﬁcant variations on
+ALT and CK serum activities were found in HC patients during atorvastatin treatment.
+This study protocol was approved by the Ethics Committees of the University Hospital
+and Faculty of Pharmaceutical Sciences of the University of Sao Paulo and all
+participants gave written informed consents.
+2.2. Biochemical analysis
+Antecubital venous blood was collected after a 12-h overnight fast and samples
+were centrifuged within 3 h from being drawn. Serum total cholesterol, HDL cholesterol
+and triglycerides were determined by enzymatic methods and serum ALT and CK were
+measured by kinetic assays using the Advia®1650 analyzer (Siemens Medical/Bayer
+Diagnostics, Tarrytown, NY). Serum LDL and VLDL cholesterol were calculated [25].
+Plasma apoAI and apoB were determined by nephelometry. AIP is a logarithmically
+transformed ratio of molar concentrations of triglycerides to HDL-cholesterol. AIP and
+ApoB/ApoAI ratio have been used for evaluation of the risk for cardiovascular disease
+[26,27].
+2.3. Genomic analysis
+Genomic DNA was extracted from EDTA-anticoagulated blood by a salting-out
+procedure [28]. SREBF1 and SCAP polymorphisms were determined by polymerase
+chain reaction (PCR) and restriction fragment analysis. For SREBF1 -36delG variant we
+used the sequences of primers previously described [16]. For SCAP A2386G polymorphism the primers sequences were: 5′-TTCTGCAGGACATCGACTG-3′ (forward) and
+5′-AGAAGGGCAAGGGAAAAG-3′ (reverse).
+
+PCR assays were performed with 50 ng genomic DNA, 200 nmol/l primers
+(Invitrogen, Brazil), 200 mmol/l dNTPs (Amersham-Pharmacia Biotech do Brasil, Brazil),
+1 U DNA polymerase and PCR buffer [75 mmol/l Tris HCl (pH 9,0), 50 mmol/l KCl,
+2 mmol/l MgCl2, 20 mmol/l (NH4)2SO4] (Biotools, Spain). PCR conditions for SREBF1
+polymorphism were: one cycle at 98 °C for 3 min; 32 cycles at 96 °C for 1 min, at 60 °C
+for 2 min, and 72 °C for 2 min; and one cycle at 72 °C for 10 min. For SCAP polymorphism
+the conditions were: one cycle at 96 °C for 3 min; 38 cycles at 95 °C for 1 min, at 58 °C
+for 2 min, and 72 °C for 1 min; and once cycle at 72 °C for 10 min. Ampliﬁcations were
+carried out in a PTC-200 thermocycler (MJ Research, Waltham MA). PCR products were
+analyzed by 1% agarose gel electrophoresis after ethidium bromide staining.
+PCR products of SREBF1 (464 bp) and SCAP (342 bp) were digested with 30 U Apa I
+and 2 U HpyCH4 IV, respectively, at 37 °C for 4 h. Restriction fragments were detected by
+2% agarose and 10% polyacrylamide gel electrophoresis, respectively for SREBF1 and
+SCAP fragments, after ethidium bromide staining. Apa I recognizes one restriction site
+that generates 131 and 333 bp fragments for G+ allele and 464 bp for G− allele. HpyCH4
+IV recognizes one constitutive site (152 bp) and one polymorphic site that generate a
+190 bp fragment for A allele and 123 and 67 bp fragments for G allele.
+2.4. Cells and culture
+Peripheral blood mononuclear cells (PBMC) were isolated as previously described
+[29] and immediately used for RNA extraction. HepG2 cells were used as calibrator for
+gene expression studies. Cells were maintained in DMEM supplemented with 10% fetal
+bovine serum, 2 mmol/l glutamine, 44 mmol/l sodium bicarbonate, 10.000 U/ml
+streptomycin and 10.000 U/ml penicillin. Cells were grown at 37 °C in a humidiﬁed
+atmosphere, containing 5% CO2. Culture medium was replaced twice a week and cells
+were trypsinized and sub-cultured every 7 days.
+2.5. mRNA expression by real-time PCR
+Total RNA was extracted from PMBC and HepG2 cells (1 × 106 to 5 × 106) using
+TRIzol® Reagent (Invitrogen-Life Technologies, Carlsbad, CA) as previously described
+[29]. cDNA was produced from 1 μg of total RNA by Superscript™ II Reverse Transcriptase and SREBF1a and SCAP mRNA were measured by TaqMan real-time PCR assay,
+using glyceraldehyde-3-phosphate dehydrogenase (GAPD) as reference gene, and mRNA
+from HepG2 cells was used as calibrator.
+The PCR assays were carried out in 96-well plates using a 7500 Real-Time PCR
+system (Applied Biosystems, Foster City, CA). The PCR protocol consisted of 40 cycles at
+95 °C for 15 s and at 60 °C for 1 min. The primers and probes sequences used for
+SREBF1a, SCAP and GAPD mRNA detection were obtained in “Assay on demand” format
+(Applied Biosystems).
+The relative quantiﬁcation value of each target gene was analyzed using a
+comparative Ct method [30,31]. The following formula was used to calculate the relative
+amount of the transcript in the sample and normalized to the GAPD as endogenous
+reference: 2−ΔΔCt, where ΔCt is the difference in Ct between the gene of interest and
+GAPD, and ΔΔCt for the sample = mean ΔCt of sample − mean ΔCt of the HepG2 cells. The
+gene expression was interpreted as the increase or reduction in relative mRNA levels
+after atorvastatin therapy.
+2.6. Statistical analysis
+The statistical calculations were carried out using SigmaStat Software 2.03 (SPSS
+Inc., Chicago, IL). Categorical variables were compared by chi-square test or Exact Fisher
+test. Chi-square analysis also was used to test Hardy–Weinberg equilibrium (HWE). For
+SREBF1 -36Gdel variant, individuals carrying G+G−/G−G− genotypes were grouped and
+compared with those carrying G+G+ genotype. For SCAP A2386G variant, individuals
+carrying AA genotype were compared with the AG/GG genotypes carriers. Differences
+on biochemical data and gene expression before and after atorvastatin treatment were
+compared by Paired t-test. The results from the effects of SREBF1 and SCAP polymorphisms on biochemical data and gene expression were evaluated by student t-test.
+For data without normal distribution the Mann Whitney and Wilcoxon tests were used.
+Correlation analyses were performed by Pearson correlation coefﬁcient. Statistical
+signiﬁcance was established at the p b 0.05 level.
+
+3. Results
+3.1. Patient data
+The demographic, clinical and laboratory data of the individuals
+with hypercholesterolemia (HC) are summarized in Table 1. The study
+group was predominantly comprised of Caucasian-descent women.
+Hypertension, obesity and tobacco consumption were found in 49.2%,
+28.8%, and 23.7% patients, respectively. These patients had an
+atherogenic serum lipid proﬁle, including values of the apolipoprotein
+B (apoB) to apolipoprotein AI (apoAI) ratio (0.37) and atherogenic
+index of plasma (AIP) (1.08) that indicate high risk for CAD [24,25]. The
+family history for CAD was found in 55.9% patients.
+
+S.S. Arazi et al. / Clinica Chimica Acta 393 (2008) 119–124
+
+121
+
+Table 1
+Demographic, clinical and laboratory data of the study group
+Variable
+
+Data
+
+Number
+Age, y
+Women
+Caucasian
+Arterial hypertension
+Obesity (BMI N 30 kg/m2)
+Tobacco consumption (current smokers)
+Family history of CAD
+Total cholesterol, mmol/l
+Triglycerides, mmol/l
+LDL cholesterol, mmol/l
+HDL cholesterol, mmol/l
+VLDL cholesterol, mmol/l
+ApoAI, g/l
+ApoB, g/l
+ApoB/ApoA
+AIP [Log (TG/HDL cholesterol)]
+
+59
+54 ± 10
+69.5% (41)
+67.8% (40)
+49.2% (29)
+28.8% (17)
+23.7% (14)
+55.9% (33)
+6.76 ± 0.76
+1.61 ± 0.62
+4.54 ± 0.63
+1.47 ± 0.32
+0.73 ± 0.28
+1.39 ± 0.29
+1.43 ± 0.32
+1.08 ± 0.44
+0.37 ± 0.22
+
+Number of individuals in parenthesis. AIP, atherogenic index of plasma; ApoAI,
+apolipoprotein AI; ApoB, apolipoprotein B; BMI, body mass index; CAD, coronary artery
+disease; HDL, high-density lipoprotein; LDL, low-density lipoprotein; TG, triglycerides;
+VLDL, very low-density lipoprotein.
+
+In this sample, the frequencies of SREBF1 -36delG allele and SCAP
+2386G alleles were 45.8% and 54.2%, respectively (Table 2). These
+results are similar to that found in other populations (SREBF1: 51%–
+63%; SCAP: 43%–53%) [16,18,19,32,33].
+3.2. Effects of atorvastatin on gene expression
+SREBF1a and SCAP mRNA were differentially expressed in peripheral blood mononuclear cells (PBMC) of HC individuals in response
+to atorvastatin. As shown in Fig. 1a, atorvastatin increased mRNA
+expression in patients with low baseline levels (SR1) and reduced in
+those with high baseline levels (SR2) (p b 0.001). The patterns of SCAP
+baseline expression (low: SC1, high SC2) were also related to the
+differential expression response to atorvastatin (Fig. 1b). Despite these
+differences, there was a positive correlation between the variations
+of SREBF1a and SCAP expression levels in response to atorvastatin
+(r = 0.595, p b 0.001) (Fig. 2).
+
+Fig. 1. SREBF1a (a) and SCAP (b) mRNA expression levels in PBMC before and after
+atorvastatin treatment. Data are presented as mean ± SE of log values compared by t-test.
+SR1 and SR2: SREBF1a expression induced and reduced, respectively, by atorvastatin;
+SC1 and SC2: SCAP expression induced and reduced, respectively, by atorvastatin.
+
+serum triglycerides and VLDL cholesterol response were signiﬁcantly
+lower in SC2 (2.9%) group when compared with SC1 group (18.2%,
+p=0.041) (Fig. 3b).
+3.4. SREBF1 and SCAP variants and gene expression
+
+3.3. Gene expression and serum lipid proﬁle in response to atorvastatin
+Anthropometric data, serum lipid proﬁle and allele frequencies of
+polymorphisms were compared between the patients with different
+SREBF1a and SCAP baseline expression patterns, but the differences
+were not signiﬁcant (Table 3). Similar results were found when individuals with low SREBF1a and SCAP mRNA levels (SR1/SC1, n = 13)
+were compared with those with high expression levels (SR2/SC2,
+n = 23) (p N 0.05) (data not shown). These data are suggestive that
+baseline expression levels of these genes are not related to the lipidemic status, SREBF1 and SCAP polymorphisms, or other studied
+variables of the hypercholesterolemic patients.
+Atorvastatin reduced serum level of total cholesterol (28.0%±8.9%), LDL
+cholesterol (37.8%±11.7%), HDL cholesterol (6.0%±10.5%), VLDL cholesterol (9.3% ± 28.2%), triglycerides (9.3% ± 28.2%) and apoB (25.6% ±
+30.2%) and increased apoAI (10.0%±36.8%). This pattern of response was
+similar between SR1 and SR2 groups (pN 0.05) (Fig. 3a). On the other hand,
+
+As shown in Fig. 4a, baseline SREBF1a mRNA expression of SR1 in
+PBMC did not differ between individuals carrying genotype SREBF1
+G+G+ and the G+G−/G−G− genotypes carriers (p N 0.05). Baseline levels
+of SCAP transcripts were also similar between individuals carrying
+SCAP AA and AG+GG genotypes (Fig. 4b). There was also no relationship between baseline expression patterns and allele frequencies
+
+Table 2
+Genotype distribution and allele frequency of SREBF1 and SCAP polymorphisms
+Polymorphism
+
+Genotype distribution
+
+SREBF1 -36delG
+
+G+G+
+25.4% (15)
+AA
+18.7% (11)
+
+SCAP A2386G
+
+G+G−
+57.6% (34)
+AG
+54.2% (32)
+
+Number of individuals in parenthesis.
+
+Allele frequency
+G−G−
+17.0% (10)
+GG
+27.1% (16)
+
+G+
+54.2%
+A
+45.8%
+
+G−
+45.8%
+G
+54.2%
+
+Fig. 2. Correlation analysis between variations of SREBF1a and SCAP mRNA normalized
+expression levels in PBMC after atorvastatin treatment. Signiﬁcant correlation was
+found as indicated by Pearson correlation coefﬁcient (r = 0.595, p b 0.001).
+
+122
+
+S.S. Arazi et al. / Clinica Chimica Acta 393 (2008) 119–124
+
+Table 3
+Demographic, clinical, laboratory and SREBF1 and SCAP polymorphisms data of the study group according to baseline expression patterns
+Variable
+
+SR1 (24)
+
+SR2 (35)
+
+p
+
+SC1 (25)
+
+SC2 (34)
+
+p
+
+Age, y
+Women
+Caucasian
+Arterial hypertension
+Obesity (BMI N 30 kg/m2)
+Tobacco consumption (current smokers)
+Family history of CAD
+Total cholesterol, mmol/l
+Triglycerides, mmol/l
+LDL cholesterol, mmol/l
+HDL cholesterol, mmol/l
+VLDL cholesterol, mmol/l
+ApoAI, g/l
+ApoB, g/l
+ApoB/ApoA
+AIP [Log (TG/HDL cholesterol)]
+SREBF1 -36delG, G− allele
+SCAP A2386G, G allele
+
+54 ± 8
+75.0% (18)
+62.5% (15)
+62.5% (15)
+37.5% (9)
+25.0% (6)
+54.2% (13)
+6.73 ± 0.89
+1.57 ± 0.54
+4.56 ± 0.75
+1.43 ± 0.24
+0.71 ± 0.25
+1.32 ± 0.30
+1.44 ± 0.40
+1.17 ± 0.61
+0.37 ± 0.18
+37.5%
+64.6%
+
+54 ± 11
+65.7% (23)
+71.4% (25)
+40.0%(14)
+22.9% (8)
+20.0% (7)
+57.1% (20)
+6.77 ± 0.69
+1.63 ± 0.68
+4.53 ± 0.54
+1.50 ± 0.35
+0.74 ± 0.31
+1.45 ± 0.28
+1.41 ± 0.26
+1.02 ± 0.27
+0.37 ± 0.24
+51.4%
+47.1%
+
+0.874
+0.049
+0.662
+0.152
+0.354
+0.892
+0.968
+0.849
+0.996⁎
+0.890⁎
+0.552⁎
+0.994⁎
+0.120
+0.742
+0.534⁎
+0.901
+0.192
+0.093
+
+54 ± 9
+64.0% (16)
+76.0% (19)
+56.0% (14)
+16.0% (4)
+24.0% (6)
+52.0% (13)
+6.80 ± 0.72
+1.69 ± 0.66
+4.54 ± 0.57
+1.46 ± 0.31
+0.77 ± 0.30
+1.34 ± 0.33
+1.41 ± 0.27
+1.16 ± 0.61
+0.40 ± 0.20
+44.0%
+56.0%
+
+54 ± 11
+73.5% (25)
+61.8% (21)
+44.1% (15)
+38.3% (13)
+20.6% (7)
+58.8% (20)
+6.73 ± 0.80
+1.54 ± 0.59
+4.55 ± 0.68
+1.47 ± 0.32
+0.70 ± 0.27
+1.43 ± 0.26
+1.43 ± 0.35
+1.03 ± 0.26
+0.35 ± 0.23
+47.0%
+33.3%
+
+0.818
+0.617
+0.382
+0.863
+0.116
+0.996
+0.798
+0.707
+0.443
+0.818⁎
+0.896⁎
+0.443
+0.240
+0.801
+0.452⁎
+0.410
+0.887
+0.887
+
+Number of individuals in parenthesis. SR1 and SR2, low and high SREBF1 expression. SC1 and SC2, low and high baseline SCAP expression. AIP, atherogenic index of plasma; ApoAI,
+apolipoprotein AI; ApoB, apolipoprotein B; BMI, body mass index; CAD, coronary artery disease; HDL, high-density lipoprotein; LDL, low-density lipoprotein; TG, triglycerides; VLDL,
+very low-density lipoprotein. Results are presented as mean ± SD. p-values for Student's t-test. ⁎Mann–Whitney Rank Test.
+
+for both SREBF1 (χ2 = 5.989, p = 0.05), and SCAP (χ2 = 1.945, p = 0.378)
+polymorphisms.
+Following treatment with atorvastatin, SCAP 2386AA genotype
+carriers showed a signiﬁcant reduction (5 times) in SCAP transcripts
+(p = 0.019) (Fig. 4b). However, this effect was not observed in AG+GG
+genotype carriers (Fig. 4b) or those carrying different SREBF1 -36delG
+genotypes (Fig. 4a).
+
+but no associations were found between these combined genotypes
+and serum lipids before and after atorvastatin therapy (data not
+shown).
+4. Discussion
+
+Baseline levels of serum lipids and apolipoproteins were similar
+between SREBF1 and SCAP genotypes. Serum lipids response to atorvastatin was also not associated with SREBF1 or SCAP variants (Table 4).
+We have also evaluated the SREBF1 and SCAP combined genotypes
+
+This study examined the effects of atorvastatin on PBMC mRNA
+expression of genes involved in intracellular cholesterol homeostasis
+and its relation with serum lipid proﬁle and genetic polymorphisms.
+The expression patterns of both SREBF1a and SCAP showed signiﬁcant
+variations before and after treatment with atorvastatin.
+Baseline levels of SREBF1a transcript has been also measured in
+PBMC of normolipidemic individuals and it seems to be positively
+correlated with the transcription levels of SREBF1c and other genes
+
+Fig. 3. Serum lipid proﬁle in response to atorvastatin in both SREBF1a (a) and SCAP (b)
+mRNA expression groups. TC, total cholesterol; TG, triglycerides; HDL-C, high-density
+lipoprotein cholesterol; LDL-C: low-density lipoprotein cholesterol; VLDL-C, very lowdensity lipoprotein cholesterol, ApoAI, apolipoprotein AI; ApoB, apolipoprotein B.
+
+Fig. 4. Inﬂuence of SNPs SREBF1 -36delG and SCAP A2386G on SREBF1a (a) and SCAP (b)
+mRNA expression in PBMC, before and after atorvastatin therapy. Data are presented as
+mean ± SE of log values compared by paired t-test.
+
+3.5. SREBF1 and SCAP variants and response to atorvastatin
+
+S.S. Arazi et al. / Clinica Chimica Acta 393 (2008) 119–124
+
+123
+
+Table 4
+Serum levels of lipids and lipoproteins, before and after 4 weeks of treatment with atorvastatin, according to the SREBF1 -36delG and SCAP Ile796Val polymorphisms in
+hypercholesterolemic patients
+Serum lipids
+
+SREBF1 -36delG polymorphism
+G+G+ (15)
+
+Total cholesterol, mmol/l
+
+Triglycerides, mmol/l
+
+HDL cholesterol, mmol/l
+
+LDL cholesterol, mmol/l
+
+VLDL-cholesterol, mmol/l
+
+ApoAI, g/l
+
+ApoB, g/l
+
+Baseline
+Atorvastatin
+Variation, %
+Baseline
+Atorvastatin
+Variation, %
+Baseline
+Atorvastatin
+Variation, %
+Baseline
+Atorvastatin
+Variation, %
+Baseline
+Atorvastatin
+Variation, %
+Baseline
+Atorvastatin
+Variation, %
+Baseline
+Atorvastatin
+Variation, %
+
+6.87 ± 1.07
+5.09 ± 0.86
+− 25.3 ± 11.1
+1.44 ± 0.62
+1.33 ± 0.56
+− 3.34 ± 33.3
+1.45 ± 0.33
+1.35 ± 0.35
+− 6.7 ± 12.2
+4.71 ± 0.88
+3.08 ± 0.69
+− 34.1 ± 12.8
+0.66 ± 0.28
+0.60 ± 0.41
+− 3.34 ± 33.3
+1.38 ± 0.26
+1.47 ± 0.24
++5.8 ± 8.8
+1.49 ± 0.29
+1.01 ± 0.25
+− 51.6 ± 28.4
+
+SCAP Ile796Val polymorphism
+
+G+G− / G−G− (44)
+6.72 ± 0.65
+4.76 ± 0.60
+− 28.9 ± 8.0
+1.66 ± 0.62
+1.43 ± 0.55
+− 11.3 ± 26.4
+1.47 ± 0.30
+1.38 ± 0.26
+− 5.8 ± 10.0
+4.49 ± 0.52
+2.73 ± 0.56
+− 39.0 ± 11.2
+0.76 ± 0.28
+0.65 ± 0.25
+− 11.3 ± 26.4
+1.39 ± 0.30
+1.48 ± 0.31
++ 4.5 ± 18.1
+1.40 ± 0.33
+1.02 ± 0.25
+− 42.9 ± 35.3
+
+p
+
+AA (11)
+
+AG/GG (48)
+
+p
+
+0.535
+0.108
+0.171
+0.164
+0.551
+0.348
+0.796
+0.753
+0.777
+0.283
+0.056
+0.158
+0.167
+0.566
+0.348
+0.830
+0.811
+0.780
+0.378
+0.820
+0.762
+
+6.72 ± 0.61
+4.68 ± 0.63
+− 30.3 ± 8.5
+1.84 ± 0.60
+1.57 ± 0.50
+− 14.1 ± 13.5
+1.38 ± 0.23
+1.26 ± 0.16
+− 8.1 ± 9.3
+4.49 ± 0.53
+2.70 ± 0.61
+− 39.9 ± 11.7
+0.84 ± 0.28
+0.71 ± 0.23
+− 14.1 ± 13.6
+1.36 ± 0.25
+1.36 ± 0.23
++0.7 ± 9.2
+1.41 ± 0.19
+0.99 ± 0.16
+− 44.1 ± 14.2
+
+6.77 ± 0.81
+3.64 ± 0.70
+− 27.5 ± 9.0
+1.55 ± 0.62
+1.36 ± 0.55
+− 8.2 ± 30.6
+1.48 ± 0.23
+1.39 ± 0.30
+− 5.6 ± 10.8
+4.56 ± 0.66
+2.85 ± 0.60
+− 37.2 ± 11.7
+0.70 ± 0.33
+0.62 ± 0.25
+− 8.2 ± 30.6
+1.40 ± 0.30
+1.50 ± 0.29
++ 6.2 ± 1.2
+1.42 ± 0.35
+1.02 ± 0.26
+− 45.5 ± 36.9
+
+0.869
+0.368
+0.359
+0.117
+0.262
+0.539
+0.316
+0.207
+0.485
+0.808
+0.479
+0.509
+0.165
+0.253
+0.539
+0.699
+0.120
+0.208
+0.924
+0.864
+0.901
+
+Number of individuals in parenthesis. ApoAI, apolipoprotein AI; ApoB, apolipoprotein B; HDL, high-density lipoprotein; LDL, low-density lipoprotein; VLDL, very low-density
+lipoprotein.
+Results are presented as mean ± SD. + and – indicate increase and decrease of the variation values. p-values for Student's t-test.
+
+involved in intracellular cholesterol homeostasis [34]. In human
+cultured cells, addition of sterols to the media suppressed SREBP1
+suggesting that SREBF1a transcription is also controlled by metabolic
+factors [35]. Nevertheless, we did not ﬁnd relationship between
+SREBF1a expression status and serum lipids.
+A variable pattern of SREBF1a and SCAP transcription in response
+to atorvastatin was found in PBMC. This differential pattern may
+result from variation in intracellular cholesterol since sterols block
+the SCAP-escorted SREBPs transport from endoplasmic reticulum to
+the Golgi [36]. This mechanism may explain the upregulation of
+atorvastatin on SREBF1a and SCAP mRNA expression found in SC1 and
+SR1 groups. However, the mechanism of the atorvastatin-induced
+downregulation of the SREBF1a and SCAP transcript levels in SR2 and
+SC2 groups remains to be elucidated. It is possible that this effect is
+secondary to the atorvastatin-induced downregulation of SREBF1a
+expression found in SR2 individuals, considering that 39% (23/59) HC
+patients had concomitant reduced expression of both genes. Moreover, the positive correlation between the variations on SREBF1a and
+SCAP transcription levels suggests that these genes are coordinately
+regulated by atorvastatin.
+In this study, lower serum triglycerides and VLDL cholesterol
+response to atorvastatin was associated with signiﬁcant reduction of
+SCAP mRNA expression in PBMC (group SC2). These results suggest
+that atorvastatin effects on SCAP expression may reﬂect the intracellular homeostasis of triglycerides and its circulating levels.
+Atorvastatin and simvastatin in high doses up regulate SREBP1 and
+enzymes involved in VLDL production such as fatty acid synthase
+(FAS), acetyl-coenzyme A carboxylase, DAG acyltransferase and
+microsomal triglycerides transfer protein in rat liver [37]. However,
+both statins markedly reduced plasma triglycerides levels, suggesting
+that different mechanisms may be involved in the hypotriglyceridemic
+effect of statins at high or low doses. On the other hand, triglycerides
+inhibit expression of SRE-promoter genes that is positively correlated
+with cell triglycerides accumulation [38]. Therefore, triglycerides
+similar to fatty acids are rapid and efﬁcient modulators of SREmediated gene expression.
+We have demonstrated that SREBF1 -36delG polymorphism is not
+associated with the levels of mRNA expression in the presence or
+
+absence of atorvastatin. Although this polymorphism is located close
+to the second Sp1 site of the promoter region [39], it seems to have no
+effect in transcription regulation at least in PBMC.
+The common A2386G polymorphism of SCAP was associated with
+mRNA expression in response to atorvastatin. Individuals carrying AA
+genotype had signiﬁcant reduction of SCAP transcription levels. The
+role of this variant on gene expression remain to be investigated. We
+speculate that it may be in linkage disequilibrium with the loss-offunction C-11T promoter polymorphism that was associated with a
+marked reduction in promoter activity in a luciferase-based expression system [40]. Mutations in the sterol sensing domain of SCAP were
+found to abolish the feedback regulation of SREBP processing by
+sterols [41]. These mutations may be also associated with differential
+pattern in SCAP mRNA expression.
+Despite of the relationship of SREBF1 -36delG and SCAP A2386G
+polymorphisms on serum lipids in response to ﬂuvastatin and
+simvastatin reported previously [17,18], we did not ﬁnd signiﬁcant
+association between these variants and response to atorvastatin.
+These results are suggestive that polymorphisms in SREBF1 and SCAP
+may play a minor role in determining the pharmacological response to
+statins. It is noteworthy that SREBP1 and SCAP are key modulators of
+the HMGCR and LDLR expression in cells, therefore polymorphisms
+that inﬂuence gene expression may affect the pharmacodynamics and
+consequently the pharmacological effects of statins without determining signiﬁcant variation in serum lipids. In addition, differences in
+pharmacokinetics of statins and metabolic status of the patient may
+also contribute to the variation in lowering-lipid responses among
+SREBF1 and SCAP genotypes carriers.
+A potential limitation of our study is the relative small number of
+cases for genotype-association analyses. Therefore the effect of
+SREBF1 and SCAP variants on statins response should be tested in
+larger populations for better evaluation of the pharmacogenetics role
+of these potent lowering-cholesterol medicines.
+In conclusion, atorvastatin has differential effects on SREBF1a and
+SCAP mRNA expression in PBMC that depends on baseline transcription levels and SCAP A2386G polymorphism. Reduction of SREBF1a
+and SCAP expression was associated with lower triglycerides response
+to atorvastatin.
+
+124
+
+S.S. Arazi et al. / Clinica Chimica Acta 393 (2008) 119–124
+
+Acknowledgments
+The authors thank Prof. Sonia Q. Doi (USUHS/USA) for the English
+review and Raquel de Oliveira, Claudia Villazon, Nadia Preto Godoy,
+Veronica Simoes de Oliveira and Helder Honorato Basques for the
+technical support. S. S. Arazi, F. D. V. Genvigir and M. A. V. Willrich are
+recipients of fellowships from FAPESP, Sao Paulo, SP, Brazil. M. H.
+Hirata and R.D. Hirata are recipients of fellowships from CNPq, Brazil.
+References
+[1] Horton JD, Goldstein JL, Brown MS. SREBPs: activators of the complete program of
+cholesterol and fatty acid synthesis in the liver. J Clin Invest 2002;109:1125–31.
+[2] Weber LW, Boll M, Stampﬂ A. Maintaining cholesterol homeostasis: sterol
+regulatory element-binding protein. World J Gastroenterol 2004;10:3081–7.
+[3] Hua X, Wu J, Goldstein JL, Brown MS, Hobbs HH. Structure of the human gene
+encoding sterol regulatory element binding protein-1 (SREBF1) and localization
+of SREBF1 and SREBF2 to chromosomes 17p11.2 and 22q13. Genomics 1995;25:
+667–73.
+[4] McPherson R, Gautheier A. Molecular regulation of SREBP function: the InsigSCAP connection and isoform-speciﬁc modulation of lipid synthesis. Biochem Cell
+Biol 2004;82:201–11.
+[5] Sakai J, Nohturfft A, Chen D, Ho YK, Brown MS, Goldstein JL. Identiﬁcation of
+complexes between the COOH-terminal domains of sterol regulatory element
+binding proteins (SREBPs) and SREBP cleavage-activating protein. J Biol Chem
+1997;272:20213–21.
+[6] Flury I, Garza R, Shearer A, Rosen J, Cronin S, Hampton RY. INSIG: a broadly
+conserved transmembrane chaperone for sterol-sensing domain proteins. EMBO J
+2005;24:3917–26.
+[7] Gong Y, Lee JN, Brown MS, Goldstein JL, Ye J. Juxtamembranous aspartic acid in
+Insig-1 and Insig-2 is required for cholesterol homeostasis. Proc Natl Acad Sci U S A
+2006;103:6154–9.
+[8] Eberle D, Hegarty B, Bossard P, Ferre P, Foufelle F. SREBP transcription factors:
+master regulators of lipid homeostasis. Biochimie 2004;86:839–48.
+[9] Yokoyama C, Wang X, Brigs MR, Admon A, Wu J, Hua X, et al. SREBP-1, a basichelix-loop-helix-leucine zipper protein that controls transcription of the low
+density lipoprotein receptor gene. Cell 1993;75:187–97.
+[10] Istvan E. Structural mechanism for statin inhibition of 3-hydroxy-3-methylglutaryl coenzyme A reductase. Am Heart J 2002;144:S27–32.
+[11] Chasman DI, Posada D, Subrahmanyan L, Cook NR, Stanton VP, Ridker PM.
+Pharmacogenetic study of statin therapy and cholesterol reduction. JAMA 2004;
+291:2821–7.
+[12] Schmitz G, Schmitz-Madry A, Ugocsai P. Pharmacogenetics and pharmacogenomics of cholesterol-lowering therapy. Curr Opin Lipidol 2007;18:164–73.
+[13] Sorkin SC, Forestiero FJ, Hirata MH, Guzman ECR, Cavalli SA, Bertolami MC, et al.
+APOAI polymorphisms are associated with variations in serum triglyceride
+concentrations in hypercholesterolemic individuals. Clin Chem Lab Med 2005;
+43:1339–45.
+[14] Salazar LA, Hirata MH, Quintao EC, Hirata RD. Lipid-lowering response of the
+HMG-CoA reductase inhibitor ﬂuvastatin is inﬂuenced by polymorphisms in the
+low-density lipoprotein receptor gene in Brazilian patients with primary
+hypercholesterolemia. J Clin Lab Anal 2000;14:125–31.
+[15] Guzman EC, Hirata MH, Quintao EC, Hirata RD. Association of the apolipoprotein B
+gene polymorphism with cholesterol levels and response so ﬂuvastain in Brazilian
+individuals with high risk for coronary heart disease. Clin Chem Lab Med 2000;38:
+731–6.
+[16] Vedie B, Jeunemaitre X, Megnien JL, Atger V, Simon A, Moatti N. A new DNA
+polymorphism in the 5′unstranslated region of the human SREBF-1a is related to
+development of the atherosclerosis in high cardiovascular risk population.
+Atherosclerosis 2001;154:589–97.
+[17] Salek L, Lutucuta S, Ballantyne CM, Gotto Jr AM, Marian AJ. Effects of SREBF-1a and
+SCAP polymorphisms on plasma levels of lipids, severity, progression and
+regression of coronary atherosclerosis and response to therapy with ﬂuvastatin.
+J Mol Med 2002;80:737–44.
+[18] Fiegenbaum M, Silveira FR, Van der Sand CR, Van der Sand LC, Ferreira ME, Pires
+RC, et al. Determinants of variable response to simvastatin treatment: the role of
+common variants of SCAP, SREBF-1a and SREBF-2 genes. Pharmacogenomics J
+2005;5:359–64.
+
+[19] Iwaki K, Nakajima T, Ota N, Emi M. A common Ile796Val polymorphism of the
+human SREBP cleavage-activating protein (SCAP) gene. J Hum Genet 1999;44:
+421–2.
+[20] Fan YM, Laaksonen R, Janatuinen T, Vesaleinen R, Nuutila P, Knuuti J, et al. Effects
+of pravastatin therapy on serum lipids and coronary reactivity are not associated
+with SREBP cleavage-activating protein polymorphism in healthy young men. Clin
+Genet 2001;60:319–21.
+[21] Wibaut-Berlaimont V, Randi AM, Mandryko V, Lunnon MW, Haskard DO,
+Naoumova RP. Atorvastatin affects leukocyte gene expression in dyslipidemia
+patients: in vivo regulation of homeostasis, inﬂammation and apoptosis. J Thromb
+Haemost 2005;3:677–85.
+[22] Rodrigues AC, Curi R, Britto LR, Rebbechi IM, Hirata MH, Bertolami MC, et al.
+Down-regulation of ABCB1 transporter by atorvastatin in a human hepatoma cell
+line and in human peripheral blood mononuclear cells. Biochim Biophys Acta
+2006;1760:1866–73.
+[23] Kang JG, Patino WD, Matoba S, Hwang PM. Genomic analysis of circulating cells: a
+window into atherosclerosis. Trends Cardiovasc Med 2006;16:163–8.
+[24] Lichtenstein AH, Appel LJ, Brands M, Carnethon M, Daniels S, Franch HA, et al.
+Diet and Lifestyle Recommendations Revision 2006: a scientiﬁc statement from
+the American Heart Association nutrition committee. Circulation 2006;114:
+82–96.
+[25] Friedewald WT, Levy RI, Fredrickson DS. Estimation of the concentration of lowdensity lipoprotein cholesterol in plasma, without use of the preparative ultracentrifuge. Clin Chem 1972;18:499–502.
+[26] Dobiasova M. Atherogenic index of plasma [log(triglycerides/HDL-cholesterol)]:
+theoretical and practical implications. Clin Chem 2004;50:1113–5.
+[27] Rasouli M, Kiasari AM, Mokhberi V. The ratio of apoB/apoAI, apoB and lipoprotein
+(a) are the best predictors of stable coronary artery disease. Clin Chem Lab Med
+2006;44:1015–21.
+[28] Salazar LA, Hirata MH, Cavalli SA, Machado MO, Hirata RD. Optimized procedure
+for DNA isolation from fresh and cryopreserved clotted human blood useful in
+clinical molecular testing. Clin Chem 1998;44:1748–50.
+[29] Massirer KB, Hirata MH, Silva AE, Ferraz ML, Nguyen NY, Hirata RD. Interferonalpha receptor 1 mRNA expression in peripheral blood mononuclear cells is
+associated with response to interferon-alpha therapy of patients with chronic
+hepatitis C. Braz J Med Biol Res 2004;37:643–7.
+[30] Livak KJ, Schmitgen TD. Analysis of relative gene expression data using real-time
+quantitative PCR and the 2−ΔΔCt method. Methods 2001;25:402–8.
+[31] Pfafﬂ MW. A new mathematical model for relative quantiﬁcation in real-time RTPCR. Nucleic Acids Res 2001;29:e45.
+[32] Rios DL, Vargas AF, Torres MR, Zago AJ, Callegari-Jacques SM, Hutz MH. Interaction
+between SREBP-1a and APOB polymorphisms inﬂuences total and low-density
+lipoprotein cholesterol levels in patients with coronary artery disease. Clin Genet
+2003;63:380–5.
+[33] Durst R, Jansen A, Erez G, Bravdo R, Butbul E, Ben Avi L, et al. The discrete and
+combined effect of SREBF-2 and SCAP isoforms in the control of plasma lipids
+among familial hypercholesterolaemia patients. Atherosclerosis 2006;189:
+443–50.
+[34] Skarits C, Fischer S, Haas OA. Quantitation of the sterol regulatory elementbinding protein mRNA in mononuclear blood cels by competitive RT-PCR. Clin
+Chim Acta 2003;336:27–37.
+[35] Shimomura I, Shimano H, Horton JD, Goldstein JL, Brown MS. Differential
+expression of exons 1a and 1c in mRNAs for sterol regulatory element binding
+protein-1 in human and mouse organs and cultured cells. J Clin Invest 1997;99:
+838–45.
+[36] Brown JL, Feramisco JD, Brown MS, Goldstein JL. Cholesterol addition to ER
+membranes alters conformation of SCAP, the SREBP escort protein that regulates
+cholesterol metabolism. Mol Cell 2002;10:237–45.
+[37] Roglans N, Verd JC, Peris C, Alegret M, Vazquez M, Adzet T, et al. High doses of
+atorvastatin and simvastatin induce key enzymes involved in VLDL production.
+Lipids 2002;37:445–54.
+[38] Densupsoontorn N, Worgall TS, Seo T, Hamai H, Deckelbaum RJ. Fatty acid supplied
+as triglyceride regulates SRE-Mediated gene expression as efﬁciently as free fatty
+acids. Lipids 2007;42:885–91.
+[39] Zhang C, Shin DJ, Osborne TF. A simple promoter containing two Sp1 sites controls
+the expression of sterol-regulatory-element-binding protein 1a (SREBP-1a).
+Biochem J 2005;386:161–8.
+[40] Cao H, Miskie BA, Hegele RA. Functional promoter polymorphism in SREBP
+cleavage-activating protein (SCAP). J Hum Genet 2002;47:492–6.
+[41] Yabe D, Xia Z, Adams CM, Rawson RB. Three Mutations in sterol-sensing domain of
+SCAP block interaction with insig and render cleavage insensitive to sterols. Proc
+Natl Acad Sci U S A 2002;99:16672–7.

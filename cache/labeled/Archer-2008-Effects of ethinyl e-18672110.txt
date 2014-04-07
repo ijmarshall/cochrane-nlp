@@ -1,0 +1,870 @@
+Contraception 78 (2008) 106 – 112
+
+Original research article
+
+Effects of ethinyl estradiol and ibuprofen compared to placebo on
+endometrial bleeding, cervical mucus and the postcoital test in
+levonorgestrel subcutaneous implant users☆
+David F. Archer a,⁎, Christine B. Philput b , Adam S. Levine c , Vanessa Cullins d ,
+Thomas G. Stovall e , Janice Bacon f , Margaret E. Weber g
+a
+
+CONRAD Clinical Research Center, Department of Obstetrics and Gynecology, Eastern Virginia Medical School, Norfolk, VA 23507, USA
+b
+RTTP Inc., Winchendon, MA 01475, USA
+c
+Tampa Obstetrics, Fertility and Gynecology, Brandon, FL 33511, USA
+d
+Planned Parenthood Federation of America, New York, NY 10001, USA
+e
+Women's Health Specialists, Germantown, TN 38138, USA
+f
+Department of Obstetrics and Gynecology, University of South Carolina School of Medicine, Columbia, SC 29209, USA
+g
+Medical Affairs Department of Wyeth Pharmaceuticals, Collegeville, PA 19426, USA
+Received 2 February 2008; revised 7 April 2008; accepted 14 April 2008
+
+Abstract
+Background: The study was conducted to evaluate ethinyl estradiol (EE) or ibuprofen (IBU) compared to placebo (PL) on spotting and
+bleeding (S/B) and a postcoital test (PCT) in women using the levonorgestrel subcutaneous implant. Women experiencing excessive S/B
+were enrolled in a multicenter prospective randomized study using EE, IBU or PL.
+Outcome Measures: Duration of S/B and a PCT were evaluated. Statistical analysis used a general linear model procedure with Duncan's
+multiple range tests for individual variables.
+Results: <n>One hundred seven</n> women were evaluated, and there was no difference in the duration of bleeding among the three therapies, while
+the mean number of spotting days were 1.8 for EE and 2.8 for PL (p=.04). There was no effect of IBU on S/B. No effect on cervical mucus or
+sperm was found between treatments.
+Conclusion: There was a decrease in spotting but no effect on bleeding with EE compared to PL.
+© 2008 Elsevier Inc. All rights reserved.
+Keywords: Levonorgestrel implants; Endometrium; Bleeding; Ethinyl estradiol; Ibuprofen; Postcoital test; Prospective; Double dummy; Randomized
+clinical trial
+
+1. Introduction
+The principal reason for discontinuation of hormonal
+contraception is for unscheduled (irregular) endometrial
+(uterine) spotting and bleeding (S/B). This is true for oral
+combination (estrogen plus progestin) as well as inject☆
+
+This study was supported by a grant from Wyeth Laboratories.
+⁎ Corresponding author. The CONRAD Clinical Research Center, The
+Jones Institute for Reproductive Medicine, Eastern Virginia Medical School,
+601 Colley Avenue, Norfolk, VA 23507-1927, USA. Tel.: +1 757 446 7444;
+fax: +1 757 446 8998.
+E-mail address: archerdf@evms.edu (D.F. Archer).
+0010-7824/$ – see front matter © 2008 Elsevier Inc. All rights reserved.
+doi:10.1016/j.contraception.2008.04.003
+
+able or implantable progestin-only contraceptive methods
+[1–5]. The exact causes of the irregular endometrial S/B
+associated with continuous progestin-only hormonal
+contraceptive methods are unknown [1,6]. Continuously
+delivered progestin-only methods of contraception are
+associated with a higher incidence of irregular bleeding
+than intermittently or cyclic administered oral contraceptives. The overall incidence of irregular bleeding in
+users of levonorgestrel subcutaneous implants (LNG SIs)
+is variable depending on the study [3,7,8]. Normal cyclic
+vaginal bleeding occurs in 25% of LNG SI participants
+during the first year of use with prolonged bleeding in
+10–20% [9].
+
+D.F. Archer et al. / Contraception 78 (2008) 106–112
+
+107
+
+The amount of blood loss associated with LNG SI is
+negligible and does not result in any significant medical
+problems such as anemia or the need for either diagnostic or
+therapeutic surgical intervention. The consumer perceives
+the occurrence and duration of the bleeding or spotting,
+which is unscheduled and/or prolonged, as a significant
+problem. Thus, the increased occurrence of unscheduled
+and/or prolonged bleeding or spotting results in discontinuation of the method. Counseling regarding this side effect
+before insertion of LNG SI results in improved compliance
+and continuation with the method [10].
+We have performed a pilot study using 20 mcg of ethinyl
+estradiol (EE) for 10 days where we found a rapid cessation
+of bleeding, within 3 days in 5 out of 10 volunteers [11].
+These data resulted in our developing the current prospective
+clinical trial using EE 20 mcg a day for 10 days or IBU
+800 mg per day for 5 days versus placebo (PL) using a
+double-blind double-dummy protocol. We have previously
+published the results of an interim analysis of this study
+without breaking the code to identify the medication [11].
+We were not able to find a significant reduction in either
+the bleeding or spotting days between any of the three
+groups based on our interim analysis [11].
+The current report is the final analysis of our data based
+on the completion of the multicenter clinical trial and the
+breaking of the code for the medication. The endpoint in this
+trial was the efficacy of the treatment (EE, IBU) to reduce or
+stop the occurrence, frequency or duration of S/B in women
+using LNG SI for contraception. A secondary endpoint was
+the findings on a standard postcoital test (PCT) performed at
+the end of the treatment period in a subset of the participants.
+
+The participant was in good general health with a negative
+pregnancy test and no known medical problems that would
+have contributed to the bleeding or spotting, and she
+understood that there was a PL arm in the study. There
+were no contraindications to the use of exogenous EE and
+nonsteroidal anti-inflammatory agents.
+Exclusion criteria were the following: unwillingness to
+participate in a PL-controlled trial or keep a daily menstrual
+diary card, any contraindication to estrogen or nonsteroidal
+anti-inflammatory drugs (NSAID), current frequent use of an
+NSAID or previous treatment for S/B related to LNG-SI.
+Current cigarette smoking was not a contraindication for
+enrollment in the study.
+
+2. Materials and methods
+
+2.3. Medications
+
+2.1. Participants
+
+EE 20 mcg tablets and PL tablets of comparable size and
+color were supplied by Schering Corporation, Kenilworth,
+NJ. IBU 800 mg tablets and identical PL were supplied by
+
+One hundred seven women who were users of LNG SI
+and were experiencing irregular endometrial S/B were
+invited to participate in this study. The protocol and
+informed consents had been approved by the local
+Institutional Review Board at each clinical site prior to
+initiating the study. All participants were counseled prior to
+enrollment in the study and had signed an informed consent.
+A registered nurse serving as a clinical coordinator initially
+interviewed each potential candidate to determine if all
+inclusion and exclusion criteria were met. Following this,
+the patient was enrolled and a medical history, complete
+physical examination, urine pregnancy test and cervical
+swabs for Neisseira gonorrhea and Chlamydia trachomatis
+were obtained by a physician.
+The following inclusion and exclusion criteria were used
+to determine eligibility of the participant: More than 1 month
+should have elapsed since insertion of the LNG SI, with S/B
+lasting eight or more consecutive days, or more than 10 days
+out of 14 days within the preceding 3 weeks, and no
+treatment for S/B within the preceding month.
+
+2.2. Therapeutic interventions
+This was a prospective randomized double-blind trial of
+the following medications: EE 20 mcg administered daily for
+10 days with 5 days of an IBU PL given twice a day;
+ibuprofen (IBU) 400 mg twice a day orally for 5 days with
+10 days of a daily EE PL; two PL tablets, one taken daily
+for 10 days and the other taken concurrently twice a day for
+the first 5 days of treatment. An overview of the clinical
+study design is found in Fig. 1.
+The participants were asked to return after the first
+10 days of medication. If S/B was persistent, they were given
+a second 10-day course of medication. If the S/B had stopped
+or was reduced, the participants were given a second 10 days
+of medication with instructions to restart the treatment if they
+had more than eight consecutive days of S/B or 10 or more
+days of S/B in a 14-day interval (see above). All participants
+were seen on a monthly basis for 1 year or until S/B had
+ceased for 2 months.
+
+Fig. 1. Schematic overview of the clinical protocol; a prospective
+randomized double-dummy trial with EE 20 mcg for 10 days versus IBU
+800 mg twice a day for 5 days versus PL.
+
+108
+
+D.F. Archer et al. / Contraception 78 (2008) 106–112
+
+Upjohn Company, Kalamazoo, MI. The tablets were
+individually labeled with a site-specific and participantspecific order number.
+All medication was prepackaged in individual lock-tight
+containers. Each participant was provided with three
+packages each containing two bottles with precounted
+tablets. There were written instructions to take one tablet
+daily from Bottle A for 10 days and simultaneously take two
+tablets twice a day from Bottle B for 5 days. These
+instructions were on the label of each bottle.
+
+2.
+
+3.
+
+2.4. Randomization
+Each of the five clinical sites was identified with an
+individual site number. Each site was then provided with a
+randomization list for the participant that was generated by
+the Data Collecting Center, Dr. Philput. At each site, as the
+patient was entered into the study, she was assigned a unique
+patient order number (PON) and the appropriate treatment
+medication that corresponded to the PON. The investigators
+and clinical staff were all blinded to the dispensed study
+medication.
+
+4.
+
+2.5. Follow-up visits
+Enrollment in the study was done at the first visit if the
+participants met all criteria and had a normal physical
+examination. Each participant was instructed to immediately
+start the medication if she was experiencing bleeding at the
+time of evaluation. If bleeding had not occurred in the past
+2 days, participants were instructed to initiate the medication if they had at least seven or more days of spotting or
+bleeding in a 14-day interval. All participants were asked to
+return between Days 7 and 10 after initiating treatment.
+At this return visit at the end of the 10-day treatment,
+each participant was asked to have intercourse within 3 h
+before the scheduled examination if possible. At this visit,
+the diary cards were reviewed and a PCT was performed
+(see Section 2.6). Each participant was then seen monthly
+every 3 months when the diary cards were collected and
+new diary cards and medication for another course of
+treatment were provided.
+
+5.
+
+6.
+
+evaluation of percentage of motile and nonmotile
+sperm was made in 10 randomly selected highpowered fields.
+Vaginal pH was determined using pH paper pressed
+against the left vaginal wall approximately halfway
+between the cervix and introitus.
+A vaginal maturation index was estimated by
+scraping cells from the lateral vaginal wall and
+placing these on a glass slide. The percentage of
+superficial, intermediate and basal cells present were
+estimated after evaluation of 100 epithelial cells
+using light microscopy.
+The portio of the cervix was then wiped with a
+cotton applicator to remove vaginal fluids. An
+aspirette uterine sampler (Unimar Aspirette, Cooper
+Surgical, Shelton, CT, USA) was inserted into the
+external cervical os and advanced approximately
+1.5 cm or less with negative pressure being applied.
+The collected cervical mucus was scored for amount,
+spinnbarkeit, ferning, viscosity and cellularity (leukocytes) from 0 to 3 using previously described criteria
+[12]. Individual cervical mucus parameters would
+receive a score of 3 for excellent and a score of 0 for
+poor. A total score of 15 for these five parameters
+would be excellent, and a score b7 would reflect poorquality cervical mucus.
+A portion of the aspirated cervical mucus was placed
+on a clean glass slide, coverslipped and evaluated for
+the presence of spermatozoa. An initial scan at ×100
+magnification was carried out to determine if
+spermatozoa were indeed present. Following this,
+five random fields were evaluated at ×400 to
+determine the number of spermatozoa and their
+motility, which was classified as (a) motile and
+progressive, (b) motile and nonprogressive and (c)
+nonmotile. The total number of sperm in the five
+high-powered fields was then divided by 5 to arrive
+at an average number per high-powered field.
+If no spermatozoa were seen at ×100, this was recorded
+as a negative PCT.
+
+2.6. PCT, vaginal pH and vaginal maturation index
+
+2.7. Outcome measures
+
+All participants were asked to have intercourse within 3 h
+before their end-of-treatment visit, which was carried out
+between 7 and 10 days following initiation of treatment.
+Persistent S/B or nonavailability of the partner would
+potentially result in noncompliance for the PCT. The PCT
+was performed in the following manner:
+
+The primary outcome measure was the number of days of
+vaginal (endometrial) S/B:
+
+1. The participant was examined in the supine position
+with a sterile vaginal speculum. The speculum was
+inserted and the vaginal pool was aspirated; the
+volume of fluid was determined using a conical
+centrifuge tube with volumetric measurements. One
+drop of this material was placed on a glass slide, and an
+
+Each participant was counseled regarding the potential
+changes in uterine (endometrial) bleeding. She was given
+a diary card along with the treatment medication on
+which she was to list all symptoms, the occurrence of
+vaginal S/B and the number of pills taken each day.
+Spotting was defined as a bloodstained vaginal discharge
+that did not require the use of a sanitary protection.
+Bleeding was any vaginal discharge that was blood-tinged
+and required sanitary protection. Each participant used
+her own subjective assessment of what amount of vaginal
+discharge required protection.
+
+D.F. Archer et al. / Contraception 78 (2008) 106–112
+
+The secondary outcome measure was the result of
+the PCT performed between Days 7 and 12 after
+initiating treatment.
+
+109
+
+Table 2
+The mean number of days of S/B during and after treatment in women using
+Norplant®
+EE
+
+2.8. Data collection and analysis
+All data were entered on specifically designed datacollecting instruments and forwarded to a central data entry
+resource, directed by Dr. Philput. The S/B data were
+analyzed to see if there were differences between groups,
+for the following parameters:
+1. Number of days of bleeding and/or spotting: from
+Days 1 to 5, from Days 6 to 10, from Days 1 to 15 and
+within the first 30 days following treatment.
+2. Number of treatments used by the participants in each
+treatment group during their enrollment in the study.
+3. Presence or absence of spermatozoa in the cervical
+mucus and the percentage of motility, as well as any
+effects on cervical mucus parameters.
+
+Days 1–5
+Days 6–10
+Days 1–10
+Days 6–15
+Days 1–10 posttreatment
+Days 1–15 posttreatment
+
+IBU
+
+PL
+
+p value
+
+1.04
+1.42
+2.35
+2.66
+2.35
+2.67
+
+0.75
+0.88
+1.76
+1.82
+1.76
+1.83
+
+1.16 a
+0.96 a
+2.17
+1.90
+2.18
+1.90
+
+NS a
+NS
+NS
+NS
+NS
+NS
+
+The treatments are EE 20 mcg for 10 days, IBU 800 mg three times a day for
+5 days or PL for 10 days (see text for treatment details).
+NS, not significant among treatment groups.
+a
+Significant difference between Days 1–5 and Days 6–10 within
+groups, pb.05.
+
+3. Results
+
+The mean number of S/B days during Days 1–5 of
+treatment was 1.1, 1.8 and 1.2 for EE, IBU and PL,
+respectively. These results were not statistically different
+among groups (see Table 2). From Day 6 to Day 10, there
+were no differences found in mean S/B days between
+treatments: 1.4, 0.9 and 1.0 for EE, IBU and PL, respectively
+(see Table 2). There were no differences in mean S/B days
+within each treatment (EE, IBU and PL) when Days 1–5
+were compared to Days 6–10.
+The mean number of S/B days was not different
+among treatments during Days 1 to 15 after initiation of
+therapy (see Table 2).
+
+3.1. Volunteer demographics
+
+3.3. S/B within the first 30 days after treatment
+
+There were no differences in mean height, weight and
+systolic and diastolic blood pressure between the participants
+in each of the three treatment groups (Table 1). There were
+106 participants whose data were available for analysis. The
+number of volunteers in each arm of the study who had
+complete data for analysis was 20 for EE, 42 for IBU and 44
+for PL.
+
+The mean number of bleeding days in the 30 days after
+initiating therapy was 5.0, 4.3 and 3.6 for women receiving
+EE, IBU and PL, respectively (see Table 3). There was no
+statistical difference among treatments. The mean number of
+spotting days during the 30 days was 1.1, 1.8 and 2.8 for EE,
+IBU and PL, respectively. There was a statistically
+significant difference between the EE and PL groups for
+the reduction of spotting (p=.04) (see Table 3). There was no
+difference between the IBU and PL groups for spotting.
+The number of mean S/B days in the first 30 days after
+treatment was 6.1, 6.2 and 6.4 for EE, IBU and PL,
+respectively, and these results were not statistically different
+(see Table 3).
+
+Statistical analysis was carried out using a general linear
+model procedure with Duncan's multiple range tests for
+individual variables. A Mantel–Hansel chi-square test and
+Fisher's Exact Test (two tailed) were performed on the
+individual outcome variables.
+
+3.2. S/B after initiation of treatment
+The mean number of S/B days after treatment began
+was evaluated between groups in several ways. The
+cessation of endometrial S/B was considered to be an
+acute response within 5 days after initiation of treatment;
+an intermediate response, between 6 and 10 days after
+initiation of therapy; and a late response, more than 10 days
+after the onset of therapy.
+Table 1
+Demographics of participants in the clinical trial of EE or IBU versus PL to
+control endometrial bleeding secondary to Norplant® contraception
+EE (n=20)
+Weight (lb)
+Height (in.)
+Systolic blood pressure
+Diastolic blood pressure
+
+IBU (n=42)
+
+PL (n=44)
+
+p value
+
+123.1
+41.5 a
+101.9
+62.9
+
+133.0
+54.1 a
+103.9
+68.7
+
+153.1
+55.7
+102.9
+64.4
+
+NS
+NS
+NS
+NS
+
+Values are expressed as means. NS, not significant.
+a
+Statistically different between groups.
+
+Table 3
+The mean (±SD) number of total S/B days in the 30-day period after
+initiation of treatment in women using Norplant® contraception
+EE
+Spotting only
+Bleeding only
+S/B
+
+IBU
+
+PL
+
+p value
+
+1.1
+5.0
+6.1 (±2.63)
+
+1.8
+4.3
+6.2 (±2.55)
+
+2.8
+3.6
+6.4 (±2.30)
+
+.04 a
+NS
+NS
+
+The treatments are EE 20 mcg for 10 days, IBU 800 mg three times a day for
+5 days or PL for 10 days (see text for treatment details).
+NS, not significant among treatment groups.
+a
+p value for comparison between EE versus IBU and PL. There was no
+statistically significant difference between IBU and PL.
+
+110
+
+D.F. Archer et al. / Contraception 78 (2008) 106–112
+
+Table 4
+Cervical mucus parameters scored from 0=poor to 3=excellent: amount,
+spinnbarkeit, ferning, viscosity, cellularity and the total score using the
+criteria of Moghissi
+EE (n=14)
+Amount (43)
+Spinnbarkeit (43)
+Ferning (40)
+Viscosity (43)
+Cellularity (42)
+Total score (42)
+a
+b
+
+IBU (n=14)
+
+PL (n=15)
+
+p value
+
+1.5
+1.0
+0.3 a
+1.1
+0.9
+4.5
+
+1.4
+1.0
+0.8 b
+0.9
+0.7
+5.0
+
+1.2
+0.7
+0.1 a, b
+1.0
+0.6
+3.5
+
+NS
+NS
+NS
+NS
+NS
+NS
+
+Not statistically different between results.
+Statistically different between results.
+
+3.4. Vaginal maturation index and pH
+There were 32 observations of vaginal pH (13 for EE, 9
+for IBU and 10 for PL) at the conclusion of the 10-day
+treatment. Mean vaginal pH values were 6.5 for EE, 6.3 for
+IBU and 5.8 for PL and were not statistically different
+between treatment groups.
+There were 86 observations in the data set for vaginal
+maturation indices but only 61 were used due to
+incomplete findings that were consistent across groups.
+The mean vaginal maturation index was assessed as the
+percentage of superficial, intermediate and basal cells for
+each group at the time of the PCT, reported as mean values
+(EE: 4.4, 31.7 and 16.1; IBU: 9.5, 35.5 and 16.1; PL: 6.5,
+30.42 and 13.1, for superficial, intermediate and basal
+cells, respectively). None of these results were statistically
+different among treatment groups.
+3.5. Postcoital test results
+There were no differences in cervical mucus scores for
+mean amount, spinnbarkeit, ferning, viscosity and cellularrity between the participants in any of the three treatment
+groups (Table 4).
+The mean cervical mucus scores were 4.5 for EE, 5.0 for
+IBU and 3.5 for PL, which were considered to characterize
+poor or hostile cervical mucus based on our scoring system.
+The mean number of sperm present in five high-powered
+fields was 6.5 for EE (n=8), 5.8 for IBU (n=5) and 5.7 for PL
+(n=5). These findings were not statistically different among
+the groups. Motile sperm were present in only four
+participants. The EE group had one participant with a
+mean of 8 motile sperm per five high-powered fields, and the
+PL group had three participants with a mean of 7 motile
+sperm per five high-powered fields.
+
+4. Discussion
+The nature of the bleeding problem associated with
+progestin-only contraceptives is such that it is perceived as
+relatively unimportant by the physician but is significant for
+the consumer, resulting in premature discontinuation of the
+
+method [3,7]. The primary reason for discontinuation of
+progestational contraception is the high incidence of
+irregular, frequent and sometimes prolonged vaginal S/B
+[1,13]. This appears due to the fact that the incidence,
+frequency and duration of this side effect improves (becomes
+less) with the increased duration of LNG SI use [13].
+Secondly, there is no clinical information that the S/B results
+in any significant medical impairment such as anemia [3].
+Third, it has been felt that the addition of a second hormone
+(specifically estrogen) to the progestin-only regimen on a
+regular and prolonged duration would result in a similar but
+different form of combination oral contraception.
+There is no clearly identified regimen of medical
+management recommended to control the S/B in LNG SI
+contraceptors [13]. A prior study of LNG SI users
+experiencing S/B used four different intervention arms: EE
+50 mcg per day for 20 days orally, IBU 800 mg three times a
+day for 5 days, LNG 30 mcg twice a day for 20 days and PL
+one tablet daily for 20 days [14]. There was a 40% reduction
+in the total number of S/B days in women using EE
+compared to PL over a 1-year period [14]. IBU reduced the
+number of S/B days by 30%, compared to PL [14]. This
+report highlighted the fact that the treatment does not result
+in a “cure” since the number of refills for medication
+averaged 3.8 per participant and, second, that the number of
+days of S/B was 77 days for EE versus 129 days for PL in the
+1 year of follow-up.
+It is well known that most of the S/B occurs in the first
+several months after insertion of the LNG SI, and the
+incidence is reduced with time [3,9].
+A prospective study of women identified by objective
+assessment of excessive bleeding after LNG SI insertion
+reported that the use of EE 50 mcg daily for 21 days of a 90-day
+period significantly reduced the total number of S/B days
+(38.0 vs. 19.2 S/B days) [15]. The number of S/B episodes
+was unchanged. The number of S/B days per episode of
+bleeding was reduced from 14.7 to 6.7 days [15].
+A combination oral contraceptive (COC) has been
+prescribed when bleeding has been a problem with LNG
+SI in order to reduce the S/B and enhance compliance and
+continuation [15,16]. The oral contraceptive preparations
+used in these reports contained either (a) EE 50 mcg and
+LNG 150 mcg or (b) EE 30 mcg and LNG 150 mcg and were
+used only for 1 month [15,16]. The duration of the S/B
+episodes was reduced with the use of COC. The authors did
+not report data regarding the resumption or continuation of
+the S/B after the discontinuation of the COCs.
+We found no discernable effect on the duration of
+bleeding immediately or within the first 30 days of
+intervention with either EE or IBU compared to PL.
+These data are in agreememt with other trials of estrogenonly regimen for the cessation of bleeding in women
+using progestin-only contraception [13,17]. An exception
+is a 1-year study that found a decrease in the mean
+number of bleeding days with EE and IBU compared to
+PL [14]. It is possible that the dose and the extended
+
+D.F. Archer et al. / Contraception 78 (2008) 106–112
+
+duration of the EE in this trial did control the S/B similar
+to the findings of reduced breakthrough bleeding with
+continued use of cyclic COC [18,19]. Our expectation
+that a reduction in the dose and duration of EE to 20 mcg
+for 10 days could improve the S/B pattern was not
+successful in decreasing the duration of bleeding and only
+marginally effective in reducing the duration of spotting
+(see Tables 1–3). A Cochrane review of the use of estrogen
+to control S/B in progestin-only contraceptive users found a
+highly variable result and significant differences between
+clinical trials, resulting in difficulty in comparison of the
+various estorgenic regimens [13].
+Continuous daily COC use results in unscheduled
+irregular endometrial bleeding similar to that found with
+progestin-only contraception, indicating that daily EE does
+not alter the mechanisms responsible for the irregular
+bleeding [4,20–22].
+A possible reason for the failure of this regimen of
+estrogen to reduce the incidence of S/B is the fact that
+exogenous estrogen might induce progesterone receptors in
+the endometrium. The endometrial site of bleeding in women
+using progestin-only contraception was shown to have
+increased progesterone receptors A and B [23]. The use of
+an antiprogestin has been shown to reduce bleeding in
+progestin-only users [24,25]. This finding implicates the
+progestin in inducing or secreting some factors that result in
+vessel fragility and bleeding.
+An alternative theory is that the dose and duration of EE
+used in this study were insufficient to control S/B. We did
+find a small but statistically significant reduction in the
+number of spotting days over the 30 days following initiation
+of treatment for EE only (see Table 3).
+The use of IBU was not associated with any significant
+change in the S/B in these women. A modest effect was seen
+in a previous clinical trial [14]. Overall, nonsteroidal antiinflammatory agents have limited success in reducing the
+incidence of S/B in progestin-only contraceptive users
+[13,26,27].
+Nonsteroidal anti-inflammatory agents, specificaly IBU,
+have been reported to reduce the occurrence of S/B by 30%
+compared to PL in the other published prospective study
+[14]. We were unable to show any effect on either bleeding
+or spotting using the same dose of IBU, 800 mg, taken three
+times a day for 5 days compared to PL. This may be due to
+the short duration of treatment since many participants exited
+the current study within three to four calendar months in
+contrast to the 1-year follow-up in the earlier published
+report [14].
+Our study found no difference between the treatments for
+control of bleeding. The total number of observations was
+107. This number was adequate for a definitive statement
+regarding bleeding (power=0.82, α=.05, effect size=0.11).
+Thus, it is apparent that further studies would not be required
+to give a more definitive answer unless a much smaller
+difference in bleeding was expected. Prestudy calculation of
+sample size indicated that we would need at least 50 in each
+
+111
+
+group to achieve a power of 0.80 for a p value of .05,
+assuming a moderate effect size. However, we had problems
+with compliance from the subjects. Some bled heavily but
+never took medication; some did not take the medication
+properly, and some never bled. This created a problem with
+missing data. To address this problem, we standardized units
+of analysis. We compared only the first month's results. We
+evaluated the first month that medication was taken (even
+though it might be Month 2 or 3 for a particular subject but
+Month 1 for another). This gave us 107 evaluable
+participants. At the conclusion of data analysis, a power
+calculation was done based on the actual means and standard
+deviations for this sample. With a power=0.82, the total
+sample size ruled out a Type II error. The power analysis
+differed from the prestudy sample size because the sample
+size calculation was based on estimates. Since power was
+adequate, it is unlikely that higher subject enrollment would
+have detected differences in bleeding or spotting. It is
+possible that the high loss to follow-up could obscure a
+change in bleeding patterns spontaneously and not reflect
+treatment. However, we do not have sufficient analyzable
+data to prove or disprove this hypothesis.
+The mean vaginal pH values ranged from 5.8 to 6.5,
+higher than what was anticipated for normal women whose
+mean vaginal pH is 4.3. The cause of the higher pH levels
+could be due to an antiestrogen effect, since the maturation
+index was compatible with low estrogen with reduced
+number of superficial cells. There was no statistical
+difference in the vaginal pH between the treatment groups
+for both pH and superficial cell count, suggesting that EE did
+not have a significant effect on the progestin-dominated
+vaginal epithelium.
+The cervical mucus scores were poor, and there was no
+difference between treatments. Cervical mucus scores of
+b7.0 result in poor PCTs. This was confirmed by our finding
+of low numbers of sperm present in the cervical mucus with
+only a few motile sperm present in four of the participants. A
+poor cervical mucus is one of the contraceptive mechanism
+of the LNG SI method [28].
+
+5. Conclusion
+Our data do not support an efficacy of either EE 20 mcg
+per day for 10 days or IBU 800 mg per day for 5 days as a
+method to reduce or stop S/B occurring with LNG SI
+contraception. The incidence of S/B should be contrasted
+with the high efficiency and need for adherence that is
+associated with implantable progestin-only contraceptives.
+We believe that directed counseling of the consumer prior
+to use of LNG SI is the best method to enhance
+compliance with this form of contraception regarding the
+occurrence of S/B. For these reasons, it is important to
+continue to pursue clinical approaches aimed at reducing
+or stopping the S/B associated with LNG SI in order to
+enhance compliance.
+
+112
+
+D.F. Archer et al. / Contraception 78 (2008) 106–112
+
+Acknowledgments
+This study was performed by the identified Principal
+Investigator at the following sites. David F. Archer, MD,
+Eastern Virginia Medical School, Norfolk, VA; Janice L.
+Bacon, MD, University of South Carolina School of
+Medicine, Columbia, SC; Vanessa Cullins, MD, Johns
+Hopkins Medical School, Baltimore, MD; Adam S. Levine,
+MD, Medical University of South Carolina, Charleston, SC;
+Thomas G. Stovall, MD, Bowman Grey School of Medicine,
+Winston-Salem, NC. The study was initiated at all sites in
+1993 and completed in 1997.
+References
+[1] Fraser IS, Hickey M. Endometrial vascular changes and bleeding
+disturbances with long-acting progestins. Steroids 2000;65:665–70.
+[2] Rosenberg MJ, Waugh MS. Oral contraceptive discontinuation: a
+prospective evaluation of frequency and reasons. Am J Obstet Gynecol
+1998;179(3 Pt 1):577–82.
+[3] Sivin I. Contraception with NORPLANT implants. Hum Reprod 1994;
+9:1818–26.
+[4] Archer DF, Jensen JT, Johnson JV, Borisute H, Grubb GS, Constantine
+GC. Evaluation of a continuous regimen of levonorgestrel/ethinyl
+estradiol: phase 3 study results. Contraception 2006;74:439–45.
+[5] Sivin I. Risks and benefits, advantages and disadvantages of
+levonorgestrel-releasing contraceptive implants. Drug Saf 2003;26:
+303–35.
+[6] Livingstone M, Fraser IS. Mechanisms of abnormal uterine bleeding.
+Hum Reprod Update 2002;8:60–7.
+[7] Gu SJ, Du MK, Zhang LD, Liu YL, Wang SH, Sivin I. A 5-year
+evaluation of NORPLANT contraceptive implants in China. Obstet
+Gynecol 1994;83(5 Pt 1):673–8.
+[8] Diaz S, Pavez M, Miranda P, Robertson DN, Sivin I, Croxatto HB.
+A five-year clinical trial of levonorgestrel Silastic implants
+(NorplantÔ). Contraception 1982;25:447–56.
+[9] Shoupe D, Mishell Jr DR, Bopp BL, Fielding M. The significance of
+bleeding patterns in Norplant implant users. Obstet Gynecol 1991;77:
+256–60.
+[10] Diaz J, Faundes A, Olmos P, Diaz M. Bleeding complaints during the
+first year of Norplant implants use and their impact on removal rate.
+Contraception 1996;53:91–5.
+[11] Archer DF, Philput CA, Webe ME. Management of irregular uterine
+bleeding and spotting associated with Norplant. Hum Reprod 1996;11
+(Suppl 2):24–30.
+[12] Archer DF, Mauck CK, Viniegra-Sibal V, Anderson FD. Lea's Shield:
+a phase I postcoital study of a new contraceptive barrier device.
+Contraception 1995;52:167–73.
+[13] Abdel-Aleem H, d'Arcangues D, Vogelsong K, Gulmezoglu AM.
+Treatment of vaginal bleeding irregularities induced by progestin only
+contraceptives. Cochrane Database Syst Rev 2007(2):CD003449.
+
+[14] Diaz S, Croxatto HB, Pavez M, Belhadj H, Stern J, Sivin I. Clinical
+assessment of treatments for prolonged bleeding in users of Norplant
+implants. Contraception 1990;42:97–109.
+[15] Witjaksono J, Lau TM, Affandi B, Roger PA. Oestrogen treatment for
+increased bleeding in Norplant users: preliminary results. Hum Reprod
+1996;11(Suppl 2):109–14.
+[16] Alvarez-Sanchez F, Brache V, Thevenin F, Cochon L, Faundes A.
+Hormonal treatment for bleeding irregularities in Norplant implant
+users. Am J Obstet Gynecol 1996;174:919–22.
+[17] d'Arcangues C. Management of vaginal bleeding irregularities induced
+by progestin-only contraceptives. Hum Reprod 2000;15(Suppl 3):
+24–9.
+[18] Archer DF, Maheux R, DelConte A, O'Brie FB. Efficacy and safety of
+a low-dose monophasic combination oral contraceptive containing 100
+microg levonorgestrel and 20 microg ethinyl estradiol (Alesse). North
+American Levonorgestrel Study Group (NALSG). Am J Obstet
+Gynecol 1999;181(5 Pt 2):39–44.
+[19] Chavez A, DelConte A. A comparison of cycle control with
+monophasic levonorgestrel/ethinylestradiol 100 micrograms/20
+micrograms versus triphasic norethindrone/ethinylestradiol 500–
+750–1000 micrograms/35 micrograms: a multicenter, randomized,
+open-label study. Eur J Contracept Reprod Health Care 1999;4:
+75–83.
+[20] Anderson FD, Hait H. A multicenter, randomized study of an extended
+cycle oral contraceptive. Contraception 2003;68:89–96.
+[21] Kwiecien M, Edelman A, Nichols MD, Jensen JT. Bleeding patterns
+and patient acceptability of standard or continuous dosing regimens of
+a low-dose oral contraceptive: a randomized trial. Contraception 2003;
+67:9–13.
+[22] Miller L, Hughes JP. Continuous combination oral contraceptive pills
+to eliminate withdrawal bleeding: a randomized trial. Obstet Gynecol
+2003;101:653–61.
+[23] Runic R, Schatz F, Krey L, et al. Alterations in endometrial stromal cell
+tissue factor protein and messenger ribonucleic acid expression in
+patients experiencing abnormal uterine bleeding while using Norplant2 contraception. J Clin Endocrinol Metab 1997;82:1983–8.
+[24] Jain JK, Nicosi AF, Nucatola DL, Lu JJ, Kuo J, Felix JC. Mifepristone
+for the prevention of breakthrough bleeding in new starters of depomedroxyprogesterone acetate. Steroids 2003;68:1115–9.
+[25] Weisberg E, Hickey M, Palmer D, et al. A pilot study to assess the
+effect of three short-term treatments on frequent and/or prolonged
+bleeding compared to placebo in women using Implanon. Hum Reprod
+2006;21:295–302.
+[26] d'Arcangues C, Piaggio G, Brache V, et al. Effectiveness and
+acceptability of vitamin E and low-dose aspirin, alone or in
+combination, on Norplant-induced prolonged bleeding. Contraception
+2004;70:451–62.
+[27] Kaewrudee S, Taneepanichskul S, Jaisamraun U, Reinprayoon D. The
+effect of mefenamic acid on controlling irregular uterine bleeding
+secondary to Norplant use. Contraception 1999;60:25–30.
+[28] Croxatto HB, Diaz S, Salvatierra AM, Morales P, Ebensperger C,
+Brandeis A. Treatment with Norplant subdermal implants inhibits
+sperm penetration through cervical mucus in vitro. Contraception
+1987;36:193–201.

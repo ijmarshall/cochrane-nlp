@@ -1,0 +1,526 @@
+Ultrasound Obstet Gynecol 2007; 29: 47–50
+Published online in Wiley InterScience (www.interscience.wiley.com). DOI: 10.1002/uog.3908
+
+Targeted therapy for threatened preterm labor based
+on sonographic measurement of the cervical length:
+a randomized controlled trial
+Z. ALFIREVIC*, H. ALLEN-COWARD†, F. MOLINA†, C. P. VINUESA‡ and K. NICOLAIDES†
+*University Division of Reproductive and Perinatal Medicine, Liverpool Women’s Hospital, †Harris Birthright Research Centre for Fetal
+Medicine, King’s College Hospital, London, UK and ‡‘Hospital clinico San Cecilio’, Granada, Spain
+
+K E Y W O R D S: cervical length; corticosteroids; preterm labor; tocolysis; ultrasonography
+
+ABSTRACT
+Objective False positive diagnosis of preterm labor
+is common. As a consequence, medications including
+corticosteroids to promote fetal lung maturity and
+tocolysis are prescribed unnecessarily. We tested the
+hypothesis that management of threatened preterm
+labor based on measurement of cervical length by
+ultrasonography can reduce the number of women who
+receive inappropriate treatment.
+Methods <n>Forty-one</n> women with threatened preterm
+labor for whom a clinical decision was made to prescribe
+antenatal corticosteroids and tocolysis were randomized
+to have their cervical length measured by transvaginal
+ultrasound (n = 21) or to receive therapy as planned
+(n = 20). Fourteen women in the ultrasound group had a
+cervix longer than 15 mm and the therapy was withheld,
+while the other seven with a short cervix were managed
+in the same way as the control group.
+Results Three women (14%) in the ultrasound group
+were treated inappropriately with antenatal corticosteroids because they remained undelivered for more
+than a week. This compared favorably with the control
+group where 18 out of 20 (90%) received corticosteroids
+unnecessarily (relative risk (RR) 0.16; 95% conﬁdence
+interval (CI), 0.05–0.39). Tocolysis was given to only
+seven women (33.3%) in the ultrasound group compared
+with 20 (100%) in the control group (RR 0.3; 95% CI,
+0.15–0.54). There were no babies in either group who
+were born prematurely without being given a full course
+of antenatal corticosteroid therapy.
+Conclusion Women with threatened preterm labor and
+cervical length more than 15 mm should not receive
+tocolysis. The issue of the safety of withholding
+
+corticosteroid therapy in this clinical scenario warrants
+further study. Copyright  2007 ISUOG. Published by
+John Wiley & Sons, Ltd.
+
+INTRODUCTION
+The diagnosis of preterm labor is notoriously difﬁcult.
+Meta-analysis of clinical trials of antibiotics in women
+with threatened preterm labor reported that only 18%
+of women in the ‘no intervention’ group actually
+delivered within 7 days of the diagnosis1 , while a large
+multicenter study of tocolytic therapy reported that,
+in the placebo arm, 49% of women in preterm labor
+still remained undelivered after 7 days2 . Such a high
+rate of false positive diagnosis of preterm labor results
+in a large proportion of women being given antenatal
+corticosteroids and tocolysis unnecessarily. Antenatal
+corticosteroids (two injections 12 hours apart) not only
+promote fetal lung maturity and reduce the incidence of
+respiratory distress syndrome, but also reduce neonatal
+mortality and neonatal intracranial hemorrhage3 . It is,
+therefore, understandable that clinicians try to avoid a
+situation where a preterm baby is born without exposure
+to corticosteroids.
+When a presumed diagnosis of preterm labor has
+been made, tocolysis is commenced to delay labor for
+a minimum of 24–48 h, thus allowing time for the
+administration of a full course of corticosteroids. However, tocolytics, especially betamimetics, have unpleasant
+side-effects4 , while several episodes of threatened preterm
+labor in the same pregnancy may expose the fetus to multiple courses of corticosteroids with potentially serious
+long-term consequences5 .
+We conducted an observational study in which cervical
+length was measured by transvaginal ultrasonography in
+
+Correspondence to: Prof. Z. Alﬁrevic, Liverpool Women’s Hospital, Crown Street, Liverpool L8 7SS, UK (e-mail: zarko@liv.ac.uk)
+Accepted: 9 November 2006
+
+Copyright  2007 ISUOG. Published by John Wiley & Sons, Ltd.
+
+ORIGINAL PAPER
+
+Alﬁrevic et al.
+
+48
+
+216 singleton pregnancies presenting with painful uterine
+contractions before 36 weeks’ gestation. We found that
+99% of women with a cervical length of ≥ 15 mm did not
+deliver within 7 days, regardless of the use of tocolytics6 .
+Based on these ﬁndings we conducted a randomized
+controlled trial to evaluate the hypothesis that in women
+presenting with threatened preterm labor the decision to
+administer tocolytics and steroids should be based on the
+sonographic measurement of cervical length.
+
+PATIENTS AND METHODS
+This multicenter randomized trial was conducted between
+2003 and 2005 in ﬁve hospitals in the UK and one
+in Spain following approval by the local Research
+Ethics Committees. Women were eligible if they fulﬁlled
+the following criteria: (1) live, singleton pregnancy;
+(2) uterine contractions before 34 completed weeks’
+gestation; and (3) a clinical decision was made to use
+tocolytics and steroids. We excluded women with preterm
+premature rupture of membranes, or if a course of
+antenatal corticosteroids or oral steroid therapy had
+been given within 7 days of possible randomization. All
+the women had a vaginal examination on admission,
+however, a change in the Bishop score was not a
+prerequisite for randomization. None of the hospitals
+used ﬁbronectin to conﬁrm or refute the diagnosis of
+preterm labor.
+A member of the research team assessed eligibility for
+the study after obtaining the appropriate information
+from the clinicians caring for the women. Following
+counseling by the members of the research team, eligible
+women who agreed to sign the written informed consent
+were randomized using consecutively numbered sealed
+envelopes kept in a secure drawer on the respective labor
+wards. The original computer-generated randomization
+sequence was kept separately.
+Women randomized to routine care received tocolytics
+and antenatal corticosteroids as per the hospital’s protocol
+and clinician’s instructions. Women allocated to the
+experimental group had a transvaginal scan to measure
+the cervical length, which was performed by a member of
+the research team who was not involved in the care of the
+patient. If the cervical length was less than 15 mm women
+were given tocolytics and antenatal corticosteroids as per
+the hospital’s protocol. Women with a cervical length of
+15 mm or more were managed expectantly; tocolysis and
+antenatal steroids were not prescribed. Women with a
+cervical length of ≥ 15 mm in whom uterine contractions
+persisted had another transvaginal scan 4 h later, or earlier
+if clinically indicated, and the same protocol was followed.
+The primary outcome of interest was the proportion
+of women still pregnant 7 days (168 h) after the last
+injection of antenatal steroids. Other outcomes of interest
+were appropriate treatment with corticosteroids (preterm
+birth with corticosteroids given within 1 week of delivery),
+duration of tocolysis and hospitalization, gestational age
+at delivery and incidence of preterm labor.
+
+Copyright  2007 ISUOG. Published by John Wiley & Sons, Ltd.
+
+Statistical considerations
+Data were analyzed according to intention to treat principles using parametric tests for normally distributed
+continuous variables and relative risks (95% conﬁdence
+intervals for comparison of proportions). Our observational data6 indicated that, in the control group, at least
+90% of eligible women would still be pregnant 7 days
+after the administration of antenatal corticosteroid therapy. We hypothesized that ultrasound-aided management
+of preterm labor would reduce by 50% the number of
+women still pregnant 1 week after corticosteroid treatment. In order to prove this hypothesis we needed to
+recruit 40 women (power 80%, alpha of 5%).
+
+RESULTS
+Communication between labor ward clinicians and the
+research team proved difﬁcult owing to the workload and
+we were, as a result, unable to collect data on the number
+of women with threatened preterm labor who fulﬁlled
+the inclusion criteria but were not offered participation
+in the study. In total, the research team was informed
+of 43 potentially eligible women. One woman declined
+participation and one woman was deemed ineligible
+because of vaginal bleeding. Demographic and clinical
+data were available for all 41 eligible women who agreed
+to participate (Figure 1).
+As expected, the groups were balanced in respect of the
+demographic and clinical ﬁndings (Table 1). Twenty-one
+women were randomized to have a transvaginal scan;
+seven of them (33%) had a short cervix. One woman
+with a cervix < 15 mm also had a dilated cervix on
+vaginal examination (2 cm); the cervical os was thought
+Assessed for eligibility
+(n = 43 )
+
+Enrolment
+
+Not meeting inclusion
+criteria (n = 1)
+Refused to participate
+(n = 1)
+
+Randomization
+
+Allocated to intervention
+(scan) (n = 21)
+Received allocated
+intervention (n = 21)
+
+Allocation
+
+Allocated to control
+(no scan) (n = 20)
+Received allocated
+intervention (n = 20)
+
+Lost to follow-up
+(n = 0)
+
+Follow-up
+
+Lost to follow-up
+(n = 0)
+
+Analyzed
+(n = 21)
+
+Analysis
+
+Analyzed
+(n = 20)
+
+Figure 1 CONSORT ﬂowchart.
+
+Ultrasound Obstet Gynecol 2007; 29: 47–50.
+
+Cervical length in threatened preterm labor
+
+49
+
+Table 1 Status at randomization
+
+Parameter
+Primpara
+Previous preterm birth < 34 weeks’
+gestation
+Height (cm, mean ± SD)
+BMI (kg/m2 , mean ± SD)
+Smokers
+Gestation (days, mean ± SD)
+Cervical length (mm, mean ±SD)
+Cervix < 15 mm
+
+Transvaginal
+scan (n = 21)
+
+Controls
+(n = 20)
+
+8
+3
+
+7
+1
+
+163 ± 7
+25 ± 5
+2
+218 ± 13
+22.8 ± 13.1
+7
+
+163 ± 6
+25 ± 5
+3
+215 ± 19
+
+—
+
+to be closed in the others. All women with a cervix longer
+than 15 mm had a closed cervix on vaginal examination,
+apart from one woman in whom the cervix admitted a
+ﬁngertip. In the control group 18 women had a closed
+cervix, in one woman the cervix admitted a ﬁngertip, and
+in one the cervix was 1–2 cm dilated.
+Management of the threatened preterm labor in both
+groups is summarized in Tables 2 and 3. In the ultrasound
+group, all fourteen women in whom the standard therapy
+was withdrawn because of a long cervix delivered more
+than 7 days after randomization (range 35–88 days).
+The remaining seven women with a short cervix were
+prescribed corticosteroids and tocolysis; three (42.9%)
+remained undelivered 7 days later. All women in the control group were prescribed a combination of steroids and
+tocolysis as per protocol; 18 of them remained undelivered
+7 days later. There was, therefore, a signiﬁcant difference
+in the proportion of women exposed to tocolytic therapy i.e. 33.3% in the ultrasound group vs. 100% in the
+controls (relative risk (RR) 0.3; 95% conﬁdence interval
+(CI), 0.15–0.54). The difference between the two groups
+in the proportion of women who received inappropriate
+treatment, deﬁned as giving birth more than 7 days after
+the administration of antenatal corticosteroids or preterm
+birth without corticosteroid treatment, was highly signiﬁcant (RR 0.16; 95% CI, 0.05–0.39; P < 0.0001).
+Therefore 18 women in the ultrasound group received the
+appropriate treatment, deﬁned as preterm birth with antenatal corticosteroids given ≤ 7 days previously (n = 4) or
+birth > 7 days after randomization without being given
+antenatal corticosteroids (n = 14), compared with only
+two women in the control group (Table 2).
+
+Six women were prescribed antibiotics after randomization. In the scan group three women had antibiotics for a
+urinary tract infection (UTI) and one for prelabor rupture
+of membranes; two women were prescribed antibiotics
+for a UTI in the control group.
+Fifteen women in the ultrasound group were discharged
+within 48 h, ﬁve within 24 h. Two out of 14 women with
+a cervical length > 15 mm needed a further transvaginal
+scan because of persistent uterine contractions, but in
+both cases the cervix remained long. Both women were
+discharged within 48 h and gave birth at term. In the
+control group, six women stayed in hospital for ≤ 24 h,
+six women for 24–48 h and eight for more than 2 days.
+The difference in the duration of hospital antenatal stay
+between the two groups was highly statistically signiﬁcant
+(P < 0.0001).
+Three premature babies in the control group and one
+in the scan group experienced breathing difﬁculties; there
+were no other neonatal morbidity or deaths recorded in
+either group.
+
+DISCUSSION
+Our study shows conclusively that cervical length
+measurement by transvaginal ultrasonography in women
+with threatened preterm labor reduces unnecessary
+exposure of pregnant women and their babies to
+corticosteroid and tocolytic therapy. The clinical beneﬁts
+include reduction in the risk of maternal side-effects and
+minimization of the risk of repeated fetal exposure to
+corticosteroids if episodes of threatened preterm labor
+persist. Although we have not performed formal health
+economic analysis, the savings from the reduced use of
+tocolytic therapy and shortened antenatal hospital stay
+are likely to be substantial.
+The high proportion of women who remain undelivered
+7 days after the diagnosis of preterm labor (85%) and the
+preterm delivery rate before 34 weeks’ gestation of only
+12% indicate a relatively low-risk population despite
+the clinical diagnosis of preterm labor and decision to
+prescribe therapy. Unfortunately, it was not possible to
+collect the demographic and clinical data on potentially
+eligible women who did not take part in the study, but
+there was no indication that women at a particularly
+high risk of preterm birth were systematically denied the
+
+Table 2 Administration of antenatal corticosteroids in relation to preterm birth
+
+Treatment administerd
+Inappropriate treatment
+Birth > 7 days after steroids given
+Preterm birth within 7 days but steroids not given
+Appropriate treatment
+Steroids given within 7 days of preterm birth
+Delivered after 7 days without receiving steroids
+
+Transvaginal
+scan (n = 21)
+
+Controls
+(n = 20)
+
+Relative risk
+(95% CI)
+
+3
+3
+0
+18
+4
+14
+
+18
+18
+0
+2
+2
+0
+
+0.16 (0.05–0.39)
+
+8.5 (2.75–30.8)
+
+CI, conﬁdence interval.
+
+Copyright  2007 ISUOG. Published by John Wiley & Sons, Ltd.
+
+Ultrasound Obstet Gynecol 2007; 29: 47–50.
+
+Alﬁrevic et al.
+
+50
+Table 3 Outcomes related to the management of threatened preterm delivery
+Transvaginal
+scan (n = 21)
+
+Controls
+(n = 20)
+
+Relative risk
+(95% CI) or P
+
+Complete course of antenatal corticosteroids
+Tocolysis
+GTN
+Atosiban
+Duration (hours, median (range))
+Onset of labor
+Spontaneous
+Induction of labor
+Cesarean section
+Mode of delivery
+Vaginal
+Cesarean section
+
+7
+7
+7
+0
+0 (0–24)
+
+20
+20
+17
+3
+24 (0–67)
+
+0.3 (0.15–0.54)
+0.3 (0.15–0.54)
+
+19
+0
+2
+
+11
+1
+8
+
+16
+5
+
+9
+11
+
+Gestational age at delivery (days, mean ± SD)
+Birth at < 28 weeks’ gestation
+Birth at < 32 weeks’ gestation
+Birth at < 34 weeks’ gestation
+
+265 ± 22
+0
+1
+2
+
+262 ± 20
+0
+1
+3
+
+Treatment administered
+
+P < 0.0001
+
+P = 0.036
+
+CI, conﬁdence interval; GTN, glyceryl trinitrate.
+
+opportunity to participate in the study at any of the
+centers involved.
+Is there a possibility that the widespread use of
+transvaginal ultrasonography to conﬁrm or refute the
+diagnosis of preterm labor may cause harm? Our study
+was not large enough to exclude the possibility that
+withholding antenatal corticosteroid therapy if the cervix
+is long (> 15 mm) may result in some preterm babies being
+born without adequate corticosteroid treatment. Our
+observational data show that the risk of this happening
+is unlikely to be greater than 2–3%6 . However, large
+cohorts would have to be followed up after ultrasoundbased management until 35 weeks’ gestation to see how
+many women may miss getting corticosteroid prophylaxis
+before preterm birth. A combination of a long cervix and
+low levels of ﬁbronectin is likely to reduce the risk of
+imminent preterm birth even further7 .
+A non-inferiority trial to conﬁrm that the targeted
+management of preterm labor based on transvaginal
+ultrasound with or without ﬁbronectin is as safe as
+current management based on the combination of digital
+vaginal examination and clinical assessment would have
+to include in excess of 4000 women with threatened
+preterm labor. As such a large study is unlikely to be
+undertaken in the foreseeable future we believe that the
+implementation of our protocol, including repeated 2–4
+hourly transvaginal scans when clinical suspicion persists,
+coupled with a careful review of all cases when a baby is
+born without exposure to antenatal corticosteroids is the
+best way forward.
+
+Copyright  2007 ISUOG. Published by John Wiley & Sons, Ltd.
+
+ACKNOWLEDGMENT
+The study was funded by The Fetal Medicine Foundation
+(Registered Charity 1037116).
+
+REFERENCES
+1. King J, Flenady V. Prophylactic antibiotics for inhibiting preterm
+labour with intact membranes. The Cochrane Database of
+Systematic Reviews: Reviews 2002 Issue 4 John Wiley & Sons,
+Ltd Chichester, CD000246.
+2. Romero R, Sibai BM, Sanchez-Ramos L, Valenzuela GJ,
+Veille JC, Tabor B, Perry KG, Varner M, Goodwin TM, Lane R,
+Smith J, Shangold G, Creasy GW. An oxytocin receptor antagonist (atosiban) in the treatment of preterm labor: a randomized,
+double-blind, placebo-controlled trial with tocolytic rescue. Am
+J Obstet Gynecol 2000; 182: 1173–1183.
+3. Crowley PA. Antenatal corticosteroid therapy: a meta-analysis of
+the randomized trials, 1972 to 1994. Am J Obstet Gynecol 1995;
+173: 322–335.
+4. Gyetvai K, Hannah M, Hodnett E, Ohlsson A. Tocolytics for
+preterm labor: a systematic review. Obstet Gynecol 1999; 94:
+869–877.
+5. Guinn DA, Atkinson MW, Sullivan L, Lee M, MacGregor S,
+Parilla BV, Davies J, Hanlon-Lundberg K, Simpson L, Stone J,
+Wing D, Ogasawara K, Muraskas J. Single vs. weekly courses of
+antenatal corticosteroids for women at risk of preterm delivery:
+a randomized controlled trial. JAMA 2001; 286: 1581–1587.
+6. Tsoi E, Akmal S, Rane S, Otigbah C, Nicolaides KH. Ultrasound
+assessment of cervical length in threatened preterm labor.
+Ultrasound Obstetric Gynecol 2003; 21: 552–555.
+7. Gomez R, Romero R, Medina L, Nien JK, Chaiworapongsa T,
+Carstens M, Gonzales R, Espinoza J, Iams JD, Edwin S, Rojas I.
+Cervicovaginal ﬁbronectin improves the prediction of preterm
+delivery based on sonographic cervical length in patients with
+preterm uterine contractions and intact membranes. Am J Obstet
+Gynecol 2005; 192: 350–359.
+
+Ultrasound Obstet Gynecol 2007; 29: 47–50.

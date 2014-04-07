@@ -1,0 +1,1023 @@
+Available online at www.sciencedirect.com
+
+Metabolism Clinical and Experimental 56 (2007) 1534 – 1541
+www.elsevier.com/locate/metabol
+
+Comparison of atorvastatin versus fenofibrate in reaching lipid targets and
+influencing biomarkers of endothelial damage in patients with familial
+combined hyperlipidemia
+Marcello Arca a,b,⁎, Anna Montali a , Giovanni Pigna a , Roberto Antonini a,b ,
+Teresa Maria Antonini a , Petramala Luigi c , Antonio Fraioli a , Marco Mastrantoni d ,
+Maura Maddaloni d , Claudio Letizia c
+Unit of Medical Therapy, Department of Clinical and Medical Therapy, University “La Sapienza,” Rome, Italy
+b
+Research Center for Clinical Trials (CRISC), University “La Sapienza,” Rome, Italy
+c
+Day Hospital of Internal Medicine and Hypertension, Department of Clinical Sciences, University “La Sapienza,” Rome, Italy
+d
+Medical Department, Pfizer Italia, Rome, Italy
+Received 8 February 2007; accepted 15 June 2007
+a
+
+Abstract
+Statins and fibrates have different effects on lipid abnormalities of familial combined hyperlipidemia (FCHL); thus, the selection of the
+first-line drug is troublesome. We evaluated to what extent monotherapy with a potent statin is more effective than fibrate in reaching the
+recommended lipid targets in FCHL. <n>Fifty-six</n> patients were randomized to receive optimal dosage of atorvastatin (n = 27) or 200 mg/d
+micronized fenofibrate (n = 29) for 24 weeks. To reach the optimal dosage, atorvastatin was up-titrated at each follow-up visit if low-density
+lipoprotein (LDL) cholesterol N130 mg/dL (N100 mg/dL in patients with coronary or cerebrovascular disease). The effects of fenofibrate and
+atorvastatin on lipoprotein fractions as well as on plasma levels of endothelin-1 (ET-1) and adrenomedullin (AM) were also evaluated. At end
+of trial, a greater proportion of patients on atorvastatin (average dosage, 20.8 mg/d) reached lipid targets in comparison with those on
+fenofibrate (64% vs 32.1%, P = .02). Atorvastatin was significantly more effective in reducing total cholesterol, LDL cholesterol,
+apolipoprotein B, and non–high-density lipoprotein (HDL) cholesterol. Conversely, triglycerides decreased and HDL increased more during
+fenofibrate. Nevertheless, atorvastatin produced a marked reduction in very low-density lipoprotein and very low-density lipoprotein
+remnants. Atorvastatin lowered all LDL subtypes, although fenofibrate appeared to be more effective on denser LDL. Compared with
+43 normolipemic controls, FCHL patients presented increased baseline plasma levels of ET-1 (P = .007) but not of AM. Fenofibrate, but not
+atorvastatin, significantly lowered ET-1 levels by 16.7% (P b .05). Neither drug significantly affected plasma concentrations of AM. In
+summary, although fenofibrate showed superiority in raising HDL and reducing ET-1, atorvastatin was more effective in reaching lipid
+targets in FCHL so that it can be proposed as the first-line option in the management of this atherogenic hyperlipidemia.
+© 2007 Elsevier Inc. All rights reserved.
+
+1. Introduction
+Familial combined hyperlipidemia (FCHL) is a common
+atherogenic dyslipidemia characterized by elevated concentrations of triglyceride-rich lipoproteins (TGRLs) (mainly
+very low-density lipoprotein [VLDL]) and/or low-density
+lipoproteins (LDLs) [1-3]. Other features of FCHL are
+⁎ Corresponding author. Dipartimento di Clinica e Terapia Medica,
+Università di Roma “La Sapienza”, Azienda Policlinico Umberto I, 00161
+Rome, Italy. Tel.: +39 06 4450074; fax.+39 06 4440290.
+E-mail address: marcelloarca@libero.it (M. Arca).
+0026-0495/$ – see front matter © 2007 Elsevier Inc. All rights reserved.
+doi:10.1016/j.metabol.2007.06.021
+
+increased concentration of apolipoprotein (apo) B and the
+preponderance of small dense LDL subfractions (sdLDL)
+[4]. Current guidelines recommend lowering both LDL
+cholesterol (LDL-C) and TGRL to reduce cardiovascular
+risk in these patients [5].
+The first-line drug for FCHL patients is still uncertain.
+Statins are very effective in reducing LDL-C, but do not
+always correct increased TGRL [6]; on the other hand,
+fibrates markedly lower plasma total triglycerides (TGs), but
+modestly lower total cholesterol (TC) and LDL-C [7]. Given
+that combination therapy with statin plus fibrate confers an
+increased risk of myopathy and rhabdomyolysis [8], a
+
+M. Arca et al. / Metabolism Clinical and Experimental 56 (2007) 1534–1541
+
+possible alternative might be to use more potent statins.
+Atorvastatin is one of the most potent statins [9], and its
+efficiency in reducing TGRLs has also been demonstrated
+[10]. However, the dosage of atorvastatin that is effective in
+most FCHL patients has not been clearly established.
+Besides their effects on blood lipid levels, the ability of
+these drugs to influence additional vascular risk factors may
+be relevant for the selection of the optimal treatment. It has
+been noted that FCHL patients present abnormalities in the
+endothelial function [11,12]. Several factors have been
+associated to endothelial dysfunction, the most investigated
+of which is the endothelial-derived nitric oxide (NO) [12,13].
+Endothelin (ET-1) acts as the natural counterpart to the
+endothelium-derived NO. In fact, ET-1 has been demonstrated to inhibit endothelial NO release, thereby impairing
+endothelium-dependent relaxation and promoting atheroma
+formation [14]. Few data are available in humans on changes
+in plasma levels of ET-1 during atorvastatin or fenofibrate
+therapy. More recently, attention has been focused on
+adrenomedullin (AM). It is a vasodilator peptide having a
+wide range of biological actions such as reduction of
+oxidative stress and inhibition of endothelial cell apoptosis
+[15]. Overexpression of AM suppressed intimal thickening,
+fatty streak formation, and perivascular hyperplasia in rodent
+models for vascular remodeling or atherosclerosis [16]. No
+data about the influence of atorvastatin and fenofibrate on
+plasma levels of AM are available.
+We designed this study with the primary aim of
+comparing the efficacy of fenofibrate vs the optimal LDLlowering dosage of atorvastatin in reaching lipid targets in
+patients with FCHL. To identify the optimal dosage of
+atorvastatin, its daily dose was titrated up to 80 mg/d
+according to attaining LDL-C b130 mg/dL (or b100 mg/dL
+in patients with coronary or cerebrovascular disease). As an
+additional objective, the ability of these 2 drugs to correct
+lipoprotein abnormalities in FCHL was also compared.
+Finally, we took the opportunity of this drug trial to evaluate
+the effects of fenofibrate and atorvastatin on plasma levels of
+ET-1 and AM.
+2. Methods
+2.1. Study population
+Patients between 30 and 75 years old with diagnosis of
+FCHL were selected for the study. They were enrolled from
+FCHL kindreds identified in the framework of a genetic
+study on this hyperlipidemia. The FCHL status
+was diagnosed according to previously reported criteria
+[17-19]. Briefly, FCHL-affected individuals were required to
+have TC and/or TG levels greater than or equal to that of ageand sex-specific 90th Italian population percentiles, and/or
+hyperapobetalipoproteinemia, defined as isolated elevation
+of plasma apo B concentrations (N130 mg/dL corresponding
+to the 90th Italian population percentile). Only families with
+at least 2 affected members presenting different lipid
+
+1535
+
+phenotypes were enrolled. Individuals with type III hyperlipidemia, diagnosed by the presence of a broad β band on
+electrophoretogram and apo E-2/E-2 genotype, were
+excluded. Family members were tested twice for plasma
+lipids during ad libitum diet and were considered affected
+only if both samples were greater than cutoff values. Other
+acquired causes of dyslipidemia were ruled out by standard
+laboratory tests. Individuals with obesity (body mass index
+N30 kg/m2) or poorly controlled diabetes mellitus (blood
+glucose N120 mg/dL and/or glycosylated hemoglobin
+N6.0%) and those taking lipid-affecting drugs were excluded.
+2.2. Study design
+The study was designed as a randomized, open-label trial.
+Eligible patients entered a washout phase where they were
+instructed to maintain a standard lipid-lowering diet for
+6 weeks before the baseline blood analysis. Thereafter, they
+were randomly assigned to receive either 10 mg atorvastatin
+or 200 mg micronized fenofibrate daily. Follow-up visits that
+included clinical assessment, blood drawings, and compliance evaluation were scheduled at 6, 12, 18, and 24 weeks.
+In the atorvastatin group, drug dosage was doubled at each
+visit (up to 80 mg/d) if LDL-C levels remained N130 mg/dL
+(or N100 mg/dL in patients with coronary or cerebrovascular
+disease). Conversely, in the fenofibrate group, the dosage of
+200 mg/d remained unchanged throughout the treatment
+period. Compliance to drug treatment was evaluated by
+counting returned pills and expressed as percentage of taken
+over scheduled doses.
+Sample size was estimated assuming a 2-sided level of
+statistical significance of .05, 80% power, and a betweengroup difference of responders of 100%. This resulted in a
+requirement of 30 subjects for each treatment group.
+The study was approved by the institutional Ethical
+Committee, and all subjects gave written informed consent to
+participate into the study.
+2.3. Lipid, lipoprotein, and apo measurements
+Blood samples were collected early in the morning after
+an overnight fast in EDTA-containing tubes. Plasma was
+obtained by centrifugation at 4°C and added with EDTA
+(0.04%), NaN3 (0.05%), and phenylmethylsulfonyl fluoride
+(0.015%) to prevent lipoprotein modification. Some aliquots
+were immediately used, and others were stored at −80°C for
+future measurements.
+Plasma and lipoprotein fractions were assayed for TC and
+TG using enzymatic reagents, and HDL-C was determined
+as reported [17]. Total protein content of lipoprotein
+fractions was assayed by a modified Lowry's procedure
+[20]. Lipoproteins were isolated from fresh plasma by
+sequential ultracentrifugation as described [21]. Briefly,
+plasma samples (4 mL) were spun at 40 000 rpm at 10°C for
+16 hours to isolate VLDL and intermediate-density lipoprotein fraction (density, b1.019 g/mL), for 18 hours for light
+LDL (density, 1.019-1.035 g/mL), and for 20 hours for dense
+
+1536
+
+M. Arca et al. / Metabolism Clinical and Experimental 56 (2007) 1534–1541
+
+The AM and ET-1 measurements were performed in
+duplicate on frozen samples at the end of the study.
+
+Table 1
+Baseline characteristics of the study population
+Variables
+
+FCHL patients (n = 56)
+
+Age (y)
+Sex (M/F)
+Body mass index (kg/m2)
+Current smoking (n [%])
+Hypertension (n [%])
+Diabetes mellitus (n [%])
+Coronary heart disease (n [%])
+Cerebrovascular disease (n [%])
+HLP phenotypes a (n [%])
+IIA
+IIB
+IV
+Isolated hyperapo B
+Plasma lipids (mg/dL)
+TC
+LDL-C
+HDL-C
+TG
+Apo B
+Apo E genotypes (n [%])
+E-3/E-3
+E-3/E-4
+E-3/E-2
+E-4/E-4
+
+53.2 ± 9.0
+38/18
+26.0 ± 2.9
+11 (19.6)
+18 (32.1)
+6 (10.7)
+6 (10.7)
+4 (7.1)
+12 (21.4)
+4 (7.1)
+14 (25.0)
+26 (46.4)
+264.7 ± 46.7
+170.3 ± 32.3
+44.9 ± 13.1
+270.9 ± 367.5
+159.3 ± 23.7
+33 (58.9)
+15 (26.8)
+7 (12.5)
+1 (1.8)
+
+Values are expressed as means ± SD and numbers, (%).
+a
+HLP indicates hyperlipidemic; IIA phenotype is defined as TC N90th
+and TG b75th percentile; IIB phenotype as TC and TG N90th percentile;
+type IV phenotype as TC b75th and TG N90th percentile; isolated hyperapo
+B phenotype as plasma apo B concentrations N130 mg/dL.
+
+LDL (density, 1.035-1.068 g/mL). It has been reported that
+light LDL included predominantly LDL-I and LDL-II
+particles (N25.5 nm) and dense LDL included predominantly
+LDL-III particles (b25.5 nm) [21].
+Total plasma apo B, apolipoprotein A-I (apo A-I),
+apolipoprotein A-II (apo A-II), and Lp(a) were measured
+by an immunoturbidimetric method (Kone Instruments,
+Espoo, Finland). To avoid assay drift, these measurements
+were performed at the end of the study in one assay.
+2.4. Plasma ET-1 and AM measurements
+Plasma concentrations of ET-1 and AM were determined
+in 47 FCHL patients (21 randomized to atorvastatin and 26
+to fenofibrate) on blood sample obtained at baseline and after
+6 and 24 weeks of treatment. Forty-three normolipemic
+subjects were included as controls (mean age, 57.0 ± 5 years;
+TC, 149 ± 21 mg/dL; and TG, 138 ± 20 mg/dL). Plasma ET-1
+was determined by a specific radioimmunoassay using rabbit
+anti-endothelin-1 antibody (Peninsula Laboratories, Belmont, CA) according to a previously described method
+[22]. Interassay and intraassay variabilities of ET-1 measurements were 13% and 9%, respectively. Adrenomedullin was
+measured by using commercially available radioimmunoassay (Phoenix Pharmaceuticals, Mountain View, CA) as
+previously described [23]. The intraassay and interassay
+coefficients of variation were 5.1% and 12%, respectively.
+
+2.5. Other laboratory methods
+Serum creatinine, uric acid, and the other safety
+parameters were determined during the lipid-lowering
+treatment using the standard laboratory methods. Apolipoprotein E genotype was determined as reported [17].
+2.6. Statistical analysis
+For the purpose of the present analysis, only baseline, 6week, and 24-week lipid and lipoprotein values are reported.
+Data are expressed as mean ± SD or as percentages
+where appropriate.
+For all efficacy analyses, a modified intention-to-treat
+model was used that included all randomized and treated
+patients with a baseline and at least one valid on-treatment
+measurement. Missing values were replaced using the “last
+observation carried forward” technique. Within treatment,
+parameters were compared by using Student t test for
+paired data; mean changes from baseline and their 95%
+confidence intervals (CIs) were also calculated. Categorical
+variables were analyzed by χ2 test. Comparison between
+treatment groups was performed by the analysis of
+covariance method, and sums of squares type III were
+used. Baseline value of the response variable was
+considered as a covariate.
+Nonparametric tests (Mann-Whitney test) were used to
+compare parameters showing skewed distribution. To
+describe association between variables, correlation coefficients were calculated by using Pearson's test. A logistic
+regression analysis including, age, sex, baseline lipid
+parameters, apo E genotype, and treatment as independent
+variable was carried out to identify factors predicting the
+response to therapy.
+All analyses were performed using SAS Software (version
+8.02, TS level 01M0; SAS, Cary, NC). A probability value of
+less than .05 was taken as statistically significant.
+3. Results
+3.1. Participant enrollment and characteristics
+Four patients withdrew consent during the washout phase;
+and therefore, 56 patients were randomized to treatment.
+Their clinical characteristics are reported in Table 1.
+Twenty-seven patients received atorvastatin and 29
+fenofibrate. Their baseline clinical characteristics did not
+differ significantly in all tested parameters (data not
+shown). Two patients in either group prematurely interrupted the study, one for acute myocardial infarction and
+one for creatine phosphokinase increase in the atorvastatin
+group, and one for sudden death and one for mild
+elevation of hepatic transaminases in the fenofibrate group.
+Atorvastatin at the dosage range of 10 to 40 mg/d allowed
+reaching LDL-C targets in all FCHL patients so that none
+
+M. Arca et al. / Metabolism Clinical and Experimental 56 (2007) 1534–1541
+
+1537
+
+3.2. Effects of treatments on plasma lipids and lipoproteins
+
+Fig. 1. Percentage of FCHL patients reaching the therapeutic goals during
+atorvastatin and fenofibrate treatment. Results of the intention-to-treat
+analysis in 27 patients on atorvastatin and 29 on fenofibrate. Therapeutic
+goal is defined as LDL-C b130 mg/dL (or b100 mg/dL in patients with
+coronary or cerebrovascular disease) and TG b200 mg/dL. At week 24, the
+average dosage of atorvastatin was 20.8 mg/d and that of fenofibrate was
+200 mg/d.
+
+required 80 mg/d. In particular, 10 patients (40.0%)
+maintained the starting dose of 10 mg/d, 9 patients
+(36.0%) received 20 mg/d, and 6 (24.0%) received a
+dose of 40 mg/d. At week 24, the average dose in the
+atorvastatin group was 20.8 mg/d. Compliance to test drug
+was comparable in the treatment groups (94.6% [range,
+73.8%-102%] in the atorvastatin group and 96.5% [range,
+83.4%-100.6%] in the fenofibrate group).
+Body weight did not change during fenofibrate, whereas
+during atorvastatin, it showed a slight but significant increase
+at week 24 compared with baseline (74.7 ± 10.7 kg vs 73.8 ±
+9.4 kg, P b .05). Plasma creatinine remained unchanged in
+the atorvastatin group, whereas it showed a significant
+increase in the fenofibrate group (from 1.05 ± 0.2 mg/dL at
+baseline to 1.18 ± 0.2 mg/dL at week 24, P b .001).
+However, no patients presented values greater than 1.3 mg/
+dL (data not shown).
+
+At week 24, 16 patients (64.0%) in the atorvastatin group
+and 9 (32.1%) in the fenofibrate group reached the
+recommended lipid targets; and this difference was statistically significant (P = .02) (Fig. 1). Compared with
+fenofibrate, atorvastatin was more effective in obtaining
+therapeutic successes also at 10 mg/d (40% vs 31.2% at week
+6); but the difference did not reach statistical significance
+(P = .552) (Fig. 1).
+Treatment was considered successful when LDL-C b130
+mg/dL (or b100 mg/dL in patients with coronary or
+cerebrovascular disease) and TG b200 mg/dL. After
+applying the LDL-C b100 mg/dL cutoff also to diabetic
+patients, a more pronounced difference in the percentage of
+responders was seen between treatment groups (64.0% in
+atorvastatin vs 28.6% in fenofibrate, P b .01). Moreover,
+when patients with severe hypertriglyceridemia (TG
+N400 mg/dL; 4 on fenofibrate and 3 on atorvastatin) were
+excluded from the analysis, the between-group difference in
+responders was only marginally affected (P b .03).
+In the logistic regression analysis, the assignments to
+atorvastatin (positively at P = .014) and baseline TGs
+(negatively at P = .009) were the only variables predicting
+the therapeutic response (data not shown). We determined
+that baseline TGs b300 mg/dL was associated with the
+highest probability (odds ratio = 8.5; 95% CI, 2.3-15.3; P b
+.001) to correct lipid profile during treatment.
+Table 2 reports the effects of both medications on lipids,
+apoproteins, and other biochemical parameters. Total
+cholesterol and LDL-C showed a statistically significant
+decrease in both treatment groups (P b .001 at any time
+point). However, atorvastatin was significantly more effective than fenofibrate in reducing both TC and LDL-C levels.
+In fact, the mean percentage changes of TC from baseline to
+
+Table 2
+Changes of plasma lipids and apoproteins and other biochemical parameters during atorvastatin and fenofibrate treatment in FCHL patients
+Variables
+(mg/dL)
+
+Atorvastatin (n = 27)
+
+Fenofibrate (n = 29)
+
+Treatment difference with
+respect to percentage changes ⁎
+
+Baseline
+TC
+LDL-C
+Non–HDL-C
+Apo B
+TG
+HDL-C
+Apo A-I
+Apo A-II
+Lp(a)
+Fibrinogen
+
+6 wk
+
+24 wk
+
+Baseline
+
+6 wk
+
+24 wk
+
+Estimate (95% CI)
+
+P
+
+258.3 ± 42.2
+166.2 ± 33.7
+213.7 ± 41.4
+160.0 ± 25.2
+239.3 ± 152.9
+44.7 ± 11.7
+132.5 ± 22.3
+32.9 ± 3.7
+16.8 ± 20.1
+298.0 ± 22.4
+
+192.6 ± 33.4 ⁎
+108.9 ± 32.5 ⁎
+147.3 ± 34.9 ⁎
+122.7 ± 16.6 ⁎
+192.0 ± 119.0
+45.3 ± 14.2
+133.2 ± 20.6
+33.8 ± 3.8
+17.9 ± 21.0
+294.4 ± 21.8
+
+182.2 ± 29.8 ⁎
+105.8 ± 21.8 ⁎
+137.2 ± 30.0 ⁎
+120.7 ± 24.7 ⁎
+158.1 ± 90.1 ⁎
+45.0 ± 11.5
+132.6 ± 24.6
+32.4 ± 2.7
+16.4 ± 19.3
+295.3 ± 24.6
+
+273.4 ± 50.8
+176.4 ± 32.6
+228.2 ± 50.8
+161.2 ± 21.1
+306.5 ± 490.6
+45.2 ± 15.2
+134.1 ± 16.3
+33.4 ± 4.2
+18.2 ± 21.5
+286.7 ± 23.4
+
+223.3 ± 35.3 §
+148.0 ± 29.5 §
+174.4 ± 42.0 §
+134.4 ± 26.5 §
+144.5 ± 198.1 ‡
+48.9 ± 15.7 †
+139.8 ± 19.6 †
+39.4 ± 4.0 §
+18.2 ± 22.0
+295.9 ± 29.6
+
+211.0 ± 31.2 §
+135.5 ± 31.7 §
+160.5 ± 36.6 §
+130.0 ± 27.1 §
+132.2 ± 105.2 †
+50.5 ± 14.1 †
+140.6 ± 18.4 †
+39.7 ± 3.8 §
+18.5 ± 22.3
+299.2 ± 22.7 ‡
+
+− 9.0 (−15.1, −3.0)
+−17.0 (−26.1, −8.0)
+−7.6 (−15.6, 0.3)
+−5.8 (−14.5, 2.8)
+15.5 (3.35, 27.7)
+−14.2 (−24.6, − 3.8)
+−5.2 (−10.2, −0.1)
+−22.0 (−27.2, −16.8)
+−16.1 (−49.9, 17.6)
+− 1.51 (−6.22, 3.19)
+
+.004
+b.001
+.059
+NS
+.013
+.008
+.044
+b.001
+NS
+NS
+
+Non–high-density lipoprotein cholesterol was calculated as TC − HDL-C. Data are reported as means ± SD. Atorvastatin vs fenofibrate difference between
+baseline and 24-week percentage changes. NS indicates not significant.
+⁎ P b .001 for comparison with baseline values in the atorvastatin-treated group.
+§
+P b .001 for comparison with baseline values in the fenofibrate-treated group.
+‡
+P b .01 for comparison with baseline values in the fenofibrate-treated group.
+†
+P b .05 for comparison with baseline values in the fenofibrate-treated group.
+
+1538
+
+M. Arca et al. / Metabolism Clinical and Experimental 56 (2007) 1534–1541
+
+Table 3
+Changes in TGRL and in light and dense LDL subfractions during atorvastatin and fenofibrate treatment in FCHL patients
+Variables
+
+Atorvastatin (n = 27)
+Baseline
+
+TGRL (mg/dL)
+Cholesterol
+48.4 ± 22.0
+Triglycerides 165.8 ± 102
+Light LDL (mg/dL)
+Cholesterol
+140.6 ± 40.3
+Triglycerides
+28.0 ± 8.6
+Total protein
+87.2 ± 31.7
+Dense LDL (mg/dL)
+Cholesterol
+23.8 ± 14.3
+Triglycerides
+7.0 ± 3.8
+Total protein
+31.6 ± 14.9
+
+Fenofibrate (n = 29)
+6 wk
+
+Treatment difference with respect to
+percentage changes ⁎
+
+6 wk
+
+24 wk
+
+Baseline
+
+24 wk
+
+Estimate (95% CI)
+
+P
+
+34.3 ± 19.5 ⁎
+142.8 ± 114.0
+
+34.3 ± 23.2 ⁎
+112.3 ± 84.8 †
+
+53.5 ± 27.6
+163.4 ± 112
+
+25.1 ± 12.0 ∥
+68.4 ± 42.6 ∥
+
+25.4 ± 15.6 ∥
+73.6 ± 66.0 ∥
+
+26.0% (1.85%, 50.1%)
+28.7% (13.7%, 43.6%)
+
+.035
+b.001
+
+95.9 ± 27.9 †
+21.2 ± 5.8 †
+56.1 ± 22.4 †
+
+86.4 ± 21.1 †
+17.7 ± 5.9 †
+45.3 ± 11.2 †
+
+146.4 ± 36.1
+32.2 ± 12.8
+80.4 ± 23.0
+
+130.9 ± 26.6 ‡
+23.1 ± 8.4 ∥
+64.0 ± 19.3 ∥
+
+121.6 ± 26.4 §
+23.2 ± 7.6 ∥
+57.5 ± 16.2 ∥
+
+−26.0 (−36.6%,−15.4%)
+−17.8 (−30.8%, −4.8%)
+−14.8% (−25.9%,−3.8%)
+
+b.001
+.008
+.010
+
+20.6 ± 8.6
+7.1 ± 3.6
+32.0 ± 13.8
+
+20.8 ± 7.8
+6.4 ± 3.6
+27.7 ± 14.7
+
+27.8 ± 17.4
+6.9 ± 4.8
+30.4 ± 15.4
+
+15.1 ± 7.1 ∥
+3.8 ± 1.4 ∥
+25.5 ± 15.4
+
+17.3 ± 12.5 ‡
+6.0 ± 4.7
+19.2 ± 7.1 ∥
+
+−7.0% (−81.9%, 67.3%)
+−22.2 (−84.6%, 40.2%)
+32.25 (12.4%, 52.0%)
+
+NS
+NS
+.002
+
+Triglyceride-rich lipoprotein (TGRL) corresponds to density fraction b1.019 g/mL. Data are reported as means ± SD. Atorvastatin vs fenofibrate difference
+between baseline and 24-week percentage changes.
+⁎ P b .01 for comparison with baseline values in the atorvastatin-treated group.
+†
+P b .001 for comparison with baseline values in the atorvastatin-treated group.
+‡
+P b .05 for comparison with baseline values in the fenofibrate-treated group.
+§
+P b .01 for comparison with baseline values in the fenofibrate-treated group.
+∥
+P b .001 for comparison with baseline values in the fenofibrate-treated group.
+
+week 24 were −28.3 ± 13.8% in the atorvastatin group and
+−21 ± 12.4% in the fenofibrate group, resulting in a betweengroup difference of 9.05% (P = .004). Similarly, LDL-C
+decreased by 34.6 ± 13.9% in the atorvastatin group and
+20.9 ± 21.3% in the fenofibrate group, resulting in a
+significant incremental difference of 17.0% in favor of
+atorvastatin (P b .001). Both treatments also significantly
+improved non–HDL-C (P b .001 at any time point), but the
+between-group difference was of borderline significance
+(Table 2). Conversely, in the fenofibrate group, HDL-C
+showed a significant increase at any time point, whereas no
+substantial changes were observed in the atorvastatin group.
+After 24 weeks of treatment, the mean percentage changes of
+HDL-C were +15.8 ± 25.3% with fenofibrate and +2.0 ±
+15.5% with atorvastatin group, resulting in a significant
+14.2% treatment difference in favor of fenofibrate (P = .008).
+During fenofibrate, TGs showed a significant reduction at
+any time point, whereas in the atorvastatin group, the
+decreases were smaller and significant only at week 18 (data
+not shown) and at week 24. At this time point, mean
+percentage changes from baseline were −27.2 ± 26.2% (P =
+.001) in the atorvastatin group and −44.1 ± 20.9% (P = .029)
+in the fenofibrate group, resulting in an incremental 15.5%
+reduction during fenofibrate (P = .013).
+Changes in the absolute concentrations of TGRL and LDL
+subfractions are reported in Table 3. After 24 weeks of
+therapy, TGRLs appeared to be more favorably affected by
+fenofibrate than atorvastatin. In fact, TC and TG in the
+density fraction b1.019 g/mL were reduced, respectively, by
+50.5% and 54.8% with fenofibrate and by 22.8 and 26.2%
+with atorvastatin; and the treatment differences were all
+statistically significant in favor of fenofibrate (P = .035 for
+TC and P b.001 for TG). Although both treatments decreased
+large, buoyant LDL (light and intermediate-dense LDL
+
+subtypes), atorvastatin was significantly more effective than
+fenofibrate in reducing concentrations of cholesterol, triglycerides, and total protein in this LDL subfraction. Conversely,
+atorvastatin therapy showed only a modest effect on denser
+LDL, whereas fenofibrate resulted in a relative reduction of
+this LDL subtype. As evaluated in terms of cholesterol
+distribution, fenofibrate determined, at week 24, a shift of
+LDL subtypes from dense (−21.9%) to large, buoyant LDL
+(+4.2%), whereas atorvastatin produced opposite changes
+(+33.8% in dense and −5.8% in large LDL).
+Both treatments significantly improved plasma concentrations of apo B (P b .001 at any time point). However, the
+difference between treatments was not statistically significant (Table 2). In concordance with changes in HDL-C
+levels, fenofibrate significantly increased plasma levels of
+apo A-I and apo A-II at any time point, whereas atorvastatin
+did not determine any significant variation of these
+parameters. After 24 weeks of fenofibrate therapy, apo A-I
+increased by 5.2 ± 10.1% and apo A-II by 20.0 ± 14.7%
+(Table 2). No significant changes were observed in plasma
+concentrations of Lp(a) during either atorvastatin or
+fenofibrate treatment. Although fibrinogen showed a slight
+but significant increase after 24 weeks of treatment with
+fenofibrate, no difference was observed when treatments
+were compared (Table 2).
+3.3. Effects of treatments on ET-1 and AM levels
+Baseline levels of ET-1 were significantly higher in
+FCHL compared with controls (10.9 ± 8.0 pg/mL vs 7.5 ±
+2.6 pg/mL, P = .007). Conversely, no difference was
+observed in plasma levels of AM (16.1 ± 19.1 pg/mL vs
+11.4 ± 4.4 pg/mL, P = .59). In the group of FCHL patients,
+inverse correlations was found between ET-1 and HDL-C
+(r = −0.344, P b .05) and between AM and LDL-C
+
+M. Arca et al. / Metabolism Clinical and Experimental 56 (2007) 1534–1541
+
+Fig. 2. Effect of treatment with atorvastatin (n = 21) or fenofibrate (n = 26)
+on plasma concentration of ET-1 (A) and AM (B). Data are presented as
+mean ± SE. *P b .048, **P b .020 for comparison with baseline values.
+
+(r = −0.485, P = .001), apo B (r = −0.404, P = .005), and
+HDL-C (r= −0.342, P b .05).
+During both treatment regimens, no significant changes
+were observed in the plasma levels of AM (Fig. 2A). After
+24 weeks of therapy, AM was reduced more by fenofibrate
+than by atorvastatin (−21.1% vs −9.7%); but this difference
+was not significant. Plasma ET-1 levels were marginally, but
+significantly, reduced during fenofibrate (−16.7%, P b .05),
+whereas these did not change during atorvastatin (Fig. 2B).
+
+4. Discussion
+It is still uncertain whether the first-line treatment of
+FCHL should consist of statin monotherapy or fibrate
+monotherapy. Other studies have compared atorvastatin and
+fenofibrate in mixed hyperlipidemia [24-27], but none have
+evaluated the effectiveness of these 2 drugs in obtaining lipid
+targets. Here we report that monotherapy with atorvastatin at
+the average dosage of 20 mg/d is more effective than 200 mg
+micronized fenofibrate in reaching recommended lipid
+targets in patients with FCHL. After 24 weeks of therapy,
+64% of patients taking atorvastatin reached the therapeutic
+targets compared with only 32% of those taking fenofibrate.
+The superiority of atorvastatin over fenofibrate was found to
+be even more pronounced when more selective lipid targets
+were used.
+This result was certainly due to the fact that atorvastatin,
+when compared with fenofibrate, produced an incremental
+reduction of TC, LDL-C, and apo B by 9%, 17%, and 5.8%,
+respectively. Although fenofibrate was more efficient in
+decreasing TGs, the overall better results observed during
+
+1539
+
+atorvastatin can be also attributable to the beneficial effect of
+this statin on the metabolism of TGRL. In agreement with
+previous observations [10,28], we found that atorvastatin
+significantly lowered VLDL and VLDL remnants and
+produced an additional 7.6% reduction of non–HDL-C
+compared with fenofibrate. Data from in vivo kinetic studies
+may provide the explanation for these effects of atorvastatin
+on TGRL metabolism in patients with mixed hyperlipidemias [29]. Besides increasing VLDL apo B removal, this
+drug has been demonstrated to reduce hepatic production of
+VLDL1 and increase the delipidation of VLDL1. It has been
+suggested that these effects of atorvastatin can be ascribed to
+the reduction of hepatocellular cholesterol and the stimulation of the LDL receptor pathway. In the same study [29], it
+was reported that fenofibrate lowered TGs and VLDL
+cholesterol by enhancing delipidation of VLDL1 and VLDL2
+and increasing VLDL1 catabolism, but not influencing
+VLDL production.
+The comparison of atorvastatin and fenofibrate on LDL
+composition is relevant because patients with FCHL typically
+present increased concentration of atherogenic sdLDL [4].
+Atorvastatin and fenofibrate similarly decreased all LDL
+subfractions, although atorvastatin was more effective in
+lowering large, buoyant LDL (light and intermediate-dense
+LDL subtypes) and fenofibrate showed a more pronounced
+action on sdLDL. These results are in good agreement with a
+number of other studies reporting that LDL subfractions
+usually fall in concert with little changes in the size
+distribution profile during statin [25,30-33], whereas they
+shift composition toward larger LDL subclasses during
+fenofibrate therapy [34]. It must be noted that if all LDLs
+are atherogenic and if small dense LDLs are particularly
+atherogenic, it could be hypothesized that atorvastatin, which
+decreases all LDL, is more efficient than fenofibrate, which
+preferentially affects sdLDL, in reducing the LDL-dependent
+risk of atherogenesis. Indeed, clinical trials have demonstrated
+that a reduction in total LDL decreased coronary mortality and
+morbidity independently of LDL particle size [35].
+Consistent with previous reports [25,32], fenofibrate was
+demonstrated to be more effective than atorvastatin in
+increasing HDL, thus providing a possible advantage in the
+management of FCHL. However, a still unanswered question
+is whether raising HDL over LDL may be more efficacious
+in reducing risk for CAD [36]. Several major prevention
+trials demonstrated that fibrate-induced raising of HDL
+significantly reduced progression of coronary atherosclerosis
+and cardiovascular events [36]. However, it must be noted
+that the most part of this benefit is confined to subjects
+showing baseline low HDL-C associated with high TG [37],
+a phenotype resembling atherogenic dyslipidemia (ALP)
+more than FCHL [38]. Moreover, with the only exception of
+the Helsinki Heart Study [37], none included patients with
+characteristics of FCHL. Finally, recent analyses of intervention trials suggested that raising HDL in patients with
+persistently elevated LDL may produce only limited benefits
+on cardiovascular risk reduction [39].
+
+1540
+
+M. Arca et al. / Metabolism Clinical and Experimental 56 (2007) 1534–1541
+
+An interesting result of our study is that about one third of
+FCHL patients failed to reach the therapeutic targets even at
+the optimal dose of atorvastatin. We may estimate that this
+could be the proportion of FCHL patients requiring
+combination therapy. We further found that the lack of
+success of therapy was strongly related to the baseline levels
+of TG greater than 300 mg/dL. Although this finding may be
+biased because of the limited TG-lowering effect of
+atorvastatin, it strongly supports the notion that FCHL is a
+metabolically heterogenous disorder where a significant
+proportion of patients may present defects in hepatic TG
+metabolism not modifiable by reducing hepatocellular
+cholesterol availability with statins [31] or by activating
+peroxisome proliferator–activated receptor α–mediated
+pathways with fenofibrate [7].
+In this study, we have examined whether and to what
+extent atorvastatin and fenofibrate may affect plasma
+concentration of AM and ET-1, 2 poorly investigated
+vasoactive peptides. We found that baseline plasma levels
+of AM were not increased in FCHL and that neither
+fenofibrate nor atorvastatin significantly influenced them.
+Conversely, ET-1 levels were elevated in FCHL; and
+fenofibrate, but not atorvastatin, significantly reduced them
+already after 6 weeks of therapy. To the best of our
+knowledge, this is the first report describing increased ET-1
+in FCHL; and it is consistent with previous studies showing
+impaired endothelial function in these individuals [11,13].
+The effect of statins on plasma ET-1 is controversial.
+Previous in vitro studies have shown that statins reduce the
+expression of ET-1 in endothelial cells [40]. However,
+atorvastatin decreased ET-1 levels in normolipemic diabetic
+patients but not in subject at risk of diabetes [41]; and
+pravastatin did not change plasma ET-1 in well-controlled
+hypertensive individuals [42]. Although these discrepancies
+might be due to differences in patients' characteristics, in our
+comparison study, we found that only fenofibrate significantly lowered ET-1 levels in FCHL, supporting previous
+observations in patients with hypertriglyceridemia [43].
+In summary, the results of the present study proved that
+atorvastatin is more efficient than fenofibrate in reaching the
+recommended lipid targets in FCHL and thus can be
+proposed as the first-choice drug in the therapy for this
+atherogenic hyperlipidemia. Whether the superiority of
+fenofibrate in influencing HDL metabolism and reducing
+ET-1 could translate into clinical benefits in FCHL patients
+deserves further investigation.
+Acknowledgments
+This study was supported by grant A2581007 from Pfizer
+Italia (to MA) and by grant COFIN 2002058281-003 from
+the Ministero dell'Università, Ricerca Scientifica e Tecnologica (to MA). The protocol Pfizer A2581007 did not include
+the measurements of AM and ET-1 that have been
+independently decided by the research group. We wish to
+thank Dr Bruno Mazzarella, Mr Renzo Cantini, and Mr
+
+Giovanni Clemente for the technical support in the laboratory
+measurements. A special acknowledgment is made to
+patients for their cooperation and commitment to the trial.
+References
+[1] Goldstein JL, Schrott HG, Hazzard WR, et al. Hyperlipidemia in
+coronary heart disease. II. Genetic analysis of lipid levels in 176
+families and delineation of a new inherited disorder, combined
+hyperlipidemia. J Clin Invest 1973;52:1544-68.
+[2] Gaddi A, Galletti C, Pauciullo P, et al. Familial combined
+hyperlipoproteinemia: experts panel position on diagnostic criteria
+for clinical practice. Committee of Experts of the Atherosclerosis and
+Dysmetabolic Disorders Study Group. Nutr Metab Cardiovasc Dis
+1999;9:304-11.
+[3] Sniderman AD, Ribalta J, Castro Cabezas M. How should FCHL be
+defined and how should we think about its metabolic bases? Nutr
+Metab Cardiovasc Dis 2001;11:259-73.
+[4] Ayyobi AF, McGladdery SH, McNeely MJ, et al. Small, dense LDL
+and elevated apolipoprotein B are the common characteristics for the
+three major lipid phenotypes of familial combined hyperlipidemia.
+Arterioscler Thromb Vasc Biol 2003;23:1289-94.
+[5] Expert Panel on Detection, Evaluation, and Treatment of High Blood
+Cholesterol in Adults. Executive summary of the third report of the
+National Cholesterol Education Program (NCEP) Expert Panel on
+Detection, Evaluation, and Treatment of High Blood Cholesterol in
+Adults (Adult Treatment Panel III). JAMA 2001;285:2486-9247.
+[6] Vicari RN, Wan GJ, Aura AM, et al. Use of simvastatin treatment in
+patients with combined hyperlipidemia in clinical practice. Arch Fam
+Med 2000;9:898-905.
+[7] Staels B, Dallongeville J, Auwerx K, et al. Mechanism of action of
+fibrates on lipid and lipoprotein metabolism. Circulation 1998;98:
+2088-93.
+[8] Shek A, Ferrill MJ. Statin-fibrate combination therapy. Ann Pharmacother 2001;35:908-17.
+[9] Jones PH, Davidson MH, Stein EA, et al, for the STELLAR Study
+Group. Comparison of the efficacy and safety of rosuvastatin versus
+atorvastatin, simvastatin, and pravastatin across doses (STELLAR
+trial). Am J Cardiol 2003;92:152-60.
+[10] Stein DT, Devaraj S, Balis D, et al. Effect of statin therapy on remnant
+lipoprotein cholesterol levels in patients with combined hyperlipidemia. Arterioscler Thromb Vasc Biol 2001;21:2026-31.
+[11] Kovacs I, Toldy E, Abel T, et al. The effect of ciprofibrate on flowmediated dilation and inflammatory markers in patients with combined
+hyperlipidemia. Endothelium 2005;12:179-83.
+[12] Sebestjen M, Zegura B, Videcnik V, et al. Determinants of endothelial
+dysfunction and carotid intima-media thickness in combined hyperlipidemia. Coron Artery Dis 2005;16:175-80.
+[13] Stroes E, de Bruin T, de Valk H, et al. NO activity in familial combined
+hyperlipidemia: potential role of cholesterol remnants. Cardiovasc Res
+1997;36:445-52.
+[14] Sudano I, Spieker LE, Hermann F, et al. Protection of endothelial
+function: targets for nutritional and pharmacological interventions.
+J Cardiovasc Pharmacol 2006;47(Suppl 2):S136-50.
+[15] Kato J, Tsuruda T, Kita T, et al. Adrenomedullin: a protective factor for
+blood vessels. Arterioscler Thromb Vasc Biol 2005;25:2480-7.
+[16] Kawai J, Ando K, Tojo A, et al. Endogenous adrenomedullin protects
+against vascular response to injury in mice. Circulation 2004;109:
+1147-53.
+[17] Porkka KV, Nuotio I, Pajukanta P, et al. Phenotype expression in
+familial combined hyperlipidemia. Atherosclerosis 1997;133:245-53.
+[18] Campagna F, Montali A, Baroni MG, et al. Common variants in the
+lipoprotein lipase gene, but not those in the insulin receptor substrate–
+1, the beta3-adrenergic receptor, and the intestinal fatty acid binding
+protein–2 genes, influence the lipid phenotypic expression in familial
+combined hyperlipidemia. Metabolism 2002;51:1298-305.
+
+M. Arca et al. / Metabolism Clinical and Experimental 56 (2007) 1534–1541
+[19] Veerkamp MJ, Graaf deJ, Hendriks JC, et al. Nomogram to diagnose
+familial combined hyperlipidemia on the basis of results of a 5-year
+follow-up study. Circulation 2004;109:2980-5.
+[20] Lowry O, Rosebrough N, Farr A, et al. Protein measurement with the
+Folin phenol reagent. J Biol Chem 1951;193:265-75.
+[21] Campos H, Blijlevens E, McNamara JR, et al. LDL particle size
+distribution. Results from the Framingham Offspring Study. Arterioscler Thromb 1992;12:1410-9.
+[22] Letizia C, Cerci S, Centanni M, et al. Circulating levels of
+adrenomedullin in patients with Addison's disease before and
+after corticosteroid treatment. Clin Endocrinol (Oxf) 1998;48:
+145-8.
+[23] Letizia C, Cerci S, De Ciocchis A, et al. Plasma endothelin-1 levels in
+normotensive and borderline hypertensive subjects during a standard
+cold pressor test. J Hum Hypertens 1995;9:903-7.
+[24] Bairaktari ET, Tzallas CS, Tsimihodimos VK, et al. Comparison of
+efficacy of atorvastatin and micronized fenofibrate in the treatment of
+mixed hyperlipidemia. J Cardiovasc Risk 1999;6:113-6.
+[25] Frost RJA, Otto C, Geiss HC, et al. Effects of atorvastatin versus
+fenofibrate on lipoprotein profiles, low-density lipoprotein subfraction
+distribution, and hemorheologic parameters in type 2 diabetes mellitus
+with mixed hyperlipoproteinemia. Am J Cardiol 2001;87:44-8.
+[26] Despres JP, Lemieux I, Salomon H, et al. Effects of micronized
+fenofibrate versus atorvastatin in the treatment of dyslipidemic patients
+with low plasma HDL-cholesterol levels: a 12-week randomized trial.
+J Int Med 2002;251:490-9.
+[27] Melenovsky V, Malik J, MD, Wichterle D, et al. Comparison of the
+effects of atorvastatin or fenofibrate on nonlipid biochemical risk
+factors and the LDL particle size in subjects with combined
+hyperlipidemia. Am Heart J 2002;144:e6.
+[28] Versyden C, Meijssen S, Cabezas MC. Effects of atorvastatin on the
+clearance of triglyceride-rich lipoproteins in familial combined
+hyperlipidemia. J Clin Endocrinol Metab 2004;89:5972-80.
+[29] Bilz S, Wagner S, Schmitz M, et al. Effects of atorvastatin versus
+fenofibrate on apoB-100 and apo A-I kinetics in mixed hyperlipidemia.
+J Lipid Res 2004;45:174-85.
+[30] Gaw A, Packard CJ, Murray EF, et al. Effects of simvastatin on apoB
+metabolism and LDL subfraction distribution. Arterioscler Thromb
+1993;13:170-89.
+[31] Geiss HC, Otto C, Schawandt P, et al. Effect of atorvastatin on lowdensity lipoprotein subtype in patients with different form of
+
+[32]
+
+[33]
+
+[34]
+
+[35]
+[36]
+
+[37]
+
+[38]
+[39]
+
+[40]
+
+[41]
+
+[42]
+
+[43]
+
+1541
+
+hyperlipoproteinemia and control subjects. Metabolism 2001;50:
+983-9.
+Otvos JD, Shalaurova I, Freedman DS, et al. Effects of pravastatin
+treatment on lipoprotein subclass profiles and particle size in the
+PLAC-1 trial. Atherosclerosis 2002;160:41-8.
+Pontreli L, Parris W, Adeli K, et al. Atorvastatin treatment beneficially
+alters the lipoprotein profile and increases low-density lipoprotein
+particle diameter in patients with combined dyslipidemia and impaired
+fasting glucose/type 2 diabetes. Metabolism 2002;51:334-42.
+Guerin M, Lassel TS, Le Goff W, et al. Action of atorvastatin in
+combined hyperlipidemia: preferential reduction of cholesteryl ester
+transfer from HDL to VLDL1 particles. Arterioscler Thromb Vasc Biol
+2000;20:189-97.
+Thompson GR, Barter PJ. Clinical lipidology at the end of the
+millennium. Curr Opin Lipidol 1999;10:521-6.
+Barter P, Kastelein J, Nunn A, Hobbs R, and the Future Forum
+Editorial Board. High density lipoproteins (HDLs) and atherosclerosis:
+the unanswered questions. Atherosclerosis 2003;168:195-211.
+Manninen V, Tenkanen L, Koskinen P, et al. Joint effects of serum
+triglyceride and LDL cholesterol and HDL cholesterol concentrations
+on coronary heart disease risk in the Helsinki Heart Study. Implications
+for treatment. Circulation 1992;85:37-45.
+Grundy SM. Atherogenic dyslipidemia: lipoprotein abnormalities and
+implications for therapy. Am J Cardiol 1995;75:45B-52B.
+Dean BB, Borenstein JE, Henning JM, et al. Can change in highdensity lipoprotein cholesterol levels reduce cardiovascular risk?
+Am Heart J 2004;147:966-76.
+Hernandez-Perera O, Perez-Sala D, Navarro-Antolin J, et al. Effects of
+the 3-hydroxy-3-methylglutaryl-CoA reductase inhibitors, atorvastatin
+and simvastatin, on the expression of endothelin-1 and endothelial
+nitric oxide synthase in vascular endothelial cells. J Clin Invest 1998;
+101:2711-9.
+Economides PA, Caselli A, Tiani E, et al. The effects of atorvastatin on
+endothelial function in diabetic patients and subjects at risk for type 2
+diabetes. J Clin Endocrinol Metab 2004;89:740-7.
+Tsung-Ming L, Sheng-Fang S, Chang-Her T. Effect of pravastatin on
+proteinuria in patients with well-controlled hypertension. Hypertension
+2002;40:67-73.
+Huang Y, Dai G, Feng Z, Lu C, et al. Effects of micronized fenofibrate
+on vascular endothelial function in patients with hypertriglyceridemia.
+Chin Med J 2003;116:1767-9.

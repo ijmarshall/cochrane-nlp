@@ -1,0 +1,665 @@
+Voiding Dysfunction
+The Relationships Among Measures of Incontinence Severity
+in Women Undergoing Surgery for Stress Urinary Incontinence
+Michael Albo,*,† Lisa Wruck, Jan Baker, Linda Brubaker, Toby Chai,†
+Kimberly J. Dandreo, Ananias Diokno, Patricia Goode,‡ Stephen Kraus,§ John W. Kusek,
+Gary Lemack,ʈ Jerry Lowder and William Steers¶ for the Urinary Incontinence Treatment Network
+From the Division of Urology, University of California, San Diego, California (MA), New England Research Institutes, Boston, Massachusetts
+(LW, KJD), Department of Obstetrics and Gynecology, University of Utah, Salt Lake City, Utah (JB), Departments of Obstetrics & Gynecology
+and Urology, Loyola University Chicago, Maywood, Illinois (LB), Division of Urology, University of Maryland, Baltimore (TC), National
+Institute of Diabetes and Digestive and Kidney Diseases, National Institutes of Health, Bethesda (JWK), Maryland, Department of Urology,
+William Beaumont Hospital, Royal Oak, Michigan (AD), Birmingham/Atlanta Veterans Affairs Geriatric Research, Education and Clinical
+Center and Division of Gerontology and Geriatric Medicine, University of Alabama at Birmingham, Alabama (PG), Department of Urology,
+University of Texas, San Antonio (SK), and University of Texas Southwestern Medical Center, Dallas (GL), Texas, Division of Urogynecology
+and Pelvic Reconstructive Surgery, University of Pittsburgh, Pittsburgh, Pennsylvania (JL), and Department of Urology, University of Virginia,
+Charlottesville, Virginia (WS)
+
+Purpose: We assessed the relationships among severity measures of urinary incontinence in women with stress predominant
+symptoms enrolled in a randomized clinical trial comparing 2 surgical techniques (Burch colposuspension vs pubovaginal
+sling) for stress urinary incontinence.
+Materials and Methods: A total of <n>655</n> women underwent a standardized preoperative assessment that included the
+Medical, Epidemiological and Social Aspects of Aging questionnaire, Urogenital Distress Inventory, Incontinence Impact
+Questionnaire, 3-day voiding diary, 24-hour pad test, a supine empty bladder stress test and Valsalva leak point pressure
+measurements. Correlations were estimated using Spearman correlation coefﬁcients and 95% conﬁdence intervals. T tests at
+␣ ϭ 0.05 were conducted to compare the distributions of the continuous severity measure between patients with positive and
+negative supine empty bladder stress test.
+Results: Baseline mean scores on Medical, Epidemiological and Social Aspects of Aging, Urogenital Distress Inventory and
+Incontinence Impact Questionnaire were 25.8, 151 and 171, respectively. Mean incontinence episode frequency and pad
+weight were 3.2 per day and 43.5 gm, respectively. Supine empty bladder stress test was positive in 218 patients, and 428
+patients had valid Valsalva leak point pressure measurements with a mean Valsalva leak point pressure of 80 cm H2O. Weak
+to moderate correlations were observed between Medical, Epidemiological and Social Aspects of Aging, incontinence episode
+frequency, pad weight, Incontinence Impact Questionnaire and Urogenital Distress Inventory. On the other hand, Valsalva
+leak point pressure correlated poorly with all variables measured. The sensitivity and speciﬁcity of the supine empty bladder
+stress test to predict intrinsic sphincter dysfunction were 49% and 60%, respectively.
+Conclusions: Urinary incontinence severity measures correlate moderately with each other at best. While Medical,
+Epidemiological and Social Aspects of Aging demonstrated stronger correlations with the other measures of severity and
+quality of life, Valsalva leak point pressure did not. Supine empty bladder stress test did not demonstrate a clinically
+signiﬁcant association among severity measures.
+Key Words: urinary bladder; female; quality of life; urinary incontinence, stress; urodynamics
+
+rinary incontinence, a highly prevalent condition
+in women, is deﬁned by symptoms, its pathophysiology and/or its impact on QOL. Assessment of
+disease severity may be used to gain insight into the
+pathophysiology or to predict responses to therapy. Al-
+
+U
+
+though a wide range of methods have been proposed to
+measure the severity of urinary incontinence, including
+use of urinary symptom and impact questionnaires,1 voiding diary,2 pad testing3 and various urodynamic test parameters,4,5 none has emerged as the gold standard. The
+
+Submitted for publication September 25, 2006.
+Supported by cooperative agreements from the National Institute
+of Diabetes and Digestive and Kidney Diseases, U01 DK58225, U01
+DK58229, U01 DK58234, U01 DK58231, U01 DK60379, U01
+DK60380, U01 DK60393, U01 DK60395, U01 DK60397, and 60401.
+Supported by the National Institute of Child Health and Human
+Development and Ofﬁce of Research in Women’s Health, National
+Institutes of Health.
+* Correspondence: Division of Urology, University of California San
+Diego Medical Center, 200 W. Arbor Drive, San Diego, California
+
+92103-8897 (telephone: 858-657-8435; FAX: 858-657-8650; e-mail:
+malbo@ucsd.edu).
+† Financial interest and/or other relationship with Pﬁzer.
+‡ Financial interest and/or other relationship with Ortho McNeil.
+§ Financial interest and/or other relationship with Pﬁzer, Novartis, Astellas, Ortho McNeil and NIDDK.
+ʈ Financial interest and/or other relationship with Pﬁzer, Astellas
+and Allergan.
+¶ Financial interest and/or other relationship with Sanoﬁ Aventis,
+Lilly, Novartis, Astellas, Pﬁzer and Allergan.
+
+0022-5347/07/1775-1810/0
+THE JOURNAL OF UROLOGY®
+Copyright © 2007 by AMERICAN UROLOGICAL ASSOCIATION
+
+1810
+
+Vol. 177, 1810-1814, May 2007
+Printed in U.S.A.
+DOI:10.1016/j.juro.2007.01.032
+
+MEASURES OF SEVERITY OF STRESS URINARY INCONTINENCE IN WOMEN
+lack of a universally accepted severity measure creates
+difﬁculty in designing or comparing results in clinical and
+epidemiological studies.
+A multicenter, randomized clinical trial of the Burch colposuspension compared to the pubovaginal sling for the
+treatment of SUI provided an opportunity to examine the
+relationship between generally accepted severity measures
+including symptom and QOL questionnaires, pad test, voiding diary, supine empty bladder stress test, and urodynamic
+measurements in women before undergoing surgery. In addition, we hypothesized that the severity measures would
+correlate differently in patients with urodynamic evidence of
+ISD compared to those with no ISD, and in patients with
+mixed incontinence compared to those with pure stress incontinence.
+MATERIALS AND METHODS
+Study Design
+The UITN SISTEr protocol was designed to comply with the
+provisions of the Declaration of Helsinki and was approved
+by the National Institutes of Health and the respective institutional review boards from the 9 clinical sites in the
+UITN.6 All patients gave written informed consent before
+enrollment. Women were eligible for the trial if they reported predominant symptoms of SUI determined from the
+MESA questionnaire,7 displayed urethral hypermobility determined by a Q-tip test and had a positive standardized
+volume stress test.
+Measurements
+Before randomization patients underwent a standardized
+preoperative evaluation which included collection of several
+measures of severity, that is MESA symptom questionnaire,
+UDI, IIQ, 3-day voiding diary, 24-hour pad test, a standardized volume stress test, SEBST and VLPP obtained during
+standardized urodynamics testing.
+The MESA total score ranges from 0 to 45 and is a sum of
+its 2 components, the stress score and the urge score. The
+stress component consists of 9 questions regarding the frequency of stress related urine loss. Scores range from 0 to 27
+and increase as the frequency of urine loss increases. Similarly the urge index consists of 6 questions regarding the
+frequency of urge related urine loss and scores range from 0
+to 18.7 For the purposes of this analysis, participants were
+classiﬁed as having symptoms of pure stress incontinence if
+the MESA urge score was zero and classiﬁed as having
+mixed incontinence if the MESA urge score was greater than
+zero.
+The UDI consists of 3 subscales (obstructive symptoms,
+irritative symptoms and stress symptoms). The total UDI
+score has a range of 0 to 300 when all questions are
+answered. Each subscale score is computed as the mean of
+the items contributing to that subscore, and scaled to have
+a range from 0 to 100. Scores increase with worsening
+QOL.8
+The IIQ consists of 4 subscales (activity, travel, social and
+emotional). The total IIQ score has a range of 0 to 400.
+Subscale scores are scaled to have a range of 0 to 100 and
+scores increase with worsening QOL.8
+PW is calculated as the difference between total pad
+weights before and after the test during a 24-hour period.3
+IEF is calculated as the mean number of involuntary epi-
+
+1811
+
+sodes of urine loss per day recorded on the 3-day voiding
+diary.
+VLPP is reported as the mean vesical pressure at leakage
+during a Valsalva maneuver minus mean vesical pressure at
+baseline of cystometrogram using atmospheric pressure as
+the reference. VLPP was obtained during standardized ﬁlling cystometry with the ﬁrst measurement at a volume of
+200 ml and repeated at 100 ml increments until SUI was
+observed on at least 2 of 3 Valsalva maneuvers at a given
+volume or until maximum cystometric capacity was reached.
+Urodynamic ISD was deﬁned as VLPP 60 cm or less. The
+urodynamic testing procedures and quality control measures have been described by Nager et al.9
+The supine empty bladder stress test was performed in
+the supine position with cough and straining maneuvers.10
+A positive test was recorded if urethral leakage was observed during any of the maneuvers. Patients with PVR
+greater than 100 cc were excluded from this analysis.
+We examined the relationship between measures of severity in the entire study population as well as in 2 subgroups of patients, those with urodynamic ISD compared to
+patients with no ISD, and among patients with symptoms of
+mixed incontinence compared to those with symptoms of
+pure stress incontinence.
+Statistical Analysis
+Statistical analysis was performed using SAS® 9.1. Correlations were estimated using Spearman correlation coefﬁcients and 95% CI. To evaluate the association between
+SEBST and each of the continuous severity measures, t
+tests at ␣ ϭ 0.05 were conducted to compare the distributions of the continuous severity measure between patients
+with positive and negative SEBST. The sensitivity and
+speciﬁcity of SEBST for ISD was calculated along with
+95% CI.
+RESULTS
+A total of 655 women were randomized between February
+2002 and June 2004. Mean age was 52 years (SD 10) with
+a range of 28 to 81 years. Mean BMI was 30 kg/m2 (SD 6).
+The mean values and ranges for the severity measures
+evaluated are shown in table 1. There were 44 women
+(7%) with pure stress incontinence, 127 (30%) with ISD
+and 226 (37%) with a positive SEBST. The small number
+of patients with pure stress incontinence precluded subgroup analysis by type of incontinence symptoms. VLPP
+measurements were obtained in 428 patients (65%), and
+
+TABLE 1. Descriptive statistics for severity measures
+and subgroups
+No. Pts
+MESA stress score
+MESA urge score
+MESA total score
+UDI obstructive symptoms
+UDI irritative symptoms
+UDI stress symptoms
+UDI total score
+Total IIQ
+PW (gm)
+IEF (leaks/day)
+VLPP (cm H2O)
+
+Mean (SD)
+
+Range
+
+655
+655
+655
+652
+652
+651
+651
+652
+645
+654
+428
+
+19 (5)
+6 (4)
+26 (7)
+25 (22)
+48 (25)
+78 (22)
+151 (49)
+171 (101)
+43.5 (79.4)
+3.2 (3.0)
+80 (36)
+
+4–27
+0–17
+4–43
+0–97
+0–100
+0–100
+0–291
+0–400
+0.1–1,022.6
+0.0–26.0
+3–202
+
+1812
+
+MEASURES OF SEVERITY OF STRESS URINARY INCONTINENCE IN WOMEN
+TABLE 2. Spearman correlation coefﬁcients (CI)
+UDI
+
+PW
+
+IEF
+
+VLPP
+
+0.46 (0.40, 0.52)
+—
+
+MESA
+UDI
+IIQ
+PW
+IEF
+
+IIQ
+0.47 (0.41, 0.53)
+0.58 (0.52, 0.63)
+—
+
+0.33 (0.26, 0.40)
+0.17 (0.09, 0.24)
+0.34 (0.27, 0.41)
+—
+
+0.37 (0.30, 0.43)
+0.23 (0.16, 0.30)
+0.34 (0.27, 0.41)
+0.61 (0.56, 0.66)
+—
+
+Ϫ0.14 (Ϫ0.23, Ϫ0.05)
+Ϫ0.01 (Ϫ0.11, 0.08)
+Ϫ0.09 (Ϫ0.18, 0.01)
+Ϫ0.11 (Ϫ0.20, Ϫ0.01)
+Ϫ0.10 (Ϫ0.19, Ϫ0.01)
+
+reasons for missing VLPP data included test artifact (85),
+leaked only with prolapse reduction (19), leaked only with
+cough (70) and no urodynamic study SUI demonstrated
+(53).
+There were weak to moderate positive and negative
+correlations between the continuous severity measures
+(table 2), ranging from a low of 0.01 (CI Ϫ0.11 to 0.08)
+between VLPP and UDI to a high of 0.61 (CI 0.56 to 0.66)
+between IEF and PW. The correlations between the patient questionnaires (UDI, IIQ and MESA) were uniformly
+moderate. The correlation of PW and IEF with the QOL
+questionnaires was weak for UDI (0.17 and 0.23, respectively) and moderate with IIQ (0.34 and 0.34, respectively). VLPP was weakly negatively correlated or not at
+all correlated with the other severity measures. In the
+subgroup analysis of patients with ISD, correlation coefﬁcients between VLPP and the other measures ranged
+from – 0.15 to 0.05, demonstrating little to no difference
+from the group as a whole.
+The associations between the SEBST and each of the
+continuous variables are presented in table 3. Mean MESA,
+UDI, IIQ and PW did not differ by SEBST result. IEF was
+statistically signiﬁcantly higher in patients with a positive
+SEBST, with means of 3.7 episodes (SD 3.3) vs 2.9 episodes
+per day (SD 2.6) (p ϭ 0.001). In addition, VLPP was significantly lower, statistically but not clinically, for patients
+with a positive SEBST vs a negative SEBST, with means of
+75 (SD 36) vs 85 cm (SD 36), respectively (p ϭ 0.011). Of the
+118 patients with ISD, 58 had a positive SEBST for a sensitivity of 49% (CI 40%, 58%). Of 284 patients with no ISD
+113 had a positive SEBST for a speciﬁcity of 60% (CI 54%,
+66%).
+DISCUSSION
+We studied a number of urinary incontinence severity measures among a large cohort of United States women scheduled to undergo surgery for SUI. Only a modest correlation
+was observed between patient symptom self-assessment
+(MESA) and 2 objective measures of urine loss, voiding diary
+(IEF) and pad test (PW). While a stronger correlation was
+found between PW and IEF, only modest correlations existed between MESA and the QOL measures (UDI and IIQ).
+
+TABLE 3. Continuous severity measures by SEBST
+Mean (SD)
+Pos SEBST (218)
+MESA
+UDI
+IIQ
+PW (gm)
+IEF (leaks/day)
+VLPP (cm H2O)
+
+Mean (SD)
+Neg SEBST (377)
+
+p Value
+
+26 (7)
+147 (50)
+180 (102)
+47.4 (78.6)
+3.7 (3.3)
+75 (36)
+
+25 (8)
+152 (49)
+168 (102)
+40.3 (789.3)
+2.9 (2.6)
+85 (36)
+
+0.170
+0.216
+0.165
+0.294
+0.001
+0.011
+
+No correlation was demonstrated between VLPP and the
+other continuous severity measures, suggesting that while
+VLPP may be a measure of urethral sphincter dysfunction,
+it is not associated with patient symptom severity, quantity
+of urine loss, or the effect the condition has on patient QOL.
+A subgroup analysis in patients with VLPP above and below
+the traditional cutoff for ISD (60 cm H2O) failed to demonstrate an improvement in the correlation between VLPP and
+the other measures.
+The moderate correlations between MESA and the
+measures IEF and PW agree with prior studies comparing
+validated patient self-assessment tools with more objective measures of incontinence frequency and quantity of
+urine loss.3,11,12 Elser et al demonstrated moderate to
+strong correlations between patient recall of the number
+of pads used and prospectively recorded events on a 7-day
+diary and a pad test.11 Stach-Lempinen et al found that
+severity measured by a visual analog score correlated
+positively with PW and IEF and negatively with MUCP.13
+They also found the QOL measure correlated weakly with
+PW and IEF, and weakly negative with MUCP. Two other
+studies have demonstrated as we have that IEF and PW
+correlate better with each other than with patient selfassessment of severity.3,12
+VLPP was ﬁrst described as a measure of urethral
+sphincter function.5 Subsequently a number of studies
+reported signiﬁcant correlation between VLPP and measures of incontinence severity including Stamey grade,5,14
+SEAPI grade,15 IEF and number of pads.16 Comparisons
+among these studies and with the data reported here are
+difﬁcult due to the varying deﬁnitions of severity used.
+Other investigators have reported minimal or absent correlation between VLPP and severity measures.14,17 Nager et
+al performed correlation analysis on women enrolled in a
+multicenter trial for a urethral bulking agent.14 They used
+the Stamey grading system as a subjective measure of severity, the SEAPI-QMM for a QOL measure, a 7-day voiding
+diary to assess IEF, and VLPP and MUCP as measures of
+urethral function. While VLPP correlated negatively (– 0.36)
+with incontinence grade as noted in the preceding paragraph, it did not correlate with PW or QOL. Theofrastous et
+al performed correlation analysis on several severity measures from 75 women with pure SUI and found weak negative correlations (Ϫ0.2) between urethral function measurements (VLPP, MUCP), and IEF and PW. They demonstrated
+no correlation between VLPP and either of the QOL measures (UDI and IIQ).17
+The observation that some patients with low MUCP values leaked with Valsalva despite having just voided, led to
+the development of the SEBST as a potential method to
+screen patients for ISD without having to perform urodynamics.18 Lobel and Sand deﬁned ISD by MUCP criterion
+
+MEASURES OF SEVERITY OF STRESS URINARY INCONTINENCE IN WOMEN
+and reported a sensitivity of 65% to 70%, and a speciﬁcity of
+67% to 76% for SEBST to diagnose ISD.18 McLennan and
+Bent deﬁned ISD by VLPP criterion and reported a sensitivity of 79% and a speciﬁcity of 62.5%.10 Walter et al subsequently demonstrated that the PVR volume had minimal
+impact on the usefulness of the SEBST.19 Ultimately the
+test is thought to have a high negative predictive value for a
+VLPP less than 60 cm but lacks the sensitivity to make the
+diagnosis of ISD.10,18,19 Our data demonstrate a statistically
+signiﬁcant association between SEBST and VLPP and IEF.
+However, the subtle differences in VLPP (75 vs 84 cm H2O)
+and IEF (3.7 vs 2.9) between those with positive and negative SEBST, respectively, are not likely clinically meaningful.
+There are a number of potential reasons why incontinence severity measures do not correlate strongly. They
+may measure different domains of urinary incontinence,
+as has been noted in prior publications of the SISTEr
+cohort. Richter et al observed that IEF was positively
+associated with BMI (p ϭ 0.003),20 whereas Lemack et al
+performed a multivariate analysis on the factors associated with VLPP and found that VLPP was positively
+associated with BMI (p ϭ 0.0129).21 These data suggest
+that for increasing BMI, severity measured by IEF worsens while severity measured by VLPP improves.
+In addition, there may be variability inherent to the
+measures. Patient self-assessment, especially by recall, has
+well documented limitations.22 Voiding diaries and pad tests
+potentially suffer from poor patient compliance, the effect
+the test may have on the patient normal voiding habits, the
+variation of the condition depending on activity, ﬂuid intake,
+and proximity to a bathroom. Lastly, VLPP, while perhaps
+an accurate indicator of outlet resistance, does not necessarily reﬂect the bother associated with incontinence (patient
+reported severity) and it does not consider how variations in
+patient lifestyles may affect their incontinence. For instance, an active woman with VLPP of 100 cm H2O may
+experience more frequent incontinence or heavier pad use
+than a woman with a lower VLPP of 60 cm H2O who has a
+more sedentary lifestyle.
+The strengths of this study are the large sample size from
+geographically and ethnically diverse sites across the United
+States as well as the standardized methods of preoperative
+assessment and data collection. The primary limitation is
+that it is not representative of the entire population of
+women with SUI. Due to the inclusion criteria, the study
+population does not include 2 subgroups traditionally considered to have more severe incontinence, those with severe
+urge and those with immobile urethras, nor does it include
+those women whose symptoms are not severe enough for
+them to seek surgery. Therefore, patients at both ends of the
+severity spectrum potentially were excluded from this analysis.
+These data support the recent recommendations by a
+number of guidelines panels on the importance of using
+multiple measures to assess incontinence.23 A number of
+groups have attempted to combine severity measures into an
+incontinence score in an effort to more comprehensively
+assess the entire condition. Tools such as the Sandvik severity index24 and the International Consultation on Incontinence Questionnaire25 have demonstrated correlation with
+the voiding diary and pad test.3,25 Whether these indexes
+are more accurate than individual measures requires fur-
+
+1813
+
+ther investigation. Ultimately, for these scores to be clinically useful, it will be important to link severity measures to
+quality of life, expectations and satisfaction data.
+
+CONCLUSIONS
+This analysis of baseline severity measures from a large
+population of women with predominant SUI suggests that
+no 2 severity measures are the same. Rather, they appear
+to measure different aspects of the incontinence condition
+and, thus, are not interchangeable when characterizing a
+patient population or assessing outcomes. This has practical implications for clinicians and investigators who are
+evaluating the results of new therapies. Before comparing
+results we must conﬁrm that similar measures were used
+to deﬁne the patient population and to assess the outcomes. To facilitate such comparisons standardized measurement tools should be agreed upon and used by all
+investigators. As there is no gold standard for severity
+against which these measures can be compared, no conclusions can be drawn about the usefulness of a given
+measure. In addition, these data do not address the potential value of these measures as predictors of treatment outcomes or to assist in choosing appropriate
+therapy. Further investigation is recommended to evaluate the relationship between these severity measures and
+the efﬁcacy and morbidity associated with surgical treatment.
+APPENDIX
+Steering Committee
+Dr. William Steers, University of Virginia, Charlottesville, Virginia; Dr.
+Ananias C. Diokno and Veronica Mallett, William Beaumont Hospital,
+Royal Oak and Oakwood Hospital, Dearborn, Michigan; Drs. Linda
+Brubaker and MaryPat FitzGerald, Loyola University Medical Center,
+Maywood, Illinois; Drs. Holly E. Richter and L. Keith Lloyd, University of
+Alabama, Birmingham, Alabama; Drs. Michael Albo and Charles Nager,
+University of California, San Diego, California; Drs. Toby Chai and Harry
+W. Johnson, University of Maryland, Baltimore, Maryland; Drs. Halina M.
+Zyczynski, Michael Chancellor and Wendy Leng, University of Pittsburgh,
+Pittsburgh, Pennsylvania; Drs. Philippe Zimmern and Gary Lemack, University of Texas Southwestern, Dallas, and Stephen Kraus and R. Duane
+Cespedes, University of Texas Health Sciences Center, San Antonio, Texas;
+Drs. Peggy Norton and Lindsey Kerr, University of Utah, Salt Lake City,
+Utah; Sharon Tennstedt and Anne Stoddard, New England Research Institutes, Watertown, Massachusetts; John W. Kusek and Dr. Leroy M.
+Nyberg, National Institute of Diabetes and Digestive and Kidney Diseases;
+and Dr. Anne M. Weber, National Institute of Child Health and Human
+Development.
+
+Co-Investigators
+Jan Baker, Diane Borello-France, Kathryn L. Burgio, and Drs. Rowell S.
+Ashford, II, Seine Chiang, Ash Dabbous, Patricia S. Goode, Lee N. Hammontree, Kimberly Kenton, Salil Khandwala, David Lesser, Karl Luber,
+Emily Lukacz, Alayne Markland, Shawn Menefee, Pamela Moalli, Mikio
+Nihira, Kenneth Peters, Curt Powell, Elizabeth Sagan, Joseph Schaffer,
+Amanda Simsiman, Larry Sirls, Robert Starr and R. Edward Varner.
+
+Study Coordinators
+Rosemary Bradt, Karen Debes, Rosanna Dinh, Judy Gruss, Lynn Hall,
+Alice Howell, Kathy Jesse, D. Lynn Kalinoski, Kathryn Koches, Barbara
+Leemon, Karen Mislanovich, Judith Murray, Shelly O’Meara, Norma Pope,
+Caren Prather, Sylvia Sluder, Mary Tulke and Gisselle Zazueta-Damian.
+
+Biostatistical Coordinating Center
+Kimberly J. Dandreo, Liane Tinsley, Leslie Kalish, Susan McDermott,
+Beth Mohr, Anne Stoddard, co-principal investigator and Sharon Tennstedt, principal investigator.
+
+1814
+
+MEASURES OF SEVERITY OF STRESS URINARY INCONTINENCE IN WOMEN
+11.
+
+Abbreviations and Acronyms
+BMI
+IEF
+IIQ
+ISD
+MESA
+
+ϭ
+ϭ
+ϭ
+ϭ
+ϭ
+
+MUCP
+PVR
+PW
+QOL
+SEBST
+SISTEr
+
+ϭ
+ϭ
+ϭ
+ϭ
+ϭ
+ϭ
+
+SUI ϭ
+UDI ϭ
+UITN ϭ
+VLPP ϭ
+
+body mass index
+incontinence episode frequency
+Incontinence Impact Questionnaire
+intrinsic sphincter dysfunction
+Medical, Epidemiological and Social
+Aspects of Aging
+maximum urethral closure pressure
+post-void residual
+pad weight
+quality of life
+supine empty bladder stress test
+Stress Incontinence Surgical Treatment
+Efﬁcacy Trial
+stress urinary incontinence
+Urogenital Distress Inventory
+Urinary Incontinence Treatment
+Network
+Valsalva leak point pressure
+
+REFERENCES
+1.
+
+2.
+
+3.
+
+4.
+
+5.
+
+6.
+7.
+
+8.
+
+9.
+
+10.
+
+Naughton MJ, Donovan J, Badia X, Corcos J, Gotoh M, Kelleher C et al: Symptom severity and QOL scales for urinary
+incontinence. Gastroenterology 2004; 126: S114.
+Wyman JF, Choi SC, Harkins SW, Wilson MS and Fantl JA:
+The urinary diary in the evaluation of incontinent women:
+a test-retest analysis. Obstet Gynecol 1988; 71: 812.
+Karantanis E, Fynes M, Moore KH and Stanton SL: Comparison of the ICIQ-SF and 24-hour pad test with other measures for evaluating the severity of urodynamic stress incontinence. Int Urogynecol J Pelvic Floor Dysfunct 2004;
+15: 111.
+Hilton P and Stanton SL: Urethral pressure measurement by
+microtransducer: the results in symptom-free women and
+in those with genuine stress incontinence. Br J Obstet
+Gynaecol 1983; 90: 919.
+McGuire EJ, Fitzpatrick CC, Wan J, Bloom DA, Sanvordenker
+J, Ritchey M et al: Clinical assessment of urethral sphincter
+function. J Urol 1993; 150: 1452.
+Tennstedt S: Design of the Stress Incontinence Surgical Treatment Efﬁcacy Trial (SISTEr). Urology 2005; 66: 1213.
+Diokno AC, Dimaculangan RR, Lim EU and Steinert BW:
+Predicting signiﬁcant urge symptoms following bladder
+neck suspension procedure. J Pelvic Surg 2002; 8: 305.
+Shumaker SA, Wyman JF, Uebersax JS, McClish D and Fantl
+JA: Health-related quality of life measures for women with
+urinary incontinence: the Incontinence Impact Questionnaire and the Urogenital Distress Inventory. Continence
+Program for Women Research Group. Qual Life Res 1994;
+3: 291.
+Nager C, Albo M, Fitzgerald MP, McDermott S, Kraus S,
+Richter H et al: A process for the development of multicenter urodynamic studies. Urology 2007; 69: 63.
+McLennan MT and Bent AE: Supine empty stress test as a
+predictor of low valsalva leak point pressure. Neurourol
+Urodyn 1998; 17: 121.
+
+12.
+
+13.
+
+14.
+
+15.
+
+16.
+
+17.
+
+18.
+
+19.
+
+20.
+
+21.
+
+22.
+
+23.
+
+24.
+
+25.
+
+Elser DM, Fantl JA and McClish DK: Comparison of “subjective” and “objective” measures of severity of urinary incontinence in women. Continence Program for Women Group.
+Neurourol Urodyn 1995; 14: 311.
+Groutz A, Blaivas JG, Chaikin DC, Resnick NM, Engleman K,
+Anazlone D et al: Noninvasive outcome measures of urinary
+incontinence and lower urinary tract symptoms: a multicenter study of micturition diary and pad tests. J Urol 2000;
+164: 698.
+Stach-Lempinen B, Kirkinen P, Laippala P, Metsanoja R and
+Kujansuu E: Do objective urodynamic or clinical ﬁndings
+determine impact of urinary incontinence or its treatment
+on quality of life? Urology 2004; 63: 67.
+Nager CW, Schulz JA, Stanton SV and Monga A: Correlation of
+urethral closure pressure, leak point pressure and incontinence severity measures. Int Urogynecol J Pelvic Floor
+Dysfunct 2001; 12: 395.
+Nitti VW and Combs AJ: Correlation of Valsalva leak point
+pressure with subjective degree of stress urinary incontinence in women. J Urol 1996; 155: 281.
+Bump RC, Coates KW, Cundiff GW, Harris RL and Weidner
+AC: Diagnosing intrinsic sphincteric deﬁciency: comparing
+urethral closure pressure, urethral axis, and Valsalva leak
+point pressures. Am J Obstet Gynecol 1997; 177: 303.
+Theofrastous JP, Bump RC, Elser DM, Wyman JF and McClish DK: Correlation of urodynamic measures of urethral
+resistance with clinical measures of incontinence severity
+in women with pure genuine stress incontinence. The Continence Program for Women Research Group. Am J Obstet
+Gynecol 1995; 173: 407.
+Lobel RW and Sand PK: The empty supine stress test as a
+predictor of instrinsic urethral sphincter dysfunction. Obstet Gynecol 1996; 88: 128.
+Walter AJ, Thornton JA and Steele AC: Further characterization of the supine empty stress test for prediciting low
+valsalva leak point pressures. Int Urogynecol J Pelvic Floor
+Dysfunct 2004; 15: 298.
+Richter HE, Burgio KL, Brubaker L, Moalli PA, Markland AD,
+Mallet V et al: Factors associated with incontinence frequency in a surgical cohort of stress incontinent women.
+Am J Obstet Gynecol 2005; 193: 2088.
+Lemack GE, Xu Y, Brubaker L, Nager C, Chai T, Moalli P et al:
+Demographic and urodynamic baseline predictors of Valsalva leak point pressure. J Urol 2006; 175: 442.
+Frazer MI, Haylen BT and Sutherst JR: The severity of urinary incontinence in women. Comparison of subjective and
+objective tests. Br J Urol 1989; 63: 14.
+Leach GE, Dmochowski RR, Appell RA, Blaivas JG, Hadley
+HR, Luber KM et al: Female Steress Urinary Incontinence
+Clinical Guidelines Panel summary report on surgical management of female stress urinary incontinence. The American Urological Association. J Urol 1997; 158: 875.
+Sandvik H, Seim A, Vanvik A and Hunskaar S: A severity
+index for epidemiological surveys of female urinary incontinence: comparison with 48-hour pad-weighing tests.
+Neurourol Urodyn 2000; 19: 137.
+Avery K, Donovan J, Peters TJ, Shaw C, Gotoh M and Abrams
+P: ICIQ: a brief and robust measure for evaluating the
+symptoms and impact of urinary incontinence. Neurourol
+Urodyn 2004; 23: 322.

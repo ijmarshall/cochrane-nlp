@@ -1,0 +1,791 @@
+Economic Analysis of Palivizumab in Infants With Congenital Heart Disease
+Laura E. Yount and William T. Mahle
+Pediatrics 2004;114;1606
+DOI: 10.1542/peds.2004-0224
+
+The online version of this article, along with updated information and services, is
+located on the World Wide Web at:
+http://pediatrics.aappublications.org/content/114/6/1606.full.html
+
+PEDIATRICS is the official journal of the American Academy of Pediatrics. A monthly
+publication, it has been published continuously since 1948. PEDIATRICS is owned,
+published, and trademarked by the American Academy of Pediatrics, 141 Northwest Point
+Boulevard, Elk Grove Village, Illinois, 60007. Copyright © 2004 by the American Academy
+of Pediatrics. All rights reserved. Print ISSN: 0031-4005. Online ISSN: 1098-4275.
+
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014
+
+Economic Analysis of Palivizumab in Infants With Congenital
+Heart Disease
+Laura E. Yount, MD, and William T. Mahle, MD
+ABSTRACT. Objective. Palivizumab has been shown
+to reduce the number of respiratory syncytial virus
+(RSV)-related hospitalizations by 45% in children with
+congenital heart disease (CHD). The American Academy
+of Pediatrics has recommended that infants with hemodynamically significant CHD be considered for palivizumab. However, the economic implications of palivizumab prophylaxis in the CHD population have not
+been evaluated. In the present study, we sought to examine the cost savings and cost utility of RSV prophylaxis
+with palivizumab in children with CHD.
+Methods. Probabilities of hospitalization and efficacy of prophylaxis were based on published results.
+Costs of hospitalization were derived from a published
+analysis of bronchiolitis hospitalization costs from a consortium of children’s hospitals. A hypothetical cohort of
+<n>10 000</n> CHD patients (half of whom would receive palivizumab) was created to calculate cost-savings and costutility. To assess cost utility, we assumed that by reducing hospitalization, palivizumab would reduce RSVrelated hospital mortality, generally reported to be 3% in
+CHD patients. Sensitivity analysis was performed.
+Results. On the basis of a protocol of 5 monthly doses
+of palivizumab, the cost of prophylaxis for 1 RSV season
+was calculated as $6160 per patient. After accounting for
+impact on direct and indirect costs of hospitalization,
+administration of palivizumab to 5000 CHD patients
+would result in a net loss of $20 415 753. If one assumes
+that palivizumab confers a survival benefit, then the cost
+of life-year saved is $100 338 and cost of quality-adjusted
+life-year saved is $114 337.
+Conclusions. The cost of palivizumab prophylaxis
+was high relative to benefits realized. Given the large
+number of CHD patients who might be considered candidates for RSV prophylaxis (>6000 patients per year in
+United States) routine use of palivizumab in young children with hemodynamically significant CHD needs to be
+evaluated further. Pediatrics 2004;114:1606–1611; bronchiolitis, congenital heart disease/defects, cost analysis.
+
+B
+
+ronchiolitis caused by respiratory syncytial virus (RSV) is an important cause of morbidity
+and mortality in the pediatric population, accounting for ϳ100 000 hospitalizations per year in
+the United States.1 Children who are hospitalized for
+RSV without other risk factors experience an ϳ1%
+mortality.1 Children with congenital heart disease
+(CHD) are more vulnerable, having a mortality of 2%
+to 3% for RSV-related hospitalizations in some studies.1,2
+Palivizumab (Synagis; MedImmune Inc, Gaithersburg, MD) is a monoclonal antibody that has been
+shown to lessen the severity of RSV bronchiolitis.3 In
+a recent multicenter, placebo-controlled trial, palivizumab significantly reduced the number of RSVrelated hospitalizations in children with CHD.4 This
+study demonstrated that the risk for hospital admission for RSV bronchiolitis was lower and the total
+number of hospital days was less in patients who
+received palivizumab. No survival benefit was demonstrated. On the basis in part of the results of this
+study, the American Academy of Pediatrics (AAP)
+recommended that “palivizumab is appropriate for
+infants and young children with hemodynamically
+significant CHD.”5
+The high cost of palivizumab remains a concern,
+however, and several studies have questioned the
+cost-effectiveness in preterm infants.6–8 The economic implications of palivizumab prophylaxis in
+the CHD population have not been evaluated. Given
+the high cost of RSV prophylaxis and large number
+of children who might be eligible on the basis of AAP
+recommendations (Ͼ6000 children in the United
+States) a critical examination of the costs of palivizumab in the CHD population is warranted.
+METHODS
+
+ABBREVIATIONS. RSV, respiratory syncytial virus; CHD, congenital heart disease; AAP, American Academy of Pediatrics; ICU,
+intensive care unit; CHF, congestive heart failure; QALY, qualityadjusted life-year.
+
+From Children’s Healthcare of Atlanta and Department of Pediatrics, Division of Cardiology, Emory University School of Medicine, Atlanta, Georgia.
+Accepted for publication Jun 21, 2004.
+doi:10.1542/peds.2004-0224
+No conflict of interest declared.
+Reprint requests to (W.T.M.) Children’s Healthcare of Atlanta, Emory University School of Medicine, 1405 Clifton Rd NE, Atlanta, GA 30322-1062.
+E-mail: wmahle@emory.edu
+PEDIATRICS (ISSN 0031 4005). Copyright © 2004 by the American Academy of Pediatrics.
+
+1606
+
+Decision Analysis
+A decision-analytic model comparing palivizumab with no
+prophylaxis for a hypothetical cohort of 10 000 pediatric CHD
+patients was constructed. We adopted the perspective of a clinician who must decide whether to administer prophylaxis to a
+CHD patient at the beginning of the RSV season. Half of the cohort
+was assigned to receive palivizumab, and half was assigned to the
+no-prophylaxis group. Although the number of doses required for
+adequate prophylaxis during a given RSV season has been debated, for the present study, we used a 5-dose regimen as has been
+used in the majority of studies.9 The distribution of various heart
+lesions in this hypothetical cohort was based on previous reports
+from the Metropolitan Atlanta Congenital Defects Program, which
+is a population-based study that has been collecting, analyzing,
+and interpreting birth defects data for Ͼ30 years.10 As palivizumab is recommended only for children with hemodynamically
+significant CHD such as cyanosis, congestive heart failure, and
+
+PEDIATRICS Vol. 114 No. 6 December 2004
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014
+
+pulmonary hypertension, we included diagnoses that were likely
+to meet these criteria. Diagnoses such as transposition of the great
+arteries, for example, were not included because these patients
+routinely undergo complete repair in the first weeks of life and
+generally have normal postoperative hemodynamics. For patients
+with ventricular septal defect, we assumed that only 25% would
+have a hemodynamically significant lesion on the basis of published data.11 Because cardiomyopathy is not included in the
+Metropolitan Atlanta Congenital Defects Program, we estimated
+the prevalence of infant dilated cardiomyopathy from a recently
+published multi-institutional study and 2000 US Census data.12,13
+Probability of hospitalization, need for intensive care unit (ICU)
+admission, and length of hospital stay were derived from the
+multicenter, placebo-controlled trial of palivizumab in patients
+with hemodynamically significant CHD.4
+Using the societal perspective, we considered medical costs and
+work-loss costs. The primary outcome was hospital savings. This
+represents the reduction in hospitalization cost minus the cost of
+palivizumab prophylaxis. Costs are reported in 2002 US dollars.
+
+Data and Assumptions
+The probability of hospitalization for patients who received
+palivizumab was 5.3% and for patients who did not receive prophylaxis was 9.7%.4 The number of days in intensive care was also
+higher for the placebo group: 71.2 versus 15.9/100 children.
+
+Direct Costs
+Medical Costs
+The average wholesale acquisition cost of on a 100-mg vile of
+palivizumab was $1369.14 The recommended dose of palivizumab
+is 15 mg/kg administered once monthly throughout the RSV
+season. Assuming a mean weight of eligible children of 6.0 kg., the
+mean dose per patient would be 90 mg. We assumed that each
+infant received 5 doses and that no drug wastage occurred. Thus,
+the total direct per-infant cost of palivizumab per month was
+assumed to be $1232 (90 mg ϫ $1369/100 mg) and for a single RSV
+season was $6160 ($1232 ϫ 5 doses).
+
+Administration Costs
+Palivizumab is routinely administered in an outpatient setting.
+We assumed that the first visit would require ϳ30 minutes of
+physician time to see the patient and discuss RSV prophylaxis
+along with 30 minutes of nursing time. The other 4 visits could be
+managed by nursing staff and would require 30 minutes per visit.
+Using 2002 National Occupational Employment and Wage Estimates from the US Department of Labor, we estimated pediatrician and nursing mean hourly wages at $68/hour and $24/hour,
+respectively.15 Costs for physician wages therefore would be $34
+(1 visit ϫ 0.5 hour/visit ϫ $68/hour) and nursing costs of $60 (5
+visits ϫ 0.5 hour/visit ϫ $24/hour). We considered overhead
+allocation and office staff time to be negligible, thus biasing toward prophylaxis. Total administration costs per infant per RSV
+season totaled $94.
+
+Hospitalization for RSV
+Cost estimates were obtained from a retrospective analysis of
+infants who were admitted to 10 children’s hospitals with a principal diagnoses of bronchiolitis (International Classification of Disease, Ninth Revision code 466.1) and RSV pneumonia (International
+Classification of Disease, Ninth Revision code 480.1).16 The study
+included children with CHD (7.8%), preterm birth (19.6%), history
+of wheezing (9.3%), and history of hospitalization (11.3%). The 10
+centers all were tertiary care hospitals with pediatric residency
+programs and pediatric ICUs. In this series, the average length of
+stay was 4.5 Ϯ 4.2 days, and average hospital costs were $6789 or
+$1508/day ($6789/4.5 days). Admission to an ICU resulted in
+greater costs. In our present analysis, we adjusted number of ICU
+days with ICU costs being calculated at 2.5 ϫ non-ICU costs on the
+basis of published pediatric and adult literature.17,18 For comparison, cost of RSV admission was determined from 2 additional
+sources: the Nationwide Inpatient Sample and a previous report
+that analyzed health maintenance organization data.7,19,20 The cost
+per day of RSV hospitalization from these 2 additional sources
+were $1675 and $1607, respectively, comparable to the 10-center
+data used for calculations in the present study.
+
+Indirect Costs
+Administration of Prophylaxis
+For each office visit, we assumed that 1 parent accompanied the
+infant and that 3 hours of work would be missed. Using the US
+Bureau of Labor and Statistics 2002 average wage of $17/hour, lost
+wages during 1 RSV season would have an indirect cost of $255 (3
+hours/visit ϫ 5 visits ϫ $17/hour). In addition, travel costs were
+estimated at $54 using the 2002 Internal Revenue Service mileage
+reimbursement rate of $0.365 per mile and assuming that on
+average a family traveled 30 miles round trip to each office visit
+($0.365/mile ϫ 30 miles ϫ 5 visits).
+
+Hospitalization for RSV
+For each hospitalization, we assumed that 1 parent stayed with
+the infant at all times. We calculated the average length of stay for
+the treated group as 10.7 days and 13.3 days for the group that was
+not treated. Considering that 5 of every 7 days are workdays, the
+estimated work-loss cost therefore was $1039 for a parent of an
+infant who received prophylaxis ($17/hour ϫ 8 hours/day ϫ 10.7
+days/hospital ϫ 5/7) and $1292 ($17/hour ϫ 8 hours/day ϫ 13.3
+days/hospital ϫ 5/7) for a parent of a child who did not receive
+treatment.
+
+Probability of Death, if Hospitalized for RSV
+The multicenter trial reported by Feltes et al4 did not demonstrate a significant difference in mortality rate (3.3% vs 4.2%; P ϭ
+.46) for patients who received palivizumab versus placebo. There
+also was not a significant difference in RSV-related adverse events.
+However, the aforementioned trial was designed to detect a difference in hospital admissions and may not have been sufficiently
+powered to detect a difference in RSV-related mortality. Previous
+studies have shown, however, that mortality for children who
+have CHD and are hospitalized for RSV bronchiolitis is higher
+than for children without CHD. Historical studies reported mortality of 37% for patients who had CHD and were admitted with
+bronchiolitis.21 Recent studies, however, have reported that hospital mortality for children who have CHD and are admitted with
+RSV bronchiolitis is between 1.6% and 3.4%.1,2 For purposes of
+cost-utility analysis, we constructed a model that assumed that the
+mortality rate for patients who are admitted to the hospital would
+be 3% whether they had received palivizumab or not. This assumption is based in part on the finding that the for patients who
+have CHD and were admitted for RSV bronchiolitis, there was no
+significant difference in need for ICU admission or need for mechanical ventilation between those who received palivizumab and
+control subjects (P ϭ .98 and P ϭ .88, respectively). Therefore, the
+difference in hospital admission rate for RSV bronchiolitis between the 2 groups (5.3% vs 9.7%) would result in a 0.13% reduction in overall mortality in our model.
+
+Cost-Utility Analysis
+Utility data (to evaluate the quality of life) in children and
+adults with CHD are lacking. However, to make comparisons
+between palivizumab prophylaxis and other public health interventions, we extrapolated data from adults with congestive heart
+failure (CHF) to the CHD population. Although the prevalence of
+CHF in CHD survivors is not well defined, there is abundant
+literature on exercise performance in adolescent and adult CHD
+patients. For the purposes of this study, we assigned an adult CHF
+utility to patients with CHD lesions that result in long-term exercise limitation as previously reported.22 The lesions with longterm exercise limitations are indicated in Table 1. Patients with
+lesions such as ventricular septal defect (with no significant longterm exercise limitations) are assigned a utility of 1.0. The utility
+for CHF was based on the Beaver Dam Health Outcomes Study,
+which evaluates health with the method of time tradeoffs.23 The
+utility of CHF from this study is 0.71. Because the utility of CHF
+can varying on the basis of method, we varied the CHF utility
+from 0.5 to 1.0 in the sensitivity analysis.
+
+Other Assumptions
+Life Expectancy
+A number of previous studies have demonstrated that the
+survival for patients with CHD is less than the normal popula-
+
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014
+
+ARTICLES
+
+1607
+
+TABLE 1.
+Congenital Heart Lesions of Hypothetical Cohort
+of CHD Patients Who Are Eligible for Palivizumab and Exercise
+Limitations in Long-Term Survivors
+% Entire Cohort
+Heterotaxy
+Tetralogy of Fallot
+Double outlet right
+ventricle
+Truncus arteriosus
+Arteriovenous canal
+Total anomalous
+pulmonary veins
+Ebstein’s anomaly
+Tricuspid atresia
+Pulmonary atresia intact
+ventricular septum
+Pulmonary atresia other
+Hypoplastic left heart
+syndrome
+Aortic arch hypoplasia
+Ventricular septal
+defect*
+Other major defects
+Cardiomyopathy
+
+Exercise
+Limitation22
+
+3.3
+14.1
+3.9
+
+UK
+Y
+Y
+
+2.3
+9.7
+2.7
+
+UK
+UK
+Y
+
+1.4
+1.2
+1.9
+
+Y
+Y
+Y
+
+6.3
+7.6
+
+Y
+Y
+
+2.3
+15.5
+
+N
+N
+
+23.9
+3.5
+
+UK
+Y
+
+N indicates no; UK, unknown; Y, yes.
+* Assuming 25% of all patients with ventricular septal defect have
+hemodynamically significant lesions.
+tion.1 However, given the improved surgical results in the past 2
+decades, accurate actuarial projections do not exist. Therefore, we
+assumed that the average life expectancy of infants in the cohort
+was 77.2 years, the US average life expectancy in 2002.24 The
+assumption that children with CHD will have a regular life span
+biases our model toward improved cost utility. Using the average
+age of 0.55 years from an industry-sponsored trial, we calculated
+that 76.65 life-years would be lost for each infant death (77.2 years
+Ϫ 0.55 years).
+
+Discount Rate
+All future costs and benefits are discounted at a rate of 3%.
+Discounting is used to calculate life-years lost.
+
+Sensitivity Analysis
+For cost-utility analysis, we evaluated the sensitivity of the
+model to variations in key assumptions over various ranges. We
+varied the hospital mortality for RSV bronchiolitis in CHD patients from 1% to 5%. We also varied the utility of CHF (exercise
+limitation) in patients with CHD from 0.50 to 1.0. The published
+data have not shown that palivizumab prophylaxis reduces hospital mortality for patients who have CHD and are admitted with
+RSV bronchiolitis.4 However, because the aforementioned study
+was not designed to detect such a benefit, we explored the possibility that palivizumab might reduce hospital mortality by 0% to
+50% in the sensitivity analysis.
+
+RESULTS
+
+Costs of prophylaxis and hospitalization are summarized in Table 2. The total cost of palivizumab
+prophylaxis for a single patient for 1 RSV season was
+$6160. The strategy of palivizumab prophylaxis resulted in a net loss of $20 415 753 per 5000 patients
+when one considers the direct and indirect costs of
+prophylaxis and hospitalization. The cost of administering the prophylaxis regimen to prevent 1 day of
+hospitalization was $4600 —nearly 3 times the cost of
+1 day in the hospital.
+Cost-utility analysis is shown in Table 3. These
+results assume that CHD patients with long-term
+exercise intolerance have utility of 0.71 and a hospital
+mortality of 3% for an RSV admission. Cost per
+1608
+
+TABLE 2.
+Hospital Cost-Savings Analysis for Hypothetical
+Cohort of 10 000 Patients With Hemodynamically Significant
+CHD, 5000 of Whom Receive Palivizumab
+No
+Prophylaxis
+(n ϭ 5000)
+
+Palivizumab
+(n ϭ 5000)
+
+0
+
+30 800 000
+
+0
+
+470 000
+
+0
+
+1 275 000
+
+0
+
+270 000
+
+0
+
+32 815 000
+
+485
+
+265
+
+6450
+6 727 350
+3560
+9 636 920
+16 364 270
+
+2075
+2 164 225
+795
+2 152 065
+4 316 290
+
+626 620
+
+275 353
+
+16 990 890
+—
+
+4 591 643
+(20 415 753)
+
+Number of RSV-related deaths averted/5000
+Life-years saved (undiscounted)
+Life-years saved (discounted)
+Cost per life-year saved (discounted)
+Cost per QALY saved (discounted)*
+
+6.6
+505.89
+203.33
+$100 338
+$114 337
+
+Acquisition cost of
+prophylaxis, $
+Administration cost of
+prophylaxis, $
+Work-loss cost of
+prophylaxis, $
+Travel costs associated with
+prophylaxis, $
+Total cost of palivizumab
+regimen, $
+No. of infants hospitalized
+for RSV
+No. of non-ICU days
+Costs of non-ICU care, $
+No. of ICU days
+Cost of ICU care, $
+Direct cost of
+hospitalization, $
+Work-loss cost of
+hospitalization, $
+Total hospital costs, $
+Hospital cost savings, $
+
+TABLE 3.
+
+Cost Utility Analysis
+
+* Based on 3% hospital mortality for RSV bronchiolitis admission
+and a utility of 0.71 for CHF.
+
+life-year saved (discounted) was $100 338, and the
+cost of quality-adjusted life-year (QALY) saved (discounted) was $114 337.
+Sensitivity analysis varying the utility for CHF in
+the CHD patients from 0.5 to 1.0 and varying the
+hospital mortality from 1% to 5% is shown in Fig 1.
+Cost utility varied from $60 233 to $382 675 per
+QALY saved. Varying the assumptions regarding
+utility for CHF (exercise limitation) had a relatively
+minor impact on cost of QALY saved: $100 388 to
+$127 558, assuming 3% hospital mortality. Varying
+hospital mortality from 1% to 5% for RSV bronchiolitis admission had a more profound impact in cost
+of QALY saved: $68 602 to $343 012, assuming a CHF
+utility of 0.71. If palivizumab not only reduced the
+risk of hospital admission for RSV bronchiolitis but
+also reduced mortality for patients who have CHD
+and are admitted, then the cost utility of palivizumab
+becomes more favorable. If one were to assume a
+hospital mortality of 3% for RSV bronchiolitis and
+that patients who receive palivizumab were to have
+50% lower hospital mortality, then the cost per
+QALY saved would be $57 169 (Fig 2).
+DISCUSSION
+
+To our knowledge, this is the first published analysis of the economic implications of palivizumab in
+the CHD population. The present study demonstrates that the cost of routine use of palivizumab in
+
+ECONOMIC ANALYSIS OF PALIVIZUMAB IN INFANTS WITH CHD
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014
+
+Fig 1. Sensitivity analysis of incremental costutility ratios varying hospital mortality for children who have CHD and are admitted for RSV
+bronchiolitis (from 1% to 5%) and utility measures of CHF (from 0.5 to 1.0) applied to patients with known long-term exercise intolerance.
+
+Fig 2. Sensitivity of cost utility of palivizumab
+prophylaxis with variation of the hospital mortality between 1% and 5% for those who do not
+receive prophylaxis. In addition, there is a potential reduction in hospital mortality by up to
+50% (x-axis) for those who receive prophylaxis.
+
+young children with hemodynamically significant
+CHD is relatively high for the benefit gained. Palivizumab does not result in cost savings with respect to
+direct and indirect costs of RSV hospitalization. Only
+if one assumes that palivizumab lowers the risk of
+in-hospital mortality for those who have CHD and
+are admitted for RSV (a potential benefit not confirmed by the published literature) does the costutility approach conventionally accepted bounds of
+cost-effectiveness.25
+A number of previous investigators have attempted to analyze the cost-effectiveness of palivizumab in other high-risk groups. Greatest attention
+has been focused on very low birth weight infants,
+who have been reported to have a higher hospital
+mortality than CHD patients.26 Even in patients with
+relatively high hospital mortality and preexisting parenchymal lung disease, a number of investigators
+have questioned the cost-effectiveness of palivizumab.7,8,27,28 Joffe et al7 reported that the cost of
+life-year saved ranged from $110 000 to $1 200 000
+(1995 US dollars). However, they reported that administration of palivizumab to a high-risk subset of
+patients (those who are born at Ͻ32 weeks’ gestation
+
+and require supplemental oxygen Ն28 days) yielded
+a cost of $33 000 per life-year saved. Roeckl-Wiedmann et al8 analyzed the cost implications of RSV
+prophylaxis for premature infants. This study reported that the cost per hospitalization avoided were
+Euro 25 288 to Euro 204 684 (US currency: $25 529 to
+$198 543). Even in the highest risk groups, palivizumab did not result in hospital cost savings.
+A number of criticisms have been put forth regarding the cost-effectiveness studies addressing palivizumab. Most studies, including our own, have not
+included the additional costs of RSV bronchiolitis
+that is treated on an outpatient basis. This is attributable in part to the difficulty in differentiating RSV
+upper respiratory infection from other viral entities.
+As such, data regarding the outpatient costs of RSV
+are limited. A recent analysis of RSV bronchiolitis in
+Canada suggested that expenditures for ambulatory
+patients accounted for 38% of direct costs.29 However, Ͻ1% of the entire infant population with an
+RSV infection required hospital admission. Therefore, on a per-patient basis, the direct costs of a single
+outpatient RSV infection is Ͻ2% of the cost of an
+RSV-related hospital admission and composes a rel-
+
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014
+
+ARTICLES
+
+1609
+
+atively small portion of the overall direct costs in a
+targeted high-risk group such as the CHD population. The indirect costs of an outpatient case of RSV
+are less well defined and represent a limitation of the
+current study design.
+An additional element of cost-effectiveness analysis engendering controversy has been the determination of indirect cost for hospitalization of a child.
+Nearly all analysis will include the impact of lost
+wages during hospitalization. However, there might
+also be additional lost wages after hospitalization.
+Leader et al30 suggested that the total average economic burden for a family per bronchiolitis admission was $4517 for premature and $2135 for term
+infants, including the value of lost productivity but
+excluding inpatient hospital and physician bills and
+lost income. An alternative approach is to perform
+contingent valuation of willingness-to-pay estimates
+of an individual, such as the value that the parent
+places on avoiding a hospitalization. In a previous
+study, Robbins et al31 reported that the parental willingness-to-pay estimate to avoid an RSV-related admission ranged from $1325 to $8700. However, concerns have been raised about the validity of such
+responses, especially by noneconomists.32
+In the present study, we undertook a cost-utility
+analysis. The advantage of such an approach is that
+it allows one to make comparisons with other public
+health interventions. Unlike in many adult conditions for which there is abundant and reliable actuarial data, the life expectancy for children who were
+born with CHD in 2003 cannot be easily defined. In
+the present study, we assumed a normal life expectancy for all CHD patients. Although published data
+suggest that survival for some lesions such as repaired ventricular septal defect may be normal or
+near normal, other lesions have been associated with
+a reasonable risk for childhood mortality.1 Children
+with hypoplastic left heart syndrome and other
+forms of single ventricle have been reported to have
+a median survival of Ͻ10 years in some studies.33 In
+addition, utility data analyzing the quality of life in
+children with CHD are lacking. For the purposes of
+this study, we attempted to link long-term exercise
+intolerance to adult measures of utility in the setting
+of CHF.34 Although such assumptions have clear
+limitations, it should be recognized that in the
+present cost-utility analysis, the majority (58%) of
+patients were considered to have a utility of 1.0, and
+varying utility assumption did not profoundly alter
+cost of QALY saved results.
+Other potential beneficial effects of palivizumab
+beyond its impact on length of hospital stay must be
+addressed in a cost-utility analysis. The present
+study assumes that palivizumab does confer any
+benefit outside the single RSV season. It is possible
+that patients with CHD might have adverse longterm effects of an RSV infection. It has previously
+been suggested that open-heart surgery be delayed 6
+weeks after an RSV infection.35 Other investigators
+suggested that RSV bronchiolitis frequently resulted
+in the need to delay surgical procedures, which
+might result in poor growth and protracted cyanosis.
+It is interesting that in the multicenter trial, there was
+1610
+
+no association between palivizumab prophylaxis
+and the need to delay or cancel heart surgery.
+Whether an RSV infection has long-term implications
+for lung function in the CHD population is not
+known. It has been shown, however, that pulmonary
+function abnormalities are seldom determinants of
+later functional capacity in the CHD population.36
+Although CHD is relatively rare (8/1000 live
+births) and the number of CHD patients who might
+be candidates is even less, the economic implications
+of the AAP Committee recommendations do have
+significant implications. Assuming that each year in
+the United States 3000 children who have critical
+CHD might be candidates for palivizumab and it
+may be administered into the second year of life, the
+overall cost of medication alone in the United States
+in 1 year could exceed $30 000 000. In the current
+economic climate, careful appraisal of the economic
+implications of palivizumab is mandatory. Additional data derived from the industry-sponsored
+trial, such as identification of potentially high-risk
+lesions such as single ventricle patients or defining a
+subset of heart patients such as those with acyanotic
+lesions, may help to refine the AAP recommendations and make better use of this potentially lifesaving yet costly resource. In addition, given the
+relatively widespread use of palivizumab in the
+CHD population, it will be important to analyze how
+well practitioners are following published guidelines
+regarding RSV prophylaxis.
+ACKNOWLEDGMENT
+We thank Dr David Holtgrave for assistance in data analysis.
+
+REFERENCES
+1. Shay DK, Holman RC, Roosevelt GE, Clarke MJ, Anderson LJ. Bronchiolitis-associated mortality and estimates of respiratory syncytial virusassociated deaths among US children 1979 –1997. J Infect Dis. 2001;183:
+16 –22
+2. Moler FW, Khan AS, Meliones JN, Custer JR, Palmisano J, Shope TC.
+Respiratory syncytial virus morbidity and mortality estimates in congenital heart disease patients: a recent experience. Crit Care Med. 1992;
+20:1406 –1413
+3. Fox JL. IMpact-RSV Study Group report. Pediatrics. 1999;104:994 –995
+4. Feltes TF, Cabalka AK, Meissner HC, et al. Palivizumab prophylaxis
+reduces hospitalization due to respiratory syncytial virus in young
+children with hemodynamically significant congenital heart disease.
+J Pediatr. 2003;143:532–540
+5. Meissner HC, Long SS. Revised indications for the use of palivizumab
+and respiratory syncytial virus immune globulin intravenous for the
+prevention of respiratory syncytial virus infections. Pediatrics. 2003;112:
+1447–1452
+6. Numa A. Outcome of respiratory syncytial virus infection and a costbenefit analysis of prophylaxis. J Paediatr Child Health. 2000;36:422– 427
+7. Joffe S, Ray GT, Escobar GJ, Black SB, Lieu TA. Cost-effectiveness of
+respiratory syncytial virus prophylaxis among preterm infants. Pediatrics. 1999;104:419 – 427
+8. Roeckl-Wiedmann I, Liese JG, Grill E, Fischer B, Carr D, Belohradsky
+BH. Economic evaluation of possible prevention of RSV-related hospitalizations in premature infants in Germany. Eur J Pediatr. 2003;162:
+237–244
+9. Pedraz C, Carbonell-Estrany X, Figueras-Aloy J, Quero J, IRIS Study
+Group. Effect of palivizumab prophylaxis in decreasing respiratory
+syncytial virus hospitalizations in premature infants. Pediatr Infect Dis J.
+2003;22:823– 827
+10. Botto LD, Correa A, Erickson JD. Racial and temporal variations in the
+prevalence of heart defects. Pediatrics. 2001;107(3). Available at:
+www.pediatrics.org/cgi/content/full/107/3/e32
+11. van den HF, Timmers T, Hess J Morphological, haemodynamic, and
+clinical variables as predictors for management of isolated ventricular
+septal defect. Br Heart J. 1995;73:49 –52
+
+ECONOMIC ANALYSIS OF PALIVIZUMAB IN INFANTS WITH CHD
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014
+
+12. US Census Bureau; 2004. Available at: www.census.gov/main/www/
+cen2000.html
+13. Lipshultz SE, Sleeper LA, Towbin JA, et al. The incidence of pediatric
+cardiomyopathy in two regions of the United States. N Engl J Med.
+2003;348:1647–1655
+14. MedImmune Annual Report 2002. Gaithersburg, MD: MedImmune;
+2004
+15. US Bureau of Labor Statistics. Employment and Earnings; 2004. Available at: www.bls.gov/bls/wages.htm
+16. Willson DF, Landrigan CP, Horn SD, Smout RJ. Complications in infants hospitalized for bronchiolitis or respiratory syncytial virus pneumonia. J Pediatr. 2003;143:S142–S149
+17. Equitable Life Assurance Society of the United States, Hospital Daily Service
+Charges. Catalog No 104283. New York, NY: Equitable Life Assurance
+Company; 1982
+18. Chalom R, Raphaely RC, Costarino AT Jr. Hospital costs of pediatric
+intensive care. Crit Care Med. 1999;27:2079 –2085
+19. Howard TS, Hoffman LH, Stang PE, Simoes EA. Respiratory syncytial
+virus pneumonia in the hospital setting: length of stay, charges, and
+mortality. J Pediatr. 2000;137:227–232
+20. Shwartz M, Young DW, Siegrist R. The ratio of costs to charges: how
+good a basis for estimating costs? Inquiry. 1995;32:476 – 481
+21. MacDonald NE, Hall CB, Suffin SC, Alexson C, Harris PJ, Manning JA.
+Respiratory syncytial viral infection in infants with congenital heart
+disease. N Engl J Med. 1982;307:397– 400
+22. Allen HD. Exercise Testing in Moss and Adams’ Heart Disease in Infants,
+Children, and Adolescents: Including the Fetus and Young Adult. Baltimore,
+MD: Lippincott Williams & Wilkins; 2000
+23. Fryback DG, Dasbach EJ, Klein R, et al. The Beaver Dam Health Outcomes Study: initial catalog of health-state quality factors. Med Decis
+Making. 1993;13:89 –102
+24. Arias E, MacDorman MF, Strobino DM, Guyer B. Annual summary of
+vital statistics—2002. Pediatrics. 2003;112:1215–1230
+25. Strutton DR, Stang PE. Prophylaxis against respiratory syncytial virus
+(RSV), varicella, and pneumococcal infections: Economic-based decision-making. J Pediatr. 2003;143:S157–S162
+
+26. Holman RC, Shay DK, Curns AT, Lingappa JR, Anderson LJ. Risk
+factors for bronchiolitis-associated deaths among infants in the United
+States. Pediatr Infect Dis J. 2003;22:483– 490
+27. Schrand LM, Elliott JM, Ross MB, Bell EF, Mutnick AH. A cost-benefit
+analysis of RSV prophylaxis in high-risk infants. Ann Pharmacother.
+2001;35:1186 –1193
+28. Shireman TI, Braman KS. Impact and cost-effectiveness of respiratory
+syncytial virus prophylaxis for Kansas medicaid’s high-risk children.
+Arch Pediatr Adolesc Med. 2002;156:1251–1255
+29. Langley JM, Wang EE, Law BJ, et al. Economic evaluation of respiratory
+syncytial virus infection in Canadian children: a Pediatric Investigators
+Collaborative Network on Infections in Canada (PICNIC) study. J Pediatr. 1997;131:113–117
+30. Leader S, Yang H, DeVincenzo J, Jacobson P, Marcin JP, Murray DL.
+Time and out-of-pocket costs associated with respiratory syncytial virus
+hospitalization of infants. Value Health. 2003;6:100 –106
+31. Robbins JM, Tilford JM, Jacobs RF, Wheeler JG, Gillaspy SR, Schutze
+GE. A number-needed-to-treat analysis of the use of respiratory syncytial virus immune globulin to prevent hospitalization. Arch Pediatr
+Adolesc Med. 1998;152:358 –366
+32. Johannesson M, Johansson PO, Jonsson B. Economic evaluation of drug
+therapy: a review of the contingent valuation method. Pharmacoeconomics. 1992;1:325–337
+33. Mahle WT, Spray TL, Wernovsky G, Gaynor JW, Clark BJ III. Survival
+after reconstructive surgery for hypoplastic left heart syndrome: a 15year experience from a single institution. Circulation. 2000;102:
+III136 –III141
+34. Weintraub WS, Cole J, Tooley JF. Cost and cost-effectiveness studies in
+heart failure research. Am Heart J. 2002;143:565–576
+35. Khongphatthanayothin A, Wong PC, Samara Y, et al. Impact of respiratory syncytial virus infection on surgery for congenital heart disease:
+postoperative course and outcome. Crit Care Med. 1999;27:1974 –1981
+36. Mulla N, Simpson P, Sullivan NM, Paridon SM. Determinants of aerobic
+capacity during exercise following complete repair of tetralogy of Fallot
+with a transannular patch. Pediatr Cardiol. 1997;18:350 –356
+
+EVIDENCE OF SUCCESS OF BLINDING IN CLINICAL TRIALS IS SCANT
+
+“The success of blinding in placebo controlled trials is not well reported, and
+when it is reported it is often poor. . . . The authors evaluated 191 randomized
+placebo controlled double blind trials published between 1998 and 201 in 9 general
+medicine or psychiatry journals. They found that only 15 trials (8%) provided
+information on the success of blinding, and that it was successful in only 5 trials.
+The validity of double blinding was reported in only 4 of the 191 articles.”
+
+Fergusson D, Glass KC, Waring D, Shapiro S. Turning a blind eye: the success of blinding reported in
+a random sample of randomised, placebo controlled trials. BMJ. 2004;328:432
+
+Submitted by Student
+
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014
+
+ARTICLES
+
+1611
+
+Economic Analysis of Palivizumab in Infants With Congenital Heart Disease
+Laura E. Yount and William T. Mahle
+Pediatrics 2004;114;1606
+DOI: 10.1542/peds.2004-0224
+Updated Information &
+Services
+
+including high resolution figures, can be found at:
+http://pediatrics.aappublications.org/content/114/6/1606.full.h
+tml
+
+References
+
+This article cites 30 articles, 7 of which can be accessed free
+at:
+http://pediatrics.aappublications.org/content/114/6/1606.full.h
+tml#ref-list-1
+
+Citations
+
+This article has been cited by 6 HighWire-hosted articles:
+http://pediatrics.aappublications.org/content/114/6/1606.full.h
+tml#related-urls
+
+Subspecialty Collections
+
+This article, along with others on similar topics, appears in
+the following collection(s):
+Fetus/Newborn Infant
+http://pediatrics.aappublications.org/cgi/collection/fetus:newb
+orn_infant_sub
+Infectious Diseases
+http://pediatrics.aappublications.org/cgi/collection/infectious_
+diseases_sub
+Cardiology
+http://pediatrics.aappublications.org/cgi/collection/cardiology
+_sub
+
+Permissions & Licensing
+
+Information about reproducing this article in parts (figures,
+tables) or in its entirety can be found online at:
+http://pediatrics.aappublications.org/site/misc/Permissions.xht
+ml
+
+Reprints
+
+Information about ordering reprints can be found online:
+http://pediatrics.aappublications.org/site/misc/reprints.xhtml
+
+PEDIATRICS is the official journal of the American Academy of Pediatrics. A monthly
+publication, it has been published continuously since 1948. PEDIATRICS is owned, published,
+and trademarked by the American Academy of Pediatrics, 141 Northwest Point Boulevard, Elk
+Grove Village, Illinois, 60007. Copyright © 2004 by the American Academy of Pediatrics. All
+rights reserved. Print ISSN: 0031-4005. Online ISSN: 1098-4275.
+
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 20, 2014

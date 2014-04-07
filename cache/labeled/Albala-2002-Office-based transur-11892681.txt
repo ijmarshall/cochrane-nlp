@@ -1,0 +1,483 @@
+JOURNAL OF ENDOUROLOGY
+Volume 16, Number 1, February 2002
+© Mary Ann Liebert, Inc.
+
+Office-Based Transurethral Microwave Thermotherapy Using
+the TherMatrx TMx-2000
+DAVID M. ALBALA, M.D.,1 BRANT R. FULMER, M.D.,1 THOMAS M.T. TURK, M.D.,1
+FERNANDO KOLESKI, M.D.,1 GERALD ANDRIOLE, M.D.,2 BRADLEY E. DAVIS, M.D.,3
+GREGG R. EURE, M.D.,4 JOHN N. KABALIN, M.D.,5 JAMES E. LINGEMAN, M.D.,6
+JOSEPH NUZZARELLO, M.D.,7 and CHANDRU SUNDARAM, M.D.2
+
+ABSTRACT
+Background and Purpose: Transurethral microwave thermotherapy (TUMT) is an effective therapy for symptomatic benign prostatic hyperplasia (BPH), but the trade-off between the magnitude of clinical improvement
+and side effects and patient tolerance has limited its appeal to patients and urologists. This study, using the
+TherMatrx TMx-2000, a TUMT device that directly heats the transition zone to greater than 50ºC, has been
+focused on resolving these issues and developing a truly office-based therapy that is well tolerated with a benign post-treatment course.
+Patients and Methods: This study was multi-institutional and designed as a blinded, randomized, and shamcontrolled trial. A series of <n>200</n> patients with an AUA Symptom Index (AUASI) of .12, a peak flow rate of
+,12 mL/sec, and cystoscopic evidence of BPH were randomized 2:1 (active to sham) and treated in seven physician offices under a Food and Drug Administration-supervised and audited premarket approval protocol. No
+intravenous sedation was used in any patient. Follow-up for the sham-treatment group was 3 months, at which
+time, patients could cross over to an active treatment. A total of 119 patients have completed 1-year follow-up.
+Results: The active and sham groups were statistically identical at baseline. The 1-hour total treatment was
+extremely well tolerated using urethral lidocaine and oral medications; not a single prostate block or parental
+dose of medication was required. The active-treatment group demonstrated a statistically significant reduction ( p , 0.05) in AUASI at 3 months compared with sham treatment, with an AUASI decrease from 22.4 to
+12.4 (n 5 124) for active v 22.9 to 17 for sham (n 5 62). For the 119 patients in the active arm who have
+reached 12 months, the AUASI has fallen to 10.6 points (47.1% decrease), and the peak flow rate has increased 5.0 mL/sec (58.1%). Postprocedure catheterization was typically 2 or 3 days, and the 16.8% of patients who failed their first voiding trial all voided within 1 week. No major adverse events such as stricture,
+rectal findings, or ejaculatory changes have been reported.
+Conclusions: This study demonstrates that the TherMatrx TMx-2000 TUMT effectively treats symptomatic
+BPH in the physician office with minimal morbidity.
+INTRODUCTION
+
+been introduced over the last decade. Symptoms of BPH, such
+as increased urinary frequency, incontinence, nocturia, urgency,
+and a slow or interrupted urinary stream, afflict millions of men
+throughout the world with an overall prevalence of histologic
+BPH at autopsy of 50% by age 60 and 90% by age 85.1 In a
+
+T
+
+HE TRADITIONAL SURGICAL MANAGEMENT of benign prostatic hyperplasia (BPH) has evolved as pharmacologic management and minimally invasive therapies have
+
+1Departments
+
+of Urology and Radiology, Loyola University Medical Center, Maywood, Illinois.
+University Medical Center, St. Louis, Missouri.
+3Urologic Surgery Associates, Overland Park, Kansas.
+4Eastern Virginia Medical School, Norfolk, Virginia.
+5Scottsbluff Urology Associates, Scottsbluff, Nebraska.
+6Methodist Urology, Indianapolis, Indiana.
+7Urology Associates of DuPage, Wheaton, Illinois.
+Presented at the 18th World Congress on Endourology and SWL and 16th Basic Research Symposium, São Paulo, Brazil, September 14–17,
+2000.
+2Washington
+
+57
+
+58
+
+ALBALA ET AL.
+
+large survey of men age 60 and older, it was noted that the
+prevalence of two or more voiding symptoms was 35%, and
+approximately 25% of men have a decreased flow rate at age
+55 and 50% at age 70.2,3 Serious complications of BPH such
+as urinary retention, renal failure, obstructive uropathy, and
+urosepsis occur in a small but significant number of patients
+(,10%) and represent the classic indications for transurethral
+resection of the prostate (TURP).4 Surgery, although effective,
+includes a 1% to 3% mortality rate. Significant morbidities of
+TURP or open prostatectomy include dribbling and urge incontinence (20%–50%), stress incontinence (1%), impotence
+(5%–40%), retrograde ejaculation (50%–75%), urethral stricture (5%–15%), chronic urinary tract infection (5%), and hemorrhage (5%–10%). These side effects are of significant concern for patients.
+The selection of therapy for a particular patient usually takes
+into account the severity of the clinical situation, the patient’s
+overall medical condition, and his tolerance for potential side
+effects. Fortunately, the majority of men seek therapy for bothersome voiding symptoms before there are indications for
+TURP, and therefore, pharmacologic and minimally invasive
+therapies are appropriate initial measures for most patients. Because the widely available Urologix Targis and Prostatron and
+Vidamed TUNA procedures are too painful for most office settings and have potential periprocedure and long-term side effects, most patients and urologists begin with pharmacologic
+therapy consisting of alpha-blockade and 5-alpha-reductase inhibition, either alone or in combination. However, within 1 year
+of initiation, at least a third of men have discontinued medical
+therapy because of lack of efficacy or bothersome side effects.
+Furthermore, many men remain on medical therapy because it
+is effective and choose to live with sexual side effects as well
+as lethargy or hypotension. For those patients who drop off therapy or choose to tolerate side effects, the need for alternative
+therapies for BPH is considerable. If a minimally invasive therapy is to provide a real alternative to medical therapy, treatment
+tolerance must be excellent, and the risk of an irreversible side
+effect or adverse event must be comparable; i.e., extremely low.
+Transurethral microwave thermotherapy (TUMT) uses microwave energy to heat the prostatic tissue to temperatures
+.45ºC, thereby inducing coagulation necrosis. The TUMT devices already approved by the Food and Drug Administration
+(FDA) use a microwave catheter that is cooled on its surface.
+Sufficient microwave energy levels are required to penetrate
+deep to the urothelial surface and maintain thermotherapy tissue temperatures despite the constant conductive cooling caused
+TABLE 1.
+
+BASELINE CLINICAL CHARACTERISTICS
+(MEAN 6 SD)a
+Active
+
+No.
+Age (years)
+AUASI
+PFR (mL/sec)
+PVR (mL)
+TRUS volume (cc)
+PSA (ng/mL)
+aAll
+
+125
+65.2 6 7.3
+22.2 6 5.0
+8.9 6 3.0
+57.9 6 53.9
+50.5 6 18.6
+2.6 6 1.8
+
+Sham
+65
+64.6 6
+22.7 6
+8.4 6
+52.6 6
+47.1 6
+2.6 6
+
+7.1
+5.7
+2.0
+51.9
+17.9
+2.3
+
+differences were insignificant by two-sample t-test.
+
+FIG. 1. Change in AUASI score at 3 months for active- and
+sham-treatment groups. Forty-five percent reduction in AUASI
+in the treatment arm was statistically significant compared to
+sham.
+
+by the catheter. Because the delivered microwave energy is often 60 to 90 W, temperature safety alarms are incorporated into
+the device to protect the rectal mucosa and urethra. Although
+symptomatic relief is provided for the majority of patients, the
+safety systems are not sufficient in all patients, and the occurrence of rectal fistula and penile necrosis in patients treated by
+the Targis and Prostatron devices prompted a FDA health notification (www.fda.gov/CDRH/safety/bph.html) to alert urologists to the risks.
+The TherMatrx TMx-2000 is a TUMT system that creates a
+directly measured temperature of 50ºC in the transition zone
+and, because of refinements in equipment and catheter design,
+does not require cooling to achieve tolerance and avoid posttreatment slough. Because energy-withdrawing effect of the circulating coolant does not need to be overcome and the treated
+tissue is closer to the catheter, lower wattages can be applied
+to achieve necrosis in the transition zone. Although this is the
+tissue traditionally resected during TURP, it has not previously
+been a target for TUMT because of concerns about patient tolerance during the treatment and the potential risk of deleterious postprocedure urethral sloughing. Phase II TherMatrx TMx2000 dose–response studies demonstrated that there is a
+microwave thermotherapy dose that provides excellent patient
+tolerance, minimal side effects, and a beneficial outcome. In
+this paper, we report our experience using the TherMatrx TMx2000 device (TherMatrx, Inc. Bannockburn, IL) in a large randomized, sham-controlled study in patients with BPH.
+
+PATIENTS AND METHODS
+Male patients between 50 and 80 years old with a diagnosis of
+symptomatic BPH to a sufficient degree that treatment was warranted were included in this study. A total of 200 patients were
+randomized into either a sham or a microwave treatment group.
+All patients underwent a thorough history and physical examination as well as prostatic specific antigen (PSA) assay. Patients
+with a PSA above the normal level of 4 ng/mL but less than 10
+ng/mL were entered in the study only after transrectal biopsy of
+the prostate demonstrated no evidence of cancer. All patients were
+blinded as to their group assignment, and outcome analysis was
+performed by individuals blinded to the randomization.
+Inclusion criteria included an American Urological Association Symptom Index (AUASI) .13 and a bother score .11.
+
+OFFICE-BASED TUMT
+
+59
+
+FIG. 2. Change in AUASI over time in active-treatment
+group. Reduction in all indices is statistically significant at 12
+months compared with baseline. Six patients have dropped out
+to date.
+
+Peak flow rates (PFRs) were ,12 mL/sec, and the postvoiding
+residual volume (PVR) was ,125 mL. Transrectal ultrasonography (TRUS) was done on all patients prior to the procedure,
+and prostate volumes were required to be between 30 and
+100 cc without a significant intravesical middle lobe. All patients underwent cystoscopy. Patients were randomized 2:1 either to a treatment group or a sham group after meeting all the
+inclusion criteria. Sham-treated patients underwent placement
+of the microwave catheter for the treatment period without energy delivery and received the same post-treatment care as the
+active-treatment patients. All patients were unblinded after the
+3-month follow-up visit, and the sham-treated patients were
+given the opportunity to receive active treatment. Patient follow-up was done at 1, 3, 6, 9, and 12 months. The pretreatment
+clinical data were similar in the two groups (Table 1).
+The TUMT utilized for this study was with a RX-200 prostate
+applicator for heating and monitoring. The RX-200 applicator
+is a modified Foley catheter containing a coiled microwave-radiating antenna. There are two thermosensor tracks on the surface of the catheter that are in contact with the prostatic tissue
+for temperature monitoring and mapping along its length.
+All treatments were performed in urology offices or clinics.
+In order to address patient comfort and the typical anxiety surrounding such a treatment, Toradol (10 mg), a narcotic analgesic (at some sites), and lorazepam (Ativan, 2.0 mg) were
+given orally 45 minutes before treatment. Prior to catheter insertion, lidocaine jelly was injected into the urethra and allowed
+to remain in place for 15 minutes. The RX-200 applicator was
+then passed, the balloon inflated, and the drainage lumen connected to a collection bag. Gentle traction was applied so the
+inflated balloon remained seated in the trigone. The area of heating was confined to the coiled antenna zone, which was located
+between the bladder neck and the distal end of the transition
+zone.5,6 The applicator is available with antennae of different
+lengths. The length from the bladder neck to the verumontanum
+
+TABLE 2.
+AUASI Change
+210.6
+
+was measured by TRUS, and the appropriate applicator was selected depending on this length.
+The treatment temperature was controlled by a computer to
+provide a gradual increase. The computer automatically initiated a preestablished rate of temperature increase; however, the
+physician or the patient could intervene to ensure optimum tolerance. All treatments of the prostate were delivered to a peak
+tissue temperature of 50º to 55ºC. After the temperature had
+been increased to approximately 50ºC, the treatment was continued for 40 minutes under computer control. Although the
+rectum is well outside the periurethral target zone, the rectal
+temperature was monitored in all patients as a safety precaution. If the rectal temperature were to exceed 42.5ºC at any time
+during the treatment, an audible alarm would sound, and power
+delivery, controlled by the computer, would immediately stop.
+After the treatment was completed, the microwave applicator was removed and a Foley catheter inserted into the bladder.
+The Foley catheter was left in place from 2 to 4 days. Patients
+were evaluated by AUASI, bother scores, as well as objective
+parameters such as urine flow rates, PUR, PSA, and TRUS. The
+clinical data were evaluated at 1, 3, 6, 9, and 12 months after
+treatment. The primary outcome indicator for the study was the
+statistical comparison between the active- and sham-treatment
+groups after 3 months.
+
+RESULTS
+Figure 1 summarizes the change in AUASI at 3 months for
+the active- and sham-treatment groups. The 45% reduction in
+AUASI in the active arm at 3 months is statistically significant
+compared with the change in the sham arm. Figure 2 shows that
+the improvement in AUASI, bother, and quality of life was
+maintained over 12 months for the treated patients. The AUASI,
+which was 12.4 at 3 months, was 11.9 at 12 months. The bother
+index initially was 18.0 and 12 months at 9.1. The quality of
+life index was initially found to be 11.4, and this decreased to
+5.8. The reduction in all indices was statistically significant at
+12 months compared with baseline. The treatment arm contains
+only those patients originally randomized to receive an active
+treatment, and not any patients who crossed over from the sham
+arm. The 12-month AUASI and PFR changes, summarized in
+Table 2, demonstrate a striking decrease in AUASI and a 58.1%
+increase in PFR.
+The treatment course itself was extremely well tolerated by
+the patients, and the post-treatment course for the study patients
+is summarized in Table 3. Recatheterization was the most common event, seen in 16.8% of patients. The protocol did not permit the use of alpha-blockers or other medications to improve
+bladder emptying, and all patients voided successfully by 1
+week. Except for transient urinary retention, this study suggests
+that long-term side effects will be rare.
+
+TWELVE -MONTH POST-TREATMENT EFFICACY DATA
+(% change)
+
+PFR change
+
+(% change)
+
+(247.1)
+
+15.0 mL/sec
+
+(58.1)
+
+60
+
+ALBALA ET AL.
+TABLE 3.
+
+SUMMARY OF POST-TREATMENT COURSE
+(7% OF PATIENTS )
+Active treatment
+(N 5 121)
+
+Recatheterization
+Dysuria
+Urgency
+Gross hematuria
+Bladder spasm
+Urethral stricture
+Ejaculatory dysfunction
+pain
+Rectal damage fistula
+
+Sham treatment
+(N 5 62)
+
+16.8
+6.6
+0
+9.1
+4.1
+0
+0
+
+0
+4.8
+0
+0
+0
+0
+0
+
+0 0
+
+DISCUSSION
+In the past several years, there has been increased interest in
+the use of minimally invasive therapies for BPH. This interest
+has been driven by the recognition by the urologist that most
+patients do not require immediate surgery as well as by the desire of patients to avoid surgery. Medical therapy is often effective, but there remains the common scenario when medical
+therapy does not provide satisfactory symptomatic improvement or is complicated by an undesirable side effect. In addition, chronic pharmacologic therapy is often expensive or perceived to be undesirable by patients.
+The use of microwave energy to reach thermotherapy temperatures of 45ºC and to improve the symptoms of BPH was
+developed in the late 1980s and early 1990s by Devonec and
+his colleagues.7 This early experience resulted in the development of the Prostatron, and in 1993, Blute et al8 reported the
+results of the treatment of 150 BPH patients with transurethral
+thermotherapy in a multi-institutional study.8 This TUMT procedure and device utilized a delivery catheter that incorporated
+TABLE 4.
+
+urethral cooling because it was believed that optimal patient
+tolerance would be facilitated. The net effect of this urethral
+cooling was an increase in the microwave power needed to heat
+the gland and to expand the area of tissue necrosis deeper into
+the prostate and potentially close to the rectum and ejaculatory
+ducts. The FDA Public Health Notification reports thermal injuries using the high-energy cooled Urologix Targis and Prostatron TUMT devices. The injuries identified include penile
+necrosis and rectal fistula formation. The warning letter notes
+that high power combined with oversedation when associated
+with catheter migration or failure of rectal temperature monitoring can lead to serious complications. Table 4 summarizes
+the FDA-identified problems and the way TherMatrx addresses
+these issues. The lower wattage of TherMatrx TUMT allows
+tolerance without sedation, and this feature addresses many of
+the FDA’s concerns.
+The randomized study presented here found that despite the
+absence of urethral cooling, treatment tolerance at urethral temperatures of 50ºC was excellent. This observation, that the prostatic urothelium is not in itself prohibitively sensitive to a temperature of 50ºC, suggests that the addition of cooling to
+microwave catheters was not mandated by the urethral surface
+temperature itself but may have been required because of the
+energy levels being used, the antenna or catheter design, or other
+unknown reasons associated with the device or treatment. From
+the outcome of this TUMT study, it appears that the creation
+of a necrotic zone in the central prostatic tissue is not required
+in order to obtain clinical improvement for the patient.9 Coagulation necrosis in the transition zone adjacent to the catheter
+causes clinical benefit.
+The TherMatrx TUMT approach also has other important
+implications. Because there is no cooling, the actual prostatic
+temperature is measured in real time during the entirety of each
+patient treatment. Therefore, a precise dose of heat is delivered
+on the basis of the highest measured tissue temperature as the
+thermosensors are scanned along the entire prostate. This fea-
+
+FDA-IDENTIFIED PROBLEMS ASSOCIATED WITH HIGH -POWER TUMT
+AND SOLUTIONS WITH THER MATRX TMX -2000 DEVICE
+
+FDA-identified problem
+Sensor placement/migration
+with resultant heating
+outside prostate
+Oversedation of patient,
+which compromises his
+ability to communicate pain
+
+Foley or rectal balloon
+leakage resulting in loss
+of correct anatomic position
+
+Solution
+Patient-held control
+button to reduce power
+immediately in response
+to any pain
+Tolerance determines sedation
+levels. The TherMatrx
+TMx-2000 TUMT
+at 7 WV 60–90 W for
+high-power TUMT is
+intrinsically safer because no
+parenteral sedation is used and less
+power is directed toward sphincter,
+rectum, and ejaculatory ducts
+Microwave antenna migration would
+be evident with the TMx-2000, as
+the alert patient feels the pain of
+distal urethral heating. The rectal
+sensor of the TMx-2000 does not
+utilize a balloon for localization
+
+OFFICE-BASED TUMT
+ture allows every patient to receive the same optimized dose.
+If urethral cooling is applied and the thermosensor is on the
+catheter surface, then the temperature readings are a blend of
+those of the circulating cold water and the tissue. Furthermore,
+because of the target zone is immediately adjacent to the treatment catheter, less wattage is required to obtain thermotherapy
+temperatures. The ability to treat with less wattage reduces the
+chance of an untoward adverse event in the case of catheter migration, balloon failure, or antenna malfunction.
+The effect of transition zone necrosis is to change BPH symptoms and voiding dynamics. Many noninvasive treatments for
+BPH have documented improvement of patient symptomatology
+and even mild improvement in flow rate, but studies comparing
+preprocedure and postprocedure complete urodynamic evaluations have not impressively demonstrated reduction in the degree
+of mechanical obstruction.10 Furthermore, the FDA-supervised
+approval studies for the Targis and Prostatron as well as the TherMatrx did not demonstrate a statistically significant reduction in
+TRUS-measured prostate volume. The obvious question, then,
+becomes why do these therapies improve symptoms without definitive evidence of relief of obstruction? The answer is likely related to the innervation of the bladder neck and prostate smooth
+muscle. It is well accepted that alpha-blockers reduce AUA
+Symptom Scores and improve lower urinary tract symptoms but
+have minimal effect on objective urodynamic obstruction or
+cause no real tissue loss. A possible explanation of the success
+of TUMT is that the induced tissue necrosis disrupts periurethral
+alpha-adrenergic tone.10 This would explain the relative improvement in symptoms without corresponding improvement in
+objective obstructive parameters.
+
+CONCLUSION
+The similarity between high-energy TUMT and TherMatrx
+TUMT is that both therapies use microwave energy to create
+temperatures in excess of 50ºC, resulting in necrosis and permanent tissue change. However, the absence of urethral surface
+cooling during TherMatrx TUMT creates a therapy that is different in four interdependent ways: (1) reproducible dose delivery to the target zone; (2) greater patient tolerance; (3) more
+benign post-treatment course; and (4) fewer side effects. Using
+the TherMatrx TMx-2000 device, our study of TUMT showed
+a 1-year statistically significant reduction in AUA Symptom
+Score of 47.1% and an increase in PFR of 58.1% in a randomized, blinded, sham-controlled trial. The TherMatrx procedure was extremely well tolerated in the office setting, and in
+
+61
+no case was intravenous sedation used. The postoperative treatment course was characterized by minimal subacute, self-resolving side effects. These characteristics of the TherMatrx
+TMx-2000 TUMT make it an ideal therapeutic option before,
+as an adjunct to, or after pharmacologic BPH therapy.
+
+REFERENCES
+1. Berry SJ, Coffey DS, Walsh PC, et al. The development of human
+benign prostatic hyperplasia with age. J Urol 1984;132:474–479.
+2. Arrighi HM, Guess HA, Metter EJ, et al. Symptoms and signs of
+prostatism as risk factors for prostatectomy. Prostate 1990;16:253–
+261.
+3. Guess HA, Arrighi HM, Metter EJ, et al. Cumulative prevalence
+of prostatism matches the autopsy prevalence of benign prostatic
+hyperplasia. Prostate 1990;17:241–246.
+4. Medina JJ, Parra RO, Moore RG. Benign prostatic hyperplasia (the
+aging prostate). Med Clin North Am 1999;83:1213–1229.
+5. Yerushalmi A, Fishelovitz Y, Singer D, et al. Localized deep microwave hyperthermia in the treatment of poor operative risk
+patients with benign prostatic hyperplasia. J Urol 1985;133:873–
+876.
+6. Yerushalmi A, Servadio C, Leib Z, et al. Local hyperthermia for
+treatment of carcinoma of the prostate: A preliminary report.
+Prostate 1982;3:623–630.
+7. Stawarz B, Szmigielski S, Ogrodnik J, et al. A comparison of
+transurethral and transrectal microwave hyperthermia in poor surgical risk benign prostatic hyperplasia patients [see comments].
+J Urol 1991;146:353–357.
+8. Blute ML, Tomera KM, Hellerstein DK, et al. Transurethral microwave thermotherapy for management of benign prostatic hyperplasia: Results of the United States Prostatron Cooperative
+Study. J Urol 1993;150:1591–1596.
+9. Devonec M, Tomera K, Perrin P. Review: Transurethral microwave
+thermotherapy in benign prostatic hyperplasia. J Endourol 1993;7:
+255–259.
+10. Larson TR, Bostwick DG, Corica A. Temperature-correlated histopathologic changes following microwave thermoablation of obstructive tissue in patients with benign prostatic hyperplasia. Urology 1996;47:463–469.
+
+Address reprint requests to:
+David M. Albala, M.D.
+Duke University Medical Center
+Rm. 1112, Green Zone
+DUMC 3457
+Durham, NC 27710
+E-mail: albaloo2@mc.duke.edu
+
+This article has been cited by:
+1. Richard M Hoffman, Manoj Monga, Sean P Elliott, Roderick MacDonald, Jens Langsjoen, James
+Tacklind, Timothy J Wilt, Richard M HoffmanMicrowave thermotherapy for benign prostatic hyperplasia .
+[CrossRef]
+2. Bob Djavan, Amir Kazzazi, Yakup Bostanci. 2011. Revival of thermotherapy for benign prostatic hyperplasia.
+Current Opinion in Urology 1. [CrossRef]
+3. T. R. W. Herrmann, A. J. Gross, D. Schultheiss, P. M. Kaufmann, U. Jonas, M. Burchardt. 2006.
+Transurethral microwave thermotherapy for the treatment of BPH: still a challenger?. World Journal of
+Urology 24:4, 389-396. [CrossRef]
+4. Benjamin Larson, Christian Huidobro, Cristian Acevedo, David Busel, Lance Mynderses, Joseph Collins,
+Thayne Larson. 2005. In Vivo Temperature Mapping of Prostate during Treatment with TherMatrx
+TMx-2000 Device: Heat Field and MRI Determinations of Necrotic Lesions. Journal of Endourology 19:8,
+1021-1025. [Abstract] [Full Text PDF] [Full Text PDF with Links]
+5. K WALMSLEY, S KAPLAN. 2004. TRANSURETHRAL MICROWAVE THERMOTHERAPY FOR
+BENIGN PROSTATE HYPERPLASIA: SEPARATING TRUTH FROM MARKETING HYPE. The
+Journal of Urology 172:4, 1249-1255. [CrossRef]
+6. Ricardo R. Gonzalez, Alexis E. Te. 2003. How do transurethral needle ablation of the prostate and
+transurethral microwave thermotherapy compare with transurethral prostatectomy?. Current Prostate
+Reports 1:2, 73-82. [CrossRef]
+7. Stavros Gravas, Maria Pilar Laguna, Jean J.M.C.H. de la Rosette. 2003. Efficacy and Safety of Intraprostatic
+Temperature-Controlled Microwave Thermotherapy in Patients with Benign Prostatic Hyperplasia:
+Results of a Prospective, Open-Label, Single-Center Study with 1-Year Follow-Up. Journal of Endourology
+17:6, 425-430. [Abstract] [Full Text PDF] [Full Text PDF with Links]
+8. 2003. AUA Guideline on Management of Benign Prostatic Hyperplasia (2003). Chapter 1: Diagnosis and
+Treatment Recommendations. The Journal of Urology 170:2, 530-547. [CrossRef]
+9. Ricardo R. Gonzalez, Alexis E. Te. 2003. How do transurethral needle ablation of the prostate and
+transurethral microwave thermotherapy compare with transurethral prostatectomy?. Current Urology
+Reports 4:4, 297-306. [CrossRef]
+10. Stavros Gravas, Pilar Laguna, Jean de la Rosette. 2003. Thermotherapy and thermoablation for benign
+prostatic hyperplasia. Current Opinion in Urology 13:1, 45-49. [CrossRef]

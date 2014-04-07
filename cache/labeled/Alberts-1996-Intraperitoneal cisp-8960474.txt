@@ -1,0 +1,866 @@
+The New England Journal of Medicine
+
+INTRAPERITONEAL CISPLATIN PLUS INTRAVENOUS CYCLOPHOSPHAMIDE
+VERSUS INTRAVENOUS CISPLATIN PLUS INTRAVENOUS CYCLOPHOSPHAMIDE
+FOR STAGE III OVARIAN CANCER
+DAVID S. ALBERTS, M.D., P.Y. LIU, PH.D., EDWARD V. HANNIGAN, M.D., ROBERT O’TOOLE, M.D.,
+STEPHEN D. WILLIAMS, M.D., JAMES A. YOUNG, M.D., ERNEST W. FRANKLIN, M.D., DANIEL L. CLARKE-PEARSON, M.D.,
+VINAY K. MALVIYA, M.D., BRENT DUBESHTER, M.D., MARK D. ADELSON, M.D., AND WILLIAM J. HOSKINS, M.D.
+
+ABSTRACT
+Background Intravenous platinum-based chemotherapy is the standard primary therapy for advanced
+ovarian cancer. We conducted a phase 3 trial to compare the effects of intraperitoneal and intravenous
+cisplatin on the survival of women with previously
+untreated, stage III, epithelial ovarian cancer.
+Methods The patients underwent an initial exploratory laparotomy and resection of all tumor masses
+larger than 2 cm. Within four weeks after surgery, six
+courses of intravenous cyclophosphamide (600 mg
+per square meter of body-surface area per course)
+plus either intraperitoneal cisplatin (100 mg per
+square meter) or intravenous cisplatin (100 mg per
+square meter) were administered at three-week intervals.
+Results Of 654 randomized patients, 546 were eligible for the study. The estimated median survival
+was significantly longer in the group receiving intraperitoneal cisplatin (49 months; 95 percent confidence interval, 42 to 56) than in the group receiving
+intravenous cisplatin (41 months; 95 percent confidence interval, 34 to 47). The risk of death was lower
+in the intraperitoneal group than in the intravenous
+group (hazard ratio, 0.76; 95 percent confidence interval, 0.61 to 0.96; P ϭ 0.02). Moderate-to-severe tinnitus, clinical hearing loss, and neuromuscular toxic
+effects were significantly more frequent in the intravenous group.
+Conclusions As compared with intravenous cisplatin, intraperitoneal cisplatin significantly improves
+survival and has significantly fewer toxic effects in
+patients with stage III ovarian cancer and residual tumor masses of 2 cm or less. (N Engl J Med 1996;335:
+1950-5.)
+©1996, Massachusetts Medical Society.
+
+O
+
+VARIAN cancer, the leading cause of
+death from gynecologic cancer in the
+United States, is one of the few solid tumors in which the five-year survival rate
+for patients has improved in recent years.1,2 Nevertheless, most women with advanced ovarian cancer
+die of the disease. Even those with stage III cancer
+and minimal residual intraperitoneal masses (р2 cm
+in the greatest dimension) have a median survival of
+only about 40 months.3,4
+Standard chemotherapy for advanced ovarian cancer includes a platinum analogue (either cisplatin or
+carboplatin). In an attempt to maximize its activity
+1950 ؒ
+
+against ovarian cancer, cisplatin has been administered directly into the peritoneal cavity in investigational studies.5 This route yields an intraperitoneal
+concentration of cisplatin that is 12 to 15 times
+greater than the plasma concentration.6,7 Some phase
+2 studies have suggested that survival is prolonged in
+patients with small residual masses (Ͻ1 cm) who receive salvage intraperitoneal chemotherapy after initial chemotherapy and second-look surgery.8,9 The
+present phase 3 trial compares cisplatin administered
+intraperitoneally with cisplatin administered intravenously in patients with previously untreated stage III
+ovarian cancer and residual masses no larger than
+2 cm in the greatest dimension.
+METHODS
+Patients
+Within four weeks before enrollment, patients underwent an
+initial exploratory laparotomy with at least bilateral salpingooophorectomy, total abdominal hysterectomy, omentectomy, and
+debulking of all tumor nodules to a size of 2 cm or less in the
+greatest dimension. The Southwest Oncology Group’s Gynecologic Surgical Review Board reviewed the surgical results to confirm eligibility for enrollment. Only patients with a histologic diagnosis of epithelial-type ovarian cancer were eligible.
+Eligible patients had stage III disease, a performance status of
+0 to 2 (according to criteria established by the Southwest Oncology Group), normal blood counts, and adequate renal function
+(serum creatinine, р1.5 mg per deciliter [130 mmol per liter];
+creatinine clearance, у40 ml per minute). All patients gave informed consent according to institutional and federal guidelines
+before enrollment.
+Treatment Plan
+Patients were randomly assigned to receive intraperitoneal cisplatin plus intravenous cyclophosphamide or intravenous cisplatin
+plus intravenous cyclophosphamide. The randomization procedure incorporated stratification according to the amount of residual tumor (р0.5 cm vs. Ͼ0.5 cm to 2 cm), performance status
+(0 or 1 vs. 2), the timing of enrollment (during vs. after surgery),
+
+From the University of Arizona, Tucson (D.S.A.); the Southwest Oncology Group Statistical Center, Seattle (P
+.Y.L.); the University of Texas Medical Branch at Galveston, Galveston (E.V.H.); Ohio State University Health
+Center, Columbus (R.O.); the Gynecologic Oncology Group, Philadelphia
+(S.D.W., D.L.C.-P B.D., M.D.A., W.J.H.); Indiana University School of
+.,
+Medicine, Indianapolis (S.D.W.); the Eastern Cooperative Oncology
+Group, Boston (J.A.Y.); Cancer Care Associates, Tulsa, Okla. (J.A.Y.); Atlanta Regional Community Clinical Oncology Program, Atlanta (E.W.F.);
+Wayne State University Medical Center, Detroit (V.K.M.); and the University of Rochester Medical School, Rochester, N.Y. (B.D.). Address reprint
+requests to Dr. Alberts at the Southwest Oncology Group (SWOG-8501),
+Operations Office, 14980 Omicron Dr., San Antonio, TX 78245-3217.
+
+De c e m b e r 2 6 , 1 9 9 6
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 1996 Massachusetts Medical Society. All rights reserved.
+
+I N T R A P E R I TO N E A L VS. I N T R AV E N O U S C I S PL AT I N FO R STAG E I I I OVA R I A N CA N C E R
+
+and the cooperative group (Southwest Oncology Group vs. Gynecologic Oncology Group vs. Eastern Cooperative Oncology
+Group).
+Patients in both treatment groups received cyclophosphamide
+(600 mg per square meter of body-surface area in 150 ml of diluent) administered in a 60-to-90-minute intravenous infusion on
+day 1. Patients in the intravenous group received cisplatin (100
+mg per square meter in 500 to 1000 ml of normal saline) administered intravenously at a rate of 1 mg per minute, followed by at
+least 1 liter of normal saline with 3 g of magnesium sulfate and
+40 g of mannitol over a period of one to two hours on day 1.
+Patients in the intraperitoneal group received cisplatin (100 mg
+per square meter in 2 liters of normal saline) warmed to body
+temperature and instilled into the peritoneal cavity as rapidly as
+possible. Concurrently, these patients received at least 1 liter of
+normal saline with 3 g of magnesium sulfate and 40 g of mannitol
+intravenously.
+Courses of cyclophosphamide and cisplatin were repeated every
+three weeks for a total of six cycles, provided the serum creatinine
+concentration was less than or equal to 1.9 mg per deciliter (170
+mmol per liter), the white-cell count was higher than 3000 per cubic
+millimeter, and the platelet count was higher than 100,000 per cubic millimeter. Therapy could be delayed for a maximum of two
+weeks to allow for the resolution of toxic effects. Cisplatin was permanently discontinued and the dose of cyclophosphamide increased
+to 1 g per square meter (in the absence of grade 3 or 4 myelosuppression) if peripheral neuropathy of grade 2 or higher developed
+or the serum creatinine concentration rose above 1.9 mg per deciliter. Therapy was discontinued altogether if the serum creatinine
+level remained higher than 1.9 mg per deciliter for eight weeks.
+Clinical and Pathological Assessments
+At base line and after six courses of therapy, a physical examination was performed, with a complete blood count, serum
+CA-125 and blood chemical measurements, and chest radiography. In addition, before each cycle, a physical examination was
+performed, with a complete blood count and measurement of serum CA-125 and creatinine concentrations. Blood chemical measurements were performed at the start of every other course. At
+the completion of therapy, patients without clinical evidence of
+ovarian cancer (excluding an elevated serum CA-125 value) underwent a second-look laparotomy to determine whether there
+had been a pathological response.
+A complete pathological response was defined as no pathological evidence of disease on second-look surgery and biopsy of the
+upper abdomen and the para-aortic and retroperitoneal lymph
+nodes, as well as any other site previously involved with tumor.
+
+cm. All previously eligible patients were included in the extended
+sample, which was planned to include 560 eligible patients overall
+and 390 eligible patients with residual tumors no larger than 0.5
+cm. In the analysis of this subgroup, if the hazard ratio was 0.67
+for the patients receiving intraperitoneal treatment, the power to
+detect a difference was 0.88.
+The treatment group, size of residual tumor (microscopical vs.
+р0.5 cm vs. Ͼ0.5 cm to 2 cm), age, performance status (0 or 1
+vs. 2), race (white vs. other), tumor type (clear cell or mucinous
+vs. other), tumor grade, participating group (Southwest Oncology Group vs. Gynecologic Oncology Group vs. Eastern Cooperative Oncology Group), and timing of enrollment (during vs.
+after surgery) were included as covariates in Cox regression analyses.10 Two-sided Fisher’s exact tests were used for comparisons of
+toxic effects in the two treatment groups. All eligible patients who
+received chemotherapy were included in the analysis of toxicity.
+
+RESULTS
+Patients
+
+Between June 1986 and July 1992, 654 women
+were randomly assigned to a study group: 295 from
+the Southwest Oncology Group, 298 from the Gynecologic Oncology Group, and 61 from the Eastern Cooperative Oncology Group. A total of 108 patients were ineligible (52 in the intravenous group
+and 56 in the intraperitoneal group) for the following reasons: inadequate surgery (in 54), pathological
+findings that did not meet the study criteria (31),
+insufficient documentation (20), and miscellaneous
+
+TABLE 1. CHARACTERISTICS OF 546 ELIGIBLE PATIENTS WITH
+STAGE III OVARIAN CANCER WHO WERE ASSIGNED TO TREATMENT
+WITH INTRAVENOUS OR INTRAPERITONEAL CISPLATIN.*
+INTRAVENOUS
+GROUP
+(N ‫)972 ؍‬
+
+Age (yr)
+Median
+Range
+
+INTRAPERITONEAL
+GROUP
+(N ‫)762 ؍‬
+
+56
+21–85
+
+CHARACTERISTIC
+
+59
+24–84
+% of patients
+
+Statistical Analysis
+In the original study design (before the protocol was amended
+to increase enrollment), it was assumed that 215 eligible patients
+would be randomly assigned to each treatment group. At a twosided P value of 0.05, with the use of a Pearson chi-square approximation, the estimated power was 0.85 to detect a difference
+of 55 percent versus 40 percent in pathological-response rates in
+the intraperitoneal and intravenous groups, respectively. The
+power was 0.93 (two-sided log-rank test, a ϭ 0.05) to detect a
+difference if the underlying risk of death (hazard ratio) in the intraperitoneal group, as compared with the intravenous group, was
+0.67. Survival was defined as the time from randomization to
+death from any cause.
+Provisions for subgroup analysis were not included in the
+original study design. During the study, however, a consensus
+emerged among gynecologic oncologists that the patients most
+likely to benefit from intraperitoneal chemotherapy were those
+with a tumor mass that was no larger than 0.5 cm in the greatest
+dimension. Therefore, in January 1991, with no knowledge of
+subgroup data, we extended accrual for an additional year to
+achieve a sufficiently large sample for a separate analysis of data
+from patients with residual tumors that were no larger than 0.5
+
+White race
+Minimal residual disease (р0.5 cm)
+No gross disease after initial surgery
+Performance status of 0 or 1
+Type of tumor
+Serous
+Endometrioid
+Mixed cell
+Undifferentiated
+Clear cell
+Mucinous
+Unknown
+Tumor grade
+1
+2
+3
+Postsurgical enrollment
+
+92
+72
+26
+86
+
+93
+73
+25
+85
+
+66
+9
+6
+11
+2
+3
+3
+
+67
+10
+6
+11
+2
+1
+3
+
+13
+30
+57
+94
+
+11
+31
+58
+94
+
+*Of the 654 patients randomly assigned to treatment with intravenous
+cisplatin (331 patients) or intraperitoneal cisplatin (323), 108 were ineligible for the study (52 in the intravenous group and 56 in the intraperitoneal group).
+
+Vo l u m e 3 3 5
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 1996 Massachusetts Medical Society. All rights reserved.
+
+Nu m b e r 2 6
+
+ؒ
+
+1951
+
+The New England Journal of Medicine
+
+ple), regardless of whether they completed the assigned treatment. The 20 patients in both groups
+who did not receive any treatment were excluded
+from the toxicity analysis.
+
+TABLE 2. PERCENTAGES OF ELIGIBLE PATIENTS RECEIVING
+CISPLATIN AND THE DOSE RECEIVED DURING EACH COURSE
+OF TREATMENT.
+
+Intensity of Cisplatin Dose
+
+TREATMENT
+
+COURSE
+
+PATIENTS RECEIVING CISPLATIN
+INTRAPERITO-
+
+INTRAVENOUS
+
+INTRAPERITO-
+
+GROUP
+
+NEAL GROUP
+
+GROUP
+
+NEAL GROUP
+
+% of patients
+
+1
+2
+3
+4
+5
+6
+
+In both the intravenous and intraperitoneal groups,
+58 percent of all eligible patients completed six courses of cisplatin therapy (Table 2). Among these patients, the average proportion of the initial cisplatin
+dose administered during cycle 6 (the course with the
+maximal dose reduction) was 96 percent in the intravenous group and 97 percent in the intraperitoneal
+group. Cisplatin was discontinued because of toxic effects (with a concomitant increase in the cyclophosphamide dose) in 40 patients in the intravenous
+group and 22 in the intraperitoneal group.
+
+CISPLATIN DOSE RECEIVED
+
+INTRAVENOUS
+
+99
+96
+92
+84
+73
+58
+
+% of initial dose
+
+93
+87
+81
+75
+67
+58
+
+100
+102
+98
+97
+99
+96
+
+100
+100
+98
+99
+98
+97
+
+Complete Pathological Responses
+
+clinical factors that did not meet the study criteria
+(3). Table 1 shows the characteristics of the eligible
+patients. There were no significant differences between the study groups with respect to important
+prognostic factors.
+Of the 279 eligible patients in the intravenous
+group, 2 died before treatment, and 1 refused treatment after randomization. There were 20 major protocol violations among the 267 eligible patients in
+the intraperitoneal group: 3 patients died before treatment was started, 6 withdrew consent after randomization, 8 did not receive the assigned treatment for
+other reasons (5 because of complications related to
+intraperitoneal catheterization and 3 because of errors by the local pathologist), 2 received treatment
+for only one day, and 1 erroneously received intravenous carboplatin during cycles 2 through 6. All
+546 eligible patients were included in the efficacy
+analyses (according to the intention-to-treat princi-
+
+TABLE 3. SURVIVAL
+
+OF
+
+SURVIVAL
+
+Of the 546 eligible patients, 20 never received any
+study treatment, 81 did not complete therapy, and
+45 had tumors that progressed before the completion of therapy. Second-look surgery was not required in these patients. In 103 of the remaining
+400 patients, surgery was contraindicated or the patient refused it (70 patients), or the procedure was
+performed but deemed inadequate by the Gynecologic Surgical Review Board (33). Because of the
+bias associated with this group of 103 patients who
+had no clinical evidence of disease at the completion
+of therapy but did not undergo second-look surgery
+or had inadequate surgery, the rates of pathological
+responses are given without statistical comparisons.
+A total of 297 patients with no clinical evidence
+of disease at the end of chemotherapy underwent
+adequate second-look surgery. The rate of complete
+pathological responses was 36 percent in the intravenous group (complete responses in 57 of 158 pa-
+
+ALL ELIGIBLE PATIENTS, ELIGIBLE PATIENTS WITH MINIMAL RESIDUAL DISEASE,
+AND ALL RANDOMIZED PATIENTS.*
+
+ALL ELIGIBLE PATIENTS
+
+ELIGIBLE PATIENTS WITH
+MINIMAL RESIDUAL DISEASE
+
+ALL RANDOMIZED PATIENTS
+
+INTRAVENOUS
+
+INTRAVENOUS
+
+INTRAPERITONEAL
+
+INTRAVENOUS
+
+GROUP
+
+GROUP
+
+GROUP
+
+GROUP
+
+GROUP
+
+GROUP
+
+(N ϭ279)
+
+Survival (mo)
+Median
+95% confidence
+interval
+Hazard ratio
+
+INTRAPERITONEAL
+
+(N ϭ267)
+
+(Nϭ202)
+
+(N ϭ195)
+
+(N ϭ331)
+
+(N ϭ323)
+
+41
+34–47
+
+49
+42–56
+
+46
+37–57
+
+51
+44–67
+
+40
+34–45
+
+48
+42–54
+
+0.76†
+
+0.80‡
+
+INTRAPERITONEAL
+
+0.77†
+
+*Minimal residual disease was defined as a residual tumor mass that was less than or equal to 0.5 cm in the greatest
+dimension.
+†The hazard ratio is for the intraperitoneal group as compared with the intravenous group (P ϭ 0.02).
+‡The hazard ratio is for the intraperitoneal group as compared with the intravenous group (P ϭ 0.10).
+
+1952 ؒ
+
+De c e m b e r 2 6 , 1 9 9 6
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 1996 Massachusetts Medical Society. All rights reserved.
+
+I N T R A P E R I TO N E A L VS. I N T R AV E N O U S C I S PL AT I N FO R STAG E I I I OVA R I A N CA N C E R
+
+100
+
+tients) and 47 percent in the intraperitoneal group
+(complete responses in 66 of 139).
+
+80
+60
+40
+
+Intraperitoneal group
+
+20
+
+Intravenous group
+
+0
+0
+
+2
+
+4
+
+6
+
+8
+
+10
+
+Years after Enrollment
+GROUP
+Intraperitoneal
+Intravenous
+
+NO. AT
+RISK
+267
+279
+
+NO. OF
+DEATHS
+147
+174
+
+MEDIAN
+SURVIVAL (MO)
+49
+41
+
+Figure 1. Survival of 546 Eligible Patients with Stage III Ovarian
+Cancer Who Were Randomly Assigned to Treatment with Intravenous or Intraperitoneal Cisplatin.
+
+100
+80
+
+Survival (%)
+
+All eligible patients were included in the primary
+analysis regardless of whether they completed the assigned treatment. Covariates associated with improved survival included the absence of gross disease
+at enrollment (PϽ0.001), a younger age (PϽ0.001),
+a type of tumor other than clear cell or mucinous
+(PϽ0.001), and enrollment after surgery (PϽ0.001).
+The final Cox model included these four factors and
+performance status (which was retained in the model because of its established prognostic importance).
+The results after adjustment for these five factors
+are shown in Table 3, along with unadjusted median
+survival in the two groups. The hazard ratio for the
+risk of death in the intraperitoneal group, as compared with the intravenous group, was 0.76 (95 percent confidence interval, 0.61 to 0.96; Pϭ0.02).
+The median survival was 41 months (95 percent
+confidence interval, 34 to 47) in the intravenous
+group and 49 months (95 percent confidence interval, 42 to 56) in the intraperitoneal group (Fig. 1).
+Figure 2 shows the survival curves for all eligible
+patients according to the extent of residual intraperitoneal disease. The effect of the treatment (intravenous or intraperitoneal cisplatin) was not influenced
+by the extent of residual disease (Pϭ0.93 for the interaction of treatment and residual disease). Table 3
+shows the results of a separate analysis for the subgroup of patients with residual tumors no larger
+than 0.5 cm. The analysis was repeated for all 654
+randomized patients, including those who were ineligible. The results were equivalent to those of the
+primary analysis (Table 3).
+
+Survival (%)
+
+Survival
+
+60
+Microscopical
+
+40
+
+р0.5 cm
+
+20
+
+Ͼ0.5 – 2 cm
+
+0
+
+Toxic Effects
+
+0
+
+Two treatment-related deaths occurred in the intraperitoneal group. One patient died of respiratory
+failure of unknown cause 41 days after the second
+cycle of chemotherapy (blood counts were adequate
+at the time of death). The second patient died of
+bronchopneumonia during a period of chemotherapy-associated leukopenia 13 days after the third cycle. No treatment-related deaths occurred in the intravenous group.
+Significantly more patients in the intravenous
+group than in the intraperitoneal group had grade 3
+or higher granulocytopenia (Pϭ0.002) and leukopenia (Pϭ0.04) (Table 4). Table 5 shows the frequency of other toxic effects (grade 2 or higher)
+during any treatment cycle. Moderate-to-severe tinnitus and hearing loss were more frequent in patients receiving intravenous cisplatin than in those
+receiving intraperitoneal cisplatin. In addition, significantly more patients in the intravenous group
+had grade 2 or 3 neuromuscular toxic effects at the
+
+2
+
+4
+
+6
+
+8
+
+10
+
+Years after Enrollment
+RESIDUAL TUMOR
+Microscopical
+р0.5 cm
+Ͼ0.5 – 2 cm
+
+NO. AT
+RISK
+139
+254
+153
+
+NO. OF
+DEATHS
+53
+157
+111
+
+MEDIAN
+SURVIVAL (MO)
+76
+42
+32
+
+Figure 2. Survival of Eligible Patients According to the Extent
+of Residual Disease at Enrollment.
+
+completion of chemotherapy (25 percent, vs. 15 percent in the intraperitoneal group; Pϭ0.02).
+As expected, abdominal pain of grade 2 or higher
+was more common in the intraperitoneal group
+(PϽ0.001); however, the pain usually resolved within 24 hours and was controlled with nonopioid or
+only weak opioid drugs. One patient had grade 4 abdominal pain. Transient dyspnea was infrequent but
+occurred in a significantly larger proportion of paVo l u m e 3 3 5
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 1996 Massachusetts Medical Society. All rights reserved.
+
+Nu m b e r 2 6
+
+ؒ
+
+1953
+
+The New England Journal of Medicine
+
+TABLE 4. FREQUENCY OF HEMATOLOGIC TOXIC EFFECTS
+(уGRADE 3) DURING ANY COURSE OF TREATMENT.
+INTRAVENOUS
+GROUP
+(N‫)672؍‬
+
+TOXIC EFFECT
+
+INTRAPERITONEAL
+GROUP
+(N‫)052؍‬
+
+P VALUE
+
+% of patients
+
+Anemia (Ͻ8.0 g of hemoglobin/dl)
+Granulocytopenia (Ͻ1000
+granulocytes/mm3)
+Leukopenia (Ͻ2000 white
+cells/mm3)
+Thrombocytopenia (Ͻ50,000
+platelets/mm3)
+
+25
+
+26
+
+0.84
+
+69
+
+56
+
+0.002
+
+50
+
+40
+
+0.04
+
+9
+
+8
+
+0.64
+
+TABLE 5. FREQUENCY OF OTHER TOXIC EFFECTS (уGRADE 2)
+DURING ANY COURSE OF TREATMENT.
+INTRAVENOUS INTRAPERITONEAL
+GROUP
+GROUP
+(N‫)052؍‬
+(N‫)672؍‬
+
+TOXIC EFFECT*
+
+P VALUE
+
+% of patients
+
+Abdominal pain
+Fever
+Tinnitus
+Hearing loss
+Neuromuscular effects
+Neuromuscular effects at end
+of treatment†
+Pulmonary effects
+
+2
+5
+14
+15
+21
+25
+0.4
+
+18
+6
+7
+5
+16
+15
+
+Ͻ0.001
+0.45
+0.01
+Ͻ0.001
+0.18
+0.02
+
+3
+
+0.002
+
+*Grade 2 toxic effects were defined as follows: abdominal pain was pain
+relieved by oral opioids; fever, a temperature higher than 38°C; tinnitus,
+moderate symptoms of tinnitus; hearing loss, the ability to hear normal
+voice and sound levels but not whispered sounds; neuromuscular effects,
+an absence of deep-tendon reflexes, weakness, and peripheral-nerve pain;
+and pulmonary effects, transient dyspnea on mild exertion.
+†A total of 201 patients in the intravenous group and 175 in the intraperitoneal group completed five or six courses of treatment.
+
+tients in the intraperitoneal group (3 percent, vs. 0.4
+percent in the intravenous group; Pϭ0.002). In the
+patients receiving intraperitoneal cisplatin, dyspnea
+probably resulted from compression of the base of
+the lung by the fluid-filled intraperitoneal cavity.
+DISCUSSION
+
+In this study we compared intraperitoneal with intravenous cisplatin in women with advanced ovarian
+cancer. All the patients had undergone debulking
+surgery and received intravenous cyclophosphamide
+concomitantly with the cisplatin. The median survival of the patients treated intraperitoneally was
+8 months longer than that of the patients given intravenous cisplatin (49 vs. 41 months), and the haz1954 ؒ
+
+ard ratio in the intraperitoneal group was 0.76
+(Pϭ0.02). These results represent a 20 percent improvement in median survival and a 24 percent
+reduction in the risk of death during the entire follow-up period among the eligible patients in the intraperitoneal group.
+Neutropenia, tinnitus, hearing loss, and neuromuscular toxic effects were significantly less frequent
+in the intraperitoneal group than in the intravenous
+group. Abdominal pain was more common in the intraperitoneal group, but in most cases it was transient and not severe (i.e., grade 3 or higher in only
+5 percent of the patients).
+Previous reports have summarized the toxic effects of intraperitoneal cisplatin at doses ranging
+from 50 to 100 mg per square meter.11-13 Chronic,
+low-grade inflammation from repeated intraperitoneal administration may cause mild-to-severe abdominal pain and intraabdominal adhesions. These
+reports have generally focused on patients who had
+undergone two exploratory laparotomies before the
+administration of intraperitoneal cisplatin. In our
+study, all the patients had undergone only one definitive exploratory laparotomy within four weeks
+before the start of chemotherapy. Thus, our patients
+were probably less susceptible to the local toxic effects of intraperitoneal cisplatin.
+Howell et al. reported that after second-line therapy with intraperitoneal cisplatin, rates of surgically established complete responses were significantly
+higher among patients with smaller residual intraperitoneal tumor masses (р0.5 cm) than among
+those with larger masses (Ͼ0.5 cm to 2 cm).8 Consistent with this finding was the 80 percent rate of a
+complete pathological response among our patients
+with no gross residual disease who received intraperitoneal cisplatin (32 of 40 patients), as compared
+with a rate of 56 percent among those with no gross
+residual disease who received intravenous cisplatin
+(24 of 43). Such results reflect the fact that the penetration of intraperitoneal cisplatin is limited to a
+depth of 0.1 to 1 mm from the surface of the peritoneal tumor.14
+We found that intraperitoneal cisplatin was associated with a longer survival than was intravenous
+cisplatin, whether residual intraperitoneal tumor masses were 0.5 cm or less or more than 0.5 cm in
+the greatest dimension. We do not know the reason
+for this result, but several explanations are possible.
+All previous investigations of intraperitoneal cisplatin therapy have been phase 2 studies, which included mainly patients who had already received intravenous cisplatin. Our patients had never before
+received chemotherapy, and their tumors may therefore have been highly sensitive to cisplatin. Moreover, the precision in measuring intraperitoneal tumor masses during an initial exploratory laparotomy
+is limited, and the total volume of the mass may
+
+De c e m b e r 2 6 , 1 9 9 6
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 1996 Massachusetts Medical Society. All rights reserved.
+
+I N T R A P E R I TO N E A L VS. I N T R AV E N O U S C I S PL AT I N FO R STAG E I I I OVA R I A N CA N C E R
+
+have more prognostic value than the maximal dimension.
+The combination of intravenous paclitaxel plus intraperitoneal cisplatin may prove to be more effective than intravenous cyclophosphamide plus intraperitoneal cisplatin in patients with stage III ovarian
+cancer and minimal residual disease. The Gynecologic Oncology Group recently reported that paclitaxel plus cisplatin significantly increased survival
+(median, 38 months, vs. 24 months with cyclophosphamide plus cisplatin) when administered as primary chemotherapy in women with incompletely resected stage III or IV ovarian cancer.15 Ongoing
+phase 3 studies by the Gynecologic Oncology Group
+and the Southwest Oncology Group will further define the role of intraperitoneal cisplatin (and intravenous paclitaxel) in the treatment of stage III ovarian
+cancer that has been optimally resected.
+Supported in part by grants from the National Cancer Institute (CA38926,
+CA32102, CA45450, CA04920, CA42028, CA46441, CA45560, CA13612,
+CA20319, CA35119, CA35090, CA35281, CA58686, CA28862, CA35431,
+CA35200, CA45377, CA58861, CA45807, CA35261, CA12644, CA35192,
+CA37981, CA42777, CA16385, CA12213, CA35128, CA04919, CA35178,
+CA35176, CA35262, CA32734, CA46282, and CA58415) and BristolMyers Squibb.
+
+We are indebted to Drs. Renzo Canetta and Mace Rothenberg for
+scientific advice; to the individual investigators for their participation and support (especially Drs. Ronald Alvarez, Albert Bonebrake,
+Eric Jenison, William Creasman, Nicola Spirtos, Matthew Burrell,
+and Mark Crozier); to Dava Garcia for assistance with study coordination and manuscript preparation; to Janet O’Sullivan, M.S., for
+assistance with the statistical analysis; to Dana Sparks, M.A.T., for
+protocol coordination; to Janet Quade, Nancy Mason-Liddil, and
+Dianna Garcia for assistance with data management; and to Lois
+Loescher, R.N., M.S., for editorial assistance.
+
+REFERENCES
+1. Wingo PA, Tong T, Bolden S. Cancer statistics, 1995. CA Cancer J Clin
+1995;45:8-30. [Erratum, CA Cancer J Clin 1995;45:127-8.]
+2. Miller BA, Ries LAG, Hankey BF, et al., eds. SEER cancer statistics review: 1973-1990. Bethesda, Md.: National Cancer Institute, 1993. (NIH
+publication no. 93-2789.)
+3. Neijt JP ten Bokkel Huinink WW, van der Burg MEL, et al. Ran,
+domized trial comparing two combination chemotherapy regimens
+(CHAP-5 v CP) in advanced ovarian carcinoma. J Clin Oncol 1987;5:
+1157-68.
+4. Omura GA, Bundy BN, Berek JS, Curry S, Delgado G, Mortel R. Randomized trial of cyclophosphamide plus cisplatin with or without doxorubicin in ovarian carcinoma: a Gynecologic Oncology Group Study. J Clin
+Oncol 1989;7:457-65.
+5. Dedrick RL, Myers CE, Bungay PM, DeVita VT Jr. Pharmacokinetic
+rationale for peritoneal drug administration in the treatment of ovarian
+cancer. Cancer Treat Rep 1978;62:1-11.
+6. Howell SB, Pfeifle CL, Wung WE, et al. Intraperitoneal cisplatin with
+systemic thiosulfate protection. Ann Intern Med 1982;97:845-51.
+7. Goel R, Cleary SM, Horton C, et al. Effect of sodium thiosulfate on
+the pharmacokinetics and toxicity of cisplatin. J Natl Cancer Inst 1989;81:
+1552-60.
+8. Howell SB, Zimm S, Markman M, et al. Long-term survival of advanced
+refractory ovarian carcinoma patients with small-volume disease treated
+with intraperitoneal chemotherapy. J Clin Oncol 1987;5:1607-12.
+9. Kirmani S, Lucas WE, Kim S, et al. A phase II trial of intraperitoneal
+cisplatin and etoposide as salvage treatment for minimal residual ovarian
+carcinoma. J Clin Oncol 1991;9:649-57.
+10. Cox DR. Regression models and life-tables. J R Stat Soc [B] 1972;34:
+187-220.
+11. Piccart MJ, Speyer JL, Markman M, et al. Intraperitoneal chemotherapy: technical experience at five institutions. Semin Oncol 1985;12:Suppl
+4:90-6.
+12. Markman M. Intraperitoneal antineoplastic agents for tumors principally confined to the peritoneal cavity. Cancer Treat Rev 1986;13:219-42.
+13. Idem. Intraperitoneal chemotherapy for gynecologic malignancies. In:
+Deppe G, ed. Chemotherapy of gynecologic cancer. 2nd ed. New York:
+Alan R. Liss, 1990:375-90.
+14. Los G, Mutsaers PHA, van der Vijgh WJF, Baldew GS, de Graaf PW,
+McVie JG. Direct diffusion of cis-diamminedichloroplatinum(II) in intraperitoneal rat tumors after intraperitoneal chemotherapy: a comparison
+with systemic chemotherapy. Cancer Res 1989;49:3380-4.
+15. McGuire WP Hoskins WJ, Brady MF, et al. Cyclophosphamide and
+,
+cisplatin compared with paclitaxel and cisplatin in patients with stage III
+and stage IV ovarian cancer. N Engl J Med 1996;334:1-6.
+
+Vo l u m e 3 3 5
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 4, 2014. For personal use only. No other uses without permission.
+Copyright © 1996 Massachusetts Medical Society. All rights reserved.
+
+Nu m b e r 2 6
+
+ؒ
+
+1955

@@ -58,7 +58,7 @@ class PdfReader(TextReader):
         """
         # bcw -- the quotes around the file path are necessary on
         # some systems!
-        rawtext = subprocess.check_output(['pdftotext', '"%s"' % filename, '-'])
+        rawtext = subprocess.check_output(['pdftotext', "%s" % filename, '-'])
         return rawtext.strip() # remove any multiple blank lines at the end
 
 
@@ -102,6 +102,7 @@ class JournalReader:
     def get_text(self):
         "returns the contents as plain text"
         return self.file_obj.get_text()
+
 
 class LabeledAbstractReader:
     ''' 

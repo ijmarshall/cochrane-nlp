@@ -1,0 +1,995 @@
+Bone Marrow Transplantation (2000) 26, 627–632
+© 2000 Macmillan Publishers Ltd All rights reserved 0268–3369/00 $15.00
+www.nature.com/bmt
+
+High-dose thiotepa and hematopoietic stem cell transplantation in
+pediatric malignant mesenchymal tumors: a phase II study
+´
+L Lafay-Cousin1, O Hartmann1, P Plouvier2, F Mechinaud3, P Boutard4 and O Oberlin1
+1
+
+´
+´
+´
+Service d’Oncologie Pediatrique, Institut Gustave Roussy, Villejuif; 2Service d’Hematolo-Oncologie Pediatrique, Centre Hospitalier
+´
+Universitaire Saint Jacques, Besancon; 3Service d’Hematolo-Oncologie, Centre Hospitalier Universitaire, Nantes; and 4Service de
+¸
+´
+Pediatrie, Centre Hospitalier Universitaire, Caen, France
+
+Summary:
+
+Patients and methods
+
+The prognosis of metastatic malignant mesenchymal
+tumors (MMT) remains poor. Given the chemosensitivity of these neoplasms, a phase II study of high-dose
+thiotepa (HDT) was performed to evaluate the efﬁcacy
+of this drug in this particular subset of pediatric tumors.
+Between 1986 and 1998, <n>18</n> patients, previously treated
+with conventional therapy for metastatic or refractory
+MMT, entered the study. Thiotepa was administered at
+a daily dose of 300 mg/m2 for 3 consecutive days. Hematopoietic stem cell rescue, consisting of bone marrow
+transplantation or peripheral stem cell transplantation,
+was performed 2 days after completion of HDT. A
+response exceeding 50% was observed in 6/18 patients
+(response rate 33%). Toxicity was severe but never led
+to death. HDT used at a dose of 900 mg/m2 yields
+measurable anti-tumor activity in previously treated
+patients. The next step in these particularly poor prognosis metastatic MMT will be to investigate HDT combined with other drugs, known to be efﬁcient at high
+doses. Bone Marrow Transplantation (2000) 26, 627–632.
+Keywords: thiotepa;
+BMT;
+rhabdomyosarcoma;
+sarcoma; children
+
+Patient characteristics
+
+Metastatic malignant mesenchymal tumors are rare but
+have a notoriously poor outcome. In stage IV rhabdomyosarcoma (RMS), for example, conventional chemotherapy
+combined with local treatment yields a cure rate of approximately 20%. As RMS is a chemosensitive tumor, it was
+thought that high-dose chemotherapy followed by autologous hematopoietic stem cell transplantation could potentially improve the outcome of patients afﬂicted by these
+tumors. The dose–effect relationship is essentially effective
+in chemosensitive malignancies. High-dose thiotepa has
+yielded signiﬁcant anti-tumor activity in a variety of pediatric solid tumors.1,2 The purpose of this phase II study was
+to evaluate the anti-tumor effect of this molecule in pediatric MMT and to describe its potential role in the future
+treatment of high-risk MMT in children.
+´
+Correspondence: Dr O Hartmann, Service d’Oncologie Pediatrique, Institut Gustave Roussy, 39 rue Camille Desmoulin, 94805 Villejuif Cedex,
+France
+Received 6 March 2000; accepted 26 June 2000
+
+From 1986 to 1998, 18 children treated for a malignant
+mesenchymal tumor, entered a phase II study of high-dose
+thiotepa (HDT) followed by hematopoietic stem cell transplantation (HSCT), in four different SFOP centers. All
+patients had recurrent disease or lesions that were refractory
+to ﬁrst-line conventional chemotherapy. The sex ratio was
+11 boys/7 girls. The median age at diagnosis was 10.5 years
+(range 2–18.5).
+The histologic types were six alveolar rhabdomyosarcoma (RMS), eight embryonal RMS, two desmoplastic
+sarcoma, and two undifferentiated sarcoma.
+At the time of diagnosis, disease was classiﬁed as stage
+IV in nine patients, stage III in four, stage II in two
+and stage I in three (Table 1) according to the TNM
+classiﬁcation.3
+Before entering this HDT phase II study, all patients had
+received conventional chemotherapy with three to 10 different drugs (median six), according to SIOP protocols MMT
+75, MMT 84, MMT 89, MMT95.4–7 The primary tumor
+(PT) had been resected in seven patients. Three of the seven
+excisions had been considered microscopically complete.
+In one patient (No. 16) pulmonary metastases had been
+resected. Surgery had not been performed when tumors
+were unresectable after chemotherapy or when there was
+no macroscopic tumor, depending on the protocol applied.
+In eight patients, local treatment had also comprised radiotherapy to the primary tumor bed at a median dose of 45.Gy
+(range 39–50).
+After ﬁrst-line chemotherapy, six patients (Nos 2, 3, 8,
+10, 11, 17) had shown no signs of response and were
+considered to have primary disease refractory (RD) to
+chemotherapy (radiologically evaluated response Ͻ25%).
+A partial remission (PR) had been obtained in two patients
+with metastatic lesions (Nos 6, 7). The 10 remaining
+patients had developed recurrent lesions (from one to six),
+after having achieved complete remission (CR) (details for
+each patient are given in Table 2).
+Treatment of recurrent disease had consisted of secondline chemotherapy for all 10 relapsing patients, surgical
+excision of a local recurrence in one patient (No. 9), radiotherapy to the PT in two others (Nos 15, 18) (45 Gy) and
+both surgical excision and radiotherapy to the PT in six
+patients (Nos 1, 4, 5, 13, 14, 16) (45 Gy). One patient had
+
+HD thiotepa in pediatric MMT
+L Lafay-Cousin et al
+
+628
+
+Table 1
+Patient No.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+
+Patient characteristics at diagnosis
+Age at
+diagnosis
+(years)
+
+Sex
+
+10.5
+7
+2
+8.5
+18.5
+3
+8
+3
+16.5
+16.5
+13
+11
+12.5
+7.5
+14
+6
+12
+16
+
+Histology
+
+M
+M
+M
+M
+M
+M
+M
+F
+F
+F
+M
+F
+M
+F
+M
+F
+M
+F
+
+Primary tumor site
+
+Undifferentiated S
+Alveolar RMA
+Embryonal RMS
+Embryonal RMS
+Embryonal RMS
+Embryonal RMS
+Alveolar RMS
+Embryonal RMS
+Embryonal RMS
+Desmoplastic S
+Alveolar RMS
+Desmoplastic S
+Undifferentiated S
+Embryonal RMS
+Embryonal RMS
+Alveolar RMS
+Alveolar RMS
+Alveolar RMS
+
+Metastastic sites
+
+Stage at
+diagnosis
+
+–
+–
+–
+–
+–
+B, BM
+LN
+L
+L, BM
+L, LN
+L, LN
+L, LN
+–
+–
+–
+–
+BM, LN, P
+B, BM, LN
+
+I
+III
+II
+III
+II
+IV
+IV
+IV
+IV
+IV
+IV
+IV
+I
+I
+III
+III
+IV
+IV
+
+left orbit
+chest wall
+right mid ear
+prostate
+pterygoid fossa
+lung
+left leg
+left adrenal
+buttock
+pelvis
+pelvis
+abdomen
+left leg
+orbit
+ethmoid
+arm
+chest wall
+arm
+
+B = Bone; BM = bone marrow; L = lung; LN = lymph nodes; P = pleura; RMS = rhabdomyosarcoma; S = sarcoma.
+
+Table 2
+
+Previous treatment and tumor status at the time of HDT
+
+Patient
+No.
+
+Drugs
+First line
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+
+VAC
+IVA;
+IVA;
+IVA;
+IVA;
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+CEV, IVA,
+
+Further lines
+
+VP16, MOPP, Pcb, CEV,
+Cp Adria
+Cp Adria VP16
+VINCA EPI
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+IVE
+
+Cb Adria, VP16
+Cb Epi
+VP 16
+Cpm
+VP16; Cb
+Genc, Thep
+VP16 Cpm
+VAC VP16;
+
+Response to
+conventional
+chemotherapy
+
+Surgery
+Location
+
+Radiotherapy
+Location
+
+S
+RD
+RD
+RR
+S
+S
+S
+RD
+RR
+RD
+RD
+S
+S
+S
+S
+S
+RD
+S
+
+PT
+
+PT
+
+PT
+PT
+
+PT
+PT
+
+No.
+relapse
+
+At time of HDT
+Tumor
+status
+
+PT
+PT
+
+PT
+PT
+Met
+
+PT
+PT
+PT
+PT Met
+PT Met
+
+4
+0
+0
+2
+2
+0
+0
+0
+1
+0
+0
+1
+2
+6
+1
+2
+0
+2
+
+PR
+PD
+PD
+PD
+PD
+PR
+PR
+PD
+PD
+PD
+PD
+PR
+PD
+PD
+PD
+PD
+PD
+PD
+
+Measurable disease
+PT
+Metast
+
++
++
++
++
++
++
++
++
++
++
++
+
++
+
++ (L)
+
++ (B)
++ (LN)
++ (L)
++ (L)
++ (L, LN)
++ (L, LN)
++ (Sp, Li, LN)
++ (L)
++ (L)
++ (LN)
++ (LN)
++ (CNS)
+
+Response: PD = progressive disease; PR = partial remission; RD = refractory disease; RR = refractory relapse; S = sensitive. Localization: B = bone;
+CNS = central nervous system; L = lung; Li = liver; LN = lymph node; Met = metastases; PT = primary tumor; Sp = spleen.
+Chemotherapy: Adria = adriamycin; Cb = carboplatin; Cp = cisplatinum; Cpm = cyclophosphamide ; CEV = carboplatin, epirubicin, vincristine;
+Epi = epirubicin; Genc = gencytabine; IVA = ifosfamide, vincristine, actinomycin D; IVE = ifosfamide, vincristine, etoposide; MOPP = nitrogen mustard,
+vincristine, procarbazine, prednisone; Pcb = procarbazine; VAC = vincristine, actinomycin D, cyclophosphamide; VINCAEPI = vincristine, carboplatin,
+teniposide; VP16 = etoposide; Thep = theprubicin.
+
+also received interleukin 2 (350 000 IU/kg × 4 days)
+(No. 4). Of the 10 relapsing patients, two (Nos 4, 9) had a
+refractory recurrence and in two, the sensitivity of the
+relapse had not been tested and HDT was the ﬁrst treatment
+proposed (Nos 12, 15). The other six patients had sensitive relapses.
+Bone Marrow Transplantation
+
+Finally, at the time of HDT, four patients were in partial
+remission and 14 had progressive disease (progression over
+25% at any sites of the disease).
+All patients had measurable disease, at the primary site
+(ﬁve patients), at metastatic sites (six patients) and at both
+sites (seven patients). Metastases were located in the lungs
+
+HD thiotepa in pediatric MMT
+L Lafay-Cousin et al
+
+Table 3
+
+629
+
+Response to HD thiotepa, post-HDT treatment and outcome
+
+Patient No.
+
+Response
+
+Post-HDT treatment
+
+Follow-up
+
+Chemotherapy
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+
+PR
+PR
+SD
+SD
+SD
+SD
+OE
+OE
+OE
+OE
+OE
+SD
+PR
+PD
+PR
+SD
+PR
+CR
+
+Surgery
+
+Radiotherapy
+
+Present status
+
+−
+−
+−
+−
+−
+−
+−
++
+−
+−
++
+−
+−
+−
+−
+−
++
+−
+
+Met
+PT
+−
+−
+−
+PT
+−
+Met
+−
+PT
+−
+−
+Met
+−
+−
+−
+−
+−
+
+−
+−
+PT
+−
+−
+−
+PT
+−
+−
+PT + Met
+−
+−
+Met
+PT
+Met
+−
+−
+PT
+
+DOD
+DOD
+DOD
+DOD
+DOD
+DOD
+NED
+NED
+DOD
+DOD
+DOD
+DOD
+SD
+DOD
+DOD
+DOD
+DOD
+PD
+
+Follow-up post Time to relapse or
+HDT (months) progression (months)
+13
+34
+2
+4
+10
+3
+63+
+50+
+3
+31
+3
+8
+16+
+5
+6
+7
+2
+22+
+
+5
+21
+−
+−
+−
+−
+1
+18
+1
+−
+−
+5
+−
+1
+7
+
+Response: DOD = died of disease; OE = objective effect; NED = no evidence of disease; PD = progressive disease; PR = partial remission; SD = stable
+disease. Location: PT = primary tumor; met = metastases.
+
+(seven patients), bone (one patient), lymph nodes (six
+patients), central nervous system (one patient), and the
+pleura (one patient).
+Drug administration and transplantation procedures
+Thiotepa was administered at a daily dose of
+300 mg/m2/day as a 1-h infusion, for 3 consecutive days
+(total dose of 900 mg/m2).
+HSCT was performed 2 or 3 days after the end of chemotherapy. Seven patients had an autologous bone marrow
+transplantation (ABMT), eight had a peripheral blood stem
+cell (PBSC) graft and three patients received both ABMT
+and PBSC. PBSC were obtained by leukaphereses and
+mobilized using G-CSF administered to patients in steady
+state or at recovery following myelosuppressive chemotherapy.
+Supportive care
+All patients were isolated in a laminar air-ﬂow room and
+were ﬁtted with a right atrial catheter on admission to the
+transplantation unit. Broad-spectrum antibiotics were prescribed, as previously described.8 Platelet and packed red
+blood cell transfusions were prescribed to maintain the platelet count Ͼ20 × 109/l and hemoglobin Ͼ70 g/l. All blood
+products were irradiated at a dose of 25 Gy before transfusion and CMV-negative products were given to CMVseronegative patients.
+Evaluation of response
+Tumor response was evaluated 4–6 weeks after transplantation. The aim of the evaluation, using CT scan or MRI,
+and/or scintigraphy and/or medullogram, was to measure
+
+changes in the tumor volume at all disease sites, primary
+tumor and measurable metastases included. Complete
+remission (CR) was deﬁned as no detectable disease, whatever the investigation. A partial response corresponded to
+shrinkage of previous volumes exceeding 50%. No
+response (NR) denoted an objective effect (OE) which was
+deﬁned as a reduction of between 25% and 50%, stable
+disease (SD) corresponding to tumor shrinkage of less than
+25% and progressive disease (PD).
+Results
+
+Tumor response
+All patients were evaluable for tumor response (Table 3)
+and toxicity.
+Of the 18 patients, one achieved CR (No. 18), ﬁve achieved PR (Nos 1, 2, 13, 15, 17), and all the others were
+considered as NR (Table 3). Six of 18 patients responded
+following HDT attaining a response rate of 33% (95% CI
+11% to 55%).
+Twelve of the 18 patients received further treatment after
+HDT. The patient who entered CR (No. 18) after HDT
+relapsed locally 7 months later and is now alive with PD.
+Among the ﬁve patients who achieved PR, one (No. 17)
+received a second course of HDT with HSCT. In spite of
+this treatment, he died of progressive disease 2 months
+later. Another patient (No. 13) had resection of lung metastases followed by thoracic radiotherapy and is still considered to have stable disease 16 months later. The three
+others (Nos 1, 2, 15) died of progressive disease despite
+further surgery in two cases and radiotherapy in one.
+Among the 12 non-responders, 10 died of progressive
+Bone Marrow Transplantation
+
+HD thiotepa in pediatric MMT
+L Lafay-Cousin et al
+
+630
+
+disease after HDT despite various post-transplantation
+treatments over a median of 4 months (range 2–31). Two
+patients (Nos 7, 8) are still alive with NED, 63+ and 50+
+months post HDT. One received radiotherapy to the primary tumor and the other had additional chemotherapy
+including cyclophosphamide and carboplatin and surgical
+resection of lung metastases. Thus, four patients are
+currently alive, two of them with NED and a duration of
+follow-up of 16+, 22+, 50+ and 63+ post HDT.
+The overall median time to relapse post HDT was 4
+months (range 1–21) with a median follow-up of 8 months
+(range 2–63).
+
+Toxicity
+No patient died of HDT-related toxicity. Although the toxicity of thiotepa was signiﬁcant, overall tolerance was
+acceptable in this study. Myelosuppression was the most
+common toxicity observed. The median duration of neutropenia (Ͻ0.5 × 109/l) and thrombocytopenia (Ͻ50 × 109/l)
+was 9.5 days (range 2–37) and 30 days (6–140), respectively. According to the current protocol at time of BMT,
+12 of 18 patients received G-CSF systematically after the
+transplantation procedure: all PBSC recipients, two ABMT
+recipients and two patients who received both grafts. The
+median duration of G-CSF administration was 13 days
+(range 8–20).
+The median number of red blood cell and platelet transfusions was two (range 1–4) and four (range 2–13), respectively.
+All patients experienced fever during neutropenia for a
+median duration of 6 days (range 1–18). In the majority of
+cases, its origin remained unknown. A bacterial isolate was
+identiﬁed in three cases. Two patients had septicemia due
+to Enterobacter cloacae in one case and to Staphylococcus
+aureus in the other. One patient had a urine infection due
+to Enterococcus. These infections resolved easily with no
+complications. The median duration of antibiotic therapy
+was 17 days (range 8–35).
+No severe hemorrhagic complications occurred during
+hospitalisation post SCT. One case of mild hemorrhagic
+cystitis was reported that resolved completely.
+Two patients experienced acute renal toxicity (tubular
+pathology and a decrease in creatinine clearance). These
+complications were transient and recovery was complete
+and rapid.
+Mucositis was observed in 12/18 patients. In seven cases,
+this side-effect exceeded grade 2 according to the Bearman classiﬁcation.9
+Fourteen of 18 patients experienced vomiting despite
+regular prophylactic ondansetron.
+Diarrhoea occurred in 13/18 patients and was severe in
+eight (three grade III and ﬁve grade II). Treatment led to
+anorexia in 15/18 children which was severe in four.
+Weight loss was severe (Ͼ10% of body weight) in three
+cases.
+Four cases of skin toxicity were documented, one of
+which was described as lobster syndrome. The patient recovered from this toxicity slowly and there were no late
+effects.
+Bone Marrow Transplantation
+
+Discussion
+Although the prognosis of localized RMS has improved
+over the last 20 years, with overall survival reaching 60%
+to 70%,10 the prognosis of metastatic or recurrent RMS
+remains very poor (15–30% according to studies).11–13 The
+cure rate of high-risk rhabdomyosarcoma, namely primary
+or secondary metastatic disease, parameningeal and
+localized tumors refractory to conventional therapy, is
+evaluated at around 20%.14 Since RMS is a chemosensitive
+tumor, dose escalation is considered a valid option in
+attempts to improve the prognosis.
+It is well established that cytotoxicity with thiotepa, an
+alkylating agent similar to nitrogen mustard, correlates with
+the dose administered.15
+Geyer et al16 concluded that thiotepa was inefﬁcient in
+recurrent malignant pediatric tumors using the maximum
+conventional dose (65 mg/m2). High-dose thiotepa, used as
+a single agent or combined with other cytotoxics and supported by hematopoietic stem cell transplantation (HSCT),
+has been tested in various solid pediatric tumors and the
+response rates were encouraging.2,17,18,19 However, no
+homogeneous large series has adequately evaluated the
+activity of thiotepa in MMT. We previously reported a
+phase II study of HDT in various pediatric solid tumors
+and some of the patients (Nos 1–7, 9) in the present study
+were included in that previous publication.2 The results
+obtained were encouraging but the limited size of the population prohibited any ﬁrm conclusions regarding response
+rate.
+This is the ﬁrst large series evaluating the anti-tumor
+activity of HDT in MMT. Response in 6/18 patients (33%)
+conﬁrms previous data and demonstrates the efﬁcacy of the
+drug used at a high dose in this type of childhood tumor.
+Given the small size of the population, no difference in
+response rate could be demonstrated in terms of histologic
+types. All children who achieved a signiﬁcant response had
+metastatic disease at the time of HDT and half of the
+responding patients were experiencing a second or further
+relapse when they received HDT. The responses observed
+are noteworthy since these patients had particularly poor
+prognosis disease.
+HDT has most often been included in multi-agent highdose chemotherapy regimens.20–22 The main drawback of
+such a combination is that drug doses have to be attenuated
+to avoid cumulative toxicity.23 Furthermore, these combinations were designed empirically and it has not been
+possible to analyse the efﬁcacy of each single agent.
+A few other phase II studies using high-dose single
+agents in MMT have been reported. Pinkerton et al24 used
+HD melphalan and achieved a response rate of 44% in
+MMT. Hartmann et al25 also reported a response rate of
+44% for RMS with HD melphalan in a phase II study of
+pediatric solid tumors. Nevertheless, HD melphalan failed
+to have an impact on survival in MMT 4–91 study.13
+A phase II study of high-dose methotrexate was conducted in high-risk unresectable or metastatic rhabdomyosarcoma (RMS) and a response rate of 33% (4/12) was
+obtained. This study,26 however, investigated ‘up-front window therapy’ and included only previously untreated chil-
+
+HD thiotepa in pediatric MMT
+L Lafay-Cousin et al
+
+dren whose tumors should have been more sensitive to
+chemotherapy.
+In the present study, thiotepa was used at 900 mg/m2.
+This is the maximum tolerated dose,15 but there are no data
+available indicating whether a lower dose would yield the
+same anti-tumor efﬁcacy or not.
+Extra-hematological toxicity of HDT was essentially severe mucositis, that was never life-threatening, but necessitated frequent use of opiates to relieve severe pain. This
+side-effect has been well described and is known to be
+dose-dependent and to become problematic as soon as the
+900 mg/m2 dose is used.15 Despite severe mucositis, no
+cases of severe gastrointestinal hemorrhage occurred in
+this series.
+Conversely, cutaneous toxicity was less frequent than
+expected. Saarinen et al19 reported the occurrence of
+erythroderma in practically every patient at a dose of
+1125 mg/m2.
+In conclusion, the present series indicates that thiotepa is
+an active agent in pediatric malignant mesenchymal tumors
+when used at a high dose. Although this HD schedule was
+not life-threatening, toxicity remained severe and necessitated intensive care monitoring and adapted supportive
+care.
+HDT could be used in combination with other agents
+demonstrated to be efﬁcient as single agents in phase II
+studies. Consolidation therapy of CR patients could therefore be investigated prospectively using combined highdose chemotherapy in patients with particularly poor prognosis stage IV MMT, namely, subjects older than 10
+years at diagnosis and/or with bone or bone marrow
+metastases.27
+
+7
+
+8
+
+9
+10
+11
+12
+
+13
+14
+15
+
+16
+
+17
+
+Acknowledgements
+We thank L Saint Ange for editing and L Morin for her incomparable support.
+
+18
+
+References
+19
+1 Standford S, Saarinen U, Warkentin P et al. High-dose N-N′N″ triethylenethiophosphoramid in pediatric phase I-II autologous bone marrow transplantation studies. Exp Hematol
+1988; 16: 503 (Abstr. 176).
+2 Lucidarme N, Valteau-Couanet D, Oberlin O et al. Phase II
+of high-dose thiotepa and hematopoietic stem cell transplantation in children with solid tumors. Bone Marrow Transplant
+1998; 22: 535–540.
+3 Rodary C, Flamant F, Donaldson SS. An attempt to use a
+common staging system in rhabdomyosarcoma: a report of an
+international workshop initated by the International Society of
+Pediatric Oncology (SIOP). Bull Cancer 1988; 75: 213–223.
+4 Flamant F, Hill C. The improvement in survival associated
+with combined chemotherapy in chilhood rhabdomyosarcoma.
+A historical comparaison of 345 patients in the same center.
+Cancer 1984; 53: 2417–2421.
+5 Flamant F, Rodary C, Rey C et al. Treatment of non metastatic
+rhabdomyosarcomas in chilhood and adolescence. Result of
+the second study of the International Society of Pediatric
+Oncology: MMT 84. Eur J Cancer 1998; 34: 1050–1062.
+6 Stevens MCG, Oberlin O, Rey A et al. Non metastatic rhabdo-
+
+20
+
+21
+
+22
+
+23
+24
+
+myosarcoma: experience from the SIOP MMT 89 study. Med
+Pediatr Oncol 1994; 23: 171 (Abstr. O6).
+Stevens MCG, Oberlin O, Rey A et al. Progress in the treatment of non-metastatic rhabdomyosarcoma (RMS): a report
+from the SCOP MMT 89 and 95 studies. Med Ped Oncol
+1999; 33: 177 (Abstr. O-142).
+Avril M, Hartmann O, Valteau-Couanet D et al. Anti-infective
+prophylaxis with ceftazidime and teicoplanin in children
+undergoing high-dose chemotherapy and bone marrow transplantation. Pediatr Hematol Oncol 1994; 11: 63–73.
+Bearman SI, Appelbaum FR, Buckner CD et al. Regimen
+related toxicity in patients undergoing bone marrow transplantation. J Clin Oncol 1988 ; 6: 1562–1568.
+Standards options and recommendations for clinical care of
+rhabdomyosarcoma and others soft tissue sarcoma in children.
+Bull Cancer 1998; 85: 1015–1042.
+Crist WM, Gehan EA, Beltangady M et al. The third
+intergroup rhabdomyosarcoma study. J Clin Oncol 1995; 13:
+610–630.
+Koscielniak E, Rodary C, Flamant F et al. Metastatic rhabdomyosarcoma and histologically similar tumors in childhood: a
+retrospective European multi-center analysis. Med Pediatr
+Oncol 1992; 20: 209–214.
+Carli M, Colombatti R, Oberlin O et al. High-dose melphalan
+with autologous stem-cell rescue in metastatic rhabdomyosarcoma. J Clin Oncol 1999; 17: 2796–2803.
+Atra A, Pinkerton CR . Autologous stem cell transplantation
+in solid tumors of childhood. Ann Med 1996; 28: 159–164.
+Wolff SN, Herzig RH, Fay JW et al. High-dose N, N′, N″triethilenethiophosphoramide (thiotepa) with autologous bone
+marrow transplantation: phase I studies. Semin Oncol 1990;
+17: 2–6.
+Geyer JR, Balis FM, Krailo MD et al. A phase II study of
+thiotepa in children with recurrent solid tumor malignancies:
+a Children’s Cancer Group study. Invest New Drugs 1996; 13:
+337–342.
+Kletzel M, Abella EM, Sandler ES et al. Thiotepa and cyclophosphamide with stem cell rescue for consolidation therapy
+for children with high risk neuroblastoma: a phase I/II study
+of the pediatric blood and marrow transplant consortium. J
+Pediatr Hematol Oncol 1998; 20: 49–54.
+Kalifa C, Hartmann O, Demeocq F et al. High-dose busulfan
+and thiotepa with autologous bone marrow transplantation in
+childhood malignant brain tumors: a phase II study. Bone
+Marrow Transplant 1992; 9: 227–233.
+¨
+Saarinen UM, Hovi L, Makipernaa. High-dose thiotepa with
+autologous bone marrow rescue in pediatric solid tumors.
+Bone Marrow Transplant 1991; 8: 369–376.
+Walterhouse DO, Hoover ML, Marymont MA. High-dose
+chemotherapy followed by peripheral blood stem cell rescue
+for metastatic rhabdomyosarcoma : the experience at Chicago
+children’s memorial hospital. Med Pediatr Oncol 1999; 32:
+88–92.
+Koscielniak E, Klingebiel TH, Peters C et al. Do patients with
+metastatic and recurrent rhabdomysarcoma beneﬁt from highdose therapy with hematopoietic rescue ? Report of the
+German/Austrian pediatric bone marrow transplantation
+group. Bone Marrow Transplant 1997; 19: 227–231.
+Hara J, Osugi Y, Ohta H et al. Double conditioning consisting
+of thiotepa, melphalan and busulfan with stem cell rescue for
+the treatment of pediatrics solid tumors. Bone Marrow Transplant 1998; 22: 7–12.
+Pinkerton CR. Megatherapy in childhood sarcoma. A decade
+of phase II studies: what next. Bone Marrow Transplant 1992;
+10 (Suppl. 2): 19.
+Pinkerton CR, Ladenstein R, Chauvin F. Megatherapy with
+autologous bone marrow rescue in advance rhabdomyosar-
+
+631
+
+Bone Marrow Transplantation
+
+HD thiotepa in pediatric MMT
+L Lafay-Cousin et al
+
+632
+
+coma. The EBMT group experience. EBMT XVIII Meeting,
+1992; 160 (Abstr. 225).
+25 Hartmann O, Vassal G, Valteau D et al. Autologous bone marrow transplantation in pediatric solid tumors: phase II studies.
+Bone Marrow Transplant 1991; 7: 106–111.
+26 Pappo AS, Bowman LC, Furman WL et al. A phase II trial
+of high-dose methotrexate in previously untreated children
+
+Bone Marrow Transplantation
+
+and adolescents with high risk unresectable or metastatic
+rhabdomyasarcoma. J Pediatr Hematol Oncol 1997; 19:
+438–442.
+27 Carli M, Colombatti R, Pinkerton R et al. Prognostic factors
+in children with metastatic rhabdomyosarcoma: results of the
+European intergroup studies (EIS) MMT’89 and MMT’91.
+Med Pediatr Oncol 1997; 29: 324 (Abstr. O-32).

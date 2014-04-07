@@ -1,0 +1,1207 @@
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+189
+
+CHRONIC OBSTRUCTIVE PULMONARY DISEASE
+
+Clinical efficacy of anti-pneumococcal vaccination in
+patients with COPD
+I Alfageme, R Vazquez, N Reyes, J Munoz, A Ferna
+˜
+´ndez, M Hernandez, M Merino,
+J Perez, J Lima
+...............................................................................................................................
+Thorax 2006;61:189–195. doi: 10.1136/thx.2005.043323
+
+See end of article for
+authors’ affiliations
+.......................
+Correspondence to:
+Dra I Alfageme,
+Pneumology Section,
+Valme University Hospital,
+41014 Seville, Spain;
+ialfageme@separ.es
+Received 2 March 2005
+Accepted
+28 September 2005
+Published Online First
+14 October 2005
+.......................
+
+I
+
+Background: A study was undertaken to evaluate the clinical efficacy of the 23-valent pneumococcal
+polysaccharide vaccine (PPV) in immunocompetent patients with chronic obstructive pulmonary disease
+(COPD).
+Methods: A randomised controlled trial was carried out in 596 patients with COPD of mean (SD) age 65.8
+(9.7) years, 298 of whom received PPV. The main outcome was radiographically proven community
+acquired pneumonia (CAP) of pneumococcal or unknown aetiology after a mean period of 979 days
+(range 20–1454).
+Results: There were 58 first episodes of CAP caused by pneumococcus or of unknown aetiology, 25 in the
+intervention group and 33 in the non-intervention group. Kaplan-Meier survival curves for CAP did not
+show significant differences between the intervention and non-intervention arms (log rank test = 1.15,
+p = 0.28) in the whole group of patients. The efficacy of PPV in all patients was 24% (95% CI 224 to 54;
+p = 0.333). In the subgroup aged ,65 years the efficacy of PPV was 76% (95% CI 20 to 93; p = 0.013),
+while in those with severe functional obstruction (forced expiratory volume in 1 second ,40%) it was 48%
+(95% CI 27 to 80; p = 0.076). In younger patients with severe airflow obstruction the efficacy was 91%
+(95% CI 35 to 99; p = 0.002). There were only five cases of non-bacteraemic pneumococcal CAP, all in the
+non-intervention group (log rank test = 5.03; p = 0.025). Multivariate analysis gave a hazard ratio for
+unknown and pneumococcal CAP in the vaccinated group, adjusted for age, of 0.20 (95% CI 0.06 to
+0.68; p = 0.01).
+Conclusions: PPV is effective in preventing CAP in patients with COPD aged less than 65 years and in
+those with severe airflow obstruction. No differences were found among the other groups of patients with
+COPD.
+
+nfection with Streptococcus pneumoniae remains a major
+cause of morbidity and mortality across all age groups,
+being the most common cause of community acquired
+bacterial pneumonia.1 The burden of disease is greatest
+among young children and the elderly. The incidence of
+invasive pneumococcal disease has been estimated to be 15–
+30 per 100 000 inhabitants per year in developed countries,
+with the highest rates among persons older than 65 years of
+age and in children aged under 2 years. In adults, pneumococcal bacteraemia is associated with pneumonia in 60–85%
+of cases.2 Despite appropriate antibiotic therapy and intensive
+care treatment, there is a considerable case fatality in
+pneumococcal bacteraemia—15–20% among adults overall,
+with the highest rates among the elderly and in patients with
+severe underlying medical conditions.3 Thus, pneumococcal
+diseases are a major public health problem all over the world,
+a problem underlined by the rapidly spreading antimicrobial
+resistance to common and essential antibiotics.
+Smoking is the most common cause of chronic obstructive
+pulmonary disease (COPD) and the rate of pneumococcal
+disease is high among patients with this condition,4 5
+probably due to defective clearance mechanisms. In these
+patients, community acquired pneumonia (CAP) is an
+infectious illness that frequently leads to hospital admission
+and increased morbidity and mortality. The main aetiology of
+CAP in these patients is infection due to S pneumoniae in up to
+43% of cases.6
+The pneumococcal polysaccharide vaccine (PPV) has been
+found to be effective in the prevention of pneumococcal
+pneumonia and bacteraemia in previously healthy young
+
+people,7 and also in certain groups of patients at high risk of
+developing pneumococcal infection.8 However, the degree of
+protection afforded by PPV remains an issue of some debate,
+despite the existence of a number of randomised (or quasirandomised) clinical trials, case-control, and indirect cohort
+studies. The effectiveness of PPV has been questioned for
+certain populations such as the elderly and some at-risk
+groups including those with diabetes or chronic respiratory
+illnesses. Part of the problem is the frequent disparity of
+results between various clinical trials,9–13 including recent
+meta-analyses that included the 23 serotype PPV.14–16
+In Spain the 23 serotype PPV was not made commercially
+available until 1999 and is currently subject to prescription
+restrictions. It is still not included in general immunisation
+programmes or recommendations and has been used only to
+a very limited extent; in practice it is only given to
+splenectomised patients.
+The aim of this study was to evaluate the clinical efficacy of
+23 serotype PPV in the prevention of pneumococcal pneumonias in immunocompetent patients with COPD.
+
+METHODS
+Patients were included in the study if they had not been
+previously vaccinated and had a spirometric diagnosis of
+COPD at the Pneumology Service of the University Hospital of
+Valme (in the southern health area of Seville). Patients were
+Abbreviations: CAP, community acquired pneumonia; COPD, chronic
+obstructive pulmonary disease; FEV1, forced expiratory volume in
+1 second; PPV, pneumococcal polysaccharide vaccine
+
+www.thoraxjnl.com
+
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+190
+
+Alfageme, Vazquez, Reyes, et al
+
+Table 1
+
+pneumonia and the isolation of S pneumoniae from the
+sputum (for an adequate sample), bronchoaspirate, blood,
+pleural fluid, or cerebrospinal fluid. Other aetiological
+diagnoses were performed according to clinical guidelines.17
+Patients admitted to hospital were given diagnostic tests as
+considered necessary by their responsible doctor, according to
+the seriousness of the case and in order to arrive at a
+diagnosis (for example, blood culture, thoracocentesis). All
+patients with an initial diagnosis of pneumonia were subject
+to a new regime which included clinical revision and
+radiography 2–4 weeks after the first visit. All the radiographs were examined by two doctors participating in the
+study.
+Analysis of data
+Absolute numbers and percentages were computed to
+describe the patient population. Medians and quartiles were
+computed as appropriate. Categorical values were compared
+using a x2 or Fisher’s test and crude odds ratios with 95%
+confidence intervals were computed. Continuous variables
+Cummulative proportion of patients without pneumonia
+
+excluded from the study if they were pregnant, were
+immunosuppressed, or had known neoplasia, renal insufficiency in dialysis, HIV infection, hypogammaglobulinaemia,
+or anatomical or functional asplenia.
+The study was approved by the ethics committee of the
+hospital. A randomisation code was developed using a
+computer random number generator in block lengths of 20
+(10 in each group). Patients who agreed to be included in the
+study and who fulfilled the selection criteria were informed
+of the aims and characteristics of the study. They were then
+randomly assigned to the intervention group and received 23valent pneumococcal capsular polysaccharide vaccine
+(Pneumo 23; Aventis Pasteur MSD), together with a clinical
+follow up examination. Subjects assigned to the nonintervention group had a clinical follow up examination but
+no vaccine. The vaccine was given free of charge at the centre
+where the patients were recruited. Written informed consent
+was obtained from all patients.
+Demographic, clinical, and spirometric data were taken
+from each patient at the start of the study. Following
+inclusion, each patient had a clinical follow up examination
+over 3 years. The physicians participating in this 3 year
+follow up were unaware of the group to which individual
+patients were assigned. The patients were instructed to
+contact the doctor if they developed a fever of 38˚ for more
+C
+than 3 days or if they presented other symptoms that might
+suggest pneumonia. All the participants were checked
+routinely every 6 months or if they requested it.
+The main outcome measured was time to the first episode
+of CAP of pneumococcal or unknown aetiology. A diagnosis
+of pneumonia was based on the finding of a new infiltrate
+typical of pneumonia which diminished or disappeared
+during follow up, and symptoms of lower respiratory tract
+infection with fever. Pneumonia was considered as nosocomial if the onset of symptoms occurred more than 3 days
+after admission to hospital or a chronic care unit and less
+than 4 days after discharge. Other cases were considered to
+have been acquired in the community. A diagnosis of
+pneumococcal pneumonia was based on the presence of
+
+1.00
+0.95
+0.90
+0.85
+
+Vaccinated = 298
+0.80
+
+Control = 298
+
+0.75
+
+Log rank = 1.15
+p = 0.28 (NS)
+
+0.70
+
+0
+
+300
+
+600
+
+900
+
+Intervention group
+(N = 298)
+
+Non-intervention
+group (N = 298)
+
+96.6%
+
+93.3%
+
+980.0
+20–1454
+800.1
+2.0 (1.6–2.5)
+62 (50–73)
+1.1 (0.8–1.4)
+42 (32–54)
+53 (45–62)
+69 (62–73)
+
+977.8
+21–1183
+798.0
+2.1 (1.7–2.6)
+63 (52–74)
+1.2 (0.8–1.5)
+43 (33–55)
+55 (45–64)
+68 (61–73)
+
+91 (31%)
+207 (69%)
+
+116 (39%)
+182 (61%)
+
+0.04
+
+132 (44%)
+166 (56%)
+65 (22%)
+58 (19.5%)
+33 (11%)
+22 (7.4%)
+18 (6%)
+57 (19.1%)
+6 (2%)
+
+114 (38%)
+184 (62%)
+77 (26%)
+52 (17.4%)
+28 (9.4%)
+33 (11.1%)
+16 (5.3%)
+58 (19.5%)
+6 (2%)
+
+0.13
+
+p value
+0.09
+0.77
+
+0.17
+0.21
+0.02
+0.21
+0.21
+0.23
+
+0.25
+0.53
+0.50
+0.12
+0.72
+0.92
+1.00
+
+FEV1, forced expiratory volume in 1 second; FVC, forced vital capacity; TB, tuberculosis.
+Values are expressed as median (interquartile range) or n (%).
+Two sided p values were calculated using the x2 test for proportions and the Wilcoxon test for quantitative
+variables.
+
+www.thoraxjnl.com
+
+1500
+
+Figure 1 Kaplan-Meier survival curve showing cumulative proportion
+of patients without pneumonia during the follow up period.
+
+Clinical and functional characteristics of study patients
+
+% Male
+Follow up
+Mean (days)
+Range (days)
+Total (person-years)
+FVC (l)
+FVC (%)
+FEV1 (l)
+FEV1 (%)
+FEV1%FVC
+Age (years)
+Age group
+,65 years
+>65 years
+Severity of COPD
+Severe (FEV1 ,40%)
+Non-severe (FEV1 >40%)
+Currently smoking
+Previous pneumonia
+Pneumonia in previous 5 years
+Previous TB
+Neoplasia during follow up
+Death from any cause
+Death from pneumonia
+
+1200
+
+Time (days)
+
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+Anti-pneumococcal vaccination in COPD
+
+191
+
+were compared using the two tailed Wilcoxon rank sum test.
+Unless otherwise stated, statistical significance is indicated
+by p values of less than 5% (two sided). Crude event rates
+were calculated by dividing the number of cases by the
+person-time for each outcome. Multivariate Cox proportional
+hazard models with covariates were used to evaluate the
+association between the receipt of pneumococcal vaccine and
+the time to a first outcome event during the study period and
+excluding repeated episodes from analysis. To investigate the
+possible effect of age and pulmonary function on the relative
+risk of pneumonia over time, we included age (, or
+>65 years) and the presence of severe airflow obstruction
+(defined as forced expiratory volume in 1 second (FEV1)
+,40% of expected following SEPAR guidelines18) as covariates in a Cox regression model, and also an estimation of a
+possible age6treatment interaction effect. The effects of the
+vaccine were therefore investigated in the whole group of 596
+patients as well in the subgroups of patients defined by the
+previously mentioned variables (age and severity of obstruction). The subgroup analysis was performed because of
+previously published data suggesting that younger patients
+(,65 years) and those with more severe obstruction (FEV1
+,40%) would benefit most from vaccine administration.7 12 16
+Survival curves for patients younger than 65 years and with
+severe COPD were calculated by the Kaplan-Meier method.
+The effectiveness of the anti-pneumococcal vaccine was
+calculated by considering the first episode of pneumococcal
+pneumonia as the first episode of CAP of unknown aetiology
+or with isolation of pneumococcus (as 1 2 RR 6 100). The
+number necessary to treat was calculated as the inverse of the
+absolute reduction of risk.
+The odds ratios and relative risk with 95% confidence
+intervals were calculated using EPI-Info (CDC, USA). The
+remaining tests were performed using SPSS Version 12.0 for
+Windows.
+
+RESULTS
+Six hundred patients with a diagnosis of COPD were included
+in the study using progressive intakes. Three hundred
+received the 23-valent pneumococcal vaccine and the other
+300 were followed clinically during the same period. Four
+patients (two from each arm of the study) were lost to follow
+up and were excluded from the final analyses. The study
+started in October 1999 and was completed in July 2004,
+which allowed for a minimum follow up of 3 years for each
+patient except 115 who died before the end of the follow up
+period. No patient reported any local or systemic reaction to
+the vaccine. The epidemiological and clinical characteristics
+of the patients in the two groups are shown in table 1.
+Although immunosuppressed patients were excluded, neoplasia was detected in 34 patients during follow up, but this
+finding did not influence the effectiveness of PPV or the
+incidence of pneumonia.
+
+Table 2
+
+Pneumonias
+Seventy five patients had an episode of pneumonia during
+the study, 38 (12.7%) in the intervention group and 37
+(12.4%) in the non-intervention group. There were a total of
+88 episodes of pneumonia, 43 in the intervention group and
+45 in the non-intervention group. Sixty four patients had just
+one episode of pneumonia (34 and 30 in the intervention and
+non-intervention groups, respectively), nine had two episodes (three and six in the intervention and non-intervention
+groups, respectively), and two had three episodes (one from
+each group).
+Of the 88 episodes of pneumonia, 73 (83%) were treated in
+hospital and the other 15 were treated as outpatients. These
+patients did not receive any special intervention and the
+doctor responsible for their care decided on the studies to be
+undertaken to determine the aetiology and treatment. An
+aetiological diagnosis was obtained for 23 cases; 14 were
+found to be due to Gram negative bacilli, two to fungi
+(Aspergillus and Nocardia), two to Staphylococcus aureus, and five
+to pneumococcus. The remaining 65 had unknown aetiologies. There were 12 nosocomial pneumonias, eight of known
+aetiology that did not include pneumococcus and four of
+unknown aetiology. There were 67 first episodes of CAP, 33 in
+the intervention group and 34 in the non-intervention group.
+Of these, 58 were either due to pneumococcus or of unknown
+aetiology (25 in the intervention group, 33 in the nonintervention group). Most of these episodes required hospital
+admission: 19/25 (76%) in the intervention group and 27/33
+(81%) in the control group (p = 0.59). The median length of
+stay was lower among vaccinated patients, although the
+differences did not reach statistical significance (9.5 (6.5–
+17) days v 12.0 (8.0–20.0) days, p = 0.16). The total number
+of days in hospital due to CAP was 242 in the intervention
+group and 412 in the control group.
+Pneumococcal pneumonia
+Streptococcus pneumoniae was isolated from five patients with
+pneumonia in the non-intervention group and from none in
+the intervention group (p = 0.03, single sided Fisher’s test).
+In three cases it was the only isolated organism, in one
+Haemophilus influenzae was also isolated, and the remaining
+patient was also infected with Pseudomonas aeruginosa.
+Pneumococcus was isolated from the sputum in two cases
+and from the bronchial secretions obtained by bronchoscopy
+in the other three. There were no cases of bacteraemic
+pneumococcal infection.
+Time to the first episode of CAP
+Kaplan-Meier survival curves for CAP did not show a
+significant difference between the intervention and nonintervention arms (log rank test = 1.15, p = 0.28, fig 1) in the
+whole group of 596 patients, although there were significant
+differences in predefined subgroups of patients (see below).
+
+Incidence of CAP per 1000 patients with COPD per year
+CAP
+
+Overall
+Intervention group
+Non-intervention group
+,65 years
+>65 years
+FEV1 ,40%
+FEV1 >40%
+
+Persons/year
+
+Rate (61000 COPD
+cases per year)
+
+76
+37
+39
+23
+53
+41
+35
+
+1597.3
+798.6
+795.7
+569.3
+1026.9
+644.5
+952.0
+
+47.6
+46.3
+49.0
+40.4
+51.6
+63.6
+36.8
+
+CAP, community acquired pneumonia; FEV1, forced expiratory volume in 1 second.
+
+www.thoraxjnl.com
+
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+192
+
+Alfageme, Vazquez, Reyes, et al
+
+Table 3 Numbers of pneumonia patients (first episode) in a prospective randomised trial showing efficacy of 23-serotype
+pneumococcal vaccine
+Intervention group
+
+Vaccine efficacy*
+
+n
+CAP-PN
+All patients
+,65 years
+>65 years
+FEV1 ,40%
+FEV1 >40%
+Age ,65 years and
+FEV1 ,40%
+Pneumococcal pneumonia
+
+Non-intervention group
+
+NNT
+
+N
+
+n
+
+N
+
+%
+
+95% CI
+
+p valueÀ
+
+25
+3
+22
+12
+13
+
+298
+91
+207
+132
+166
+
+33
+16
+17
+20
+13
+
+298
+116
+182
+114
+184
+
+24
+76
+214
+48
+211
+
+(224 to 54)
+(20 to 93)
+(2107 to 38)
+(27 to 80)
+(2132 to 47)
+
+0.333
+0.013
+0.801
+0.076
+0.945
+
+1
+
+46
+
+10
+
+40
+
+91
+
+(35 to 99)
+
+0.002
+
+0
+
+298
+
+5
+
+298
+
+n
+
+95% CI
+
+10
+
+(6 to 31)
+
+3
+
+(2 to 4)
+
+0.061
+
+CAP-PN, community acquired pneumonia of unknown aetiology and pneumococcal pneumonia; FEV1, forced expiratory volume in 1 second; NNT, number
+needed to treat.
+*Vaccine efficacy = 1 2 RR 6 100.
+ÀThe p value for pneumococcal pneumonia is 0.06 using the Fisher’s exact test (two sided) and 0.03 (single sided). This last p value is very similar to that obtained
+with the log rank test (p = 0.025, Kaplan-Meier curves).
+
+1.00
+0.95
+0.90
+0.85
+
+Vaccinated = 91
+
+0.80
+0.75
+0.70
+
+0
+
+Control = 116
+Log rank = 6.68
+p = 0.0097
+250
+
+500
+
+750
+
+1000
+
+1250
+
+Time (days)
+
+Figure 2 Kaplan-Meier survival curve showing the cumulative
+proportion of patients ,65 years without pneumonia during the follow
+up period.
+
+www.thoraxjnl.com
+
+p = 0.0250). The Kaplan-Meier curve in fig 2 shows the
+accumulated percentage of patients ,65 years without pneumonia (of unknown aetiology and pneumococcus) across time
+for both the intervention and non-intervention groups (log
+rank test = 6.68; p = 0.0097). Figure 3 shows a Kaplan-Meier
+curve for patients with severe airflow obstruction (FEV1 ,40%
+predicted), with the accumulated percentage of pneumonias
+for both groups (log rank test = 3.85; p = 0.049). In the Cox
+regression multivariate analyses (fig 4) the hazard ratio for
+pneumonia was adjusted for the effects of age (,65 or
+>65 years, table 4), the severity of obstruction (FEV1 ,40%
+or >40%), and the interaction of age 6vaccine. This interaction
+means that the efficacy of the vaccine depends on the age of the
+patients. There was no sign of efficacy in older subjects
+(>65 years) but younger patients (,65 years) in the intervention group were five times less likely to develop pneumonia
+than a non-vaccinated person of the same age with COPD of
+the same severity (RR 0.20, 95% CI 0.06 to 0.68; p = 0.01).
+Severity of airflow obstruction (FEV1 ,40%) was also a risk
+factor for developing pneumonia (RR 2.03, 95% CI 1.21 to 3.41;
+p = 0.008). Similar results could be achieved if the model was
+stratified by age. Instead of a global model with an interaction
+term, we obtained two models for ages ,65 and >65 years
+(table 4). For younger patients the model was very similar to
+the previously described global model but, for older patients,
+there was no indication of vaccine efficacy (RR 1.53, 95% CI
+0.61 to 2.17; p = 0.66).
+
+Cummulative proportion of patients without pneumonia
+
+Cummulative proportion of patients without pneumonia
+
+Incidence of pneumonia and efficacy of the vaccine
+The incidence of global pneumonia (CAP and nosocomial) in
+patients with COPD was 55.1 per 1000 patients with COPD
+per year. In those with CAP, it was 47.6 per 1000 patients
+with COPD per year (46.3 in the intervention group, 49.0 in
+the non-intervention group). Table 2 shows the incidence of
+pneumonia by age and severity of airflow obstruction. The
+incidence of non-bacteraemic pneumococcal pneumonia was
+313 per 100 000 patients with COPD per year.
+Table 3 shows the results of univariate analysis and the
+efficacy of the anti-pneumococcal vaccine in preventing
+pneumonia which, in the whole group of patients with
+COPD, was 24% (95% CI 224 to 54; p = 0.333). The efficacy
+increased in the subgroup of younger patients of ,65 years
+up to 76% (95% CI 20 to 93; p = 0.013) and in those with
+severe functional obstruction to 48% (95% CI 27 to 80;
+p = 0.076). In the subgroup of younger patients with severe
+airflow obstruction the efficacy increased up to 91% (95% CI
+35 to 99; p = 0.002) with a number needed to treat of three
+COPD patients (95% CI 2 to 4).
+The risk ratio (RR) and vaccine efficacy could not be
+calculated when there was no case of pneumonia with isolated
+pneumococcus in the intervention group, which is why both
+groups could only be compared by survival analysis.
+Accordingly, the Kaplan-Meier survival curves for pneumococcal pneumonia show a significant difference between the
+intervention and non-intervention groups (log rank test = 5.03;
+
+Vaccinated = 132
+1.00
+
+Control = 114
+
+0.95
+0.90
+0.85
+0.80
+0.75
+
+Log rank = 3.85
+p = 0.0498 (NS)
+
+0.70
+
+0
+
+300
+
+600
+
+900
+
+1200
+
+1500
+
+Time (days)
+
+Figure 3 Kaplan-Meier survival curve showing cumulative proportion
+of patients with severe COPD (FEV1 ,40%) without pneumonia during
+the follow up period.
+
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+
+Cummulative proportion of patients without pneumonia
+
+Anti-pneumococcal vaccination in COPD
+
+193
+
+Vaccinated = 298
+
+1.00
+
+Control = 298
+
+0.98
+0.96
+0.94
+0.92
+0.90
+0.88
+
+0
+
+200
+
+400
+
+600
+
+800
+
+1000 1200
+
+Time (days)
+
+Figure 4 Cox regression model curve showing the proportion of
+patients with COPD without pneumonia adjusted for age and severity of
+airflow obstruction during the follow period.
+
+Mortality
+There was no difference in the mortality rates between the
+two groups which was around 19%. The major cause of death
+was respiratory failure in 34 patients, followed by cardiovascular diseases in 29 cases, cancer detected during follow up in
+21 subjects (11 of these were pulmonary carcinomas), 13
+deaths due to infections (12 for pneumonia, one being
+pneumococcus), 11 to gastrointestinal causes, five to other
+causes, and two due to unknown causes. Factors influencing
+the mortality rate among the patients were age (RR 1.05, 95%
+CI 1.03 to 1.08; p,0.001), FEV1 % predicted (RR 0.97, 95% CI
+0.95 to 0.98; p,0.001), current smokers (RR 1.67, 95% CI
+1.08 to 2.60; p = 0.022), and the presence of neoplasia (RR
+6.54, 95% CI 4.15 to 10.23; p,0.001). The mortality rate for
+nosocomial pneumonia and CAP in those with COPD was
+50.8 per 1000 per year (and 34.4 in those with CAP only).
+
+DISCUSSION
+This study shows that the protective efficacy of 23 serotype
+PPV in immunocompetent COPD patients for the prevention
+of radiologically proven pneumonia of pneumococcal and
+unknown aetiology is linked to two factors—the age of the
+patient and the severity of the airflow obstruction—as can be
+seen from the survival analysis. The vaccine had an efficacy
+of 76% (95% CI 20 to 93) in patients of ,65 years of age and
+91% (95% CI 35 to 99) in those who also had severe airflow
+obstruction. Pneumonia cases from whom pneumococcus
+was isolated were not found in the intervention group. As
+expected, cases of pneumococcal bacteraemia were not found
+in the non-intervention group since bacteraemia occurs in
+only 10–20% of patients with pneumococcal pneumonia.2 7
+
+Table 4
+
+Nevertheless, within this group, the vaccine had no effect in
+the subgroup of patients over the age of 65 years.
+Practically all clinical studies10–12 19 and meta-analyses7 15 16
+agree as to the efficacy of the vaccine in the prevention of
+invasive pneumococcal disease; however, data regarding the
+effectiveness of this vaccine in reducing other more common
+manifestations of pneumococcal disease such as pneumonia
+have been inconclusive for elderly and high risk groups.
+Nichol et al,20 in a retrospective cohort study, showed that
+pneumococcal vaccination of elderly people with chronic lung
+disease was associated with fewer hospital admissions for
+pneumonia (defined by ICD-9CM codes) and fewer deaths,
+with the additional effect of influenza vaccination. Hedlund
+et al,21 in a recently published prospective cohort study,
+showed a reduction in the incidence of hospital admissions
+for pneumonia and invasive pneumococcal disease in the year
+following vaccination, adjusted for sex and age. The reasons
+for these disparate findings include differences in the study
+population, the prevalence and diagnosis of non-bacteraemic
+pneumococcal pneumonia, and in the methods used for
+ascertaining vaccination status.12
+The incidence of CAP requiring admission to hospital is 2.7
+per 1000 of the population, which increases with age to 10.1
+per 1000 for those aged over 65 years.22 A recent Spanish
+report established the relative risk of developing pneumonia
+in patients with COPD as 4.7 times that of the general
+population over 65 years.23 The overall incidence rate of CAP
+in our COPD patients was 47.6 episodes per 1000 COPD years,
+which corresponds to that expected. The incidence increased
+significantly in subjects over the age of 65 years with COPD
+to 51.6 per 1000 COPD years, and in those with severe airflow
+obstruction to 63.6 per 1000 COPD years. In this last group
+the efficacy of the vaccine was shown in the prevention of
+pneumonias of both pneumococcal and unknown aetiology.
+It is highly unlikely that there was any bias towards
+omitting nosocomial pneumonias of pneumococcal aetiology,
+since pneumococcus was isolated in 5% of nosocomial
+infections from any origin.24 Also, we excluded non-pneumococcal cases of known aetiology because mixed infections
+are produced in about 2% of cases.22 This reduced the number
+of cases for analysis, but we believe it reflected more closely
+the true number of non-bacteraemic pneumococcal pneumonias; by contrast, all of the pneumonias were radiologically
+proven, including those of outpatients. The reduction in
+pneumonias of unknown aetiology after vaccination supports
+the suspicion that some of these pneumonias may be due to
+pneumococcus. Perhaps all of these discrepancies could be
+clarified with a more widespread use of the antigenuria test
+to detect pneumococcus. This might identify, in a more
+precise way, the non-bacteraemic pneumococcal pneumonias. Although the aetiology in our patients was frequently
+unknown, there were an appreciable number of Gram
+negative bacterial pneumonias. This aetiology is justified
+
+Variables selected by the Cox regression model
+p value
+
+Global model (with interaction between age and vaccine)
+Vaccinated (0 = no/1 = yes)
+0.01
+Age (0 = ,65/1 = >65 years)
+0.23
+Severe airflow obstruction (0 = no/1 = yes)
+0.01
+Age 6 vaccinated
+0.01
+Model for age ,65 years
+Vaccinated (0 = no/1 = yes)
+0.01
+Severe airflow obstruction
+0.04
+Model for age >65 years
+Vaccinated (0 = no/1 = yes)
+0.66
+Severe airflow obstruction
+0.07
+
+RR
+
+95% CI
+
+0.20
+0.66
+2.03
+5.82
+
+0.06
+0.33
+1.21
+1.45
+
+0.19
+2.62
+
+0.06 to 0.66
+1.04 to 6.55
+
+1.53
+1.81
+
+0.61 to 2.17
+0.96 to 3.39
+
+to
+to
+to
+to
+
+0.68
+1.31
+3.41
+23.34
+
+RR, risk ratio.
+
+www.thoraxjnl.com
+
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+194
+
+because many of them were hospital acquired and these
+patients—because of their more serious condition—have
+more diagnostic tests performed in the aetiological diagnosis.
+Despite many studies of the effectiveness of anti-pneumococcal vaccine for different populations, few have been
+performed on patients with COPD. Leech et al9 administered
+a 14-serotype anti-pneumococcal vaccine to patients with an
+FEV1 of less than 1.5 litres. No differences were found
+between the groups in the 2 year follow up period in terms of
+death or deteriorating conditions, which is attributed to the
+small number of patients included in the series and the low
+rate of pneumococcal bacteraemia. Franzen et al25 in another
+short series study of 65 patients with longstanding emphysema and/or bronchitis found a reduction in the number of
+pneumonias at 1 year follow up compared with the year
+before vaccination. The most representative study is the
+retrospective study of Nichol et al20 involving 1898 patients
+with an ICD-9-CM diagnosis of chronic lung disease
+including illnesses other than COPD such as bronchial
+asthma, bronchiectasis and fibrosis, giving a population less
+homogeneous than ours.
+Our study analysed the efficacy of the anti-pneumococcal
+vaccine in a homogeneous cohort of patients with a clinical
+and spirometric diagnosis of COPD. We established the
+differences in the incidence of pneumonia according to the
+degree of airflow obstruction in patients with COPD. The
+incidence of pneumonia was 1.7 times greater in patients
+with a severe degree of airflow obstruction than in those with
+light to moderate disease. Analysis of the efficacy of the
+vaccine according to the degree of airflow obstruction showed
+that the vaccine tended to be more beneficial in patients with
+the most severe obstruction. We therefore support the
+recommendation that anti-pneumococcal vaccine should be
+administered to these patients, independent of the cost
+effectiveness analysis already cited.20
+Most COPD patients with CAP (76% and 81% in the
+intervention and control groups, respectively) need hospital
+admission, with prolonged lengths of inpatient stay and
+increased medical costs. A low cost intervention such as PPV
+that tends to reduce the incidence of pneumonia should
+therefore be cost effective.
+Nichol et al20 and Hedlund et al21 found a reduction in the
+mortality rate of patients who received PPV which can only
+be explained by a reduction in the specific mortality due to
+pneumonia of pneumococcal aetiology. However, these
+studies did not state this categorically, so other uncontrolled
+factors may have influenced the mortality rate in these
+patients. In our study the 23 serotype PPV had no effect on
+the mortality rate. Although it is certain there was a death
+due to pneumococcal pneumonia in the non-intervention
+group, this was not sufficient to generate a difference
+between the groups. The factors that influenced mortality
+in our patients, in addition to the presence of neoplasia, were
+those classically described in patients with COPD (age,
+severity of airflow obstruction, and current smoking).
+A considerable limitation of this study is the lack of a blind
+placebo comparison group. Nevertheless, it is highly unlikely
+that this limitation significantly influenced the results
+because the vaccination status of the patient was kept in a
+specific encrypted database and was not stated in the
+patients’ clinical records. The main investigator of this study
+(IA) was the only person with access to this database, but
+this investigator did not participate in the follow up or in
+adjudicating the outcome events. This task was performed by
+the physicians conducting the follow up who were unaware
+of the treatment group allocation of their patients. These
+investigators were committed not to ask patients about their
+vaccination status. Furthermore, during the follow up period
+most patients from both groups also received vaccination
+
+www.thoraxjnl.com
+
+Alfageme, Vazquez, Reyes, et al
+
+against influenza for several years; this could be confusing,
+especially for old patients from rural areas (the majority in
+the present study) and probably many of them did not have a
+clear idea of their anti-pneumococcal vaccination status after
+3 years of follow up.
+In summary, PPV should be given to patients with COPD
+aged ,65 years, especially if they have severe airflow
+obstruction. This vaccination could prevent episodes of
+pneumococcal pneumonia frequently labelled as ‘‘pneumonia
+of unknown aetiology’’. Further studies are needed with a
+larger sample to examine a possible protective effect in the
+elderly population and in COPD patients with less severe
+obstruction. In addition, studies should be undertaken to
+determine the real incidence of non-bacteraemic pneumococcal pneumonia, as well as perfecting the diagnostic
+methods used in its detection. This would permit the
+effectiveness of PPV to be determined with greater precision,
+and its possible substitution by other types of anti-pneumococcal vaccines, such as pneumococcal protein conjugate
+vaccine26 or by other protein vaccines, to be assessed.27
+.....................
+
+Authors’ affiliations
+
+I Alfageme, N Reyes, J Munoz, M Hernandez, M Merino, J Perez,
+˜
+J Lima, Pneumology Section, Valme University Hospital, Seville, Spain
+R Vazquez, A Ferna
+´ndez, Research Unit, Valme University Hospital,
+Seville, Spain
+Supported by two grants of SEPAR (Sociedad Espanola de Neumologıa
+˜
+´
+y Cirugıa Tora
+´
+´cica) and SAS (Servicio Andaluz de Salud: 53/99).
+Competing interests: none declared.
+
+REFERENCES
+1 Anon. Pneumococcal vaccines. WHO position paper. Wkly Epidemiol Rec
+1999;74:177–83.
+2 Austrian R, Gold J. Pneumococcal bacteremia with special reference to
+bacteremic pneumococcal pneumonia. Ann Intern Med 1964;60:759–76.
+3 Ortqvist A. Pneumococcal vaccination: current and future issues. Eur Respir J
+2001;18:184–95.
+4 Lipsky BA, Boyko EJ, Inui TS, et al. Risk factors for acquiring pneumococcal
+infections. Arch Intern Med 1986;146:2179–85.
+5 Pastor P, Medley F, Murphy TV. Invasive pneumococcal disease in Dallas
+County, Texas: results from population-based surveillance in 1995. Clin Infect
+Dis 1998;26:590–5.
+6 Torres A, Dorca J, Zalacaın R, et al. Community-acquired pneumonia in
+´
+chronic obstructive pulmonary disease. A Spanish multicenter study.
+Am J Respir Crit Care Med 1996;154:1456–61.
+7 Fine MJ, Smith MA, Carson CA, et al. Efficacy of pneumococcal vaccination in
+adults. A meta-analysis of randomized controlled trials. Arch Intern Med
+1994;154:2666–77.
+8 Shapiro ED, Berg AT, Austrian R, et al. The protective efficacy of polyvalent
+pneumococcal polysaccharide vaccine. N Engl J Med 1991;325:1453–60.
+9 Leech JA, Gervais A, Ruben FL. Efficacy of pneumococcal vaccine in severe
+chronic obstructive pulmonary disease. Can Med Assoc J 1987;136:361–5.
+10 Koivula I, Sten M, Leinonen M, et al. Clinical efficacy of pneumococcal
+vaccine in the elderly: a randomized, single-blind population-based trial.
+Am J Med 1997;103:281–90.
+11 Ortqvist A, Hedlund J, Burman LA, and Swedish Pneumococcal Vaccination
+Study Group, et al. Randomised trial of 23-valent pneumococcal capsular
+polysaccharide vaccine in prevention of pneumonia in middle-aged and
+elderly people. Lancet 1998;351:399–403.
+12 Jackson LA, Neuzil KM, Yu O, et al. Vaccine Safety Datalink. Effectiveness of
+pneumococcal polysaccharide vaccine in older adults. N Engl J Med
+2003;348:1747–55.
+13 Honkanen PO, Keistinen T, Miettinen L, et al. Incremental effectiveness of
+pneumococcal vaccine on simultaneously administered influenza vaccine in
+preventing pneumonia and pneumococcal pneumonia among elderly persons
+aged 65 years or older. Vaccine 1999;17:2493–500.
+14 Hutchison BG, Oxman AD, Shannon HS, et al. Clinical effectiveness of
+pneumococcal vaccine – meta-analysis. Can Family Physician
+1999;45:2381–93.
+15 Cornu C, Yzebe D, Leophonte P, et al. Efficacy of pneumococcal
+polysaccharide vaccine in immunocompetent adults: a meta-analysis of
+randomized trials. Vaccine 2001;19:4780–90.
+16 Melegaro A, Edmunds WJ. The 23-valent pneumococcal polysaccharide
+vaccine. Part I. Efficacy of PPV in the elderly: a comparison of meta-analyses,
+Eur J Epidemiol 2004;19:353–63.
+17 Bartlett JG, Dowell SF, Mandell LA, et al. Practice guidelines for the
+management of community-acquired pneumonia in adults. Chron Infect Dis
+2000;31:347–82.
+
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+Anti-pneumococcal vaccination in COPD
+
+18 Barbera JA, Peces-Barba G, Agustı AGN, et al. Guıa clınica para el
+`
+´
+´ ´
+diagno
+´stico y el tratamiento de la enfermedad pulmonar obstructiva cro
+´nica.
+Arch Bronconeumol 2001;37:297–316.
+19 Vila Corcoles A, Ochoa Gondar O, Hospital Guardiola I, et al. Guinea
+Oruechevarria I, Alvarez Luy M, Grupo de estudio EVAN-65. Efectividad de
+la vacuna antineumococica en pacientes mayores de 65 anos. Medifarm
+˜
+2003;13:297–304.
+20 Nichol KL, Baken L, Wuorenma J, et al. The health and economic benefits
+associated with pneumococcal vaccination of elderly persons with chronic
+lung disease. Arch Intern Med 1999;159:2437–42.
+21 Hedlund J, Christenson B, Lundbergh P, et al. Effects of a large-scale
+intervention with influenza and 23-valent pneumococcal vaccines in elderly
+people: a 1-year follow-up. Vaccine 2003;21:3906–11.
+22 Marston BJ, Plouffe JF, File TM Jr, et al. Incidence of community-acquired
+pneumonia requiring hospitalization. Results of a population-based active
+surveillance Study in Ohio. The Community-Based Pneumonia Incidence Study
+Group. Arch Intern Med 1997;157:1709–18.
+
+195
+
+23 Vila Corcoles A, Ochoa Gondar O, Hospital Guardiola I, et al. La
+enfermedad pulmonar obstructiva cro
+´nica y el tabaquismo: principales
+factores de riesgo en las neumonıas de personas mayores de 65 anos. Aten
+´
+˜
+Primaria 2003;31:272.
+24 Gonzalez-Romo F, Rubio M, Betriu C, et al. Prevalence and treatment of
+Gram-positive infections in internal medicine departments of Spanish
+hospitals: IGP Study. Rev Esp Quimioter 2003;16:428–35.
+25 Franzen D. Clinical efficacy of pneumococcal vaccination – a prospective
+study in patients with longstanding emphysema and/or bronchitis. Eur J Med
+Res 2000;5:537–40.
+26 Black SB, Shinefield HR, Ling S, et al. Effectiveness of heptavalent
+pneumococcal conjugate vaccine in children younger than five years
+of age for prevention of pneumonia. Pediatr Infect Dis J
+2002;21:810–5.
+27 Briles DE, Hollingshead S, Brooks-Walter A, et al. The potential to use PspA
+and other pneumococcal proteins to elicit protection against pneumococcal
+infection. Vaccine 2000;18:1707–11.
+
+LUNG ALERT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Many asthma deaths may be preventable
+m Harrison B, Stephenson P, Mohan G, et al. An on-going confidential enquiry into asthma deaths in the Eastern region of
+the UK, 2001–2003. Primary Care Respir J 2005;14:303–13
+
+A
+
+ll deaths under the age of 65 with asthma recorded in the first part of the death
+certificate were examined from a population of approximately 5.25 million people.
+Hospital and GP records were scrutinised and GPs were interviewed to ensure that
+asthma was the cause of death. Fifty seven of the original 95 reported deaths were due to
+asthma; the other 38 deaths were due to COPD (n = 13), cardiac disease (n = 11),
+pneumonia (n = 9), and other conditions.
+Of the 57 confirmed asthma deaths, 19 patients had significant co-morbid diseases. 60%
+of the asthma fatalities were male, a reverse of the male/female ratio observed in severe
+asthma. 53% of patients were felt to have severe asthma according to BTS guidelines, 21%
+had moderately severe asthma, 16% mild asthma, and 11% not known. Eleven patients
+(19%, eight male, eight aged 20 years or less) suffered sudden death from acute severe
+asthma; 10 of these occurred between April and August suggesting that atopy may have had
+a role. The other 81% had more protracted courses of their final illness with potential
+opportunity for earlier intervention. The authors point out that the data were, by their
+nature, retrospective and occasionally incomplete.
+Patient care was considered appropriate in only 33% of cases. Failings were present across
+primary and secondary care and included inadequate follow up (failures to refer to hospital
+at an appropriate time or to a respiratory specialist once in hospital) and inadequate
+prescription of inhaled or oral corticosteroids. 81% of patients had psychosocial or
+behavioural factors that were considered to be contributory to death. These included poor
+compliance/failure to attend (61%), but also significant smoking (46%), denial (37%),
+depression (20%), alcohol abuse (20%), and family disharmony (15%).
+The authors endorse the production of an ‘‘at risk’’ register in primary care as advocated
+by the 2003 BTS/SIGN asthma guidelines and suggest criteria to guide the construction of
+such a register.
+C Prys-Picard
+Clinical Research Fellow, North West Lung Centre, Manchester, UK; cpryspicard@fs1.with.man.ac.uk
+
+www.thoraxjnl.com
+
+Downloaded from thorax.bmj.com on March 4, 2014 - Published by group.bmj.com
+
+Clinical efficacy of anti-pneumococcal
+vaccination in patients with COPD
+I Alfageme, R Vazquez, N Reyes, et al.
+Thorax 2006 61: 189-195 originally published online October 14, 2005
+
+doi: 10.1136/thx.2005.043323
+
+Updated information and services can be found at:
+http://thorax.bmj.com/content/61/3/189.full.html
+
+These include:
+
+References
+
+This article cites 26 articles, 3 of which can be accessed free at:
+http://thorax.bmj.com/content/61/3/189.full.html#ref-list-1
+
+Article cited in:
+http://thorax.bmj.com/content/61/3/189.full.html#related-urls
+
+Email alerting
+service
+
+Topic
+Collections
+
+Receive free email alerts when new articles cite this article. Sign up in the
+box at the top right corner of the online article.
+
+Articles on similar topics can be found in the following collections
+Pneumonia (infectious disease) (451 articles)
+TB and other respiratory infections (1025 articles)
+Airway biology (967 articles)
+Clinical trials (epidemiology) (420 articles)
+Drugs: infectious diseases (763 articles)
+Lung function (714 articles)
+Vaccination / immunisation (128 articles)
+Pneumonia (respiratory medicine) (438 articles)
+
+Notes
+
+To request permissions go to:
+http://group.bmj.com/group/rights-licensing/permissions
+
+To order reprints go to:
+http://journals.bmj.com/cgi/reprintform
+
+To subscribe to BMJ go to:
+http://group.bmj.com/subscribe/
