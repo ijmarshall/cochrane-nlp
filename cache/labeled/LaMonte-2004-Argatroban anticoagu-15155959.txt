@@ -1,0 +1,1132 @@
+Argatroban Anticoagulation in Patients With Acute Ischemic Stroke (ARGIS-1): A
+Randomized, Placebo-Controlled Safety Study
+Marian P. LaMonte, Marshall L. Nash, David Z. Wang, Andrew R. Woolfenden, John Schultz,
+Marcie J. Hursting and Philip M. Brown
+Stroke. 2004;35:1677-1682; originally published online May 20, 2004;
+doi: 10.1161/01.STR.0000131549.20581.ba
+Stroke is published by the American Heart Association, 7272 Greenville Avenue, Dallas, TX 75231
+Copyright © 2004 American Heart Association, Inc. All rights reserved.
+Print ISSN: 0039-2499. Online ISSN: 1524-4628
+
+The online version of this article, along with updated information and services, is located on the
+World Wide Web at:
+http://stroke.ahajournals.org/content/35/7/1677
+
+Permissions: Requests for permissions to reproduce figures, tables, or portions of articles originally published
+in Stroke can be obtained via RightsLink, a service of the Copyright Clearance Center, not the Editorial Office.
+Once the online version of the published article for which permission is being requested is located, click
+Request Permissions in the middle column of the Web page under Services. Further information about this
+process is available in the Permissions and Rights Question and Answer document.
+Reprints: Information about reprints can be found online at:
+http://www.lww.com/reprints
+Subscriptions: Information about subscribing to Stroke is online at:
+http://stroke.ahajournals.org//subscriptions/
+
+Downloaded from http://stroke.ahajournals.org/ at RHODE ISLAND HOSP on March 12, 2014
+
+Argatroban Anticoagulation in Patients With Acute
+Ischemic Stroke (ARGIS-1)
+A Randomized, Placebo-Controlled Safety Study
+Marian P. LaMonte, MD, MSN; Marshall L. Nash, MD; David Z. Wang, DO;
+Andrew R. Woolfenden, MD; John Schultz, PhD; Marcie J. Hursting, PhD; Philip M. Brown, MD, JD;
+for the ARGIS-1 Investigators
+Background and Purpose—Direct thrombin inhibitors, including argatroban, represent an anticoagulant class distinct from
+heparins. We investigated the safety of 2 levels of argatroban anticoagulation in acute ischemic stroke.
+Methods—This multicenter, randomized, double-blinded, placebo-controlled study included <n>171</n> patients with acute (Յ12
+hours from onset) stroke and National Institutes of Health Stroke Scale (NIHSS) scores of 5 to 22. Patients received
+continuous intravenous argatroban (100 ␮g/kg bolus) at 3 ␮g/kg per minute (nϭ59) or 1 ␮g/kg per minute (nϭ58),
+respectively, adjusted to target activated partial thromboplastin times (aPTTs) 2.25ϫ and 1.75ϫ baseline or placebo
+(nϭ54) for 5 days. The primary outcome was symptomatic intracranial hemorrhage (ICH) at 30 days.
+Results—Baseline characteristics including neurologic deficits (median NIHSS score 9) were comparable between groups.
+Argatroban at mean doses of 2.7 and 1.2 ␮g/kg per minute increased aPTTs significantly (PϽ0.001), with mean aPTTs
+at or near target values throughout infusion. Symptomatic ICH was not significantly different between groups (high-dose
+argatroban, 5.1%; low-dose argatroban, 3.4%; placebo, 0%; PՆ0.18), with 3 events during argatroban infusion and 2
+events Ն7 days after stopping infusion. No significant between-group differences occurred in asymptomatic ICH (7
+events), major systemic hemorrhage (no event), or 90-day mortality (13.4% overall).
+Conclusions—In this first North American randomized, double-blinded, placebo-controlled study of direct thrombin
+inhibition in acute ischemic stroke, argatroban at each dose evaluated significantly prolonged aPTTs without increasing
+ICH or major bleeding. These results suggest that argatroban provides safe anticoagulation in acute ischemic stroke,
+warranting future studies powered to evaluate its efficacy and more precisely estimate event rates. (Stroke. 2004;35:
+1677-1682.)
+Key Words: stroke, acute Ⅲ thrombin, antagonists and inhibitors Ⅲ randomized controlled trails Ⅲ anticoagulent agents
+
+U
+
+rgent routine anticoagulation with heparin, lowmolecular-weight heparins, or heparinoid is not recommended in acute ischemic stroke (AIS).1 These agents increase bleeding complications, eg, intracranial hemorrhage
+(ICH), without increasing favorable outcomes except perhaps
+in large-artery atherosclerotic stroke.1 Other limitations of
+heparins are unpredictable anticoagulant effects, dependence
+on adequate antithrombin levels, no inhibition of clot-bound
+thrombin, and heparin-induced thrombocytopenia (HIT).2
+Direct thrombin inhibitors including argatroban represent an
+anticoagulant class distinct from heparins (and thrombolytic
+and antiplatelet agents) and have not been prospectively
+studied outside Japan for treating AIS.
+Argatroban directly inhibits free and clot-bound thrombin
+and, hence, thrombin-induced activities, eg, platelet aggrega-
+
+tion and endothelin-1 release.3 Argatroban has predictable
+anticoagulant effects,4 does not induce or potentiate HIT,5
+causes less bleeding compared with heparin for the same
+anticoagulant effect,6 and is well-tolerated in various settings.7–11 Preclinical12–16 and clinical11,17 studies indicate that
+argatroban offers benefits in AIS. In rat models, argatroban
+increases blood flow to the penumbral area and reduces
+infarct size, microthrombi counts, and neurologic deficit.12,13
+Researchers postulate that argatroban, by inhibiting thrombin
+formed locally in response to ischemia, prevents subsequent
+microthrombi formation, improves blood flow to the periischemic areas, and thus rescues at-risk neuronal cells.16 In a
+double-blinded, placebo-controlled Japanese study, intravenous argatroban (60 mg/d for 2 days, then 10 mg twice daily
+for 5 days) significantly improved global outcome in patients
+
+Received February 10, 2004; accepted February 24, 2004.
+From the University of Maryland School of Medicine (M.P.L.), Baltimore, Md; Dekalb Neurology Associates/DNA Research (M.L.N.), Decatur, Ga;
+OSF Stroke Network (D.Z.W.), Peoria, Ill; Vancouver General Hospital (A.R.W.), Vancouver, BC, Canada; University of Virginia (J.S.), Charlottesville,
+Va; Clinical Science Consulting (M.J.H.), Potomac, Md; Encysive Pharmaceuticals (P.M.B.), Houston, TX
+Correspondence to Dr Marian P. LaMonte, University of Maryland School of Medicine, 22 South Greene St, Room N4W46, Baltimore, MD
+21201-1595. E-mail mlamonte@umm.edu
+© 2004 American Heart Association, Inc.
+Stroke is available at http://www.strokeaha.org
+
+DOI: 10.1161/01.STR.0000131549.20581.ba
+
+1677
+Downloaded from http://stroke.ahajournals.org/ at RHODE ISLAND HOSP on March 12, 2014
+
+1678
+
+Stroke
+
+July 2004
+
+treated within 48 hours of stroke, without increasing ICH.11
+In a casebook review of 2 historical controlled studies, which
+included 960 patients, argatroban (mean doses, 1.7 to 2.0
+␮g/kg per minute) reduced new stroke and stroke-associated
+mortality in HIT, without increasing ICH or major bleeding.17
+Among other uses, argatroban is available as an anticoagulant
+in Japan for treating large-artery atherosclerotic stroke and in
+America for prophylaxis or treatment of thrombosis in HIT
+and during percutaneous coronary interventions in patients
+with or at risk for HIT.
+Few randomized, controlled studies of intravenous anticoagulation in AIS are reported.11,18,19 We report a North
+American randomized, double-blinded, placebo-controlled
+study to establish safety and explore outcomes of 2 levels of
+intravenous argatroban in patients treated within 12 hours of
+AIS symptom onset.
+
+Materials and Methods
+This multicenter, randomized, double-blinded, phase 2, placebocontrolled study of argatroban in ischemic stroke (ARGIS-1) was
+conducted between April 2001 and August 2002 at 42 North
+American centers. Each center’s institutional review board approved
+the study. Subjects gave informed consent.
+
+Patients
+Males and nonpregnant females, aged 18 to 85 years, presenting
+within 12 hours of AIS symptom onset with a National Institutes of
+Health Stroke Scale (NIHSS) score of 5 to 22 were eligible. Patients
+were excluded if they had ICH or nonvascular cause of deficit;
+NIHSS level of consciousness score Ն2 or rapidly improving
+symptoms; preexisting modified Rankin score (mRS) Ն2; head
+computerized tomography (CT) findings of large mass effect with
+sulcal effacement in more than one-third of the middle cerebral
+artery territory; significant bleeding or coagulopathy currently or
+within 3 months; major surgery, trauma, arterial puncture at a
+noncompressible site, myocardial infarction, or previous stroke in the
+past 6 weeks; lumbar puncture in the past 2 weeks; anticipated
+surgery in the next week; mean arterial pressure Ͼ130 mm Hg,
+systolic blood pressure Ն220 mm Hg, or hypertension managed by
+intravenous medication requiring titration; hepatic dysfunction with
+alanine and aspartate transaminase Ͼ3ϫ the upper limit of normal;
+drug or alcohol abuse in the previous 6 months; history of brain
+tumor; any other serious illness that in the investigator’s opinion
+would have increased the risk associated with study participation or
+confounded treatment assessment; warfarin treatment with international neormalized ratio (INR) Ͼ1.4; heparin treatment with activated partial thromboplastin time (aPTT) Ն35 seconds; thrombolysis
+in the past week; or need for concomitant use of thrombolytic agents
+or intravenous anticoagulants besides argatroban.
+
+Treatment and Assessments
+Patients were randomly assigned (1:1:1) to receive high infusiondose argatroban, low infusion-dose argatroban, or placebo for 5 days.
+Argatroban was administered intravenously as an initial 100-␮g/kg
+bolus over 3 to 5 minutes, followed by continuous infusion at 3
+␮g/kg per minute (high-dose argatroban group) or 1 ␮g/kg per
+minute (low-dose argatroban group), adjusted respectively to target
+aPTTs of 2.25ϫ (Ϯ5%) and 1.75ϫ (Ϯ5%) the baseline aPTT.
+Placebo was administered as a bolus followed by continuous infusion
+of 0.9% saline at volumes appropriate for active treatment given the
+patient’s weight. The aPTT was determined 2 hours after initiating
+treatment. Personnel blinded to the patient’s clinical status monitored
+the patient’s anticoagulant status; adjusted the argatroban infusion
+dose (up to 10 ␮g/kg per minute) to achieve and maintain target
+aPTTs (not to exceed 80 seconds); and to maintain blinding, with
+adjusted placebo infusion similarly, as if titrating for aPTT variations. aPTTs were determined 2 to 4 hours after any dose change and
+
+daily. For aPTTs 80 to 100 seconds, the infusion dose was decreased
+50%. For aPTTs Ͼ100 seconds, the infusion was temporarily
+discontinued until the aPTT, checked hourly, was Ͻ80 seconds, then
+restarted at the lowest dose previously supporting acceptable aPTTs.
+Treatment was discontinued if infusion was interrupted for Ն4 hours
+consecutively, surgical intervention was required, or intracranial or
+major systemic hemorrhage occurred.
+Patients received basic stroke care including aspirin 81 to 325 mg
+within 48 hours of symptom onset, flat head positioning, oxygen,
+intravenous saline, swallowing assessment, and compression stockings or devices, unless contraindicated. Head CT scans were performed at baseline (ie, immediately before randomization), within 12
+hours of stopping infusion, and on suspected hemorrhage and read
+locally. Stroke subtype20 was assessed at 30 days. Adverse events
+were recorded for 30 days.
+Randomized patients who received study drug were evaluated for
+safety. The primary outcome was symptomatic ICH (ie, parenchymal
+hemorrhage, hemorrhagic infarction, or hemorrhagic transformation
+detected by CT and associated with neurologic deterioration, defined
+as an increase of Ն4 points in total NIHSS score, Ն2 points in
+NIHSS motor component, or Ն1 point in NIHSS level of consciousness component) within 30 days. Secondary safety outcomes were
+major systemic hemorrhage (ie, bleeding into a major prosthetic
+joint; retroperitoneal bleeding; or other major hemorrhage associated
+with a hemoglobin decrease Ն2 g/dL and blood transfusion Ն2 U),
+asymptomatic ICH (ie, parenchymal hemorrhage, hemorrhagic infarction, or hemorrhagic transformation detected by CT but without
+meeting score criteria for symptomatic ICH), and minor systemic
+bleeding (ie, bleeding not meeting criteria for major systemic
+hemorrhage) within 30 days.
+Although the study sample size was insufficient for a statistically
+robust efficacy analysis, we explored patient outcomes by group.
+Randomized patients without significant protocol or entry criteria
+violations who received drug infusion Ն2 days (no gap Ͼ4 hours)
+were prespecified as the efficacy population for exploration of
+outcomes. Outcomes included the NIHSS, mRS, and Barthel index
+(BI) assessed at baseline (NIHSS and mRS only), daily during
+treatment (NIHSS only), and at discharge/early withdrawal, 30 days,
+and 90 days by personnel blinded to the patient’s treatment assignment and aPTTs. Baseline mRS scores reflected conditions before
+the qualifying stroke. Stroke severity scores at 90 days were
+dichotomized as “success” (ie, NIHSS score 0 to 1 or 40% improvement over baseline; NIHSS score 0 to 1; mRS score 0 to 2; or BI
+score Ն85) or “failure” (including death). Worse possible scores
+were given on patient death.
+
+Safety Oversight
+An independent Data and Safety Monitoring Board provided safety
+oversight. As support for their oversight, an independent neuroradiologist performed centralized, blinded review of CT scans on
+patients who experienced neurologic deterioration or serious adverse
+events related to neurologic bleeding and whose complete films were
+available (nϭ60). Centralized and local reviews agreed regarding
+bleeding, except for 1 patient (low-dose argatroban) with ICH by
+local, yet not centralized, review; 1 patient (high-dose argatroban)
+with ICH by centralized review and “suggestion of petechial bleeding” by local review; and 3 patients (each active treatment) with
+minimal/petechial bleeding by centralized, yet not local, review.
+
+Statistical Methods
+One hundred eighty subjects, 60 per group, were planned. In the
+primary safety analysis, with 120 subjects administered study drug,
+there was a 95% chance of observing a drug-related event with a true
+occurrence rate of 2.5%. Regarding comparisons between placebo
+and the combined active treatment groups, a difference in event rate
+of Ϸ10% could be detected with 80% power using a 2-sided test at
+the 0.05 level. Tests of interactions and baseline differences were
+2-sided at a 0.10 significance level; other tests were 2-sided at a 0.05
+significance level. No adjustments were made for multiple comparisons. Comparisons were made between active treatment groups,
+
+Downloaded from http://stroke.ahajournals.org/ at RHODE ISLAND HOSP on March 12, 2014
+
+LaMonte et al
+TABLE 1.
+
+Patient Disposition
+High-Dose
+Argatroban
+n (%)
+
+Low-Dose
+Argatroban
+n (%)
+
+Placebo
+n (%)
+
+59
+
+59
+
+58*
+
+Randomized
+Safety population†
+
+59
+
+58*
+
+54
+
+48 (81)
+
+Completed study
+
+45 (78)
+
+47 (87)
+
+Withdrew consent
+
+2
+
+0
+
+0
+
+Adverse event, including death
+
+7
+
+11
+
+6
+
+Lost to follow-up
+
+2
+
+2
+
+1
+
+47 (80)
+
+39 (67)
+
+10
+
+16
+
+6
+
+Violated entry criteria
+
+2
+
+2
+
+1
+
+Incorrect medication
+
+0
+
+1
+
+0
+
+Efficacy population
+
+separately and combined, and placebo. Patients withdrawn before
+receiving study drug were excluded from analyses.
+For demographic and baseline characteristics, continuous variables were analyzed using analysis of variance, adjusting for treatment. Categorical variables were analyzed using the Kruskal–Wallis
+test (smoking and alcohol history) or Cochran–Mantel–Haenszel
+general association test. Changes in aPTT were analyzed using
+analysis of covariance, adjusting for treatment, with baseline aPTT
+as covariate.
+
+TABLE 2. Demographic and Baseline Characteristics
+(Safety Population)
+High-Dose
+Argatroban
+(Nϭ59)
+
+Low-Dose
+Argatroban
+(Nϭ58)
+
+Placebo
+(Nϭ54)
+
+P
+
+Age, y*
+
+70Ϯ13
+
+70Ϯ12
+
+65Ϯ13
+
+0.038
+
+Weight, kg*
+
+80Ϯ18
+
+79Ϯ16
+
+78Ϯ20
+
+0.90
+
+Female
+
+31 (53)
+
+37 (64)
+
+Black
+
+10 (17)
+
+White
+
+48 (81)
+
+31 (57)
+
+0.47
+
+10 (17)
+
+9 (17)
+
+0.50
+
+47 (81)
+
+42 (78)
+
+Race
+
+Other
+
+Results
+Patients
+
+*Five patients (low-dose argatroban, nϭ2; placebo, nϭ3) withdrew before
+receiving study medication. One patient randomized to placebo received
+low-dose argatroban (included in the latter group for analyses).
+†Denominator for percentages.
+
+Characteristic, n (%)
+
+1679
+
+Safety analyses were conducted on the prespecified safety population. Bleeding and adverse event rates were compared between
+groups using Fishers exact test. Seven- and 90-day mortality was
+summarized by group. Kaplan–Meier estimates of 90-day survival
+were compared using the log-rank test.
+Exploration of patient outcomes was conducted using the prespecified efficacy population. Logistic regression analyses were
+performed on dichotomized outcomes, numerical scores at discharge/early withdrawal and at 90 days, and serial NIHSS scores.
+Covariates used in the analyses were demographic or baseline
+characteristics that demonstrated between-group differences (0.10
+significance level), baseline neurologic scores, and time from symptom onset to treatment.
+
+47 (87)
+
+Infusion duration Ͻ2 days
+
+Safety of Argatroban in Acute Ischemic Stroke
+
+1 (2)
+
+1 (2)
+
+13 (22)
+
+13 (22)
+
+17 (32)
+
+11 (19)
+
+17 (29)
+
+19 (35)
+
+0.07
+
+Previous stroke
+
+15 (25)
+
+14 (24)
+
+10 (19)
+
+All patients received an initial bolus. Mean (SD) infusion
+doses were 2.7 (0.9) and 1.2 (0.5) ␮g/kg per minute, respectively, for high-dose and low-dose argatroban. Argatroban
+versus placebo significantly prolonged aPTTs within 2 hours
+of starting therapy (PϽ0.001, each group). Mean aPTTs
+
+0.28
+
+Current drinker
+
+Dosing
+
+3 (6)
+
+Current smoker
+
+In the safety population, 171 patients received high-dose
+(nϭ59) or low-dose (nϭ58) argatroban (respectively adjusted
+to achieve aPTTs 2.25ϫ and 1.75ϫ baseline), or placebo
+(nϭ54) within 12 hours of AIS symptom onset (Table 1). One
+hundred forty (82%) patients completed the study. The
+efficacy population included 133 patients.
+In the safety population, the groups were similar regarding
+demographic and baseline characteristics, except age and
+alcohol use (Table 2). Vital signs and routine laboratory
+values were similar between groups (data not shown), except
+serum glucose (range of group means: 6.4 to 7.8 mmol/L;
+Pϭ0.051) and aPTT (26.8 to 28.8 seconds; Pϭ0.032).
+Overall, the median NIHSS score was 9. The mean time from
+symptom onset to treatment was 9 hours (SD: 2) in each
+group. In the efficacy population, INR (range of group
+means: 0.99 to 1.04; Pϭ0.08), age, alcohol use, serum
+glucose, and aPTT demonstrated significant between-group
+differences and were covariates in exploration of patient
+outcomes.
+
+0.23
+0.65
+
+Qualifying stroke type
+Large-artery atherosclerosis
+
+18 (35)
+
+14 (29)
+
+11 (22)
+
+Small-artery occlusion
+
+15 (29)
+
+15 (31)
+
+18 (35)
+
+Cardioembolism
+
+8 (16)
+
+12 (24)
+
+8 (16)
+
+Other cause
+
+4 (8)
+
+1 (2)
+
+7 (14)
+
+Multiple causes
+
+1 (2)
+
+1 (2)
+
+1 (2)
+
+Undetermined cause
+
+5 (10)
+
+6 (12)
+
+6 (12)
+
+NIHSS score, median (range)
+
+9 (5–22)
+
+10 (5–22)
+
+9 (5–20) 0.29
+
+Symptom onset to treatment
+Ͼ3–6 hours
+
+12 (20)
+
+10 (17)
+
+9 (17)
+
+Ͼ6–12 hours
+
+46† (78)
+
+48 (83)
+
+45 (83)
+
+*MeanϮSD.
+†1 additional patient treated 12.8 hours after symptom onset.
+
+0.69
+Mean (SD) absolute aPTT change versus baseline for high-dose
+argatroban (diamonds), low-dose argatroban (squares), or placebo (triangles). The dashed lines represent absolute changes
+associated with target aPTTs of 2.25ϫ and 1.75ϫ baseline.
+
+Downloaded from http://stroke.ahajournals.org/ at RHODE ISLAND HOSP on March 12, 2014
+
+1680
+
+Stroke
+
+July 2004
+TABLE 3.
+
+Safety Outcomes
+n (%)
+High-Dose
+Argatroban
+(Nϭ59)
+
+Event
+Symptomatic intracranial hemorrhage
+
+Low-Dose
+Argatroban
+(Nϭ58)
+
+P vs Placebo
+
+Placebo
+(Nϭ54)
+
+Active
+
+High-Dose
+
+Low-Dose
+
+3 (5.1)
+
+2 (3.4)
+
+0 (0)
+
+0.18
+
+0.24
+
+0.50
+
+Parenchymal hemorrhage
+
+1 (1.7)
+
+0 (0)
+
+0 (0)
+
+1.0
+
+1.0
+
+NA
+
+Hemorrhagic infarction
+
+1 (1.7)
+
+0 (0)
+
+0 (0)
+
+1.0
+
+1.0
+
+NA
+
+Hemorrhagic transformation
+
+1 (1.7)
+
+2 (3.4)
+
+0 (0)
+
+0.55
+
+1.0
+
+0.50
+
+Major systemic hemorrhage
+
+0 (0)
+
+0 (0)
+
+0 (0)
+
+NA
+
+NA
+
+NA
+
+Asymptomatic intracranial hemorrhage
+
+1 (1.7)
+
+4 (6.9)
+
+2 (3.7)
+
+1.0
+
+0.61
+
+0.68
+
+16 (27.1)
+
+11 (19.0)
+
+6 (11.1)
+
+0.09
+
+0.035
+
+0.30
+
+Minor systemic hemorrhage
+Death
+Within 7 days
+
+2 (3.4)
+
+4 (7.0)
+
+1 (1.9)
+
+NA
+
+NA
+
+NA
+
+Within 90 days
+
+7 (11.1)
+
+11 (19.3)
+
+5 (9.3)
+
+NA
+
+NA
+
+NA
+
+0.881
+
+0.802
+
+0.907
+
+0.26
+
+0.64
+
+0.13
+
+Survival estimate (90 days)
+NA indicates not applicable/available.
+
+remained at or near target values throughout infusion (presented normalized as change from baseline in Figure 1). The
+median duration of therapy was 119 hours (range: 4 to 123)
+for high-dose argatroban, 106 hours (range: 2 to 121) for
+low-dose argatroban, and 120 hours (0.3 to 136) for placebo.
+
+Primary Analyses: Safety
+The primary outcome—symptomatic ICH—was not significantly different between patients administered high-dose
+argatroban (5.1%), low-dose argatroban (3.4%), or any argatroban (4.3%) versus placebo (0%; PՆ0.18) (Table 3). No
+between-group differences occurred by ICH subtype
+(PՆ0.50). Of 5 symptomatic ICHs (Table 4), 2 were temporally unrelated to study treatment, occurring Ն7 days after
+stopping argatroban (elimination half-life, 39 to 51 minutes).5
+2 were in patients supratherapeutic (aPTT Ͼ2.25ϫ (Ϯ5%)
+baseline aPTT) on high-dose argatroban, and 1 was in an
+elderly patient therapeutic (aPTT Ͻ1.75ϫ (Ϯ5%) baseline
+aPTT) on low-dose argatroban.
+No major systemic hemorrhage occurred (Table 3). Seven
+patients experienced asymptomatic ICH, without betweengroup differences (PՆ0.61). Minor systemic hemorrhage
+increased only with high-dose argatroban versus placebo
+(27.1% versus 11.1%, Pϭ0.035). Survival estimates at 90
+TABLE 4.
+
+days did not differ between groups (PՆ0.13); 90-day mortality was 13.5% overall.
+
+Exploration of Patient Outcomes
+Neurologic assessment scores did not differ between groups
+at discharge/early withdrawal (range of group median scores:
+NIHSS, 6 to 7.5; mRS, 4; BI, 45 to 55; PՆ0.07) or 90 days
+(NIHSS, 1 to 2; mRS, 1 to 2; BI, 100; PՆ0.40). Improvements occurred in each scale over time. No between-group
+differences in stroke progression, as reflected by serial
+NIHSS scores, were detected (PՆ0.07). Success at 90 days,
+by each definition, did not differ between groups (Table 5).
+Forty-four (34%) of 129 patients with data achieved NIHSS
+scores of 0 to 1. Examination of data suggested differences in
+response by stroke subtype; however, sample sizes were
+small (nՅ16) and there were no between-group significant
+differences.
+
+Discussion
+We evaluated safety and explored patient outcomes associated with argatroban anticoagulation at target aPTTs of
+1.75ϫ and 2.25ϫ baseline (mean infusion doses of 1.2 and
+2.7 ␮g/kg per minute, respectively) versus placebo in 171
+patients treated within 12 hours of AIS symptom onset. The
+12-hour window allowed a broad temporal evaluation of the
+
+Symptomatic Intracranial Hemorrhages
+Study
+Day
+
+Treatment
+Group
+
+Maximum aPTT During Infusion,
+or Anticoagulation After Infusion
+
+Age (y)/
+Gender
+
+Baseline
+NIHSS Score
+
+Outcome
+
+Hemorrhagic transformation
+
+1
+
+Active (high)
+
+103 s (3.22ϫ baseline)
+
+65/f
+
+16
+
+Died
+
+Hemorrhagic transformation
+
+1
+
+Active (low)
+
+49 s (1.69ϫ baseline)
+
+83/m
+
+13
+
+Survived
+
+Hemorrhagic infarction
+
+4
+
+Active (high)
+
+68 s (2.83ϫ baseline)
+
+80/m
+
+21
+
+Died
+
+Hemorrhagic transformation
+
+13
+
+Active (low)
+
+Warfarin, LMWH
+
+85/f
+
+16
+
+Died
+
+Parenchymal hemorrhage
+
+17
+
+Active (high)
+
+Warfarin (INR 5.2)
+
+84/f
+
+10
+
+Lost to follow-up
+
+Event
+During infusion
+
+After infusion
+
+m indicates male; f, female.
+
+Downloaded from http://stroke.ahajournals.org/ at RHODE ISLAND HOSP on March 12, 2014
+
+LaMonte et al
+TABLE 5.
+
+Safety of Argatroban in Acute Ischemic Stroke
+
+1681
+
+Success at 90 Days
+n (%*)
+
+P vs Placebo
+
+High-Dose
+Argatroban
+(Nϭ47)
+
+Low-Dose
+Argatroban
+(Nϭ39)
+
+Placebo
+(Nϭ47)
+
+Active
+
+High-Dose
+
+Low-Dose
+
+NIHSS 0 –1, or 40% improvement in score
+
+32 (71)
+
+24 (63)
+
+33 (72)
+
+0.96
+
+0.88
+
+0.96
+
+NIHSS 0–1
+
+15 (33)
+
+15 (39)
+
+14 (30)
+
+0.21
+
+0.52
+
+0.10
+
+Modified Rankin scale 0–2
+
+23 (51)
+
+17 (45)
+
+25 (54)
+
+0.54
+
+0.58
+
+0.61
+
+Barthel index Ն85
+
+26 (58)
+
+20 (53)
+
+30 (65)
+
+0.62
+
+0.60
+
+0.74
+
+Success Definition
+
+*Percentage of patients with available data.
+
+safety of direct thrombin inhibition with argatroban in AIS.
+Placebo control was used because the only approved therapy
+for AIS is tissue plasminogen activator (tPA).1 Despite
+eligibility of tPA-disqualified patients, no one received study
+drug within 3 hours of symptoms. Patients also received
+aspirin. Argatroban and aspirin lack pharmacokinetic/pharmacodynamic interactions, including no interaction regarding
+bleeding times, an index of platelet and vascular function.21
+Their combination use during percutaneous coronary interventions (mean argatroban dose: 23 ␮g/kg per minute) has
+low (0.9%) bleeding risk.10 The treatment groups were well
+matched with the few imbalanced characteristics, eg, age,
+serving as covariates in comparative regression analyses.
+Group mean aPTTs increased in an argatroban dose-related
+fashion, consistent with its predictable pharmacodynamics.4
+A study limitation is that despite precautions to maintain
+blinding, it was theoretically possible for investigators to
+guess treatment identity, because in some cases aPTTs were
+recorded on hospital charts.
+Results indicate that intravenous argatroban administered
+within 12 hours of symptom onset at mean infusion doses of
+1.2 and 2.7 ␮g/kg per minute (100-␮g/kg initial bolus) for 5
+days provides safe anticoagulation in AIS. Argatroban therapy versus placebo had no significant effect on the primary
+outcome of symptomatic ICH at 30 days or the safety
+outcomes of asymptomatic ICH, major systemic hemorrhage,
+or 90-day mortality. Minor bleeding was less common with
+low-dose than high-dose argatroban, perhaps related to a
+decreased likelihood of aPTTs Ͼ80 seconds. These safety
+data are consistent with the lack of increased ICH or major
+bleeding in controlled studies of argatroban therapy in HIT,
+including patients with comorbid stroke,8,9 and in acute
+stroke.11 The data indirectly contrast with the increased
+serious bleeding associated with intravenous heparinoid in
+AIS.19
+In this study designed primarily to evaluate safety and not
+powered to evaluate efficacy, we were unable to detect a
+treatment effect on early stroke progression or neurologic
+impairment at 90 days. The positive safety profile of argatroban in AIS, taken together with clinical data supporting its
+benefits in stroke,11,17 particularly large-artery atherosclerotic
+stroke,11 suggest that trials to evaluate its efficacy and more
+precisely estimate adverse event rates are warranted. Such
+studies could test the hypothesis that early direct thrombin
+inhibition prevents extension of primary ischemic areas by
+reducing thrombin activity and promoting collateral flow
+
+channels.16 A study evaluating argatroban with tPA in acute
+stroke is underway.22
+
+Appendix
+Individuals and Groups That Contributed to the
+Success of ARGIS-1
+Principal investigator: Marian P. LaMonte, MD, MSN, Baltimore, MD
+Study investigators: Paul T. Akins, MD, PhD, Sacramento, CA;
+Erfan A. Albakri, MD, Tampa, FL; Mark L. Brody, MD, Boynton
+Beach, FL; Wayne M. Clark, MD, Portland, OR; David R. Craig,
+MD, Kelowna, BC, Canada; Edgardo Crisostomo, MD, Duluth, MN;
+Bhuvaneswari Dandapani, MD, Melbourne, FL; Patricia Davis, MD,
+Iowa City, IA; Thomas G. Devlin, MD, PhD, Chattanooga, TN; B.
+Franklin Diamond, MD, Abington, PA; Joseph E. Freschi, MD,
+Atlanta, GA; Adrian Goldszmidt, MD, Baltimore, MD; Ruwani
+Gunawardane, MD, Baltimore, MD; Joseph Hanna, MD, Cleveland,
+OH; Dennis Hill, MD, Winston-Salem, NC; Michael R. K. Jacoby,
+MD, Des Moines, IA; Srinath Kadimi, MD, Fairfield, CT; Scott E.
+Kasner, MD, Philadelphia, PA; Enrique Leira, MD, St. Louis, MO;
+Kenneth A. Levin, MD, Ridgewood, NJ; Richard Libman, MD, New
+York, NY; Jonathan Maisel, MD, Bridgeport, CT; Samuel Markind,
+MD, Danbury, CT; Gerald McIntosh, MD, Fort Collins, CO;
+Marshall L. Nash, MD, Decatur, GA; Chikin (Ken) Ng, MD, Ocala,
+FL; Vernon D. Rowe, MD, Kansas City, MO; Harmeet Sachdev,
+MD, San Jose, CA; Daniel Selchen, MD, Mississauga, Ontario,
+Canada; Souvik Sen, MD, Edison, NJ; Ashfaq Shuaib, MD, Edmonton, Alberta, Canada; Richard Shubin, MD, Pasadena, CA; Raymond Stephens, MD, Walnut Creek, CA; Ronald Tarrel, DO,
+Minneapolis, MN; Peter Vrooman, MD, Winston-Salem, NC; David
+Wang, DO, Peoria, IL; Lawrence Wechsler, MD, Pittsburgh, PA;
+Michael Winger, MD, Tecumseh, Ontario, Canada; Andrew R.
+Woolfenden, MD, Vancouver, BC, Canada; Richard M. Zweifler,
+MD, Mobile, AL
+Data and Safety Monitoring Board: Pierre Fayad, MD (Chair),
+Omaha, NE; Michael Gent, DSc, Hamilton, Ontario, Canada; Carlos
+Kase, MD, Boston, MA; Ralph Sacco, MD, New York, NY
+Independent neuroradiologic review: Howard Rowley, MD,
+Madison, WI
+Clinical operations, statistical support, or data analyses: Encysive Pharmaceuticals, Houston, TX; INC Research Inc, Raleigh,
+NC; John Schultz, PhD, Charlottesville, VA; Marcie Hursting, PhD,
+Potomac, MD; Mona Bahouth, MSN, CNRP, Baltimore, MD
+
+Acknowledgments
+Encysive Pharmaceuticals, Houston, Tex supported this study. Drs
+LaMonte, Schultz, and Hursting have received consultancy fees from
+Encysive Pharmaceuticals.
+
+References
+1. Adams HP, Adams RJ, Brott T, del Zoppo GJ, Furlan A, Goldstein LB,
+Grubb RL, Higashida R, Kidwell C, Kwiatkowsi TG, Marler R,
+Hademenos GJ. Guidelines for the early management of patients with
+ischemic stroke: a scientific statement from the Stroke Council of the
+American Stroke Association. Stroke. 2003;34:1056 –1083.
+
+Downloaded from http://stroke.ahajournals.org/ at RHODE ISLAND HOSP on March 12, 2014
+
+1682
+
+Stroke
+
+July 2004
+
+2. Hirsh J, Warkentin TE, Shaughnessy SG, Anand SS, Halperin JL,
+Raschke R, Granger C, Ohman EM, Dalen JE. Heparin and lowmolecular-weight heparin: mechanisms of action, pharmacokinetics,
+dosing, monitoring, efficacy, and safety. Chest. 2001;119:64S–94S.
+3. Okamoto S, Okunomiya-Hijikata A. Synthetic selective inhibitors of
+thrombin. Methods Enzymol. 1993;222:328 –340.
+4. Swan SK, Hursting MJ. The pharmacokinetics and pharmacodynamics of
+argatroban: effects of age, gender, and hepatic or renal dysfunction.
+Pharmacotherapy. 2000;20:318 –329.
+5. Walenga JM, Koza MJ, Lewis BE, Pifarre R. Relative heparin-induced
+´
+thrombocytopenic potential of low molecular weight heparins and new
+antithrombotic agents. Clin Appl Thromb Hemost. 1996;2:S21–S27.
+6. Berry CN, Girard D, Lochot S, Lecoffre C. Antithrombotic actions of argatroban
+in rat models of venous, “mixed” and arterial thrombosis, and its effects on the
+tail transection bleeding time. Br J Pharmacol. 1994;113:1209–1214.
+7. Kathiresan S, Shiomura J, Jang IK. Argatroban. J Thromb Thrombolysis.
+2002;13:41– 47.
+8. Lewis BE, Wallis DE, Berkowitz SD, Matthai WH, Fareed J, Walenga
+JM, Bartholomew J, Sham R, Lerner RG, Zeigler ZR, Rustagi PK, Jang
+I-K, Rifkin SD, Moran J, Hursting MJ, Kelton JG. Argatroban anticoagulant therapy in patients with heparin-induced thrombocytopenia. Circulation. 2001;103:1838 –1843.
+9. Lewis BE, Wallis DE, Leya F, Hursting MJ, Kelton JG. Argatroban
+anticoagulation in patients with heparin-induced thrombocytopenia. Arch
+Intern Med. 2003;163:1849 –1856.
+10. Lewis B, Matthai WH, Cohen M, Moses JW, Hursting MJ, Leya F.
+Argatroban anticoagulation during percutaneous coronary intervention in
+patients with heparin-induced thrombocytopenia. Catheter Cardiovasc
+Interv. 2002;57:177–184.
+11. Kobayashi W, Tazaki Y. Effect of the thrombin inhibitor argatroban in
+acute cerebral thrombosis. Semin Thromb Hemost. 1997;23:531–534.
+12. Kawai H, Yuki S, Sugimoto J, Tamao Y. Effects of a thrombin inhibition,
+argatroban, on ischemic brain damage in the rat distal middle cerebral
+artery occlusion model. J Pharmacol Exp Ther. 1996;278:780 –785.
+
+13. Kawai H, Umemura K, Nakashima M. Effect of argatroban on microthrombi formation and brain damage in the rat middle cerebral artery
+thrombosis model. Jpn J Pharmacol. 1995;69:143–148.
+14. Mima T, Jin YJ, Hirayama T, Mostafa MG, Mori K. Argatroban, a
+thrombin inhibitor, decreased mortality after 10 min of forebrain ischemia
+in the gerbil. Neurosci Lett. 2000;279:93–96.
+15. Morris DC, Zhang L, Zhang ZG, Lu M, Berens KL, Brown PM, Chopp
+M. Extension of the therapeutic window for recombinant tissue plasminogen activator with argatroban in a rat model of embolic stroke. Stroke.
+2001;32:2635–2640.
+16. Tamoa Y, Kikumoto R. Effect of argatroban, a selective thrombin inhibitor, on animal models of cerebral thrombosis. Semin Thromb Hemostat.
+1997;23:523–530.
+17. Lamonte MP, Brown PM, Hursting MJ. Stroke in patients with heparininduced thrombocytopenia and the effect of argatroban therapy. Crit Care
+Med. 2004;32:979 –980.
+18. Duke RJ, Bloch RF, Turpie AG, Trebilcock R, Bayer N. Intravenous
+heparin for the prevention of stroke progression in acute partial stable
+stroke. Ann Intern Med. 1986;105:825– 828.
+19. The Publications Committee for the Trial of ORG 10172 in Acute Stroke
+Treatment (TOAST) Investigators. Low molecular weight heparinoid,
+ORG 10172 (danaparoid), and outcome after acute ischemic stroke: a
+randomized controlled study. JAMA. 1998;279:1265–1272.
+20. Adams HP, Bendixen BH, Kappelle LJ, Love BB, Gordon DL, Marsh EE.
+Classification of subtype of acute ischemic stroke. Definitions for use in
+a multicenter clinical trial. Stroke. 1993;24:35– 41.
+21. Clarke RJ, Mayo G, FitzGerald GA, Fitzgerald DJ. Combined administration of aspirin and a specific thrombin inhibitor in man. Circulation.
+1991;83:1510 –1518.
+22. Acute stroke trials at the University of Texas Health Science Center at
+Houston: argatroban and tPA. Available at: http://www.houstonstroke.
+com/clinical_trials/acutestroke.html. Accessed October 23, 2003.
+
+Downloaded from http://stroke.ahajournals.org/ at RHODE ISLAND HOSP on March 12, 2014

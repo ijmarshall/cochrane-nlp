@@ -1,0 +1,1903 @@
+new england
+journal of medicine
+The
+
+july 15 , 2004
+
+established in 1812
+
+vol. 351
+
+no. 3
+
+Single-Dose Perinatal Nevirapine plus Standard Zidovudine
+to Prevent Mother-to-Child Transmission of HIV-1 in Thailand
+Marc Lallemant, M.D., Gonzague Jourdain, M.D., Sophie Le Coeur, M.D., Ph.D., Jean Yves Mary, Ph.D.,
+Nicole Ngo-Giang-Huong, Pharm.D., Ph.D., Suporn Koetsawang, M.D., Siripon Kanshana, M.D.,
+Kenneth McIntosh, M.D., and Vallop Thaineua, M.D., for the Perinatal HIV Prevention Trial (Thailand) Investigators*
+
+abstract
+background
+
+Although zidovudine prophylaxis decreases the rate of transmission of the human immunodeficiency virus (HIV) type 1 substantially, a large number of infants still become
+infected. We hypothesized that the administration, in addition to zidovudine, of a single
+dose of oral nevirapine to mothers during labor and to neonates would further reduce
+transmission of HIV.
+methods
+
+We conducted a randomized, double-blind trial of three treatment regimens in Thai
+women who were receiving zidovudine therapy during the third trimester of pregnancy. In one group, mothers and infants received a single dose of nevirapine (nevirapine–
+nevirapine regimen); in another, mothers and infants received nevirapine and placebo,
+respectively (nevirapine–placebo regimen); and in the last, mothers and infants received
+placebo (placebo–placebo regimen). The infants also received one week of zidovudine
+therapy and were formula-fed. The end point of the study was infection with HIV in the
+infants, established by virologic testing.
+results
+
+Between January 15, 2001, and February 28, 2003, a total of <n>1844</n> Thai women were enrolled. At the first interim analysis, the independent data monitoring committee stopped
+enrollment in the placebo–placebo group. Among women who delivered before the interim analysis, the as-randomized Kaplan–Meier estimates of the transmission rates
+were 1.1 percent (95 percent confidence interval, 0.3 to 2.2) in the nevirapine–nevirapine
+group and 6.3 percent (95 percent confidence interval, 3.8 to 8.9) in the placebo–placebo group (P<0.001). The final per-protocol transmission rate in the nevirapine–nevirapine group, 1.9 percent (95 percent confidence interval, 0.9 to 3.0), was not significantly inferior to the rate in the nevirapine–placebo group (2.8 percent; 95 percent
+confidence interval, 1.5 to 4.1). Nevirapine had an effect within subgroups defined by
+known risk factors such as viral load and CD4 count. No serious adverse effects were associated with nevirapine therapy.
+
+From Epidémiologie Clinique, Santé Maternelle et Infantile et Sida, Institut de Recherche pour le Développement, Paris
+(M.L., G.J., S.L., N.N.-G.-H.); the Department of Immunology and Infectious Diseases, Harvard School of Public Health,
+Boston (M.L., G.J., N.N.-G.-H.); Institut
+National d’Etudes Démographiques, Paris
+(S.L.); INSERM, Erm 0321, Paris (J.Y.M.);
+the Family Health Research Center, Mahidol University, Bangkok, Thailand (S. Koetsawang); the Ministry of Public Health,
+Bangkok, Thailand (S. Kanshana, V.T.);
+and Children’s Hospital and the Department of Pediatrics, Harvard Medical
+School — both in Boston (K.M.). Address
+reprint requests to Dr. Lallemant at the
+Perinatal HIV Prevention Trial — Institut
+de Recherche pour le Développement,
+Unité 54, 29/7-8 Samlan Rd., Soi 1 Prasing Muang, Chiang Mai 50200, Thailand,
+or at marc@phpt.org.
+*The coinvestigators and study coordinators of the Perinatal HIV Prevention Trial
+(Thailand) are listed in the Appendix.
+N Engl J Med 2004;351:217-28.
+Copyright © 2004 Massachusetts Medical Society.
+
+conclusions
+
+A single dose of nevirapine to the mother, with or without a dose of nevirapine to the infant, added to oral zidovudine prophylaxis starting at 28 weeks’ gestation, is highly effective in reducing mother-to-child transmission of HIV.
+n engl j med 351;3
+
+www.nejm.org
+
+july 15, 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+217
+
+The
+
+new england journal
+
+m
+
+other-to-child transmission of
+the human immunodeficiency virus
+(HIV) remains a major health problem
+worldwide, even though the preventive efficacy of
+zidovudine was established in 1994.1-3 In Thailand,
+where 1.3 percent of pregnant women are infected
+with HIV, since 1993 the Ministry of Public Health
+has operated programs for voluntary counseling
+and testing of pregnant women and has provided
+free infant formula to mothers infected with HIV.4
+Since 1999, this national program has provided zidovudine therapy during the last trimester of pregnancy, at delivery, and to the newborn. Even with
+these interventions, however, transmission rates remain at or above 6 percent.5,6 When a clinical trial
+demonstrated the efficacy of a single dose of nevirapine (Viramune, Boehringer Ingelheim) during
+labor plus a single dose to the newborn,7 we hypothesized that, without additional toxicity, logistic complications, or significant cost, perinatal nevirapine therapy added to zidovudine therapy could
+further reduce mother-to-child transmission of HIV
+in Thailand.
+
+methods
+trial design
+
+We conducted a multicenter, phase 3, double-blind,
+randomized, placebo-controlled trial. The primary
+objective was to assess the safety and efficacy of a
+single dose of nevirapine administered to women
+at the onset of labor and given to infants between
+48 and 72 hours after birth, added to zidovudine
+prophylaxis, for the prevention of mother-to-child
+transmission of HIV type 1. A secondary objective
+was to evaluate the incremental effect of the administration of perinatal nevirapine to newborns.
+The ethics committees of the Thai Ministry of
+Public Health, Chiang Mai University, and the Harvard School of Public Health approved the protocol
+used in the study, including the amendments. All
+study sites complied with regulations of the Department of Health and Human Services for the protection of human research subjects.
+patients
+
+Eligible subjects were pregnant women participating in the national program of voluntary counseling and testing who were receiving zidovudine
+prophylaxis (starting at 28 weeks’ gestation or as
+soon as possible thereafter) at any of 37 study sites
+in Thailand. The subjects were enrolled between
+
+218
+
+n engl j med 351;3
+
+of
+
+medicine
+
+January 15, 2001, and February 28, 2003. Preenrollment evaluations included HIV testing; history
+taking and physical examination; ultrasonographic
+uterine imaging; measurement of hemoglobin,
+white-cell and differential counts; CD4 count; measurements of plasma HIV RNA, alanine aminotransferase, and creatinine; and hepatitis B surface
+antigen and hepatitis C virus serologic testing.
+The subjects were randomly assigned to one of
+three study groups at enrollment if they had received
+zidovudine for at least 2 weeks, had provided written
+informed consent, agreed not to breast-feed, and
+had the following laboratory values within 21 days
+before randomization: hemoglobin level greater
+than 8.0 g per deciliter, absolute neutrophil count
+greater than 750 cells per cubic millimeter, alanine
+aminotransferase level less than five times the upper
+limit of normal (i.e., less than 35 U per liter), and
+creatinine level less than 1.5 mg per deciliter (132.6
+µmol per liter). Exclusion criteria included a maternal or fetal condition or a concomitant treatment
+that contraindicated treatment with zidovudine or
+nevirapine, oligohydramnios, unexplained polyhydramnios or in utero anemia, or a medical condition
+that required immediate use of highly active antiretroviral therapy. Open-label nevirapine was available
+to women who did not enroll in the study.
+Until delivery, the women in the study had an obstetrical examination every two weeks; every other
+week, blood was drawn for hematologic, virologic,
+and biochemical testing. Adherence to zidovudine
+therapy was assessed at each visit by counting pills.
+After delivery, the women were seen at 10 days,
+6 weeks, and 4 months for a physical examination
+and for hematologic and virologic monitoring. They
+were referred to an internist for further follow-up.
+Infants were examined at birth, and follow-up
+visits were scheduled at 10 days (for measurement
+of hematocrit and alanine aminotransferase levels),
+6 weeks (for hematologic tests), and 4, 6, 9, and 12
+months. At each visit, a supply of powdered formula
+was provided to the mother; the child’s health history since the previous visit was recorded, including
+the measurement of weight, recumbent length, and
+head circumference; and a clinical examination of
+the infant was performed. To determine the presence or absence of HIV infection, peripheral blood
+obtained at birth, six weeks, and four and six
+months was spotted onto filter papers, dried, and
+stored at ¡20°C to await shipping to the New England Newborn Screening Program for testing with
+a polymerase-chain-reaction (PCR) DNA assay for
+
+www.nejm.org
+
+july 15 , 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+nevirapine plus zidovudine to prevent perinatal hiv
+
+HIV (Amplicor HIV-1 DNA, version 1.5, Roche Molecular Systems).5 Serious adverse events were reported to the ministry of public health and Boehringer Ingelheim.
+All the women received 300 mg of zidovudine
+twice daily starting at 28 weeks’ gestation or as soon
+as possible thereafter; the dosing regimen was
+changed to 300 mg every three hours from the onset
+of labor until delivery. Infants received 2 mg of zidovudine per kilogram of body weight in an oral suspension every six hours for one week after birth. In
+accordance with national guidelines, if the mother
+had received zidovudine for a period of less than
+four weeks, the infant was treated for four to six
+weeks.8
+Prophylaxis against opportunistic infections was
+provided as necessary, including the administration
+of oral trimethoprim–sulfamethoxazole to immunocompromised women9 and to infants from six
+weeks of age until it was established that they were
+not infected.10 After delivery, immunocompromised
+women and HIV-infected, immunocompromised
+infants were offered antiretroviral treatment that
+was provided by the Ministry of Public Health.8
+treatment
+
+Women were randomly assigned to one of three
+treatment groups. In the nevirapine–nevirapine
+group, women received one dose of oral nevirapine
+(200 mg) at the onset of labor and neonates received
+nevirapine oral suspension (6-mg fixed dose, 0.6 ml)
+between 48 and 72 hours after birth. In the placebo–placebo group, women received placebo at the
+onset of labor and neonates received placebo between 48 and 72 hours after birth. In the nevirapine–placebo group, women received one dose of
+oral nevirapine (200 mg) at the onset of labor and
+neonates received placebo between 48 and 72 hours
+after birth.
+In instances of prolonged and false labor, additional doses were provided to women every 48 hours
+until delivery. Infants born less than one hour after
+the mother had ingested nevirapine or placebo while
+in labor, according to the random assignment of
+treatment, were to be given the assigned treatment
+within six hours after birth.
+randomization and blinding
+
+On enrollment, women were provided with the
+study drug, either nevirapine or matched placebo,
+to be taken at home at the onset of labor. The study
+drugs were identified by random numbers with the
+
+n engl j med 351;3
+
+use of permuted blocks of six in a ratio of 1:1:1.
+Twins were assigned to receive the same study drug.
+Additional doses were accessible in a blinded fashion at any hospital participating in the study with the
+use of a shared code. The study drugs were provided
+by Boehringer Ingelheim and were repackaged at
+the pharmacy of Children’s Hospital, Boston, in individual blisters or oral syringes (Exacta-Med dispenser, Baxa).
+primary end point
+
+Infants were considered to be infected with HIV if
+the results of the PCR test were positive in blood obtained on two separate occasions, and infants were
+considered to be uninfected if the test results were
+negative on two occasions after one month of age.11
+Infants who did not meet this definition were evaluated and classified as infected (six infants) or uninfected (three infants) by a clinician and a virologist before unblinding. In twins, infection in one or
+both was counted as one transmission.
+statistical analysis
+
+The study was designed primarily to test the superiority of the nevirapine–nevirapine regimen over
+the placebo–placebo regimen. We calculated that
+484 mother–infant pairs were needed in each treatment group for a 0.05 one-sided type I error with
+0.8 power, assuming a transmission rate of 8 percent in the placebo–placebo group and 4 percent in
+the nevirapine–nevirapine group. The nevirapine–
+placebo group was added in order to estimate, as a
+secondary objective, the proportion of overall transmission that was prevented by treating infants with
+nevirapine. Assuming that 5 percent of the cases
+could not be evaluated, the initial target sample size
+was 1530.
+Interim safety analyses were planned when 40
+percent and 70 percent of the total number of women had been enrolled. An increased rate of transmission associated with any of the three treatment
+regimens would be considered significant if any
+nominal P value was less than 0.0004 at the first interim analysis (with the use of O’Brien–Fleming
+boundaries as modified by Lan and DeMets and the
+use of one-sided tests with Bonferroni adjustments
+for multiple comparisons).12-14
+After the first interim analysis, on May 2, 2002,
+the independent data and safety monitoring committee recommended stopping enrollment in the
+placebo–placebo group. The trial design was modified, and the target sample size was increased to
+
+www.nejm.org
+
+july 15, 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+219
+
+The
+
+new england journal
+
+695 per treatment group to ensure 0.8 power to test
+for noninferiority of the nevirapine–placebo regimen as compared with the nevirapine–nevirapine
+regimen. Noninferiority would be declared if the upper limit of the 95 percent one-sided confidence interval of the observed difference was lower than 2.5
+percent.
+Two separate efficacy analyses were performed.
+The first efficacy analysis included all three treatment groups and all mothers who delivered before
+the first interim analysis. The second tested the noninferiority of the nevirapine–placebo regimen as
+compared with the nevirapine–nevirapine regimen.
+In addition to an as-randomized analysis, a per-protocol analysis was performed, primarily to test for
+noninferiority, in which the populations compared
+were defined according to actual intake of the assigned study drug, major deviations from the protocol, and adherence to zidovudine prophylaxis.15
+Infants were analyzed according to the actual intake of the maternal or infant study drug. For the
+per-protocol analysis, criteria for exclusion were
+the intake of placebo by the mother and nevirapine
+by the infant, an infant’s receipt of nevirapine more
+than 72 hours after birth or more than 6 hours after
+birth if the mother delivered less than 1 hour after
+receiving nevirapine, undocumented timing of intake by the mother or infant of the study drug, intake by the mother of the study drug more than 96
+hours before delivery, less than 50 percent adherence to zidovudine prophylaxis or adherence that
+was not documented, breast-feeding, and maternal initiation of highly active antiretroviral therapy
+during pregnancy.
+Characteristics of the mother, the delivery, and
+the infant were compared among the treatment
+groups with the use of the chi-square and Kruskal–
+Wallis tests. The Kaplan–Meier method and Greenwood’s formula were used to estimate transmission
+rates and their standard errors. The time to the first
+positive HIV test was considered the time to the
+end point. Data on infants with negative HIV test
+results were censored at the time of their last HIV
+test. The method developed by Balasubramanian
+and Lagakos, which does not require a predefined
+operational definition of HIV infection, was used
+for confirmation; the results are not presented, because they were not different from the transmission rates estimated with the Kaplan–Meier method
+and Greenwood’s formula.16
+The differential effect of nevirapine was tested by
+a comparison within subgroups, defined according
+
+220
+
+n engl j med 351;3
+
+of
+
+medicine
+
+to known risk factors for transmission, of the difference in transmission rates between the placebo–
+placebo group and the nevirapine–nevirapine group
+(before the first interim analysis) and between the
+nevirapine–placebo group and the nevirapine–nevirapine group (at the final analysis). In case of rejection of homogeneity of the effect of nevirapine
+across subgroups with the use of a chi-square test,12
+the differential effect was also examined within each
+subgroup. Except for noninferiority testing, all reported P values are two-sided, without adjustment
+for multiple testing. Adverse events in mothers and
+infants were analyzed from enrollment until six
+months after the birth of the infant.
+
+results
+enrollment
+
+Of 3061 pregnant women who underwent testing
+for HIV at the study sites and whose results were
+positive, 1844 were randomly assigned to study
+treatment and 1807 were followed through to delivery. Of those not enrolled, 316 women declined enrollment, 395 moved to another town or were lost to
+follow-up, 50 enrolled in a perinatal nevirapine
+pharmacokinetics substudy, 104 delivered before
+pre-enrollment evaluations, 129 terminated their
+pregnancy, 5 had a spontaneous abortion, 3 started
+highly active antiretroviral therapy, 2 died before
+inclusion, and 213 did not meet the inclusion criteria, including 184 who delivered after less than two
+weeks of zidovudine prophylaxis and were offered
+open-label nevirapine. Thirty-nine women randomly assigned to the placebo–placebo group were excluded from the analysis because they were provided with open-label nevirapine after the first interim
+analysis. There were 12 twin pregnancies and 14
+fetal deaths (including 1 twin). Enrollment, loss to
+follow-up, pregnancy outcomes, and available end
+points for each treatment group in the study are
+summarized in Figure 1. End points were available
+for 97.6 percent of the 1766 live-born infants included in the analysis.
+characteristics of the women, deliveries,
+and infants
+
+Baseline characteristics of the women, the deliveries, and the newborns were similar across treatment
+groups (Table 1). Zidovudine prophylaxis was initiated at a median of 28.7 weeks’ gestation. The median duration of zidovudine prophylaxis was 9.7
+weeks. The median CD4 count among the women
+
+www.nejm.org
+
+july 15 , 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+nevirapine plus zidovudine to prevent perinatal hiv
+
+First Interim Analysis
+(deliveries before May 2, 2002)
+
+Final Analysis
+
+1087 Women
+randomly assigned
+
+365 Assigned
+to NVP–NVP
+
+6 Lost to
+follow- up
+before delivery
+
+359 Deliveries
+
+6 Could not be
+evaluated
+(5 with HIV
+test at birth
+only, 1 with
+no HIV test
+result)
+
+353 Deliveries
+with data
+on outcomes
+
+362 Assigned
+to NVP–PL
+
+1445 Women
+randomly assigned
+
+360 Assigned
+to PL–PL
+
+7 Lost to
+follow-up
+before delivery
+
+355 Deliveries,
+including
+3 sets of twins
+
+3 Lost to
+follow-up
+before delivery
+
+357 Deliveries,
+including
+6 sets of twins
+
+707 Deliveries,
+including
+3 sets of twins
+
+348 Deliveries
+with data
+on outcomes
+
+721 Assigned
+to NVP–PL
+
+17 Lost to
+follow-up
+before delivery
+
+4 Stillbirths,
+including
+1 twin
+6 Could not
+be evaluated
+(5 with HIV
+test at birth
+only, 1 twin
+with no HIV
+test result)
+
+6 Stillbirths,
+including
+1 twin
+17 Could not
+be evaluated
+(HIV test
+at birth only)
+
+333 Deliveries
+with data
+on outcomes
+
+724 Assigned
+to NVP–NVP
+
+17 Lost to
+follow-up
+before delivery
+
+704 Deliveries,
+including
+3 sets of twins
+8 Stillbirths,
+including
+1 twin
+25 Could not
+be evaluated
+(23 with HIV
+test at birth
+only, 2 with
+no HIV test
+result)
+
+2 Stillbirths
+12 Could not
+be evaluated
+(10 with HIV
+test at birth
+only, 2 with
+no HIV test
+result)
+
+693 Deliveries
+with data
+on outcomes
+
+672 Deliveries
+with data
+on outcomes
+
+Figure 1. Treatment Assignment, Loss to Follow-up, and Outcome of Pregnancy.
+Thirty-nine women assigned to the placebo–placebo group were excluded from the analyses, because they were given open-label nevirapine
+(NVP) after the first interim analysis. PL denotes placebo. Delivery of twins counted as only one delivery.
+
+was 372 cells per cubic millimeter, and the median
+viral load was 4.0 log10 copies per milliliter. Fifty-six
+women had received antiretroviral therapy during
+a previous pregnancy.
+Thirteen percent of the women delivered at or
+before 37 weeks’ gestation. The median interval
+between the onset of labor and administration of a
+dose of the assigned treatment was 2.1 hours, and
+the median interval between receipt of the dose of
+the assigned treatment and delivery was 6.5 hours.
+Seventy women received two doses of the assigned
+treatment because of false or prolonged labor.
+Twenty percent of the deliveries were by cesarean
+section, of which 28 percent were performed before
+the onset of labor.
+Nine percent of the infants weighed less than
+2500 g (5.5 lb) at birth. The median interval between
+birth and administration of the first dose of the assigned treatment was 48.4 hours. Eight percent of
+
+n engl j med 351;3
+
+infants received zidovudine for at least one month,
+because their mothers had received less than four
+weeks of zidovudine prophylaxis. There was one report of breast-feeding by the mother.
+analysis of efficacy
+
+First Interim Analysis
+
+In women who delivered by May 2, 2002, the asrandomized transmission rate among those in the
+nevirapine–nevirapine group was 1.1 percent (95
+percent confidence interval, 0.3 to 2.2), which was
+significantly lower than the rate of 6.3 percent (95
+percent confidence interval, 3.8 to 8.9) in the placebo–placebo group (P<0.001). This finding confirmed the results of the first interim analysis, at
+which time the data and safety monitoring board
+recommended stopping the placebo–placebo regimen. In the nevirapine–placebo group, the rate was
+2.1 percent (95 percent confidence interval, 0.6 to
+
+www.nejm.org
+
+july 15, 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+221
+
+The
+
+new england journal
+
+of
+
+medicine
+
+Table 1. Characteristics of Mothers, Deliveries, and Infants in the Study, According to the Treatment Assignment.*
+Characteristic
+
+First Interim Analysis
+
+Final Analysis
+
+NVP–NVP
+Group
+Mothers
+No. of women randomly assigned
+Age (yr)
+Median
+Interquartile range
+Length of gestation at entry (wk)
+Median
+Interquartile range
+Length of gestation at start of zidovudine therapy (wk)
+Median
+Interquartile range
+Hemoglobin level (g/dl)
+Median
+Interquartile range
+Viral load at baseline (log10 copies per ml)†
+Median
+Interquartile range
+CD4 count
+Median (cells per mm3)
+Interquartile range
+≤200 cells per mm3 (%)
+Hepatitis B surface antigenemia (%)
+Hepatitis C antibodies (%)
+Alanine aminotransferase >200 IU/liter (%)
+Deliveries
+Total no. of deliveries‡
+Length of gestation at delivery (wk)
+Median
+Interquartile range
+Duration of zidovudine therapy (wk)
+Median
+Interquartile range
+Adherence to zidovudine therapy
+<90 percent (%)
+Delivery ≤37 weeks’ gestation (%)
+Time from onset of labor to study-drug intake (hr)
+Median
+Interquartile range
+Time from study-drug intake to delivery (hr)
+Median
+Interquartile range
+Cesarean delivery (%)
+Live-born infants
+Total no. of live-born infants
+Birth weight
+Median (kg)
+Interquartile range
+<2.5 kg (%)
+Time from birth to study-drug intake (hr)
+Median
+Interquartile range
+
+NVP–PL
+Group
+
+PL–PL
+Group
+
+NVP–NVP
+Group
+
+NVP–PL
+Group
+
+365
+
+362
+
+360
+
+724
+
+721
+
+26
+22–30
+
+26
+23–30
+
+26
+23–30
+
+26
+23–30
+
+26
+23–30
+
+31
+30–33
+
+31
+30–34
+
+31
+30–34
+
+31
+30–33
+
+31
+30–33
+
+29
+28–31
+
+29
+28–31
+
+29
+28–31
+
+29
+28–30
+
+29
+28–31
+
+11.1
+10.3–11.7
+
+10.9
+10.2–11.6
+
+11.0
+10.2–11.8
+
+11.0
+10.2–11.6
+
+10.9
+10.2–11.6
+
+4.2
+3.5–4.7
+
+4.0
+3.3–4.6
+
+4.2
+3.4–4.7
+
+4.1
+3.4–4.7
+
+3.9
+3.3–4.5
+
+371
+232–522
+20.0
+6.3
+3.6
+1.1
+
+373
+256–543
+17.2
+5.0
+5.8
+0.5
+
+372
+241–526
+19.2
+5.8
+6.1
+0.5
+
+363
+238–510
+18.2
+5.8
+3.3
+1.4
+
+381
+249–546
+17.0
+5.3
+4.3
+1.1
+
+359
+
+355
+
+357
+
+707
+
+704
+
+39
+38–40
+
+39
+38–40
+
+39
+38–40
+
+39
+38–40
+
+39
+38–40
+
+9.7
+7.1–11.1
+7.3
+
+9.4
+7.1–11.0
+5.1
+
+9.4
+7.1–10.9
+4.0
+
+9.9
+7.7–11.1
+5.5
+
+9.9
+7.9–11.1
+4.6
+
+12.7
+
+13.0
+
+11.5
+
+12.3
+
+11.9
+
+2.1
+0.6–4.3
+
+2.3
+0.8–4.1
+
+2.3
+0.8–4.1
+
+2.1
+0.7–4.2
+
+2.1
+0.6–4.0
+
+6.4
+3.1–12.0
+20.3
+
+7.5
+3.5–15.0
+22.8
+
+6.7
+2.8–11.0
+21.3
+
+6.1
+2.7–11.6
+19.2
+
+6.8
+3.1–13.0
+22.5
+
+359
+
+352
+
+359
+
+708
+
+699
+
+3.0
+2.8–3.3
+7.0
+
+3.0
+2.7–3.3
+9.5
+
+3.0
+2.7–3.3
+11.0
+
+3.0
+2.7–3.3
+7.9
+
+3.0
+2.7–3.3
+9.3
+
+48.5
+48.0–51.2
+
+48.4
+48.0–50.4
+
+48.4
+48.0–51.7
+
+48.4
+48.0–50.8
+
+48.4
+48.0–50.4
+
+* The first interim analysis included all deliveries before May 2, 2002. NVP–NVP denotes nevirapine–nevirapine, NVP–PL nevirapine–placebo,
+and PL–PL placebo–placebo.
+† Data on viral load at baseline were available for 356 women in the NVP–NVP group, 353 in the NVP–PL group, and 354 in the PL–PL group
+at the first interim analysis and for 703 women in the NVP–NVP group and 702 in the NVP–PL group in the final analysis.
+‡ Delivery of twins counted as one delivery.
+
+222
+
+n engl j med 351;3
+
+www.nejm.org
+
+july 15 , 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+nevirapine plus zidovudine to prevent perinatal hiv
+
+Table 2. Kaplan–Meier Estimates of the Rate of Transmission of HIV at Six Months, According to Assigned and Actual
+Treatment.*
+Variable
+
+First Interim Analysis
+
+Final Analysis
+
+NVP–NVP
+Group
+
+NVP–PL
+Group
+
+PL–PL
+Group
+
+NVP–NVP
+Group
+
+NVP–PL
+Group
+
+No. of mother–infant pairs at risk
+
+359
+
+350
+
+354
+
+705
+
+697
+
+No. of deliveries that could be evaluated
+
+353
+
+333
+
+348
+
+693
+
+672
+
+No. of HIV transmissions at birth
+
+1
+
+2
+
+11
+
+7
+
+11
+
+No. of deliveries with missing data at birth
+
+0
+
+0
+
+2
+
+1
+
+As-randomized analysis
+
+Rate of HIV positivity at birth (%)†
+No. of transmissions overall
+
+0.3±0.3
+4
+
+Overall rate of transmission (%)‡
+
+0.6±0.4
+7
+
+1.1±0.6
+
+3.1±0.9
+
+1.0±0.4
+
+1
+1.6±0.5
+
+22
+
+14
+
+19
+
+2.1±0.8
+
+6.3±1.3
+
+2.0±0.5
+
+2.8±0.6
+
+Per-protocol analysis
+No. of mother–infant pairs at risk
+
+321
+
+312
+
+316
+
+636
+
+628
+
+No. of deliveries that could be evaluated
+
+318
+
+300
+
+310
+
+627
+
+611
+
+4
+
+6
+
+20
+
+12
+
+17
+
+6.5±1.4
+
+1.9±0.6
+
+2.8±0.7
+
+No. of transmissions overall
+Overall rate of transmission (%)§
+
+1.3±0.6
+
+2.0±0.8
+
+* The first interim analysis included all deliveries before May 2, 2002. Positivity at birth denotes a positive test result within
+three days after birth. NVP–NVP denotes nevirapine–nevirapine, NVP–PL nevirapine–placebo, and PL–PL placebo–placebo. Plus–minus values are means ±SE.
+† In the interim as-randomized analysis, the difference in the rate of HIV-positivity at birth between the PL–PL group and
+the two groups that received nevirapine was 2.7 percentage points (95 percent confidence interval, 0.8 to 4.6; P<0.001).
+‡ In the interim as-randomized analysis, the difference in the overall rate of transmission between the NVP–NVP group
+and the PL–PL group was 5.2 percentage points (95 percent confidence interval, 2.4 to 8.0; P<0.001), and the difference
+between the NVP–PL group and the PL–PL group was 4.2 percentage points (95 percent confidence interval, 1.2 to 7.2;
+P=0.006). In the final as-randomized analysis, the difference between the NVP–PL group and the NVP–NVP group was
+0.8 percentage point (95 percent confidence interval, ¡0.9 to 2.4). The upper limit of the one-sided 95 percent confidence
+interval for rejection of inferiority was 2.2 (P=0.021).
+§ In the first interim per-protocol analysis, the difference between the NVP–NVP group and the PL–PL group was 5.2 percentage points (95 percent confidence interval, 2.2 to 8.2; P=0.007), and the difference between the NVP–PL group and the PL–
+PL group was 4.5 percentage points (95 percent confidence interval, 1.3 to 7.6; P=0.006). In the final per-protocol analysis,
+the difference between the NVP–PL group and the NVP–NVP group was 0.9 percentage point (95 percent confidence interval, ¡0.8 to 2.6). The upper limit of the one-sided 95 percent confidence interval for rejection of inferiority was 2.3 (P=0.029).
+
+3.7). Per-protocol transmission rates were very sim- Other Analyses of Transmission
+ilar (Table 2).
+Among infants, the rate of testing positive for HIV
+within three days after birth in the placebo–placebo
+Final Analysis
+group (3.1 percent) was significantly higher than
+The final per-protocol transmission rate among the rate among mothers in the study groups asthose in the nevirapine–nevirapine group (1.9 per- signed to receive nevirapine before the interim
+cent; 95 percent confidence interval, 0.9 to 3.0) was analysis (0.4 percent) (P<0.001) (Table 2). In the finot statistically inferior to the rate in the nevirapine– nal analysis, the overall rate of testing positive withplacebo group (2.8 percent; 95 percent confidence in three days after birth was 1.3 percent (95 percent
+interval, 1.5 to 4.1). The upper limit of the one-sided confidence interval, 0.7 to 1.9). An analysis of the
+confidence interval of the difference between these rate of death or HIV infection in infants before six
+observed rates was 2.2, which was below the pre- months of age did not modify the conclusions of the
+defined 2.5 percent inferiority threshold. The rates efficacy analysis (Table 3).
+in the as-randomized analysis were similar — 2.0
+percent (95 percent confidence interval, 1.0 to 3.1) effect of nevirapine according to known
+in the nevirapine–nevirapine group and 2.8 percent risk factors for transmission
+(95 percent confidence interval, 1.6 to 4.1) in the ne- Nevirapine had an effect according to the known
+virapine–placebo group.
+risk factors for transmission, including viral load
+
+n engl j med 351;3
+
+www.nejm.org
+
+july 15, 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+223
+
+The
+
+new england journal
+
+of
+
+medicine
+
+Table 3. Estimates of the Rate of Transmission of HIV or Death at Six Months, According to Treatment Assignment.*
+Variable
+
+Interim Analysis
+NVP–NVP NVP–PL PL–PL
+Group
+Group Group
+
+No. of infants at risk
+
+Final Analysis
+NVP–NVP NVP–PL
+Group
+Group
+
+359
+
+350
+
+354
+
+705
+
+697
+
+4
+
+7
+
+22
+
+14
+
+19
+
+HIV-positive
+
+0
+
+0
+
+2
+
+1
+
+2
+
+HIV-negative
+
+0
+
+0
+
+1
+
+0
+
+0
+
+Indeterminate HIV status with severe congenital malformations
+
+0
+
+2
+
+0
+
+0
+
+6
+
+Other indeterminate HIV status
+
+1
+
+1
+
+2
+
+1
+
+2
+
+No. of transmissions overall
+Infants who died by 6 months (no.)
+
+Total no. of deaths at six months†
+
+1
+
+3
+
+5
+
+2
+
+10
+
+No. of transmissions or deaths overall
+
+5
+
+10
+
+25
+
+15
+
+27
+
+2.2±0.6
+
+4.0±0.8
+
+15
+
+21
+
+2.2±0.6
+
+3.1±0.7
+
+Rate (%)‡
+
+1.4±0.6
+
+No. of transmissions or deaths excluding infants with congenital
+malformations and HIV-negative infants
+Rate (%)‡
+
+3.0±0.9 7.2±1.4
+
+5
+1.4±0.6
+
+8
+
+24
+
+2.5±0.8 6.9±1.4
+
+* The interim analysis included all deliveries before May 2, 2002. NVP–NVP denotes nevirapine–nevirapine, NVP–PL nevirapine–placebo, and PL–PL placebo–placebo. Plus–minus values are means ±SE.
+† Nineteen deaths have been recorded, including two of children born to mothers for whom blinding was discontinued after the interim analysis. The causes of death were as follows: in the NVP–NVP group, meconium aspiration and diarrhea
+with dehydration; in the NVP–PL group, esophageal atresia, Down’s syndrome with cardiac malformation, multiple malformations (microcephaly, cleft palate, and patent ductus arteriosus), congenital heart malformation, birth asphyxia with
+suspected congenital anomaly (in two infants), severe prematurity, diarrhea with dehydration (in three infants); in the
+PL–PL group, pneumonia, twin–twin transfusion syndrome, meningitis, diarrhea with dehydration (in two infants). In
+the cases of the two children whose mothers were randomly assigned to the PL–PL group, blinding was discontinued;
+one infant who was HIV-positive died of pneumonia, and the other of neonatal bacterial infection.
+‡ Rates of transmission or death were calculated as follows: rate of death+(1¡rate of death)¬rate of transmission among
+surviving infants. The rate of death and the rate of transmission were estimated separately by Kaplan–Meier methods.
+
+and CD4 count at baseline, gestational age at the
+initiation of zidovudine treatment, gestational duration, and the duration of zidovudine prophylaxis,
+although the effect often varied across subgroups
+(Table 4).2,5,17-21 In addition, the nevirapine–nevirapine regimen was somewhat superior to the nevirapine–placebo regimen in most subgroups.
+maternal safety
+
+No severe rashes were observed. At 10 days, mild
+rashes were reported in 3.8 percent of mothers.
+Alanine aminotransferase levels were 36 to 42 IU
+per liter in 8.5 percent of mothers and 43 to 69 IU
+per liter in 0.9 percent (none of the mothers had
+levels above 70 IU per liter); there was no significant
+difference among the treatment groups. Rates of serious adverse events were similar across the groups
+(216 reports) and were related to pregnancy (59
+percent), infection or HIV (26 percent), possibly zidovudine prophylaxis (anemia in 7 percent), possi-
+
+224
+
+n engl j med 351;3
+
+bly nevirapine (e.g., allergic reaction during therapy
+in one woman), and other conditions (7 percent).
+infant safety
+
+In infants, the rates of rash were 15.9 percent and
+7.5 percent at 10 and 45 days of life, respectively,
+with no significant difference among treatment
+groups. Likewise, increases in alanine aminotransferase levels (36 to 69 IU per liter in 4.8 percent of
+infants and 260 IU per liter in one infant; none had
+levels above 350 IU per liter) and the presence of
+hyperbilirubinemia were not associated with exposure to nevirapine. The rates of serious adverse
+events were similar across treatment groups (598
+reports) and were related to neonatal or obstetrical
+conditions (11 percent), to congenital abnormalities (6 percent), to any infection, including HIV (72
+percent), possibly to zidovudine (anemia in 2 percent), and to other causes (9 percent). Prolonged
+neonatal icterus (1 percent) was classified as possi-
+
+www.nejm.org
+
+july 15 , 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+nevirapine plus zidovudine to prevent perinatal hiv
+
+Table 4. Effect of Nevirapine among Infants with Known Risk Factors for Transmission of HIV.*
+Risk Factor
+
+First Interim Analysis (As-Randomized)
+NVP–NVP
+Group
+
+PL–PL
+Group
+
+no. HIV-positive/
+no. at risk
+
+Difference between PL–PL
+and NVP–NVP Groups
+percentage
+points
+
+Viral load (copies/ml)
+<25,000
+≥25,000
+
+4/199
+18/146
+
+2.0±1.1
+9.5±3.1
+
+Gestational age at start
+of zidovudine therapy (wk)
+10/227
+12/121
+
+1/71
+3/282
+
+11/67
+11/281
+
+15.1±4.8
+2.9±1.3
+
+P
+value§
+
+1/387
+11/238
+
+7/434
+10/177
+
+0.033
+
+1.4±0.7
+1.0±2.2
+0.032
+
+0.025
+<0.001
+
+9/446
+3/181
+
+6/412
+11/199
+
+¡0.6±0.9
+3.9±1.9
+
+<0.001
+0.015
+
+4/119
+8/508
+
+7/99
+10/511
+
+3.7±3.1
+0.4±0.8
+
+0.013
+
+Duration of gestation (wk)
+
+0.165
+0/50
+4/303
+
+5/43
+17/305
+
+1/68
+16/543
+
+13/135
+6/100
+3/111
+
+8.9 (2.7)
+6.0 (2.5)
+0.3 (2.0)
+
+<0.001
+0.008
+0.448
+
+4/191
+2/190
+6/246
+
+8/194
+3/190
+6/227
+
+0.023
+
+0.693
+
+2/85
+10/542
+
+0.009
+
+0.679
+
+<0.001
+
+0.015
+
+¡0.9±2.2
+1.1±0.9
+
+0.025
+1/130
+0/97
+3/126
+
+<0.001
+0.770
+0.289
+
+11.6 (5.1)
+4.3 (1.5)
+
+Duration of zidovudine
+treatment (wk)
+≤8.5
+8.6–10.5
+>10.5
+
+percentage
+P
+points
+value†
+0.874
+
+0.028
+<0.001
+
+3.1±1.6
+9.2±2.8
+
+CD4 count (cells/mm3)
+
+≤37
+>37
+
+no. HIV-positive/
+no. at risk
+
+Difference between NVP–PL
+and NVP–NVP Groups
+
+0.059
+
+3/225
+1/128
+
+≤200
+>200
+
+P
+P
+value† value‡
+
+NVP–NVP NVP–PL
+Group
+Group
+
+0.020
+0/207
+4/143
+
+<30
+≥30
+
+Final Analysis (Per-Protocol)
+
+2.0±1.8
+0.5±1.2
+0.2±1.5
+
+* The interim analysis included all deliveries before May 2, 2002. NVP–NVP denotes nevirapine–nevirapine, NVP–PL nevirapine–placebo, and
+PL–PL placebo–placebo. Plus–minus values are ±SE.
+† The P value corresponds to the test of homogeneity of the effect of nevirapine across risk-factor categories. P<0.05 indicates that the effect of
+nevirapine varies significantly among risk-factor subgroups, that a common estimate of the difference in the rate of transmission in all subgroups should not be used, and that the effect of nevirapine should be tested within each subgroup. P≥0.05 indicates that the effect of nevirapine does not vary significantly among risk-factor subgroups and that a common estimate should be used to test the effect of nevirapine globally.
+‡ The P value corresponds to the two-sided test for difference between the PL–PL and NVP–NVP groups, either per stratum (P<0.05 for the test
+of homogeneity) or globally through a common estimate of the difference (P≥0.05 for the test of homogeneity).
+§ The P value corresponds to the one-sided test of the noninferiority of NVP–PL relative to NVP–NVP, either per subgroup (if P<0.05 for the test
+of homogeneity), or globally through a common estimate of the difference (P≥0.05 for the test of homogeneity).
+
+bly related to nevirapine even in the placebo–placebo group, since classification was performed by persons blinded to treatment assignment. Nineteen
+infants died within six months after birth (Table 3).
+
+discussion
+This study demonstrates the high efficacy of adding a single dose of nevirapine in the mother, with
+or without a dose in the infant, to oral zidovudine
+prophylaxis for the reduction of perinatal transmission of HIV. The observed reduction by 80 percent that led to the early interruption of enrollment
+in the placebo–placebo group was much higher than
+we had hypothesized when we designed the study.
+The transmission rate observed in the placebo–placebo group was consistent with rates observed in
+
+n engl j med 351;3
+
+other studies in which zidovudine prophylaxis was
+initiated at the beginning of the last trimester of
+pregnancy,1,19-21 in particular in our previous trial,
+which was performed in a similar population.5
+Although the efficacy of a single maternal dose
+of nevirapine was declared statistically noninferior
+to that of a maternal dose plus an infant dose with
+the use of our predetermined criteria (2.5 percent
+as the upper limit of the one-sided 95 percent confidence interval for the difference between the observed rates of transmission), in fact, two doses appeared consistently better than one throughout our
+analysis (Table 4). Moreover, because the nevirapine–placebo group had a somewhat lower median
+viral load at baseline than the nevirapine–nevirapine
+group, the difference in transmission rates might be
+an underestimate. On the basis of these findings
+
+www.nejm.org
+
+july 15, 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+225
+
+The
+
+new england journal
+
+and for additional logistic reasons, the ministry of
+public health in Thailand has recommended administration of nevirapine to both mother and infant,
+with a slight modification, that of giving nevirapine
+to the mother on arrival at the hospital and to the
+infant as soon as possible after birth.22
+The percentage of infants with a positive HIV test
+within three days after birth was significantly lower
+in the nevirapine–nevirapine and the nevirapine–
+placebo groups than in the placebo–placebo group.
+This surprising finding suggests either that infants
+become HIV-positive earlier after infection than previously suspected or that perinatal nevirapine may
+delay the detection of HIV positivity or even abort
+infection completely when transmission occurs in
+the last few weeks of pregnancy.
+Newborns in this study were formula-fed. This
+recommendation, made by the Ministry of Public
+Health in 1993, is strongly adhered to and has been
+shown to have no negative effect either on the health
+of the infant or on the promotion of breast-feeding
+among HIV-negative women.5,23,24
+In the South African Intrapartum Nevirapine Trial, the rate of intrapartum transmission of HIV was
+three times as high when the mother had received
+nevirapine less than two hours before delivery as
+when the mother had received it earlier.25 Our study
+did not confirm this finding. However, since the administration of nevirapine to infants appears to be
+safe whatever the delay between birth and receipt of
+the drug7,25 and given that in clinical practice women may take their nevirapine dose later during labor
+and stay in the hospital for a shorter period, it may
+be preferable to administer the dose of nevirapine
+to the infant shortly after birth, with the first dose of
+zidovudine.
+In the Pediatric AIDS Clinical Trials Group study
+known as PACTG 316, which evaluated the efficacy
+of perinatal nevirapine therapy added to standard
+antiretroviral therapy, no benefit of nevirapine was
+shown.26 The effect of nevirapine was not observed
+even in the subgroup of women who received only
+zidovudine in addition to nevirapine. This subgroup, however, may have been selected to receive
+zidovudine monotherapy because of the subjects’
+low viral load. In addition, 43 percent of the women
+in the group delivered by planned cesarean section.
+We also found that in the subgroup of women whose
+viral load at entry was less than 25,000, the transmission rate was very low in the placebo–placebo
+group (2 percent) and only marginally lower in the
+nevirapine groups. Although a subgroup analysis
+
+226
+
+n engl j med 351;3
+
+of
+
+medicine
+
+has the potential for bias, the effect of perinatal nevirapine was observed in most of the subgroups, a
+finding that suggests that there is no population
+for whom nevirapine prophylaxis would not be
+beneficial.
+The discovery of drug-resistance mutations in a
+substantial proportion of the recipients of perinatal nevirapine27-34 has raised questions of a possible
+risk to mothers who subsequently receive nonnucleoside reverse-transcriptase inhibitors as therapy for
+their own disease. The resistance consequences
+among the participants of our study are described
+by Jourdain et al. elsewhere in this issue of the Journal.35 The maternal risk is juxtaposed with the clear
+benefit to the babies. The relative value of this or
+other interventions in any particular setting will depend on considerations of cost, medical logistics,
+and drug access, as well as on data from future studies of outcomes in women receiving both perinatal
+prophylaxis and antiretroviral therapy.36 Nevirapine
+at delivery added to third-trimester zidovudine results in very low transmission rates with minimal
+medical and financial burdens — rates that are very
+similar to those achieved with more complex, expensive, and potentially toxic multidrug maternal
+regimens.37-43
+Supported by grants from the National Institutes of Health (5 R01
+HD 39615); the Agence Nationale de Recherches sur le Sida (ANRS
+12-08); the Ministry of Public Health, Thailand; the Institut de Recherche pour le Développement, France; the Institut National
+d’Etudes Démographiques, France; the Department of Technical
+and Economic Cooperation, Thailand; Boehringer Ingelheim;
+GlaxoSmithKline (which provided the zidovudine); and Roche Molecular Systems.
+Dr. Jourdain reports having equity in Aventis.
+We are indebted to S. Hammer and M. Tod for their contribution
+to the design of the study; to M.P. Kieffer for assistance in preparing
+the initial trial proposal; to the data and safety monitoring committee members V. Phoolcharoen, D. Costagliola, V. Vithayasai, A. Chaovavanich, for their advice and support throughout the trial; to the
+staff of the Perinatal HIV Prevention Trial, as follows: for administrative support: N. Chaiboonruang, Y. Thita, P. Pirom, D. Tiptepin,
+N. Pawadee, R. Klaijak, W. Ruangphornwisut; tracking and supplies: K. Taninard, P. Asongchaiwatanakul, S. Phonin; safety monitoring: S. Chalermpantmetagul, R. Peongjakta; sites monitoring: P.
+Sukrakanchana, A. Saiphueng, B. Yapuang, W. Pongchaisit, Y. Yensuang, B. Subhamitra, C. Kanabkaew, C. Puttimit, J. Wallapachai, N.
+Kruenual, N. Kongstan, N. Krapunpongsakul, R. Wongchai, S.
+Thammajitsagul, S. Jina, N. Seetapun; data management: R. Seubmongkolchai, A. Maleesatharn, J. Suewan, N. Kawee, S. Chailert, S.
+Tanasri, A. Wongja, K. Yoddee, M. Nuchniyom, K. Chaokasem, P.
+Supinya, J. Maneechan, K. Suebmongkolchai, S. Tansenee, A. Seubmongkolchai, C. Pholhinkong, C. Chimplee, K. Saopang, N. Karbkam, P. Chusut, P. Onnoy, S. Aumtong; and laboratory: T. Cressey,
+W. Khamduang, A. Preedam, A. Kummee, K. Janjaroen, M. Sumonwiriya, P. Chanthubthong, W. Boonprasit, J. Kamkorn, P. Tungyai, S.
+Kanthawong, S. Kunkeaw; to the Thai Ministry of Public Health for
+advice and assistance: Office of the Permanent Secretary, Department of Health, Department of Communicable Diseases Control,
+and Provincial Hospitals Division, especially, M. Teeratantikanont,
+P. Amornwichet, V. Chokevivat, T. Siraprapasiri, T Liewsaree, W.
+
+www.nejm.org
+
+july 15 , 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+nevirapine plus zidovudine to prevent perinatal hiv
+
+Liewsaree, P. Kantipong, C. Bowonwatanuwong, P. Leenasirimakul,
+A. Nilmanat, A. Chutanunta, O. Kamsao, W. Panitsuk, P. Pathipvanich; and Chiang Mai University: W. Sirirungsi, P. Lechanachai, U.
+Haesungcharern, A. Matanasaravoot; to the microbiology reference
+laboratories: R. Sutthent, P. Auewarakul (Mahidol University, Thailand); A.M. Comeau, J. Gerstel-Thompson (University of Massachusetts), F. Barin (Tours University, France); to the National Institute of
+Child Health and Human Development: A. Willoughby, B. Nugent,
+
+L. Mofenson; to Boehringer Ingelheim: E. Van Steenberge; to
+GlaxoSmithKline: S. Chinnapha, W. Rungsiyapornrat; to the following colleagues who contributed to this project in many critical
+ways: M. Essex, P. Matangkhasombut, A. Patterson, P. Casky, P. Jacob, J. Sullivan, C. Bellec, E. Kiley, J. Morcos, M.L. Bezencon, U. Thisyakorn, M. Mirochnich, A. Kuo, D. Bray, K. Young, A. Kuo, N. Briand, R. Balasubramanian; to all members of the hospital teams; and
+to the women and children who participated in this study.
+
+ap p e n d i x
+The following sites and principal investigators participated in the Perinatal HIV Prevention Trial (Thailand) (the number of women enrolled
+at each hospital is given in parentheses): Rayong (149): S. Ariyadej, W. Karnchanamayul, P. Dumrongkitchaiporn, C. Pinyowittayakool, C.
+Tantiyawarong; Hat Yai (96): S. Lamlertkittikul, B. Warachit, K. Veerapradist; Samutsakorn (90): T. Sukhumanant, P. Thanasiri, C. Pinsuwan; Samutprakarn (90): P. Sabsanong, C. Sriwacharakarn, M. Hongsawinitkul; Nakhonpathom (84): S. Bunjongpak, V. Chalermpolprapa,
+P. Hirunchote; Bhumibol Adulyadej (76): K. Kengsakul, S. Prommas, P. Layangool, P. Prateeprat, Y. Vonglertvit; Banglamung (66): K. Boonrod, J. Ithisuknanth, S. Sirithadthamrong, P. Jittiwattanapongs; Chonburi (65): N. Chotivanich, S. Hongsiriwon, P. Kittikoon, C. Tantiyawarong; Somdej Prapinklao (65): S. Suphanich, P. Kanchanakitsakul, B. Tapawal, N. Kamolpakorn, P. Sunalai; Chiangrai Provincial
+(64): R. Hansudewechakul, J. Achalapong, R. Srismith, S. Yanpaisan; Prapokklao (61): P. Yuthavisuthi, C. Ngampiyasakul, D. Sinthuvanich;
+Pranangklao (61): S. Pipatnakulchai, S. Watanayothin, S. Hongyok; Health Promotion Region 10 Chiang Mai (60): A. Limtrakul, W. Jitphiankha, S. Sethavanich, V. Sittipiyasakul; Somdej Pranangchao (58): W. Pornkitprasarn, T. Hinjiranandana, W. Rutirawat; Klaeng (52): S.
+Hotrawarikarn, S. Techapalokul, S. Sungpapan; Buddhachinaraj (52): W. Wannapira, W. Ardong, P. Thanomrat, W. Boonyawatana; Chacheongsao (51): A. Kanjanasing, R. Kwanchaipanich, R. Kaewsonthi, C. Jirawison, V. Latdhivongsakorn; Mae Sai (49): S. Kunkongkapan,
+T. Meephian, K. Kongsing; Khon Kaen (38): J. Ratanakosol, S. Tanupattarachai, M. Onchan, V. Jarupoonphol; Mae Chan (37): S. Buranabanjasatean, S. Piyaworawong; Kalasin (37): B. Suwannachat, S. Srirojana, S. Nitpanich; Lamphun (35): W. Matanasaravoot, P. Wannarit,
+K. Pagdi, R. Somsamai, C. Wannalit, S. Yanpaisan; Phaholpolphayuhasena (35): Y. Srivarasat, P. Attavijtrakarn, T. Buddhaboriwan; Health
+Promotion Region I Bangkok (34): S. Sirinontakan, W. Laphikanont, B. Ngamsiriudom, C. Kommongkol; Ratchaburi (34): T. Chonladarat,
+N. Pinyotrakool, P. Malitong, O. Bamroongshawkasem, M. Jittwatanakorn, P. Bunjongjit; Chiang Kham (32): C. Putiyanun, P. Jittamala, C.
+Kulkolakan; Health Promotion Region 6 Khon Kaen (31): N. Winiyakul, S. Hanpinitsak, W. Sinchai; Roi-et (31): W. Atthakorn, P. Ananpatharachai, W. Supanchaimat; Phan (29): S. Jungpichanvanich, T. Changchit, S. Suwan; Nakornping (28): V. Gomuthbutra, S. Kanjanavanit, S. Kahintapongs, C. Sirinirundr, Nong Khai (27): N. P. Ruttana-Aroongorn, S. Potchalongsin, T. Wichatrong; Phayao Provincial (26):
+S. Bhakeecheep, S. Sangsawang, S. Techakulviroj, S. Attawibool; Srinagarind (26): P. Kosalaraksa, C. Sakondhavat, W. Laupattarakasem, S.
+Kraitrakul; Nopparat Rajathanee (23): S. Surawongsin, S. Ruangsirinusorn, T. Chanpoo, N. Thamanavat, P. Hotrarapavanond; Mahasarakam (21): S. Nakhapongse, S. Tonmat, K. Kovitanggoon, W. Worngsatthanaphong; Kranuan Crown Prince (16): R. Thongdej, T. Chaiyabut, P. Kovit, S. Benchakhanta, A. Rattanaparinya; Prajaksilapakom Army (15): D. Langkafa, S. Pratchayakul, W. Srichandraphan.
+references
+1. Connor EM, Sperling RS, Gelber R, et
+
+al. Reduction of maternal–infant transmission of human immunodeficiency virus type
+1 with zidovudine treatment. N Engl J Med
+1994;331:1173-80.
+2. Sperling RS, Shapiro DE, Coombs RW,
+et al. Maternal viral load, zidovudine treatment, and the risk of transmission of human
+immunodeficiency virus type 1 from mother
+to infant. N Engl J Med 1996;335:1621-9.
+3. Mofenson LM, McIntyre JA. Advances
+and research directions in the prevention of
+mother-to-child HIV-1 transmission. Lancet
+2000;355:2237-44.
+4. Kanshana S, Thewanda D, Teeraratkul
+A, et al. Implementing short-course zidovudine to reduce mother-infant HIV transmission in a large pilot program in Thailand.
+AIDS 2000;14:1617-23.
+5. Lallemant M, Jourdain G, Le Coeur S, et
+al. A trial of shortened zidovudine regimens
+to prevent mother-to-child transmission of
+human immunodeficiency virus type 1.
+N Engl J Med 2000;343:982-91.
+6. Amornwichet P, Teeraratkul A, Simonds
+RJ, et al. Preventing mother-to-child HIV
+transmission: the first year of Thailand’s national program. JAMA 2002;288:245-8.
+7. Guay LA, Musoke P, Fleming T, et al. Intrapartum and neonatal single-dose nevira-
+
+pine compared with zidovudine for prevention of mother-to-child transmission of
+HIV-1 in Kampala, Uganda: HIVNET 012
+randomised trial. Lancet 1999;354:795-802.
+8. Ministry of Public Health. National
+guidelines for the clinical management of
+HIV infection in children and adults. Nonthaburi, Thailand: AIDS Division, Department of Communicable Disease Control,
+2000.
+9. 1999 USPHS/IDSA guidelines for the
+prevention of opportunistic infections in
+persons infected with human immunodeficiency virus. MMWR Recomm Rep 1999;
+48(RR-10):1-59, 61-6.
+10. 1995 Revised guidelines for prophylaxis
+against Pneumocystis carinii pneumonia for
+children infected with or perinatally exposed
+to human immunodeficiency virus. MMWR
+Recomm Rep 1995;44(RR-4):1-11.
+11. Revised recommendations for HIV
+screening of pregnant women. MMWR Recomm Rep 2001;50(RR-19):63-85.
+12. Fleiss JL. Statistical methods for rates
+and proportions. 2nd ed. New York: John
+Wiley, 1981:161-5.
+13. O’Brien PC, Fleming TR. A multiple
+testing procedure for clinical trials. Biometrics 1979;35:549-56.
+14. Lan KKG, DeMets DL. Changing fre-
+
+n engl j med 351;3
+
+www.nejm.org
+
+quency of interim analysis in sequential
+monitoring. Biometrics 1989;45:1017-20.
+15. Ellenberg JH. Intention-to-treat analysis. In: Redmond CK, Colton T, eds. Biostatistics in clinical trials. Chichester, England:
+John Wiley, 2001:245-9.
+16. Balasubramanian R, Lagakos SW. Estimation of the timing of perinatal transmission of HIV. Biometrics 2001;57:1048-58.
+17. Mofenson LM, Lambert JS, Stiehm ER,
+et al. Risk factors for perinatal transmission
+of human immunodeficiency virus type 1 in
+women treated with zidovudine. N Engl J
+Med 1999;341:385-93.
+18. Shapiro DE, Sperling RS, Coombs RW.
+Effect of zidovudine on perinatal HIV-1
+transmission and maternal viral load. Lancet 1999;354:156.
+19. Wade NA, Birkhead GS, Warren BL, et
+al. Abbreviated regimens of zidovudine prophylaxis and perinatal transmission of the
+human immunodeficiency virus. N Engl J
+Med 1998;339:1409-14.
+20. Matheson PB, Abrams EJ, Thomas PA,
+et al. Efficacy of antenatal zidovudine in reducing perinatal transmission of human immunodeficiency virus type 1. J Infect Dis
+1995;172:353-8.
+21. Simpson BJ, Shapiro ED, Andiman WA.
+Reduction in the risk of vertical transmis-
+
+july 15, 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.
+
+227
+
+nevirapine plus zidovudine to prevent perinatal hiv
+
+sion of HIV-1 associated with treatment of
+pregnant women with orally administered
+zidovudine alone. J Acquir Immune Defic
+Syndr Hum Retrovirol 1997;14:145-52.
+22. Guidelines for the management of prevention of mother to child transmission of
+HIV in Thailand: policy of prevention of
+mother to child transmission of HIV in
+Thailand. Nonthaburi, Thailand: Ministry
+of Public Health, Department of Health, December 2003.
+23. Kanshana S, Simonds RJ. National program for preventing mother-child HIV
+transmission in Thailand: successful implementation and lessons learned. AIDS 2002;
+16:953-9.
+24. Talawat S, Dore GJ, Le Coeur S, Lallemant M. Infant feeding practices and attitudes among women with HIV infection in
+northern Thailand. AIDS Care 2002;14:62531.
+25. Moodley D, Moodley J, Coovadia H, et
+al. A multicenter randomized controlled trial
+of nevirapine versus a combination of zidovudine and lamivudine to reduce intrapartum and early postpartum mother-to-child
+transmission of human immunodeficiency
+virus type 1. J Infect Dis 2003;187:725-35.
+26. Dorenbaum A, Cunningham CK, Gelber RD, et al. Two-dose intrapartum/newborn nevirapine and standard antiretroviral
+therapy to reduce perinatal HIV transmission: a randomized trial. JAMA 2002;288:
+189-98.
+27. Jackson JB, Becker-Pergola G, Guay LA,
+et al. Identification of the K103N resistance
+mutation in Ugandan women receiving nevirapine to prevent HIV-1 vertical transmission. AIDS 2000;14:F111-F115.
+28. Eshleman SH, Mracna M, Guay LA, et
+al. Selection and fading of resistance mutations in women and infants receiving nevirapine to prevent HIV-1 vertical transmission
+(HIVNET 012). AIDS 2001;15:1951-7.
+29. Cunningham CK, Chaix ML, Rekacewicz C, et al. Development of resistance
+mutations in women receiving standard antiretroviral therapy who received intrapar-
+
+228
+
+tum nevirapine to prevent perinatal human
+immunodeficiency virus type 1 transmission: a substudy of Pediatric AIDS Clinical
+Trials Group protocol 316. J Infect Dis 2002;
+186:181-8.
+30. Morris L, Pillay C, Chezzi C, et al. Low
+frequency of the V106M mutation among
+HIV-1 subtype C-infected pregnant women
+exposed to nevirapine. AIDS 2003;17:1698700.
+31. Kantor R, Lee E, Johnston E, et al. Rapid
+flux in non-nucleoside reverse transcriptase
+inhibitor resistance mutations among subtype C HIV-1-infected women after single
+dose nevirapine. Antiviral Ther 2003;8:S85.
+abstract.
+32. Chaix ML, Montcho C, Ekouevi DK, et
+al. Genotypic resistance analysis in women
+who received intrapartum nevirapine associated to a short course of zidovudine to prevent perinatal HIV-1 transmission: the Ditrame Plus ANRS 1201/02 Study, Abidjan,
+Côte d’Ivoire. In: Proceedings of the 11th
+Conference on Retroviruses and Opportunistic Infections, San Francisco, February 8–
+11, 2004:657. abstract.
+33. Chalermchokcharoenkit A, Asavapiriyanont S, Teeraratkul A, et al. Combination
+short-course zidovudine plus 2-dose nevirapine for prevention of mother-to-child
+transmission: safety, tolerance, transmission, and resistance results. In: Proceedings
+of the 11th Conference on Retroviruses and
+Opportunistic Infections, San Francisco,
+February 8–11, 2004:96. abstract.
+34. Martinson N, Morris L, Gray G, et al.
+HIV resistance and transmission following
+single-dose nevirapine in a PMTCT cohort.
+In: Proceedings of the 11th Conference on
+Retroviruses and Opportunistic Infections,
+San Francisco, February 8–11, 2004:38. abstract.
+35. Jourdain G, Ngo-Giang-Huong N, Le
+Coeur S, et al. Intrapartum exposure to nevirapine and subsequent maternal responses
+to nevirapine-based antiretroviral therapy.
+N Engl J Med 2004;351:229-40.
+36. World Health Organization. Antiretro-
+
+n engl j med 351;3
+
+www.nejm.org
+
+viral drugs and the prevention of mother-tochild transmission of HIV infection in resource-limited settings: expert consultation,
+Geneva, 5-6 February 2004: a summary of
+main points from the meeting. (Accessed
+June 18, 2004, at http://www.who.int/3by5/
+arv_ pmtct/en/.)
+37. Bucceri AM, Somigliana E, Matrone R,
+et al. Combination antiretroviral therapy in
+100 HIV-1-infected pregnant women. Hum
+Reprod 2002;17:436-41.
+38. Cooper ER, Charurat M, Mofenson L, et
+al. Combination antiretroviral strategies for
+the treatment of pregnant HIV-1-infected
+women and prevention of perinatal HIV-1
+transmission. J Acquir Immune Defic Syndr
+2002;29:484-94.
+39. Tuomala RE, Shapiro DE, Mofenson
+LM, et al. Antiretroviral therapy during pregnancy and the risk of an adverse outcome.
+N Engl J Med 2002;346:1863-70.
+40. Wimalasundera RC, Larbalestier N,
+Smith JH, et al. Pre-eclampsia, antiretroviral
+therapy, and immune reconstitution. Lancet
+2002;360:1152-4.
+41. Shapiro D, Tuomala R, Pollack H, et al.
+Mother-to-child HIV transmission risk according to antiretroviral therapy, mode of
+delivery, and viral load in 2895 U.S. women
+(PACTG 367). In: Proceedings of the 11th
+Conference on Retroviruses and Opportunistic Infections, San Francisco, February 8–
+11, 2004:99. abstract.
+42. Shepard KV. Important new safety information: clarification of risk factors for
+severe, life-threatening and fatal hepatotoxicity with VIRAMUNE (nevirapine). Ridgefield, Conn.: Boehringer Ingelheim Pharmaceuticals, February 2004.
+43. Panel on Clinical Practices for Treatment of HIV Infection. Guidelines for the
+use of antiretroviral agents in HIV-1-infected adults and adolescents. Washington,
+D.C.: Department of Health and Human
+Services, March 23, 2004.
+Copyright © 2004 Massachusetts Medical Society.
+
+july 15, 2004
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2004 Massachusetts Medical Society. All rights reserved.

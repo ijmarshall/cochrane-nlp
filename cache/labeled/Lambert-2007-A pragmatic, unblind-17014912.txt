@@ -1,0 +1,1058 @@
+Journal of Affective Disorders 99 (2007) 63 – 71
+www.elsevier.com/locate/jad
+
+Research report
+
+A pragmatic, unblinded randomised controlled trial comparing an
+occupational therapy-led lifestyle approach and routine GP
+care for panic disorder treatment in primary care☆
+Rodney A. Lambert a,⁎,1 , Ian Harvey b , Fiona Poland c
+a
+
+School of Allied Health Professions, University of East Anglia, Norwich, Norfolk, England, NR4 7TJ, UK
+b
+School of Medicine, Health Policy and Practice, University of East Anglia, Norwich, UK
+c
+School of Allied Health Professions, University of East Anglia, Norwich, UK
+Received 19 June 2006; received in revised form 8 August 2006; accepted 11 August 2006
+Available online 2 October 2006
+
+Abstract
+Background: Treated anxiety increased in the UK by over 30% since 1994. Medication and psychological treatment is most
+common, but outcomes are sometimes poor, with high relapse rates. Lifestyle has a potential role in treatment, but is not considered
+in clinical guidelines. Panic disorder is potentially influenced by lifestyle factors.
+Methods: 16 week unblinded pragmatic randomised controlled trial in 15 East of England primary care practices (2 Primary Care
+Trusts). Participants met DSM-IV criteria for panic disorder with/without agoraphobia. Follow-up at 20 weeks and 10 months.
+Control arm, unrestricted routine GP care. Trial Arm, Occupational therapy-led lifestyle treatment comprising: lifestyle review of
+fluid intake, diet pattern, exercise, caffeine, alcohol and nicotine; negotiation of positive lifestyle changes; monitoring and review
+of impact of changes. Primary outcome measure: Beck Anxiety Inventory.
+Data analysis: Intention-to-treat analysis provided between-group comparisons using analysis of co-variance. Bonferroni method
+to adjust p-values.
+Results: From 199 referrals, 36 GP care and 31 lifestyle arm patients completed to final follow-up. Significantly lower lifestyle arm
+BAI scores at 20 weeks ( p b 0.001), non-significant ( p = 0.167) at 10 months after Bonferroni correction. 63.6% lifestyle arm, and
+40% GP arm patients ( p = 0.045) panic-free at 20 weeks; 67.7% and 48.5% ( p = 0.123) respectively at 10 months.
+Limitations: Final study size/power calls for caution in interpreting findings.
+Conclusions: A lifestyle approach may provide a clinically effective intervention at least as effective as routine GP care, with significant
+improvements in anxiety compared with routine GP care at the end of treatment. Further study is required before suggesting practice changes.
+© 2006 Elsevier B.V. All rights reserved.
+Keywords: Clinical trial; Panic disorder; Lifestyle; Primary care; Occupational therapy; Pragmatic
+
+☆
+The main results from this research were presented at the 33rd
+North American Primary Care Research Group Meeting held in
+Quebec City on October 15th–18th 2005.
+⁎ Corresponding author. Tel.: +44 1603 593096; fax: +44 1603 593166.
+E-mail address: r.lambert@uea.ac.uk (R.A. Lambert).
+1
+Clinical Trial Registration details: Controlled-trials.com—
+ISRCTN51562655 http://www.controlled-trials.com/isrctn/search.asp.
+
+0165-0327/$ - see front matter © 2006 Elsevier B.V. All rights reserved.
+doi:10.1016/j.jad.2006.08.026
+
+1. Introduction
+In England, the cost of mental illness is estimated at
+over £77 billion, including the costs of care provided by
+the NHS, local authorities, privately funded services,
+family and friends; lost output in the economy caused by
+
+64
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+
+people being unable to work (paid and unpaid) and the
+human costs of reduced quality of life, and loss of life,
+amongst those experiencing a mental health problem (The
+Sainsbury Centre for Mental Health, 2003).
+Within the UK between 1994 and 1998, the prevalence of treated anxiety increased by over 30%, with
+prevalence in females being consistently over twice that
+of males. About 25% of GP consultations are for mental
+health problems and 90% of mental health care is provided in primary care (Office of National Statistics,
+2001). Although mental health problems are commonly
+reported in primary care, these disorders are “often not
+detected” (WHO, 2001 p. 59). When detected, current
+clinical guidelines recommend either medication or psychological therapies (alone or in combination) (NICE,
+2004). However, evidence of effective outcomes from
+treatment is sometimes modest, or shows only small
+effect sizes (Nadiga et al., 2003). A proportion of people
+with mental health problems therefore continue to
+experience morbidity, take time off work, and experience
+social, psychological and physical consequences (WHO,
+2001).
+Panic attacks are a specific and severe form of anxiety
+disorder, typified by the sudden onset of overwhelming
+anxiety that presents with a variety of physical symptoms
+such as palpitations, shortness of breath, dizziness and
+nausea, and may involve fears of ‘going crazy’ or of
+impending doom or death (Ohman, 2000). The prevalence of panic attacks more than doubled in the population
+of the United States from 5.3% in 1980, to 12.7% in 1995
+(Goodwin, 2003). Panic attacks occur in many anxiety
+disorders and may be associated with specific events or
+situations. However, panic attacks as a central feature of
+panic disorder (PD) generally occur ‘out-of-the-blue’
+(American Psychiatric Association, 2000). The prevalence of PD appears to be relatively consistent across
+cultures at between 1% and 3% (Weissman et al., 1997).
+Current treatment guidelines for PD (NICE, 2004),
+recommend medication or psychological treatments such
+as cognitive behavioural therapy (CBT) or counselling,
+either individually, or in combination, as being the best
+evidenced treatment. However, after 8 years of follow-up,
+relapse rates of 64% in women and 21% in men were
+reported in a study of 558 panic disorder patients enrolled
+in the Harvard–Brown Anxiety Research Programme
+(Yonkers et al., 2003).
+A potential role for lifestyle in the prevention of
+mental health problems has been recognised which relates to improving nutrition (Benton and Nabb, 2003;
+Papakostas et al., 2004) and fluid intake (Muller et al.,
+2002); reducing habitual substance use such as caffeine
+(Alsene et al., 2003), alcohol (Davids et al., 2002) and
+
+nicotine (Isensee et al., 2003); increasing exercise
+(Callaghan, 2004) and reducing work stress (WHO,
+2004). Nonetheless, very little mention is made of this
+therapeutic approach within the current clinical guidance. The National Service Framework for Mental
+Health (NSFMH) (DoH, 1999) recommends that modifying lifestyle factors such as smoking, excess alcohol
+consumption; drug use; exercise and general physical
+health may have a beneficial impact on mental health.
+The present study was undertaken to test the hypothesis that modifying habitual lifestyle behaviours in a
+health protective direction will reduce the frequency and
+severity of anxiety and panic symptoms in panic disorder patients compared with usual GP care. It is
+intended that a companion paper will report costeffectiveness findings.
+2. Methods
+An unblinded, pragmatic randomised controlled trial
+was undertaken to determine whether an occupational
+therapy-led lifestyle approach to the treatment of panic
+disorder presenting in primary care achieves comparable
+or better clinical outcomes when compared with routine
+GP care.
+2.1. Participants
+Participants were adults (18–65 years) identified
+with panic disorder with or without agoraphobia, from
+15 GP practices within 2 Primary Care Trusts in the East
+of England. At a screening interview with a trained
+research therapist, eligibility was established through
+administration of the Anxiety Disorders Interview
+Schedule for DSM-IV (ADIS-IV). Participants were
+required to meet the DSM-IV criteria for panic disorder
+with or without agoraphobia. Participants prescribed
+medication were required to have been taking a stable
+dosage for at least 4 weeks before being entered into the
+study. Results from the study show that 4 medication
+types were commonly prescribed, and comprised over
+75% of all prescriptions made during the trial. These
+were SSRI's (43.5%), Benzodiazepines (15.2%), Betablockers (11.1%) and Tricyclics (5.8%). After providing
+participants with a complete description of the study,
+their written informed consent was obtained.
+2.1.1. Stratification and randomisation
+Participants were stratified in relation to the presence/
+absence of agoraphobia and lifestyle factors to ensure
+equal distribution of these characteristics within the
+study arms. Agoraphobia was identified through the use
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+
+of the ADIS-IV (Brown et al., 1994), and lifestyle
+factors were identified at initial interview by recording
+average daily consumption of 1 or more of the
+following: drinking more than 2 mugs of regular coffee;
+drinking more than 3 mugs of tea; drinking more than 2
+alcoholic drinks; drinking less than a total of 1.5 l of
+fluid; smoking more than 5 cigarettes. After stratification, patients were randomly assigned to either routine
+GP care or to the occupational therapy-led lifestyle
+approach. Random allocation was carried out using
+sealed envelopes prepared in advance by the principal
+researcher and supplied to the research therapists.
+2.1.2. Sample size
+A power calculation was carried out using a standardised difference of 0.5 derived from a trial comparing
+cognitive behavioural therapy, applied relaxation and
+imipramine in the treatment of PD (Clark et al., 1994),
+and a significance level of p = 0.05. For 90% power to
+detect a 5 point difference on the BAI, a sample size of
+170 patients (85 patients per arm) was estimated.
+It was assumed that 50% of patients referred to the
+study would either not meet the eligibility criteria, or not
+consent to participate, and that 30% loss to follow-up
+would occur. Just under 500 referrals into the study were
+therefore estimated.
+2.2. Design
+Routine GP care was not defined, but was
+monitored using routine GP practice records of
+attendance, prescriptions and referrals. The trial
+intervention addressed four areas of lifestyle; diet,
+fluid intake, exercise and habitual lifestyle drug use
+(caffeine, alcohol and nicotine). It provided up to 10
+intervention sessions over a 16-week period (3 × 1 h
+appointments at weekly intervals, 3 × half hour appointments at weekly intervals, 3 × half hour appointments at
+fortnightly intervals and 1 × 1 h appointment at a
+monthly interval). The intervention was delivered in
+four stages:
+• lifestyle review using self-report mood and lifestyle
+diaries
+• education to increase patient awareness of the
+potential negative health effects of some lifestyle
+behaviours (such as smoking and poor diet pattern)
+and the health benefits of other lifestyle behaviours
+(such as sufficient exercise and sufficient fluid intake)
+• specific lifestyle changes (in diet, fluid intake, exercise
+or habitual lifestyle drug use) were negotiated between
+the therapist and the patient.
+
+65
+
+• monitoring and review of the agreed lifestyle changes
+and any subsequent change in symptomatology.
+2.3. Process measure
+A process measure was required to document the
+degree of lifestyle change during the study. The Lifestyle
+Behaviour Index (LBI) was developed in a Dutch study
+(Mulder et al., 1998) of the stability of lifestyle
+behaviour in 1400 men over a 4-year period, and
+provides a valid measure of change in smoking, alcohol
+consumption, physical exercise and dietary habits. The
+LBI does not, however, assess changes in caffeine use or
+general fluid intake. Additional items were therefore
+devised using the same format as in the original
+questionnaire to assess these variables. In the analysis,
+scores from both the original questionnaire and the
+extended questionnaire are used.
+2.4. Primary outcome measure
+The Beck Anxiety Inventory (BAI), a broad indicator
+of anxiety severity, was used as the primary outcome
+measure. The BAI is a 21-item self-completion measure
+of established validity and reliability that has been
+previously used in studies of PD (de Beurs et al., 1997;
+Clark et al., 1994). The BAI has a range of 0–63, with
+bands indicating minimal (0–7), mild (8–15), moderate
+(16–25) and severe (26–63) anxiety (Beck and Steer,
+1993).
+2.5. Secondary outcome measures
+Secondary outcome measures were: panic attack
+frequency, severity and symptomatology (ADIS-IV);
+comorbid depression (Beck Depression inventory II
+(BDI-II) (Beck et al., 1996); phobic symptoms (Fear
+Questionnaire) (Marks and Mathews, 1979); and quality
+of life (Short Form Health Survey Questionnaire (SF36) (Ware, 1993) and EuroQol Health Questionnaire
+(EQ-5D) (Kind and de Charro, 1998).
+2.6. Analysis
+While the intervention period was over 16 weeks,
+analysis was carried out at baseline, and at follow-up
+appointments at 20 weeks and at 10 months after randomisation. Each of the outcome measures was provided to
+participants at baseline and at each follow-up by the
+research therapists who were different from the therapists providing the intervention. These were also
+collected at the interview and placed in a file ready for
+
+66
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+
+data entry and analysis at the end of the trial. Analysis
+consisted primarily of between-group comparisons using
+Chi squared tests for categorical outcome measures;
+unpaired t-tests (Mann–Whitney U-tests if data were not
+normally distributed) and analysis of covariance
+(ANCOVA) to adjust for minor baseline differences in
+the degree of apprehension, degree of interference in
+daily life and the number of limited symptom attacks,
+along with stratification factors of agoraphobia and
+lifestyle factors. Within group changes were analysed
+using paired t-tests.
+To allow for the effect of performing multiple tests of
+significance, the Bonferroni method was employed to
+adjust p-values (reducing the level at which results were
+considered significant from p = 0.05 to p = 0.007) (Pocock
+et al., 2002a). Analysis was carried out on an intention-totreat basis where all patients on whom information was
+available were analysed within the groups to which they
+were originally allocated (Petrie and Sabin, 2003).
+3. Results
+Despite initially positive indications for recruitment
+rates from pilot data, the number of referrals received
+between February 2001 and July 2003 was considerably
+lower than required (199 patients) with an uneven
+distribution across the 15 participating GP practices
+(Mean referrals/practice = 13.3; Min = 1; Max = 32). From
+these referrals, 59% (117 patients) were entered into the
+study, and 43% (50 patients) were lost to follow-up, with
+similar losses within each study arm. No indication was
+received of the reasons for withdrawal from the study. The
+median number of intervention sessions attended in the
+lifestyle arm was 5 (range 0–10). The study retained 31
+Lifestyle arm patients and 36 GP care arm patients to final
+analysis (See Fig. 1). This resulted in a study which was
+underpowered in comparison to that planned. Rather than
+
+carry out a post-hoc power calculation which is viewed
+with suspicion amongst some statisticians (Levine and
+Ensom, 2001; Pocock et al., 2002c), ANCOVA was used
+to report mean difference and 95% confidence intervals as
+a more appropriate indicator of sample size issues.
+In this study therefore, 67 patients completed to final
+follow-up and 50 patients did not. Only minor differences
+were observed between completers and non-completers in
+mean age (completers 40.2; non-completers 38.2); gender
+(completers 70% female; non-completers 66% female)
+and mean number of children (completers 1.43; noncompleters 1.54). There were also no significant differences in any clinical measures. There were no adverse
+events reported during the trial.
+Clinical comparisons were made which did not
+show any significant differences between these two
+groups on any baseline measure. Patients completing
+the research may be considered therefore as being
+representative of the patient group who were eligible
+for the study, and patients not completing the study
+were unlikely to be significantly different from those
+completing the study.
+A comparison of baseline demographic and clinical
+characteristics of patients in each study arm is provided
+in Table 1, and show broadly comparable groups. In the
+period of 3 months before entry into the study, 9
+referrals (including 2 mental health referrals) were made
+for specialist consultations outside the GP practice for
+patients entered into the lifestyle arm, compared with 12
+(8 mental health) for patients entered into the GP care
+arm. Analysis of covariance was, however, used to
+adjust for the small observed differences in the number
+of limited symptom attacks (as a between-group
+imbalance was observed at baseline), degree of
+interference and degree of apprehension in daily life
+(as predictors of outcome), the LBI extended total score
+and the fear questionnaire total phobia score (as factors
+
+Fig. 1. Study progression.
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+
+67
+
+Table 1
+Baseline demographic and clinical characteristics
+Lifestyle arm
+N
+Gender (female)
+Age
+No. of children
+
+Mean
+
+%
+
+N
+
+68.4
+
+41/60
+60
+56
+
+38.6
+1.3
+
+S.D.
+
+N
+
+Mean
+
+3.0
+2.0
+
+2.7
+1.0
+
+46
+59
+
+2.8
+1.5
+
+3.0
+1.0
+
+1.9
+0.9
+
+7.4
+15.6
+5.5
+5.9
+29.5
+24.3
+
+5.0
+8.0
+6.0
+6.0
+29.0
+23.5
+
+6.4
+19.5
+2.1
+1.9
+11.3
+10.5
+
+59
+56
+59
+58
+58
+58
+
+8.5
+8.7
+5.4
+5.1
+29.4
+23.1
+
+5.0
+6.0
+6.0
+5.0
+27.0
+23.0
+
+9.0
+10.3
+2.3
+1.7
+13.5
+12.3
+
+54
+54
+
+21.1
+61.4
+
+22.0
+59.5
+
+8.2
+23.1
+
+57
+57
+
+21.8
+61.8
+
+22.0
+62.0
+
+8.1
+24.9
+
+54
+54
+53
+54
+54
+53
+53
+54
+
+82.2
+60.2
+41.6
+53.3
+32.8
+59.7
+25.2
+42.2
+
+90.0
+75.0
+42.0
+52.0
+30.0
+62.5
+0.0
+42.0
+
+19.8
+40.8
+10.1
+15.4
+19.0
+24.2
+33.9
+15.1
+
+59
+59
+59
+57
+59
+59
+59
+59
+
+80.5
+59.3
+43.0
+54.5
+36.5
+60.8
+36.2
+45.3
+
+90.0
+75.0
+44.0
+57.0
+35.0
+62.5
+33.3
+48.0
+
+23.6
+41.5
+10.0
+17.6
+20.6
+28.9
+40.7
+17.7
+
+53
+53
+
+0.6
+60.8
+
+0.7
+60.0
+
+0.3
+18.8
+
+59
+58
+
+0.7
+64.2
+
+0.8
+67.5
+
+0.2
+18.1
+
+52
+54
+54
+54
+53
+54
+52
+52
+
+4.1
+2.1
+1.5
+1.6
+1.0
+2.4
+9.3
+12.8
+
+2.0
+2.0
+1.0
+2.0
+1.0
+2.0
+9.0
+13.0
+
+4.1
+1.7
+1.2
+1.3
+0.9
+1.3
+51.0
+5.0
+
+58
+58
+58
+58
+58
+58
+58
+58
+
+4.0
+2.2
+1.6
+1.7
+0.8
+2.0
+9.4
+12.3
+
+1.0
+2.0
+1.0
+2.0
+1.0
+2.0
+8.0
+10.5
+
+43.0
+1.7
+1.5
+1.5
+0.7
+1.4
+6.3
+7.1
+
+used in stratifying the randomisation procedure)
+(Pocock et al., 2002b).
+
+39/57
+57
+55
+
+40.1
+1.7
+
+N
+No. of GP Practice appointments in last 3 months
+Total lifestyle factors
+ADIS-IV
+Number of full (4 or more symptoms) panic attacks/last month
+Number of limited symptom attacks (3 or less symptoms/last month)
+Degree of apprehension
+Degree of interference in daily life
+Beck Anxiety Inventory
+Beck Depression Inventory
+Fear Questionnaire
+Anxiety and depression score
+Total score
+SF-36 Health Survey
+SF Physical Function
+SF Role—Physical
+SF Bodily Pain
+SF General Health
+SF Vitality
+SF Social Functioning
+SF Role—Emotional
+SF Mental Health
+EQ-5D EuroQol
+Health state coding
+Valuation of own health/100
+Lifestyle Behaviour Index
+Smoking
+Alcohol
+Physical exercise
+Diet
+Caffeine
+General fluid
+Original Total
+Extended Total
+
+Routine GP care arm
+
+Mean
+
+39
+54
+
+3.4
+1.7
+
+55
+52
+55
+55
+54
+54
+
+Median
+
+Mean
+
+%
+68.3
+
+Median
+
+S.D.
+
+either follow-up for smoking or alcohol use. In contrast,
+there were no significant changes in any LBI variable at
+any trial stage in the GP care arm.
+
+3.1. Between-group comparisons
+3.1.1. Process measure (Lifestyle Behaviour Index (LBI))
+Fig. 2 shows that significant LBI changes were observed in the lifestyle arm at both 20 weeks and at
+10 months for physical exercise, diet, general fluid intake,
+and both original and extended total scores. A significant
+change in caffeine use between baseline and 20 weeks was
+non-significant between baseline and 10 months. No
+significant changes were observed between baseline and
+
+3.1.2. Primary outcome measure (BAI)
+At baseline, over 85% of patients in both study arms
+were observed to have moderate to severe anxiety. In the
+lifestyle arm, fewer than 20% of patients experienced
+severe anxiety at 20 weeks, although at 10 months this
+had risen to 30%. In the GP care arm, the level of severe
+anxiety reduced to 55% at 20 weeks, and reduced further
+to just over 40% at 10 months. ANCOVA (see Fig. 3)
+shows results were significantly different at 20 weeks
+
+68
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+
+Fig. 2. Lifestyle arm paired t-test for lifestyle behaviour index (Baseline—assessment period).
+
+(after Bonferroni correction) for the total BAI score
+( p b 0.001, mean difference (md) −9.8; 95% confidence
+interval (CI) − 15.0 to − 4.6); the neurophysiological
+( p = 0.002), subjective ( p b 0.001) and autonomic
+( p = 0.006) subscores, but not for the panic subscore
+( p = 0.041). There were no significant between-group
+differences at 10 months.
+A proportion of patients (36% lifestyle arm; 50% GP
+care arm) had higher levels of anxiety at 10 months than
+at 20 weeks. When mean BAI scores at 10 months were
+compared with those at baseline, a significantly greater
+number (Fishers Exact Test (2-sided) p = 0.016) of
+lifestyle arm patients remained improved (28/29
+patients) than GP care arm patients (25/34 patients).
+This is illustrated by the finding that at 10 months just
+over 26% (9/34) of GP care arm patients compared with
+3.4% (1/29) lifestyle arm patients were observed to have
+an increased BAI score.
+
+3.1.3. Secondary outcome measures
+At 20 weeks, 63.6% of lifestyle arm patients had
+been panic-free in the previous month compared with
+40% in the GP care arm. At the 10-month follow-up,
+67.7% of lifestyle arm patients and 48.5% of GP care
+arm patients had been panic-free for 1 month. Although
+there was therefore an observed trend towards greater
+improvement in panic reactions in the lifestyle arm, the
+differences were not statistically significant.
+In the period of 3 months before follow-up at
+20 weeks, 4 further referrals (2 mental health) had been
+made for lifestyle arm patients and 6 further referrals (3
+mental health) for GP care arm patients. In the 3-month
+period before follow-up at 10 months, 6 further lifestyle
+arm referrals (0 mental health) were made, compared
+with 17 (7 mental health) referrals for GP care arm
+patients.
+A range of other secondary outcome measures showed
+significant or near significant results at 20 weeks, but only
+the general health item from the SF36 showed a significant result at 10 months (before Bonferroni correction). After Bonferroni correction, only the anxiety and
+depression score of the fear questionnaire at 20 weeks
+remained significant. Once again this indicates a trend
+towards improvement in the lifestyle arm, but not at a
+statistically significant level.
+4. Discussion
+
+Fig. 3. ANCOVA for BAI results at 20 weeks and 10 months.
+
+The main conclusion from this study is that there is
+some evidence that a lifestyle approach in the treatment
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+
+of PD in primary care may be at least as clinically
+effective as routine GP care, and may be more effective
+over a short follow-up period.
+At baseline, patients in both the lifestyle and routine
+GP care arms were broadly demographically and
+clinically similar. The pattern of results at both
+20 weeks and at 10 months consistently favoured the
+lifestyle arm. At 20 weeks, differences favouring the
+lifestyle intervention compared with routine GP care
+remained significant after Bonferroni correction on the
+BAI total score, ( p b 0.001), and on all except the BAI
+panic subscores. At the 10-month follow-up however, no
+significant between-group differences were observed.
+The mean BAI score at 10 months improved by 5 or more
+points in over 85% (25/29) of lifestyle patients and 60%
+(21/34) of GP care arm patients. At 10 months, over 26%
+(9/34) of GP care arm patients were observed to have an
+increased BAI total score compared with 3.4% (1/29) of
+patients in the lifestyle arm. These findings indicate that
+while there were only minor between-group differences in
+mean BAI scores at the 10 month follow-up, at 20 weeks a
+significant short-term benefit was observed. The lifestyle
+approach also appears to have a significantly lower
+relapse rate than routine GP care.
+One possible factor in the lifestyle arm relapse rate
+after the end of treatment at 20 weeks may be the duration
+of lifestyle treatment. The possibility of using maintenance appointments (possibly at 2 to 3 monthly intervals
+over the 12 months following the end of treatment) to
+improve clinical outcomes therefore requires further examination. It should also be noted that in a comparison of
+study effects (see Fig. 4) from studies using the BAI as an
+
+69
+
+outcome measure, the degree of improvement from
+baseline to the end of treatment and at follow-up in the
+lifestyle arm compares favourably with CBT, other psychological treatments, Imipramine (Clark et al., 1994,
+1999; Proudfoot et al., 2003a), and treatment as usual
+(Proudfoot et al., 2003b).
+Only relatively minor between-group differences
+were observed using the secondary outcome measures.
+From 199 referrals received, a higher than expected
+percentage of patients were randomised (59%), but there
+was also a higher than expected loss to follow-up (43%).
+The study therefore fell short of the required sample
+size based on 90% power, but nonetheless there is a
+significant difference after Bonferroni correction on the
+primary outcome measure at first follow-up. The aim of
+treatment in the lifestyle arm was the promotion of
+positive lifestyle changes. Significant LBI changes were
+observed in the lifestyle arm on all except smoking and
+alcohol subscores. No such changes were observed in
+the GP care arm. The lifestyle intervention therefore
+appears to promote lifestyle changes across a range of
+habitual behaviours, and these appear to have been
+maintained at 10 months in about two-thirds of lifestyle
+arm patients. However, smoking and alcohol consumption were more resistant to change.
+A range of possible mechanisms may underlie the
+clinical findings. About 40% of PD is genetically
+determined, and this is expressed in some PD patients
+through altered sensitivity in a range of normal body
+functions compared with other patient groups and
+normal controls. Such altered sensitivity in PD patients
+has been reported in the respiratory (Horwath et al.,
+
+Fig. 4. Difference in BAI total score between baseline and end of treatment and baseline and follow-up.
+
+70
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+
+1997; Biber and Alkin, 1999), cardiovascular (Yeragani
+et al., 2003), musculoskeletal (Gulpek et al., 2004),
+audio-vestibular (Perna et al., 2001; Asmundson et al.,
+1998), gastro-intestinal (Kumano et al., 2004; Maunder,
+1998) and immune systems (Slattery et al., 2002; Koh
+and Lee, 2004). A combination of habitual lifestyle
+behaviours such as diet, fluid intake exercise and
+habitual lifestyle drug use (such as caffeine, alcohol
+and nicotine) may interact with altered sensitivity in
+body system function in some PD patients.
+It is proposed that the interaction between altered
+body system sensitivity, and adverse habitual lifestyle
+behaviours in PD patients may provoke cognitive
+awareness of altered bodily sensations at an earlier
+stage than for other groups. Cognitive appraisal of these
+physiological symptoms may then provoke further
+physiological and cognitive reactions, thereby raising
+anxiety levels into an anxiety spiral leading to a panic
+attack. The latter mechanism is similar to the original
+cognitive model proposed by Clarke (1986). It deviates
+from this model in the proposal of a physiological
+trigger, possibly resulting from a combination of lowlevel symptoms from a range of body systems that reach
+an additive threshold level before reaching cognitive
+awareness.
+A review of habitual lifestyle behaviours can identify
+possible triggers for physiological reactions underlying
+panic responses. Using lifestyle review and lifestyle
+change in this way can provide PD patients with a
+rational explanation of their symptoms, a range of
+possible strategies through which to explain and alter the
+sensations they are experiencing, and thus placing
+symptoms under their own control. Although the
+intervention in the present study was provided by
+occupational therapists, the efficacy of using other
+professionals such as Practice Nurses, or training Health
+Care Assistants in the provision of this form of intervention should be examined.
+In conclusion, lower than expected numbers of
+patients in the study suggest caution should be exercised
+in interpreting results. However, significant results after
+Bonferroni correction and reporting of point estimates
+and 95% confidence intervals show that an occupational
+therapy-led lifestyle approach to the treatment of PD in
+primary care represents a clinically effective treatment at
+least equal to that of routine GP care. At the end of
+treatment, a significantly greater number of patients
+receiving the lifestyle intervention recorded lower levels
+of anxiety than at baseline, compared with those
+receiving routine GP care.
+By the 10-month follow-up, while the results generally
+favoured the lifestyle intervention, the between-group
+
+differences were statistically non-significant. The results
+from the present study show that this approach does not
+work in the longer term, for all patients, as a return to
+previous lifestyle and anxiety patterns was observed in
+about one-third of patients. However, in the remaining
+two-thirds of patients in the lifestyle arm of the trial,
+positive lifestyle changes were promoted and were
+maintained at the 10-month follow-up, and were
+associated with continued improvements in anxiety.
+Acknowledgements
+To the grant awarding bodies whose financial support
+made the research possible. To the patients, the GP
+Practices and Occupational Therapists who participated
+in the research, without whose continued support the
+research could never have been achieved.
+The Principal Investigator and corresponding author
+who takes responsibility for the integrity of the data and
+the accuracy of the data analysis, and that all authors had
+full access to all the data in the study.
+This research was supported by a NHS R&D National
+Primary Care Researcher Development Award Fellowship (Grant RDA99/062) and by a NHS R&D Eastern
+Region Health Services and Public Health Research
+Scheme Grant (Grant HSR/0500/1).
+References
+Alsene, K., Deckert, J., Sand, P., de Wit, H., 2003. Association
+between A2a receptor gene polymorphisms and caffeine-induced
+anxiety. Neuropsychopharmacology 28, 1694–1702.
+American Psychiatric Association, 2000. Diagnostic and Statistical
+Manual of Mental Disorders; DSM-IV TR. American Psychiatric
+Association, Washington, DC.
+Asmundson, G.J., Larsen, D.K., Stein, M.B., 1998. Panic disorder and
+vestibular disturbance: an overview of empirical findings and
+clinical implications. J. Psychosom. Res. 44, 107–120.
+Beck, A.T., Steer, R.A., 1993. Beck Anxiety Inventory Manual. The
+Psychological Corporation, San Antonio.
+Beck, Aaron T., Steer, Robert A., Brown, Gregory K. Beck Depression
+Inventory-BDI-II Manual. 1996. San Antonio, The Psychological
+Corporation, Harcourt Brace and Co.
+Benton, D., Nabb, S., 2003. Carbohydrate, memory, and mood. Nutr.
+Rev. 61, S61–S67.
+Biber, B., Alkin, T., 1999. Panic disorder subtypes: differential
+responses to CO2 challenge. Am. J. Psychiatry 156, 739–744.
+Brown, T.A., DiNardo, P.A., Barlow, D.H., 1994. Anxiety Disorders
+Interview Schedule for DSM-IV (Adult version). Graywind
+Publications Incorporated.
+Callaghan, P., 2004. Exercise: a neglected intervention in mental health
+care? J. Psychiatr. Ment. Health Nurs. 11, 476–483.
+Clark, D.M., 1986. A cognitive approach to panic. Behav. Res. Ther.
+24, 461–470.
+Clark, D.M., Salkovskis, P.M., Hackmann, A., Middleton, H.,
+Anastasiades, P., Gelder, M., 1994. A comparison of cognitive
+
+R.A. Lambert et al. / Journal of Affective Disorders 99 (2007) 63–71
+therapy, applied relaxation and imipramine in the treatment of
+panic disorder [see comments]. Br. J. Psychiatry 164, 759–769.
+Clark, D.M., Salkovskis, P.M., Hackmann, A., Wells, A., Ludgate, J.,
+Gelder, M., 1999. Brief cognitive therapy for panic disorder: a
+randomized controlled trial. J. Consult Clin. Psychol. 67, 583–589.
+Davids, E., Muller, M.J., Rollmann, N., Burkart, M., Regier-Klein, E.,
+Szegedi, A., Benkert, O., Maier, W., 2002. Syndrome profiles in
+alcoholism and panic disorder with or without agoraphobia: an
+explorative family study. Prog. Neuro-psychopharmacol. Biol.
+Psychiatry 26, 1079–1087.
+de Beurs, E., Wilson, K.A., Chambless, D.L., Goldstein, A.J., Feske,
+U., 1997. Convergent and divergent validity of the Beck Anxiety
+Inventory for patients with panic disorder and agoraphobia.
+Depress. Anxiety 6, 140–146.
+DoH, 1999. National Service Framework for Mental Health: Modern
+Standards and Service Models. Department of Health, London.
+Goodwin, R.D., 2003. The prevalence of panic attacks in the United
+States: 1980 to 1995. J. Clin. Epidemiol. 56, 914–916.
+Gulpek, D., Bayraktar, E., Akbay, S.P., Capaci, K., Kayikcioglu, M.,
+Aliyev, E., Soydas, C., 2004. Joint hypermobility syndrome and
+mitral valve prolapse in panic disorder. Prog. Neuro-psychopharmacol. Biol Psychiatry 28, 969–973.
+Horwath, E., Adams, P., Wickramaratne, P., Pine, D., Weissman, M.M.,
+1997. Panic disorder with smothering symptoms: evidence for
+increased risk in first-degree relatives. Depress. Anxiety 6,
+147–153.
+Isensee, B., Wittchen, H.U., Stein, M.B., Hofler, M., Lieb, R., 2003.
+Smoking increases the risk of panic: findings from a prospective
+community study. Arch. Gen. Psychiatry 60, 692–700.
+Kind, Paul, de Charro, Frank, 1998. Euroqol EQ-5D: User guide.
+Centre for Health Economics, University of York, York.
+Koh, K.B., Lee, Y., 2004. Reduced anxiety level by therapeutic
+interventions and cell-mediated immunity in panic disorder
+patients. Psychother. Psychosom. 73, 286–292.
+Kumano, H., Kaiya, H., Yoshiuchi, K., Yamanaka, G., Sasaki, T.,
+Kuboki, T., 2004. Comorbidity of irritable bowel syndrome, panic
+disorder, and agoraphobia in a Japanese representative sample.
+Am. J. Gastroenterol. 99, 370–376.
+Levine, M., Ensom, M.H., 2001. Post hoc power analysis: an idea
+whose time has passed? [see comment]. Pharmacotherapy 21,
+405–409.
+Marks, I.M., Mathews, A.M., 1979. Brief standard self-rating for
+phobic patients. Behav. Res. Ther. 17, 263–267.
+Maunder, R.G., 1998. Panic disorder associated with gastrointestinal
+disease: review and hypotheses. J. Psychosom. Res. 44, 91–105.
+Mulder, M., Ranchor, A.V., Sanderman, R., Bouma, J., van den
+Heuvel, W.J., 1998. The stability of lifestyle behaviour. Int. J.
+Epidemiol. 27, 199–207.
+Muller, V., Birbaumer, N., Preissl, H., Braun, C., Lang, F., 2002.
+Effects of water on cortical excitability in humans. Eur. J.
+Neurosci. 15, 528–538.
+Nadiga, D.N., Hensley, P.L., Uhlenhuth, E.H., 2003. Review of the
+long-term effectiveness of cognitive behavioral therapy compared
+to medications in panic disorder. Depress. Anxiety 17, 58–64.
+NICE, 2004. Clinical Guidelines for the Management of Panic
+Disorder and Generalised Anxiety Disorder. University of
+Sheffield, ScHARR.
+Office of National Statistics, 2001. Prevalence of Treated Anxiety per
+1000 Patients, by Age, Sex and Calendar Year: 1994–98. Office of
+National Statistics, London.
+
+71
+
+Ohman, A., 2000. Anxiety. In: Fink, G. (Ed.), Encyclopedia of Stress.
+Academic Press, London, pp. 226–231.
+Papakostas, G.I., Ongur, D., Iosifescu, D.V., Mischoulon, D., Fava,
+M., 2004. Cholesterol in mood and anxiety disorders: review of the
+literature and new hypotheses. Eur. Neuropsychopharmacol. 14,
+135–142.
+Perna, G., Dario, A., Caldirola, D., Stefania, B., Cesarani, A., Bellodi,
+L., 2001. Panic disorder: the role of the balance system.
+J. Psychiatr. Res. 35, 279–286.
+Petrie, A., Sabin, C., 2003. Medical Statistics at a Glance. Blackwell
+Science, Padstow.
+Pocock, S.J., Assmann, S.E., Enos, L.E., Kasten, L.E., 2002a. Subgroup
+analysis, covariate adjustment and baseline comparisons in clinical
+trial reporting: current practice and problems. Stat. Med. 21,
+2917–2930.
+Pocock, S.J., Assmann, S.E., Enos, L.E., Kasten, L.E., 2002b. Subgroup
+analysis, covariate adjustment and baseline comparisons in clinical
+trial reporting: current practice and problems. Stat. Med. 21,
+2917–2930.
+Pocock, S.J., Assmann, S.E., Enos, L.E., Kasten, L.E., 2002c. Subgroup
+analysis, covariate adjustment and baseline comparisons in clinical
+trial reporting: current practice and problems. Stat. Med. 21,
+2917–2930.
+Proudfoot, J., Goldberg, D., Mann, A., Everitt, B., Marks, I., Gray, J.A.,
+2003a. Computerized, interactive, multimedia cognitive–behavioural program for anxiety and depression in general practice.
+Psychol. Med. 33, 217–227.
+Proudfoot, J., Goldberg, D., Mann, A., Everitt, B., Marks, I., Gray, J.A.,
+2003b. Computerized, interactive, multimedia cognitive–behavioural program for anxiety and depression in general practice.
+Psychol. Med. 33, 217–227.
+Slattery, M.J., Klein, D.F., Mannuzza, S., Moulton III, J.L., Pine, D.S.,
+Klein, R.G., 2002. Relationship between separation anxiety
+disorder, parental panic disorder, and atopic disorders in children:
+a controlled high-risk study. J. Am. Acad. Child Adolesc. Psych.
+41, 947–954.
+The Sainsbury Centre for Mental Health, 2003. Economic and Social
+Costs of Mental Illness in England. The Sainsbury Centre for
+Mental Health, London.
+Ware, J.E., 1993. SF-36 Health Survey: Manual and Interpretation Guide.
+The Health Institute, New England Medical Centre, Massachusetts.
+Weissman, M.M., Bland, R.C., Canino, G.J., Faravelli, C., Greenwald,
+S., Hwu, H.G., Joyce, P.R., Karam, E.G., Lee, C.K., Lellouch, J.,
+Lepine, J.P., Newman, S.C., Oakley-Browne, M.A., Rubio-Stipec,
+M., Wells, J.E., Wickramaratne, P.J., Wittchen, H.U., Yeh, E.K.,
+1997. The cross-national epidemiology of panic disorder. Arch.
+Gen. Psychiatry 54, 305–309.
+WHO, 2001. World Health Report 2001: Mental Health, New
+Understanding, New Hope. World Health Organisation, Geneva.
+WHO, 2004. Prevention of Mental Disorders: Effective Interventions
+and Policy Options. World Health Organisation, Geneva.
+Yeragani, V.K., Tancer, M., Uhde, T., 2003. Heart rate and QT interval
+variability: abnormal alpha-2 adrenergic function in patients with
+panic disorder. Psychiatry Res. 121, 185–196.
+Yonkers, K.A., Bruce, S.E., Dyck, I.R., Keller, M.B., 2003.
+Chronicity, relapse, and illness-course of panic disorder, social
+phobia, and generalized anxiety disorder: Findings in men and
+women from 8 years of follow-up. Depress. Anxiety 17, 173–179.

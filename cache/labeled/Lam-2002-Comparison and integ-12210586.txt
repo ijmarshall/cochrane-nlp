@@ -1,0 +1,625 @@
+PRENATAL DIAGNOSIS
+
+Prenat Diagn 2002; 22: 730–735.
+Published online in Wiley InterScience (www.interscience.wiley.com). DOI: 10.1002 / pd.382
+
+Comparison and integration of ﬁrst trimester fetal nuchal
+translucency and second trimester maternal serum screening for
+fetal Down syndrome
+Yung Hang Lam1*, Chin Peng Lee1, Sai Yuen Sin2, Rebecca Tang3, Hong Soo Wong4, Sai Fun Wong5,
+Danial Yee Tak Fong6, Mary Hoi Yin Tang1 and Hennie Hai Nin Woo2
+1
+
+Department of Obstetrics and Gynaecology, The University of Hong Kong, Tsan Yuk Hospital, Hong Kong, China
+Department of Obstetrics and Gynaecology, Kwong Wah Hospital, Hong Kong, China
+3
+Pamela Youde Eastern Hospital, Hong Kong, China
+4
+Princess Margaret Hospital, Hong Kong, China
+5
+Tuen Mun Hospital, Hong Kong, China
+6
+Clinical Trials Centre, The University of Hong Kong, Hong Kong, China
+2
+
+Background It is uncertain whether ﬁrst trimester nuchal translucency (NT) is more effective than the wellestablished second trimester serum screening for fetal Down syndrome or whether their combination works
+best. We report data from a large multicentre non-interventional trial in which all subjects underwent both
+ﬁrst and second trimester screening.
+Methods All women who attended the obstetric clinic before 15 weeks’ gestation were recruited. An
+ultrasound examination was performed at 10 to 14 weeks to measure the NT. The nuchal measurements
+were not acted upon unless the fetus showed gross features of hydrops fetalis. All women had serum alphafetoprotein (AFP) and human chorionic gonadotrophin (hCG) assay at 15 to 20 weeks. The Down
+syndrome risk assigned by serum screening was disclosed and amniocentesis was offered if this assigned risk
+was o1 : 250 or if the women were 35 years and older. The efﬁcacy of different combinations of screening
+markers was compared.
+Results Between January 1997 and August 2000, 17 <n>590</n> women were recruited (19% o35 years old). After
+excluding subjects who miscarried, defaulted the serum test and other reasons, 16 237 pregnancies were
+analysed. Of these, 35 pregnancies were affected by Down syndrome (2.2 cases per 1000 pregnancies). At a
+false-positive rate of 5%, the detection rate of Down syndrome by NT alone, NT and age, serum hCG, AFP
+and age, and NT, hCG, AFP and age were 61%, 69%, 73% and 86%, respectively.
+Conclusion Integration of NT and second trimester serum AFP and hCG assay yielded the best screening
+efﬁcacy for Down syndrome. Copyright # 2002 John Wiley & Sons, Ltd.
+KEY WORDS:
+
+Down syndrome; screening; ultrasound; serum screening; nuchal translucency
+
+INTRODUCTION
+Prenatal diagnosis of Down syndrome can be accurately made by cytogenetic studies on samples
+obtained from invasive procedures such as amniocentesis or chorionic villus sampling (CVS). Because these
+procedures are associated with a 0.5% to 1% risk of
+miscarriage, the common approach is to perform noninvasive screening tests to deﬁne an individual
+woman’s risk of having a Down syndrome pregnancy
+before subjecting her to a diagnostic test. The most
+commonly employed screening test is based on the
+combination of maternal age and maternal serum
+assay of alpha-fetoprotein (AFP), human chorionic
+gonadotrophin (hCG) and other analytes in the second
+trimester (Palomaki et al., 1997). This yields a
+detection rate of 60–70% for a 5% false-positive rate
+*Correspondence to: Dr. Y. H. Lam, 2nd Floor, Tsan Yuk Hospital,
+30 Hospital Road, Hong Kong, China.
+E-mail: yhlamobgyn@yahoo.com.hk
+
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+(Cuckle, 2000; Lam et al., 1998). Recently, efforts were
+made to increase the screening efﬁcacy by adding new
+markers such as inhibin-A (Wald et al., 1996; Lam and
+Tang, 1999) and to move screening forward into
+the ﬁrst trimester (Malone et al., 2000). The most
+commonly used marker for Down syndrome in the
+ﬁrst trimester is sonographic measurement of nuchal
+translucency (NT), though studies of its efﬁcacy have
+yielded widely conﬂicting results with detection rates
+ranging from 29% to 91% (Malone et al., 2000).
+Because of the spontaneous loss of Down syndrome
+fetuses between the ﬁrst and second trimesters, direct
+comparison of the screening efﬁcacy derived from ﬁrst
+trimester intervention studies with that derived from
+second trimester studies will be invalid (Malone et al.,
+2000). Recently, Wald et al. (1999) proposed a new
+concept of screening by integrating ﬁrst and second
+trimester markers that may improve the screening
+efﬁcacy dramatically. In the present study, we report
+our data on a large multicentre non-interventional trial
+in which all subjects underwent both ﬁrst and second
+Received: 8 November 2001
+Revised: 13 February 2002
+Accepted: 17 February 2002
+
+SCREENING FOR DOWN SYNDROME
+
+trimester methods of screening to assess the relative
+efﬁcacy of different methods of screening.
+
+731
+
+12 weeks or amniocentesis at 15 to 20 weeks (Lam
+et al., 2000) but a serum sample would still be taken
+a few weeks after CVS or just prior to amniocentesis
+for hCG and AFP assay.
+
+METHODS
+
+Subjects
+This was a multicentre study conducted between the
+years 1997 and 2000 in Hong Kong. Pregnant women
+who attended at or before 14 completed weeks of
+gestation and who agreed to be screened for fetal
+Down syndrome were recruited. A written informed
+consent was obtained from all subjects and they were
+told that the NT was to be recorded for research
+purpose and they would not be informed of the results.
+
+Outcome ascertainment
+Pregnancy outcome was retrieved from the hospital
+record. If this was not available, the woman was
+contacted by phone. In order to ensure complete
+ascertainment of the Down syndrome pregnancies,
+records of the cytogenetic laboratories responsible
+for performing karyotyping for the ﬁve participating
+hospitals were reviewed up to July 2001.
+
+Statistical analysis
+Ultrasound examination
+All subjects underwent an abdominal and/or vaginal
+ultrasound examination at 10–14 weeks of gestation.
+The ultrasound examinations were performed by
+either one of the authors who were experienced
+obstetricians and who had undergone training in NT
+measurements. The gestational age was ascertained by
+the measurement of fetal crown–rump length at or
+before 13 weeks, and by the measurement of biparietal
+diameter and head circumference between 13 and
+14 weeks of gestation. A sagittal section of the fetus
+was obtained for the measurement of NT to the
+nearest 0.1 mm (Nicolaides et al., 1992). NT was
+always measured when the fetal neck was in a neutral
+position (Whitlow et al., 1998) and the image was
+adequately magniﬁed according to the guidelines of
+the Fetal Medicine Foundation of London and all the
+ultrasound images were continuously audited by the
+chief investigator (Y.H.L.) (Herman et al., 1998). For
+each fetus, the two best NT measurements were
+averaged. To adjust for the effect of gestational age,
+all the NT measurements were converted to multiples
+of the median (MoM) for the gestational day (Yagel
+et al., 1998; Lam et al., 1999). The NT were not
+disclosed to the subjects or their obstetricians or acted
+upon unless the fetus showed ultrasound features of
+generalised hydropic changes.
+
+Serum screening
+All subjects underwent serum screening in the second
+trimester by the assay of human chorionic gonadotrophin (hCG) and alpha-fetoprotein (AFP) between
+15 and 20 weeks of gestation. The Down syndrome
+risk assigned by serum screening was disclosed and
+women with a risk at or above 1 : 250 were offered
+amniocentesis (Lam et al., 1998). The risk cut-off was
+chosen to achieve a detection rate of around 60% and
+a false-positive rate (i.e. amniocentesis rate) of around
+5% (Lam et al., 1998). Women aged 35 years and older
+or those who had other risk factors for fetal
+chromosomal disorders were given the options of
+undergoing chorionic villus sampling (CVS) at 10 to
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+All markers were expressed as MoMs of the unaffected
+pregnancies at a given gestational age. AFP and hCG
+MOMs were adjusted for maternal weight as described
+by Neveux et al. (1996) using commercially available
+software (Robert Macial, USA). The detection rates
+and false-positive rates of the screening methods [ﬁrst
+trimester NT, second trimester hCG and AFP assay
+and an integration of the ﬁrst and second trimester
+markers (the integrated test)] were obtained by
+following the model-based likelihood ratio approach
+described by Royston and Thompson (1992). Speciﬁcally, all the markers were ﬁrst logarithmic (base 10)
+transformed and a multivariate Gaussian distribution
+was ﬁtted for each of the affected and unaffected
+pregnancies. Adequacy of each of the two multivariate Gaussian distributions was examined by using
+Shapiro-Wilks and V tests in each and all subsets of
+the three markers and by comparing the observed and
+predicted likelihood ratios (Royston and Thompson,
+1992). Using the age-speciﬁc risk of having a Down
+syndrome pregnancy and the maternal age distribution
+in Hong Kong in 1994 (Hong Kong College of
+Obstetricians and Gynaecologists, 1996), the detection
+rate and false-positive rate for a particular risk cut-off
+level were obtained numerically for different screening
+methods. Thus, the receiver-operating characteristic
+curves (ROC, i.e. plot of detection rate against falsepositive rate over different risk cut-off levels) could be
+constructed.
+Screening accuracy of the different methods was
+then compared by their detection rates at a 5% falsepositive rate, the total area under the ROC curve, and
+the partial area under the ROC curve (deﬁned as the
+part of the curve where the false-positive rate was
+between 0% and 10%). Estimates of the three measures
+were computed as above while their 95% conﬁdence
+intervals (CI) were obtained and comparisons were
+examined by parametric bootstrap of size 300 since
+no standard methods were available (Efron and
+Tibshirani, 1993). Speciﬁcally, 300 sets of samples
+were re-sampled from the two ﬁtted multivariate
+Gaussian distributions for the affected and unaffected
+pregnancies. The analysis was repeated on these
+samples and thus 300 sets of bootstrapped measure
+Prenat Diagn 2002; 22: 730–735.
+
+732
+
+Y. H. LAM ET AL.
+
+estimates were obtained for each screening method.
+The 95% CI of a measure for a screening method was
+then taken as the 2.5th and 97.5th percentiles of the
+corresponding bootstrapped measure estimates. With
+the same 300 sets of bootstrapped estimates, a nonparametric Friedman’s test was used to examine
+the overall difference and pair-wise differences of a
+measure among the different screening methods. All
+the statistical analysis was performed using the
+Statistical Analysis System (SAS) version 8.
+RESULTS
+Between January 1997 and August 2000, 17 590
+women were recruited. After excluding those pregnancies in which NT were unsuccessful (n=39), those
+affected by chromosomal abnormalities other than
+trisomy 21 (n=48) or other major non-chromosomal
+abnormalities (n=160), subjects who defaulted the
+second trimester serum test (n=1015) and those who
+miscarried after NT measurements and before the
+second trimester serum test (n=91), 16,237 pregnancies which completed both ﬁrst and second trimester
+screening were analysed. The mean maternal age of
+unaffected pregnancies was 30.5 years (19% were
+35 years and older). The mean gestational age at ultrasound scan and gestational age at second trimester
+serum screening were 87 days and 16 weeks, respectively. Of these 16,237 pregnancies, 117 women (0.7%)
+underwent CVS (none were affected by Down
+syndrome) and 1913 women (11.8%) underwent
+amniocentesis. A total of 35 pregnancies were affected
+by Down syndrome (2.2 cases per 1000 pregnancies)
+
+and all the diagnosis were ascertained at or beyond
+15 weeks of gestation or after birth. Pregnancy outcome was ascertained in 15,253 pregnancies (93.9%).
+NT measurements were successful in 99.8% of cases
+and this was performed by abdominal ultrasound
+examination in 98.6%. NT increased with gestational
+age and a log-linear model ﬁtted the data well (NT
+median=100.005342rgestational daysx0.259). The log means
+(tstandard deviations) of NT MOM for affected
+and unaffected pregnancies were 0.25 (t0.17) and
+0.00 (t0.13), respectively. NT was not correlated
+with maternal age, hCG and AFP, except a small
+signiﬁcant correlation between NT MOM and hCG
+MOM in the Down syndrome pregnancies (r=
+0.363, p=0.03; Pearson correlation test). Figure 1
+shows the ROC curves of the different methods of
+screening for Down syndrome. The areas under the
+ROC curves by different methods of screening are
+shown in Table 1. The differences in the areas
+between different methods of screening were statistically signiﬁcant ( p<0.001). The integrated test
+yielded the best result. Second trimester hCG and
+AFP screening performed slightly better than NT and
+the difference was statistically signiﬁcant (Table 1).
+At a 5% false-positive rate (a risk cut-off of 1 : 320),
+the detection rate of Down syndrome pregnancies by
+the integrated test was 85.7% (95% CI, 76.2–92.1%).
+This was greater than the detection rate achieved
+with second trimester hCG, AFP and age (73.2%;
+95% CI 63.4–82.9%), NT and age (69.3%; 95% CI
+56–76.1%) or NT alone (60.8%; 95% CI 41.7–69.4%).
+Pair-wise comparisons of NT and age with hCG,
+AFP and age, NT and age with the integrated test,
+
+Figure 1—Receiver-operating characteristic (ROC) curves for different combinations of screening test for Down syndrome
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+Prenat Diagn 2002; 22: 730–735.
+
+733
+
+SCREENING FOR DOWN SYNDROME
+
+Table 1—Area under the receiver-operating characteristic
+(ROC) curves for different methods of screening
+Total area
+(95% CI)
+0.881
+(0.840–0.943)
+0.924
+(0.904–0.968)
+0.947
+(0.919–0.977)
+
+Screening test
+b
+
+NT and age
+
+hCG, AFP
+and ageb
+NT, hCG,
+AFP and ageb
+
+Partial areaa
+(95% CI)
+0.065
+(0.053–0.074)
+0.069
+(0.059–0.079)
+0.083
+(0.073–0.089)
+
+a
+Area of the curves restricted to the zone where false-positive rates
+were between 0% and 10%.
+b
+p<0.001, non-parametric Friedman test.
+AFP, a-Fetoprotein; CI, conﬁdence intervals; hCG, human chorionic gonadotrophin; NT, nuchal translucency.
+
+hCG, AFP and age with the integrated test showed
+statistically signiﬁcant differences in the detection rates
+(pair-wise p values were all<0.001). Conversely, the
+integrated test resulted in a much lower false-positive
+rate than the other combinations to achieve a 70%
+detection of Down syndrome pregnancies (Table 2).
+In the US and other places, screening for Down
+syndrome is primarily offered to women under
+35 years of age (ACOG Committee, 1994). In the
+present study, 13,120 women were less than 35 years
+old and 12 of these pregnancies were affected by Down
+syndrome (0.9 cases per 1000 pregnancies). Re-analysis
+of the data showed that using a risk cut-off of 1 : 320
+(that would result in an overall false-positive rate of
+5%), the integrated test would detect 75% of the Down
+syndrome pregnancies at a false-positive rate of 2.6%
+in women less than 35 years old. Using this risk cutoff, 352 young subjects would be screen-positive of
+which nine were true-positives and 343 were falsepositives. The odds of being affected given a positive
+screening result in the young subjects were 1 : 38. The
+corresponding detection rate, false-positive rate and
+odds of being affected given a positive screening result
+for women 35 years and older were 93.3%, 15.1% and
+1 : 22, respectively. Figure 2 shows the ROC curves of
+the different methods of screening for Down syndrome
+Table 2—Efﬁcacy of different screening methods when the
+false-positive rate is ﬁxed at 5% or the detection rate is
+ﬁxed at 70%
+Screening test
+NT
+NT
+HCG, AFP
+and age
+NT, hCG,
+AFP and age
+
+Detection
+rate (%)
+
+False-positive
+rate (%)
+
+Risk
+cut-offa
+
+60.8
+70.0
+69.3
+70.0
+73.2
+70.0
+85.7
+70.0
+
+5
+9.4
+5
+5.2
+5
+4.1
+5
+0.8
+
+–
+–
+1 : 186a
+1 : 198b
+1 : 147a
+1 : 120b
+1 : 320a
+1 : 44b
+
+a
+
+Risk cut-off used when the false-positive rate is ﬁxed at 5%.
+Risk cut-off used when the detection rate is ﬁxed at 70%.
+AFP, a-Fetoprotein; hCG, human chorionic gonadotrophin; NT,
+nuchal translucency.
+b
+
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+in women less than 35 years old. The integrated test
+again yielded the best result.
+DISCUSSION
+This is the ﬁrst report of data on pregnancies that have
+undergone both ﬁrst and second trimester screening
+without action being taken on the ﬁrst trimester NT
+measurements. This allows a valid comparison of the
+screening performance of NT versus second trimester
+serum screening. Despite the use of a double test (hCG
+and AFP) that may be inferior to a test that incorporates unconjugated estriol (uE3) and inhibin-A
+(Wald et al., 1999), we demonstrated that NT detects
+69% of Down syndrome fetuses which is inferior to the
+73% detection rate of the double test. Examination of
+the ROC curves conﬁrms that the screening efﬁcacy of
+NT is inferior to the double test (Figure 1). We realise
+the vital importance of sonographer training and
+auditing to the performance of NT-based screening.
+The tight distribution (SD=1.3 MOM) of NT in the
+controls provides some evidence to this quality
+control. Despite this effort, the present data on NT
+is slightly inferior than that reported by the Fetal
+Medicine Foundation (Snijders et al., 1998). In that
+study 96,127 patients at both high and low risk had
+nuchal screening at 22 centres in the UK. At a 5%
+false-positive rate, 77% of the Down syndrome pregnancies were detected (Snijders et al., 1998). Because
+that was an interventional study, the majority of the
+Down syndrome cases were ascertained in the ﬁrst
+trimester. It is well known that some of the Down
+syndrome pregnancies are spontaneously miscarried
+between the ﬁrst and second trimesters (Morris et al.,
+1999). Detection rate will be exaggerated if NT
+preferentially detects cases that are more likely to
+miscarry. We believe that the present study provides a
+better estimation of the screening performance of NT
+because of its non-interventional design and the fact
+that all the Down syndrome cases were ascertained at
+or beyond the second trimester.
+The present data show that the integrated test
+provides the highest screening efﬁcacy. The detection
+rate can be increased from 73% to 86% at a 5% falsepositive rate. However, extra resources will be needed
+for ultrasound examination. In the present study, it
+meant an extra cost of 16 237 NT measurements to
+detect ﬁve additional Down syndrome fetuses that
+would have been missed by the serum double test.
+Whether this is cost-effective depends largely on the
+cost of an ultrasound examination in the locality
+versus the cost of, and suffering associated with,
+raising a child with Down syndrome. Conversely, the
+integrated test reduces the false-positive rate from 5%
+to 0.8% to achieve the current 70% detection rate of
+Down syndrome pregnancies. This strategy will reduce
+substantially the number of unaffected pregnancies
+subjected to the risk of amniocentesis and hence the
+resultant unnecessary fetal loss. It will reduce the cost
+spent on unnecessary amniocentesis. Because fewer
+women will be labelled screen-positive, this may reduce
+Prenat Diagn 2002; 22: 730–735.
+
+734
+
+Y. H. LAM ET AL.
+
+Figure 2—Receiver-operating characteristic (ROC) curves for different combination of screening for Down syndrome for women under
+35 years of age
+
+the unnecessary anxiety associated with receiving an
+abnormal result that may persist into the postpartum
+period (Marteau et al., 1992). Nevertheless, costeffectiveness was not the research question of interest
+to the present study and hence this issue should be
+addressed by further studies.
+Besides the better screening efﬁcacy, the integrated
+test has several other potential advantages. First, it
+will avoid the problem of sequential screening and
+the confusion created by giving ﬁrst and second
+trimester results independently that may be contradictory. Second, the diagnostic test will be amniocentesis rather than CVS. A meta-analysis of randomised
+trials comparing these two invasive procedures showed
+that ﬁrst trimester CVS was associated with more
+sampling and technical failures, more false-positive
+and false-negative results and more pregnancy losses
+(Alﬁrevic et al., 2000). CVS is also considered to be
+a more difﬁcult procedure to learn (Wijnberger
+et al., 2000). Thus, it is probably easier and safer to
+implement the integrated test in centres with an
+existing second trimester screening protocol and
+established expertise in amniocentesis rather than
+moving screening into the ﬁrst trimester. The strategy
+also allows continuation of second trimester AFP
+screening for neural tube defect and provides Down
+syndrome screening for the occasional late attendees.
+Third, the integrated test will avoid detecting Down
+syndrome cases that are destined to miscarry between
+the ﬁrst and second trimesters.
+The main disadvantage of the integrated test is the
+time lag between the ﬁrst screening by NT and
+reporting of the screening results which may take up
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+to 5 weeks and so delay the diagnosis of an affected
+pregnancy beyond 15 weeks of gestation. Some women
+may ﬁnd this waiting and delay unacceptable. Conversely, some women may not return for secondtrimester serum screening thus making the integration
+impossible. Because of these potential advantages and
+disadvantages of the integrated test, we believe that
+the women should be given the information and be
+allowed to choose between different methods of
+screening.
+It is well known that both NT and the second
+trimester serum test can detect aneuploidies other than
+Down syndrome (Chitty, 1998). In the present study
+we have excluded pregnancies affected by other
+chromosomal abnormalities from analysis. Because
+the number of fetuses affected by each individual
+aneuploidy was few, we could not assess whether the
+integrated test was useful in detecting these cases. This
+issue should be addressed by further studies.
+An important limitation of the present study is that
+we cannot ascertain pregnancy outcome in 6% of the
+subjects. In Hong Kong there is no Down syndrome
+registry, however each of the participating hospitals
+have a registry of birth malformations. To ensure
+complete ascertainment of the Down syndrome cases
+we have tried to contact the women individually and
+have reviewed the records of the cytogenetic laboratories. According to the maternal age distribution of
+the subjects studied and the second trimester incidence
+of Down syndrome (Cuckle et al., 1987; Snijders et al.,
+1999), the estimated number of Down syndrome
+pregnancies in the present series should be around
+38, i.e. a similar ﬁgure to the ascertained cases. Hence
+Prenat Diagn 2002; 22: 730–735.
+
+SCREENING FOR DOWN SYNDROME
+
+comparison of efﬁcacy of different methods of screening in the present series should be valid.
+ACKNOWLEDGEMENTS
+
+The authors thank Dr HY Tse, Ms YP Lee, Ms V
+Chan, and all the staff of the antenatal and ultrasound
+clinics of the participating hospitals for recruitment of
+subjects, and Dr E Lau for co-ordination of the
+laboratory work. This work was supported by a grant
+from the Research Grants Council of Hong Kong.
+REFERENCES
+Alﬁrevic Z, Gosden CM, Neilson JP. 2000. Chorion villus sampling
+versus amniocentesis for prenatal diagnosis. Cochrane Database
+Syst Rev CD000055.
+American College of Obstetricians and Gynecologists (ACOG)
+Committee. 1994. Down syndrome screening. ACOG Committee
+Opinion: Committee on Obstetric Practice, No. 141, August 1994
+(replaces No. 76, December 1989). Int J Gynaecol Obstet 47:
+186–190.
+Chitty LS. 1998. Antenatal screening for aneuploidy. Curr Opin
+Obstet Gynecol 10: 91–96.
+Cuckle H. 2000. Biochemical screening for Down syndrome. Eur
+J Obstet Gynecol Reprod Biol 92: 97–101.
+Cuckle HS, Wald NJ, Thompson SG. 1987. Estimating a woman’s
+risk of having a pregnancy associated with Down’s syndrome
+using her age and serum alpha-fetoprotein level. Br J Obstet
+Gynaecol 94: 387–402.
+Efron B, Tibshirani RJ. 1993. An Introduction to the Bootstrap.
+Chapman & Hall: New York, NY, 1993.
+Herman A, Maymon R, Dreazen E, Caspi E, Bukovsky I, Weinraub
+Z. 1998. Image magniﬁcation does not contribute to the
+repeatability of caliper placement in measuring nuchal translucency thickness. Ultrasound Obstet Gynecol 11: 266–270.
+Hong Kong College of Obstetricians and Gynaecologists. 1996.
+Territory-wide Audit in Obstetrics and Gynaecology (Hong Kong
+1994), 1996: 10.
+Lam YH, Tang MH. 1999. Second-trimester maternal serum
+inhibin-A screening for fetal Down syndrome in Asian women.
+Prenat Diagn 19: 463–467.
+Lam YH, Ghosh A, Tang MH, et al. 1998. Second-trimester
+maternal serum alpha-fetoprotein and human chorionic gonadotrophin screening for Down’s syndrome in Hong Kong. Prenat
+Diagn 18: 585–589.
+Lam YH, Tang MH, Lee CP, Tse HY. 1999. Nuchal translucency
+
+Copyright # 2002 John Wiley & Sons, Ltd.
+
+735
+
+in fetuses affected by homozygous alpha-thalassemia-1 at
+12–13 weeks of gestation. Ultrasound Obstet Gynecol 13: 238–240.
+Lam YH, Tang MH, Lee CP, et al. 2000. Acceptability of serum
+screening as an alternative to cytogenetic diagnosis of Down
+syndrome among women 35 years or older in Hong Kong. Prenat
+Diagn 20: 487–490.
+Malone FD, Berkowitz RL, Canick JA, D’Alton ME. 2000. Firsttrimester screening for aneuploidy: research or standard of care?
+Am J Obstet Gynecol 182: 490–496.
+Marteau TM, Cook R, Kidd J, et al. 1992. The psychological effects
+of false-positive results in prenatal screening for fetal abnormality:
+a prospective study. Prenat Diagn 12: 205–214.
+Morris JK, Wald NJ, Watt HC. 1999. Fetal loss in Down syndrome
+pregnancies. Prenat Diagn 19: 142–145.
+Neveux LM, Palomaki GE, Larrivee DA, Knight GJ, Haddow JE.
+1996. Reﬁnements in managing maternal weight adjustment
+for interpreting prenatal screening results. Prenat Diagn 16:
+1115–1119.
+Nicolaides KH, Azar G, Byrne D, Mansur C, Marks K. 1992. Fetal
+nuchal translucency: ultrasound screening for chromosomal
+defects in ﬁrst trimester of pregnancy. BMJ 304: 867–869.
+Palomaki GE, Knight GJ, McCarthy JE, Haddow JE, Donhowe
+JM. 1997. Maternal serum screening for Down syndrome in
+the United States: a 1995 survey. Am J Obstet Gynecol 176:
+1046–1051.
+Royston P, Thompson SG. 1992. Model-based screening by risk
+with application to Down’s syndrome. Stat Med 11: 257–268.
+Snijders RJ, Noble P, Sebire N, Souka A, Nicolaides KH. 1998. UK
+multicentre project on assessment of risk of trisomy 21 by
+maternal age and fetal nuchal-translucency thickness at
+10–14 weeks of gestation. Fetal Medicine Foundation First
+Trimester Screening Group. Lancet 352: 343–346.
+Snijders RJ, Sundberg K, Holzgreve W, Henry G, Nicolaides KH.
+1999. Maternal age- and gestation-speciﬁc risk for trisomy 21.
+Ultrasound Obstet Gynecol 13: 167–170.
+Wald NJ, Densem JW, George L, Muttukrishna S, Knight PG.
+1996. Prenatal screening for Down’s syndrome using inhibin-A as
+a serum marker. Prenat Diagn 16: 143–153.
+Wald NJ, Watt JC, Hackshaw AK. 1999. Integrated screening for
+Down’s syndrome on the basis of tests performed during the ﬁrst
+and second trimesters. N Engl J Med 341: 461–467.
+Whitlow BJ, Chatzipapas IK, Economides DL. 1998. The effect of
+fetal neck position on nuchal translucency measurement. Br
+J Obstet Gynaecol 105: 872–876.
+Wijnberger LD, van der Schouw YT, Christiaens GC. 2000.
+Learning in medicine; chorionic villus sampling. Prenat Diagn
+20: 241–246.
+Yagel S, Anteby EY, Rosen L, Yaffe E, Rabinowitz R, Tadmor O.
+1998. Assessment of ﬁrst-trimester nuchal translucency by daily
+reference intervals. Ultrasound Obstet Gynecol 11: 262–265.
+
+Prenat Diagn 2002; 22: 730–735.

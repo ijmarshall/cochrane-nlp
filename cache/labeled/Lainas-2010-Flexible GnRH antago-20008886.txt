@@ -1,0 +1,873 @@
+Human Reproduction, Vol.25, No.3 pp. 683–689, 2010
+Advanced Access publication on December 15, 2009 doi:10.1093/humrep/dep436
+
+ORIGINAL ARTICLE Infertility
+
+Trifon G. Lainas 1, Ioannis A. Sfontouris 1, Ioannis Z. Zorzovilis 1,
+George K. Petsas 1, George T. Lainas 1, Efthymia Alexopoulou 2,
+and Efstratios M. Kolibianakis 3,4
+1
+
+Eugonia-Iatriki Erevna IVF Center, Athens, Greece 22nd Department of Radiology, Medical School, University of Athens, Attikon University
+Hospital, Athens, Greece 3Unit for Human Reproduction, Aristotle University of Thessaloniki, Skoufa 5 Str, Pilea, Thessaloniki 55535, Greece
+
+4
+
+Correspondence address. Fax: þ30-2310-821420; E-mail: stratis.kolibianakis@gmail.com
+
+background: Women with polycystic ovary syndrome (PCOS) are at risk of developing ovarian hyperstimulation syndrome (OHSS)
+during ovarian stimulation. Use of GnRH antagonist in the general subfertile population is associated with lower incidence of OHSS than
+agonists and similar probability of live birth but it is unclear if this is true for patients with PCOS. Our aim was to compare the ﬂexible
+GnRH antagonist and GnRH agonist long protocols in patients with PCOS undergoing IVF (primary end-point: ongoing pregnancy rate
+per patient randomized).
+methods: In this randomised controlled trial (RCT), <n>220</n> patients with PCOS were randomly allocated in two groups: long GnRH agonist
+down-regulation protocol (n ¼ 110) and ﬂexible GnRH antagonist protocol (n ¼ 110).
+results: No differences were observed in ongoing pregnancy rates [50.9 versus 47.3%, difference 3.6%, 95% conﬁdence interval (CI):
+29.6 to þ16.8%] in the agonist and antagonist protocols, respectively. Incidence of OHSS Grade II was lower in the antagonist compared
+with agonist group (40.0 versus 60.0%, difference 220.0%, 95% CI: 27.1 to 232.9%, P , 0.01). Duration of stimulation (10 versus 12 days,
+difference 2 days, 95% CI: þ1 to þ2, P , 0.001) and total gonadotrophin required (1575 versus 1850 IU, difference 2275 IU, 95% CI: 225
+to 2400, P , 0.05) were also lower in the antagonist compared with agonist protocol.
+
+conclusions: The current RCT suggests that the ﬂexible GnRH antagonist protocol is associated with a similar ongoing pregnancy
+rate, lower incidence of OHSS grade II, lower gonadotrophin requirement and shorter duration of stimulation, compared with GnRH
+agonist. The GnRH antagonist might be the treatment choice for patients with PCOS undergoing IVF.
+The study was registered at clinicaltrials.gov. ID: NCT00417144.
+Key words: GnRH antagonists / GnRH agonists / polycystic ovary syndrome / ovarian hyperstimulation syndrome / pregnancy rates
+
+Introduction
+Polycystic ovary syndrome (PCOS) is a common endocrinopathy that
+affects 5– 10% of women of reproductive age. Despite the development of universally accepted criteria for the diagnosis of the syndrome
+by the European Society for Human Reproduction (ESHRE) and the
+
+American Society of Reproductive Medicine (ASRM) (The Rotterdam
+ESHRE/ASRM-sponsored PCOS consensus workshop group, 2004),
+the optimal infertility treatment for PCOS women is still a matter of
+controversy. Recently, a consensus was reached on treatment for
+PCOS patients, that includes the use of clomiphene citrate, exogenous
+gonadotrophins, laparoscopic ovarian surgery and IVF (The
+
+& The Author 2009. Published by Oxford University Press on behalf of the European Society of Human Reproduction and Embryology. All rights reserved.
+For Permissions, please email: journals.permissions@oxfordjournals.org
+
+Downloaded from http://humrep.oxfordjournals.org/ at Brown University on March 12, 2014
+
+Flexible GnRH antagonist protocol
+versus GnRH agonist long protocol
+in patients with polycystic ovary
+syndrome treated for IVF: a
+prospective randomised controlled
+trial (RCT)
+
+684
+
+Materials and Methods
+Patient population and study design
+This is a single center RCT performed at the Eugonia-Iatriki Erevna IVF unit
+from November 2004 to February 2008. Random allocation was performed by a study nurse at consultation, using a computer generated randomization list, in a 1:1 ratio. Patients were treated either by a long GnRH
+agonist down regulation protocol (n ¼ 110, agonist group) or by a ﬂexible
+GnRH antagonist protocol (n ¼ 110, antagonist group). Neither patients
+nor doctors were blinded to the treatment assigned. The study was
+approved by our institutional ethics review board. An informed consent
+was obtained from all patients included in this study.
+Patients could enter the study only once after being diagnosed as PCOS
+[presence of oligoovulation/anovulation (Ehrmann et al., 2006) and polycystic ovaries]. Additional inclusion criteria were: age 18 – 39 years, no
+endometriotic cyst present, as assessed by transvaginal ultrasound examination, and basal hormonal levels of FSH in the early follicular phase
+of 10 IU/ml. Patients with known previous poor ovarian response
+(Kolibianakis et al., 2004) were excluded.
+
+Ovarian stimulation
+All patients received oral contraceptive pill (OCP) starting on Day 2 of
+spontaneous menses of the cycle prior to the treatment cycle, after
+blood test conﬁrmed the presence of a baseline hormone proﬁle. The
+OCP contained 0.03 mg ethinyl estradiol (E2) and 0.075 mg gestodene
+(Minulet, Wyeth, Greece). OCPs were taken daily for 21 days.
+Patients in the agonist group were administered s.c. GnRH agonist
+0.1 mg triptorelin (Arvekap, Ipsen, France) daily. The agonist was
+started 3 days before discontinuation of the OCP. All patients had
+blood loss after discontinuation of the OCP. When desensitization was
+achieved (10 – 15 days after the initiation of GnRH agonists), as evidenced by plasma E2 levels of 50 pg/ml, the absence of ovarian follicles
+and endometrial thickness 6 mm on transvaginal ultrasound examination
+(Barash et al., 1998), daily s.c. injection of recombinant FSH (rFSH,
+Puregon, Organon, The Netherlands) was commenced. The dose of
+GnRH agonist was decreased on that day to 0.05 mg/day and continued
+until and including the day of triggering of ﬁnal oocyte maturation.
+In the ﬂexible GnRH antagonist protocol (antagonist group) daily s.c
+administration of ganirelix 0.25 mg (Orgalutran, Organon, The
+
+Netherlands) was initiated when at least one of the following criteria
+were fulﬁlled: (i) the presence of at least one follicle measuring
+.14 mm; (ii) serum E2 levels .600 pg/ml; and (iii) serum LH levels
+.10 IU/l (Lainas et al., 2005).
+In the antagonist protocol patients started daily rFSH treatment with s.c
+injections of follitropin b (Puregon, Organon, The Netherlands), on Day 2
+of cycle that followed the discontinuation of the OCP. Treatment with
+rFSH and GnRH antagonist continued daily thereafter, until and including
+the day of triggering of ﬁnal oocyte maturation.
+The starting dose of rFSH was 150 IU/day for all patients in both
+groups. This dose was adjusted after Day 5 of stimulation, depending on
+the ovarian response, as assessed by E2 levels and ultrasound. As soon
+as three follicles reached a mean diameter of 17 mm, 5000 IU of hCG
+(Kolibianakis et al., 2007b) (Pregnyl, Organon, The Netherlands) were
+administered i.m.
+
+Oocyte retrieval, embryo transfer, luteal
+support
+Oocyte retrieval was performed 35– 36 h after the hCG injection by transvaginal ultrasound-guided double lumen needle aspiration. ICSI was performed only in cases with severe male factor or previous fertilization
+failure. Ultrasound guidance was used for all embryo transfers, which
+were performed 2 or 3 days post-oocyte retrieval, depending on the
+weekly clinical program (i.e. to avoid embryo transfer on Sundays). Day
+2 and Day 3 embryo transfers were equally distributed in the two
+groups. Luteal phase support with 600 mg of micronized progesterone
+(Utrogestan Laboratoires Besins-International S.A., France) was initiated
+2 days after oocyte retrieval.
+Embryo transfer was cancelled and elective embryo cryopreservation
+was performed in cases of early OHSS, detected 3 days post-oocyte
+retrieval, that could possibly lead to life-threatening OHSS (Navot et al.,
+1992), or in cases fulﬁlling one or more of the criteria for hospitalization
+(The Practice Committee of the American Society for Reproductive
+Medicine, 2004), described below in grade III OHSS.
+
+Classiﬁcation of OHSS
+A modiﬁed classiﬁcation system based on combined criteria previously
+reported (Golan et al., 1989; Navot et al., 1992; Rizk and Aboulghar,
+1999) was used in the current study.
+Grade I included patients with no or mild manifestations of OHSS who
+did not need any treatment or monitoring as a result of ovarian
+hyperstimulation.
+Grade II included patients who were not hospitalized as a result of
+OHSS and required monitoring on an outpatient basis. These patients
+had either (a) moderate OHSS, with discomfort, abdominal pain,
+nausea, distension, ultrasonic evidence of ascites, haematocrit (Ht) ,
+45%, white blood cells (WBC) , 15 000 (Golan et al., 1989; Navot
+et al., 1992; Rizk and Aboulghar, 1999) and enlarged ovaries (maximum
+diameter ,10 cm), requiring frequent monitoring, or (b) severe OHSS
+requiring daily monitoring, with Ht . 45%, WBC . 15 000, nausea,
+abdominal pain, clinical evidence of ascites, marked distension of the
+abdomen, marked ascites (Golan et al., 1989; Navot et al., 1992; Rizk
+and Aboulghar, 1999) and ultrasound showing large ovaries (maximum
+diameter .10 cm).
+Grade III OHSS included women who were hospitalized either because
+they developed critical OHSS (Navot et al., 1992) (i.e. Ht . 55, WBC .
+25 000 and creatinine .1.5), or because they fulﬁlled one or more of the
+criteria for hospitalization described by the Practice Committee of the
+ASRM (2004). These criteria include severe abdominal pain or peritoneal
+signs, intractable nausea and vomiting, severe oliguria or anuria, tense
+ascites, dyspnea or tachypnea, hypotension, dizziness or syncope, severe
+
+Downloaded from http://humrep.oxfordjournals.org/ at Brown University on March 12, 2014
+
+Thessaloniki ESHRE/ASRM-Sponsored PCOS Consensus Workshop
+Group, 2008).
+PCOS patients undergoing IVF have a high risk of developing ovarian
+hyperstimulation syndrome (OHSS) (Delvigne et al., 1993), a serious
+iatrogenic complication of ovarian stimulation, triggered by exogenous
+and/or endogenous hCG. The introduction of GnRH antagonists in
+recent years, with a now established decrease in the incidence of
+OHSS as compared with GnRH agonists in the general population
+(Kolibianakis et al., 2006; Aboulghar et al., 2007), might offer a new
+safer treatment option for these patients.
+However, in PCOS patients very few studies have been published
+comparing agonist and antagonist protocols (Hohmann et al., 2003;
+Hwang et al., 2004; Bahceci et al., 2005; Ragni et al., 2005; Lainas
+et al., 2007). As a result, available data so far cannot lead to reliable
+conclusions (Griesinger et al., 2006).
+The aim of the present RCT was to compare the ﬂexible GnRH
+antagonist and the GnRH agonist long protocols in a large group of
+PCOS patients undergoing IVF treatment, with primary end-point
+being ongoing pregnancy rate per patient randomized.
+
+Lainas et al.
+
+685
+
+GnRH antagonist or agonist in polycystic ovary syndrome
+
+electrolyte imbalance, haemoconcentration and abnormal liver function
+tests (The Practice Committee of the American Society for Reproductive
+Medicine, 2004).
+
+Ultrasound and laboratory assays
+All ultrasound measurements were performed using a 7.5 or 6 or 5 MHz
+vaginal probe (Sonoline Adara, Siemens). FSH, LH, E2 and progesterone
+levels were measured using an Immulite analyzer and commercially available kits (DPC, Los Angeles, CA, USA). Analytical sensitivity were
+0.1 mIU/ml for FSH, 0.1 mIU/ml for LH, 15 pg/ml for E2 and 0.2 ng/ml
+for progesterone. Intra- and inter-assay precision at the concentrations
+of most relevance to the current study (expressed as coefﬁcients of variation) were 2.6 and 5.8% for FSH, 5.9 and 8.1% for LH, 6.3 and 6.4% for
+E2 and 7.9 and 10% for progesterone, respectively.
+
+Outcome measures
+
+We selected to set the baseline ongoing pregnancy rate for PCOS patients
+at 35%, and the detectable difference between groups at 5%, assuming an
+alpha level of 0.05. It was calculated that a sample size of 1471 patients
+was required in each group to achieve a 0.80 power. In conﬁrmation of
+the values used for power analysis, Griesinger et al. (2006) reported
+41.6 and 37.1% clinical pregnancy rates in PCOS patients treated by
+agonist and antagonist protocols respectively. In addition, Heijnen et al.
+(2006) showed that PCOS and control IVF patients achieve similar clinical
+pregnancy rates of approximately 35%, a percentage that was also
+accepted by The Thessaloniki ESHRE/ASRM-Sponsored PCOS Consensus
+Workshop Group (2008).
+Obtaining such a sample size (1471 patients per group) is not easy to
+achieve in a single center, and is also extremely difﬁcult for multicenter
+studies, especially when it refers to a small proportion of the population,
+such as PCOS patients, even during a 4-year period. Even for a 20% baseline pregnancy rate with 5% difference, more than 900 patients per group
+would be required. In addition, detecting a difference of 10% in pregnancy
+rates, which is not supported by the data published so far, would still
+require a considerable number of patients in each group (n ¼ 376).
+Despite this, however, we decided to embark on this trial with the aim
+to produce, to the best of our knowledge, the largest comparative trial to
+date of GnRH analogues in PCOS patients that could be incorporated in a
+future meta-analysis.
+
+Results
+
+Statistical analysis
+Proportions were compared with the Fisher’s exact test or the x2 test,
+where appropriate. Continuous variables (age, BMI), were compared
+with the Student’s t-test for independent samples or the Mann –
+Whitney depending on the normality of their distribution. Statistical signiﬁcance was accepted when P  0.05.
+
+Baseline characteristics and hormonal proﬁle of the patients analyzed
+are shown in Table I, although Table II shows ovarian stimulation
+characteristics and hormonal data on the day of hCG administration.
+No signiﬁcant differences were observed between the agonist and the
+antagonist group regarding baseline characteristics and hormonal proﬁle.
+
+Table I Baseline characteristics and hormonal proﬁle of patients with PCOS in the GnRH agonist and GnRH antagonist
+group
+Agonist group (n 5 110)
+
+Antagonist group (n 5 110)
+
+.............................................................................................................................................................................................
+Baseline characteristics
+Age (years)
+BMI (kg/m2)
+
+32 (29– 35)
+23.2 (20.9– 25.8)
+
+31 (28 –35)
+24.6 (20.9 –29.3)
+
+Duration of infertility (years)
+
+3 (2–5)
+
+3 (2– 5)
+
+Number of previous IVF attempts
+
+1 (0–4)
+
+1 (0– 3)
+
+Subjects with previous IVF attempts, n (%)
+
+69 (62.7, 53.7–71.7)
+
+69 (62.7, 53.7– 71.7)
+
+Indication for IVF, n (%, 95% CI)
+PCOS only
+
+22 (20.0, 12.5–27.5)
+
+28 (25.5, 17.3– 33.6)
+
+PCOS þ male factor
+
+53 (48.2, 38.9–57.5)
+
+52 (47.3, 38.0– 56.6)
+
+PCOS þ tubal factor
+
+27 (24.5, 16.5–32.5)
+
+18 (16.4, 9.5–23.3)
+
+8 (7.3, 2.4– 12.2)
+
+12 (10.9, 5.1–6.7)
+
+PCOS þ other
+Baseline hormonal proﬁle
+FSH (IU/l)
+
+6.0 (4.3–6.9)
+
+6.2 (4.8– 7.5)
+
+LH (IU/l)
+
+5.9 (3.4–7.6)
+
+5.3 (4.0– 7.5)
+
+E2 (pg/ml)
+
+30 (19– 44)
+
+Progesterone (ng/ml)
+
+0.57 (0.45– 0.78)
+
+Values are expressed as medians (lower-upper quartiles) unless stated otherwise. Differences between groups are not statistically signiﬁcant.
+E2, estradiol; CI, conﬁdence interval.
+
+30 (19 –43)
+0.54 (0.40 –0.74)
+
+Downloaded from http://humrep.oxfordjournals.org/ at Brown University on March 12, 2014
+
+The primary outcome measure was ongoing pregnancy rate per patient
+randomized. Ongoing pregnancy and clinical pregnancy were deﬁned as
+the presence of gestational sac with fetal heart beat detection at 12
+weeks and at 6 – 7 weeks of gestation, respectively.
+Secondary outcome measures were incidence of OHSS, duration of
+rFSH stimulation, total dose of rFSH, E2 and progesterone concentration
+on the day of hCG administration, cycle cancellation rate, number of
+cumulus-oocyte complexes (COCs) retrieved, number of metaphase II
+oocytes and fertilization rates.
+
+Power analysis
+
+686
+
+Lainas et al.
+
+Table II Ovarian stimulation characteristics and hormonal data on the day of hCG in the GnRH agonist and antagonist
+group
+Agonist group (n 5 110)
+
+Antagonist group (n 5 110)
+
+P-value
+
+.............................................................................................................................................................................................
+Stimulation period (days)
+
+12 (10– 12)
+
+Total FSH (IU)
+
+10 (9–11)
+
+1850 (1370– 2480)
+
+0.001
+
+1575 (1306–2212)
+
+0.019
+
+Number of oocytes retrieved
+
+27 (20– 33)
+
+28 (20–36)
+
+0.289
+
+Mature oocytes (in ICSI patients)
+
+18 (11– 25)
+
+21 (10–26)
+
+0.604
+
+IVF
+
+58 (52.7, 43.4– 62.0)
+
+52 (47.3, 38.0–56.6)
+
+0.578
+
+ICSI
+
+38 (34.5, 25.6– 43.4)
+
+39 (35.5, 26.6–44.4)
+
+Type of fertilization, n (%, 95% CI)
+
+IVF þ ICSI
+
+14 (12.7, 6.5 –18.9)
+
+Fertilization rate (%)
+
+19 (17.3, 10.2–24.4)
+55.0 (38.9–66.7)
+
+0.795
+
+Within IVF
+
+62.2 (47.7 –74.7)
+
+64.0 (50.0–71.1)
+
+0.959
+
+Within ICSI
+
+45.5 (41.2 –56.5)
+
+46.9 (34.4–57.1)
+
+0.962
+
+Within ICSI þ IVF
+
+42.0 (32.1 –56.6)
+
+E2 concentration on hCG day (pg/ml)
+PRG concentration on hCG day (ng/ml)
+Number of embryos transferred
+
+44.8 (38.4–60.5)
+
+0.414
+
+2850 (1994– 3585)
+
+2144 (1533–2977)
+
+0.004
+
+1.1 (0.7– 1.4)
+
+1.1 (0.9–1.4)
+
+Embryo transfer day (Day 3/Day 2)
+Cycle/embryo transfer cancellations
+
+75/35
+
+0.185
+
+3 (2–3.5)
+
+3 (2– 4)
+
+0.297
+
+72/38
+
+5 (4.5%)
+
+0.668
+
+4 (3.6%)
+
+0.734
+
+Statistical differences were calculated using the non-parametric Mann –Whitney test, except for ‘type of fertilization’ where the x2 test was used.
+Values are expressed as medians (lower-upper quartiles) unless stated otherwise. P-values in bold indicate statistical signiﬁcance.
+PRG, progesterone.
+
+Table III Achievement of pregnancy in the GnRH agonist and antagonist groups
+Agonist group (n 5 110)
+
+Antagonist group (n 5 110)
+
+Difference % (95% CI)
+
+P (Fisher’s exact test)
+
+.............................................................................................................................................................................................
+Biochemical pregnancy, % (n)
+
+68.2 (75)
+
+62.7 (69)
+
+5.5 (27.0 to þ17.9)
+
+0.479
+
+Clinical pregnancy, % (n)
+
+61.8 (68)
+
+52.7 (58)
+
+9.1 (23.9 to þ22.0)
+
+0.220
+
+Ongoing pregnancy, % (n)
+
+50.9 (56)
+
+47.3 (52)
+
+3.6 (29.6 to þ16.8%)
+
+0.686
+
+The antagonist group was characterized by a shorter stimulation
+period [10 versus 12 days, difference 2 days, 95% conﬁdence interval
+(CI): þ1 to þ2, P , 0.001], a reduced amount of total gonadotrophin
+units required (1575 versus 1850 IU, difference 2275 IU, 95% CI:
+225 to 2400, P , 0.05) and a lower E2 concentration on the day
+of hCG administration (2144 versus 2850 pg/ml; difference
+2706 pg/ml, 95% CI: 2240 to 2841; P , 0.01).
+No signiﬁcant differences were observed in ongoing pregnancy rates
+[50.9% (56/110) versus 47.3% (52/110)], as well as in biochemical
+[68.2% (75/110) versus 62.7% (69/110)], and clinical pregnancy
+rates [61.8% (68/110) versus 52.7% (58/110)] between the agonist
+and the antagonist group, respectively (Table III). Logistic regression
+with the dependent variable ongoing pregnancy, and independent variables the baseline characteristics of patients recruited and type of
+stimulation protocol, revealed a signiﬁcant negative (adverse) effect
+of the number of previous attempts and BMI on the outcome
+(Table IV).
+A signiﬁcantly higher proportion of women (55.5 versus 34.5%, P ,
+0.001) in the antagonist as compared with the agonist group
+
+developed Grade I OHSS (Table V). Conversely, a signiﬁcantly
+greater proportion of women developed grade II OHSS in the
+agonist group (60.0 versus 40.0%, P , 0.01).
+All patients proceeded at least to oocyte retrieval. Cycle cancellations were therefore equivalent to cancellations of embryo transfer
+and elective cryopreservation of all embryos. Cycle/embryo transfer
+cancellations were similar in the agonist and antagonist protocol
+[ﬁve patients (4.5%) versus four patients (3.6%); Table II].
+
+Discussion
+The present study evaluated the comparative efﬁcacy of the ﬂexible
+GnRH antagonist and the long GnRH agonist down-regulation protocol in PCOS patients treated for IVF. Ongoing pregnancy rates were
+similar in the two protocols, although the GnRH antagonist protocol
+was associated with signiﬁcantly lower incidence of Grade II OHSS
+(requiring monitoring on an outpatient basis but not necessitating hospitalization), as well as signiﬁcantly higher proportion of women who
+did not develop OHSS or developed mild hyperstimulation without
+
+Downloaded from http://humrep.oxfordjournals.org/ at Brown University on March 12, 2014
+
+53.3 (40.6 –68.5
+
+687
+
+GnRH antagonist or agonist in polycystic ovary syndrome
+
+Table IV Logistic regression of pregnancy outcome in
+patients with PCOS
+Baseline parameter
+
+Total sample
+
+....................................
+
+b
+
+P-value
+
+........................................................................................
+Age (years)
+
+20.018
+
+0.691
+
+2
+
+20.055
+
+0.039
+
+BMI (kg/m )
+Duration of infertility (years)
+
+0.070
+
+0.286
+
+Number of previous attempts
+
+20.160
+
+0.029
+
+FSH (IU/l)
+
+20.034
+
+0.694
+
+LH (IU/l)
+
+0.125
+
+0.093
+
+E2 (pg/ml)
+
+0.001
+
+0.887
+
+20.256
+
+0.438
+
+0.218
+
+0.526
+
+Progesterone (ng/ml)
+Type of stimulation protocol
+
+clinical relevance and did not require monitoring (Grade I). In addition,
+duration of stimulation and total amount of gonadotrophin units
+required were signiﬁcantly lower in the antagonist compared with
+the agonist protocol.
+The meta-analysis by Griesinger et al. (2006) compared agonist
+and antagonist protocols in a total of 305 patients with PCOS and
+included four studies. In agreement with the results presented
+here, pregnancy rates of 41.5 versus 37% in the agonist and in the
+antagonist groups were reported. It must be noted that the
+ongoing pregnancy rates reported in the present manuscript (50.9
+versus 47.3% for agonists and antagonists, respectively) are higher
+than the baseline pregnancy rate (35%) used for the power calculation. Higher pregnancy rates have also been shown in previous
+studies in patients with PCOS [57 versus 61% (Kurzawa et al.,
+2008); 58.5 versus 57.6% (Bahceci et al., 2005) for agonists and
+antagonists, respectively].
+It should be noted that the difference observed here in ongoing
+pregnancy rates between the groups (3.6%) is below that arbitrarily
+accepted as clinically signiﬁcant (5%), and is not statistically signiﬁcant.
+However, the 95% CI shows that the current study (although, to the
+best of our knowledge, the largest performed in patients with PCOS
+comparing the two GnRH analogues) cannot exclude a difference of
+29.6 or þ16.8%, which is clinically important. Thus it is likely that
+to reject or accept the hypothesis that in PCOS patients the probability of ongoing pregnancy is independent of the analogue used, a
+meta-analysis of adequate size is necessary.
+
+Table V OHSS occurrence in the GnRH agonist and antagonist groups
+OHSS % (n)
+
+Agonist group (n 5 110)
+
+Antagonist group (n 5 110)
+
+Difference (95% CI)
+
+P-value (chi-square)
+
+.............................................................................................................................................................................................
+I
+
+34.5 (38)
+
+55.5 (61)
+
+221.0 (233.8 to 28.1)
+
+II
+
+60.0 (66)
+
+40.0 (44)
+
+20.0 (þ7.1 to þ32.9)
+
+III
+
+5.5 (6)
+
+4.5 (5)
+
+1.0 (29.2 to þ11.2)
+
+0.006
+
+I, none or mild OHSS; II, moderate and severe OHSS treated at an outpatient level; III, critical OHSS requiring patient hospitalization. P-values in bold indicate statistical signiﬁcance.
+
+Downloaded from http://humrep.oxfordjournals.org/ at Brown University on March 12, 2014
+
+b is the value of the coefﬁcient and P-value shows its signiﬁcance of its entrance in the
+logistic regression equation. P-values in bold indicate statistical signiﬁcance.
+
+In the current study it was shown that the ﬂexible GnRH antagonist
+protocol was associated with a signiﬁcantly lower probability of Grade
+II OHSS (requiring monitoring on an outpatient basis but not necessitating hospitalization) compared with the GnRH agonist protocol. Our
+results corroborate ﬁndings from previous studies in the general population (Kolibianakis et al., 2006; Aboulghar et al., 2007; Lainas et al.
+2007), which suggested that the use of GnRH antagonists was associated with a lower probability of OHSS as compared with the use of
+GnRH agonists. These observations suggest that use of GnRH antagonists in the treatment of patients with PCOS results in a safer way of
+performing ovarian stimulation for IVF.
+It is not, however, clear what is the basis of the different occurrence
+of OHSS observed between the two groups: this does not appear to
+be associated with the number of COCs retrieved (Table II).
+However, a signiﬁcantly lower total dose of gonadotrophins was
+required and a shorter duration of stimulation was necessary in the
+antagonist, as compared with the agonist, group. Despite the similar
+number of COCs retrieved in the two groups, it cannot be excluded
+that the number of small follicles, which did not yield COCs but contributed to OHSS occurrence, might be associated with the total rFSH
+dose administered and/or the duration of stimulation.
+The ﬁndings of a decreased total dose of rFSH, of shorter duration
+of gonadotrophin stimulation and of lower E2 levels on the day of hCG
+administration in the antagonist group, should be read with caution as
+this study was not double blind. Nevertheless, these results are in
+agreement with those previously published by other groups
+(Hohmann et al., 2003; Hwang et al., 2004; Bahceci et al., 2005;
+Ragni et al., 2005; Griesinger et al., 2006; Kolibianakis et al., 2007a;
+Lainas et al., 2007; Kurzawa et al. 2008).
+Increased BMI was shown to have a negative effect on ongoing pregnancy rates, as calculated by logistic regression. This ﬁnding is in agreement with previous studies that reported lower pregnancy rates in
+women with high BMI who had been treated with either agonist
+(Orvieto et al., 2009) or antagonist protocols (Kolibianakis et al.,
+2003).
+It should also be noted that the dose of hCG used for triggering ﬁnal
+oocyte maturation in the current study was 5000 IU. This choice was
+made in order to reduce the occurrence of OHSS in this high-risk
+population. Consequently, regarding OHSS occurrence the conclusions drawn in the current study might not be applicable in patients
+with PCOS in whom 10 000 IU hCG are used for triggering ﬁnal
+oocyte maturation.
+Despite the lack of adequate power that would allow solid conclusions to be drawn, this is the largest study to date comparing
+GnRH analogues in patients with PCOS. The ﬂexible GnRH antagonist
+protocol, as compared with the long agonist protocol, appears to offer
+
+688
+similar ongoing pregnancy rates, and is associated with a signiﬁcantly
+lower incidence of Grade II OHSS, requiring lower gonadotrophin
+amounts and a shorter duration of stimulation. Considering, in
+addition, that the antagonist protocol is more patient friendly as compared with the agonist, GnRH antagonists might be the protocol of
+choice for patients with PCOS. This, however, remains to be veriﬁed
+by a future meta-analysis.
+
+Supplementary data
+Supplementary data are available at http://humrep.oxfordjournals.
+org/.
+
+Acknowledgements
+
+References
+Aboulghar MA, Mansour RT, Amin YM, Al-Inany HG, Aboulghar MM,
+Serour GI. A prospective randomized study comparing coasting with
+GnRH antagonist administration in patients at risk for severe OHSS.
+Reprod Biomed Online 2007;15:271 – 279.
+Bahceci M, Ulug U, Ben-Shlomo I, Erden HF, Akman MA. Use of a GnRH
+antagonist in controlled ovarian hyperstimulation for assisted conception
+in women with polycystic ovary disease: a randomized, prospective,
+pilot study. J Reprod Med 2005;50:84 – 90.
+Barash A, Weissman A, Manor M, Milman D, Ben-Arie A, Shoham Z.
+Prospective evaluation of endometrial thickness as a predictor of
+pituitary down-regulation after gonadotropin-releasing hormone
+analogue administration in an in vitro fertilization program. Fertil Steril
+1998;69:496 – 499.
+Delvigne A, Demoulin A, Smitz J, Donnez J, Koninckx P, Dhont M,
+Englert Y, Delbeke L, Darcis L, Gordts S et al. The ovarian
+hyperstimulation syndrome in in-vitro fertilization: a Belgian multicentric
+study. I. Clinical and biological features. Hum Reprod 1993;8:
+1353 – 1360.
+Ehrmann DA, Liljenquist DR, Kasza K, Azziz R, Legro RS, Ghazzi MN.
+Prevalence and predictors of the metabolic syndrome in women
+with polycystic ovary syndrome. J Clin Endocrinol Metab 2006;91:
+48 – 53.
+Golan A, Ron-el R, Herman A, Soffer Y, Weinraub Z, Caspi E. Ovarian
+hyperstimulation syndrome: an update review. Obstet Gynecol Surv
+1989;44:430 – 440.
+Griesinger G, Diedrich K, Tarlatzis BC, Kolibianakis EM. GnRH-antagonists
+in ovarian stimulation for IVF in patients with poor response to
+gonadotrophins, polycystic ovary syndrome, and risk of ovarian
+hyperstimulation: a meta-analysis. Reprod Biomed Online 2006;
+13:628 – 638.
+Heijnen EM, Eijkemans MJ, Hughes EG, Laven JS, Macklon NS, Fauser BC.
+A meta-analysis of outcomes of conventional IVF in women with
+polycystic ovary syndrome. Hum Reprod Update 2006;
+12:13 – 21.
+Hohmann FP, Macklon NS, Fauser BC. A randomized comparison of two
+ovarian stimulation protocols with gonadotropin-releasing hormone
+(GnRH) antagonist cotreatment for in vitro fertilization commencing
+recombinant follicle-stimulating hormone on cycle day 2 or 5 with the
+
+standard long GnRH agonist protocol. J Clin Endocrinol Metab 2003;
+88:166 – 173.
+Hwang JL, Seow KM, Lin YH, Huang LW, Hsieh BC, Tsai YL, Wu GJ,
+Huang SC, Chen CY, Chen PH et al. Ovarian stimulation by
+concomitant administration of cetrorelix acetate and HMG following
+Diane-35 pre-treatment for patients with polycystic ovary
+syndrome: a prospective randomized study. Hum Reprod 2004;19:
+1993 – 2000.
+Kolibianakis E, Zikopoulos K, Albano C, Camus M, Tournaye H, Van
+Steirteghem A, Devroey P. Reproductive outcome of polycystic
+ovarian syndrome patients treated with GnRH antagonists and
+recombinant FSH for IVF/ICSI. Reprod Biomed Online 2003;7:
+313 – 318.
+Kolibianakis E, Albano C, Zikopoulos K, Kahn JA, Van Steirteghem A,
+Devroey P. GnRH antagonists in poor responders. Acta Obstet Gynecol
+Scand 2004;83:1216 – 1217.
+Kolibianakis EM, Collins J, Tarlatzis BC, Devroey P, Diedrich K,
+Griesinger G. Among patients treated for IVF with gonadotrophins
+and GnRH analogues, is the probability of live birth dependent on the
+type of analogue used? A systematic review and meta-analysis. Hum
+Reprod Update 2006;12:651 – 671.
+Kolibianakis EM, Kalogeropoulou L, Griesinger G, Papanikolaou EG,
+Papadimas J, Bontis J, Tarlatzis BC. Among patients treated with FSH
+and GnRH analogues for in vitro fertilization, is the addition of
+recombinant LH associated with the probability of live birth? A
+systematic review and meta-analysis. Hum Reprod Update 2007a;
+13:445 – 452.
+Kolibianakis EM, Papanikolaou EG, Tournaye H, Camus M, Van
+Steirteghem AC, Devroey P. Triggering ﬁnal oocyte maturation using
+different doses of human chorionic gonadotropin: a randomized pilot
+study in patients with polycystic ovary syndrome treated with
+gonadotropin-releasing hormone antagonists and recombinant
+follicle-stimulating hormone. Fertil Steril 2007b;88:1382– 1388.
+Kurzawa R, Ciepiela P, Baczkowski T, Safranow K, Brelik P. Comparison of
+embryological and clinical outcome in GnRH antagonist vs. GnRH
+agonist protocols for in vitro fertilization in PCOS non-obese patients.
+A prospective randomized study. J Assist Reprod Genet 2008;
+25:365 – 374.
+Lainas T, Zorzovilis J, Petsas G, Stavropoulou G, Cazlaris H, Daskalaki V,
+Lainas G, Alexopoulou E. In a ﬂexible antagonist protocol, earlier,
+criteria-based initiation of GnRH antagonist is associated with
+increased pregnancy rates in IVF. Hum Reprod 2005;20:2426– 2433.
+Lainas TG, Petsas GK, Zorzovilis IZ, Iliadis GS, Lainas GT, Cazlaris HE,
+Kolibianakis EM. Initiation of GnRH antagonist on Day 1 of stimulation
+as compared to the long agonist protocol in PCOS patients. A
+randomized controlled trial: effect on hormonal levels and follicular
+development. Hum Reprod 2007;22:1540 – 1546.
+Navot D, Bergh PA, Laufer N. Ovarian hyperstimulation syndrome in
+novel reproductive technologies: prevention and treatment. Fertil Steril
+1992;58:249 – 261.
+Orvieto R, Nahum R, Meltcer S, Homburg R, Rabinson J, Anteby EY,
+Ashkenazi. Ovarian stimulation in polycystic ovary syndrome patients:
+the role of body mass index. Reprod Biomed Online 2009;18:
+333 – 336.
+Ragni G, Vegetti W, Riccaboni A, Engl B, Brigante C, Crosignani PG.
+Comparison of GnRH agonists and antagonists in assisted
+reproduction cycles of patients at high risk of ovarian hyperstimulation
+syndrome. Hum Reprod 2005;20:2421– 2425.
+Rizk B, Aboulghar MA. Classiﬁcation, pathophysiology and management of
+ovarian hyperstimulation syndrome. In Brinsden P (ed). In-Vitro
+Fertilization and Assisted Reproduction. New York, London: The
+Parthenon Publishing Group, 1999, 131 – 155.
+
+Downloaded from http://humrep.oxfordjournals.org/ at Brown University on March 12, 2014
+
+The authors wish to thank Mr G. Iliadis for embryology work, Mrs
+G. Stavropoulou for patient coordination and Mrs R. Carousou for
+secretarial support during manuscript preparation.
+
+Lainas et al.
+
+GnRH antagonist or agonist in polycystic ovary syndrome
+
+The Practice Committee of the American Society for Reproductive
+Medicine. Ovarian hyperstimulation syndrome. Fertil Steril 2004;82:81–86.
+The Rotterdam ESHRE/ASRM-sponsored PCOS consensus workshop
+group. Revised 2003 consensus on diagnostic criteria and long-term
+health risks related to polycystic ovary syndrome (PCOS). Hum
+Reprod 2004;19:41– 47.
+
+689
+The Thessaloniki ESHRE/ASRM-Sponsored PCOS Consensus Workshop
+Group. Consensus on infertility treatment related to polycystic ovary
+syndrome. Fertil Steril 2008;89:505 – 522.
+Submitted on May 1, 2009; resubmitted on November 6, 2009; accepted on
+November 16, 2009
+
+Downloaded from http://humrep.oxfordjournals.org/ at Brown University on March 12, 2014
