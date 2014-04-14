@@ -13,10 +13,14 @@
 from sklearn.feature_extraction.text import HashingVectorizer
 from sklearn.preprocessing import normalize
 from itertools import izip
-
+import numpy as np
+import scipy
 
 
 class ModularVectorizer(object):
+
+    def __init__(self):
+        self.vec = InteractionHashingVectorizer(norm=None, non_negative=True, binary=True)
 
     def builder_clear(self):
         self.X = None
@@ -26,21 +30,18 @@ class ModularVectorizer(object):
             self.X = X_part
         else:
             self.X = self.X + X_part
+            self.X.data.fill(1) # since we want a binary matrix
 
-    def builder_add_docs(self, X_docs, prefix = None, weighting=1):
-        vec = InteractionHashingVectorizer(interaction_prefix=prefix)
-        X_part = vec.transform(X_docs)
+    def builder_add_docs(self, X_docs, weighting=1, interactions=None, prefix=None, low=None):
+        X_part = self.vec.transform(X_docs, i_vec=interactions, i_term=prefix, low=low)
         self._combine_matrices(X_part)
 
-    def builder_add_interaction_features(self, X_docs, interactions, prefix=None):
-        vec = InteractionHashingVectorizer(interaction_prefix=prefix)
-        X_part = vec.transform(X_docs, i=interactions)
-        self._combine_matrices(X_part)
+    builder_add_interaction_features = builder_add_docs # identical fn here; but for compatability
 
     def builder_transform(self):
         return self.X
 
-    builder_fit_transform = builder_transform
+    builder_fit_transform = builder_transform # identical fn here; but for compatability
 
 
 class InteractionHashingVectorizer(HashingVectorizer):
@@ -52,48 +53,103 @@ class InteractionHashingVectorizer(HashingVectorizer):
     """
     def __init__(self, *args, **kwargs):
 
-        self.interaction_prefix = kwargs.pop("interaction_prefix", None)
-        # remove from the kwargs before calling super.__init__
+        # this subclass requires certain parameters - check these
 
-        assert kwargs.get("analyzer", "word") == "word"
-        # this subclass only does word tokenization
+        assert kwargs.get("analyzer", "word") == "word" # only word tokenization (default)
+        assert kwargs.get("norm") is None # don't normalise words (i.e. counts only)
+        assert kwargs.get("binary") == True 
+        assert kwargs.get("non_negative") == True
 
         super(InteractionHashingVectorizer, self).__init__(*args, **kwargs)
 
+    def build_analyzer(self, i_term=None):
+        """Return a callable that handles preprocessing and tokenization"""
 
-    def _word_ngrams(self, tokens, stop_words=None):
+        preprocess = self.build_preprocessor()
+
+        # only does word level analysis
+        stop_words = self.get_stop_words()
+        tokenize = self.build_tokenizer()
+
+        return lambda doc: self._word_ngrams(
+            tokenize(preprocess(self.decode(doc))), stop_words, i_term=i_term)
+
+
+    def _word_ngrams(self, tokens, stop_words=None, i_term=None):
         """
         calls super of _word_ngrams, then adds interaction prefix onto each token
         """
         tokens = super(InteractionHashingVectorizer, self)._word_ngrams(tokens, stop_words)
 
-        if self.interaction_prefix:
-            return [self.interaction_prefix + token for token in tokens]
+        if i_term:
+            return [i_term + token for token in tokens]
         else:
             return tokens
 
-    def _iter_interact_docs(self, X, i):
-        for doc, interacts in izip(X, i):
+    def _iter_interact_docs(self, X, i_vec):
+        for doc, interacts in izip(X, i_vec):
             if interacts:
                 yield doc
             else:
                 yield ""
 
-    def transform(self, X, y=None, i=None):
+
+    def _limit_features(self, csr_matrix, low=2, high=None, limit=None):
+        """
+        Lower bound on features, so that > n docs much contain the feature
+        """
+        
+        assert isinstance(csr_matrix, scipy.sparse.csr_matrix) # won't work with other sparse matrices
+        # (most can be converted with .tocsr() method)
+
+        indices_to_remove = np.where(np.asarray(csr_matrix.sum(axis=0) < low)[0])[0]
+        # csr_matrix.sum(axis=0) < low: returns Boolean matrix where total features nums < low
+        # np.asarray: converts np.matrix to np.array
+        # [0]: since the array of interest is the first (and only) item in an outer array
+        # np.where: to go from True/False to indices of Trues
+
+        
+        data_filter = np.in1d(csr_matrix.indices, indices_to_remove)
+        # gets boolean array, where the columns of any non-zero values are to be removed
+        # (i.e. their index is in the indices_to_remove array)
+
+        # following three lines for info/debugging purposes
+        # to show how many unique features are being removed
+        num_total_features = len(np.unique(csr_matrix.indices)) 
+        num_features_to_remove = np.sum(np.in1d(indices_to_remove, np.unique(csr_matrix.indices)))
+        print "%d/%d features will be removed" % (num_features_to_remove, num_total_features)
+
+        csr_matrix.data[data_filter] = 0
+        # set the values to be removed to 0 to start with
+
+        csr_matrix.eliminate_zeros()
+        # then run the np optimised routine to delete those 0's (and free a little memory)
+        # NB zeros are superfluous since a sparse matrix
+
+        return csr_matrix
+
+    def transform(self, X, y=None, i_vec=None, i_term=None, high=None, low=None, limit=None):
         """
         same as HashingVectorizer transform, except allows for interaction list
         which is an iterable the same length as X filled with True/False
         this method adds an empty row to docs labelled as False
         """
-        analyzer = self.build_analyzer()
-        if i == None:
+        analyzer = self.build_analyzer(i_term=i_term)
+        if i_vec is None:
             X = self._get_hasher().transform(analyzer(doc) for doc in X)
+
         else:
-            X = self._get_hasher().transform(analyzer(doc) for doc in self._iter_interact_docs(X, i))
-        if self.binary:
-            X.data.fill(1)
+            X = self._get_hasher().transform(analyzer(doc) for doc in self._iter_interact_docs(X, i_vec))
+            
+
+        
+        X.data.fill(1)
+
         if self.norm is not None:
             X = normalize(X, norm=self.norm, copy=False)
+
+        if low:
+            X = self._limit_features(X, low=low)
         return X
 
     # Alias transform to fit_transform for convenience
