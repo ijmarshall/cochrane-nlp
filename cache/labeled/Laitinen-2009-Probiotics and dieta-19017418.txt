@@ -1,0 +1,1410 @@
+British Journal of Nutrition (2009), 101, 1679–1687
+q The Authors 2008
+
+doi:10.1017/S0007114508111461
+
+Probiotics and dietary counselling contribute to glucose regulation during
+and after pregnancy: a randomised controlled trial
+Kirsi Laitinen1,2*, Tuija Poussa3, Erika Isolauri4,5 and the Nutrition, Allergy, Mucosal Immunology and
+Intestinal Microbiota Group
+1
+
+Department of Biochemistry and Food Chemistry, University of Turku, 20014 Turku, Finland
+Functional Foods Forum, University of Turku, 20014 Turku, Finland
+3
+Stat-Consulting, 33230 Tampere, Finland
+4
+Department of Paediatrics, University of Turku, 20014 Turku, Finland
+5
+Department of Paediatrics, Turku University Central Hospital, 20520 Turku, Finland
+2
+
+British Journal of Nutrition
+
+(Received 1 May 2008 – Revised 7 August 2008 – Accepted 21 August 2008 – First published online 19 November 2008)
+
+Balanced glucose metabolism ensures optimal fetal growth with long-term health implications conferred on both mother and child. We examined
+whether supplementation of probiotics with dietary counselling affects glucose metabolism in normoglycaemic pregnant women. At the ﬁrst
+trimester of pregnancy <n>256</n> women were randomised to receive nutrition counselling to modify dietary intake according to current recommendations or as controls; the dietary intervention group was further randomised to receive probiotics (Lactobacillus rhamnosus GG and Biﬁdobacterium lactis Bb12; diet/probiotics) or placebo (diet/placebo) in a double-blind manner, whilst the control group received placebo (control/
+placebo). Blood glucose concentrations were lowest in the diet/probiotics group during pregnancy (baseline-adjusted means 4·45, 4·60 and
+4·56 mmol/l in diet/probiotics, diet/placebo and control/placebo, respectively; P¼ 0·025) and over the 12 months’ postpartum period (baselineadjusted means 4·87, 5·01 and 5·02 mmol/l; P¼ 0·025). Better glucose tolerance in the diet/probiotics group was conﬁrmed by a reduced risk
+of elevated glucose concentration compared with the control/placebo group (OR 0·31 (95 % CI 0·12, 0·78); P¼ 0·013) as well as by the lowest
+insulin concentration (adjusted means 7·55, 9·32 and 9·27 mU/l; P¼ 0·032) and homeostasis model assessment (adjusted means 1·49, 1·90 and
+1·88; P¼ 0·028) and the highest quantitative insulin sensitivity check index (adjusted means 0·37, 0·35 and 0·35; P¼ 0·028) during the last trimester
+of pregnancy. The effects observed extended over the 12-month postpartum period. The present study demonstrated that improved blood glucose
+control can be achieved by dietary counselling with probiotics even in a normoglycaemic population and thus may provide potential novel means
+for the prophylactic and therapeutic management of glucose disorders.
+Probiotics: Dietary counselling: Glucose metabolism: Pregnancy
+
+Early pregnancy is characterised by normal tolerance to
+glucose and insulin. In late pregnancy, in contrast, an
+increase is observed in the serum insulin concentration
+accompanied by insulin resistance. These metabolic adaptations aim to promote fetal growth by shunting metabolic
+fuels to the fetus instead of the mother, as well as preparation
+for breast-feeding. In some pregnant women these adaptive
+processes are exaggerated and lead to impaired glucose
+tolerance. Such individuals are predisposed to gestational diabetes mellitus and consequently to type 2 diabetes(1). In the
+case of the child, impaired maternal glycaemia predisposes
+toward macrosomia(2) and impaired glucose tolerance(3),
+which may develop even when maternal estimates are
+within normal reference ranges, i.e. not classiﬁed as gestational diabetes mellitus(4). A higher-than-optimal glucose
+level, now acknowledged to be more common than anticipated, may involve long-term effects not only on the
+mother but also on the child(5 – 7). Indeed, the effects on the
+
+infant of maternal nutrition during pregnancy may initiate a
+cascade of metabolic and immunoinﬂammatory conditions
+manifested in later life.
+We chose a combined dietary counselling and probiotic
+intervention to target maternal glucose metabolism, in view
+of the importance to maintain normoglycaemia throughout
+pregnancy. Previous dietary interventions with primarily
+reduced energy and fat intakes as well as increased ﬁbre
+intakes have resulted in improved glucose tolerance test
+results(8). Recent experimental evidence, on the other hand,
+points to a role for the gut microbiota composition in the
+harvesting and storage of nutrients(9 – 11). The approach may
+also be justiﬁed by the demonstration that diet and microbiota
+may exert their effects via similar signalling pathways in
+regulating immune responses(12 – 14). Immunoinﬂammatory
+processes and prevailing systemic low-grade inﬂammation
+may contribute to the metabolic conditions affecting glucose
+metabolism(15). In a randomised clinical trial from early
+
+Abbreviations: HOMA, homeostasis model assessment; QUICKI, quantitative insulin sensitivity check index.
+* Corresponding author: Dr Kirsi Laitinen, fax þ358 2 333 6862, email kirsi.laitinen@utu.ﬁ
+
+1680
+
+K. Laitinen et al.
+
+pregnancy, 256 women were allocated to three groups: modiﬁcation of dietary intake according to current recommendations with probiotics or placebo and a control group
+receiving placebo only. The women were followed clinically
+and their glucose metabolism repeatedly evaluated from
+early pregnancy up to 12 months postpartum.
+
+Methods
+
+British Journal of Nutrition
+
+Participants
+Altogether 256 pregnant women were recruited to participate
+in a randomised, prospective, parallel-group, combined dietary
+counselling and probiotics intervention study from April 2002
+to November 2005 (NCT00167700; section 3, http://www.
+clinicaltrials.gov). The overall aims of the study were to
+optimise maternal dietary intake and metabolism to advance
+maternal health and thus to reduce the risk of disease in the
+child. The present report explores the impact of intervention
+on maternal nutrition with the main focus on glucose metabolism. The subjects were informed about the study by leaﬂets
+distributed during their ﬁrst visit to maternal welfare clinics in
+
+Fig. 1. Flow chart of the study.
+
+the city of Turku and neighbouring areas in South-West
+Finland. Interested recipients contacted the research nurse,
+who gave further information on the study and scheduled
+their ﬁrst visit to the study clinic in Turku University Central
+Hospital. Women were eligible for participation if they were at
+less than 17 weeks’ gestation and had no metabolic or chronic
+diseases such as diabetes. The study complies with the
+Declaration of Helsinki as revised in 2000. Written informed
+consent was obtained from the participants and the study protocol was approved by the Ethics Committee of the Hospital
+District of South-West Finland.
+Intervention and study conduct
+Study visits took place three times during pregnancy (at 13·9
+(SD 1·6), 23·8 (SD 1·4) and 33·9 (SD 1·4) weeks of gestation)
+and at 1, 6 and 12 months postpartum. At baseline, subjects
+were randomly assigned to three study groups (Fig. 1) according to computer-generated block randomisation of six women:
+dietary counselling with probiotic capsules (diet/probiotics);
+dietary counselling with placebo (diet/placebo); controls (control/placebo). The randomisation list was generated by a
+
+British Journal of Nutrition
+
+Probiotics, diet and blood glucose
+
+statistician (T. P.) who was not involved in recruitment or
+study visits. Sealed envelopes contained subject numbers corresponding to numbered probiotics and placebo containers and
+information on whether the subject would receive dietary
+counselling. All pregnant women participating in the study
+also attended communal well-women clinics.
+At the ﬁrst study visit the envelopes were opened by the
+research nurse and nutritionist in the presence of each study
+subject in their order of recruitment. The random allocation
+sequence was thus concealed until interventions were
+assigned. Research nurses and researchers ensured that capsules with corresponding numbers were given to the subjects
+and that appropriate dietary counselling intervention was carried out. The capsule containers were numbered according to
+the randomisation list by a member of the research group not
+involved with the conduct or reporting of the study. The trial
+data were collected on printed case record forms and the members of the research group performed data entry. All data were
+kept conﬁdential.
+Randomisation to receive probiotics (Lactobacillus rhamnosus GG, ATCC 53 103, Valio Ltd, Helsinki, Finland and Biﬁdobacterium lactis Bb12, Chr. Hansen, Hoersholm, Denmark,
+1010 colony-forming units/d each) or placebo (microcrystalline
+cellulose and dextrose anhydrate; Chr. Hansen, Hoersholm,
+Denmark) in the dietary counselling groups took place in a
+double-blind manner, while the control group received
+placebo in single-blind manner (Fig. 1). The choice of the
+probiotic combination was based on in vitro results(16),
+and previous clinical intervention studies suggesting that L.
+rhamnosus GG promotes a biﬁdogenic microbiota and biﬁdobacteria dominate the microbiota of healthy breast-fed
+infants(17,18), with high biﬁdobacteria levels linked to the
+risk of allergy(19). Probiotics and placebo capsules and contents looked, smelled and tasted identical. Dosing with standard content capsules commenced at the ﬁrst study visit and
+lasted until the end of exclusive breast-feeding. All capsules
+were stored at þ 58C and the viability of the probiotic capsules was conﬁrmed by regular analysis of blind in the laboratory under Professor S. Salminen. Compliance in consumption
+of study capsules was assessed by interview.
+Dietary counselling given by a dietitian at each study visit
+aimed to modify dietary intake to conform with that currently
+recommended(20,21), particular attention being paid to the
+quality of dietary fat. Achievement of the recommended diet
+was supported by providing participants with readily available
+food products of favourable fat composition (for example,
+rapeseed oil-based spreads and salad dressing) to be consumed
+at home. The counselling and food products provided have
+been described in detail elsewhere(22). Dietary intake was
+assessed at each trimester using 3 d food diaries. Energy and
+nutrient intakes were calculated with a Micro-Nutricaw computerised program (version 2.5; Research Centre of the Social
+Insurance Institution, Turku, Finland).
+At baseline, background information concerning education
+and parity was collected by interview. Total gestational
+weight gain was calculated by subtracting self-reported prepregnancy weight from that recorded at a prenatal visit or at
+hospital within 1 week before delivery. Information regarding
+children’s birth weights and heights and the course of pregnancy was obtained from hospital records. On the morning
+of each visit, a 10 h overnight fasting blood sample was
+
+1681
+
+drawn from the antecubital vein for the analysis of glucose
+and glycated Hb A1C on the day of sampling, whilst serum
+was stored at 2 70 8C for the group analysis of insulin.
+Analytical methods
+On the day of sampling, plasma glucose concentration was
+measured by an enzymic method utilising hexokinase in a
+Modular P800 automatic analyser (Roche Diagnostics
+GmbH, Mannhein, Germany) and blood glycated Hb A1C
+was measured by ion-exchange HPLC by the Bio-Rad VariantTM II Haemoglobin A1C Program (Bio-Rad Laboratorioes,
+Marnes-la-Coquette, France). Serum insulin concentration was
+measured by immunoelectrochemiluminometric assay in a
+Modular E170 automatic analyser (Roche Diagnostics
+GmbH). To evaluate insulin sensitivity, the quantitative insulin sensitivity check index (QUICKI) was calculated as
+described by Katz et al. (23). Homeostasis model assessment
+(HOMA) was calculated using a formula devised by Matthews
+et al. (24). All personnel who handled or analysed blood
+samples were blind to the intervention. Glucose challenge
+screening tests were taken from those performed in wellwomen clinics at 26 to 28 weeks of gestation according to
+standard procedures for women fulﬁlling the criteria for atrisk pregnancy: pre-pregnancy BMI over 25 kg/m2; age over
+40 years; gestational diabetes mellitus in a previous pregnancy; previous delivery of a child weighing more than
+4500 g; detection of glucose in the urine or suspicion of a
+macrosomic fetus in the present pregnancy.
+Plasma glucose concentrations above 4·8 mmol/l during
+pregnancy and 5·6 mmol/l in the non-pregnant state, the
+percentage of glycated Hb in total Hb above 6·5 % and a
+serum insulin concentration above 26 mU/l were considered
+raised. Results of the glucose challenge tests were considered
+pathological if an increased fasting glucose value (4·8 mmol/l)
+was combined with at least one abnormal post-glucose
+measurement (blood glucose . 10·0 mmol/l at 1 h or
+.8·7 mmol/l at 2 h) according to reference values in Turku
+University Central Laboratories. A higher QUICKI and
+lower HOMA were taken to indicate better insulin sensitivity
+in comparison of differences amongst the groups.
+Outcome measures
+The primary outcome measure to explore the effects of intervention on the mother was glucose metabolism, characterised
+by plasma glucose concentration, blood glycated Hb A1C,
+serum insulin and HOMA and QUICKI indices. The measurements were made at the ﬁrst trimester (baseline) and third trimester of pregnancy, and at 1, 6 and 12 months postpartum,
+the primary time points being the third trimester of pregnancy
+and 12 months postpartum. Secondary outcomes were dietary
+energy-yielding nutrients assessed from food diaries, which
+were analysed to explain changes in glucose metabolism.
+Statistical analyses
+Data were analysed with SPSS (version 14.0; SPSS Inc.,
+Chicago, IL, USA) by a statistician (T. P.) independent of
+clinical evaluations. The primary sample size calculations
+were based on infant sensitisation assessed by skin prick
+
+British Journal of Nutrition
+
+1682
+
+K. Laitinen et al.
+
+testing at the age of 12 months. We estimated that the required
+sample size for analyses of glucose metabolism was sixty-six
+per group to detect a difference in blood glucose of
+0·20 mmol/l between groups statistically signiﬁcant with a
+0·05 two-sided signiﬁcance level and 90 % power. We
+assumed the common SD to be 0·35. Thus the same ﬁxed
+sample size ensured that the power was sufﬁcient also for analyses of glucose metabolism.
+The baseline and clinical variables were analysed using the
+x2 test, ANOVA or the Kruskal –Wallis test (5 min Apgar).
+Missing values for glucose metabolism (at most one during
+pregnancy and one during the postpartum period) were computed using the group mean or geometric mean, as linear
+extrapolation or interpolation methods were not appropriate
+due to the substantial inherent non-linear within-subject
+ﬂuctuation. Serum insulin and HOMA were skewed to the
+right and were logarithmically transformed before analysis.
+Comparison of glucose metabolism between the three study
+groups at the third trimester of pregnancy or at 12 months
+postpartum was made by analysis of covariance (ANCOVA)
+and that in the postpartum period (1, 6 and 12 months) was
+analysed using ANCOVA for repeated measurements. In
+both cases the baseline was included as a continuous covariate. The results are given as baseline-adjusted means or geometric means with 95 % CI or standard deviations. Paired
+group comparisons were Bonferroni-adjusted. The proportions
+of subjects with elevated glucose concentrations ($ 4·8 mmol/l
+during pregnancy, $ 5·6 mmol/l postpartum) were compared
+between the study groups using the x2 test. Results of group
+comparisons are given as OR with 95 % CI. For dietary
+intake the study groups were compared at the third trimester,
+during the postpartum period and at 12 months postpartum
+using the same methods as described for glucose metabolism.
+The analyses were based on the intention-to-treat population, apart from the twenty-three women who were pregnant
+again by the end of the follow-up of 12 months and were
+excluded, a new pregnancy being considered to be a strong
+confounder.
+
+Results
+The participants (Table 1) were Caucasian. The majority had
+higher college or university education (79 % in the diet/probiotics, 69 % in the diet/placebo and 79 % in the control/placebo
+groups; P¼0·210) and were expecting their ﬁrst child (65 % in
+the diet/probiotics, 51 % in the diet/placebo and 57 % in the control/placebo groups; P¼ 0·197). The infants were delivered at
+term and their mean heights and weights were within population
+reference ranges (Table 1). The mean duration of exclusive
+breast-feeding and thus the duration of the probiotics/placebo
+intervention did not differ amongst the study groups, nor
+did the groups diverge with regard to pregnancy weight gain.
+Of the total participating women, 99·5 % (216 out of 217),
+99 % (209 out of 212) and 95 % (195 out of 205) at the second,
+third and fourth study visit, respectively, reported without signiﬁcant difference between groups that they consumed the capsules regularly daily. An adverse event was not the reason for
+non-compliance in any case. On initiation of capsule consumption 7 % (ﬁve out of seventy-three) of the women in the diet/probiotics group, 8 % (six out of seventy-ﬁve) in the diet/placebo
+group, 3 % (two out of sixty-nine) in the control/placebo group
+and 6 % (thirteen out of 217) in all three groups together reported
+gut-associated adverse events including ﬂatulence, loose stools
+or constipation. Subsequently the prevalence of reported symptoms was reduced to 2 % and 0·5 % at subsequent study visits.
+Of the recruited women, 81 % (208 out of 256) were followed up till 12 months postpartum (Fig. 1). The reasons for
+discontinuing were representative of a normal population of
+pregnant women. Additionally, twenty-three women were
+pregnant again by the end of the follow-up and were excluded
+from the postpartum analysis.
+Although energy intakes did not differ amongst the groups,
+dietary counselling resulted in changes in the intakes of
+energy-yielding nutrients compared with controls (Table 2).
+Particularly the intakes of MUFA and PUFA as a proportion
+of energy intake were highest in the diet/placebo group; thus,
+the intake of SFA as a proportion of energy intake was lowest
+
+Table 1. Characteristics of the women and their infants
+(Mean values and standard deviations)
+Group. . .
+
+Diet/probiotics
+Mean
+
+Women
+Subjects (n)
+Age (years)
+Weight gain over pregnancy (kg)
+Duration of exclusive breast-feeding (months)
+Duration of total breast-feeding (months)
+Infants
+Subjects (n)
+Birth at weeks of gestation
+Birth weight (g)
+Birth height (cm)
+Head circumference (cm)
+Apgar at 5 min
+Median
+Range
+* ANOVA.
+† Kruskal –Wallis test.
+
+Diet/placebo
+
+SD
+
+Mean
+
+85
+29·7
+15·0
+3·3
+7·6
+
+30·1
+14·8
+3·6
+9·1
+
+1·3
+431
+2
+1·3
+
+39·9
+3602
+51
+35·1
+
+75 – 81
+
+9
+6 – 10
+
+SD
+
+Mean
+
+86
+4·1
+4·3
+1·8
+4·3
+
+39·9
+3489
+51
+34·8
+
+Control/placebo
+P*
+
+85
+5·2
+5·1
+1·9
+5·8
+
+30·2
+14·8
+3·4
+8·3
+
+1·8
+439
+2
+1·3
+
+40·1
+3600
+51
+35·1
+
+76 – 79
+
+9
+3 – 10
+
+SD
+
+5·0
+5·1
+1·6
+4·5
+
+0·813
+0·946
+0·587
+0·287
+
+1·3
+515
+2
+1·4
+
+0·672
+0·209
+0·197
+0·257
+
+76 – 78
+
+9
+4 – 10
+
+0·280†
+
+Probiotics, diet and blood glucose
+
+1683
+
+Table 2. Daily intake of energy and energy-yielding nutrients and dietary ﬁbre at ﬁrst trimester (baseline) and third trimester of pregnancy, during the
+postpartum period (mean of 1, 6 and 12 months) and at 12 months postpartum in the study groups*
+(Mean values and standard deviations or baseline-adjusted means and 95 % conﬁdence intervals)
+Group. . .
+
+Diet/probiotics
+(n 75)
+Mean
+
+EnergyðkJÞ
+First trimester of pregnancy
+Mean
+8531
+7878
+7217
+
+8196
+1774
+8155, 8904
+7523, 8234
+6795, 7640
+
+53·2
+48·8
+48·9
+
+50·2
+4·9
+51·9, 54·5
+47·8, 49·9
+47·4, 50·4
+
+15·4
+17·4
+17·9
+
+16·9
+2·5
+14·8, 16·0
+16·9, 18·0
+17·1, 18·7
+
+30·0
+31·9
+31·3
+
+31·4
+4·8
+28·8, 31·3
+30·9, 32·9
+29·8, 32·8
+
+10·6
+11·2
+10·9
+
+10·6
+2·6
+10·0, 11·1
+10·8, 11·7
+10·2, 11·6
+
+5·7
+5·8
+5·7
+
+5·1
+1·5
+5·4, 6·1
+5·5, 6·1
+5·3, 6·2
+
+11·1
+11·8
+11·7
+
+12·9
+2·5
+10·5, 11·7
+11·3, 12·4
+10·9, 12·4
+
+22·3
+19·1
+18·2
+
+20·2
+6·0
+20·9, 23·7
+17·8, 20·3
+16·7, 19·7
+
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+Carbohydrates (% of energy)
+First trimester of pregnancy
+Mean
+
+British Journal of Nutrition
+
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+Protein (% of energy)
+First trimester of pregnancy
+Mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+Fat (% of energy)
+First trimester of pregnancy
+Mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+MUFA (% of energy)
+First trimester of pregnancy
+Mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+PUFA (% of energy)
+First trimester of pregnancy
+Mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+SFA (% of energy)
+First trimester of pregnancy
+Mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+Dietary ﬁbre (g)
+First trimester of pregnancy
+Mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+
+95 % CI
+
+Diet/placebo
+(n 81)
+Mean
+
+95 % CI
+
+8255
+7929
+7431
+
+8263
+1736
+7883, 8627
+7581, 8280
+7012, 7845
+
+51·3
+48·3
+47·7
+
+50·9
+5·7
+50·0, 52·5
+47·3, 49·4
+46·2, 49·1
+
+16·9
+17·1
+17·7
+
+16·4
+2·9
+16·3, 17·4
+16·6, 17·7
+16·9, 18·5
+
+30·3
+32·4
+31·8
+
+31·2
+5·6
+29·1, 31·5
+31·5, 33·4
+30·4, 33·3
+
+10·9
+11·6
+11·1
+
+10·3
+2·2
+10·3, 11·4
+11·2, 12·0
+10·4, 11·8
+
+5·8
+6·1
+5·7
+
+5·1
+1·8
+5·4, 6·1
+5·8, 6·3
+5·3, 6·2
+
+11·0
+11·9
+11·8
+
+13·0
+3·0
+10·4, 11·6
+11·4, 12·4
+11·1, 12·6
+
+21·7
+19·9
+18·4
+
+20·5
+6·6
+20·3, 23·1
+18·6, 21·1
+16·9, 19·9
+
+Control/placebo
+(n 76)
+Mean
+
+95 % CI
+
+ANCOVA P †
+
+Group comparisons P ‡
+
+8427
+8083
+7481
+
+8042
+1874
+8046, 8807
+7715, 8452
+7046, 7916
+
+0·586
+0·718
+0·659
+
+51·0
+48·3
+47·8
+
+49·8
+6·1
+49·7, 52·3
+47·3, 49·4
+46·3, 49·4
+
+0·036
+0·760
+0·441
+
+0·056; 0·111; 1·000
+
+16·8
+17·3
+17·9
+
+16·6
+2·7
+16·2, 17·4
+16·7, 17·9
+17·1, 18·8
+
+0·001
+0·723
+0·890
+
+0·004; 0·002; 1·000
+
+30·8
+32·4
+31·5
+
+32·3
+5·7
+29·5, 32·0
+31·3, 33·4
+30·0, 33·1
+
+0·698
+0·749
+0·877
+
+10·1
+10·6
+10·4
+
+10·9
+2·5
+9·5, 10·7
+10·2, 11·0
+9·7, 11·1
+
+0·154
+0·008
+0·369
+
+5·1
+5·4
+5·3
+
+5·3
+1·5
+4·8, 5·5
+5·1, 5·6
+4·8, 5·7
+
+0·030
+0·001
+0·267
+
+0·071; 1·000; 0·056
+0·081; 0·455; 0·001
+
+12·5
+13·2
+12·6
+
+13·2
+2·9
+11·9, 13·1
+12·6, 13·7
+11·9, 13·4
+
+0·001
+0·002
+0·162
+
+0·003; 1·000; 0·002
+0·002; 1·000; 0·004
+
+20·6
+18·7
+17·6
+
+18·6
+6·3
+19·1, 22·0
+17·4, 20·0
+16·0, 19·1
+
+0·222
+0·409
+0·729
+
+0·124; 0·865; 0·006
+
+ANCOVA, analysis of covariance.
+* Number of subjects in analysis 232 (75 in diet/probiotics, 81 in diet/placebo and 76 in control/placebo) at ﬁrst trimester of pregnancy, 209 (70, 71 and 68) at third trimester of
+pregnancy, 203 (68, 71 and 64) during the postpartum period and 173 (58, 60 and 55) at 12 months postpartum.
+† Baseline-adjusted univariate ANOVA.
+‡ The group comparisons (diet/probiotics v. control/placebo; diet/probiotics v. diet/placebo; diet/placebo v. control/placebo) are given Bonferroni-corrected.
+§ Baseline-adjusted mean of measurements at 1, 6 and 12 months.
+
+British Journal of Nutrition
+
+1684
+
+K. Laitinen et al.
+
+Fig. 2. Plasma glucose concentrations (mmol/l) during and after pregnancy
+in diet/probiotics (n 66; D), diet/placebo (n 70; X) and control/placebo
+(n 60; W) groups. Values are means, with 95 % CI represented by vertical
+bars. There were signiﬁcant differences amongst the groups at the third trimester of pregnancy (P¼0·025), 12 months postpartum (P¼0·060) and over
+the postpartum period (P¼0·025) by analysis of covariance, where the baseline was taken as the continuous covariate. Only women with values for each
+time-point were included in the analysis. Bonferroni-corrected group comparisons for diet/probiotics v. diet/placebo and diet/probiotics v. control/placebo
+were P¼0·026 and P¼0·165 for the third trimester, P¼0·054 and P¼0·878
+for 12 months postpartum, and P¼0·066 and P¼0·048 for over the postpartum period, respectively. The inset shows the proportion (%) of abnormal
+glucose concentrations in the diet/probiotics ( ), diet/placebo (B) and control/placebo (A) study groups. tr., Trimester. There were differences amongst
+the groups in the third trimester of pregnancy (P¼0·013), 12 months postpartum (P¼0·189) and over the postpartum period (P¼ 0·096) by logistic
+regression, where the baseline was taken as a covariate. Only women with
+values for each time-point are included.
+
+in both intervention groups compared with controls. At the same
+time the intakes of energy-yielding nutrients among women
+receiving probiotics (diet/probiotics) and placebo (diet/placebo)
+did not differ. This allowed comparisons of the effect of
+the probiotics according to the study design, except for that of
+the intake of protein as a proportion of energy intake, this
+being lowest in the diet/probiotics group at the third trimester
+of pregnancy, but not during the postpartum period.
+
+Impact of the intervention on glucose metabolism
+Glucose concentrations decreased from the ﬁrst trimester to
+the third and increased during the 12 months’ postpartum
+period in all study groups alike (Fig. 2). The levels were
+lowest in the diet/probiotics group throughout the follow-up
+period and thus results are presented adjusted for baseline, i.e.
+any differences before randomisation cannot explain the outcome. The difference between the study groups was signiﬁcant
+during pregnancy, when the baseline-adjusted means were
+4·45, 4·60 and 4·56 mmol/l in the diet/probiotics, diet/placebo
+and control/placebo groups, respectively (P¼0·025). The same
+was noted at 12 months after delivery (adjusted means 4·93, 5·22
+and 5·06 mmol/l; P¼0·060) and over the 12-month postpartum
+period (adjusted means 4·87, 5·01 and 5·02 mmol/l; P¼0·025).
+The diet/probiotics group was distinguishable from the diet/placebo group at the third trimester of pregnancy (P¼0·026), at 12months postpartum (P¼0·054) and over the entire postpartum
+
+period (P¼0·066), and further, from the control/placebo group
+over the postpartum period (P¼0·048).
+Although in these healthy pregnant women, the mean plasma
+glucose concentrations were within normal reference ranges in
+all study groups, the risk of elevated concentrations was reduced
+in the diet/probiotics group throughout the study period
+(Fig. 2, inset). During the third trimester, the diet/probiotics
+intervention (OR 0·31 (95 % CI 0·12, 0·78); P¼0·013), unlike
+the diet/placebo intervention (OR 1·26 (95 % CI 0·59, 2·69);
+P¼0·553), had the capacity to reduce the risk of elevated
+plasma glucose concentrations compared with the control/placebo treatment. In sequence, over the postpartum period the
+risk of elevated plasma glucose concentrations remained lower
+in the diet/probiotics group, albeit not statistically signiﬁcantly
+(OR 0·46 (95 % CI 0·14, 1·50); P¼0·197), but not in the diet/placebo group (OR 1·55 (95 % CI 0·61, 3·95); P¼0·360), both compared with the control/placebo group.
+Altogether 45 % of the subjects underwent a glucose
+challenge test in well-women clinics during pregnancy.
+The prevalence of pathological test results was lowest in the
+diet/probiotics group (37 % of subjects) compared with the
+diet/placebo (58 %) and control/placebo (57 %) groups.
+However, the relative risk was not statistically signiﬁcantly
+lowered (OR 0·44 (95 % CI 0·14, 1·38) in the diet/probiotics
+group and OR 1·03 (95 % CI 0·41, 2·61) in the diet/placebo
+group compared with the control/placebo group).
+Glycated Hb A1C remained within normal ranges throughout the study and was comparable amongst the study groups
+at the third trimester of pregnancy and at 12 months
+postpartum, but there was a tendency towards lowered glycated Hb A1C in the diet/probiotics group compared with the
+diet/placebo group over the postpartum period (Table 3).
+Impact of the intervention on serum insulin and insulin
+sensitivity indices
+Insulin concentrations as well as insulin resistance, evaluated
+by the HOMA index, were increased and insulin sensitivity,
+evaluated by the QUICKI index, was reduced towards the
+third trimester of pregnancy in all groups. The opposite was
+noted after delivery, insulin concentration and HOMA index
+being reduced and QUICKI index increased. Mean serum
+insulin concentrations, insulin resistance and insulin sensitivity were found to differ amongst the groups throughout
+the study period (Table 3). This difference, at the third trimester of pregnancy and over the postpartum period, was
+explained by the lowering effect on serum insulin of the combined dietary and probiotics intervention (diet/probiotics
+group), which was especially pronounced when compared
+with controls (control/placebo group). The HOMA index
+was lowest and QUICKI index highest, indicating improved
+insulin sensitivity in the diet/probiotics group.
+Discussion
+Balanced glucose metabolism during pregnancy reduces
+the risk of pregnancy-related complications(25) and confers
+long-term health beneﬁts on both the mother and the
+child(3,26). In the present study, throughout the study period,
+combined dietary counselling and probiotics intervention
+yielded consistently improved glucose metabolism and
+
+Probiotics, diet and blood glucose
+
+1685
+
+Table 3. Blood glycated Hb A1C (percentage of total Hb), serum insulin (mU/l) and insulin sensitivity indices homeostasis model assessment (HOMA)
+and quantitative insulin sensitivity check index (QUICKI) at the ﬁrst trimester (baseline) and third trimester of pregnancy, during the postpartum period
+(mean of 1, 6 and 12 months) and at 12 months postpartum in the study groups*
+(Mean values and standard deviations or baseline-adjusted means and 95 % conﬁdence intervals)
+Group. . .
+
+Diet/probiotics
+(n 76)
+Mean
+
+Glycated Hb A1C
+First trimester of pregnancy
+Mean
+5·19
+5·29
+5·35
+
+5·01
+0·24
+5·13, 5·25
+5·24, 5·34
+5·29, 5·41
+
+7·55
+4·32
+5·01
+
+6·27
+13·46
+6·68, 8·54
+3·81, 4·91
+4·31, 5·83
+
+1·49
+0·94
+1·10
+
+1·30
+3·93
+1·31, 1·71
+0·83, 1·07
+0·94, 1·30
+
+0·37
+0·40
+0·39
+
+0·38
+0·03
+0·36, 0·37
+0·39, 0·41
+0·38, 0·40
+
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+Insulink
+First trimester of pregnancy
+Geometric mean
+
+British Journal of Nutrition
+
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+HOMAk
+First trimester of pregnancy
+Geometric mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+QUICKI{
+First trimester of pregnancy
+Mean
+SD
+
+Third trimester of pregnancy
+Postpartum period§
+Postpartum at 12 months
+
+95 % CI
+
+Diet/placebo
+(n 81)
+
+Control/placebo
+(n 75)
+
+Mean
+
+95 % CI
+
+5·21
+5·36
+5·41
+
+5·03
+0·25
+5·16, 5·27
+5·32, 5·41
+5·35, 5·46
+
+9·32
+5·10
+6·37
+
+5·11
+4·37
+8·24, 10·54
+4·49, 5·79
+5·47, 7·41
+
+1·90
+1·14
+1·46
+
+1·05
+0·90
+1·66, 2·17
+1·00, 1·30
+1·24, 1·73
+
+0·35
+0·39
+0·37
+
+0·39
+0·03
+0·35, 0·36
+0·38, 0·40
+0·36, 0·38
+
+Mean
+
+95 % CI
+
+P†
+
+Group comparisons P ‡
+
+5·21
+5·32
+5·36
+
+5·08
+0·30
+5·16, 5·27
+5·27, 5·37
+5·30, 5·42
+
+0·805
+0·082
+0·293
+
+1·000; 0·078
+
+9·27
+5·51
+6·20
+
+5·19
+3·47
+8·06, 10·66
+4·77, 6·37
+5·22, 7·37
+
+0·032
+0·038
+0·06
+
+0·095; 0·057
+0·042; 0·220
+0·211; 0·091
+
+1·88
+1·22
+1·39
+
+1·08
+0·79
+1·61, 2·18
+1·05, 1·41
+1·15, 1·67
+
+0·028
+0·023
+0·047
+
+0·083; 0·040
+0·030; 0·119
+0·219; 0·057
+
+0·35
+0·38
+0·37
+
+0·39
+0·03
+0·35, 0·36
+0·37, 0·39
+0·36, 0·39
+
+0·028
+0·070
+0·096
+
+0·103; 0·042
+0·067; 0·529
+0·291; 0·133
+
+* Number of subjects in analysis 232 (76 in diet/probiotics, 81 in diet/placebo and 75 in control/placebo) at ﬁrst and third trimesters of pregnancy and 196 (66, 70 and 60) during
+the postpartum period and at 12 months.
+† Baseline-adjusted univariate ANOVA or ANOVA for repeated measurements.
+‡ The group comparisons (diet/probiotics v. control/placebo; diet/probiotics v. diet/placebo) are given Bonferroni-corrected.
+§ Baseline-adjusted marginal mean or geometric mean, based on repeated measurements at 1, 6 and 12 months.
+k Data are presented as geometric mean and standard deviation or baseline-adjusted geometric mean and 95 % CI for insulin and HOMA.
+{ Number of subjects 45 in diet/probiotics group, 44 in diet/placebo group and 34 in control/placebo group.
+
+insulin sensitivity in healthy women, providing the ﬁrst clinical evidence of an active dialogue between host and
+microbiota in glucose metabolism. These results in a general
+normoglycaemic population call for further research in at-risk
+populations.
+Combined dietary counselling and probiotic intervention
+with L. rhamnosus GG and B. lactis Bb12 moderated
+plasma glucose concentrations and afforded glycaemic control
+in healthy young females during and after pregnancy. Previous
+evidence regarding the effects of probiotics on glucose metabolism has been limited to experimental studies, speciﬁcally in
+mice with existing alterations in glucose metabolism. A diet
+enriched with L. rhamnosus GG has resulted in improved glucose tolerance test results as well as in reduced blood glycated
+Hb(27) and L. casei administration in reduced glucose levels(28)
+in diabetic mice. Likewise the Indian fermented milk product
+dahi supplemented with L. acidophilus and L. casei (29) or
+Lactococcus lactis (30) delayed the disturbance of glucose
+metabolism in diabetic rats. The present study, indeed,
+provided the ﬁrst evidence of consistently improved glucose
+metabolism in humans. The impact of the intervention
+extended several months beyond the period of probiotic
+
+consumption, which has also been shown in other clinical
+studies, for example, the effect of probiotic intervention
+lasting for up to 7 years in reducing the risk of atopic
+eczema(31). This is probably due to a relatively long duration
+of probiotic consumption, from early pregnancy until the end
+of exclusive breast-feeding, and occurring in the critical
+period of the maturing infant, thus inducing an enduring
+small change in intestinal microbiota composition, sufﬁcient
+to stimulate the metabolic change observed in blood glucose
+metabolism.
+The microbes may impact on the glucose metabolism by
+processing dietary polysaccharides, indigestible by human
+enzymes, adding to the pool of gastrointestinal absorbable glucose(9). The gut microbiota may also enhance glucose storage
+in adipose tissue by suppressing the fasting-induced adipocyte
+factor gene transcription with ensuing enhanced lipoprotein
+lipase activity(9). Thus, as a consequence of probiotic
+consumption, a less saccharolytic microbiota in the gastrointestinal tract may diminish both fermentation of polysaccharides and induction of fasting-induced adipocyte factor gene
+transcription. In addition to the effects seen as lowered
+blood glucose levels in our study, it has been recently reported
+
+British Journal of Nutrition
+
+1686
+
+K. Laitinen et al.
+
+that differences in the gut microbiota content may predict
+overweight in children, biﬁdobacterial content and composition being determinants of normal weight(32). Fermentation
+of dietary ﬁbre in the gastrointestinal tract is known to be
+associated with improved glucose metabolism(33), but is not
+a likely explanatory factor here since dietary intake of ﬁbre
+did not differ in women having received probiotics or not.
+Alternatively, the mechanism may be independent of energy
+harvest and storage as shown by resistance to diet-induced
+obesity and glucose intolerance(11,34).
+We suggest that the observed pronounced effect of probiotics
+on glucose metabolism is most probably attributable to their
+immunoregulatory properties. Probiotics elicit powerful antiinﬂammatory capabilities by inhibiting the NF-kB pathway,
+which mediates microbial activation of the immune system
+through toll-like receptors(35). Regulation of inﬂammatory pathways by probiotics may be of particular importance due to the
+fundamental involvement that inﬂammation plays in insulin
+resistance(15). The concomitance of elevated blood glucose concentrations, insulin resistance and dyslipidaemia with activation
+of inﬂammation pathways(35) is related to an enhanced risk of a
+range of metabolic disorders, including obesity and CVD(36,37).
+Indeed, alterations in gut microbiota composition have recently
+been documented in obesity, providing a target for probiotic
+intervention(10,32,38). Here we need to acknowledge that speciﬁc
+probiotic strains may inﬂuence the microbiota composition in a
+manner favouring lower circulating lipopolysaccharide levels,
+possibly ensuing via the CD14 receptor(39), that associate with
+lower insulin resistance and blood glucose levels(40,41). Thus a
+universal presence of microbes or microbiota per se, may not
+be crucial in determining glucose-regulating effects but rather
+speciﬁc compositions may form the key factors.
+Intriguingly, probiotics were shown here to provide a more
+profound glucose-lowering effect than dietary counselling
+alone. This notwithstanding, the impact of dietary counselling,
+focused on fat composition(22), is most probably also afforded
+by the speciﬁc regulatory properties of fats, beyond their
+nutritional value(42). In fact, the microbes and fatty acids
+engage the same signalling channels through toll-like receptor
+4(35) and soluble CD14(14) of innate immunity. The innate
+immune system, again, apart from microbial recognition, has
+been demonstrated to participate in the regulation of glucose
+metabolism and insulin resistance(35). Furthermore the composition of the gut microbiota has recently been proven instrumental in energy metabolism. High-fat feeding is associated
+with lower intestinal Biﬁdobacterium content in mice, and
+increase in Biﬁdobacterium content positively correlated
+with improved glucose tolerance(39). It may be projected that
+the clinical effects are under the same regulatory mechanisms.
+Thus the present study calls for the precise characterisation of
+the mechanisms involved in the combined regulatory properties of probiotics and speciﬁc dietary compounds.
+Modiﬁcation of gut microbiota composition by probiotics,
+thereby altering the intestinal immunological milieu, may be
+seen as a novel means of attaining regulation of glucose
+metabolism. This dietary approach would offer a cost-effective tool for both prophylaxis and therapy in the metabolic disorders that constitute the metabolic syndrome. The beneﬁt is
+expected to be most pronounced during the critical period
+of human development in view of the programming of later
+diseases by events in the uterus(5).
+
+Acknowledgements
+The present study was supported by grants from the Social
+Insurance Institution of Finland, the Sigrid Juselius Foundation and the Academy of Finland. Provision of food products was by Raisio plc (Raisio, Finland), B. lactis Bb12 by
+Chr. Hansen (Hoersholm, Denmark) and L. rhamnosus GG
+by Valio Ltd (Helsinki). We would like to thank Professor
+Seppo Salminen, University of Turku, for academic assistance
+and continual organisation of the microbial content analysis of
+probiotic capsules. The authors declare that there is no personal or ﬁnancial conﬂict of interest associated with this
+paper. The authors’ responsibilities were as follows: K. L.
+and E. I. were responsible for the design of the study, organisation of data collection, and for analysing and reporting
+the data. T. P. conducted the statistical analysis. All authors
+contributed to writing and revising of the paper.
+References
+1.
+
+2.
+
+3.
+
+4.
+
+5.
+6.
+
+7.
+8.
+9.
+
+10.
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+Ben-Haroush A, Tyogev Y & Hod M (2004) Epidemiology
+of gestational diabetes mellitus and its association with type 2
+diabetes. Diabet Med 21, 103–113.
+¨
+¨
+Ostlund I, Hanson U, Bjorklund A, et al. (2003) Maternal and
+fetal outcomes if gestational impaired glucose tolerance is not
+treated. Diabetes Care 26, 2107 – 2111.
+Plagemann A, Harder T, Kohlhoff R, et al. (1997) Glucose tolerance
+and insulin secretion in children of mothers with pregestational
+IDDM or gestational diabetes. Diabetologia 40, 1094–1100.
+Clausen T, Burski TK, Oyen N, et al. (2005) Maternal anthropometric and metabolic factors in the ﬁrst half of pregnancy
+and risk of neonatal macrosomia in term pregnancies. A prospective study. Eur J Endocrinol 153, 887– 894.
+Godfrey KM & Barker DJP (2000) Fetal nutrition and adult
+disease. Am J Clin Nutr 71, 344–352.
+Danaei G, Lawes CMM, Vander Hoorn S, et al. (2006) Global
+and regional mortality from ischaemic heart disease and stroke
+attributable to higher-than-optimum blood glucose concentration: comparative risk assessment. Lancet 368, 1651 –1659.
+´
+Ahren B (2007) Insulin secretion and insulin sensitivity in relation
+to fasting glucose in healthy subjects. Diabetes Care 30, 644–648.
+Yamaoka K & Tango T (2005) Efﬁcacy of lifestyle education to
+prevent type 2 diabetes. Diabetes Care 28, 2780 – 2786.
+¨
+Backhed F, Ding H, Wang T, et al. (2004) The gut microbiota
+as an environmental factor that regulates fat storage. Proc Natl
+Acad Sci U S A 101, 15718– 15723.
+Turnbaugh PJ, Ley RE, Mahowald MA, et al. (2006) An obesity-associated gut microbiome with increased capacity for
+energy harvest. Nature 444, 1027– 1031.
+¨
+Backhed F, Manchester JK, Semenkovich CF, et al. (2007)
+Mechanisms underlying the resistance to diet-induced obesity
+in germ-free mice. Proc Natl Acad Sci U S A 104, 979– 984.
+Goldblum SE, Grann TW, Ding X, et al. (1994) Lipopolysaccharide (LPS)-binding protein and soluble CD14 function as
+accessory molecules for LPS-induced changes in endothelial
+barrier function, in vitro. J Clin Invest 93, 692– 702.
+Yu B, Hailman E & Wright SD (1997) Lipopolysaccharides
+binding protein and soluble CD14 catalyze exchange of phospholipids. J Clin Invest 99, 315–324.
+¨ ¨¨
+Laitinen K, Hoppu U, Hamalainen M, et al. (2006) Breast milk
+fatty acids may link innate and adaptive immune regulation:
+analysis of soluble CD14, prostaglandin E2 and fatty acids.
+Pediatr Res 59, 723–727.
+Shoelson SE, Lee J & Goldﬁne AB (2006) Inﬂammation and
+insulin resistance. J Clin Invest 116, 1793– 1801.
+
+British Journal of Nutrition
+
+Probiotics, diet and blood glucose
+16. Ouwehand A, Isolauri E, Kirjavainen PV, et al. (2000) The
+mucus binding of Biﬁdobacterium lactis Bb12 is enhanced in
+the presence of Lactobacillus GG and Lact. delbrueckii subsp.
+bulgaricus. Lett Appl Microbiol 30, 10 –13.
+17. Benno Y, He F, Hosoda M, et al. (1996) Effects of
+Lactobacillus GG yogurt on human intestinal microecology in
+Japanese subjects. Nutr Today 31, Suppl., 9– 11.
+¨
+18. Kalliomaki M, Kirjavainen P, Eerola E, et al. (2001) Distinct
+patterns of neonatal gut microﬂora in infants in whom atopy
+was and was not developing. J Allergy Clin Immunol 107,
+129 –134.
+¨
+19. Kalliomaki M, Salminen S, Arvilommi H, et al. (2001)
+Probiotics in primary prevention of atopic disease: a randomised, placebo-controlled trial. Lancet 357, 1076 –1079.
+20. Nordic Working Group on Diet and Nutrition (1996) Nordic
+Nutrition Recommendations. Scand J Nutr 40, 161 – 165.
+21. Becker W, Lyhne N, Pedersen AN, et al. (2004) Nordic nutrition recommendations 2004 – integrating nutrition and physical
+activity. Scand J Nutr 48, 178 –187.
+¨
+22. Piirainen T, Isolauri E, Lagstrom H, et al. (2006) Impact of
+dietary counseling on nutrient intake during pregnancy: a prospective cohort study. Br J Nutr 96, 1095 –1104.
+23. Katz A, Nambi SS, Mather K, et al. (2000) Quantitative insulin
+sensitivy check index: a simple accurate method for assessing
+insulin sensitivity in humans. J Clin Endocrinol Metab 85,
+2402 – 2410.
+24. Matthews DR, Hosker JP, Rudenski AS, et al. (1985) Homeostasis model assessment: insulin resistance and b-cell function
+from fasting plasma glucose and insulin concentrations in
+man. Diabetologia 28, 412 – 419.
+25. Crowther CA, Hiller JE, Moss JR, et al. (2005) Effect of treatment of gestational diabetes mellitus on pregnancy outcomes.
+New Engl J Med 352, 2477– 2486.
+¨
+26. Lobner K, Knopff A, Baumgarten A, et al. (2006) Predictors
+of postpartum diabetes in women with gestational diabetes
+mellitus. Diabetes 55, 792 –797.
+27. Tabuchi M, Ozaki M, Tamura A, et al. (2003) Antidiabetic
+effect of Lactobacillus GG in streptozotocin-induced diabetic
+rats. Biosci Biotechnol Biochem 67, 1421 – 1424.
+28. Matsuzaki T, Nagata Y, Kado S, et al. (1997) Effect of
+oral administration of Lactobacillus casei on alloxan-induced
+diabetes in mice. APMIS 105, 637 – 642.
+29. Yadav H, Jain S & Sinha PR (2007) Antidiabetic effect
+of probiotic dahi containing Lactobacillus acidophilus and
+Lactobacillus casei in high-fructose fed rats. Nutrition 23,
+62 –68.
+
+1687
+
+30. Yadav H, Jain S & Sinha PR (2006) Effect of dahi containing
+Lactococcus lactis on the progression of diabetes induced by
+a high-fructose diet in rats. Biosci Biotechnol Biochem 70,
+1255– 1258.
+¨
+31. Kalliomaki M, Poussa T, Salminen S, et al. (2007) Probiotics
+during the ﬁrst 7 years of life: a cumulative risk reduction of
+eczema in a randomized, placebo-controlled trial. J Allergy
+Clin Immunol 119, 1019 –1021.
+¨
+32. Kalliomaki M, Collado MC, Salminen S, et al. (2008) Early
+differences in fecal microbiota composition in children may predict overweight. Am J Clin Nutr 87, 534–538.
+33. Delzenne NM & Cani PD (2005) A place for dietary ﬁbre in the
+management of the metabolic syndrome. Micronutrients, neutraceutics and functional foods. Curr Opin Clin Nutr Metab Care
+8, 636– 640.
+34. Membrez M, Blancher F, Jaquet M, et al. (2008) Gut microbiota
+modulation with norﬂoxacin and ampicillin enhances glucose
+tolerance in mice. FASEB J 22, 2416– 2426.
+35. Shi H, Kokoeva MV, Inouye K, et al. (2006) TLR4 links innate
+immunity and fatty acid-induced insulin resistance. J Clin Invest
+116, 3015 – 3025.
+36. Stampfer MJ, Hu FB, Manson JE, et al. (2000) Primary prevention of coronary heart disease in women through diet and
+lifestyle. New Engl J Med 343, 16–22.
+37. Weiss R, Dziura J, Burgert TS, et al. (2004) Obesity and the
+metabolic syndrome in children and adolescents. New Engl J
+Med 350, 2362 –2374.
+38. Ley RE, Turnbaugh PJ, Klein S, et al. (2006) Human gut
+microbes associated with obesity. Nature 444, 1022 –1023.
+39. Cani PD, Neyrinck AM, Fava F, et al. (2007) Selective
+increases of biﬁdobacteria in gut microﬂora improve high-fatdiet-induced diabetes in mice through a mechanism associated
+with endotoxaemia. Diabetologia 50, 2374– 2383.
+40. Creely SJ, McTernan PG, Kusminski CM, et al. (2007) Lipopolysaccharide activates an innate immune system response in
+human adipose tissue in obesity and type 2 diabetes. Am J Physiol Endocrinol Metab 292, E740 – E747.
+41. Erridge C, Attina T, Spickett CM, et al. (2007) A high-fat meal
+induces a low-grade endotoxemia: evidence of a novel mechanism
+of postprandial inﬂammation. Am J Clin Nutr 86, 1286 –1292.
+42. Calder PC (2006) Polyunsaturated fatty acids and inﬂammation.
+Prostaglandins Leukot Essent Fatty Acids 75, 197– 202.
+43. Cani PD, Neyrinck AM, Fava F, et al. (2007) Selective
+increases of biﬁdobacteria in gut microﬂora improve high-fatdiet-induced diabetes in mice through a mechanism associated
+with endotoxaemia. Diabetologia 50, 2374– 2383.

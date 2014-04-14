@@ -1,0 +1,1328 @@
+VOLUME
+
+22
+
+⅐
+
+NUMBER
+
+15
+
+⅐
+
+AUGUST
+
+1
+
+2004
+
+JOURNAL OF CLINICAL ONCOLOGY
+
+O R I G I N A L
+
+R E P O R T
+
+A Randomized Trial Comparing Deﬁned-Duration With
+Continuous Irinotecan Until Disease Progression in
+Fluoropyrimidine and Thymidylate Synthase Inhibitor–
+Resistant Advanced Colorectal Cancer
+Rohit Lal, James Dickson, David Cunningham, Ian Chau, Andrew R. Norman, Paul J. Ross,
+Clare Topham, Gary Middleton, Mark Hill, and Jacqui Oates
+From the Royal Marsden Hospital,
+London and Surrey; St Luke’s Oncology
+Centre, Guildford; Kent Oncology
+Centre, Maidstone, United Kingdom.
+Submitted January 6, 2004; accepted
+May 10, 2004.
+Presented at the 39th Annual Meeting of
+the American Society of Clinical Oncology, Chicago, IL, May 31-June 3, 2003.
+Authors’ disclosures of potential conﬂicts of interest are found at the end of
+this article.
+Address reprint requests to David
+Cunningham, MD, FRCP, Department
+of Medicine, Royal Marsden Hospital,
+Downs Rd, Sutton, Surrey, United
+Kingdom SM2 5PT; e-mail:
+david.cunningham@icr.ac.uk.
+© 2004 by American Society of Clinical
+Oncology
+0732-183X/04/2215-3023/$20.00
+DOI: 10.1200/JCO.2004.01.005
+
+A
+
+B
+
+S
+
+T
+
+R
+
+A
+
+C
+
+T
+
+Purpose
+Irinotecan given until disease progression is an accepted standard treatment for advanced colorectal
+cancer (CRC) resistant to ﬂuoropyrimidines. It is not known whether a predeﬁned period of irinotecan
+treatment would result in similar duration of disease control. We performed a multicenter phase III trial
+to compare the two policies of deﬁned-duration versus continuous irinotecan treatment.
+Patients and Methods
+<n>Three hundred thirty-three</n> eligible patients with advanced CRC progressing on or within 24 weeks of
+completing ﬂuoropyrimidine-based chemotherapy were prospectively registered. After receiving eight
+cycles of irinotecan given at 350 mg/m2 once every 3 weeks, 55 patients with responding or stable
+disease were randomly assigned to stop irinotecan (n ϭ 30) or continue until disease progression
+(n ϭ 25). Registered patients were not randomly assigned predominantly due to disease progression (n ϭ 236) and intolerable toxicity (n ϭ 38).
+Results
+From the time of random assignment, there were no differences in failure-free survival (P ϭ .999) or
+overall survival (P ϭ .11) between the two arms. No difference was seen in mean global health status
+quality-of-life score between the two arms at 12 weeks after random assignment. No grade 3 diarrhea
+and febrile neutropenia was seen in the continue-irinotecan arm after random assignment.
+Conclusion
+For most patients, the decision to continue on irinotecan beyond 24 weeks is inﬂuenced by disease
+progression or treatment-related toxicity. However, for 17% of patients in whom this decision is clinically
+relevant, there seems to be little beneﬁt from continuing irinotecan, though the drug was well tolerated
+without any deterioration in quality of life.
+J Clin Oncol 22:3023-3031. © 2004 by American Society of Clinical Oncology
+
+INTRODUCTION
+
+In advanced colorectal cancer (CRC), patients with access to ﬂuoropyrimidines, irinotecan, and oxaliplatin can achieve a
+median survival of 18 to 22 months.1,2 The
+role of irinotecan was ﬁrst established in
+patients with ﬂuoropyrimidine-refractory
+CRC, with two randomized studies demonstrating survival beneﬁt over best supportive
+care3 or alternative continuous infusion of
+ﬂuorouracil (FU)4 in this group of patients.
+In both studies, irinotecan was given until
+
+disease progression. Subsequently, the combination of irinotecan with FU and leucovorin (LV) produced superior survival
+compared with FU/LV in a ﬁrst-line setting,5,6 and led to irinotecan becoming the
+standard of care in ﬁrst-line treatment of
+metastatic CRC. In addition, oxaliplatin/infused FU/LV (FOLFOX) has recently been
+shown to have a survival advantage over irinotecan/bolus FU/LV (IFL),1 and similar efﬁcacy
+to irinotecan/infused FU/LV (FOLFIRI).2 Oxaliplatin combination has therefore also become standard of care in the ﬁrst-line setting.
+3023
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Lal et al
+
+Whereas the issue of treatment duration has been addressed in many adjuvant studies in CRC,7-9 only one randomized study evaluated two policies of a deﬁned treatment
+period of 12 weeks, compared with treatment until disease
+progression in patients receiving ﬁrst-line treatment.10 No
+studies have evaluated whether continuous treatment with
+irinotecan until disease progression is superior to a deﬁned
+period of treatment in the second-line setting in terms of
+survival or quality of life (QoL). In this prospective study,
+we compared the two policies of continuous treatment until
+disease progression, with a deﬁned duration of eight cycles
+of irinotecan monotherapy, given every 3 weeks.
+PATIENTS AND METHODS
+This phase III multicenter prospective randomized controlled trial
+recruited patients from six oncology centers in the United Kingdom. The eligibility criteria included: locally advanced or metastatic histologically proven CRC that progressed on or within 24
+weeks of FU, raltitrexed, or oral ﬂuoropyrimidine– based chemotherapy; WHO performance status (PS) Յ 2; bidimensionally
+measurable disease assessed by chest x-ray or computed tomography (CT) scan; and satisfactory hematological, renal, and liver
+functions. Patients who had received previous adjuvant chemotherapy and up to a maximum of three lines of palliative chemotherapy, as well as those with no measurable disease, were
+permitted into the study.
+The protocol was approved by the Scientiﬁc and Research
+Ethics Committee of the participating institutions as well as the
+London Multicenter Research Ethics Committee. Written informed consent was obtained from each patient at registration.
+Details of all eligible patients were forwarded to the trial ofﬁce
+based at the Royal Marsden Hospital (Surrey, UK) to verify eligibility criteria and were prospectively registered for the trial. Patients who achieved a radiological objective response or disease
+stabilization after 24 weeks of irinotecan were then randomly
+assigned by an independent randomization ofﬁce to either stop
+irinotecan or continue irinotecan in a 1:1 basis using random
+permuted blocks. Patients were stratiﬁed according to number of
+previous lines of treatment. Patients, who did not have measurable
+disease on entry into the study, were eligible for random assignment if no objective disease progression was observed after 24
+weeks of irinotecan.
+Before treatment, the serum carcinoembryonic antigen level
+was measured, in addition to laboratory testing for hematological
+and biochemical proﬁle. Baseline QoL assessment was made using
+the European Organization for Research and Treatment of Cancer
+QoL Questionnaire core 30 (EORTC QLQc30).
+Patients were treated with irinotecan 350 mg/m2 intravenously over 30 minutes every 3 weeks for eight cycles. No reduced
+starting dose was recommended in the protocol for patients aged
+Ն 70 years, those with WHO PS 2, or patients receiving previous
+pelvic radiotherapy. Before irinotecan, intravenous 5HT3 antagonist and dexamethasone were given. If patients developed acute
+cholinergic syndrome, then atropine 0.25 mg subcutaneously was
+given, and future courses would also be preceded by atropine,
+although in the latter part of the study, all patients were given
+prophylactic atropine before the ﬁrst course of treatment.
+3024
+
+Toxicity was measured using the National Cancer Institute
+Common Toxicity Criteria version 2.11 Delayed diarrhea was
+managed with loperamide and prophylactic ciproﬂoxacin as per
+unit guideline. A dose reduction of irinotecan to 300 mg/m2 in
+subsequent courses was made if patients developed grade 3 or 4
+diarrhea, grade 4 neutropenia, or grade 3 febrile neutropenia. A
+second dose reduction to 250 mg/m2 was recommended with the
+recurrence of these toxicities. Patients were withdrawn from the
+study if signiﬁcant toxicity occurred at a dose level of 250 mg/m2.
+Dose delay for up to 2 weeks was recommended in cases of absolute neutrophil count less than 1.5 ϫ 109/L, platelet less than
+100 ϫ 109/L on the day of treatment, or grades 2 to 3 renal and liver
+dysfunction during treatment.
+Radiological assessments with CT scan were made after every
+four cycles of irinotecan. Radiological tumor response was evaluated according to WHO criteria.12 Complete response (CR) was
+deﬁned as the complete disappearance of all measurable lesions,
+without the appearance of new lesion(s). Partial response was
+deﬁned as a reduction of bidimensional lesions by Ն 50% of the
+sum of the products of the largest perpendicular diameters of each
+measurable lesion, and no progression in other lesions or appearance of any new lesions. Stable disease (SD) was deﬁned as a less
+than 50% reduction of tumor volume or a less than 25% increase
+in the volume of one or more measurable lesions, with no new
+lesions. Progressive disease (PD) was deﬁned as an increase of
+Ն 25% of the size of at least one bidimensionally measurable
+lesion, the appearance of new lesion(s), and/or the onset of ascites
+or pleural effusion with cytological conﬁrmation. Patients who
+were randomly assigned to stop irinotecan would continue to have
+clinical and biochemical reassessment every 3 months after the
+completion of irinotecan, whereas those in the continueirinotecan arm would have repeated CT after every four cycles of
+irinotecan. QoL assessment was repeated after completing eight
+cycles of irinotecan and then every 6 weeks until PD. QoL questionnaires were mailed to patients if they were not due for clinic
+visits. As the primary treatment period of interest in this trial was
+after random assignment, no interval QoL assessment was made
+during the ﬁrst eight cycles of chemotherapy, and more frequent
+assessment was instituted after random assignment.
+The primary end point was failure-free survival (FFS) from
+time of random assignment (ie, after eight cycles of irinotecan).
+One hundred twelve patients (56 in each arm) were required to
+detect a 25% difference (from 25% to 50%) in 6-month FFS
+following random assignment with 80% power and a 2-sided ␣ of
+5%. It was anticipated that around 50% of prospectively registered
+patients would have SD or responding disease after eight cycles of
+treatment and were available for random assignment; therefore,
+224 patients were required to be registered on the study.
+Secondary end points included QoL, overall survival (OS),
+and adverse events after random assignment. FFS was calculated
+from the date of random assignment until PD, relapse, or death
+from any cause. OS from registration or random assignment was
+calculated from the date of registration or random assignment
+until death from any cause or censored at last follow-up respectively. Both FFS and OS were estimated using the Kaplan-Meier
+method13 and were compared between the two arms using the
+log-rank test.14 Hazard ratios for the stop-irinotecan arm were set
+at 1. All analyses were performed on an intention-to-treat basis.
+Analyses were performed using SPSS package version 12 (SPSS
+Inc, Chicago, IL).
+JOURNAL OF CLINICAL ONCOLOGY
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Comparing Duration of Irinotecan in CRC
+
+Fig 1. Trial proﬁle.
+
+RESULTS
+
+Between November 1997 and September 2002, 333 patients
+were prospectively registered into this study. Figure 1 shows
+the trial proﬁle. Two patients were ineligible because of
+previous carcinoma of the prostate (n ϭ 1) and elevated
+
+bilirubin (n ϭ 1). Five patients were commenced with a
+reduced dose of 300 mg/m2 and were considered to be
+protocol violations, but they were included in the
+intention-to-treat analysis. Two hundred thirty-six patients
+(71%) developed PD, and 38 (11%) withdrew because of
+intolerable toxicity. Of the remaining 57 patients (17.1%)
+3025
+
+www.jco.org
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Lal et al
+
+Table 1. Baseline Characteristics at Registration
+All Patients
+(N ϭ 333)
+No. of
+Patients
+Age, years
+Median
+Range
+Sex
+Male
+Female
+Performance status
+0
+1
+2
+3
+Unknown
+Primary tumor site
+Colon
+Rectum
+Rectosigmoid junction
+Synchronous
+Others
+Unknown
+Involved sites
+Liver
+Lung
+Peritonuem
+Primary tumor in situ or local recurrence
+No. of involved organs
+1
+2
+3
+No. of lines of previous chemotherapy
+1
+2
+3
+Unknown
+Progression on adjuvant treatment
+Best response to last treatment
+Unknown
+Nonevaluable
+No. of patients assessable for response to last treatment
+Complete response
+Partial response
+Stable disease
+Progressive disease
+
+%
+
+No. of
+Patients
+
+62
+29-80
+
+Continue Irinotecan
+(n ϭ 25)
+
+%
+
+No. of
+Patients
+
+65
+42-76
+
+%
+
+64
+45-78
+
+199
+134
+
+60
+40
+
+20
+10
+
+67
+33
+
+16
+9
+
+64
+36
+
+88
+199
+39
+1
+6
+
+26
+60
+12
+0.3
+1.8
+
+11
+14
+5
+0
+0
+
+37
+47
+17
+0
+0
+
+11
+13
+1
+0
+0
+
+44
+52
+4
+0
+0
+
+208
+90
+20
+11
+1
+3
+
+62
+27
+6
+3
+0.3
+0.9
+
+22
+7
+0
+1
+0
+0
+
+73
+23
+0
+3
+0
+0
+
+16
+7
+1
+1
+0
+0
+
+64
+28
+4
+4
+0
+0
+
+238
+133
+55
+56
+
+71
+40
+17
+17
+
+22
+8
+8
+3
+
+73
+27
+27
+10
+
+17
+12
+5
+4
+
+68
+48
+20
+16
+
+122
+136
+75
+
+37
+41
+23
+
+16
+13
+1
+
+53
+43
+3
+
+8
+11
+6
+
+32
+44
+24
+
+263
+59
+4
+7
+20
+
+79
+18
+1.2
+2.1
+6
+
+22
+8
+0
+0
+4
+
+73
+27
+0
+0
+13
+
+20
+5
+0
+0
+1
+
+80
+20
+0
+0
+4
+
+54/333
+6/333
+253
+6/253
+53/253
+96/253
+98/253
+
+16
+2
+
+2/30
+2/30
+22
+2/22
+6/22
+10/22
+4/22
+
+5/25
+0/25
+19
+0/19
+4/19
+9/19
+6/19
+
+20
+0
+
+with responding or SD who were eligible, two refused to
+be randomly assigned; thus 55 patients were randomly
+allocated to stop irinotecan (n ϭ 30) or continue irinotecan (n ϭ 25).
+Table 1 presents the baseline characteristics at registration for the whole group as well as those who were randomly
+assigned. Baseline demographics were balanced between
+the two treatment arms. The majority of the randomly
+assigned patients were still of PS 0 or 1 after eight cycles of
+irinotecan. Only one patient and two patients were of PS 2
+3026
+
+Stop Irinotecan
+(n ϭ 30)
+
+2
+21
+38
+39
+
+7
+7
+9
+27
+45
+18
+
+0
+21
+47
+32
+
+at random assignment in the stop-irinotecan and continueirinotecan arms, respectively. However, more patients had
+two or three organs involved by metastatic disease in the
+continue irinotecan arm. For 79% of all patients, trial treatment was their second-line treatment, whereas for 18%, it
+was their third-line therapy.
+Table 2 presents the status of patients and outcome
+events after the ﬁrst four and eight cycles of irinotecan
+before random assignment. Of 333 patients registered in the
+study, 153 (45.9%) developed PD during the ﬁrst four
+JOURNAL OF CLINICAL ONCOLOGY
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Comparing Duration of Irinotecan in CRC
+
+Table 2. Outcome Events After Four and Eight Cycles of Irinotecan
+Prior to Random Assignment
+After Four
+Cycles of
+Irinotecan
+No. of
+Patients
+
+Outcome Events
+Withdrawn
+Stop due to toxicity
+Stop due to progressive disease
+Total
+
+2
+29
+153
+184
+
+%
+
+After Eight
+Cycles of
+Irinotecan
+No. of
+Patients
+‫ء‬
+
+0.5
+9
+46
+55
+
+4
+38
+236
+278
+
+%
+1
+11
+71
+83
+
+‫ء‬
+
+Including two patients who refused random assignment.
+
+cycles of treatment, and in total, 236 patients (70.9%)
+progressed after eight cycles. Twenty-nine patients withdrew from the study during the ﬁrst four cycles due to
+intolerable toxicity, and another nine patients did so at
+the end of eight cycles.
+Table 3 presents the objective tumor response during
+the ﬁrst eight cycles of irinotecan. The overall response rate
+for the whole cohort was only 9% (95% CI, 6.2% to 12.6%).
+Thirty patients, including eight patients who achieved an
+objective response, were randomly assigned to stop irinotecan. One patient with lung metastases at registration had a
+CR during the ﬁrst eight cycles of treatment and remains in
+CR. Fifteen patients in the stop-irinotecan arm had further
+chemotherapy on PD. Eight of these patients were rechallenged with irinotecan. The other seven patients received
+oxaliplatin or mitomycin C– containing regimens, usually
+due to short progression-free interval. It was not possible to
+treat 14 of 29 patients in the stop-irinotecan arm with PD
+due to deterioration of PS.
+Twenty-ﬁve patients, including six objective responses,
+were randomly assigned to continue irinotecan. Two patients developed PD following random assignment before
+receiving any further irinotecan, and were included in analyses on an intention-to-treat basis. One hundred thirty-six
+further cycles of irinotecan were given to this group of
+
+Fig 2. Failure-free survival of the two treatment arms from
+random assignment.
+
+patients. The median additional cycles delivered was four
+(range, one to 12 cycles). The total irinotecan dosage per
+cycle prescribed to patients after random assignment was
+88% of the recommended total irinotecan dose (350 mg/
+m2) per cycle. There were no further responses after random assignment.
+Figure 2 shows the FFS for the randomly assigned
+patients. There were no signiﬁcant differences in FFS between the two arms (hazard ratio, 1.01; 95% CI, 0.57 to 1.78;
+log-rank P ϭ .999). Six-month FFS rates were 25.3% (95%
+CI, 11.2 to 42.2%) for stop irinotecan, and 36.4% (95% CI,
+17.4 to 55.7%) for continue-irinotecan arm. At 6 months,
+the point difference in FFS was not signiﬁcant (P ϭ .377).
+Median FFS was 3.2 months (95% CI, 2.7 to 3.8) and 4.9
+months (95% CI: 3.9-5.9) for stop- and continueirinotecan arms, respectively.
+Figure 3 shows the OS for the randomly assigned patients. Forty-three patients (78%) had died. There was no
+signiﬁcant difference in OS between the two arms (hazard
+ratio, 1.63; 95% CI, 0.88 to 3.02; P ϭ .109). One-year
+survival rates were 54.8% (95%CI, 34.2 to 71.4%) for the
+stop-irinotecan arm and 46.3% (95%CI, 25.1 to 65.1%) for
+
+Table 3. Best Achieved Objective Response
+All Patients
+(N ϭ 333)
+Response
+
+No. of Patients
+
+CR
+PR
+SD
+PD
+Not assessable
+ORR
+95% CI, %
+
+1
+29
+104
+173
+26
+30
+
+Stop Irinotecan
+(n ϭ 30)
+%
+0.3
+8.7
+31
+52
+8
+9
+
+6 to 13
+
+Continue Irinotecan
+(n ϭ 25)
+
+No. of Patients
+
+%
+
+No. of Patients
+
+%
+
+1
+7
+22
+0
+0
+8
+
+3
+24
+73
+0
+0
+27
+
+0
+6
+19
+0
+0
+6
+
+0
+24
+76
+0
+0
+24
+
+12 to 46
+
+9 to 45
+
+Abbreviations: CR, complete response; PR, partial response; SD, stable disease; PD, progressive disease; ORR, overall response rate.
+
+3027
+
+www.jco.org
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Lal et al
+
+stop-irinotecan arm were due to subsequent chemotherapy
+treatment on PD.
+DISCUSSION
+
+Fig 3. Overall survival of the two treatment arms from random assignment.
+
+the continue-irinotecan arm. The median survival from
+random assignment was 13.4 months for the stopirinotecan arm and 12.1 months for the continueirinotecan arm. From the time of registration, the median
+survival was 19 months for the stop-irinotecan arm and
+17.7 months for the continue-irinotecan arm. Figure 4
+shows the FFS and OS for the whole cohort of 333 patients.
+The median and 1-year FFS was 3.6 months and 7.7% (95%
+CI, 5.1% to 11.1%), respectively. The median and 1-year OS
+was 9.3 months and 35.6% (95% CI, 30.1 to 42.2%).
+Table 4 presents the mean scores and standard deviations of QoL scores assessed at random assignment and 12
+weeks after random assignment. The number of questionnaires returned was small, but there were no differences in
+QoL between the two arms. Table 5 shows the incidences of
+grade 3 or 4 toxicities occurring after random assignment.
+Serious adverse events were infrequent in both arms. In the
+continue-irinotecan arm, no patients developed grade 3
+diarrhea, febrile neutropenia, or infection after random
+assignment. Grade 3 neutropenia occurred in two patients
+only. All the grade 3 or 4 hematological toxicities seen in the
+
+Fig 4. Failure-free and overall survival of all registered patients
+from registration.
+
+3028
+
+In this article, we report that administering irinotecan
+for a deﬁned duration of 24 weeks did not inﬂuence
+outcome compared with continuous therapy in patients
+with ﬂuoropyrimidine-refractory advanced CRC. However, continuing irinotecan beyond 24 weeks did not lead
+to any clinically important incidences of serious adverse
+events, and QoL was not compromised by continuing
+on treatment.
+Only 17% of our patients still had responding or SD
+after eight cycles of irinotecan—much lower than our original anticipation of 50%. This study was designed in 1997
+before the results of the two pivotal studies of irinotecan in
+second-line treatment were known.3,4 Indeed, in these two
+studies, irinotecan was given for a median of 4.1 and 4.2
+months.3,4 Fifty-ﬁve percent of our patients already stopped
+treatment after four cycles (3 months), predominantly due
+to disease progression. Thus our question of whether continuous treatment would lead to prolonged disease control
+compared with a deﬁned duration of eight cycles was only
+relevant to a small proportion of patients. Our study was
+therefore closed early and was underpowered to show a
+clinically relevant survival difference between the two treatment arms. In fact, based on the actual proportion of patients who were eligible to be randomly assigned, close to
+660 patients would be required to register on the study for
+our original sample size of 112 randomly assigned patients.
+Due to the prolonged period of recruitment and the inability to randomly assign 112 patients in a reasonable timeframe, the principal investigator, in conjunction with other
+participating centers, decided to close the study in May
+2003, after 348 patients were registered. No further patients
+underwent random assignment. Based on 55 patients randomly assigned, a 40% difference in 6-month FFS (from 25%
+to 65%) could be detected with 81% power (2-sided ␣ ϭ 5%)
+compared with 25% difference as originally hypothesized.
+Although the optimal duration of adjuvant chemotherapy has been addressed in colon cancer,7-9 randomized
+data are lacking in advanced CRC comparing the two strategies of continuous treatment until disease progression or
+deﬁned treatment duration. Whereas an early study in
+breast cancer suggested that continuous chemotherapy resulted in longer time to disease progression, longer survival,
+and better QoL compared with intermittent therapy,15
+more recent data in patients with non–small-cell lung cancer and breast cancer suggested no additional clinical beneﬁt in terms of survival, QoL, and symptomatic response
+with prolonged treatment.16-21 The United Kingdom Medical Research Council (MRC) published a randomized
+JOURNAL OF CLINICAL ONCOLOGY
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Comparing Duration of Irinotecan in CRC
+
+Table 4. Quality-of-Life Analyses Using EORTC QLQc30
+At Random Assignment
+Stop Irinotecan
+(n ϭ 23)
+
+12 Weeks Random Assignment
+
+Continue Irinotecan
+(n ϭ 19)
+
+Stop Irinotecan
+(n ϭ 15)
+
+Continue Irinotecan
+(n ϭ 11)
+
+Mean
+
+SD
+
+Mean
+
+SD
+
+Mean
+
+SD
+
+Mean
+
+SD
+
+79.3
+73.2
+90.5
+82.3
+77.5
+71.4
+
+20.4
+28.3
+15.8
+17
+27.8
+13.3
+
+81.6
+71.1
+92.9
+82.5
+77.7
+70.6
+
+18
+33.7
+10.2
+17.5
+22.2
+19.7
+
+78.2
+75.6
+82.1
+76.9
+71.1
+68.3
+
+26.4
+39.2
+28.5
+23
+42.4
+28.4
+
+82
+78.7
+91.6
+90.3
+83.3
+76.5
+
+17.5
+23.7
+11.8
+16.9
+12.8
+14.4
+
+22.6
+5.3
+15.2
+13
+18.8
+7.2
+6
+17.2
+19.7
+
+Functional scales
+Physical
+Role
+Cognitive
+Emotional
+Social
+Global
+Symptom scales
+Fatigue
+Nausea and vomiting
+Pain
+Dyspnea
+Sleep disturbance
+Appetite loss
+Constipation
+Diarrhea
+Financial
+
+17.6
+10.7
+15.7
+19.3
+26.3
+17.3
+13
+16.9
+33.6
+
+36.3
+15.9
+7
+19.2
+15.7
+17.5
+10.4
+21
+20
+
+23.6
+18.8
+12.7
+27.9
+23.2
+30.2
+15.8
+25.4
+37.4
+
+28.1
+10.0
+23.3
+22.3
+24.4
+17.8
+6.6
+15.5
+10.5
+
+33.9
+26.6
+33.8
+35
+36.7
+33.1
+13.7
+21.3
+22.4
+
+29.1
+10.7
+6.2
+18.2
+15.1
+3
+9
+24.1
+6.1
+
+19.4
+11.3
+8.6
+27.4
+22.9
+10
+15.4
+30.1
+20.2
+
+Abbreviations: EORTC QLQc30, European Organization for Research and Treatment of Cancer Quality of Life Questionnaire core 30; SD, standard deviation.
+
+study comparing intermittent and continuous palliative
+ﬁrst-line chemotherapy for 354 patients with advanced
+CRC.10 In this study, patients received either infused FU/LV
+(LVFU2) as described by de Gramont et al,22 or protracted
+venous infusion FU or raltitrexed for 3 months only. Those
+who achieved tumor response or disease stabilization were
+then randomly assigned between the two treatment strategies (intermittent v continuous). No survival difference was
+found between the two treatment strategies, though intermittent therapy was associated with reduced toxicity. The
+median time to rechallenge was 4.3 months after stopping
+ﬁrst-line chemotherapy. During rechallenge, an objective
+response rate of 21% was obtained, with a median survival
+
+Table 5. Grade 3 or 4 Adverse Events After Random Assignment
+Stop Irinotecan
+(n ϭ 30)
+
+Continue
+Irinotecan
+(n ϭ 25)
+
+Adverse Event
+
+No. of
+Patients
+
+%
+
+No. of
+Patients
+
+%
+
+Anemia
+Neutropenia
+Thrombocytopenia
+Febrile neutropenia
+Diarrhea
+Stomatitis
+Nausea and vomiting
+Lethargy
+Infection
+
+1
+2
+1
+0
+0
+0
+0
+1
+0
+
+3
+7
+3
+0
+0
+0
+0
+3
+0
+
+2
+2
+0
+0
+0
+0
+2
+2
+0
+
+8
+8
+0
+0
+0
+0
+8
+8
+0
+
+of 10.8 months and 1-year survival of 46%. Notably, despite
+being a principal intention of the trial, only 66 patients
+(37%) randomly assigned to the intermittent group were
+rechallenged with the same ﬁrst-line chemotherapy.
+To our knowledge, our study is the ﬁrst evaluating the
+duration of second-line treatment in advanced CRC. Patients recruited into our study were representative of patients with CRC who received second-line treatment,4,23
+though patients with PS 0 or 1 and solitary site of metastases
+in our study seemed to be fewer than in other published
+studies.3 The whole group’s median survival of 9 months
+seemed to be similar to other published studies.3,4,23,24
+However, the survival of randomized patients was exceptionally good (median survival of 17 to 19 months from
+registration). This reﬂects that this group of patients, who
+had responding or SD after 24 weeks of second-line irinotecan, was prognostically much more favorable than the
+average patient receiving second-line treatment. Notably,
+this group of patients only comprised 17% of the whole
+group. Despite that, the median FFS was only 3 to 4 months
+after random assignment, suggesting that chemoresistance
+was probably already emerging at the time of random assignment. Indeed no objective responses were observed
+with continuing irinotecan after random assignment.
+Only eight patients (27%) in the stop irinotecan group
+could be rechallenged with irinotecan on disease progression, and nearly half of the patients could not receive further
+treatment due to rapid deterioration of their PS. Our protocol required patients in the stop-irinotecan arm to be
+3029
+
+www.jco.org
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Lal et al
+
+reviewed in clinic 3 months after random assignment without any speciﬁc repeat imaging assessment, and this period
+might be too long. An earlier clinic visit with imaging assessment may allow disease progression to be detected in a
+more timely fashion, thus allowing more patients to receive
+further anticancer treatment.
+Aside from the previously mentioned MRC study,
+three other studies have evaluated the value of rechallenge
+in the ﬁrst-line setting. One study reported on 49 patients
+who were reinduced with same dose and schedule of FU and
+LV on disease progression after completing a 6-month
+course of ﬁrst-line FU and LV in a randomized trial of 248
+patients comparing two isomers of LV.25 The median time
+to rechallenge was 5.4 months after stopping ﬁrst-line chemotherapy. During rechallenge, an objective response rate
+of 18% was obtained with a median OS of 8.9 months.
+Another study assessed FU rechallenge in 613 patients recruited within three consecutive randomized studies.
+Ninety-three patients were rechallenged, with a response
+rate of 17% and a median survival of 14.8 months.26 More
+recently, the OPTIMOX study reported on 623 patients
+randomly assigned to FOLFOX4 given till disease progression or FOLFOX7 given for 12 weeks followed by LVFU2
+for 24 weeks, and then reintroduced FOLFOX7 for 12 weeks
+or earlier in case of progression on LVFU2 in patients
+having responsive or SD at the ﬁrst FOLFOX7 administration. This study aimed to decrease the neurotoxicity associated with FOLFOX and to allow FOLFOX rechallenge. The
+response rates and time to disease control was similar in
+both arms, but less neurotoxicity was seen in the intermittent FOLFOX7 arm.27
+However, the role of irinotecan rechallenge has been
+highlighted by the recent introduction of cetuximab, a
+monoclonal antibody against epidermal growth factor receptor. In a randomized study, patients with epidermal
+growth factor receptor– expressing metastatic CRC who
+progressed on or within 3 months of irinotecan were randomly allocated to either combination of cetuximab and
+irinotecan at the same dose and schedule or cetuximab
+monotherapy.28 The combination produced an overall response rate of 22.9% and median time to progression of 4.1
+months, which were both statistically signiﬁcantly better
+than cetuximab monotherapy. This study demonstrated
+that cetuximab could circumvent chemotherapy resistance
+allowing irinotecan rechallenge.
+After four cycles of irinotecan, only nine patients withdrew from our study due to intolerable toxicity, and for
+REFERENCES
+1. Goldberg RM, Sargent DJ, Morton RF, et
+al: A randomized controlled trial of ﬂuorouracil
+plus leucovorin, irinotecan, and oxaliplatin combinations in patients with previously untreated
+
+3030
+
+those randomly assigned to continuous treatment, serious
+adverse events were infrequent after eight cycles. No patients developed grades 3/4 diarrhea, febrile neutropenia, or
+infection in the continue-irinotecan arm. Indeed two patients in the continue-irinotecan arm proceeded to receive
+an additional 12 cycles of treatment. Our data suggest that
+patients who tolerate irinotecan with appropriate dose
+modiﬁcation beyond the ﬁrst four cycles are unlikely to
+experience further dose-limiting toxicity, and the incidence
+of late intolerable adverse events is low.
+There were no differences in QoL in all functional
+domains and symptom scales between the two arms at 12
+weeks after random assignment. The small number of patients randomly assigned and the low number of questionnaires returned 12 weeks after random assignment
+precluded smaller subtle differences in QoL to be detected
+and ﬁrm conclusions to be made, though our data showed
+that QoL was maintained with continuous treatment.
+In conclusion, the decision to continue irinotecan beyond eight cycles in patients with ﬂuoropyrimidineresistant metastatic CRC is relevant in only a small
+proportion (17%) of patients. There were no improvements in FFS from continuing irinotecan beyond eight
+cycles. However, for patients randomly assigned to continue irinotecan, there was no deterioration in QoL, and
+treatment was well tolerated. Although no OS beneﬁt was
+demonstrated from continuing irinotecan, small but clinically important differences may exist.
+I I I
+
+Acknowledgment
+We thank all patients, their families and other investigators who took part in the study: N. Hodson (East Sussex
+Hospital, Brighton), F. Lofts (St George’s Hospital, London), D. Pickering (Kent Oncology Centre, Maidstone), N.
+Stuart (Ysbyty Gwynedd Hospital, Bangor), J. Summers
+(Kent Oncology Centre, Maidstone).
+Authors’ Disclosures of Potential
+Conﬂicts of Interest
+The following authors or their immediate family members have indicated a ﬁnancial interest. No conﬂict exists for
+drugs or devices used in a study if they are not being evaluated as part of the investigation. Acted as a consultant
+within the last 2 years: David Cunningham, Aventis. Received more than $2,000 a year from a company for either of
+the last 2 years: David Cunningham, Aventis.
+
+metastatic colorectal cancer. J Clin Oncol 22:2330, 2004
+2. Tournigand C, Andre T, Achille E, et al:
+FOLFIRI followed by FOLFOX6 or the reverse
+sequence in advanced colorectal cancer: A randomized GERCOR study. J Clin Oncol 22:229237, 2004
+
+3. Cunningham D, Pyrhonen S, James RD, et
+al: Randomised trial of irinotecan plus supportive
+care versus supportive care alone after ﬂuorouracil failure for patients with metastatic colorectal cancer. Lancet 352:1413-1418, 1998
+4. Rougier P, Van Cutsem E, Bajetta E, et al:
+Randomised trial of irinotecan versus ﬂuorouracil
+
+JOURNAL OF CLINICAL ONCOLOGY
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149
+
+Comparing Duration of Irinotecan in CRC
+
+by continuous infusion after ﬂuorouracil failure in
+patients with metastatic colorectal cancer. Lancet 352:1407-1412, 1998
+5. Douillard JY, Cunningham D, Roth AD, et
+al: Irinotecan combined with ﬂuorouracil compared with ﬂuorouracil alone as ﬁrst-line treatment for metastatic colorectal cancer: A
+multicentre randomised trial. Lancet 355:10411047, 2000
+6. Saltz LB, Cox JV, Blanke C, et al: Irinotecan plus ﬂuorouracil and leucovorin for metastatic colorectal cancer: Irinotecan Study Group.
+N Engl J Med 343:905-914, 2000
+7. Andre T, Colin P, Louvet C, et al: Semimonthly versus monthly regimen of ﬂuorouracil
+and leucovorin administered for 24 or 36 weeks
+as adjuvant therapy in stage II and III colon
+cancer: Results of a randomized trial. J Clin
+Oncol 21:2896-2903, 2003
+8. O’Connell MJ, Laurie JA, Kahn M, et al:
+Prospectively randomized trial of postoperative
+adjuvant chemotherapy in patients with high-risk
+colon cancer. J Clin Oncol 16:295-300, 1998
+9. Saini A, Norman AR, Cunningham D, et al:
+Twelve weeks of protracted venous infusion of
+ﬂuorouracil (5-FU) is as effective as 6 months of
+bolus 5-FU and folinic acid as adjuvant treatment
+in colorectal cancer. Br J Cancer 88:1859-1865,
+2003
+10. Maughan TS, James RD, Kerr DJ, et al:
+Comparison of intermittent and continuous palliative chemotherapy for advanced colorectal
+cancer: A multicentre randomised trial. Lancet
+361:457-464, 2003
+11. National Cancer Institute: National Cancer
+Institute–Common Toxicity Criteria. Bethesda,
+MD, National Cancer Institute, 1998
+12. Miller AB, Hoogstraten B, Staquet M, et al:
+Reporting results of cancer treatment. Cancer
+47:207-214, 1981
+
+13. Kaplan EL, Meier P: Non parametric estimation from incomplete observations. J Am Stat
+Assoc 53:457-481, 1958
+14. Peto R, Peto J: Asymptotically efﬁcient
+invariant procedures. J R Stat Soc A 135:185206, 1972
+15. Coates A, Gebski V, Bishop JF, et al:
+Improving the quality of life during chemotherapy for advanced breast cancer: A comparison of
+intermittent and continuous treatment strategies. N Engl J Med 317:1490-1495, 1987
+16. Smith IE, O’Brien ME, Talbot DC, et al:
+Duration of chemotherapy in advanced nonsmall-cell lung cancer: A randomized trial of three
+versus six courses of mitomycin, vinblastine, and
+cisplatin. J Clin Oncol 19:1336-1343, 2001
+17. Gregory RK, Powles TJ, Chang JC, et al: A
+randomised trial of six versus twelve courses of
+chemotherapy in metastatic carcinoma of the
+breast. Eur J Cancer 33:2194-2197, 1997
+18. Muss HB, Case LD, Richards F, et al:
+Interrupted versus continuous chemotherapy in
+patients with metastatic breast cancer: The Piedmont Oncology Association. N Engl J Med 325:
+1342-1348, 1991
+19. Epirubicin-based chemotherapy in metastatic breast cancer patients: Role of doseintensity and duration of treatment. J Clin Oncol
+18:3115-3124, 2000
+20. Harris AL, Cantwell BM, Carmichael J, et
+al: Comparison of short-term and continuous
+chemotherapy (mitozantrone) for advanced
+breast cancer. Lancet 335:186-190, 1990
+21. Socinski MA, Schell MJ, Peterman A, et al:
+Phase III trial comparing a deﬁned duration of
+therapy versus continuous therapy followed by
+second-line therapy in advanced-stage IIIB/IV
+non-small-cell lung cancer. J Clin Oncol 20:13351343, 2002
+
+22. de Gramont A, Bosset JF, Milan C, et al:
+Randomized trial comparing monthly low-dose
+leucovorin and ﬂuorouracil bolus with bimonthly
+high-dose leucovorin and ﬂuorouracil bolus plus
+continuous infusion for advanced colorectal cancer: A French intergroup study. J Clin Oncol
+15:808-815, 1997
+23. Fuchs CS, Moore MR, Harker G, et al:
+Phase III comparison of two irinotecan dosing
+regimens in second-line therapy of metastatic colorectal cancer. J Clin Oncol 21:807-814,
+2003
+24. Tsavaris N, Ziras N, Kosmas C, et al: Two
+different schedules of irinotecan (CPT-11) in patients with advanced colorectal carcinoma relapsing after a 5-ﬂuorouracil and leucovorin
+combination: A randomized study. Cancer Chemother Pharmacol 52:514-519, 2003
+25. Hejna M, Kornek GV, Raderer M, et al:
+Reinduction therapy with the same cytostatic
+regimen in patients with advanced colorectal
+cancer. Br J Cancer 78:760-764, 1998
+26. Yeoh C, Chau I, Cunningham D, et al:
+Impact of 5-ﬂuorouracil rechallenge on subsequent response and survival in advanced colorectal cancer: Pooled analysis from three
+consecutive randomized controlled trials. Clin
+Colorectal Cancer 3:102-107, 2003
+27. Andre T, Figer A, Cervantes A, et al:
+FOLFOX7 compared to FOLFOX 4: Preliminary
+results of the randomized OPTIMOX study.
+Proc Am Soc Clin Oncol 22:253, 2003 (abstr
+1016)
+28. Cunningham D, Humblet Y, Siena S, et al:
+A randomized comparison of cetuximab monotherapy and cetuximab plus irinotecan in
+irinotecan-refractory metastatic colorectal cancer. N Engl J Med (in press)
+
+3031
+
+www.jco.org
+
+Information downloaded from jco.ascopubs.org and provided by at BROWN UNIVERSITY on March 12, 2014 from
+Copyright © 2004 American Society of Clinical Oncology. All rights reserved.
+128.148.196.149

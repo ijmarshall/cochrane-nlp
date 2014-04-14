@@ -1,0 +1,900 @@
+NIH Public Access
+Author Manuscript
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+NIH-PA Author Manuscript
+
+Published in final edited form as:
+J Am Dent Assoc. 2012 April ; 143(4): 370–376.
+
+Multivitamin therapy for recurrent aphthous stomatitis:
+A randomized, double-masked, placebo-controlled trial
+Dr. Rajesh V. Lalla, DDS, PhD, CCRP, DABOM,
+Assistant professor, Section of Oral Medicine, University of Connecticut Health Center, MC1605,
+263 Farmington Ave., Farmington, Conn. 06030-1605
+Ms. Linda E. Choquette, RDH, MSHS, CCRP,
+Clinical research associate, Section of Oral Medicine, University of Connecticut Health Center,
+Farmington
+Dr. Richard S. Feinn, PhD,
+Biostatistician, Clinical Research Center, University of Connecticut Health Center, Farmington
+
+NIH-PA Author Manuscript
+
+Ms. Harriet Zawistowski, BGS, CCRP,
+Clinical research assistant, Clinical Research Center, University of Connecticut Health Center,
+Farmington
+Dr. Marie C. Latortue, DDS, MPH, MS,
+At the time this study was conducted, Dr. Latortue was a postdoctoral fellow in clinical research,
+Section of Oral Medicine, University of Connecticut Health Center, Farmington. She now is a
+resident in prosthodontics, New York University, New York City
+Dr. Edward T. Kelly, DMD, and
+At the time this study was conducted, Dr. Kelly was a dental student, School of Dental Medicine,
+University of Connecticut Health Center, Farmington. He now is in private practice
+Dr. Lorena Baccaglini, DDS, MS, PhD, CCRP, DABOM
+Assistant professor, College of Dentistry, University of Florida, Gainesville
+
+Abstract
+
+NIH-PA Author Manuscript
+
+Background—Recurrent aphthous stomatitis (RAS) is a painful condition of unknown etiology,
+affecting more than 2.5 billion people worldwide. Vitamin deficiencies have been implicated as a
+possible cause.
+Methods—The authors conducted a single-center, randomized, parallel-arm, double-masked,
+placebo-controlled study to examine the effect of daily multivitamin supplementation on the
+number and duration of RAS episodes. The authors randomly assigned <n>160</n> adults who had a
+validated history of at least three episodes of idiopathic minor RAS within the previous 12 months
+to one of two groups: the first group (n = 83) received a once-daily multivitamin containing 100
+percent of the U.S. reference daily intake (RDI) of essential vitamins, and the second group (n =
+77) received once-daily placebo for up to 365 days.
+Results—The results showed no significant difference in the mean number of new RAS episodes
+between the multivitamin (4.19 episodes) and placebo (4.60 episodes) arms during the study
+period (P = .69). The mean duration of new RAS episodes also was similar for the multivitamin
+(8.66 days) and placebo (8.99 days) arms (P = .60). Furthermore, the authors found no differences
+
+Copyright © 2012 American Dental Association. All rights reserved.
+Address reprint requests to Dr. Lalla., lalla@uchc.edu.
+Disclosure. None of the authors reported any disclosures.
+
+Lalla et al.
+
+Page 2
+
+between the two arms with regard to mouth pain, normalcy of diet or compliance with the study
+medication regimen.
+
+NIH-PA Author Manuscript
+
+Conclusion—Daily multivitamin supplementation, with the RDI of essential vitamins, did not
+result in a reduction in the number or duration of RAS episodes.
+Clinical Implications—Clinicians should not recommend multi-vitamin supplementation
+routinely as prophylaxis for RAS.
+Keywords
+Recurrent aphthous stomatitis; canker sore; multi-vitamin; vitamin
+
+NIH-PA Author Manuscript
+
+Recurrent aphthous stomatitis (RAS), also known as “canker sores,” is a common disease,
+affecting an estimated 2.5 billion people worldwide.1 Clinically, this disease manifests as
+recurrent, painful oral ulcerations. Three clinical types have been described: minor, major
+and herpetiform.2 Owing to their painful nature, RAS lesions can affect nutrition, speech
+and oral hygiene.3 Thus, RAS can result in significant morbidity and a diminished quality of
+life.4,5 Patients who experience major RAS develop large, painful oral ulcerations that often
+last for several weeks and heal with scarring. The etiology of RAS is not well understood,
+which hampers the development of effective therapies for prevention or treatment. Several
+factors have been implicated, including genetics, stress, allergies and autoimmunity.2 In
+addition, a substantial body of literature indicates that some patients with RAS have vitamin
+deficiencies.
+Researchers in several studies have implicated vitamin deficiencies—including vitamin
+B12,6–10 folic acid,8,9,11 vitamin B1, B2 and B6—in the pathogenesis of RAS.12,13 For
+example, investigators in one study found that 28 percent of patients with RAS had a
+deficiency of one or more of the B vitamins tested (B1, B2 and B6). In these patients,
+replacement therapy for the deficient vitamins significantly reduced the number of days with
+RAS.13 Investigators in other studies also reported that specific replacement therapy to
+correct vitamin deficiencies (notably B12 and folic acid) can be effective in improving the
+patient’s condition or leading to remission.9,10,14 The results of studies of therapy with a
+combination vitamin/herbal supplement (LongoVital, Cederroth, Upplands Väsby, Sweden)
+indicated that daily prophylactic use resulted in a reduced number of RAS lesions, even in
+the absence of serologic vitamin deficiency.15,16 However, because this supplement contains
+both vitamins and herbal supplements, the specific contribution of vitamins is not clear.
+
+NIH-PA Author Manuscript
+
+Thus, the role of vitamin deficiencies in RAS is not well understood. Furthermore, testing
+for vitamin deficiencies is invasive and expensive, and it is not done routinely in the clinical
+management of RAS. Currently used therapies (such as steroids) have significant adverse
+effects. Therefore, we sought to identify a low-cost, non-toxic strategy for the prevention of
+RAS lesions. We performed this study to examine the efficacy of daily multivitamin
+supplementation in a group of patients with RAS.
+
+METHODS
+Study design
+We conducted a randomized, double-masked, placebo-controlled, parallel-arm, single-center
+study at the University of Connecticut Health Center, Farmington, after having received
+institutional review board approval. All participants provided written informed consent.
+
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 3
+
+Participants
+
+NIH-PA Author Manuscript
+
+We recruited participants from the general population of Hartford County, Connecticut, via
+flyers posted at various locations, e-mails to the health center community and
+advertisements in local newspapers. People 18 years and older with a validated history of at
+least three episodes of idiopathic minor RAS within the previous 12 months were eligible
+for the study. One of three study investigators (R.V.L., L.E.C., H.Z.) questioned volunteers
+about the location, duration and appearance of reported lesions and showed them
+photographs of RAS lesions and of other oral ulcerative lesions to validate their history of
+RAS. Exclusion criteria included smoking, pregnancy, regular use of vitamin supplements
+or any over-the-counter or prescription agents for RAS, and a diagnosis of a systemic
+condition that can cause oral ulceration. Detailed exclusion criteria are available at
+www.clinicaltrials.gov, where the trial is registered under identifier number NCT00527306.
+Interventions
+
+NIH-PA Author Manuscript
+
+The active agent tested was a generic multivitamin supplement containing only the U.S.
+reference daily intake (RDI) of the essential vitamins A, B1, B2, B3, B5, B6, B9, B12, C, D
+and E.17 The active agent did not contain any other micronutrients or supplements such as
+iron or calcium. The placebo consisted of lactose powder. A pharmacy technician inserted
+the multivitamin and placebo into identically colored gelatin capsules at the University of
+Connecticut Health Center Research Pharmacy. Thus, the multivitamin and placebo capsules
+had the same external physical appearance, taste and texture. We instructed participants to
+take one capsule per day for 365 days and to record use of the medication in a study diary.
+Randomization and masking
+The research pharmacist assigned participants randomly to the multivitamin or placebo
+groups (1:1 allocation ratio) by using a computer-based pseudorandom number generator.
+We used a stratified randomization with a fixed block size of 20 participants. We defined
+strata as low RAS frequency (three or four RAS episodes in the year before the study; group
+A) or high RAS frequency (five or more episodes in the previous year; group B). The
+research pharmacist dispensed the treatments and kept confidential records of study drug
+assignment, which were not accessible to study investigators during the study.
+Clinical data collection
+
+NIH-PA Author Manuscript
+
+Baseline visit—At the baseline study visit, we performed the following procedures:
+screened prospective participants; obtained medical histories, including use of any
+medications; conducted clinical oral examinations; educated participants about RAS and
+other oral ulcers; dispensed the study medication; distributed the study diary forms and
+instructions for study participation, including use of the study medication; and took a
+baseline blood sample to determine vitamin B12 and folate levels. We also showed
+photographs of RAS and non-RAS oral ulcers to participants for reference.
+Six-month visit—At the six-month recall visit, one of three investigators (R.V.L., L.E.C.,
+H.Z.) updated participants’ medical histories, including current medications; performed a
+clinical oral examination; reeducated participants about RAS and other oral ulcers;
+dispensed additional study medication and study diary pages; collected completed study
+diary pages (from the first six months); and provided oral and written reinforcement of
+instructions in use of the study medication.
+One-year visit—At the one-year study visit (the final visit), one of the three investigators
+performed the following procedures: collected completed study diary pages (from the
+
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 4
+
+second six months); updated medical histories, including current medications; and
+conducted clinical oral examinations.
+
+NIH-PA Author Manuscript
+
+In addition to the three scheduled study visits, we asked participants to return for additional
+study visits when they developed new episodes of mouth sores during the one-year study
+period. We defined a new episode as the onset of mouth sores after at least one day without
+any mouth sores. At these visits, a masked dentist or dental hygienist using calibrated
+technique obtained a detailed medical history and performed an oral examination to
+determine whether the mouth sores were RAS. If the dentist or dental hygienist determined
+that the mouth sores were not RAS, he or she referred the participant for additional clinical
+evaluation if appropriate. We paid participants $25 for each completed study visit.
+Participants completed written diaries consisting of data regarding onset and duration of
+each RAS episode experienced during study participation. We instructed them to record
+these data on the basis of the first and last day on which they were aware of the presence of
+an RAS lesion. In addition, participants recorded mouth pain scores and normalcy of diet
+scores for each day of an RAS episode. We gave participants postage-paid envelopes for
+return of the completed forms.
+
+NIH-PA Author Manuscript
+
+We asked participants to bring in bottles of capsules at the six- and 12-month study visits so
+that we could count the number of remaining pills. However, their compliance with this
+request was suboptimal and, therefore, we were unable to obtain satisfactory data regarding
+pill counts. In addition, at each study visit (that is, baseline, six months and any intervening
+RAS episode visit), we asked participants about compliance with the study medication
+regimen and reinforced the importance of taking the medication as instructed.
+Outcome measures
+The primary outcome measures were the number and duration of RAS episodes during the
+one-year study period. Secondary outcome measures included mouth pain and normalcy of
+diet during RAS episodes. We assessed mouth pain during RAS episodes by asking
+participants to indicate the daily level of mouth pain (worst, least, average and pain now) on
+an 11-point validated scale ranging from 0 (no pain) to 10 (worst pain imaginable).18 We
+assessed normalcy of diet by using a validated Normalcy of Diet scale,19 on which
+participants rated (during RAS episodes) the highest ranking food they could eat each day
+(ranging from 0 [no alimentation possible] to 10 [full diet]).
+Sample size and statistical methods
+
+NIH-PA Author Manuscript
+
+We calculated study sample size on the basis of 80 percent power and 0.05 α to detect at
+least a 65 percent probability that a randomly chosen participant from the multivitamin arm
+had a superior outcome (that is, fewer episodes, episodes of shorter duration or both) when
+compared with that for a randomly chosen participant from the placebo arm. On the basis of
+these parameters, we estimated that a final sample size of at least 100 participants (50 per
+arm) completing the study would be needed to achieve adequate power after accounting for
+dropouts.
+We conducted baseline group comparisons of demographic variables and baseline vitamin
+levels by using the unpaired t test for continuous measures and the χ2 test for categorical
+measures. A few participants with severe disease had multiple overlapping RAS lesions that
+they reported as one long episode. On the basis of published data20 indicating that the
+maximum duration of minor RAS episodes is 21 days, we treated such episodes as multiple
+episodes of up to 21 days each for the analyses.
+
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 5
+
+NIH-PA Author Manuscript
+
+Main outcome measures—For the first main outcome—duration of RAS episodes—we
+used a linear mixed model with “treatment” (multivitamin or placebo) as the exposure and
+“duration in days” as the dependent variable. Episodes were clustered within participants
+and we treated the intercept as random, allowing for differing numbers of episodes among
+study participants. For the second main outcome—number of episodes—we used an analysis
+of covariance with “treatment” as the exposure and “length of study participation” as the
+covariate to enable us to adjust for a variable length of follow-up.
+Secondary outcome measures—Analyses for the secondary outcome measures—
+mouth pain and diet—also involved the use of linear mixed models because participants
+could provide multiple observations for both of these measures. We included additional
+covariates—sex and number of episodes in the previous year—in the above models to assess
+their effects on parameter estimates. We did not perform any statistical analyses before all
+participants completed their participation in the study. We performed all analyses by using
+statistical software (PASW Statistics 18, IBM SPSS, Armonk, N.Y.).
+
+RESULTS
+Participants
+
+NIH-PA Author Manuscript
+
+We enrolled a total of 160 participants in this study and randomly assigned 83 to the
+multivitamin arm and 77 to the placebo arm. The stratified block randomization resulted in
+an even distribution of participants across the low and high RAS frequency groups (that is,
+groups A and B), as well as comparable demographics and baseline levels of vitamin B12
+and red blood cell (RBC) folate across the two treatment arms (Table 1). Baseline vitamin
+B12 levels were low (less than 201 picograms per milliliters) in 14 of the 160 participants (9
+percent). Of these 14 participants, five were randomized to the multivitamin arm (all five in
+group B) and nine were randomized to the placebo arm (four in group A [low RAS
+frequency] and five in group B [high RAS frequency]). For participants with low baseline
+levels of B12, there was no significant difference in the incidence of new RAS episodes
+during the period of study participation between the five participants randomized to the
+multivitamin arm and the nine participants randomized to the placebo arm (P = .0162).
+Baseline RBC folate levels were low (less than 237 nanograms/mL) in two participants. We
+randomly assigned one of these participants to the multivitamin arm (group B) and one to
+the placebo arm (group B). We did not perform any statistical analyses pertaining to low
+baseline RBC folate levels because of the low number of such participants.
+
+NIH-PA Author Manuscript
+
+Twenty-five of 83 participants (30 percent) in the multivitamin arm and 21 of 77
+participants (27 percent) in the placebo arm did not complete the study. In most cases, they
+gave no specific reason for dropping out. Thus, 58 participants in the multivitamin arm and
+56 participants in the placebo arm completed the entire one-year study. All participants
+(including those who withdrew) reported a total of 779 new RAS episodes during the study.
+For 575 of these episodes, the participant underwent a clinical examination during the
+episode; a dentist or dental hygienist confirmed that 498 of these 575 episodes (87 percent)
+were RAS and determined that 77 of these episodes (13 percent) were not RAS. We
+removed the latter episodes from the analyses.
+Compliance with study medication regimen
+We calculated compliance in two ways. When we compared the number of days that
+participants reported having taken their study medication with the total number of days for
+which they provided responses in the study diary, the mean compliance rates were 92.6
+percent and 94.4 percent for the multivitamin and placebo arms, respectively (P = .43).
+However, when we compared the number of days that participants reported taking the study
+
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 6
+
+NIH-PA Author Manuscript
+
+medication with the total number of days that they were in the study (thus, assuming
+conservatively that participants did not take the study medication on days in which they did
+not provide responses in the medication diary), compliance rates were 63.3 percent and 54.8
+percent for the multivitamin and placebo arms, respectively (P = .21).
+Incidence of RAS episodes
+We examined the incidence of new RAS episodes in an intent-to-treat analysis of all 160
+randomized participants, after adjusting for the duration of study participation. Thus, we
+compared the incidence in the 83 participants in the multivitamin arm (who collectively
+reported 348 RAS episodes) with that in the 77 participants in the placebo arm (who
+collectively reported 354 episodes). The results show no significant difference in the mean
+number of new RAS episodes between that in the multivitamin arm and that in the placebo
+arm during the study period (Table 2). The results of factorial analysis of variance showed
+no treatment effect (P = .69) and no interaction between treatment and group (that is, A or
+B) (P = .40). However, we found a significant A/B group effect (P = .025). Participants with
+a history of more frequent RAS episodes (group B) reported, on average, almost twice as
+many new RAS episodes (4.79) during the study period as did participants who had a history
+of less frequent RAS episodes (group A, 2.50 new episodes). Sex did not interact with
+treatment or A/B group, and the results showed no main effect for sex.
+
+NIH-PA Author Manuscript
+
+Duration of RAS episodes
+Twenty-two participants in the multivitamin arm and 14 participants in the placebo arm did
+not experience any new RAS episodes during the study period; therefore, we could not
+include them in the duration analyses. Thus, we compared the duration of episodes in 61
+participants in the multivitamin arm who experienced at least one RAS episode during the
+study period with that in 63 participants in the placebo arm who experienced at least one
+RAS episode. The mean duration of each RAS episode in participants in the multivitamin
+arm was 8.66 days compared with 8.99 days in those in the placebo arm (P = .60) (Table 3).
+A/B group and sex did not interact significantly with treatment with regard to duration of
+RAS episodes, and there was no main effect for either variable.
+Mouth pain during RAS episodes
+
+NIH-PA Author Manuscript
+
+We excluded from this analysis 36 of 160 participants (22 in the multivitamin arm and 14 in
+the placebo arm) who did not experience any new RAS episodes during the study period.
+Therefore, we compared mouth pain during RAS episodes in 61 participants in the
+multivitamin arm with that in 63 participants in the placebo arm. We found no differences
+between the multivitamin and placebo arms regarding worst pain (P = .63), least pain (P = .
+58), average pain (P = .57) or pain right now (P = .50) (Table 4). A/B group and sex did not
+interact significantly with treatment with regard to mouth pain scores, and there was no main
+effect for either variable.
+Normalcy of diet during RAS episodes
+Thirty-nine participants (22 in the multivitamin arm and 17 in the placebo arm) did not
+provide any normalcy of diet data during an RAS episode; therefore, we compared data from
+61 participants in the multivitamin arm with data from 60 participants in the placebo arm for
+these analyses. The mean diet scores were similar (9.48 for the multivitamin arm and 9.70
+for the placebo arm; P = .18). A/B group and sex did not interact significantly with
+treatment with regard to diet scores, and there was no main effect for either variable.
+
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 7
+
+DISCUSSION
+NIH-PA Author Manuscript
+
+In a subset of patients with RAS, specific replacement therapy to correct vitamin
+deficiencies can improve the patient’s condition or induce remission.9,10,13,14 However, with
+the exception of some specialists, clinicians rarely perform serum testing for vitamin
+deficiencies in patients with RAS. In this study, we examined the merits of an alternative
+approach: daily supplementation in all patients with RAS with the U.S. RDI of essential
+vitamins. Multivitamin supplements at these levels are safe and have been recommended for
+various population groups.21,22 The safety of this regimen also was evidenced by the
+absence of reported adverse events associated with its use in our study population.
+The number of new RAS episodes did not differ significantly according to treatment arm. As
+expected, participants with fewer RAS episodes before enrollment experienced fewer
+episodes during the study period than did participants with a history of more frequent RAS
+episodes. These findings validate the stratification strategy used, which balanced expected
+numbers of RAS episodes across treatment arms.
+
+NIH-PA Author Manuscript
+
+Because the major morbidity of these ulcerative lesions results from pain, any reduction in
+the duration of the lesions can have significant benefits for patients. However, neither the
+mean duration of RAS episodes nor the associated pain was significantly different between
+the two arms. Normalcy of diet scores were high in both groups, indicating that minor RAS
+did not have a significant effect on the consistency of foods that participants could tolerate.
+However, because patients with RAS often report pain on consuming acidic and spicy foods,
+a diet scale focused on such attributes may better quantify the effects of RAS on diet than
+does the consistency-based scale we used.
+Limitations of this study include the reliance on self-reported data from participants to
+determine the presence and duration of RAS episodes. However, participants received a
+clinical examination during study visits for almost 75 percent of all reported episodes of
+RAS. The dentist or dental hygienist determined that 13 percent of these episodes were not
+RAS, and we removed them from our analyses. If we were to extrapolate this finding to the
+remaining 25 percent of reported episodes for which a clinical examination was not possible,
+we can estimate that only an additional 3.25 percent of these episodes may not have been
+RAS. We would not expect this to change the outcome of the study.
+
+NIH-PA Author Manuscript
+
+Another limitation is the inherent difficulty in measuring compliance with pill taking,
+particularly in a yearlong trial. Thus, we cannot prove that participants took the study
+medication exactly as reported in their written diaries. Although some helpful devices are
+available, such as bottle caps that register how often the bottle is opened, the cost of these
+for a large and long clinical trial can be prohibitive.
+Many investigators in the studies cited earlier found that high-dose replacement therapy with
+specific vitamins was helpful in the treatment of RAS in patients with documented vitamin
+deficiencies. This may explain the lack of effect in our study, in which we examined lowdose prophylactic multivitamin use in a population largely without vitamin deficiencies. In a
+randomized, double-masked, placebo-controlled trial of once-daily sublingual vitamin B12
+therapy for RAS, Volkov and colleagues23 reported that after six months of treatment, 20 of
+27 patients (74 percent) with RAS in the treatment arm were free of ulceration, compared
+with eight of 25 patients (32 percent) with RAS in the placebo arm (P < .01). This response
+to vitamin B12 was independent of the participant’s initial blood B12 level, which was
+normal in most participants. These investigators23 tested 1,000 micrograms of vitamin B12
+daily compared with 6 μg in our multivitamin supplement, which may account for the
+different outcome in our study.
+
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 8
+
+NIH-PA Author Manuscript
+
+The findings of our study suggest that in the U.S. population, routine screening of all
+patients who have RAS for vitamin B12 and folate deficiencies is not warranted. Although
+not studied here, clinicians may wish to test for such deficiencies in patients with refractory
+RAS or when signs suggestive of such deficiency (for example, tongue depapillation for
+vitamin B12 deficiency) are present.
+
+CONCLUSION
+Our study findings show that daily multivitamin supplementation, with the RDI of essential
+vitamins, did not result in a reduction in the number or duration of RAS episodes. Therefore,
+clinicians should not use this prophylactic strategy routinely in patients who have RAS.
+
+Acknowledgments
+This study was supported by The Patrick and Catherine Weldon Donaghue Medical Research Foundation, National
+Institutes of Health (NIH) General Clinical Research Center grant M01R006192 and NIH career development grant
+K23DE016946.
+The authors gratefully acknowledge the contributions of those who participated in this study, and of the following
+people who contributed to the conduct of the clinical study: Sandra D’Amato-Palumbo, Lisa Jaser, Ruth LaCasse,
+Easwar Natarajan, Alis Ohlheiser, Vijay Parashar, Douglas Peterson, Margaret Phillipi and Harriet Potts.
+
+NIH-PA Author Manuscript
+
+ABBREVIATION KEY
+RAS
+
+Reccurent aphthous stomatitis
+
+RBC
+
+Red blood cell
+
+RDI
+
+Reference daily intake
+
+References
+
+NIH-PA Author Manuscript
+
+1. Kleinman DV, Swango PA, Pindborg JJ. Epidemiology of oral mucosal lesions in United States
+schoolchildren: 1986–87. Community Dent Oral Epidemiol. 1994; 22(4):243–253. [PubMed:
+7924239]
+2. Scully C. Clinical practice. Aphthous ulceration. N Engl J Med. 2006; 355(2):165–172. [PubMed:
+16837680]
+3. Silverman S Jr. Mucosal lesions in older adults. JADA. 2007; 138(suppl):41S–46S. [PubMed:
+17761845]
+4. Tabolli S, Bergamo F, Alessandroni L, Di Pietro C, Sampogna F, Abeni D. Quality of life and
+psychological problems of patients with oral mucosal disease in dermatological practice.
+Dermatology. 2009; 218(4):314–320. [PubMed: 19174600]
+5. Hapa A, Aksoy B, Polat M, Aslan U, Atakan N. Does recurrent aphthous stomatitis affect quality of
+life? A prospective study with 128 patients evaluating different treatment modalities. J Dermatolog
+Treat. 2011; 22(4):215–220. [PubMed: 20804437]
+6. Weusten BL, van de Wiel A. Aphthous ulcers and vitamin B12 deficiency. Neth J Med. 1998; 53(4):
+172–175. [PubMed: 9825643]
+7. Piskin S, Sayan C, Durukan N, Senol M. Serum iron, ferritin, folic acid, and vitamin B12 levels in
+recurrent aphthous stomatitis. J Eur Acad Dermatol Venereol. 2002; 16(1):66–67. [PubMed:
+11952294]
+8. Porter SR, Scully C, Flint S. Hematologic status in recurrent aphthous stomatitis compared with
+other oral disease. Oral Surg Oral Med Oral Pathol. 1988; 66(1):41–44. [PubMed: 3165514]
+9. Wray D, Ferguson MM, Hutcheon WA, Dagg JH. Nutritional deficiencies in recurrent aphthae. J
+Oral Pathol. 1978; 7(6):418–423. [PubMed: 105102]
+10. Wray D, Ferguson MM, Mason DK, Hutcheon AW, Dagg JH. Recurrent aphthae: treatment with
+vitamin B12, folic acid, and iron. Br Med J. 1975; 2(5969):490–493. [PubMed: 1148667]
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 9
+
+NIH-PA Author Manuscript
+NIH-PA Author Manuscript
+
+11. Thongprasom K, Youngnak P, Aneksuk V. Hematologic abnormalities in recurrent oral ulceration.
+Southeast Asian J Trop Med Public Health. 2002; 33(4):872–877. [PubMed: 12757242]
+12. Haisraeli-Shalish M, Livneh A, Katz J, Doolman R, Sela BA. Recurrent aphthous stomatitis and
+thiamine deficiency. Oral Surg Oral Med Oral Pathol Oral Radiol Endod. 1996; 82(6):634–636.
+[PubMed: 8974135]
+13. Nolan A, McIntosh WB, Allam BF, Lamey PJ. Recurrent aphthous ulceration: vitamin B1, B2 and
+B6 status and response to replacement therapy. J Oral Pathol Med. 1991; 20(8):389–391.
+[PubMed: 1941656]
+14. Porter S, Flint S, Scully C, Keith O. Recurrent aphthous stomatitis: the efficacy of replacement
+therapy in patients with underlying hematinic deficiencies. Ann Dent. 1992; 51(2):14–16.
+[PubMed: 1463310]
+15. Pedersen A, Hougen HP, Klausen B, Winther K. LongoVital in the prevention of recurrent
+aphthous ulceration. J Oral Pathol Med. 1990; 19(8):371–375. [PubMed: 2250227]
+16. Pedersen A, Klausen B, Hougen HP, Ryder L, Winther K. Immunomodulation by LongoVital in
+patients with recurrent aphthous ulceration. J Oral Pathol Med. 1990; 19(8):376–380. [PubMed:
+1979083]
+17. Council for Responsible Nutrition. [Accessed March 1, 2012] Vitamin and mineral
+recommendations. www.crnusa.org/about_recs3.html
+18. Cleeland CS, Ryan KM. Pain assessment: global use of the Brief Pain Inventory. Ann Acad Med
+Singapore. 1994; 23(2):129–138. [PubMed: 8080219]
+19. List MA, Ritter-Sterr C, Lansky SB. A performance status scale for head and neck cancer patients.
+Cancer. 1990; 66(3):564–569. [PubMed: 2364368]
+20. Axéll T, Henricsson V. The occurrence of recurrent aphthous ulcers in an adult Swedish
+population. Acta Odontol Scand. 1985; 43(2):121–125. [PubMed: 3863446]
+21. Fairfield KM, Fletcher RH. Vitamins for chronic disease prevention in adults: scientific review.
+JAMA. 2002; 287(23):3116–3126. [PubMed: 12069675]
+22. Fletcher RH, Fairfield KM. Vitamins for chronic disease prevention in adults: clinical applications.
+JAMA. 2002; 287(23):3127–3129. [PubMed: 12069676]
+23. Volkov I, Rudoy I, Freud T, et al. Effectiveness of vitamin B12 in treating recurrent aphthous
+stomatitis: a randomized, double-blind, placebo-controlled trial. J Am Board Fam Med. 2009;
+22(1):9–16. [PubMed: 19124628]
+
+NIH-PA Author Manuscript
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+NIH-PA Author Manuscript
+
+NIH-PA Author Manuscript
+391.3 (196.4)
+
+pg/mL: Picograms per milliliter.
+
+ng/mL: Nanograms per milliliter.
+
+††
+
+**
+
+RBC: Red blood cell.
+
+#
+
+SD: Standard deviation.
+
+¶
+
+Group B: Five or more episodes of minor recurrent aphthous stomatitis reported in previous year.
+
+RAS: Recurrent aphthous stomatitis.
+
+§
+
+‡
+
+Group A: Three to four episodes of minor recurrent aphthous stomatitis reported in previous year.
+
+†
+
+Comparison of all participants in the multivitamin arm with all participants in the placebo arm.
+
+*
+
+395.1 (150.2)
+
+Mean (SD) Serum B12, pg/mL††
+
+542.0 (168.9)
+
+27 (39.7)
+
+6 (40.0)
+499.5 (140.0)
+
+68
+35.5 (19–73)
+
+15
+36.5 (22–56)
+
+Group B§ (High
+RAS Frequency)
+
+MULTIVITAMIN ARM
+Group A† (Low RAS‡
+Frequency)
+
+Mean (SD¶) Serum RBC# Folate, ng/
+mL**
+
+Number (%) of Men
+
+Mean (Range) Age in Years
+
+Number of Participants
+
+CHARACTERISTIC
+
+Baseline characteristics of study participants (N = 160).
+
+392.0 (188.1)
+
+534.3 (164.1)
+
+33 (39.8)
+
+35.7 (19–73)
+
+83
+
+Both Groups
+
+412.0 (210.4)
+
+497.7 (145.5)
+
+0 (0.0)
+
+33.0 (20–46)
+
+13
+
+Group A (Low RAS
+Frequency)
+
+386.1 (139.7)
+
+502.6 (109.9)
+
+23 (35.9)
+
+37.1 (18–72)
+
+64
+
+Group B (High RAS
+Frequency)
+
+PLACEBO ARM
+
+390.5 (152.5)
+
+501.7 (115.7)
+
+23 (29.9)
+
+36.4 (18–72)
+
+77
+
+Both Groups
+
+NIH-PA Author Manuscript
+
+TABLE 1
+
+.96
+
+.15
+
+.19
+
+.74
+
+P VALUE*
+
+Lalla et al.
+Page 10
+
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 11
+
+TABLE 2
+
+Incidence of recurrent aphthous stomatitis episodes, according to treatment arm and stratification group.
+
+NIH-PA Author Manuscript
+
+MEAN (SD*) NUMBER OF NEW EPISODES
+
+GROUP
+
+NUMBER OF PARTICIPANTS
+
+Placebo
+A†
+
+1.92 (2.99)
+
+13
+
+B‡
+
+5.14 (4.67)
+
+64
+
+TOTAL
+
+4.60 (4.58)
+
+77
+
+A
+
+3.00 (4.29)
+
+15
+
+B
+
+4.46 (4.82)
+
+68
+
+TOTAL
+
+4.19 (4.74)
+
+83
+
+Multivitamin
+
+Placebo and Multivitamin Arms Combined
+2.50 (3.72)
+
+28
+
+B
+
+NIH-PA Author Manuscript
+
+A
+
+4.79 (4.75)
+
+132
+
+TOTAL
+
+4.39 (4.65)
+
+160
+
+*
+
+SD: Standard deviation.
+
+†
+
+Group A: Three to four episodes of minor recurrent aphthous stomatitis reported in previous year.
+
+‡
+
+Group B: Five or more episodes of minor recurrent aphthous stomatitis reported in previous year.
+
+NIH-PA Author Manuscript
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 12
+
+TABLE 3
+
+Duration of recurrent aphthous stomatitis (RAS) episodes.
+
+NIH-PA Author Manuscript
+
+MEAN (SD*) DURATION
+IN DAYS
+
+NUMBER OF PARTICIPANTS
+
+NUMBER OF EPISODES
+
+Placebo
+
+8.99 (5.22)
+
+63†
+
+329
+
+Multivitamin
+
+8.66 (4.60)
+
+61‡
+
+335
+
+Placebo and Multivitamin Arms
+Combined
+
+8.83 (4.92)
+
+124
+
+664
+
+TREATMENT ARM
+
+*
+
+SD: Standard deviation.
+
+†
+
+Fourteen participants in the placebo arm were excluded from the duration analysis because they did not experience any new RAS episodes during
+study participation.
+‡
+
+Twenty-two participants in the multivitamin arm were excluded from the duration analysis because they did not experience any new RAS
+episodes during study participation.
+
+NIH-PA Author Manuscript
+NIH-PA Author Manuscript
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.
+
+Lalla et al.
+
+Page 13
+
+TABLE 4
+
+Mouth pain scores during episodes of recurrent aphthous stomatitis (RAS).
+
+NIH-PA Author Manuscript
+
+MEAN* (SD†) SCORE
+
+TREATMENT ARM
+Worst Pain
+
+Least Pain
+
+Average Pain
+
+Pain Now
+
+Placebo (n = 63)‡,§
+
+2.96 (2.10)
+
+1.55 (1.68)
+
+2.12 (1.86)
+
+2.14 (1.89)
+
+Multivitamin (n = 61)¶,#
+
+2.83 (2.19)
+
+1.42 (1.64)
+
+2.07 (1.89)
+
+2.03 (1.93)
+
+*
+
+Mean pain score measured on a scale from 0 to 10.
+
+†
+
+SD: Standard deviation.
+
+‡
+
+The total number of observations in the placebo arm was 2,759.
+
+§
+
+Fourteen participants in the placebo arm were excluded from the analysis of pain scores because they did not experience any new RAS episodes
+during study participation.
+¶
+
+The total number of observations in the multivitamin arm was 2,602.
+
+#
+
+Twenty-two participants in the multivitamin arm were excluded from the analysis of pain scores because they did not experience any new RAS
+episodes during study participation.
+
+NIH-PA Author Manuscript
+NIH-PA Author Manuscript
+J Am Dent Assoc. Author manuscript; available in PMC 2014 January 03.

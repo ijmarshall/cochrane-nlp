@@ -1,0 +1,1488 @@
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+VENTRICULAR PACING OR DUAL-CHAMBER PACING
+FOR SINUS-NODE DYSFUNCTION
+GERVASIO A. LAMAS, M.D., KERRY L. LEE, PH.D., MICHAEL O. SWEENEY, M.D., RUSSELL SILVERMAN, M.D.,
+ANGEL LEON, M.D., RAYMOND YEE, M.D., ROGER A. MARINCHAK, M.D., GREG FLAKER, M.D.,
+ELEANOR SCHRON, M.S., R.N., E. JOHN ORAV, PH.D., ANNE S. HELLKAMP, M.S., AND LEE GOLDMAN, M.D.,
+FOR THE MODE SELECTION TRIAL IN SINUS-NODE DYSFUNCTION*
+
+ABSTRACT
+Background Dual-chamber (atrioventricular) and
+single-chamber (ventricular) pacing are alternative
+treatment approaches for sinus-node dysfunction
+that causes clinically significant bradycardia. However,
+it is unknown which type of pacing results in the better
+outcome.
+Methods We randomly assigned a total of 2010 patients with sinus-node dysfunction to dual-chamber
+pacing (1014 patients) or ventricular pacing (996 patients) and followed them for a median of 33.1 months.
+The primary end point was death from any cause or
+nonfatal stroke. Secondary end points included the
+composite of death, stroke, or hospitalization for heart
+failure; atrial fibrillation; heart-failure score; the pacemaker syndrome; and the quality of life.
+Results The incidence of the primary end point
+did not differ significantly between the dual-chamber
+group (21.5 percent) and the ventricular-paced group
+(23.0 percent, P=0.48). In patients assigned to dualchamber pacing, the risk of atrial fibrillation was lower
+(hazard ratio, 0.79; 95 percent confidence interval, 0.66
+to 0.94; P=0.008), and heart-failure scores were better
+(P<0.001). The differences in the rates of hospitalization for heart failure and of death, stroke, or hospitalization for heart failure were not significant in unadjusted analyses but became marginally significant
+in adjusted analyses. Dual-chamber pacing resulted
+in a small but measurable increase in the quality of life,
+as compared with ventricular pacing.
+Conclusions In sinus-node dysfunction, dual-chamber pacing does not improve stroke-free survival, as
+compared with ventricular pacing. However, dualchamber pacing reduces the risk of atrial fibrillation,
+reduces signs and symptoms of heart failure, and
+slightly improves the quality of life. Overall, dualchamber pacing offers significant improvement as
+compared with ventricular pacing. (N Engl J Med
+2002;346:1854-62.)
+Copyright © 2002 Massachusetts Medical Society.
+
+S
+
+INCE the first implantation of a cardiac pacemaker in a human in 1958,1 technological advances have enhanced the sophistication of cardiac pacemakers, but there has been no clear
+evidence of the advantages of more complex devices.2-4 For example, dual-chamber pacing maintains
+atrioventricular synchrony and may better preserve
+normal physiologic function as compared with singlechamber ventricular pacemakers,5-7 but dual-chamber
+pacemakers are more expensive, are more complex to
+implant and program, and have a higher rate of complications.8 Although retrospective studies and case series suggest benefits of dual-chamber or atrial-based
+pacing,9,10 randomized trials have had divergent results
+with regard to rates of death and stroke, particularly in
+patients with sinus-node dysfunction.11-14 We investigated whether dual-chamber pacing would provide
+better event-free survival and quality of life than singlechamber ventricular pacing in patients with sinus-node
+dysfunction.
+METHODS
+The Mode Selection Trial in Sinus-Node Dysfunction (MOST)
+was designed as a five-year trial to compare single-chamber (ventricular), rate-modulated pacing with dual-chamber (atrioventricular), rate-modulated pacing in patients whose sinus-node dysfunction required permanent pacing for bradycardia.15 The first patient
+was enrolled on September 25, 1995, and the last patient on Octo-
+
+From the Division of Cardiology, Mount Sinai Medical Center, and the
+University of Miami School of Medicine, Miami Beach, Fla. (G.A.L.); the
+Duke Clinical Research Institute and Duke University School of Medicine,
+Durham, N.C. (K.L.L., A.S.H.); Brigham and Women’s Hospital and Harvard Medical School, Boston (M.O.S., E.J.O.); Heart Care Center, Fayetteville, N.Y. (R.S.); Emory University and Crawford Long Hospital, Atlanta (A.L.); University Hospital, London, Ont., Canada (R.Y.); Lankenau
+Hospital, Wynnewood, Pa. (R.A.M.); University of Missouri Hospital and
+Clinics, Columbia (G.F.); the Division of Epidemiology and Clinical Applications, National Heart, Lung, and Blood Institute, Bethesda, Md. (E.S.);
+and the Department of Medicine, University of California at San Francisco,
+San Francisco (L.G.). Address reprint requests to Dr. Lamas at Cardiovascular Associates of Miami, 4300 Alton Rd., Suite 207, Miami Beach, FL
+33140, or at glamas@msmc.com.
+Other authors were Stephen Greer, M.D. (Baptist Medical Center, Little
+Rock, Ark.), John McAnulty, M.D. (Oregon Health Sciences University,
+Portland), Kenneth Ellenbogen, M.D. (Medical College of Virginia, Richmond), Frederick Ehlert, M.D. (St. Luke’s–Roosevelt Medical Center,
+New York), Roger A. Freedman, M.D. (University of Utah Health Sciences
+Center, Salt Lake City), N.A. Mark Estes III, M.D. (New England Medical
+Center, Boston), and Arnold Greenspon, M.D. (Thomas Jefferson University Hospital, Philadelphia).
+*Other participating investigators are listed in the Appendix.
+
+1854 · N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+V E N T R I C U L A R PAC I N G VS. D UA L - C H A M B E R PAC I N G
+
+ber 13, 1999. Follow-up ended on January 31, 2001. The 2010
+patients enrolled at 91 clinical sites had a median follow-up of 33.1
+months.
+
+syndrome required signs and symptoms of elevated right-sided or
+left-sided filling pressures or hypotension with ventricular pacing.13,15
+
+Selection of Patients
+
+The study was designed to have over 90 percent power to detect
+a 25 percent reduction in the rate of the primary end point and over
+80 percent power to detect a 25 percent reduction in mortality
+in the dual-chamber group. Unless otherwise specified, treatment
+groups were compared on an intention-to-treat basis. All statistical
+tests were two-tailed. Cumulative event rates were calculated by
+the Kaplan–Meier method,24 and differences between the treatment
+groups were assessed with the log-rank test. 25 Relative risk was
+expressed as a hazard ratio (with a 95 percent confidence interval).26
+As specified in the study protocol, supplemental analyses adjusted
+for selected base-line characteristics with the use of the Cox proportional-hazards model.26 An independent data and safety monitoring board monitored interim analyses with two-sided, symmetric
+O’Brien–Fleming 27 boundaries generated with the Lan–DeMets 28
+spending-function approach to group-sequential testing. The heartfailure score, calculated as an average score per visit, was analyzed
+with the use of the Wilcoxon rank-sum test.
+Each of the SF-36 scale and summary scores, the time-tradeoff
+utility scores, and the score on the Specific Activity Scale were compared with the use of a repeated-measures analysis of variance. An
+unstructured correlation matrix was used to adjust for dependence
+across the five time points, and the model included covariates for
+age group, sex, and base-line quality of life. Since there were no
+significant interactions between time and the effect of treatment,
+significance testing considered only the single-effect estimate across
+all time points. Analyses are presented as the adjusted average change
+from base line in each study group. For patients who crossed over
+from single to dual pacing, health status at the time of the crossover
+was carried forward; in a secondary analysis, actual health status,
+which commonly was improved by crossing over, was assessed. The
+principal investigators had full access to the data and independently
+performed all data analyses.
+
+Patients were eligible if they were at least 21 years old; were
+undergoing initial implantation of a dual-chamber, rate modulated
+pacing system for sinus-node dysfunction; and were in sinus rhythm
+when randomly assigned to treatment. To be eligible for the qualityof-life analyses, patients had to score 17 or higher on the Mini–
+Mental State Examination16 before implantation. Patients with serious concurrent illnesses, as determined by the investigator at each
+site, were excluded.
+Collection of Data before Implantation
+Written informed consent was obtained before implantation.
+Trained research coordinators collected base-line demographic, clinical, and quality-of-life data. Coexisting conditions were assessed
+with the Charlson comorbidity index.17 Multidimensional healthrelated quality of life was assessed with the Medical Outcomes
+Study 36-item Short-Form General Health Survey (SF-36).18 The
+individual components of the SF-36 were used to calculate summary
+scores for the physical and mental components.19 Cardiovascular
+functional status was measured with the Specific Activity Scale. 20
+Utilities were assessed with the time-tradeoff approach, in which
+patients are asked a series of questions to determine how much
+time in their present state of health they would trade for perfect
+health.21
+Implantation, Randomization, Programming
+of Pacemakers, and Monitoring of Patients
+After both atrial and ventricular leads were positioned, a 24-hour
+randomization line was called, and the pacemaker was programmed
+to the randomly assigned mode (rate-modulated dual-chamber
+pacing or rate-modulated ventricular pacing) before implantation.
+Patients were unaware of the pacing assignment. Randomization
+was stratified according to the history of stroke and the clinical site.
+For both assigned modes, the lower heart rate was programmed to
+be at least 60 beats per minute, and the upper rate to be at least 110
+beats per minute.
+Follow-up evaluations occurred four times during the first year
+and twice yearly thereafter. Quality-of-life assessments were performed 3 and 12 months after enrollment and yearly thereafter,
+with use of the SF-36 scales,18,19 the time-tradeoff utility score, 21
+and the Specific Activity Scale class. 20
+Primary and Secondary End Points
+The primary end point was death from any cause or nonfatal
+stroke. Prespecified secondary end points included the composite
+of death from any cause, a first occurrence of stroke, or a first occurrence of hospitalization for heart failure; death from any cause; death
+from cardiovascular causes; atrial fibrillation; the Minnesota Living
+with Heart Failure score 22; the pacemaker syndrome 23 with a need
+for permanent reprogramming to dual-chamber pacing; and healthrelated quality of life. A clinical-events committee that was unaware
+of the assigned pacing mode classified deaths according to cause and
+adjudicated all suspected strokes and hospitalizations for heart
+failure. An electrocardiographic core laboratory reviewed electrocardiograms and confirmed diagnoses of atrial fibrillation. Investigators at each site categorized patients as having chronic atrial
+fibrillation if they had atrial fibrillation without intervening sinus
+rhythm on more than one visit. The heart-failure score, which assigns points for symptoms and signs as well as intensification of
+medical therapy for heart failure, correlates with exercise capacity22
+and mortality after myocardial infarction (unpublished data). Higher
+points indicate more severe disease. The diagnosis of the pacemaker
+
+Statistical Analysis
+
+RESULTS
+Base-Line Characteristics
+
+The median age of the 2010 patients was 74 years;
+48 percent were women (Table 1). Hypertension was
+reported by 62 percent, and diabetes by 22 percent. A
+history of myocardial infarction was reported by 26
+percent of patients, and a history of heart failure by 20
+percent. Over 80 percent of patients were in New York
+Heart Association class I or II at base line. Over 50
+percent of patients had a history of supraventricular
+tachycardia, generally atrial fibrillation or flutter that
+had occurred within the past three weeks. The indication for pacemaker implantation was sinus-node dysfunction in all cases, but 21 percent of patients also
+had atrioventricular block. A total of 1014 patients
+were assigned to dual-chamber pacing, and 996 patients were assigned to ventricular pacing.
+Primary End Point
+
+The primary end point, death or nonfatal stroke,
+occurred in 447 patients (22.2 percent). There were
+no significant differences between patients receiving
+dual-chamber pacing (21.5 percent) and those receiving ventricular pacing (23.0 percent, P=0.48)
+(Fig. 1 and Table 2).
+
+N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org · 1855
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+TABLE 1. BASE-LINE CHARACTERISTICS OF THE STUDY PATIENTS
+ACCORDING TO TREATMENT GROUP.
+VENTRICULAR DUAL-CHAMBER
+PACING
+PACING
+P
+(N=996)
+(N=1014)
+VALUE*
+
+CHARACTERISTIC
+
+Age (yr)
+Median
+Interquartile range
+
+0.58
+74
+68–80
+
+74
+67–80
+no. (%)
+
+Female sex
+Nonwhite race
+Hypertension
+Hypercholesterolemia
+Current smoker
+Prior myocardial infarction
+Prior heart failure
+New York Heart Association
+class I or II heart failure
+Cardiomyopathy
+Prior stroke
+Diabetes
+Chronic pulmonary disease
+Percutaneous transluminal
+coronary angioplasty
+Coronary-artery bypass grafting
+Other cardiac surgery
+Implantation of cardioverter–
+defibrillator
+Any supraventricular tachycardia
+Atrial fibrillation
+Other atrial tachycardia
+Any atrioventricular block
+Complete heart block
+Second-degree heart block
+Prolonged atrioventricular interval
+Other heart block
+Vasovagal syndromes
+Ventricular tachycardia or
+ventricular fibrillation
+
+477
+144
+608
+340
+85
+243
+183
+841
+
+(48)
+(14)
+(61)
+(34)
+(9)
+(24)
+(18)
+(84)
+
+478
+162
+640
+376
+84
+279
+221
+822
+
+(47)
+(16)
+(63)
+(37)
+(8)
+(28)
+(22)
+(81)
+
+0.74
+0.34
+0.34
+0.17
+0.87
+0.11
+0.05
+0.05
+
+106
+108
+204
+109
+119
+
+(11)
+(11)
+(20)
+(11)
+(12)
+
+133
+116
+246
+109
+131
+
+(13)
+(11)
+(24)
+(11)
+(13)
+
+0.09
+0.67
+0.04
+0.89
+0.50
+
+215 (22)
+88 (9)
+6 (1)
+
+222 (22)
+83 (8)
+13 (1)
+
+0.87
+0.63
+0.17
+
+514
+440
+92
+209
+52
+62
+102
+23
+33
+24
+
+545
+477
+94
+204
+39
+72
+101
+25
+28
+42
+
+0.34
+0.20
+0.99
+0.62
+0.16
+0.48
+0.83
+0.88
+0.52
+0.03
+
+(52)
+(44)
+(9)
+(21)
+(5)
+(6)
+(10)
+(2)
+(3)
+(2)
+
+(54)
+(47)
+(9)
+(20)
+(4)
+(7)
+(10)
+(2)
+(3)
+(4)
+
+*P values for categorical variables present in less than 10 percent of patients
+were calculated with Fisher’s exact test; for other categorical variables,
+P values were calculated with the likelihood-ratio chi-square test. For continuous variables, P values were calculated with the Wilcoxon rank-sum test.
+
+(Fig. 1 and Table 2). Of 487 patients in whom atrial
+fibrillation developed after randomization, 105 (21.6
+percent) had chronic atrial fibrillation (15.2 percent of
+patients with dual-chamber pacing, as compared with
+26.7 percent of patients with ventricular pacing;
+hazard ratio for chronic atrial fibrillation in the overall study population, 0.44; 95 percent confidence interval, 0.29 to 0.67; P<0.001). Patients receiving
+dual-chamber pacing who had no history of atrial fibrillation had a 50 percent lower incidence of atrial
+fibrillation after randomization (hazard ratio as compared with ventricular pacing, 0.50; 95 percent confidence interval, 0.32 to 0.76; P=0.001), whereas patients receiving dual-chamber pacing who had a
+history of atrial fibrillation had a smaller, nonsignificant 14 percent reduction (hazard ratio, 0.86; 95 percent confidence interval, 0.70 to 1.04; P=0.12).
+Heart Failure
+
+Hospitalization for heart failure occurred in 10.3
+percent of the patients receiving dual-chamber pacing and 12.3 percent of the patients receiving ventricular pacing (hazard ratio, 0.82; 95 percent confidence
+interval, 0.63 to 1.06; P=0.13). Patients who did not
+have a history of heart failure at the time of enrollment
+accounted for 51 percent of hospitalizations for heart
+failure, and the hazard ratios for the treatment groups
+were similar in patients with a history of heart failure
+(0.74; 95 percent confidence interval, 0.51 to 1.07)
+and without such a history (0.79; 95 percent confidence interval, 0.55 to 1.13). During follow-up, patients receiving dual-chamber pacing accumulated fewer points per visit on the heart-failure score than did
+patients receiving ventricular pacing (average points
+per visit during follow-up: ventricular pacing, 1.75;
+dual-chamber pacing, 1.49; P<0.001).
+Adjusted Analyses
+
+Death, Nonfatal Stroke, or Hospitalization for Heart Failure
+
+Stroke occurred in 4.5 percent of the study population, death from any cause in 20.1 percent, and the
+composite end point — death, stroke, or hospitalization for heart failure — in 28.8 percent. Death from
+cardiovascular causes occurred in 8.9 percent. Unadjusted analyses did not reveal any significant differences
+between the treatment groups in the rate of any of the
+end points (Fig. 1 and Table 2).
+Atrial Fibrillation
+
+Atrial fibrillation occurred in 24.2 percent of the
+study population, including 4.8 percent in whom it
+developed for the first time. The incidence of atrial
+fibrillation after randomization was significantly lower
+in the dual-chamber group (hazard ratio, 0.79; 95
+percent confidence interval, 0.66 to 0.94; P=0.008)
+
+Multivariable analyses were performed to control
+for slightly higher proportions of patients with a history of myocardial infarction, diabetes, congestive heart
+failure, and supraventricular tachycardia in the group
+receiving dual-chamber pacing. Adjusted analyses had
+minimal influence on the estimate of the effect of
+treatment on the primary end point. However, the
+adjusted hazard ratio was 0.73 (95 percent confidence
+interval, 0.56 to 0.95; P=0.02) for hospitalization
+for heart failure and 0.85 (95 percent confidence interval, 0.72 to 1.00; P=0.05) for death, stroke, or hospitalization for heart failure (the combined clinical end
+point).
+Prespecified Subgroups
+
+There were no statistically significant differences
+in the risk of death, stroke, and hospitalization for
+heart failure between the two treatment groups among
+
+1856 · N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+V E N T R I C U L A R PAC I N G VS. D UA L - C H A M B E R PAC I N G
+
+patients over 75 years of age, women, nonwhite patients, or patients with a history of supraventricular
+tachycardia (Fig. 2).
+Quality of Life
+
+At three months, both ventricular pacing and dualchamber pacing led to substantial improvement in
+
+the SF-36 physical role (18 points for ventricular pacing, about 1.3 times the effect of a history of angina
+or heart failure in study patients), but a much smaller
+1.9-point change in the SF-36 physical function
+(only about 10 to 15 percent of the effect of a history
+of angina or heart failure in study patients). Over a
+period of four years, dual-chamber pacing provided
+
+Primary End Point
+
+Hospitalization for Heart Failure,
+Stroke, or Death
+0.50
+
+0.50
+
+0.45
+
+0.45
+P=0.48
+Adjusted P=0.32
+
+0.35
+
+Ventricular pacing
+
+0.30
+0.25
+0.20
+Dual-chamber pacing
+
+0.15
+
+Event Rate
+
+Event Rate
+
+0.40
+
+Ventricular pacing
+
+0.40
+
+P=0.23
+Adjusted P=0.05
+
+0.35
+0.30
+0.25
+
+Dual-chamber pacing
+
+0.20
+0.15
+
+0.10
+
+0.10
+
+0.05
+
+0.05
+
+0.00
+
+0.00
+0
+
+6
+
+0
+
+12 18 24 30 36 42 48 54 60
+
+6
+
+Months
+
+12 18 24 30 36 42 48 54 60
+
+Months
+
+NO. AT RISK
+
+NO. AT RISK
+
+Ventricular
+0996 934 897 813 678 557 431 320 218 125 39
+pacing
+Dual-chamber 1014 963 930 833 693 555 431 328 214 120 28
+pacing
+
+Ventricular
+0996 880 839 752 624 504 388 287 193 110 35
+pacing
+Dual-chamber 1014 926 889 793 649 518 394 297 188 105 26
+pacing
+
+0.50
+0.45
+0.40
+0.35
+0.30
+0.25
+0.20
+0.15
+0.10
+0.05
+0.00
+
+Atrial Fibrillation
+
+P=0.13
+Adjusted P=0.02
+
+Ventricular pacing
+
+Event Rate
+
+Event Rate
+
+Hospitalization for Heart Failure
+
+Dual-chamber pacing
+
+0
+
+6
+
+0.50
+0.45
+0.40
+0.35
+0.30
+0.25
+0.20
+0.15
+0.10
+0.05
+0.00
+
+P=0.008
+Adjusted P=0.004
+
+Dual-chamber pacing
+
+0
+
+12 18 24 30 36 42 48 54 60
+
+Months
+
+Ventricular pacing
+
+6
+
+12 18 24 30 36 42 48 54 60
+
+Months
+
+NO. AT RISK
+
+NO. AT RISK
+
+Ventricular
+0996 890 855 766 637 516 402 300 200 116 36
+pacing
+Dual-chamber 1014 932 894 801 658 528 406 307 191 106 27
+pacing
+
+Ventricular
+0996 815 761 668 542 432 333 242 162 92
+pacing
+Dual-chamber 1014 852 795 700 572 444 341 248 148 77
+pacing
+
+27
+20
+
+Figure 1. Rates of Clinical Events According to the Mode of Pacing.
+An explanation of adjusted and unadjusted analyses is provided in the Methods section. Unadjusted P values were derived with
+the log-rank test.
+
+N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org · 1857
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+TABLE 2. CLINICAL EVENTS
+
+EVENT
+
+OR
+
+VENTRICULAR
+PACING
+
+END POINT
+
+DUAL-CHAMBER
+PACING
+
+AND
+
+CLINICAL END POINTS.*
+
+UNADJUSTED
+HAZARD
+RATIO
+
+UNADJUSTED
+95% CI
+
+P VALUE
+
+0.93
+0.90
+0.97
+0.82
+0.93
+0.82
+0.79
+
+0.78–1.13
+0.77–1.06
+0.80–1.18
+0.54–1.25
+0.69–1.24
+0.63–1.06
+0.66–0.94
+
+0.48
+0.23
+0.78
+0.36
+0.61
+0.13
+0.008
+
+ADJUSTED
+HAZARD
+RATIO
+
+ADJUSTED
+95% CI†
+
+0.91
+0.85
+0.95
+0.81
+0.87
+0.73
+0.77
+
+0.75–1.10
+0.72–1.00
+0.78–1.16
+0.54–1.23
+0.65–1.18
+0.56–0.95
+0.64–0.92
+
+P VALUE
+
+percent
+
+Death or stroke
+Combined clinical end point‡
+Death
+Stroke
+Death from cardiovascular causes
+Hospitalization for heart failure
+Atrial fibrillation
+
+23.0
+29.9
+20.5
+4.9
+9.2
+12.3
+27.1
+
+21.5
+27.6
+19.7
+4.0
+8.5
+10.3
+21.4
+
+0.32
+0.05
+0.64
+0.33
+0.37
+0.02
+0.004
+
+*CI denotes confidence interval.
+†Values have been adjusted for age, sex, history of stroke, history of supraventricular arrhythmia, history of heart failure, history of myocardial infarction,
+history of ventricular tachycardia or ventricular fibrillation, and score on the Charlson comorbidity index.
+‡The combined clinical end point included death from any cause, a first occurrence of nonfatal stroke, or a first hospitalization for heart failure.
+
+CHARACTERISTIC
+All patients
+Sex
+Female
+Male
+Age
+»75 years
+<75 years
+Race
+White
+Nonwhite
+History of supraventricular
+tachycardia
+Yes
+No
+
+NO. OF
+PATIENTS
+
+HAZARD RATIO (95% CI)
+
+2010
+
+0.90 (0.77–1.06)
+
+0955
+1055
+
+0.89 (0.71–1.13)
+0.91 (0.73–1.15)
+
+0987
+1023
+
+0.97 (0.79–1.21)
+0.83 (0.65–1.07)
+
+1704
+0306
+
+0.88 (0.73–1.05)
+1.00 (0.68–1.46)
+
+1059
+0951
+
+0.92 (0.74–1.14)
+0.88 (0.69–1.13)
+0.5
+
+1.0
+
+2.0
+
+Better Results with Better Results
+Dual-Chamber
+with Ventricular
+Pacing
+Pacing
+Figure 2. Unadjusted Subgroup Comparisons According to the Mode of Pacing.
+Shown are the unadjusted hazard ratios for the secondary composite end point (death, stroke, or hospitalization for heart failure) for the patients assigned to dual-chamber pacing as compared with those
+assigned to ventricular pacing. CI denotes confidence interval.
+
+significant improvements in health-related quality of
+life, as compared with ventricular pacing, for six of
+eight SF-36 subscales in the carry-forward analysis
+(Table 3). Summary scores for both physical and mental components also improved significantly. If health
+status after crossover was included in the analysis,
+there were no significant differences between the two
+groups.
+
+Pacemaker Syndrome
+
+During the course of the trial, 374 patients receiving ventricular pacing (37.6 percent) had their pacemakers reprogrammed to dual-chamber pacing; 61
+of the patients were subsequently switched back to
+the originally assigned mode. Thus, at the last followup, 313 patients (31.4 percent) assigned to ventricular
+pacing were receiving dual-chamber pacing. The pace-
+
+1858 · N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+BASE LINE
+
+58.8
+35.7
+63.5
+41.9
+72.0
+74.0
+67.5
+60.0
+48.4
+38.5
+2.01
+73
+
+VENTRICULAR
+
+58.9
+34.6
+62.6
+42.6
+72.0
+74.0
+67.0
+60.2
+48.4
+38.4
+1.97
+72
+
+DUAL
+
++1.9
++17.8
++6.3
++7.1
++2.2
++5.0
++4.2
+0.0
++1.8
++2.2
+–0.04
++7
+
++4.3
++25.5
++9.1
++11.6
++2.8
++6.9
++4.4
++1.9
++2.6
++3.7
+–0.06
++8
+
+DUAL
+
+3 MONTHS
+VENTRICULAR
+
++0.5
++21.5
++6.7
++6.3
++1.7
++4.6
++3.3
+–0.8
++1.5
++2.1
+0.00
++5
+
+IN
+
+OF
+
+LIFE
+
+–1.7
++17.1
++4.3
++4.0
++1.6
++4.3
++0.4
+–3.4
++1.4
++0.6
++0.03
++4
+
+VENTRICULAR
+
+AFTER
+
++0.7
++28.4
++6.3
++7.1
++3.2
++9.2
++2.4
+–3.1
++2.3
++2.0
++0.05
++7
+
+DUAL
+
+24 MONTHS
+
+QUALITY
+
++1.8
++27.7
++9.3
++9.3
++3.1
++9.1
++3.7
+–0.2
++2.8
++2.7
++0.02
++8
+
+DUAL
+
+12 MONTHS
+
+BASE LINE
+
+VENTRICULAR
+
+FROM
+
+–2.9
++17.1
++4.3
++1.7
++1.6
++4.7
++3.5
+–3.4
++1.4
++0.7
++0.04
++4
+
+VENTRICULAR
+
+–0.7
++32.7
++7.8
++8.3
++5.6
++11.4
++4.6
+–3.1
++3.6
++2.3
++0.11
++8
+
+DUAL
+
+36 MONTHS
+
+PACING.*
+
+–0.1
++26.7
++9.8
++5.2
++4.6
++12.3
++5.1
+–2.5
++3.5
++2.2
++0.13
++6
+
++1.9
++8.6
++2.5
++4.1
++1.2
++3.6
++0.5
++1.1
++1.1
++1.2
++0.002
++2
+
+SCORE
+
+VALUE
+
+0.04
+<0.01
+<0.01
+<0.01
+0.05
+<0.01
+0.57
+0.09
+<0.01
+<0.01
+0.94
+0.06
+
+P
+
+CHANGE FROM
+BASE LINE AFTER
+48 MONTHS‡
+
+‡ The score represents the difference between the group of patients assigned to ventricular pacing and the group assigned to dual-chamber pacing, where a plus sign indicates a better result in the group
+assigned to dual-chamber pacing. P values are for the comparison between the two groups.
+
+†All are SF-36 scales except for the Specific Activity Scale and the time-tradeoff utility scale. For all SF-36 scales and component summaries, a positive number denotes improved quality of life. For the
+score on the Specific Activity Scale, a lower number denotes improved quality of life. For time-tradeoff utility, a positive number denotes improvement.
+
+–3.2
++18.0
++6.4
++3.6
++4.7
++4.8
++6.9
+–3.5
++2.4
++1.0
++0.16
++6
+
+DUAL
+
+48 MONTHS
+VENTRICULAR
+
+*P values (which are not shown) for comparisons with base line were all less than 0.05 except for perception of health and score on the Specific Activity Scale.
+
+Physical function
+Physical role
+Social function
+Energy
+Mental health
+Emotional role
+Pain
+Health perception
+Mental-component summary
+Physical-component summary
+Specific Activity Scale
+Time-tradeoff utility (%)
+
+QUALITY-OF-LIFE SCALE†
+
+TABLE 3. CHANGES
+
+V E N T R I C U L A R PAC I N G VS. D UA L - C H A M B E R PAC I N G
+
+N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org · 1859
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+maker syndrome as strictly defined by the protocol
+was present in 113 of these patients, whereas an additional 69 had symptoms of severe pacemaker syndrome but did not fully meet the strict definition.
+Consequently, clinical pacemaker syndrome was the
+principal reason for crossover in 18.3 percent of patients assigned to ventricular pacing and in 48.9 percent of all patients who crossed over. Most crossovers
+due to the pacemaker syndrome occurred early (69
+percent by 3 months and 73 percent by 6 months;
+median time to crossover, 58 days). Other reasons for
+crossover are listed in Table 4.
+Complications
+
+The rate of complications within 30 days after pacemaker implantation was 4.8 percent. The most frequent complications were dislodgement or failure of
+the atrial lead in 1.8 percent, pneumothorax in 1.5
+percent, and complications associated with the ventricular lead in 1.1 percent. There were no instances of
+death as a complication of implantation of a permanent pacemaker.
+DISCUSSION
+
+In 2000, over 225,000 pacemakers were implanted
+in the United States, and over 600,000 were implanted worldwide. Historically, sinus-node dysfunction,
+a disorder of unknown cause, represents the diagnosis
+leading to implantation in about one half of all pacemaker recipients in the United States.10 To date, clinical
+recommendations and guidelines regarding the selection of pacing systems have been based on small clinical studies and retrospective analyses of existing data
+bases.29
+When viewed in aggregate, the first randomized
+trials comparing ventricular with dual-chamber pacing11-14 suggested that dual-chamber pacing reduces
+the rates of death, stroke, and heart failure, particularly
+among patients with sinus-node dysfunction. These
+small trials led to the expectation that larger trials
+would confirm the superiority of dual-chamber pacing
+for sinus-node dysfunction.
+The Canadian Trial of Physiologic Pacing (CTOPP)8
+compared physiologic (i.e., atrial or dual-chamber)
+pacing with ventricular pacing in 2568 patients and
+reported no differences in the rates of death, stroke,
+or hospitalizations for heart failure. CTOPP included
+1077 patients with sinus-node dysfunction and thus
+did not have sufficient statistical power to exclude a
+moderate benefit of physiologic pacing. In the present
+trial in 2010 patients, we also found no statistically
+significant differences when comparing dual-chamber
+with ventricular pacing in terms of death from any
+cause, death from cardiovascular causes, or stroke.
+The loss of atrioventricular synchrony with ventricular pacing is associated with enlargement of the
+
+TABLE 4. REASONS FOR PERMANENT CROSSOVERS
+FROM VENTRICULAR TO DUAL-CHAMBER PACING.
+REASON
+
+Severe pacemaker syndrome requiring
+permanent reprogramming
+Refractory heart failure
+Chronotropic incompetence*
+Physician’s preference or refusal
+Supraventricular arrhythmias
+Possible pacemaker syndrome
+Patient’s refusal
+Rate response causing angina
+Vasovagal syndrome
+Physician’s error or programming error
+Recurrent syncope
+Unknown
+Total
+
+NO. OF PATIENTS
+
+182
+39
+27
+22
+19
+8
+4
+2
+2
+1
+1
+6
+313
+
+*Chronotropic incompetence was defined as the failure to
+increase heart rate with exercise.
+
+left atrium,30 and retrospective studies noted a marked
+reduction in atrial fibrillation31 with dual-chamber
+pacing. A more moderate reduction, principally in patients with sinus-node disease, was found in two small
+prospective trials12,13 and confirmed by CTOPP. In
+contrast to CTOPP, 21 percent of whose patients had
+a history of supraventricular arrhythmia, the prevalence
+of prior supraventricular tachycardia in our trial was
+over 50 percent, and we found a 56 percent reduction
+in the subsequent development of chronic atrial fibrillation with dual-chamber pacing than with ventricular
+pacing.
+The preservation of atrioventricular synchrony has
+been thought to be central to the maintenance of optimal cardiac performance.5-7 Signs and symptoms of
+heart failure, as assessed by the heart-failure score,22
+were less severe with dual-chamber pacing than with
+ventricular pacing. Unadjusted comparisons of hospitalizations for heart failure reflected an insignificant
+18 percent reduction in risk, whereas multivariable
+analyses that adjusted for base-line imbalances revealed
+a marginally significant reduction in hospitalizations
+for heart failure with dual-chamber pacing.
+A high incidence of the pacemaker syndrome,
+which is thought to be due to loss of atrioventricular
+synchrony, was observed in the group receiving ventricular pacing.32 In observational studies, the incidence of the pacemaker syndrome has been reported
+to be as high as 83 percent.33 In the Pacemaker Selection in the Elderly (PASE) trial, the pacemaker syndrome occurred in 26 percent of patients during an
+average follow-up of 18 months.13 In our trial, 16.5
+percent of the patients receiving ventricular pacing
+
+1860 · N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+V E N T R I C U L A R PAC I N G VS. D UA L - C H A M B E R PAC I N G
+
+crossed over to dual-chamber pacing because of the
+pacemaker syndrome. In both the PASE trial and our
+study, about 75 percent of crossovers occurred within
+six months.
+The high incidence of the pacemaker syndrome
+reported here is in sharp contrast to the low incidence
+(1.7 percent) reported by Andersen et al.11,12 and the
+2.7 percent rate at three years reported in CTOPP.8
+In our study and the PASE trial,13,31 only reprogramming was required to change from ventricular to physiologic pacing, whereas reoperation was necessary in
+the other two studies. Nonetheless, we cannot exclude
+the possibility that there are different clinical thresholds for the diagnosis of such a subjective condition
+in different countries.
+The quality-of-life benefits of dual-chamber pacing
+over ventricular pacing were generally small in comparison with the differences based on the presence
+of angina or heart failure. Although physical role improved by an amount equivalent to about 60 percent
+of the improvement associated with a change of one
+class on the Specific Activity Scale, the changes were
+much smaller for physical function and perception of
+health. These data suggest that dual-chamber pacing
+has incremental benefits in terms of the ability to perform physical tasks at the margin of a person’s own
+capacity but does not have dramatic incremental benefits over ventricular pacing in terms of the number
+of blocks walked or stairs climbed. In addition, the
+incremental benefits of dual-chamber pacing were,
+in part, offset by age-related declines in function over
+the course of the study.
+Limitations in the design of the study may have
+affected our results. We randomly assigned programming, not the type of pacemaker. Since mode changes
+are easier with this design, we may have overestimated
+the true incidence of the pacemaker syndrome and
+reduced the number of clinical events in the ventricular-pacing group. Dual-chamber pacing, by necessity,
+led to atrial synchronous ventricular pacing in many
+patients. There is increasing recognition that a ventricular-paced beat, with a wide QRS interval and left
+bundle-branch block morphology, may be hemodynamically disadvantageous and may even blunt the
+benefits of atrial pacing. Finally, given the study design, it is impossible to determine whether atrialbased pacing prevents atrial fibrillation or whether
+ventricular pacing is arrhythmogenic and thus causes
+atrial fibrillation.
+We conclude that for patients with sinus-node
+dysfunction, dual-chamber pacing, as compared with
+single-chamber ventricular pacing, did not improve
+the rate of our primary end point of stroke-free survival. However, when compared with ventricular pacing, dual-chamber pacing reduces newly diagnosed
+and chronic atrial fibrillation, reduces signs and symp-
+
+toms of heart failure, and slightly improves the quality
+of life.
+Supported by grants from the National Heart, Lung, and Blood Institute
+(U01 HL 49804, to Dr. Lamas; U01 HL 53973, to Dr. Lee; and U01 HL
+55981, to Dr. Goldman), Medtronic, Guidant, and St. Jude Medical. Some
+authors of the study have financial arrangements with Medtronic, Guidant,
+and St. Jude Medical. These arrangements include equity interest (Dr. Flaker),
+research support (Drs. Lamas, Ellenbogen, Freedman, Leon, Marinchak, Silverman, and Sweeney), consulting (Drs. Greer and Leon), and membership
+in speakers’ bureaus (Drs. Ellenbogen and Marinchak).
+
+We are indebted to the national coordinators of the study, Kimberly
+Vitale, R.N., Roxann Evans, R.N., and Kirby Quintero, R.N., and
+the administrative coordinator, Randel Plant, B.A.
+
+APPENDIX
+The following investigators participated in MOST: Advanced Cardiac
+Specialists, Gilbert, Ariz.: R. Siegel, S. Cantor, and P. Underwood; Austin
+Heart, Austin, Tex.: D. Pederson and J. Black; Baptist Medical Center,
+Princeton, N.J.: T. Gaskin, A. Bouchard, and M. Nilensky; Baylor College
+of Medicine, Houston: A. Blaustein and M. Nadir Ali; Baystate Medical
+Center, Springfield, Mass.: J. Kirchhoffer, J. Cook, and G. Kabell; Brigham
+and Women’s Hospital, Boston: M. Sweeney and G. Mitchell; Brooklyn
+Veterans Affairs Medical Center, Brooklyn, N.Y.: N. El-Sherif; Cardiac Disease Specialists, Atlanta: T. Deering; Christ Hospital, Cincinnati: R.
+Henthorn, S. Behrens, and T. Waller; Christiana Hospital, Newark, N.J.:
+R. Vitullo, M. Stillabower, and R. Miller; Cleveland Clinic Foundation,
+Cleveland: B. Wilkoff, R. Augustine, M. Chung, F. Jaeger, G. Kidwell, V.
+Morant, M. Nierbauer, and P. Tchou; Clinical Investigation Specialists: S.
+Greer; Columbia Presbyterian Medical Center, New York: D. Bloomfield,
+J. Dizon, and H. Spotnitz; Crawford Long Hospital and Emory University
+Hospital, Atlanta: A. Leon, D. Delurgio, and J. Langberg; Danville Regional Medical Center, Danville, Va.: G. Miller; Deaconess Nashoba Hospital, Ayer, Mass.: T. Hack; Deborah Heart and Lung Center, Browns Mills,
+N.J.: C. Dennis and R. Corbisiero; Duke University Medical Center,
+Durham, N.C.: J. Wharton, R. Greenfield, and R. Sorrentino; Easton Hospital, Easton, Pa.: K. Khalighi; Gaston Memorial Hospital, Gastonia, N.C.:
+M. Silver; Geisinger Medical Center, Danville, Pa.: R. Storm and J. Oren;
+Good Samaritan Hospital, Los Angeles: M. O’Toole and M. Nora; Hackensack Medical Center, Hackensack, N.J.: J. Zimmerman and T. Glotzer;
+Harper Hospital and Detroit Medical Center, Detroit: M. Meissner; Heart
+Clinics Northwest, Spokane, Wash.: T. Lessmeir and W. Pochis; Henry
+Ford Hospital, Detroit: C. Schuger, M. Lehmann, L. Pires, and R. Steinman; Hospital of the University of Pennsylvania, Philadelphia: D. Kocovic
+and B. Pavri; John F. Kennedy Medical Center, Atlantis, Fla.: R. Fishel; Lahey Hitchcock Medical Center, Burlington, Mass.: F. Venditti, R. John, and
+D. Martin; Lankenau Hospital, Wynnewood, Pa.: R. Marinchak, D.
+Bharucha, M. Hernandez, P. Kowey, S. Rials, and J. Shuck; Lovelace
+Health Systems, Albuquerque, N.M.: M. West and F. Kusumoto; Maine
+Medical Center, Portland: J. Love, J. Cutler, G. Leask, and W. Dietz; Medical College of Philadelphia–Hahnemann University, Philadelphia: S.
+Kutalek; Mount Sinai Medical Center, Miami Beach, Fla.: J. Zebede and
+E. Lieberman; Medical College of Virginia, Richmond: K. Ellenbogen and
+M. Wood; Montefiore Medical Center, Bronx, N.Y.: J. Gross and S. Furman; Montreal General Hospital, Montreal: T. Hadjis and M. Sami; Mount
+Sinai Medical Center, New York: J. Camuñas and J. Halperin; M.S. Hershey
+Medical Center, Hershey, Pa.: J. Luck, G. Naccarelli, D. Wolbrette, H. Kumar,
+and J. Dell’Orfano; Mt. Auburn Hospital, Cambridge, Mass.: S. Forwand
+and P. Voukydis; New England Medical Center, Boston: M. Link; Northeast Medical Center, Fayetteville, N.Y.: R. Silverman; Oregon Health Sciences University, Portland: J. McAnulty, B. Halperin, and J. Kron; Ohio
+State University Medical Center, Columbus: C. Love and A. Mehdirad;
+Peninsula Regional Medical Center, Salisbury, Md.: E. Nsah; Phoebe Putney Memorial Hospital, Albany, Ga.: S. Souther; Presbyterian Medical
+Center and the University of Pennsylvania, Philadelphia: A. Russo and H.
+Waxman; Providence Hospital, Southfield, Mich.: C. Machado; Regional
+Cardiology Associates, Sacramento, Calif.: G. O’Neill and A. Sharma;
+Ruby Memorial Hospital, Morgantown, W.V.: S. Schmidt and J. Lobban;
+Rush–Presbyterian–St. Luke’s Medical Center, Chicago: P. Santucci and E.
+Sgarbossa; Saint Joseph’s Hospital of Atlanta, Atlanta: M. Cohen, H. Kopelman, and S. Prater; Sentara Norfolk General, Norfolk, Va.: R. Bernstein
+and J. Herre; Shands Hospital, Gainesville, Fla.: J. Conti; Southeastern
+
+N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org · 1861
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.
+
+The Ne w E n g l a nd Jo u r n a l o f Me d ic i ne
+
+Cardiovascular Institute, Rome, Ga.: R. Young, G. Floyd, G. Myers, D.
+MacLeod, and F. Stegall; Southern New Hampshire Cardiology Center,
+Manchester: B. Hook; St. Elizabeth’s Hospital, Boston: C. Haffajee and G.
+Chaundhry; St. Joseph Medical Center, Atlanta: L. Borgatta; St. Joseph
+Mercy Hospital, Ypsilanti, Mich.: J. Kappler, J.H. Kapler, and S. Winston;
+St. Joseph Hospital and Medical Center, Paterson, N.J.: N. Tullo, M. Biehl,
+and S. Fishberger; St. Luke’s–Roosevelt Hospital Center, New York: F. Ehlert and J. Steinberg; Sunnybrook Health Sciences Centre, Toronto: C.
+Lau; Susquehanna Health System, Williamsport, Pa.: E. Keating; Tampa
+General Hospital, Tampa, Fla.: H. Fontanet; Thomas Jefferson University
+Hospital, Philadelphia: A. Greenspon, D. Kleinman, and S. Sloan; Tri-City
+Cardiology, Mesa, Ariz.: A. Kaplan; University Community Hospital and
+Pepin Heart Center, Tampa, Fla.: S. Elchahal; University Hospital, London, Canada: R. Yee, G. Klein, and A. Krahn; University of California at
+Los Angeles, Los Angeles: Z. Feliciano; University of Chicago Hospitals,
+Chicago: D. Wilber and D. Kopp; University of Kentucky, Lexington: A.
+Natale and F. Leonelli; University of Massachusetts Medical Center,
+Worcester: R. Mittleman, P. Spector, and L. Rosenthal; University of Missouri Hospital and Clinics, Columbia: G. Flaker, P. McLaughling, and R.
+Tummula; University of New Mexico School of Medicine, Albuquerque:
+C. Cadman; University of Pittsburgh Medical Center, Pittsburgh: D.
+Schwartzman, K. Anderson, D. Contrafatto, and V. Gottipaty; University
+of Utah Health Sciences Center, Salt Lake City: R. Freedman and S.
+Compton; University of Virginia Health Sciences Center, Charlottesville:
+J. DiMarco, D. Haines, and S. Nath; Veterans Affairs Medical Center,
+Washington, D.C.: S. Singh, R. Fletcher, and P. Karasik; Virginia Beach
+General Hospital, Virginia Beach, Va.: J. Griffin and L. Kanter; Watson
+Clinic, Lakeland, Fla.: S. Keim, D. Ebersole, J. Messina, W. Moore III, G.
+Tyson, and R. Vlietstra; Welborn Baptist Hospital, Evansville, Ind.: S. Mufti; West Los Angeles Veterans Affairs Medical Center, Los Angeles: D. Gallik; William Beaumont Hospital, Royal Oak, Mich.: H. Frumin and J. Stewart; Wilson Regional Medical Center of United Health Services Hospitals,
+Johnson City, N.Y.: N. Stamato; Winthrop University Hospital, Mineola,
+N.Y.: B. Ibrahim and R. Steingart; William Jennings Bryan Dorn Veterans
+Hospital, Columbia, S.C.: A. Saenz; Yale University School of Medicine,
+New Haven, Conn.: W. Batsford, C. McPherson, and L. Rosenfeld; ECG
+Core Laboratory: A. Tolentino, A. Montañez, and J. Zebede; Data and
+Safety Monitoring Board: M. Pfeffer, M.D., Ph.D. (Chair), E. Antman,
+M.D., A. Curtis, M.D., K. Davis, Ph.D., S. Saksena, M.D., M. Hlatky,
+M.D., and D. Sherman, M.D.
+
+REFERENCES
+1. Elmqvist R, Senning A. Implantable pacemaker for the heart. In: Smyth
+CN, ed. Medical electronics: proceedings of the Second International Conference on Medical Electronics, Paris, June 24–27, 1959. London: Iliffe,
+1960:253-4. abstract.
+2. Connolly SJ, Kerr C, Gent M, Yusuf S. Dual-chamber versus ventricular
+pacing: critical appraisal of current data. Circulation 1996;94:578-83.
+3. Lamas GA. Pacemaker mode selection and survival: a plea to apply the
+principles of evidence based medicine to cardiac pacing practice. Heart
+1997;78:218-20.
+4. Ovsyshcher IE, Hayes DL, Furman S. Dual-chamber pacing is superior
+to ventricular pacing: fact or controversy? Circulation 1998;97:2368-70.
+5. Samet P, Castillo C, Bernstein WH. Hemodynamic consequences of
+atrial and ventricular pacing in subjects with normal hearts. Am J Cardiol
+1966;18:522-5.
+6. Stewart WJ, Dicola VC, Harthorne JW, Gillam LD, Weyman AE. Doppler ultrasound measurement of cardiac output in patients with physiologic
+pacemakers: effects of left ventricular function and retrograde ventriculoatrial conduction. Am J Cardiol 1984;54:308-12.
+7. Lamas G. Physiological consequences of normal atrioventricular conduction: applicability to modern cardiac pacing. J Card Surg 1989;4:89-98.
+8. Connolly SJ, Kerr CR, Gent M, et al. Effects of physiologic pacing versus ventricular pacing on the risk of stroke and death due to cardiovascular
+causes. N Engl J Med 2000;342:1385-91.
+9. Rosenqvist M, Brandt J, Schuller H. Long-term pacing in sinus node
+disease: effects of stimulation mode on cardiovascular morbidity and mortality. Am Heart J 1988;116:16-22.
+10. Lamas GA, Pashos CL, Normand SLT, McNeil B. Permanent pace-
+
+maker selection and subsequent survival in elderly Medicare pacemaker recipients. Circulation 1995;91:1063-9.
+11. Andersen HR, Thuesen L, Bagger JP, Vesterlund T, Thomsen PEB.
+Prospective randomised trial of atrial versus ventricular pacing in sick-sinus
+syndrome. Lancet 1994;344:1523-8.
+12. Andersen HR, Nielsen JC, Thomsen PEB, et al. Long-term follow-up
+of patients from a randomised trial of atrial versus ventricular pacing for
+sick-sinus syndrome. Lancet 1997;350:1210-6.
+13. Lamas GA, Orav EJ, Stambler BS, et al. Quality of life and clinical outcomes in elderly patients treated with ventricular pacing as compared with
+dual-chamber pacing. N Engl J Med 1998;338:1097-104.
+14. Wharton JM, Sorrentino RA, Campbell P, et al. Effect of pacing modality on atrial tachyarrhythmia recurrence in the tachycardia-bradycardia
+syndrome: preliminary results of the Pacemaker Atrial Tachycardia Trial.
+Circulation 1998;98:Suppl I:I-494. abstract.
+15. Lamas GA, Lee K, Sweeney M, et al. The Mode Selection Trial
+(MOST) in sinus node dysfunction: design, rationale, and baseline characteristics of the first 1000 patients. Am Heart J 2000;140:541-51.
+16. Kaplan SH. Patient reports of health status as predictors of physiologic
+health measures in chronic disease. J Chronic Dis 1987;40:Suppl:27S-40S.
+17. Charlson ME, Pompei P, Ales KL, MacKenzie CR. A new method of
+classifying prognostic comorbidity in longitudinal studies: development
+and validation. J Chronic Dis 1987;40:373-83.
+18. Ware JE, Sherbourne CD. The MOS 36-item short-form health status
+survey (SF-36): conceptual framework and item selection. Med Care 1992;
+30:473-83.
+19. Ware JE. SF-36 physical and mental summary scores: a user’s manual.
+Boston: Medical Outcomes Trust, 1994.
+20. Goldman L, Hashimoto B, Cook EF, Loscalzo A. Comparative reproducibility and validity of systems for assessing cardiovascular functional
+class: advantages of a new specific activity scale. Circulation 1981;64:122734.
+21. Tsevat J, Goldman L, Lamas GA, et al. Functional status versus utilities
+in survivors of myocardial infarction. Med Care 1991;29:1153-9.
+22. Lamas GA, Vaughan DE, Parisi AF, Pfeffer MA. Effects of left ventricular shape and captopril therapy on exercise capacity after anterior wall
+acute myocardial infarction. Am J Cardiol 1989;63:1167-73.
+23. Ellenbogen KA, Gilligan DM, Wood MA, Morillo C, Barold SS. The
+pacemaker syndrome — a matter of definition. Am J Cardiol 1997;79:
+1226-9.
+24. Kaplan EL, Meier P. Nonparametric estimation from incomplete
+observations. J Am Stat Assoc 1958;53:457-81.
+25. Kalbfleisch JD, Prentice RL. The statistical analysis of failure time
+data. New York: John Wiley, 1980.
+26. Cox DR. Regression models and life-tables. J R Stat Soc [B] 1972;34:
+187-220.
+27. O’Brien PC, Fleming TR. A multiple testing procedure for clinical trials. Biometrics 1979;35:549-56.
+28. Lan KKG, DeMets DL. Discrete sequential boundaries for clinical trials. Biometrika 1983;70:659-63.
+29. Gregoratos G, Cheitlin MD, Conill A, et al. ACC/AHA guidelines for
+implantation of cardiac pacemakers and antiarrhythmia devices: a report of
+the American College of Cardiology/American Heart Association Task
+Force of Practice Guidelines (Committee on Pacemaker Implantation).
+J Am Coll Cardiol 1998;31:1175-209.
+30. Nielsen JC, Andersen HR, Thomsen PEB, et al. Heart failure and
+echocardiographic changes during long-term follow-up of patients with
+sick sinus syndrome randomized to single-chamber atrial or ventricular
+pacing. Circulation 1998;97:987-95.
+31. Hesselson AB, Parsonnet V, Bernstein AD, Bonavita GJ. Deleterious
+effects of long-term single-chamber ventricular pacing in patients with sick
+sinus syndrome: the hidden benefits of dual-chamber pacing. J Am Coll
+Cardiol 1992;19:1542-9.
+32. Ellenbogen KA, Stambler BS, Orav EJ, et al. Clinical characteristics of
+patients intolerant to VVIR pacing. Am J Cardiol 2000;86:59-63.
+33. Heldman D, Mulvihill D, Nguyen H, et al. True incidence of pacemaker syndrome. Pacing Clin Electrophysiol 1990;13:1742-50.
+
+Copyright © 2002 Massachusetts Medical Society.
+
+1862 · N Engl J Med, Vol. 346, No. 24 · June 13, 2002 · www.nejm.org
+
+The New England Journal of Medicine
+Downloaded from nejm.org at BROWN UNIVERSITY on March 12, 2014. For personal use only. No other uses without permission.
+Copyright © 2002 Massachusetts Medical Society. All rights reserved.

@@ -33,7 +33,7 @@ I
 Background: A study was undertaken to evaluate the clinical efficacy of the 23-valent pneumococcal
 polysaccharide vaccine (PPV) in immunocompetent patients with chronic obstructive pulmonary disease
 (COPD).
-Methods: A randomised controlled trial was carried out in 596 patients with COPD of mean (SD) age 65.8
+Methods: A randomised controlled trial was carried out in <n>596</n> patients with COPD of mean (SD) age 65.8
 (9.7) years, 298 of whom received PPV. The main outcome was radiographically proven community
 acquired pneumonia (CAP) of pneumococcal or unknown aetiology after a mean period of 979 days
 (range 20–1454).
