@@ -445,173 +445,6 @@ class BinaryMetricsRecorder(object):
 
         
 
-############################################################
-#   
-#   Vectorizer
-#
-############################################################
-# class ModularCountVectorizer():
-#     """
-#     Similar to CountVectorizer from sklearn, but allows building up
-#     of feature matrix gradually, and adding prefixes to feature names
-#     (to identify interaction terms)
-#     """
-#     STOP_WORDS = set(stopwords.words('english'))
-#     SIMPLE_WORD_TOKENIZER = re.compile("[a-zA-Z]{2,}") # regex of the rule used by sklearn CountVectorizer
-
-
-#     def __init__(self, *args, **kwargs):
-#         self.data = []
-#         self.vectorizer = DictVectorizer(*args, **kwargs)
-
-#     def _transform_X_to_dict(self, X, prefix=None, weighting=1):
-#         """
-#         makes a list of dicts from a document
-#         1. word tokenizes
-#         2. creates {word1:1, word2:1...} dicts
-#         (note all set to '1' since the DictVectorizer we use assumes all missing are 0)
-#         """
-#         return [self._dict_from_word_list(
-#             self._word_tokenize(document, prefix=prefix), weighting=1) for document in X]
-
-#     def _word_tokenize(self, text, prefix=None, stopword=True):
-#         """
-#         simple word tokenizer using the same rule as sklearn
-#         punctuation is ignored, all 2 or more letter characters are a word
-#         """
-
-
-#         stop_word_list = self.STOP_WORDS if stopword else set()
-
-#         if prefix:
-#             return [prefix + word.lower() for word in self.SIMPLE_WORD_TOKENIZER.findall(text) 
-#                         if not word.lower() in stop_word_list]
-#         else:
-#             return [word.lower() for word in self.SIMPLE_WORD_TOKENIZER.findall(text) 
-#                         if not word.lower() in stop_word_list]
-
-
-#     def _dict_from_word_list(self, word_list, weighting=1):
-#         return {word: weighting for word in word_list}
-
-#     def _dictzip(self, dictlist1, dictlist2):
-#         """
-#         zips together two lists of dicts of the same length
-#         """
-#         # checks lists must be the same length
-#         if len(dictlist1) != len(dictlist2):
-#             raise IndexError("Unable to combine featuresets with different number of examples")
-
-#         output = []
-
-#         for dict1, dict2 in zip(dictlist1, dictlist2):
-#             output.append(dict(dict1.items() + dict2.items()))
-#             # note that this *overwrites* any duplicate keys with the key/value from dictlist2!!
-
-#         return output
-
-#     def transform(self, X, prefix=None):
-#         # X is a list of document strings
-#         # word tokenizes each one, then passes to a dict vectorizer
-#         dict_list = self._transform_X_to_dict(X, prefix=prefix)
-#         return self.vectorizer.transform(dict_list)
-
-#     def fit_transform(self, X, prefix=None, max_features=None, low=2):
-#         # X is a list of document strings
-#         # word tokenizes each one, then passes to a dict vectorizer
-#         dict_list = self._transform_X_to_dict(X, prefix=prefix)
-#         X = self.vectorizer.fit_transform(dict_list)
-
-#         if max_features is not None or low is not None:
-#             X, removed = self._limit_features(X.tocsc(), 
-#                         self.vectorizer.vocabulary_, low=low, limit=max_features)
-#             print "pruned %s features!" % len(removed)
-#             X = X.tocsc()
-
-#         return self.vectorizer.fit_transform(dict_list)
-
-#     def get_feature_names(self):
-#         return self.vectorizer.get_feature_names()
-
-
-#     def builder_clear(self):
-#         self.builder = []
-#         self.builder_len = 0
-
-#     def builder_add_docs(self, X, prefix = None, weighting=1):
-#         if not self.builder:
-#             self.builder_len = len(X)
-#             self.builder = self._transform_X_to_dict(X, prefix=prefix, weighting=weighting)
-#         else:
-#             X_dicts = self._transform_X_to_dict(X, prefix=prefix, weighting=weighting)
-#             self.builder = self._dictzip(self.builder, X_dicts)
-
-#     def builder_add_interaction_features(self, X, interactions, prefix=None):
-#         if prefix is None:
-#             raise TypeError('Prefix is required when adding interaction features')
-
-#         doc_list = [(sent if interacting else "") for sent, interacting in zip(X, interactions)]
-#         self.builder_add_docs(doc_list, prefix)
-
-        
-#     def builder_fit_transform(self, max_features=None, low=2):
-#         X = self.vectorizer.fit_transform(self.builder)
-#         if max_features is not None or low is not None:
-#             X, removed = self._limit_features(X.tocsc(), 
-#                         self.vectorizer.vocabulary_, low=low, limit=max_features)
-#             print "pruned %s features!" % len(removed)
-#             X = X.tocsc()
-
-#         return X #self.vectorizer.fit_transform(self.builder)
-
-#     def builder_transform(self):
-#         return self.vectorizer.transform(self.builder)   
-
-
-#     def _limit_features(self, cscmatrix, vocabulary, high=None, low=None,
-#                         limit=None):
-#         """Remove too rare or too common features.
-
-#         Prune features that are non zero in more samples than high or less
-#         documents than low, modifying the vocabulary, and restricting it to
-#         at most the limit most frequent.
-
-#         This does not prune samples with zero features.
-#         """
-#         if high is None and low is None and limit is None:
-#             return cscmatrix, set()
-
-#         # Calculate a mask based on document frequencies
-#         dfs = self._document_frequency(cscmatrix)
-#         mask = np.ones(len(dfs), dtype=bool)
-#         if high is not None:
-#             mask &= dfs <= high
-#         if low is not None:
-#             mask &= dfs >= low
-#         if limit is not None and mask.sum() > limit:
-#             # backward compatibility requires us to keep lower indices in ties!
-#             # (and hence to reverse the sort by negating dfs)
-#             mask_inds = (-dfs[mask]).argsort()[:limit]
-#             new_mask = np.zeros(len(dfs), dtype=bool)
-#             new_mask[np.where(mask)[0][mask_inds]] = True
-#             mask = new_mask
-
-#         new_indices = np.cumsum(mask) - 1  # maps old indices to new
-#         removed_terms = set()
-#         for term, old_index in list(six.iteritems(vocabulary)):
-#             if mask[old_index]:
-#                 vocabulary[term] = new_indices[old_index]
-#             else:
-#                 del vocabulary[term]
-#                 removed_terms.add(term)
-#         kept_indices = np.where(mask)[0]
-
-#         return cscmatrix[:, kept_indices], removed_terms
-
-     # def _document_frequency(self, X):
-     #     """Count the number of non-zero values for each feature in csc_matrix X."""
-     #     return np.diff(X.indptr)
-
 ModularCountVectorizer = ModularVectorizer
 
 ############################################################
@@ -621,11 +454,14 @@ ModularCountVectorizer = ModularVectorizer
 ############################################################
 class ExperimentBase(object):
 
-    def __init__(self, dat):
-        self.dat = RoBData(test_mode=False)
+    def __init__(self, dat=None):
+        if dat is None:
+            self.dat = self._get_data_filter()
+        else:
+            self.dat = dat
         self.dat.generate_data()
-        self.metrics = BinaryMetricsRecorder(dat.CORE_DOMAINS)
-        self.stupid_metrics = BinaryMetricsRecorder(dat.CORE_DOMAINS) # record a baseline
+        self.dat_filter = self._get_filter(self.dat)
+        self.metrics = BinaryMetricsRecorder(self.dat.CORE_DOMAINS)
 
     def run(self):
         pass
@@ -635,6 +471,16 @@ class ExperimentBase(object):
 
     def _process_fold(self):
         pass
+
+    def _get_data(self):
+        return RoBData(test_mode=False)
+
+    def _get_filter(self, dat):
+        return DocFilter(dat)
+
+    
+
+
 
 
 class SimpleModel(ExperimentBase):
@@ -681,7 +527,7 @@ def simple_model_test(data_filter=DocFilter):
 
 
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='accuracy')
+        clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
         no_studies = len(uids)
 
@@ -706,7 +552,7 @@ def simple_model_test(data_filter=DocFilter):
 
             stupid_metrics.add_preds_test([1] * len(y_test), y_test, domain=domain)
 
-    metrics.save_csv('new_simple_test.csv')
+    metrics.save_csv('simple_acc.csv')
     stupid_metrics.save_csv('stupid_output.csv')
             
 
@@ -736,7 +582,7 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
     logging.info('setting model parameters')
     tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-    clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='accuracy')
+    clf = GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
 
     no_studies = len(train_uids)
     logging.info('calculating folds')
@@ -806,7 +652,7 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
 
     if fold is None:
-        metrics.save_csv('new_multitask.csv')
+        metrics.save_csv('multitask_acc.csv')
     else:
         metrics.save_csv(os.path.join(metrics_out_path, 'multitask.csv'))
 
@@ -823,8 +669,8 @@ if __name__ == '__main__':
         multitask_test(fold=fold_to_run, pickle_metrics=True, 
                 metrics_out_dir=metrics_out_dir)
     else:
-        simple_model_test(data_filter=DocFilter)
-        # multitask_test()
+        # simple_model_test(data_filter=DocFilter)
+        multitask_test()
     
 
 

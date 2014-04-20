@@ -25,16 +25,20 @@ class ModularVectorizer(object):
     def builder_clear(self):
         self.X = None
 
-    def _combine_matrices(self, X_part):
+    def _combine_matrices(self, X_part, weighting=1):
+        X_part.data.fill(weighting)
+
         if self.X is None:
             self.X = X_part
         else:
             self.X = self.X + X_part
-            self.X.data.fill(1) # since we want a binary matrix
+            # assuming we have no collisions, the interaction terms shouldn't be identical
+            # if there are collisions, this is ok since they should form a tiny proportion
+            # of the data (they will have values > weighting)
 
     def builder_add_docs(self, X_docs, weighting=1, interactions=None, prefix=None, low=None):
         X_part = self.vec.transform(X_docs, i_vec=interactions, i_term=prefix, low=low)
-        self._combine_matrices(X_part)
+        self._combine_matrices(X_part, weighting=weighting)
 
     builder_add_interaction_features = builder_add_docs # identical fn here; but for compatability
 
