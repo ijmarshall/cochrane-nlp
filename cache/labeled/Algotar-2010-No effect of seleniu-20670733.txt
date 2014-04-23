@@ -1,6 +1,6 @@
 BRIEF OBSERVATION
 
-No Effect of Selenium Supplementation on Serum Glucose
+No Effect of Selenium Supplementation on <tx>Serum Glucose</tx>
 Levels in Men with Prostate Cancer
 Amit M. Algotar, PhD, MBBS,a Mimi Suzanne Stratton, PhD,a Steven P. Stratton, PhD,a,b Chiu-Hsieh Hsu, PhD,a,c
 Frederick R. Ahmann, MDa,b
@@ -11,16 +11,16 @@ University of Arizona, Tucson.
 
 ABSTRACT
 BACKGROUND: Literature indicates a relationship between selenium supplementation and risk of diabetes.
-However, because these data are inconclusive, we investigated the effect of selenium supplementation on
+However, because these data are inconclusive, we investigated the effect of <tx>selenium supplementation</tx> on
 serum glucose levels in men with prostate cancer enrolled in a clinical trial testing of the effect of selenium
 on prostate cancer progression.
-METHODS: Subjects were randomized to receive placebo (n ϭ 46), selenium 200 ␮g/day (n ϭ 47), and
-selenium 800 ␮g/day (n ϭ 47). Serum glucose levels were obtained every 6 months for up to 5 years.
+METHODS: Subjects were randomized to receive <tx>placebo</tx> (n ϭ 46), <tx>selenium 200</tx> ␮g/day (n ϭ 47), and
+<tx>selenium 800</tx> ␮g/day (n ϭ 47). Serum glucose levels were obtained every 6 months for up to 5 years.
 Longitudinal analysis was carried out to assess whether rate of change of serum glucose levels was
-signiﬁcantly different in the selenium-supplemented groups as compared with placebo. Sensitivity analyses
+signiﬁcantly different in the <tx>selenium-supplemented</tx> groups as compared with placebo. Sensitivity analyses
 were performed to assess the robustness of ﬁndings.
 RESULTS: Changes in serum glucose levels during the course of the trial were not statistically signiﬁcantly
-different as compared with placebo for the selenium 200 ␮g/day (P ϭ .56) or selenium 800 ␮g/day
+different as compared with <tx>placebo</tx> for the <tx>selenium 200</tx> ␮g/day (P ϭ .56) or selenium 800 ␮g/day
 (P ϭ .91) treatment groups.
 CONCLUSION: These results do not support a relationship between selenium supplementation and changes
 in serum glucose levels. Recommendations about selenium supplementation and risk of diabetes will
@@ -28,9 +28,9 @@ require more deﬁnitive studies.
 © 2010 Elsevier Inc. All rights reserved. • The American Journal of Medicine (2010) 123, 765-768
 KEYWORDS: Prostate cancer; Selenium supplementation; Serum glucose
 
-Although selenium supplementation has been reported to be
+Although <tx>selenium supplementation</tx> has been reported to be
 inversely associated with prostate cancer risk,1-3 recent reports indicate that it may increase the risk of type 2 diabetes.
-In secondary analyses of data from the Nutritional Prevention of Cancer (NPC) study, 58 subjects in the seleniumsupplemented group (n ϭ 600) and 39 subjects in the placebo group (n ϭ 602) developed type 2 diabetes (hazard
+In secondary analyses of data from the Nutritional Prevention of Cancer (NPC) study, 58 subjects in the seleniumsupplemented group (n ϭ 600) and 39 subjects in the <tx>placebo</tx> group (n ϭ 602) developed type 2 diabetes (hazard
 ratio 1.55; 95% conﬁdence interval [CI], 1.03-2.33).4 Results were prominent in the highest tertile of baseline seleFunding: National Cancer Institute grants CA079080 and CA023074.
 Conﬂict of Interest: All authors declare that there are no competing
 interests. No pharmaceutical industry funds were received for this work.
@@ -49,10 +49,10 @@ nium (hazard ratio 2.70; 95% CI, 1.30-5.61).4 In a crosssectional study, Bleys e
 (95% CI, 1.16-2.13) for diabetes (n ϭ 8876).
 The Selenium and Vitamin E Cancer Prevention Trial
 (SELECT) is a phase-3 randomized clinical trial conducted
-to assess whether supplementation with 200 ␮g/day selenium or 400 IU/day vitamin E would prevent prostate cancer in average-risk men.6 Interim review indicated that selenium did not prevent prostate cancer in this population.6 A
+to assess whether supplementation with <tx>200 ␮g/day selenium</tx> or <tx>400 IU/day vitamin E</tx> would prevent prostate cancer in average-risk men.6 Interim review indicated that selenium did not prevent prostate cancer in this population.6 A
 statistically nonsigniﬁcant increased risk of type 2 diabetes
 was observed in the selenium group (P ϭ .16) but not in the
-selenium ϩ vitamin E group.6
+<tx>selenium ϩ vitamin E</tx> group.6
 Each study has its limitations. In secondary analysis of
 the NPC study, diabetes was not the primary outcome, and it
 was self reported.4 In the SELECT analysis, not only was
@@ -73,7 +73,7 @@ tation on serum glucose levels in a cohort of men with
 model to account for variability in fasting status as had been
 biopsy-proven prostate cancer on active surveillance for
 done by Bleyer et al.8
-their disease. Selenium is an important nutritional trace
+their disease. <tx>Selenium</tx> is an important nutritional trace
 element; hence, understanding its
 Mixed-effects models9 were
 effect on biological processes is
@@ -82,7 +82,7 @@ essential before public health recsupplementation on glucose levels
 CLINICAL SIGNIFICANCE
 ommendations can be made.
 over time. Statistical signiﬁcance of
-an interaction term between treat● Selenium supplementation did not inment group and time-on-study was
+an interaction term between treat● <tx>Selenium supplementation</tx> did not inment group and time-on-study was
 ﬂuence serum glucose levels in men
 METHODS
 used to assess the signiﬁcance of
@@ -117,7 +117,7 @@ There were no statistically signiﬁcant differences in glucose
 follow-up visit recorded diabetes status. Thirteen subjects
 levels during the course of the trial in men supplemented
 reported having diabetes at baseline, and 6 others reported
-with selenium as compared with those on placebo. The
+with selenium as compared with those on <tx>placebo</tx>. The
 being diagnosed with diabetes during the trial. These 19
 P-values comparing changes in glucose levels during the
 subjects were not included in the longitudinal analysis.
@@ -258,14 +258,14 @@ Effect of Selenium on Serum Glucose Levels
 
 Figure Mean serum selenium levels (upper panel) and glucose levels (lower panel) at each quarterly clinic visit for
 subjects receiving placebo (), 200 ␮g/day selenium (), or
-800 ␮g/day selenium ( ) during the Watchful Waiting Trial.
+<tx>800 ␮g/day selenium</tx> ( ) during the Watchful Waiting Trial.
 ‘
 The Table indicates the number of subjects contributing data at
 selected clinic visits.
 
 DISCUSSION
-Serum glucose levels in subjects supplemented with 200 or
-800 ␮g/day of selenium were not statistically signiﬁcantly
+Serum glucose levels in subjects supplemented with <tx>200 or
+  800 ␮g/day of selenium</tx> were not statistically signiﬁcantly
 different than those observed in subjects on placebo. These
 results do not support previous conclusions about association between selenium and diabetes in other studies.4-6 The
 current analysis does provide distinct advantages over previous studies. Because serum glucose values were used as
