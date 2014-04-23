@@ -10,7 +10,8 @@ GREGG R. EURE, M.D.,4 JOHN N. KABALIN, M.D.,5 JAMES E. LINGEMAN, M.D.,6
 JOSEPH NUZZARELLO, M.D.,7 and CHANDRU SUNDARAM, M.D.2
 
 ABSTRACT
-Background and Purpose: Transurethral microwave thermotherapy (TUMT) is an effective therapy for symptomatic benign prostatic hyperplasia (BPH), but the trade-off between the magnitude of clinical improvement
+Background and Purpose: <tx>Transurethral microwave thermotherapy</tx>
+(TUMT) is an effective therapy for symptomatic benign prostatic hyperplasia (BPH), but the trade-off between the magnitude of clinical improvement
 and side effects and patient tolerance has limited its appeal to patients and urologists. This study, using the
 TherMatrx TMx-2000, a TUMT device that directly heats the transition zone to greater than 50ºC, has been
 focused on resolving these issues and developing a truly office-based therapy that is well tolerated with a benign post-treatment course.
@@ -75,16 +76,16 @@ effects. Fortunately, the majority of men seek therapy for bothersome voiding sy
 TURP, and therefore, pharmacologic and minimally invasive
 therapies are appropriate initial measures for most patients. Because the widely available Urologix Targis and Prostatron and
 Vidamed TUNA procedures are too painful for most office settings and have potential periprocedure and long-term side effects, most patients and urologists begin with pharmacologic
-therapy consisting of alpha-blockade and 5-alpha-reductase inhibition, either alone or in combination. However, within 1 year
+therapy consisting of <tx>alpha-blockade</tx> and <tx>5-alpha-reductase inhibition</tx>, either alone or in <tx>combination</tx>. However, within 1 year
 of initiation, at least a third of men have discontinued medical
 therapy because of lack of efficacy or bothersome side effects.
 Furthermore, many men remain on medical therapy because it
 is effective and choose to live with sexual side effects as well
 as lethargy or hypotension. For those patients who drop off therapy or choose to tolerate side effects, the need for alternative
-therapies for BPH is considerable. If a minimally invasive therapy is to provide a real alternative to medical therapy, treatment
+therapies for <tx>BPH</tx> is considerable. If a minimally invasive therapy is to provide a real alternative to medical therapy, treatment
 tolerance must be excellent, and the risk of an irreversible side
 effect or adverse event must be comparable; i.e., extremely low.
-Transurethral microwave thermotherapy (TUMT) uses microwave energy to heat the prostatic tissue to temperatures
+<tx>Transurethral microwave thermotherapy (TUMT)</tx> uses microwave energy to heat the prostatic tissue to temperatures
 .45ºC, thereby inducing coagulation necrosis. The TUMT devices already approved by the Food and Drug Administration
 (FDA) use a microwave catheter that is cooled on its surface.
 Sufficient microwave energy levels are required to penetrate
@@ -140,13 +141,13 @@ the device to protect the rectal mucosa and urethra. Although
 symptomatic relief is provided for the majority of patients, the
 safety systems are not sufficient in all patients, and the occurrence of rectal fistula and penile necrosis in patients treated by
 the Targis and Prostatron devices prompted a FDA health notification (www.fda.gov/CDRH/safety/bph.html) to alert urologists to the risks.
-The TherMatrx TMx-2000 is a TUMT system that creates a
+The <tx>TherMatrx TMx-2000</tx> is a TUMT system that creates a
 directly measured temperature of 50ºC in the transition zone
 and, because of refinements in equipment and catheter design,
 does not require cooling to achieve tolerance and avoid posttreatment slough. Because energy-withdrawing effect of the circulating coolant does not need to be overcome and the treated
 tissue is closer to the catheter, lower wattages can be applied
 to achieve necrosis in the transition zone. Although this is the
-tissue traditionally resected during TURP, it has not previously
+tissue traditionally resected during <tx>TURP</tx>, it has not previously
 been a target for TUMT because of concerns about patient tolerance during the treatment and the potential risk of deleterious postprocedure urethral sloughing. Phase II TherMatrx TMx2000 dose–response studies demonstrated that there is a
 microwave thermotherapy dose that provides excellent patient
 tolerance, minimal side effects, and a beneficial outcome. In
@@ -155,7 +156,7 @@ this paper, we report our experience using the TherMatrx TMx2000 device (TherMat
 PATIENTS AND METHODS
 Male patients between 50 and 80 years old with a diagnosis of
 symptomatic BPH to a sufficient degree that treatment was warranted were included in this study. A total of 200 patients were
-randomized into either a sham or a microwave treatment group.
+randomized into either a <tx>sham</tx> or a <tx>microwave treatment</tx> group.
 All patients underwent a thorough history and physical examination as well as prostatic specific antigen (PSA) assay. Patients
 with a PSA above the normal level of 4 ng/mL but less than 10
 ng/mL were entered in the study only after transrectal biopsy of
@@ -176,7 +177,7 @@ to date.
 Peak flow rates (PFRs) were ,12 mL/sec, and the postvoiding
 residual volume (PVR) was ,125 mL. Transrectal ultrasonography (TRUS) was done on all patients prior to the procedure,
 and prostate volumes were required to be between 30 and
-100 cc without a significant intravesical middle lobe. All patients underwent cystoscopy. Patients were randomized 2:1 either to a treatment group or a sham group after meeting all the
+100 cc without a significant intravesical middle lobe. All patients underwent <tx>cystoscopy</tx>. Patients were randomized 2:1 either to a treatment group or a sham group after meeting all the
 inclusion criteria. Sham-treated patients underwent placement
 of the microwave catheter for the treatment period without energy delivery and received the same post-treatment care as the
 active-treatment patients. All patients were unblinded after the
@@ -189,7 +190,7 @@ is a modified Foley catheter containing a coiled microwave-radiating antenna. Th
 for temperature monitoring and mapping along its length.
 All treatments were performed in urology offices or clinics.
 In order to address patient comfort and the typical anxiety surrounding such a treatment, Toradol (10 mg), a narcotic analgesic (at some sites), and lorazepam (Ativan, 2.0 mg) were
-given orally 45 minutes before treatment. Prior to catheter insertion, lidocaine jelly was injected into the urethra and allowed
+given orally 45 minutes before treatment. Prior to catheter insertion, <tx>lidocaine jelly</tx> was injected into the urethra and allowed
 to remain in place for 15 minutes. The RX-200 applicator was
 then passed, the balloon inflated, and the drainage lumen connected to a collection bag. Gentle traction was applied so the
 inflated balloon remained seated in the trigone. The area of heating was confined to the coiled antenna zone, which was located
@@ -239,7 +240,7 @@ Table 2, demonstrate a striking decrease in AUASI and a 58.1%
 increase in PFR.
 The treatment course itself was extremely well tolerated by
 the patients, and the post-treatment course for the study patients
-is summarized in Table 3. Recatheterization was the most common event, seen in 16.8% of patients. The protocol did not permit the use of alpha-blockers or other medications to improve
+is summarized in Table 3. Recatheterization was the most common event, seen in 16.8% of patients. The protocol did not permit the use of <tx>alpha-blockers</tx> or other medications to improve
 bladder emptying, and all patients voided successfully by 1
 week. Except for transient urinary retention, this study suggests
 that long-term side effects will be rare.
