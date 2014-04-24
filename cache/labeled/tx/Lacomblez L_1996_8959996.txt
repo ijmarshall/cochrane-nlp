@@ -1,0 +1,2122 @@
+A confirmatory dose-ranging study of
+riluzole in A L S
+L. Lacomblez, MD; G. Bensimon, MD, PhD; P.N. Leigh, PhD, FRCP; P. Guillet, MD; L. Powe, MD;
+S. Durrleman, MD; J.C.Delumeau, MD, PhD; V. Meininger, MD, PhD; and the ALS/Riluzole Study Group-11"
+
+Article abstracb-ALS is a progressive motor neuron disease with no effective treatment. The anti-excitotoxic drug
+<tx>riluzole (100 mg/day)</tx> has been shown to decrease mortality and muscular deterioration in ALS patients. To confirm and
+extend the therapeutic effect of <tx>riluzole</tx>, we performed a double-blind, placebo-controlled, multicenter, international,
+dose-ranging (50,
+100,200mglday), stratified study in 959 ALS outpatients treated for up to 18 months. Primary efficacy
+criterion was survival and the effect of treatment was analyzed before (Wilcoxon and log rank tests) and after adjustment
+on prognostic factors (Cox model). Secondary efficacy criterion was disease progression assessed through change in
+functional measures. Tracheostomy-free survival rates were: 50.4% (placebo), 55.3% (50mg riluzole) (p = 0.23,
+Wilcoxon
+test; p = 0.25,log-rank test), 56.8% (100 mg riluzole) (p = 0.05,Wilcoxon test; p = 0.076,log-rank test), and 57.8%
+(200 mg riluzole) (p = 0.061,Wilcoxon test; p = 0.075,log-rank test). At the end of the 18-month study, there was a
+significant dose-related decrease in risk of death or tracheostomy (p = 0 0 ) Adjustment for baseline prognostic factors
+.4.
+showed a 35% decreased risk of death with the 100-mg dose compared with placebo (p = 0.002). No significant treatment
+effects were detected for the functional assessments. The most frequent dose-related adverse events included nausea,
+asthenia, and elevated liver enzyme levels. This study confirms the therapeutic effect of riluzole in a large representative
+ALS sample, over an 18-month period. Riluzole is well tolerated and decreases the risk of death or tracheostomy in ALS
+patients.
+NEUROLOGY 1996;47(Suppl4):5242S250
+
+ALS is characterized by a progressive loss of motor
+neurons, which generally leads to death within 2 to 5
+years after onset of first symptoms.' The cause of
+ALS is unknown but glutamate toxicity is one of the
+many hypotheses that have been put forward t o
+explain the progressive neuronal
+<tx>Riluzole
+(2-amino-G-(trifluoromethoxy)benzothiazole</tx>, RP
+54274) demonstrated neuroprotective properties during preclinical
+This activity is thought to
+be related to the inhibitory effect of <tx>riluzole</tx> on glutamate neurotransmission.5~8-11
+The first clinical trial with <tx>riluzole</tx> in ALS12enrolled
+155 patients in a stratified randomized, double-blind,
+<tx>placebo</tx>-controlled study. Results of this first trial
+showed that riluzole (100 mg/day) significantly improved survival and decreased the deterioration rate of
+muscle function over 15 to 21 months follow-up, as
+compared with placebo. The aim of the second study
+was to confirm the benefit of the 100-mg daily dose of
+<tx>riluzole</tx> and to determine whether the benefithisk ratio
+could be enhanced by using either 50 or 200 mg/day. In
+the following we present a brief outline of the main
+report13with complementary aspects of the design and
+results of the study.
+Methods. The trial design was similar to the first
+study.13 This was an international randomized, double-
+
+blind, dose-ranging, <tx>placebo</tx>-controlled, stratified, parallelgroup study. Patients aged 18 to 75,diagnosed as having
+probable or definite ALS according to the El Escorial criteria,I4 were eligible. To prevent interference with the main
+outcome measures, patients were not eligible if the following characteristics applied: (1) more than 5 years had
+elapsed since first symptom; (2)vital capacity was less
+than 60% of the predicted value; (3) tracheostomy had
+occurred or was pending; (4)serum hepatic enzyme levels
+were greater than twice the upper limit of normal (2 X
+ULN);(5)incapacitating or life-threatening diseases were
+present; or (6) the patient was pregnant. Patients were
+also excluded if they had signs of conduction blocks of
+motor nerves, renal dysfunction, paraproteinemia, substantial lesions accounting for the clinical signs on imaging
+studies (CT or MRI), or signs of dementia.
+Patients had to be free from treatments that could possibly interfere with the assessment of therapeutic effect or
+possibly potentiate hepatic toxicity at least 4 weeks prior
+to entry. To this end a prospective list of allowed and
+contraindicated medications was set up (table 1).All patients gave written informed consent to participate in the
+study. The study was granted approval by Institutional
+Review Boards according to the rules of each country.
+Randomization and treatment. Randomization was
+stratified according to site of disease onset (bulbar or limb)
+and center (n = 3 ) Patients were given placebo or 50 mg,
+1.
+100 mg, or <tx>200 mg riluzole/day</tx> as identical tablets. Tablets
+
+*See the Appendix on page 5249 for study organization and other participants.
+From the Departments of Pharmacology (Drs. Lacomblez and Bensimon), and Neurology (Dr. Meininger), Hbpital de la Piti&Salp6tri&re, Pans; RhbnePoulenc Rorer (Drs. Guillet, Powe, Durrleman. and Delumeau), Antony, France and Collegeville, USA; and the Department of Neurology (Professor Leigh),
+Institute of Psychiatry, de Crespigny Park,London, UK.
+Address correspondence and reprint requests to Dr. L. Lacomblez, Department of Pharmacology, Hbpital de la PitiB-Salp&riBre, 47 blvd de l'Hopital, 75651
+Paris Cedex 13,France.
+9242
+
+Copyright 0 1996 by the American Academy of Neurology
+
+Table 1 Contraindicated and allowed medications during
+the study
+Contraindicated medications
+
+Allowed medications
+
+~~
+
+<tx>Antidepressants</tx>
+
+Safety
+Enzyme-inhibiting drugs
+
+Anxiolytics, hypnotics
+
+Drugs with known or potential
+hepatic toxicity
+
+Analgesics
+Symptomatic treatments for
+the following:
+
+Efficacy
+<tx>Enzyme-inducing drugs</tx>
+Drugs intended to treat
+neurodegeneration or
+suspected to aggravate
+such as:
+<tx>Drugs containing amino acids</tx>
+(glutamate, aspartate)
+Anabolic drugs
+<tx>Calcium-channel blocking</tx>
+<tx>drugs</tx>
+Miscellaneous
+~~~~
+
+Ocular irritation: artificial
+tears
+Ptyalism
+Bronchospasms
+Pseudobulbar syndrome
+Hypertonia, spasticity
+Constipation
+
+~
+
+were taken orally twice daily (morning and evening), before meals. Each patient was required to continue doubleblind <tx>therapy</tx> for 18 months or until the administrative
+cut-off date, whichever was the sooner. At the end of that
+period, patients were offered the opportunity to receive
+<tx>riluzole (100 mg/day)</tx> in an open-label study. The tablets
+
+of <tx>riluzole</tx> and <tx>placebo</tx> were provided by Rhbne-Poulenc
+Rorer (Antony, France).
+Efficacy criteria. The primary efficacy outcome was defined prospectively as survival during the 18 months
+double-blind period or until the final cut-off date. Endpoints for survival were defined as death (from any cause),
+tracheostomy, or intubation with artificial ventilation.
+Rates of functional deterioration were secondary efficacy criteria. Disease progression was assessed with use of
+functional evaluations (muscle testing, modified Norris
+limb and bulbar scales)16,16 symptom assessments for
+and
+fasciculations, cramps, stiffness, and tiredness were based
+on the patients’ subjective evaluation using 100-mm
+visual-analog scales (table 2). Respiratory function was
+monitored with tests of vital capacity and expressed as a
+percentage of the expected normal value. Overall clinical
+assessment was done with the Clinical Global Impression
+of Change scale.
+All clinical evaluations were scheduled at entry and a t
+2-month intervals except for respiratory function, which
+was assessed at entry and every 6 months thereafter.
+Safety and off-treatment criteria. Safety assessments
+were done through clinical examination and laboratory
+findings. Special attention was given to hepatic function
+and hematologic evaluations, which were carried out every
+2 weeks during the first 8 weeks of treatment and then
+every 2 months. If the serum alanine aminotransferase
+(ALT) level increased above three times the normal value,
+
+Table 2 Functional scales for ALS
+Manual muscle testing
+
+Modified Norris bulbar scale
+
+Modified Norris limb scale
+
+Visual analog scale
+
+~~
+
+I. Upper limb strength“
+1 Thumb opposition
+.
+2. Wrist flexion
+3. Wrist extension
+4. Elbow flexion
+5. Elbow extension
+6. Shoulder abduction
+11. Lower limb strengthb
+7. Ankle dorsiflexion
+8. Knee flexion
+9. Knee extension
+10. Hip flexion
+111. Neck
+11. Neck flexion
+12. Neck extension
+
+1. Blow
+2. Whistle
+3. Blowing out cheeks
+4. Jaw movement
+5. Clicking tongue
+6. Tongue protrusion
+7. Tongue against the cheek
+8. Tongue against the palate
+9. Cough
+10. Hypersialorrhea
+11. Nasalization
+12. Speech: mumbling
+13. Swallowing: food
+
+Gradation of items 1 to 9:
+0: none
+1: moderate
+Gradation of items
+2: impaired
+0: no contraction
+3: normal
+1: flicker of trace
+Gradation of items 10 to 12:
+contraction
+0: severe
+2: active movement with
+1: present
+gravity eliminated
+2: moderate
+3: active movement against
+3: absent
+gravity but not against
+Gradation of item 13:
+resistance
+0: Yz liquid
+4: active movement against
+1: minced
+gravity and resistance
+2: tender
+5: normal power
+3: normal
+(If food is given through gastric
+tube, swallowing must be rated
+0)
+~
+
+.~
+
+1. Hold up head
+2. Turn in bed
+3. Sit up in bed
+4. Writing ability
+5. Buttoning, zipping
+6. Dress oneself with a shirt, a
+blouse
+7. Dress oneself with pants, a
+skirt
+8. Cutting meat
+9. Holding a fork
+10. Filling up a glass and
+drinking from it
+11. Standing up and shaking
+hands
+12. Combing one’s hair
+13. Brushing one’s teeth
+14. Lift book or tray
+15. Lift fork or pencil
+16. Change arm position
+17. Climb stairs
+18. Walk around a block
+19. Walk alone
+20. Walk with assistance
+21. S t a n d u p
+
+Indication of the intensity on a
+100-mm line for each of the
+following items (from “not at
+all” to “very much”):
+Fasciculation
+Cramp
+Stiffness
+Fatigue
+
+Gradation of items:
+0: none
+1: moderate
+2: impaired
+3: normal
+
+~.
+
+* Each item of upper and lower limb is scored for the right and left side separately.
+December 1996 NEUROLOGY 47(Suppl4) S243
+
+Table 3 Cox model covariates: candidate and significant prognostic factors
+Significant prognostic factors
+Relative risk < 1
+
+Relative risk > 1
+
+Prognostic factor candidates
+Gender
+
+Increase of variable =
+increase in death rate
+
+Increase of variable =
+decrease in death rate
+
+Bulbar signs at entry
+
+Bulbar score
+
+Vital capacity
+
+Height
+Weight
+
+Age$
+Bulbar signs at entry* (no
+= 0; yes = 1)
+
+Vital capacity$
+
+VAS tiredness
+VAS stiffness
+
+VAS cramp
+
+VAS tiredness$
+
+Testing score$
+
+Testing score
+
+VAS fasciculation
+
+CGI severity* (maximum
+severity = 7)
+
+Disease duration$
+
+Disease duration
+
+Limb score
+
+Weight?
+
+CGI severity
+
+Heart rate
+
+Groups of countries (relative to Fr and B)
+
+VAS stiffness*
+
+OECt
+
+NA*
+* p < 0.05.
+t p < 0.01.
+$ p < 0.001.
+
+Fr = France; B = Belgium; OEC
+Global Impression scale.
+
+=
+
+other European countries; NA = North America; VAS = Visual Analogue scale; CGI = Clinical
+
+serologic studies for evidence of viral hepatitis (A, B, and C
+subtypes) were performed.
+Reasons for withdrawal from treatment included the
+occurrence of a serious adverse event, an increase in serum
+ALT to more than five times the upper limit of the normal
+range (>5 x ULN), and withdrawal of the patient’s consent. For the intent-to-treat survival analysis, the status of
+withdrawn patients was checked a t regular time points
+until their planned end in the study. Patients who withdrew from treatment were not required to continue functional assessment.
+Statistical analyses. Relevant demographic and clinical characteristics of the patient population in each group
+at entry were assessed for significant imbalance.
+For efficacy outcomes, the primary statistical analysis
+was performed on the intent-to-treat population, including
+all randomly assigned patients followed for 18 months or
+until the cut-off date or death. Additional preplanned analyses included: a per protocol analysis (excluding the patients for whom protocol was violated, defined before unblinding), analysis with death as the endpoint (excluding
+assisted ventilation as an endpoint to measure survival),
+and censoring a t treatment discontinuation (considering
+only events that occurred during continuous therapy
+within 1month after treatment discontinuation).
+Analyses of the drug effect upon survival were done
+before (stratified log-rank and Wilcoxon tests) and after
+adjustment for prognostic factors (Cox proportionalhazards analysis). Candidate prognostic variables (table 3)
+in the model were a priori defined from previous
+reports. 12~17-20 The significant variables in the Cox model
+were combined in a prognostic score to allow graphic representation. l3 The dose-effect relationship to survival was
+also assessed before and after adjusting for the prognostic
+factors selected in the model.
+Drug effect upon functional measures was evaluated
+5244
+
+NEUROLOGY 47(Suppl4) December 1996
+
+with the unweighted least-squares method.21For each patient, the repeated measures of the functional scores (muscle testing, limb and bulbar Norris scores) over time were
+summarized into slope of change in score, and betweentreatment group differences were compared with variance
+analysis.
+
+Results. <n>Nine hundred fifty-nine</n> patients from 31 centers in seven countries (Belgium, n = 22; Canada, n = 68;
+France, n = 422; Germany, n = 95; Spain, n = 24; UK, n =
+208; USA, n = 120) were enrolled between December 1992
+and October 1993. The median double-blind follow-up was
+548 days (range, 442-548 days).
+There was no statistical difference between the four
+treatment groups for any demographic and clinical variable a t entry, both as a whole and within the stratified
+groups of site of onset or center.13 Significant differences
+between bulbar-onset and limb-onset strata were as expected12:compared with limb onset, patients in the bulbar
+onset group were older, had a lower male-to-female ratio, a
+shorter disease duration, a lower vital capacity and bulbar
+score, but a higher limb and muscle testing score (table 4).
+Concomitant medications a t entry and prior participation in therapeutic trials were well balanced among the
+four treatment groups (table 5).
+For the evaluable population analysis, a total of 37 protocol violations led to the exclusion of 35 patients (3.6%).
+Two hundred five patients (21.4%) prematurely discontinued treatment. These patients were evenly distributed
+across all treatment groups (20.7% in the placebo group,
+20.3% in the 50-mg group, 22.9% in the 100-mg group, and
+21.7% in the 200-mg <tx>riluzole</tx> group). For the survival analysis, nine patients were lost to follow-up a t 18 months.
+The primary analysis for the effect of the 100-mg <tx>riluzole</tx> dose on survival during the double-blind period
+showed a significantly better survival of the treated group
+
+Table 4 Baseline demographic characteristics by disease onset and treatment (missing data for clinical scores are related to missing
+items in the scale)*
+Bulbar-onset ALS
+Placebo
+(n = 74)
+
+R 50 mg
+(n = 71)
+
+R 100 mg
+
+Parameter
+
+(n = 71)
+
+R 200 mg
+(n = 79)
+
+All doses
+(n = 295)
+
+Sex M (%I
+
+42 (56.8)
+
+33 (46.5)
+
+34 (47.9)
+
+42 (53.2)
+
+151 (51.2)
+
+32 (43.2)
+
+38 (53.5)
+
+37 (52.1)
+
+37 (46.8)
+
+144 (48.8)
+
+Age (years)
+Duration of disease (years)
+
+59.6 t 1.2
+
+59.6 2 1.3
+
+58.6 t 1.1
+
+57.8 t 1.2
+
+58.9 2 0.6
+
+1.4 t 0.1
+
+1.4 t 0.1
+
+1.4 2 0.1
+
+1.4 t 0.1
+
+1.4 t 0.1
+
+Vital capacity ratio
+
+82.9 2 2.1
+
+81.9 t 1.7
+
+85.6 2 2.2
+
+81.7 t 2.0
+
+83.0 t 1.0
+
+Muscle testing scale
+
+98.7 2 1.2
+
+96.8 2 1.4
+
+98.5 t 1.3
+
+97.6 t 1.3
+
+97.9 2 0.6
+
+(n = 78)
+
+(n = 294)
+
+21.6 2 1.0
+
+19.9 t 0.8
+
+20.6 t 0.5
+
+(n = 70)
+
+(n = 77)
+
+(n = 292)
+
+53.4 2 1.4
+
+54.6 2 1.1
+
+54.1 t 0.6
+
+F (%)
+
+( m a . score = 110)
+20.4 2 1.0
+
+Bulbar scale
+
+20.8 t 1.0
+
+(max. score = 39)
+54.4 2 1.1
+
+Limb scale
+(max. score
+
+=
+
+53.8 t 1.5
+
+(n = 70)
+
+63)
+
+(n
+
+=
+
+78)
+
+(n
+
+=
+
+293)
+
+Limb-onset ALS
+<tx>Placebo</tx>
+(n = 168)
+
+R 50 mg
+(n = 166)
+
+R 100 mg
+(n = 165)
+
+R 200 mg
+(n = 165)
+
+All
+(n = 664)
+
+Sex M (%)
+
+110 (65.5)
+
+111 (66.9)
+
+109 (66.1)
+
+94 (57.0)
+
+424 (63.9)
+
+F (%)
+
+58 (34.5)
+
+55 (33.1)
+
+56 (33.9)
+
+71 (43.0)
+
+240 (36.1)
+
+54.4 2 0.9
+
+56.0 t 0.8
+
+56.2 2 0.9
+
+56.4 t 0.8
+
+55.7 2 0.4
+
+2.0 t 0.1
+
+2.1 t 0.1
+
+1.8 2 0.1
+
+2.0 t 0.1
+
+2.0 t 0.1
+
+89.7 t 1.4
+
+91.4 t 1.6
+
+89.7 2 1.5
+
+91.3 t 1.5
+
+90.5 t 0.7
+
+(n = 164)
+
+(n = 163)
+
+83.1 t 1.3
+
+85.0 t 1.2
+
+85.0 2 1.1
+
+162)
+
+(n = 164)
+
+(n = 163)
+
+(n = 657)
+
+34.7 2 0.5
+
+36.2 2 0.4
+
+35.1 t 0.5
+
+36.2 2 0.4
+
+35.5 t 0.2
+
+164)
+
+(n = 662)
+
+40.4 2 1.1
+
+41.0 2 1.1
+
+41.6 t 1.1
+
+40.6 t 0.6
+
+(n
+
+(n = 163)
+
+Age (years)
+Duration of disease (years)
+Vital capacity ratio
+Muscle testing scale
+(max. score
+
+=
+
+(max. score
+
+=
+
+39)
+
+Limb scale
+(max. score = 63)
+
+* Mean
+
+5
+
+(n
+
+110)
+
+Bulbar scale
+
+=
+
+84.4 t 1.1
+
+(n
+
+(n = 167)
+39.5 t 1.2
+
+(n
+
+=
+
+165)
+
+=
+
+=
+
+660)
+
+84.3 2 0.6
+
+(n = 661)
+
+SEM.
+
+compared with <tx>placebo</tx> (figure 1)(p = 0.05, Wilcoxon test;
+p = 0.076, log-rank test). An increased survival in the
+<tx>riluzole</tx>-treated patients was apparent after 3 months, significant at 12 months (p = 0.016, Wilcoxon test; p = 0.019,
+log-rank test), and the difference remained throughout the
+study. The greatest difference in survival was seen a t 9 to
+12 months, when 17.5% more <tx>riluzole</tx>-treated patients
+were likely to be alive and tracheostomy-free compared
+with patients receiving <tx>placebo</tx>. The 200 mglday dose of
+<tx>riluzole</tx> showed a similar effect a t 12 months (p = 0.027,
+Wilcoxon test; p = 0.021, log-rank test) and 18 months
+(p = 0.061, Wilcoxon test; p = 0.075, log-rank test). Results for <tx>riluzole</tx> a t 50 mglday showed a trend in significance at 12 months (p = 0.10, Wilcoxon test; p = 0.089,
+log-rank test) and were not significant a t 18 months (p =
+0.23, Wilcoxon test; p = 0.25, log-rank test).
+When all <tx>riluzole</tx> doses were pooled compared with <tx>placebo</tx> there was a significant effect at 12 months (p = 0.009,
+Wilcoxon test; p = 0.006, log-rank test) and 18 months
+
+(p = 0.038, Wilcoxon test; p = 0.048, log-rank test) showing an increased survival in the treated groups (figure 2).
+Comparisons of all four treatment groups showed that
+there was a significant dose effect on survival a t 12
+months (p = 0.005, trend test) and 18 months (p = 0.04,
+trend test) (figure 3).
+There was no significant treatment by site-of-disease
+onset interaction, meaning that the treatment effect was
+similar in both groups of patients. An improved survival
+rate was seen for the <tx>riluzole</tx>-treated patients in both the
+bulbar-onset and the limb-onset groups (see figure 2). Test
+of treatment by group-of-countries interaction effect was
+not statistically significant, meaning that the drug effect
+on survival was homogeneous across groups of countries.
+There was no treatment by duration-of-therapy interaction
+effect, meaning that the <tx>riluzole</tx> effect was constant over
+the 18-month treatment period. Analysis with death as the
+sole endpoint (excluding tracheostomy as an endpoint for
+survival), analysis using only evaluable patients (excludDecember 1998 NEUROLOGY 47(Suppl4) 5245
+
+Table 5 Participation in a therapeutic trial before inclusion and concomitant medication at entry and during the study (the concomitant
+medications are reported according to Anatomical Therapeutic Classification-ATC)22
+Number of patients reported
+<tx>Placebo</tx>
+Total number of patients
+
+R 50 mg
+
+R 100 mg
+
+R 200 mg
+
+All
+
+242
+
+237
+
+236
+
+244
+
+959
+
+Prior therapeutic trials
+Overall
+
+13.6
+
+11.81
+
+12.7
+
+9.8
+
+12.0
+
+Branched amino acids
+
+9.5
+
+5.1
+
+7.2
+
+4.9
+
+6.7
+
+Dextromethorphan
+
+2.1
+
+1.7
+
+3.0
+
+2.9
+
+2.4
+
+L-threonine
+
+0.8
+
+1.3
+
+1.7
+
+0.8
+
+1.1
+
+Selegiline
+
+1.2
+
+2.1
+
+0.4
+
+1.2
+
+1.2
+
+Miscellaneous*
+
+1.2
+
+2.3
+
+1.7
+
+1.2
+
+1.7
+
+Concomitant medications
+~
+
+E
+
+T
+
+E
+
+T
+
+E
+
+T
+
+E
+
+T
+
+E
+
+T
+
+Gastrointestinal, antispasmodics, and
+anticholinergics
+
+2.9
+
+18.6
+
+2.5
+
+16.9
+
+4.7
+
+22.0
+
+4.1
+
+22.5
+
+3.5
+
+20.0
+
+Antiemetics and antinauseants
+
+2.5
+
+12.0
+
+0.4
+
+8.0
+
+0.8
+
+8.9
+
+0.8
+
+12.7
+
+1.1
+
+10.4
+
+41.3
+
+69.0
+
+34.6
+
+70.0
+
+45.8
+
+76.3
+
+46.3
+
+73.4
+
+0.8
+
+7.0
+
+2.5
+
+6.9
+
+2.1
+
+7.2
+
+0.4
+
+8.6
+
+1.5
+
+7.4
+
+14.5
+
+24.8
+
+12.7
+
+23.6
+
+16.1
+
+27.5
+
+14.3
+
+22.1
+
+14.4
+
+24.5
+
+Alimentary tract and metabolism
+Antithrombotic agents
+Blood and blood-forming organs
+
+42
+
+72.2
+
+Hypotensives
+
+12
+
+16.5
+
+11
+
+16.0
+
+11.9
+
+17.4
+
+14.3
+
+20.5
+
+12.3
+
+17.6
+
+Cardiovascular system
+
+25.2
+
+42.1
+
+22.4
+
+37.1
+
+28.4
+
+41.5
+
+32
+
+47.5
+
+27
+
+42.1
+
+7.9
+
+28.5
+
+8
+
+30.0
+
+8.1
+
+27.1
+
+6.1
+
+30.7
+
+7.5
+
+29.1
+
+10.7
+
+24.4
+
+9.3
+
+24.1
+
+12.3
+
+23.7
+
+8.6
+
+25.4
+
+10.2
+
+24.4
+
+Dermatologicals
+Genitourinary system
+Systemic hormonal
+
+7.4
+
+17.4
+
+6.3
+
+13.9
+
+7.2
+
+16.1
+
+7.4
+
+15.6
+
+7.1
+
+15.7
+
+<tx>Antibiotics</tx> for systemic use
+
+3.3
+
+38.8
+
+2.1
+
+36.3
+
+3.8
+
+33.1
+
+1.2
+
+34.0
+
+2.6
+
+35.6
+
+General anti-infectives
+
+2.1
+
+23.1
+
+1.3
+
+25.7
+
+5.5
+
+23.7
+
+3.3
+
+26.6
+
+3
+
+24.8
+
+<tx>Antineoplasic, immunosuppressives</tx>
+
+5.8
+
+6.6
+
+6.3
+
+6.8
+
+8.5
+
+9.3
+
+6.1
+
+7.0
+
+6.7
+
+7.4
+
+Muscle relaxants
+
+14.5
+
+26.9
+
+10.5
+
+20.7
+
+9.3
+
+19.1
+
+5.3
+
+15.2
+
+9.9
+
+20.4
+
+Musculoskeletal system
+
+28.1
+
+45.0
+
+20.7
+
+40.1
+
+23.7
+
+42.8
+
+22.1
+
+42.6
+
+23.7
+
+42.6
+
+Analgesics
+
+14
+
+40.5
+
+16
+
+45.6
+
+19.9
+
+41.1
+
+10.7
+
+35.7
+
+15.1
+
+40.7
+
+Anxiolytics
+
+15.3
+
+33.5
+
+15.2
+
+40.5
+
+15.3
+
+33.9
+
+12.3
+
+30.7
+
+14.5
+
+34.6
+
+<tx>Antidepressants</tx>
+
+18.6
+
+45.5
+
+18.1
+
+41.4
+
+17.4
+
+46.6
+
+15.6
+
+43.4
+
+17.4
+
+44.2
+
+Central nervous system
+
+22
+
+20.2
+
+43.0
+
+17.3
+
+38.4
+
+38.6
+
+17.6
+
+39.8
+
+19.3
+
+39.9
+
+Parasitology
+
+6.6
+
+9.1
+
+4.6
+
+9.7
+
+5.1
+
+9.3
+
+3.3
+
+8.6
+
+4.9
+
+9.2
+
+Respiratory system
+
+9.5
+
+38.0
+
+9.3
+
+42.2
+
+11.4
+
+44.5
+
+7
+
+40.2
+
+9.3
+
+41.2
+
+Sensory organs
+
+9.5
+
+32.6
+
+8.9
+
+29.5
+
+8.1
+
+28.4
+
+7.4
+
+27.9
+
+8.4
+
+29.6
+
+Miscellaneous
+
+8.7
+
+31.4
+
+3.8
+
+25.7
+
+4.7
+
+31.8
+
+7
+
+32.0
+
+6
+
+30.2
+
+~
+
+~
+
+* Growth factor, immunosuppressor, calcium channel inhibitor, cyclophosphamide, lamotrigine, endoxan, TRH, guanidine.
+E
+
+=
+
+medications at entry; T = medications during trial.
+
+ing protocol violation), or censoring for treatment discontinuation showed that these results were very consistent
+with the primary intent-to-treat analysis (table 6).
+The Cox proportional hazard model analysis showed
+that 10 clinical and demographic characteristics a t entry
+had significant effects on survival (see table 3), which
+could have confounded the treatment effect. After correcting for these prognostic factors the treatment effect on
+S246 NEUROLOGY 47(Suppl4) December 1998
+
+survival was found to be significant for all independent
+<tx>riluzole</tx> doses compared with <tx>placebo</tx> a t both 12 and 18
+months (figure 4). Compared with placebo, the decrease in
+risk of death or tracheostomy under <tx>riluzole</tx> was dosedependent, at both 12 and 18 months ( p = 0.0001), ranging
+from a mean decrease of 24% (<tx>riluzole</tx> 50 mg at 18 months;
+p = 0.04) to 43% (<tx>riluzole</tx> 100 and 200 mg at 12 months;
+p 5 0.001). The decrease in risk of death or tracheostomy
+
+75 -
+
+100 1
+
+73.7
+
+[7 Placebo
+[7 50 mg/day <tx>riluzole</tx>
+
+*
+
+8
+
+70 -
+
+100 mg/day <tx>riluzole</tx>
+
+v
+
+c
+
+200 mg/day <tx>riluzole</tx>
+
+65-
+
+2
+-
+
+9
+.z
+
+60 57.8
+
+3
+v)
+
+55 -
+
+9
+12
+15
+6
+Months since randomization
+
+50 -
+
+18
+
+12 months
+
+18 months
+
+Figure 3. Dose relationship on survival at 12 months
+(p = 0.005) and 18 months (p = 0.04).
+
+Figure 1. Kaplan-Meier survival rate estimates calculated
+at 3-month intervals for 100 mg riluzole dose (solid bars)
+compared with placebo (open bars). *p < 0.05.
+
+Elevated ALT levels (>5 X ULN) accounted for the
+majority of treatment discontinuations based on laboratory
+adverse events. The frequency and time to onset of elevated ALT was dose-related (table 8). Patients with serum
+ALT levels greater than 5 x ULN represented less than
+4% in any treatment group. ALT levels returned to less
+than 2 X ULN within 2 months of treatment discontinuation. For patients with ALT levels elevated 3 to 5 x ULN,
+serum levels decreased within 2 to 6 months under continuous treatment.
+During the trial, virtually all patients took a t least one
+concomitant medication. The highest frequency of concomitant drug was related to alimentary tract and metabolism
+(72.2%),while drugs used for depression, musculoskeletal
+system, cardiovascular system, respiratory system, or pain
+were used by more than 40% of the patients. As a rough
+indicator of the high frequency of concomitant medication,
+the mean number of concomitant treatments per patient
+during the trial period was 6.6 in the overall population
+(6.7 in the placebo group, 6.5 for 50 mg <tx>riluzole</tx>, 6.7 for 100
+mg <tx>riluzole</tx>, and 6.6 in the 200-mg <tx>riluzole</tx> group). There
+was no apparent difference between treatment groups with
+regard to concomitant medications in any of the therapeutic subclasses considered (see table 5).
+
+for the 100-mg dose over the trial period was 35% (confidence interval: 15-50%; p = 0.002).13
+No statistically significant difference between <tx>riluzoleand placebo</tx>-treated patients was demonstrated on the rate
+of deterioration in functional score for manual muscle testing and the bulbar and limb Norris scales.
+The number of patients reporting adverse experiences,
+and the number of treatment discontinuations related to
+either clinical or laboratory adverse experiences, are reported in table 7. Clinical adverse experiences that occurred more frequently in the <tx>riluzole-treated</tx> patients
+than in the placebo group were: nausea, asthenia, dizziness, diarrhea, anorexia, and circumoral paresthesia. Nausea was reported by 12 to 21% of <tx>riluzole-treated</tx> patients
+compared with 12% in the placebo group and resulted in
+13 patients (1.4%)discontinuing treatment. Asthenia was
+reported by 15 to 20% of <tx>riluzole-treated</tx> patients, compared with 12%for <tx>placebo</tx>. Only nine (0.9%)patients with
+asthenia discontinued treatment, as these patients were
+encouraged to remain in the trial. Dizziness, diarrhea, anorexia, and circumoral paresthesia occurred more frequently with 200 mg/day riluzole.
+
+0.8 -
+
+-
+
+0.8-
+
+0.7 -
+
+0.7 -
+
+0.7 -
+
+b 0.6 -
+
+-
+
+0.6-
+
+2
+a 0.5-
+
+0.5-
+
+.-
+
+5
+v)
+
+2
+2
+
+0.4-
+
+a 0.3 0.2 0.1
+
+0.5 -
+
+0.4-
+
+- <tx>Riluzole</tx> ( ~ 7 1 7 )
+
+0.3 0.2 -
+
+<tx>Placebo</tx> (n=242)
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+01
+.
+
+0.4-
+
+"I
+I
+
+-<tx>Riluzole</tx> (n=221)
+l
+
+0.2 - - <tx>Placebo</tx> (n=168)
+
+<tx>Placebo</tx> (n=74)
+
+l
+
+l
+
+l
+
+-<tx>Riluzole</tx> (n=496)
+
+0.3-
+
+LL
+
+l
+
+l
+
+I
+
+o
+
+~
+
+l
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+Table 6 Sensitivity analyses at the end of the study: Death as endpoint, evaluable population, and censoring for treatment
+discontinuation
+Death as endpoint
+
+Evaluable population
+
+P value
+Survival
+rate (%)
+
+Group
+
+Log-rank
+
+Treatment discontinuation
+
+P value
+Survival
+rate (%)
+
+Wilcoxon
+
+Log-rank
+
+P value
+
+Wilcoxon
+
+Survival
+rate (%)
+
+Log-rank
+
+Wilcoxon
+
+Placebo
+
+52.1
+
+I
+
+I
+
+50.6
+
+1
+
+I
+
+57.0
+
+I
+
+I
+
+R 50 mg
+
+56.1
+
+0.29
+
+0.26
+
+55.1
+
+0.28
+
+0.27
+
+63.7
+
+0.19
+
+0.19
+
+R 100 mg
+
+60.2
+
+0.029
+
+0.023
+
+57.3
+
+0.081
+
+0.056
+
+65.3
+
+0.061
+
+0.048
+
+R 200 mg
+
+59.0
+
+0.075
+
+0.054
+
+57.9
+
+0.110
+
+0.082
+
+64.8
+
+0.094
+
+0.093
+
+All doses
+
+58.4
+
+0.035
+
+0.027
+
+56.7
+
+0.061
+
+0.048
+
+64.6
+
+0.041
+
+0.040
+
+Discussion. Our results confirm the therapeutic
+effect of riluzole in ALS patients. Riluzole demonstrated a dose-dependent positive effect on survival.
+Results for the present trial were identical to those
+reported in the previous study.12 After adjustment
+for significant prognostic factors, both studies demonstrated a 35% decrease in risk of death or trache1.0 -
+
+a
+
+0.9-
+
+5
+
+0.8-
+
+>
+.v)
+
+c
+
+0
+
+a
+- 0.7.5
+2 0.62
+
+a
+
+I
+_
+
+Riluzole 200 mg/day
+Riluzole 100 rng/day
+Riluzole 50 rng/day
+Placebo
+
+I
+_
+_
+
+0.50.4
+
+'
+
+0
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+3
+6
+9 12 15 18
+Months since randomization
+
+21
+
+Figure 4. Cox model. Treatment effect at constant level of
+prognostic score. Survival probability estimates in the four
+treatment groups at a mean prognostic score. Analysis at
+12 and 18 months for each riluzole dose compared with
+placebo: 50 mg: p < 0.05; 100 mg: p < 0.01;200 mg: p <
+0.001.
+Table 7 Total number (percentage) of patients reporting at least
+one adverse event, and number of patients (percentage)
+discontinuing treatment due to an adverse event
+
+ostomy over an 18-month period for patients given
+100 mg/day compared with placebo.
+In both studies, broad inclusion criteria were used
+to allow a sample of patients representative of the
+majority of ALS patients. This study identified the
+same prognostic factors as in the previous study.
+After adjustment on significant prognostic factors,
+the estimate of treatment efficacy was highly significant for all doses of riluzole at both 12 and 18
+months. The lack of significance for interaction effects between treatment factor and either time or
+site of onset factors means that the efficacy of the
+treatment was stable over the 18-month period and
+similar in patients with bulbar and limb onset.
+A statistically significant 35% decrease in rate of
+muscle strength deterioration was observed in the
+first study, but the present study could not confirm
+this result. The discrepancy between the first and
+second studies might have been caused by differences in the duration of drug-induced asthenia in the
+two trials. In the first study, many patients discontinued treatment because of asthenia, but their assessment after withdrawal was included in the
+intent-to-treat analysis. In our study, patients were
+informed that asthenia could be induced by riluzole
+and should not be interpreted as disease worsening
+or lack of efficacy. As a consequence, asthenia did
+not lead to treatment withdrawal. Because this adverse event obviously interferes with functional assessments, this might explain the discrepancy on
+functional measures between the two studies.
+Overall, the drug was well tolerated and adverse
+events did not outweigh the therapeutic effect of riluzole on survival. Gastrointestinal disorders, asthe-
+
+Reason for discontinuation
+Adverse event
+experienced
+
+Clinical adverse
+event n (%)
+
+Placebo
+
+216 (89.3%)
+
+19 (7.9%)
+
+8 (3.3%)
+
+50 mg
+
+207 (87.3%)
+
+20 (8.4%)
+
+3 (1.3%)
+
+Dose
+
+Laboratory adverse
+event n (%)
+
+Table 8 Percentage of patients with ALT levels 23 ULN, 25
+ULN, and median time to onset of ALT 25 ULN
+Placebo
+
+50 mg
+
+100 mg
+
+200 mg
+
+ALT 2 3 ULN but <
+5 ULN
+
+3.7%
+
+5.9%
+
+10.6%
+
+15.3%
+
+100 mg
+
+216 (91.5%)
+
+25 (10.6%)
+
+9 (3.8%)
+
+ALT25ULN
+
+2.1%
+
+1.3%
+
+3.8%
+
+3.3%
+
+200 mg
+
+223 (91.4%)
+
+27 (11.1%)
+
+9 (3.7%)
+
+219
+
+255
+
+51
+
+42
+
+All
+
+862 (98.9%)
+
+91 (9.5%)
+
+29 (3.0%)
+
+Time to onset of ALT
+2 5 ULN (days)
+
+S248 NEUROLOGY 47(Suppl4) December 1996
+
+nia, and dizziness were more frequent in the 200-mg
+dose. Aminotransferase elevations were more frequent in the 100- and 200-mg groups and were reversible after treatment discontinuation. In the placebo group, 2% of the patient population experienced
+more than 5 X ULN transaminase elevation. These
+may be related t o the high frequency of unavoidable
+concomitant treatments having an hepatic effect.
+The high frequency of concomitant medications
+during the study, as compared with those at inclusion, reflects the progression of the disease but also
+the quality of patient care, which might have been
+improved by the trial itself. With regard to the consistency of results, concomitant medication seemed
+well balanced between groups. However, for none of
+the therapeutic classes prescribed during the trial do
+we have information on possible interference with
+trial outcomes nor with riluzole efficacy or safety.
+Our study unambiguously confirms the therapeutic effect of riluzole in ALS patients on a hard endpoint of survival. Significantly decreased risk of
+death or tracheostomy was observed for all doses,
+and the 100-mg dosage presented the best benefit-torisk ratio.
+
+Acknowledgments
+The authors wish to thank P. Chaumet-Riffaud (DRC-GERMED,
+APHP Paris, France), C.J. Sweatt, T.R. Warkentin, B.A. Marshall,
+B.L. Hargrove (Baylor College of Medicine, Houston, USA), and L.
+Gibson (Institute of Psychiatry, London, UK).
+
+Appendix. ALSIRiluzole Study Group-II.
+Principal investigators: V. Meininger, MD, PhD
+(Department of Neurology, Hdpital de la Pitie'Salpbtridre, Paris, France); P.N. Leigh, PhD, FRCP
+(Department of Neurology, Institute of Psychiatry, de
+Crespigny Park, London, UK). Methodologist: G.
+Bensimon, MD, PhD (Pr. A.J. Puech, Department of
+Pharmacology, Hdpital de la Pitid-Salpbtridre, Paris,
+France). Steering committee: Chairman: P. Guillet
+(Rhdne-Poulenc Rorer, Antony, France); G. Bensimon, L. Lacomblez (Pr. A.J. Puech, Department of
+Pharmacology, Hdpital de la Pitie'-Salpbtridre, Paris,
+France); J.C. Delumeau, S. Durrleman (RhdnePoulenc Rorer, Antony, France); V. Meininger (Department of Neurology, Hdpital de la Pitie'Salpbtridre, Paris, France); P.N. Leigh (Department
+of Neurology, Institute of Psychiatry, de Crespigny
+Park, London, UK); L. Powe (Rhdne-Poulenc Rorer,
+Collegeville, USA). Advisory board: Chairman: J.
+Whitehead (Department of Applied Statistics, University of Reading, Reading, UK); B. Asselain (Department of Biostatistics, Institut Curie, Paris, France);
+P. Cesaro (Department of Neurology, Hdpital Henri
+Mondor, Cre'teil, France); D. Larrey (Department
+of Hepatogastroenterology, St. Eloi, Montpellier,
+France); M. Rossor (Department of Neurology, St.
+Mary's Hospital, London, UK);H.J. Zimmerman (Hepatic Department, Armed Forces, Institute of Pathology, Washington, DC, USA). Steering committee1
+Advisory board coordination: P. Salzman (RhBnePoulenc Rorer, Collegeville, USA). Study coor-
+
+dinators: France and Belgium: G. Bensimon, V.
+Doppler, L. Lacomblez (Pr. A.J . Puech, Department of
+Pharmacology, HBpital de la Pitie'-Salpbtriere, Paris,
+France); Germany, Spain and UK: C.M. Lloyd, P.N.
+Leigh (Department of Neurology, Institute of Psychiatry, de Crespigny Park, London, UK). Canada and
+USA: L. Powe (RhBne-Poulenc Rorer, Collegeville,
+USA). Coordination at RPR: P. Guillet (RhBnePoulenc Rorer, Antony, France); P. Salzman (RhdnePoulenc Rorer, Collegeville, USA). Investigators and
+coinvestigators at each center: Belgium: J.M. Maloteaux, C. Delwaide (E.C. Laterre, Universite' de Louvain, Brussels); Canada: J.P. Bouchard (Hdpital de
+I'Enfant-Jksus, Quebec City), P. Duquette, M. Girard,
+C. Masse (HBpital Notre-Dame, Montreal), A. Eisen
+(Vancouver Hospital and Health Science Centre,
+Vancouver); France: 0. Blin, J.P. Azulay, F. BilleTurc, J . Pouget (G. Serratrice, Hdpital de la Timone,
+Marseille), P. Bouche (HBpital de la Pitie'-Salpbtriere,
+Paris, France), W. Camu, B. Carlander (M. Billiard,
+Hdpital G. de Chauliac, Montpellier), M. Clanet, G.
+Angibaud, M.C. Arne-Bes, M. Benazet (Hdpital Purpan, Toulouse), P. Couratier (J.M. Vallat, Hdpital
+Dupuytren, Limoges), C. Desnuelle (M. Chatel, Hdpital Pasteur, Nice), A. Lagueny, E. Ellie (J. Julien,
+HBpital Haut-Leveque, Pessac), V. Meininger, M. Dib,
+A. Rozier, F. Salachas (P. Brunet, Hdpital de la PitidSalpbtridre, Paris), F. Viader, D. Delaunay (B. Lechevalier, C.H.U. de la Cdte de Nacre, Caen); Germuny:
+R. Dengler, G. Kuther, M. Troger (Medizinische
+Hochschule, Hannover), A. Ludolph, R. Bachus, C.
+Gericke (Neurologische Universitatsklinik, Charite,
+Berlin), H. Przuntek, M. Langkafel (St. JosefHospital, Bochum), K. Schimrigk, W.H. Jost, J . 0 s terhage, J . Prudlo (Neurologische Universitatsklinik,
+Homburg); Spain: J . Mora, D. Chaverri, E. Saenz
+(Institude de Salud Carlos 111, Madrid); United
+Kingdom: D. Jefferson, V. Orpe (Queens Medical Centre, Nottingham), R.J.M. Lane, R.W. Orrell (Charing
+Cross Hospital, London), P.N. Leigh, C.M. Lloyd, T.
+Barbie (Institute of Psychiatry, London), J.D. Mitchell, J. Kilshaw (Royal Preston Hospital, Preston),
+H.S. Pall, M. Goodwin (Queen Elizabeth Hospital,
+Birmingham), W. Schady, S. Duncan, C. Moore, C.
+Rickards (Manchester Royal Infirmary, Manchester),
+P.J. Shaw, G. Chari, B. Pickering (Queen Victoria
+Infirmary, Newcastle-upon-Tyne), M. Swash (The
+Royal London Hospital, London); USA: Y. Harati,
+C.L. Gooch, C.W. Echols (Baylor College of Medicine
+and VAMC, Houston), R.G. Miller, D.F. Gelinas, A.
+Quien (California Pacific Medical Centre, Sun Francisco), T.L. Munstat, B. Thornell (New England Medical Center, Boston), J.D. Rothstein, L. Clawson
+(Johns Hopkins School of Medicine, Baltimore), R.
+Sufit, P. Casey (Northwestern Medical Faculty, Chicago). RPR clinical monitors: European countries:
+J.C. Delumeau, P. Truffinet (Rhdne-Poulenc Rorer,
+Antony, France); North American countries: L. Powe
+(RhBne-Poulenc Rorer, Collegeville, USA). Data monitoring: C. Debove, P. Enfrin, G. Hampton, F. Muller,
+T. Nguyen, D. Rothfuss, A. Senechal, C. S h u (RhBneDecember 1998 NEUROLOGY 476uppl4) 5249
+
+Poulenc Rorer, Antony, France), P. Leswell, P. Whitworth (RhSne-Poulenc Rorer, Eastbourne, UK), M.
+DeBoe, M. De Bruyckere (Rhbne-Poulenc Rorer, Brussels, Belgium), W. Fisher, M. Konig (RhSne-Poulenc
+Rorer, Koln, Germany), L. Verdugo, M. Sainz de 10s
+Terreros (RhSne-Poulenc Rorer, Madrid, Spain), D.
+Deakin, M. Giguere (RhSne-PoulencRorer, Montreal,
+Canada), K. Adair, M. Franco, D. Skarinsky, M.
+Wexler (Rhbne-Poulenc Rorer, Collegeville, USA), M.
+Pizzato (GERMED, APHP Paris, France). Data management: L. Ledoux, E. Campagnes, M. Hartnett
+(RhSne-PoulencRorer, Antony, France & Collegeville,
+USA). Biostatistical analysis: P. Bastien, R. Bejuit
+(RhSne-PoulencRorer, Antony, France), G. Bensimon
+(Pr. A.J. Puech, Department of Pharmacology, H6pital de la Pitid-Salp&tri&re,
+Paris, France), S. Durrleman, Y. Kim, L. Le Lann, F. Leroy, C. Papillon
+(RhSne-PoulencRorer, Antony, France & Collegeville,
+USA). Respiratory function advisory center: E.
+Orvoen-Frija (Department of Pneumology, HStelDieu, Paris, France).
+
+References
+1. Smith RA,ed. Handbook of amyotrophic lateral sclerosis. New
+York: Marcel Dekker, 1992.
+2. Choi DW. Glutamate neurotoxicity and diseases of the nervous system. Neuron 1988;1:623-634.
+3. Shaw PJ. Excitotoxicity and motor neuron disease: a review of
+the evidence. J Neurol Sci 1994;124(Suppl):1-13.
+4. Rothstein JD. Excitatory mechanisms in the pathogenesis of
+amyotrophic lateral sclerosis. Adv Neurol 1995;68:7-20.
+5. Pratt J , Rataud J , Bardot F, et al. Neuroprotective actions of
+riluzole in rodent models of global and focal ischaemia (ENG).
+Neurosci Lett 1992;140:225-230.
+6. Malgouris C, Daniel M, Doble A. Neuroprotective effects of
+riluzole on N-methyl-D-aspartate- or veratridine-induced neurotoxicity in rat hippocampal slices. Neurosci Lett 1994;177:
+95-99.
+7. Couratier P, Sindou P, Esclaire F, Louvel E, Hugon J. Neuroprotective effects of riluzole in ALS CSF toxicity. Neuroreport
+1994;5:1012-1014.
+8. Doble A, Hubert JP, Blanchard JC. Pertussis toxin pretreat-
+
+S250
+
+NEUROLOGY 47(Suppl4) December 1998
+
+ment abolishes the inhibitory effect of riluzole and carbachol
+on D-[%] aspartate release from cultured cerebellar granule
+cells. Neurosci Lett 1992;140:251-254.
+9. Debono M-W, Le Guern J , Canton T, Doble A, Pradier L.
+Inhibition by riluzole of electrophysiological responses mediated by rat kainate and NMDA receptors expressed in Xenopus oocytes. Eur J Pharmacol 1993;235:283-289.
+10. Hubert JP, Delumeau JC, Glowinski J, Promont J , Doble A.
+Antagonism by riluzole of entry of calcium evoked by NMDA
+and veratridine in rat cultured granule cells: Evidence for a
+dual mechanism of action. Br J Pharmacol 1994;113:261-267.
+11. Herbert T, Drapeau P, Pradier L, Dunn FLJ. Block of the rat
+brain IIA sodium channel a subunit by the neuroprotective
+drug riluzole. Mol Pharmacol 1994;45:1055-1060.
+12. Bensimon G, Lacomblez L, Meininger V, for the ALSRiluzole
+Study Group. A controlled trial of riluzole in amyotrophic
+lateral sclerosis. N Engl J Med 1994;330:585-591.
+13. Lacomblez L, Bensimon G, Leigh PN, Guillet P, Meininger V,
+for the Amyotrophic Lateral SclerosidRiluzole Study Group
+11. Dose-ranging study of riluzole in amyotrophic lateral sclerosis. Lancet 1996;347:1425-1431.
+14. Brooks BR. El Escorial World Federation of Neurology criteria
+for the diagnosis of amyotrophic lateral sclerosis. J Neurol Sci
+1994;124 S~ppl:96-107.
+15. Rozier A, Lacomblez L, Chatelier G, Bensimon G, Bouche P,
+Meininger V. Interrater reliability of a new rating scale for
+amyotrophic lateral sclerosis [abstract]. J Neurol Sci 1990;98
+Suppl:316.
+16. Lacomblez L, Bouche P, Bensimon G, Meininger V. A doubleblind placebo-controlled trial of high dose gangliosides in
+amyotrophic lateral sclerosis. Neurology 1989;39:1635-1637.
+17. Norris F, Shepherd R, Denys E, et al. Onset, natural history
+and outcome in idiopathic adult motor neuron disease. J Neurol Sci 1993;118:48-55.
+18. Eisen A, Schulzer M, MacNeil M, Pant B, Mak E. Duration of
+amyotrophic lateral sclerosis is age dependent. Muscle Nerve
+1993;16:27-32.
+19. Tysnes 0-B, Vollset SE, Larsen JP,Aarli JA. Prognostic factors and survival in amyotrophic lateral sclerosis. Neuroepidedology 1994;13:226-235.
+20. Jablecki CK, Berry C, Leach J. Survival prediction in amyotrophic lateral sclerosis. Muscle Nerve 1989;12:833-841.
+21. Wu MC, Carroll FLJ. Estimation and comparison of changes in
+the presence of informative right censoring by modeling the
+censoring process. Biometrics 1988;44:175-188.
+22. Guidelines for ATC classification. WHO Collaborating Centre
+for Drugs Statistics Methodology. Oslo, 1993.

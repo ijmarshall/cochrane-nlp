@@ -1,0 +1,1504 @@
+Articles
+
+<tx>Radiotherapy plus chemotherapy</tx> with or without surgical
+resection for stage III non-small-cell lung cancer: a phase III
+randomised controlled trial
+Kathy S Albain, R Suzanne Swann, Valerie W Rusch, Andrew T Turrisi III, Frances A Shepherd, Colum Smith, Yuhchyau Chen, Robert B Livingston,
+Richard H Feins, David R Gandara, Willard A Fry, Gail Darling, David H Johnson, Mark R Green, Robert C Miller, Joanne Ley, Willliam T Sause, James D Cox
+
+Summary
+Background Results from phase II studies in patients with stage IIIA non-small-cell lung cancer with ipsilateral
+mediastinal nodal metastases (N2) have shown the feasibility of resection after concurrent chemotherapy and
+radiotherapy with promising rates of survival. We therefore did this phase III trial to compare <tx>concurrent chemotherapy</tx>
+and <tx>radiotherapy</tx> followed by resection with standard concurrent chemotherapy and deﬁnitive radiotherapy without
+resection.
+
+Lancet 2009; 374: 379–86
+
+Methods Patients with stage T1-3pN2M0 non-small-cell lung cancer were randomly assigned in a 1:1 ratio to concurrent
+induction chemotherapy (two cycles of cisplatin [50 mg/m² on days 1, 8, 29, and 36] and etoposide [50 mg/m² on
+days 1–5 and 29–33]) plus radiotherapy (45 Gy) in multiple academic and community hospitals. If no progression,
+patients in group 1 underwent resection and those in group 2 continued radiotherapy uninterrupted up to 61 Gy. Two
+additional cycles of cisplatin and etoposide were given in both groups. The primary endpoint was overall survival
+(OS). Analysis was by intention to treat. This study is registered with ClinicalTrials.gov, number NCT00002550.
+
+Loyola University Chicago
+Stritch School of Medicine,
+Maywood, IL, USA
+(Prof K S Albain MD); Radiation
+Therapy Oncology Group ,
+Philadelphia, PA, USA
+(R S Swann PhD, J Ley RN);
+Memorial Sloan-Kettering
+Cancer Center, New York, NY,
+USA (Prof V W Rusch MD);
+Wayne State University,
+Detroit, MI, USA
+(Prof A T Turrisi III MD);
+University Health Network,
+Princess Margaret Hospital
+Site, Toronto, ON, Canada
+(Prof F A Shepherd MD);
+Tom Baker Cancer Center,
+Calgary, AB, Canada
+(Prof C Smith MD); University
+of Rochester Medical Center,
+Rochester, NY, USA
+(Prof Y Chen MD); University of
+Arizona Cancer Center, Tucson,
+AZ, USA
+(Prof R B Livingston MD);
+University of North Carolina,
+Chapel Hill, NC, USA
+(Prof R H Feins MD); University
+of California at Davis Cancer
+Center, Sacramento, CA, USA
+(Prof D R Gandara MD);
+Evanston Hospital of
+NorthShore University Health
+System, Evanston, IL, USA
+(Prof W A Fry MD); University
+Health Network, Toronto
+General Hospital Site,
+Toronto, ON, Canada
+(Prof G Darling MD);
+Vanderbilt-Ingram Cancer
+Center, Nashville, TN, USA
+(Prof D H Johnson MD); Medical
+University of South Carolina,
+Charleston, SC, USA
+(Prof M R Green MD);
+Mayo Clinic, Rochester, MN,
+USA (Prof R C Miller MD);
+Intermountain Medical Center,
+Salt Lake City, UT, USA
+(Prof W T Sause MD);
+
+Findings <n>202</n> patients (median age 59 years, range 31–77) were assigned to group 1 and 194 (61 years, 32–78) to
+group 2. Median OS was 23·6 months (IQR 9·0–not reached) in group 1 versus 22·2 months (9·4–52·7) in group 2
+(hazard ratio [HR] 0·87 [0·70–1·10]; p=0·24). Number of patients alive at 5 years was 37 (point estimate 27%) in
+group 1 and 24 (point estimate 20%) in group 2 (odds ratio 0·63 [0·36–1·10]; p=0·10). With N0 status at thoracotomy,
+the median OS was 34·4 months (IQR 15·7–not reached; 19 [point estimate 41%] patients alive at 5 years).
+Progression-free survival (PFS) was better in group 1 than in group 2, median 12·8 months (5·3–42·2) vs 10·5 months
+(4·8–20·6), HR 0·77 [0·62–0·96]; p=0·017); the number of patients without disease progression at 5 years was
+32 (point estimate 22%) versus 13 (point estimate 11%), respectively. Neutropenia and oesophagitis were the main
+grade 3 or 4 toxicities associated with <tx>chemotherapy plus radiotherapy</tx> in group 1 (77 [38%] and 20 [10%], respectively)
+and group 2 (80 [41%] and 44 [23%], respectively). In group 1, 16 (8%) deaths were treatment related versus four (2%)
+in group 2. In an exploratory analysis, OS was improved for patients who underwent lobectomy, but not
+pneumonectomy, versus chemotherapy plus radiotherapy.
+Interpretation Chemotherapy plus radiotherapy with or without resection (preferably lobectomy) are options for
+patients with stage IIIA(N2) non-small-cell lung cancer.
+Funding National Cancer Institute, Canadian Cancer Society, and National Cancer Institute of Canada.
+
+Introduction
+Patients with stage IIIA non-small-cell lung carcinoma
+with clinically evident, ipsilateral mediastinal nodal
+metastases (N2) had poor outcomes after treatment with
+surgical resection or radiotherapy.1–4 Addition of chemotherapy to radiotherapy signiﬁcantly improved survival
+for patients in this disease-stage subset and is now
+regarded as standard care.5–8 In subsequent phase III
+trials, survival was much better with concurrent
+chemotherapy and radiotherapy than with sequential
+administration.9–11
+Phase II pilot studies were done to test the role of
+surgical resection after induction treatment with
+<tx>chemotherapy</tx> alone or concurrent <tx>chemotherapy and
+  radiotherapy</tx> to optimise local control after systemic
+treatment. The results were controversial, with long-term
+www.thelancet.com Vol 374 August 1, 2009
+
+survival rates that were higher than expected.11–13 However,
+substantial toxicity, postoperative morbidity, and mortality
+were noted, and the ﬁndings of these studies were
+criticised because the patients enrolled had heterogeneous
+substages of disease and seemed unusually healthy
+compared with the general population with stage III
+disease.
+On the basis of the ﬁndings of two previous phase II
+studies done by the Southwest Oncology Group,14,15 we
+designed a phase III trial (National Cancer Institute
+numbers R9309, INT0139) in which patients with
+pathologically documented stage IIIA(pN2) non-smallcell lung cancer were given <tx>concurrent chemotherapy
+  plus radiotherapy</tx> followed by <tx>surgery</tx>, versus <tx>chemotherapy</tx> with <tx>deﬁnitive radiotherapy</tx> and without surgery.
+The objectives were to assess whether resection resulted
+
+Published Online
+July 27, 2009
+DOI:10.1016/S01406736(09)60737-6
+See Comment page 359
+
+379
+
+Articles
+
+and MD Anderson Cancer
+Center, Houston, TX, USA
+(Prof J D Cox MD)
+Correspondence to:
+Prof Kathy S Albain, Loyola
+University Chicago Stritch School
+of Medicine, Cardinal Bernardin
+Cancer Center, 2160 South First
+Ave, Maywood, IL 60153-5589,
+USA
+kalbain@lumc.edu
+
+in a signiﬁcant improvement in survival outcomes
+compared with just chemotherapy plus radiotherapy;
+examine the toxicity in each group; and report patterns of
+local and distant disease recurrence.
+
+Methods
+Patients
+The study was done at multiple academic and community
+hospitals in the USA and Canada. The international
+system was used to stage lung cancer,1 using a CT scan of
+the chest, liver, and adrenal glands; bone scan; and CT or
+MRI scan of the brain. Inclusion criteria were stage
+IIIA(pN2) disease: T1, T2, or T3 primary non-small-cell
+lung cancer with pathological proof of N2 involvement
+(from biopsy samples of ipsilateral mediastinal nodes
+that were visible on radiographs by any of several
+protocol-speciﬁed standard procedures). If contralateral
+mediastinal nodes that were larger than 1 cm were visible
+on the CT scan, a biopsy was needed to exclude N3 (stage
+IIIB) disease.
+Patients were assessed by a thoracic surgeon, radiation
+oncologist, and medical oncologist (each approved to
+participate through a centralised questionnaire process)
+to establish that N2 disease was present to the extent
+that concurrent chemotherapy and radiotherapy was
+regarded as the standard approach instead of deﬁnitive
+resection, and that the cancer was potentially technically
+resectable. Pulmonary function criteria were mandated
+by the protocol (standard formula speciﬁed in protocol:
+predicted postresection forced expiratory volume in 1 s
+
+429 patients with stage IIIA(N2) non-small-cell
+lung cancer randomly allocated to treatment
+Group 1
+
+Group 2
+
+216 concurrent induction chemotherapy
+plus radiotherapy followed by surgery
+
+213 concurrent induction chemotherapy
+plus deﬁnitive radiotherapy
+
+202 included in analysis
+14 ineligible
+8 wrong stage
+3 incomplete staged
+3 other reason
+
+194 included in analysis
+19 ineligible
+13 wrong stage
+4 incomplete staging
+2 other reason
+
+177 (88%) eligible for thoracotomy
+
+179 (92%) eligible to continue consolidation
+chemoradiotherapy without break
+
+164 (81%) underwent thoracotomy
+144 (71%) complete resection
+11 (5%) incomplete resection
+9 (4%) no resection
+
+121 (60%) began consolidation chemotherapy
+111 (55%) completed both consolidation
+chemotherapy cycles
+
+Figure 1: Trial proﬁle
+N2=ipsilateral mediastinal nodal metastases.
+
+380
+
+155 (80%) began consolidation chemotherapy
+144 (74%) completed both consolidation
+chemotherapy cycles
+
+[FEV1] of at least 800 cm² on quantitative perfusion scan
+if FEV1 overall was less than 2000 cm³). Pulmonary
+medicine specialists were also consulted as needed to
+conﬁrm pulmonary ﬁtness for a potential resection. The
+Karnofsky performance status was 90 or 100; or, if 70 or
+80, the albumin was at least 85% of the normal value
+with less than 10% weight loss within the previous
+3 months.
+All patients provided written informed consent after
+study approval by a local institutional review board.
+
+Study design
+We stratiﬁed eligible patients by primary T designation
+(T1 vs T2 vs T3), Karnofsky performance status (90 or
+100 vs 70 or 80), and contralateral mediastinal nodal
+sampling (yes vs no). Patients were randomly assigned
+in an unmasked manner to <tx>induction chemotherapy</tx>
+plus radiotherapy followed by <tx>surgery</tx> (group 1), or the
+same induction chemotherapy and radiotherapy with
+completion of deﬁnitive-dose radiotherapy (group 2).
+The random allocation schedule was generated by
+computer at the Radiation Therapy Oncology Group
+statistical centre, whose personnel were not associated
+with the institutions or investigators. The i<tx>nduction
+  chemotherapy</tx> was two cycles of cisplatin (50 mg/m² on
+days 1, 8, 29, and 36, intravenous infusions) and
+etoposide (50 mg/m² on days 1–5 and 29–33, intravenous
+infusions); and induction thoracic radiotherapy (45 Gy)
+was administered beginning on day 1 in 1·8 Gy daily
+fractions. We reassessed disease status with CT scan
+plus repeat pulmonary function tests 2–4 weeks after
+patients completed radiotherapy in group 1, and 7 days
+before they completed induction chemotherapy plus
+radiotherapy in group 2. If disease had not progressed
+and the patient remained medically healthy, we did a
+complete surgical resection (with protocol-speciﬁed
+mediastinal lymph node sampling or dissection)
+3–5 weeks after completion of radiotherapy in group 1,
+or the radiation dose was continued to 61 Gy without
+interruption in group 2. We gave patients two cycles of
+consolidation chemotherapy (same doses and schedule
+as during induction). Dose reduction guidelines were
+speciﬁed in the protocol for chemotherapy plus
+radiotherapy, with central quality control.
+Patients were scheduled to have a chest CT scan
+4–6 weeks after completion of the last <tx>chemotherapy</tx>
+cycle. Patients were followed up every 2 months for 1 year,
+every 3 months for 2 years, and then every
+6 months indeﬁnitely. CT scans of the thorax and upper
+abdomen, and MRI or CT scan of the brain were done at
+12 months, 18 months, and 24 months, and every year
+thereafter.
+
+Statistical analysis
+We used Zelen’s randomised permuted block within
+strata to assign patients to a treatment group.16 Analyses
+were by intention to treat, using only eligible patients as
+www.thelancet.com Vol 374 August 1, 2009
+
+Articles
+
+CT/RT/S
+(group 1,
+n=202)
+
+CT/RT
+(group 2,
+n=194)
+
+Total
+(n=396)
+
+59 (31–77)
+
+61 (32–78)
+
+60 (31–78)
+
+≤60
+
+113 (56%)
+
+95 (49%)
+
+208 (53%)
+
+>60*
+
+89 (44%)
+
+99 (51%)
+
+188 (47%)
+
+Women
+
+131 (65%)
+
+121 (62%)
+
+252 (64%)
+
+71 (35%)
+
+73 (38%)
+
+144 (36%)
+
+70–80
+
+23 (11%)
+
+25 (13%)
+
+48 (12%)
+
+90–100
+
+179 (89%)
+
+169 (87%)
+
+348 (88%)
+
+Grade 3
+
+Grade 4
+
+Grade 5
+
+82 (41%)
+
+15 (7%)
+
+0
+
+76 (39%)
+
+31 (16%)
+
+0
+
+Neutropenia
+
+54 (27%)
+
+23 (11%)
+
+0
+
+47 (24%)
+
+33 (17%)
+
+0
+
+Anaemia
+
+25 (12%)
+
+1 (<1%)
+
+0
+
+42 (22%)
+
+5 (3%)
+
+0
+
+Thrombocytopenia
+
+10 (5%)
+
+4 (2%)
+
+0
+
+12 (6%)
+
+11 (6%)
+
+0
+
+89 (44%)
+
+28 (14%)
+
+0
+
+75 (39%)
+
+50 (26%)
+
+0
+0
+
+Nausea or emesis, or both
+
+27 (13%)
+
+2 (1%)
+
+0
+
+22 (11%)
+
+4 (2%)
+
+Neuropathy
+
+10 (5%)
+
+0
+
+0
+
+4 (2%)
+
+3 (2%)
+
+0
+
+17 (8%)
+
+3 (1%)
+
+0
+
+37 (19%)
+
+7 (4%)
+
+0
+0
+
+Stomatitis or mucositis, or both
+
+154 (76%)
+
+146 (75%)
+
+299 (76%)
+
+5–10
+
+36 (18%)
+
+30 (15%)
+
+67 (17%)
+
+>10
+
+7 (3%)
+
+10 (5%)
+
+17 (4%)
+
+Unknown
+
+5 (2%)
+
+8 (4%)
+
+13 (3%)
+
+Pulmonary
+
+6 (3%)
+
+0
+
+0
+
+17 (8%)
+
+1 (<1%)
+
+Other gastrointestinal or renal
+
+Estimated weight loss in past 6 months (kg)
+
+6 (3%)
+
+4 (2%)
+
+Cardiac
+
+4 (2%)
+
+3 (1%)
+
+3 (1%)†
+
+Miscellaneous infection
+
+5 (2%)
+
+1 (<1%)
+
+0
+
+Haemorrhage
+
+0
+
+0
+
+1 (<1%)
+
+148 (73%)
+
+147 (76%)
+
+295 (74%)
+
+Abnormal†
+
+39 (19%)
+
+33 (17%)
+
+0
+
+4 (2%)
+
+1 (<1%)
+
+24 (12%)
+
+4 (2%)
+
+3 (2%)
+
+5 (3%)
+
+2 (1%)
+
+0
+
+7 (4%)
+
+2 (1%)
+
+0
+
+8 (4%)
+
+0
+
+0
+
+0
+
+1 (<1%)
+
+0
+
+15 (7%)
+
+14 (7%)
+
+29 (7%)
+
+Squamous cell carcinoma
+
+64 (32%)
+
+65 (34%)
+
+129 (33%)
+
+Adenocarcinoma
+
+79 (39%)
+
+82 (42%)
+
+29 (14%)
+
+24 (12%)
+
+53 (13%)
+
+Mixed/other NSCLC
+
+30 (15%)
+
+23 (12%)
+
+53 (13%)
+
+0
+
+0
+
+9 (5%)
+
+0
+
+0
+
+3 (1%)
+
+0
+
+0
+
+4 (2%)
+
+3 (2%)
+
+0
+
+Allergy
+
+1 (<1%)
+
+0
+
+0
+
+3 (2%)
+
+0
+
+0
+
+161 (41%)
+
+Large cell
+
+11 (5%)
+
+72 (18%)
+
+Not done
+
+Fatigue
+
+13 (6%)
+
+Anorexia
+
+Lactate dehydrogenase
+Normal
+
+Grade 5
+
+Oesophagitis*
+
+Karnofsky performance status
+
+<5
+
+Grade 4
+
+Worst haematological toxicity per
+patient
+
+Sex
+Men
+
+CT/RT (group 2, n=194)
+
+Grade 3
+Leucopenia
+
+Age (years)
+Median (range)
+
+CT/RT/S (group 1, n=202)
+
+Histology
+
+T stage
+T1
+
+50 (25%)
+
+47 (24%)
+
+97 (24%)
+
+T2
+
+130 (64%)
+
+121 (62%)
+
+251 (63%)
+
+T3
+
+22 (11%)
+
+26 (13%)
+
+48 (12%)
+
+Number of positive nodal stations reported‡
+1
+
+153 (76%)
+
+146 (75%)
+
+299 (76%)
+
+2
+
+39 (19%)
+
+39 (20%)
+
+78 (20%)
+
+3
+
+4 (2%)
+
+4 (2%)
+
+8 (2%)
+
+Unknown
+
+6 (3%)
+
+5 (3%)
+
+11 (3%)
+
+Data are number (%), unless otherwise indicated. CT=chemotherapy.
+RT=radiotherapy. S=surgery. NSCLC=non-small-cell lung cancer. *63 (16%)
+patients were at least 70 years of age. †Greater than institutional upper limit of
+normal. ‡Not all patients had mediastinoscopy, since method of recording disease
+with ipsilateral mediastinal nodal metastases was at the discretion of the
+investigator.
+
+Table 1: Baseline characteristics of eligible patients
+
+per Radiation Therapy Oncology Group policy. The
+primary endpoint was overall survival (OS), deﬁned as
+time from randomisation to death from any cause.
+Secondary endpoints were progression-free survival
+(PFS), deﬁned as time from randomisation to disease
+progression, detection of a secondary primary tumour,
+or death from any cause; toxicity; and patterns of
+failure.
+We calculated the sample size using a non-stationary
+Markov process to model survival with the Lakatos
+method,17 assuming a one-sided log-rank test with a
+type I error rate of 0·05 and 93% statistical power, and
+www.thelancet.com Vol 374 August 1, 2009
+
+CT=chemotherapy. RT=radiotherapy. S=surgery. *Only toxicity that was signiﬁcantly (p=0·0006) diﬀerent between
+groups 1 and 2. †One patient also included in grade 5 pulmonary toxicity.
+
+Table 2: Overall worst toxicities
+
+minimum follow-up of 2·5 years. Only two-sided
+p values are reported. Two interim analyses were
+speciﬁed and done by the independent data safety
+monitoring board after 33% and 67% of patients were
+followed up for at least 2·5 years.
+The target sample size was 612 (556 eligible) patients
+to record 507 deaths to detect a 10% absolute
+improvement in the surgical group, assuming 25%
+2-year OS with chemotherapy plus radiotherapy. The
+size was recalculated after recommendation by the
+Data Safety and Monitoring Committee, because of
+slower accrual than projected and updated survival
+rates from the two phase II trials that represented each
+group.14,15 The revised sample size was 510 (484 eligible)
+patients.
+We analysed OS and PFS with the log-rank test, and
+used the Cox proportional hazards model for multivariate
+analyses.18 The adjusted α at the ﬁnal analysis was
+0·0487. Only the unadjusted estimates and CIs are
+reported here because the largest diﬀerence (between
+unadjusted and adjusted) was 0·002 for hazard ratios
+(HRs) and 0·04 for rates of OS and PFS. All ﬁgures
+show Kaplan-Meier estimates.19 We used stepwise
+selection in Cox modelling, including sex, weight loss
+(<5 kg or >5 kg), number of positive nodal stations (1 or
+2·3), T stage (T1 vs T2 vs T3), histology (non-squamous
+vs squamous), age (<60 years vs >60 years), Karnofsky
+performance status (90 or 100 vs 70 or 80), and lactate
+dehydrogenase level (normal vs abnormal). We did
+exploratory logistic regression for factors associated
+with 5-year survival.
+381
+
+Articles
+
+and clinical T stage (exact match). Patients in group 1
+who had a lobectomy were matched 1:1 with those in
+group 2 according to the same characteristics.
+This study is registered with ClinicalTrials.gov, number
+NCT00002550.
+
+A
+CT/RT/S
+CT/RT
+
+100
+
+Patients alive without progression (%)
+
+HR 0·77 (95% CI 0·62–0·96); p=0·017
+
+Role of the funding source
+
+75
+
+The sponsor had no role in data analysis, writing the
+report, or the decision to submit for publication. The
+Radiation Therapy Oncology Group was responsible for
+data gathering and analysis. The corresponding author
+with the Radiation Therapy Oncology Group had
+responsibility for the decision to submit for
+publication.
+
+50
+
+Results
+
+25
+
+0
+Number at risk
+CT/RT/S 202
+CT/RT 194
+
+102
+88
+
+63
+43
+
+51
+31
+
+40
+21
+
+32
+13
+
+B
+100
+HR 0·87 (95% CI 0·70–1·10); p=0·24
+
+Patients alive (%)
+
+75
+
+50
+
+25
+
+0
+0
+Number at risk
+CT/RT/S 202
+CT/RT 194
+
+12
+
+24
+
+36
+
+48
+
+60
+
+48
+40
+
+37
+24
+
+Time from randomisation (months)
+136
+131
+
+97
+89
+
+71
+59
+
+Figure 2: Progression-free survival (A) and overall survival (B) of intention-to-treat population
+Slash marks represent censored results. CT/RT/S=chemotherapy plus radiotherapy followed by surgery (group 1,
+n=202). CT/RT=chemotherapy plus radiotherapy (group 2, n=194). HR=hazard ratio.
+
+An unplanned, exploratory OS analysis was added for
+hypothesis generation, prompted by unexpectedly high
+postoperative mortality rates. Patients in group 1 who
+underwent pneumonectomy were matched 1:1 with
+those in group 2 according to age (+/– 5 years), sex,
+Karnofsky performance status (70 or 80, and 90 or 100),
+382
+
+Patient accrual period was from March, 1994, until the end
+of November, 2001. Because of the extended accrual period
+resulting in suﬃcient events, the Data Safety and
+Monitoring Committee (with knowledge of the survival
+curves in each group) recommended closure when
+429 patients were randomly assigned. A PFS analysis and
+initial OS have been previously presented, with a
+subsequent update.20,21 Deﬁnitive estimates are now
+available for all endpoints; median follow-up for all patients
+was 22·5 months (range 0·9–125·1) and for those still alive
+at the ﬁnal analysis was 69·3 months (6·2–125·1).
+Figure 1 shows the trial proﬁle; 396 (92%) patients of
+429 randomised were eligible for the analysis. The main
+reasons for patient ineligibility were wrong stage or
+incompletely staged disease during central review. The
+rates of ineligibility and reasons did not diﬀer
+substantially between the groups. Table 1 shows that
+patient and tumour characteristics were well balanced
+across the treatment groups. Of 155 resections, three
+were wedge resections, 98 were lobectomies, and
+54 were pneumonectomies (29 right lung; 25 left lung).
+In group 2, 155 (80%) of 194 patients began consolidation
+chemotherapy according to per protocol guidelines.
+The amount of chemotherapy delivered per protocol
+during induction chemotherapy plus radiotherapy did
+not diﬀer between the groups (group 1, 191 [95%] of 201;
+group 2, 177 [92%] of 193). 111 (55%) of 202 patients in
+group 1 and 144 (74%) of 194 in group 2 completed
+consolidation chemotherapy (p<0·0001; ﬁgure 1). We
+administered radiotherapy per protocol or with acceptable
+variation to 193 (96%) patients in group 1 and to 154
+(79%) in group 2 (p<0·0001).
+Table 2 summarises the toxicities. The most common
+grade 3 or 4 toxicity was neutropenia in 77 (38%)
+patients in group 1 and 80 (41%) in group 2. Grade 3
+or 4 oesophagitis was reported in 20 (10%) patients in
+group 1 and 44 (23%) in group 2 (p=0·0006).
+Pneumonitis or other grade 3 or 4 respiratory
+complications were reported in 18 (9%) patients in
+group 1 and 28 (14%) in group 2 (p=0·116). Grade 3 or 4
+nausea or emesis, or both, were reported in 29 (14%)
+www.thelancet.com Vol 374 August 1, 2009
+
+Articles
+
+www.thelancet.com Vol 374 August 1, 2009
+
+100
+
+Pathological N0 (n=76)
+Pathological N1–3, unknown (n=88)
+No surgery (n=38)
+
+75
+
+Patients alive (%)
+
+patients in group 1 and 26 (13%) in group 2 (p=0·885).
+Grade 3 or above overall toxicity during induction
+chemotherapy plus radiotherapy did not diﬀer between
+the groups (data not shown), whereas the rate of
+haematological toxicity was greater in group 2 during
+consolidation chemotherapy (89 [point estimate 56%]
+of 159 vs 44 [point estimate 36%] of 121).
+No treatment-related deaths were reported during
+induction treatment in either group. Subsequently,
+16 (8%) patients died from causes not attributable to
+cancer in group 1, including ten within 30 days of
+thoracotomy. 14 of 16 patients died after pneumonectomy
+and one after lobectomy, and one patient who did not
+undergo thoracotomy also died. Causes of death were
+acute respiratory distress syndrome (n=9), other
+respiratory (n=4), cardiac (n=2), and haemorrhage (n=1).
+Four (2%) patients in group 2 died from treatment-related
+causes (non-acute-respiratory-distress-syndrome respiratory [n=3] and other [n=1]) during or after consolidation
+chemotherapy plus radiotherapy.
+OS was not improved in group 1 versus group 2
+(median 23·6 months [IQR 9·0–not reached] vs 22·2
+months [9·7–52·7]; hazard ratio (HR) 0·87 [0·70–1·10],
+p=0·24; ﬁgure 2B); 145 of 202 patients had died in group 1
+versus 155 of 194 in group 2. More patients were alive
+without progression in group 1 (43 [21%] of 202 vs 22 [11%]
+of 194; p=0·008), but more individuals died without
+progression in group 1 (36 [18%] of 202 vs 19 [10%] of 194;
+p=0·02) than in group 2. By 5 years, an absolute diﬀerence
+of 7% was noted in favour of the surgical group, with
+37 (point estimate 27%) of 202 patients alive versus
+24 (point estimate 20%) of 194 (odds ratio 0·63
+[0·36–1·10]). No other factor was useful for prediction of
+5-year survival with logistic regression.
+Several independent predictors of outcome were noted
+with the Cox OS model, including absence of major
+weight loss (p=0·003), female sex (p=0·009), and one N2
+nodal station that was positive at diagnosis versus more
+(p=0·024). Treatment group, age, Karnofsky performance
+status, T stage, lactate dehydrogenase, and histology were
+not retained in the model. Because diﬀerent factors
+determined whether a pneumonectomy or lobectomy
+was chosen, a survival comparison of the cohorts given
+these surgeries was not done.
+PFS was longer in group 1 than in group 2 (median
+12·8 months [IQR 5·3–42·2] vs 10·5 months [4·8–20·6];
+HR 0·77 [95% CI 0·62–0·96], p=0·017; ﬁgure 2A); 159 of
+202 patients had progressed or died in group 1 versus
+172 of 194 in group 2. At 5 years, 32 (point estimate 22%)
+of 202 patients in group 1 versus 13 (point estimate 11%)
+of 194 in group 2 were free of disease.
+The postinduction pathological ﬁndings in group 1 by
+T and N category were recorded as proportions of
+164 thoracotomies done and of total number (n=202) of
+patients enrolled for each category. The categories were
+29 T0N0 (18% thoracotomies and 14% patients); 31 T1N0
+(19% and 15%), 16 T2-4N0 (10% and 8%); 85 N1-3 (52%
+
+50
+
+25
+
+0
+0
+
+12
+
+24
+
+36
+
+48
+
+60
+
+Time from randomisation (months)
+Number at risk
+N0 76
+N1-3 88
+No surgery 38
+
+61
+61
+14
+
+47
+44
+6
+
+34
+33
+4
+
+24
+20
+4
+
+19
+15
+3
+
+Figure 3: Overall survival in group 1 by pathological nodal substage
+determined after thoracotomy
+
+and 42%); and 3 unknown (2% and 2%). A pneumonectomy had been done for 13 (45%) of 29 T0N0 specimens. Figure 3 shows OS by postinduction pathological
+stage according to N status. Median survival time and
+5-year survival rates for patients with T (any) N0 were
+34·4 months (IQR 15·7–not reached) and 19 (point
+estimate 41%) of 76, respectively; T(any)N1-3 or unknown,
+26·4 months (11·0–57·1) and 15 (point estimate 24%)
+of 88, respectively; and no surgical resection, 7·9 months
+(4·2–14·4) and 3 (point estimate 8%) of 38, respectively
+(p<0·0001 for diﬀerence in survival between patients in
+these three categories; ﬁgure 3). Patients in the T0N0
+subset had a median survival of 39·8 months (16·4–not
+reached), and at 5 years six (point estimate 42%) of 29
+were alive. Postinduction pathological categories were
+not known in group 2, thus comparisons between groups
+were not feasible within TN subsets.
+With the exception of fewer local-only relapses in
+group 1 (21 [10%] of 202) than in group 2 (43 [22%] of
+194), no diﬀerences were noted in sites of ﬁrst progression.
+The sites of these relapses were the primary tumour sites
+only (5 [2%] of 202 vs 28 [14%] of 194); hilar, mediastinal,
+or supraclavicular nodes only (14 [7%] of 202 vs 6 [3%] of
+194), and both (2 [1%] of 202 vs 9 [5%] of 194). The brain
+was the only initial site of relapse in 23 (11%) of
+202 patients in group 1 versus 29 (15%) of 194 in group 2.
+Rates of recurrence at other distant sites were 75 (37%) of
+202 versus 81 (42%) of 194, respectively.
+383
+
+Articles
+
+reached) in group 1 versus 21·7 months (10·1–46·0) in
+group 2 (p=0·002); at 5 years, 21 (point estimate 36%) of
+90 patients versus ten (point estimate 18%) of 90,
+respectively, were alive. Rate of OS for patients in group 1
+for the pneumonectomy subgroup was non-signiﬁcantly
+worse than those for the matched cohort in group 2
+(ﬁgure 4B). Median survival times were 18·9 months
+(6·0–46·6) versus 29·4 months (12·0–53·7); at 3 years,
+17 (point estimate 36%) of 51 patients versus 22 (point
+estimate 45%) of 51 were alive; and at 5 years, seven
+(point estimate 22%) of 51 in group 1 versus ten (point
+estimate 24%) of 51 in group 2 were alive.
+
+A
+100
+
+CT/RT/S
+CT/RT
+
+Patients alive (%)
+
+75
+
+50
+
+Discussion
+
+25
+
+0
+Number at risk
+CT/RT/S 90
+CT/RT 90
+
+73
+60
+
+56
+39
+
+40
+24
+
+28
+17
+
+21
+10
+
+24
+
+36
+
+48
+
+60
+
+9
+14
+
+7
+10
+
+B
+100
+
+Patients alive (%)
+
+75
+
+50
+
+25
+
+0
+0
+
+12
+
+Time from randomisation (months)
+Number at risk
+CT/RT/S 51
+CT/RT 51
+
+32
+38
+
+21
+28
+
+17
+22
+
+Figure 4: Overall survival of a subset of patients from the intention-to-treat population given lobectomy (A)
+or pneumonectomy (B) in group 1 versus matched cohorts in group 2
+Slash marks represent censored results. CT/RT/S=chemotherapy plus radiotherapy followed by surgery (group 1,
+n=202). CT/RT=chemotherapy plus radiotherapy (group 2, n=194).
+
+The OS matching analysis for four prestudy factors for
+group 1 against group 2 subsets was feasible for 90 of
+98 lobectomies and 51 of 54 pneumonectomies. Rate of
+OS was improved in the surgical group if a lobectomy
+was done compared with the rate in the matched
+chemotherapy plus radiotherapy group (ﬁgure 4A).
+Median survival time was 33·6 months (IQR 15·6–not
+384
+
+OS was not signiﬁcantly improved, even though PFS
+was, in patients who underwent trimodality treatment—ie,
+concurrent chemotherapy and radiotherapy followed by
+surgical resection—compared with those given
+concurrent chemotherapy and radiotherapy without
+surgery. Rates of 5-year OS were non-signiﬁcantly
+improved after trimodality treatment. Reasons for the
+absence of OS beneﬁt might include inadequate power
+and reduced delivery of cycles 3 and 4 of chemotherapy
+in the surgical group. However, whether the additional
+chemotherapy had any eﬀect in the non-surgical setting
+is not known.
+Another reason for the absence of beneﬁt with surgery
+might largely relate to the high death rate after pneumonectomy, mainly attributable to acute respiratory distress
+syndrome and other respiratory causes. On the basis of
+this ﬁnding, we did an exploratory matching analysis that
+led us to the hypothesis that trimodality treatment could
+be beneﬁcial if a complete resection with lobectomy can
+be done after chemotherapy plus radiotherapy, or if
+mortality from pneumonectomy can be avoided. This
+type of analysis has limitations because of the possibility
+of other diﬀerences that were not noted when criteria
+were matched, so it should not be used as the only basis
+to select treatment. Also, the necessity for pneumonectomy
+in many patients was probably related to other adverse
+prognostic factors. 45% of pT0N0 specimens were
+resected with pneumonectomy, showing that perhaps a
+large proportion underwent extensive surgery
+unnecessarily. Thus, this exploratory analysis could be
+useful in decision making to ensure caution when a
+trimodality prescription with pneumonectomy is
+considered.
+Both treatment regimens resulted in median and 5-year
+survival rates that were better than expected on the basis
+of data from phase II studies in patients with
+stage IIIA(N2) non-small-cell lung cancer.11,12 The patients
+enrolled in our trial with mediastinal nodal (pN2)
+involvement were judged to be ﬁt for a rigorous treatment
+regimen and had disease for which chemoradiotherapy
+alone was deemed the standard therapy, yet was
+technically resectable. However, this population stands
+in contrast with other phase III trials in patients with
+www.thelancet.com Vol 374 August 1, 2009
+
+Articles
+
+pN2 disease. The patients who were included in the
+randomised trials12,13,22–24 in which induction chemotherapy was followed by surgery versus a surgery-only
+control group had less extensive N2 disease than those
+included in our study.
+Although the European Organisation for Research
+and Treatment of Cancer (EORTC) did a phase III trial25
+in which patients with stage IIIA(N2) non-small-cell
+lung cancer were randomly assigned to surgery or
+radiotherapy after response to induction chemotherapy,
+the study diﬀered from ours in several ways. The
+EORTC control group of chemotherapy followed by
+radiotherapy is not regarded as standard treatment,9–11
+and the outcome of all the patients is not known because
+only the responding patients were randomly assigned to
+treatment unlike in our trial. Similar to our ﬁndings,
+accrual in the EORTC study was protracted, and no OS
+beneﬁt was noted. The median and 5-year survival rates
+in both groups of the EORTC study were worse than
+those in our study, although this diﬀerence could be
+explained partly by the two trials having diﬀerent entry
+criteria.
+Induction chemotherapy plus radiotherapy were well
+tolerated by patients in both groups in our study, with
+excellent treatment compliance. Treatment-related
+mortality attributable to respiratory causes was worse in
+the surgical group, and fewer patients could complete
+consolidation chemotherapy after surgery than in the
+non-surgery group. However, patients in the concurrent
+chemotherapy and radiotherapy group had an increased
+rate of severe oesophagitis and other toxicities during
+consolidation chemotherapy and radiotherapy, and were
+less likely to complete the prescribed radiotherapy than
+were those given surgery.
+With the long accrual period needed to complete trials
+that address whether the inclusion of surgery versus a
+non-surgical approach is beneﬁcial, a prospective trial is
+unlikely to be done to validate the hypothesis generated
+as a result of our exploratory analysis (ie, trimodality
+approaches are better than bimodality approaches if
+lobectomies can be done). Thus, medically healthy
+patients with stage IIIA(N2) non-small-cell lung cancer
+should be assessed by a team skilled in multimodality
+treatment, and treatment options can be considered
+during assessment. On the basis of the ﬁndings of our
+study, patients should be counselled about the risks and
+potential beneﬁts of deﬁnitive chemotherapy plus
+radiotherapy with and without a surgical resection
+(preferably by lobectomy).
+Contributors
+KSA, VRR, and ATT were the principal investigators. KSA, VWR, ATT,
+CS, RHF, and DHJ participated in study design, writing the protocol,
+review or approval of the ﬁnal draft of the protocol, patient accrual, study
+monitoring, and data and toxicity review, discipline review, ﬁnal data
+analyses, and interpretation of results. FAS participated in patient accrual,
+study monitoring, data and toxicity review, discipline review, ﬁnal data
+analyses, and interpretation of results. RSS was the study biostatistician,
+and did all the analyses, participated in the ﬁnal data analyses, and
+
+www.thelancet.com Vol 374 August 1, 2009
+
+interpretation of results. RBL participated in study design, protocol
+writing or review or approval of the ﬁnal draft of the protocol, and patient
+accrual. DRG participated in study design, patient accrual, discipline
+review, ﬁnal data analyses, and interpretation of results. YC, WAF, and
+GD participated in patient accrual. MRG participated in interpretation of
+results. RCM participated in patient accrual, study monitoring, data and
+toxicity review, ﬁnal data analyses, and interpretation of results. JL
+participated in study monitoring, data and toxicity review, and discipline
+review. WTS participated in study design. KSA, RSS, VWR, ATT, FAS, CS,
+YC, RHF, DRG, WAF, GD, DHJ, MRG, RCM, and JDC participated in
+writing or reviewing the completed report. All authors have approved the
+report for publication.
+Conﬂicts of interest
+We declare that we have no conﬂicts of interest.
+Acknowledgments
+This trial was funded by the National Cancer Institute (PHS Cooperative
+Agreement grant numbers CA21661, CA37422, CA32115, CA46441,
+CA77202, CA49957, CA03927, CA25224) with high priority designation,
+and Canadian Cancer Society (NCIC10362), and administered by the
+Radiation Therapy Oncology Group (RTOG, R9309), with participation by
+Southwest Oncology Group, National Cancer Institute of Canada Clinical
+Trials Group, Eastern Cooperative Oncology Group, Cancer and
+Leukemia Group B, and North Central Cancer Treatment Group. We
+thank the many North American Intergroup discipline chairs and others
+who provided advice or assistance during the design of this study or
+while the study was in progress; the members of the Lung Cancer
+Committees of the Southwest Oncology Group, National Cancer Institute
+of Canada Clinical Trials Group, Eastern Cooperative Oncology Group,
+Cancer and Leukemia Group B, and the North Central Cancer Treatment
+Group for their support of this study over the long accrual period; and
+especially the lung cancer survivors who were treated and followed up on
+this protocol, and the lay advocates who supported this trial design.
+References
+1
+Mountain CF. Prognostic implications of the International Staging
+System for lung cancer. Semin Oncol 1988; 3: 236–45.
+2
+Martini N, Flehinger BJ. The role of surgery in N2 lung cancer.
+Surg Clin North Amer 1987; 67: 1037–49.
+3
+Perez CA, Pajak TF, Rubin P, et al. Long-term observations of
+the patterns of failure in patients with unresectable non-oat cell
+carcinoma of the lung treated with deﬁnitive radiotherapy.
+Report by the Radiation Therapy Oncology Group. Cancer 1987;
+59: 1874–81.
+4
+Johnson DH, Einhorn LH, Bartolucci A, et al. Thoracic radiotherapy
+does not prolong survival in patients with locally advanced,
+unresectable non-small cell lung cancer. Annals Int Med 1990;
+113: 33–38.
+5
+Dillman RO, Seagren SL, Propert KJ, et al. A randomized trial of
+induction chemotherapy plus high-dose radiation versus radiation
+alone in stage III non-small-cell-lung cancer. N Engl J Med 1990;
+323: 940–45.
+6
+Sause WT, Scott C, Taylor S, et al. Radiation Therapy Oncology
+Group (RTOG) 88-08 and Eastern Cooperative Oncology Group
+(ECOG) 4588: Preliminary results of a phase III trial in regionally
+advanced, unresectable non-small-cell lung cancer.
+J Natl Cancer Inst 1995; 87: 198–205.
+7
+LeChevalier T, Arriagada R, Quoix E, et al. Radiotherapy alone
+versus combined chemotherapy and radiotherapy in non-resectable
+non-small cell lung cancer: ﬁrst analysis of a randomized trial in
+353 patients. J Natl Cancer Inst 1991; 83: 417–23.
+8
+Pritchard RS, Anthony SP. Chemotherapy plus radiotherapy
+compared with radiotherapy alone in the treatment of locally
+advanced, unresectable, non-small-cell lung cancer–a meta-analysis.
+Ann Intern Med 1996; 125: 723–29.
+9
+Furuse K, Fukuoka M, Kawahara M, et al. Phase III study of
+concurrent versus sequential thoracic radiotherapy in combination
+with mitomycin, vindesine, and cisplatin in unresectable stage III
+non-small-cell lung cancer. J Clin Oncol 1999; 17: 2692–69.
+10 Curran WJ, Scott CB, Langer CJ, et al. Long-term beneﬁt is observed
+in a phase III comparison of sequential versus concurrent
+chemoradiation for patients with unresected stage III non-small cell
+lung cancer: RTOG 9410. Proc Am Soc Clin Oncol 2003; 22: 621 (abstr).
+
+385
+
+Articles
+
+11
+12
+
+13
+
+14
+
+15
+
+16
+17
+18
+19
+
+386
+
+Farray D, Mirkovic N, Albain KS. Multimodality therapy for
+stage III non-small-cell lung cancer. J Clin Oncol 2005; 23: 3257–69.
+Eberhardt WE, Albain KS, Pass H, et al. Induction treatment before
+surgery for non-small cell lung cancer: IASLC consensus report.
+Lung Cancer 2003; 42: S9–14.
+Pisters K, Mirkovik N, Pass H, Albain KS. Preoperative
+chemotherapy/radiation therapy for early stage and locally advanced
+non-small cell lung carcinoma.
+In: Pass HI, Carbone DP, Johnson DH, et al, eds. Lung cancer:
+principles and practice, 3rd edn. Philadelphia: JB Lippincott
+Williams and Wilkins, 2005: 626–49.
+Albain KS, Rusch VW, Crowley JJ, et al. Concurrent
+cisplatin/etoposide plus chest radiotherapy followed by surgery for
+stages IIIA(N2) and IIIB non-small cell lung cancer: Mature results
+of Southwest Oncology Group phase II study 8805. J Clin Oncol
+1995; 13: 1880–92.
+Albain KS, Crowley JJ, Turrisi AT, et al. Concurrent cisplatin,
+etoposide and chest radiotherapy in pathological stage IIIB
+non-small cell lung cancer: a Southwest Oncology Group Study
+(SWOG-9019). J Clin Oncol 2002; 20: 3454–60.
+Zelen M. The randomization and stratiﬁcation of patients to clinical
+trials. J Chron Dis 1974; 27: 365–75.
+Lakatos E. Sample size based on the long-rank statistic in complex
+clinical trials. Biometrics 1988; 44: 229–41.
+Cox D. Regression models and life-tables (with discussion).
+J R Stat Soc, Series B 1972; 34: 187–220.
+Kaplan E, Meier P. Nonparametric estimation from incomplete
+observations. J Am Stat Assoc 1958; 53: 457–81.
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+Albain KS, Scott CB, Rusch VR, et al. Phase III comparison of
+concurrent chemotherapy plus radiotherapy (CT/RT) and CT/RT
+followed by surgical resection for stage IIIA(pN2) non-small cell
+lung cancer: initial results from intergroup trial 0139 (RTOG 93-09).
+Proc Am Soc Clin Oncol 2003; 22: 621 (abstr).
+Albain KS, Swann RS, Rusch VR, et al. Phase III study of
+concurrent chemotherapy and radiotherapy (CT/RT) vs CT/RT
+followed by surgical resection for stage IIIA(pN2) non-small cell
+lung cancer: Outcomes update of North American Intergroup 0139
+(RTOG-9309). J Clin Oncol 2005; 23: 624s (abstr).
+Roth JA, Fossella F, Komaki R, et al. A randomized trial comparing
+preoperative chemotherapy and surgery with surgery alone in
+resectable stage IIIA non-small cell lung cancer. J Natl Cancer Inst
+1994; 86: 673–30.
+Rosell R, Gomez-Codina J, Camps C, et al. A randomized trial
+comparing preoperative chemotherapy plus surgery with surgery
+alone in patients with non-small-cell lung cancer. N Engl J Med 1994;
+330: 153–58.
+Depierre A, Milleron B, Moro-Sibilot D, et al. Preoperative
+chemotherapy followed by surgery compared with primary surgery
+in resectable stage I (except T1N0), II and IIIa non-small-cell lung
+cancer. J Clin Oncol 2002; 20: 247–53.
+van Meerbeeck JP, Kramer GWPM, Van Schil PEY, et al.
+Randomized controlled trial of resection versus radiotherapy after
+induction chemotherapy in stage IIIA-N2 non-small-cell lung
+cancer. J Natl Cancer Inst 2007; 99: 442–50.
+
+www.thelancet.com Vol 374 August 1, 2009
