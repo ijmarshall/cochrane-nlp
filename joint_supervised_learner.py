@@ -17,6 +17,7 @@ To run vanilla/baseline CRF:
 '''
 
 # std lib
+import pickle
 import string
 import os
 import pdb
@@ -42,7 +43,7 @@ from indexnumbers import swap_num
 import bilearn
 from taggedpipeline import TaggedTextPipeline
 from journalreaders import LabeledAbstractReader
-from tokenizer import MergedTaggedAbstractReader
+from tokenizer import MergedTaggedAbstractReader, FullTextReader
 import progressbar
 
 
@@ -191,7 +192,7 @@ class SupervisedLearner:
     def train_mallet(train_f, model_f_name):
         full_train_path = os.path.join(MALLET_OUTPUT_DIR, train_f)
         full_model_path = os.path.join(MALLET_OUTPUT_DIR, model_f_name)
-
+        
         p = subprocess.Popen([JAVA_PATH, '-Xmx2g', '-cp', 
                                MALLET_PATHS, 'cc.mallet.fst.SimpleTagger',
                                "--train", "true", 
@@ -199,8 +200,11 @@ class SupervisedLearner:
                                "--model-file", full_model_path, 
                                full_train_path], stdout=subprocess.PIPE)
         output, errors = p.communicate()
-        print "ok! model trained!"
+
+        print "ok! model trained and written to %s!" % full_model_path
+
         return full_model_path
+
 
     @staticmethod
     def test_mallet(test_f, full_model_path):
@@ -220,7 +224,7 @@ class SupervisedLearner:
 
         test_size = len(test_citation_indices)
         print "test set of size {0} out of {1} total citations".format(
-                                    test_size, self.n_citations)
+                                        test_size, self.n_citations)
 
         ''' mallet! '''
         print "assembling mallet str..."
@@ -292,6 +296,27 @@ class SupervisedLearner:
                 new_preds.append(pred)
                 in_TX = False
         return new_preds
+
+
+    def train_mallet_on_all_data(self, train_file_path = "tx.mallet."):
+        if self.X_fv is None:
+            print "features not yet generated! taking a stab at it..."
+            self.generate_features()
+            print "ok."
+
+        train_path, test_path, test_y_path, test_tokens_out_path = \
+                    self.write_files_to_disk_for_mallet(
+                        test_citation_indices=[], 
+                        fpath=train_file_path)
+
+        model_f = "fully.train.crf.mallet"
+        full_model_path = SupervisedLearner.train_mallet(train_path, model_f)
+
+        ### also dump vectorizer
+        vectorizer_out="crf.vectorizer.pickle"
+        with open(vectorizer_out, 'wb') as v_out:
+            pickle.dump(self.vectorizer, v_out)
+
 
     def train_and_test_mallet(self, fpath="CRF.", force_two_TXs=False):
         if self.X_fv is None:
