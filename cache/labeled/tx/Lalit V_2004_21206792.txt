@@ -1,0 +1,1078 @@
+ORIGINAL ARTICLE
+
+Indian Journal of Psychiatry, 2004, 46(4)333-341
+
+Escitalopram Versus Citalopram And Sertraline: A Double–Blind Controlled,
+Multi-centric Trial in Indian Patients with Unipolar Major Depression
+Vaya Lalit*1, Appaya Prakash M.2, Hegde Rajendra P.3, Mital Anukant K.4, Mittal Sunil5, Nagpal
+Rajesh6, Palaniappun Vaiapuri7, Ramsubramaniam C.8, Rao Gundugurti P.9, Roy Krishna.10,
+Trivedi Jitendra K.11, Vankar Ganpat K.12, Karan Rajesh S.1, Shah Sweety1, Patel Ronak B.1
+ABSTRACT
+The present randomized, double blind, parallel group, controlled, multi-centric trial was designed to evaluate the efficacy and tolerability
+of <tx>escitalopram</tx> in comparison with <tx>citalopram and sertraline</tx> in the treatment of major depressive disorder. Outpatients (N=<n>214</n>) with an
+ongoing/newly diagnosed ICD-10 major depressive episode and a Hamilton Rating Scale for Depression (HAM-D) score of > 18 were
+randomly assigned to <tx>citalopram, 20–40 mg/day</tx> (74 patients), <tx>escitalopram, 10–20 mg/day (69 patients)</tx> and <tx>sertraline, 50-150 mg/day</tx>
+(71 patients), for a 4-week double-blind treatment period, with dosage adjustment (after 2 weeks of treatment) according to the response
+to treatment. Clinical response was evaluated by the 17 items HAM-D and the Clinical Global Impression (CGI) scales, which were
+recorded at baseline and at weekly intervals. Tolerability was evaluated by observed/spontaneously reported adverse changes in
+laboratory parameters (baseline and after 4 weeks). Response rate was defined as a decrease in HAM-D score by 50% from baseline and
+remission rate was defined as a HAM-D score of < 8. Response rate at the end of two week were 58% for escitalopram (10mg/day), 49%
+for <tx>citalopram (20mg/day)</tx> and 52% for <tx>sertraline (50-100mg/day)</tx>. Response rate at the end of four week were 90% for escitalopram (1020mg/day), 86% for <tx>citalopram (20-40mg/day)</tx> and 97% for <tx>sertraline (100-150mg/day)</tx>. The Remission rates at the end of four weeks
+were 74% for <tx>escitalopram</tx>, 65% for <tx>citalopram</tx> and 77% for <tx>sertraline</tx>. Adverse experiences were reported by 45% of patients in
+<tx>escitalopram</tx> group, 58% patients in <tx>citalopram</tx> and 56% patients in the <tx>sertraline</tx> group. Additionally, there were lesser dropouts and
+lesser requirement for dose escalation in <tx>escitalopram</tx> than in <tx>citalopram</tx> and <tx>sertraline</tx> group. In conclusion <tx>Escitalopram</tx>, the <tx>Senantiomer</tx> of the <tx>citalopram</tx> is a safe and effective antidepressant in the Indian population. It has potentially superior efficacy than
+<tx>citalopram</tx> and a comparable efficacy to <tx>sertraline</tx> with fewer side effects than both <tx>citalopram</tx> and <tx>sertraline</tx>.
+Key Words : <tx>Escitalopram</tx>, <tx>Sertraline</tx>, <tx>Citalopram</tx>, <tx>SSRI’s</tx>.
+
+Introduction
+
+development of that single isomer could improve both risks
+and benefits over the original antidepressant compound.
+
+Chirality, potentially offers one method to improve upon
+the SSRI (selective <tx>serotonin reuptake inhibitors</tx>) class. If
+all the serotonin reuptake inhibitory activity of racemic SSRI
+antidepressant resides in single isomer, it would be expected
+to be more potent than the racemate, and it might also be
+more selective (Hutt 2000; Tucker 2000). Thus, the clinical
+
+<tx>Escitalopram</tx> is the S-enantiomer of <tx>citalopram (SSRI)</tx>; a
+racemic compound that has been demonstrated to be
+effective in the treatment of depression, panic disorder,
+premenstrual dysphoric disorder, and obsessive- compulsive
+disorder (Willetts, 1999; Joubert, 1999; Keller, 2000).
+
+1
+
+Department of Clinical Research, Torrent Research Centre, Village Bhat, Dist. Gandhinagar-382 428. E-mail : lalitvaya@torrentpharma.com.
+
+2
+
+Department of Psychiatry, St. John’s Medical college & Hospital, Bangalore.
+
+3
+
+Consultant Psychiatrist, Goa.
+
+4
+
+Department of Psychiatry, Rajiv Gandhi Medical college & Chattrapati shivaji Hospital, Thane.
+
+5
+
+Consultant Psychiatrist & Psychotherapist, Delhi Psychiatry center, Delhi.
+
+6
+
+Consultant Psychiatrist, Manobal Klinik, Delhi.
+
+7
+
+Department of Psychiatry, Madras medical college & research institute, Chennai.
+
+8
+
+Consultant Psychiatrist, M.S. Chellamuthu Trust & Research foundation, Madurai.
+
+9
+
+Consultant psychiatrist, Woodland Asha Neuro Psychiatric center, Hyderabad.
+Department of Psychiatry, N.R.S. Medical College, Kolkatta.
+
+10
+11
+
+Department of Psychiatry, K. G. Medical College Lucknow.
+Department of Psychiatry, B.J. medical College and Civil hospital, Ahmedabad.
+
+12
+
+* Correspondence
+
+333
+
+Vaya Lalit et al
+
+Substantial evidence indicates that <tx>escitalopram</tx> is
+responsible for the therapeutic efficacy of the racemate
+(Owens 2001). <tx>Escitalopram</tx> is over 100 times more potent
+as serotonin reuptake inhibitor than its stereoisomer, Rcitalopram (Hyttel 1992; Sanchez 2000). In vivo studies of
+antidepressant action also support this conclusion;
+<tx>escitalopram</tx> is more potent and as efficacious as <tx>citalopram</tx>
+in various animal models of depression (Hyttel 1992;
+Mitchell 2001; Sanchez 2000; Montgomery 2001).
+
+schizoaffective or bipolar disorder, 6) seizure disorder, 7)
+anorexia nervosa, 8) hepatic and renal system dysfunction,
+9) <tx>therapy with lithium</tx> within the preceding month, 10)
+treatment with <tx>cimetidine, warfarin or MAO inhibitors</tx>, 11)
+hypersensitivity to <tx>citalopram</tx>, <tx>escitalopram</tx> and <tx>sertraline</tx>
+and non responders to <tx>citalopram</tx> and <tx>sertraline</tx>. Women
+of childbearing age not using contraceptives, pregnant
+women, lactating mothers, women desiring to have children,
+were also excluded.
+
+<tx>Escitalopram</tx> is therefore expected to offer several
+advantages over <tx>citalopram</tx>. <tx>Escitalopram</tx> theoretically
+should have at least twice the antidepressant potency of
+<tx>citalopram</tx>, since the therapeutic effects of <tx>citalopram</tx> are
+thought to be dependent upon serotonin reuptake inhibition
+and <tx>escitalopram</tx> appears to be responsible for virtually all
+of the serotonin reuptake inhibition produced by <tx>citalopram</tx>.
+Moreover, if any adverse effects of racemic <tx>citalopram</tx>
+were attributable to the R- enantiomer, they would be
+avoided in patients treated with the pure S- enantiomer.
+
+Study Design
+The multi-centric trial was spread over diverse geographical
+locations in India. The study protocol was approved by the
+Institutional Review Boards for all participating study
+centers and by the Drug Regulatory Authority of India (Drug
+Controller General of India). The patients gave a signed
+informed consent before any study-related procedure
+(including screening) could be undertaken.
+Patients underwent a comprehensive psychiatric and
+physical examination and appropriate investigations including
+hematology, biochemistry, ECG and urine pregnancy test
+(females). Patients meeting eligibility criteria at screening
+were enrolled in the study. Category I patients (Newly
+diagnosed) were started on drug therapy immediately.
+Category II patients (Non-responders) were started on trial
+drugs after a 1-week, single blind, placebo washout period
+(4 week for <tx>fluoxetine</tx>).
+
+The present multi-centric, parallel group study, examined
+the safety and efficacy of <tx>escitalopram</tx> in comparison with
+<tx>citalopram</tx> and <tx>sertraline</tx> (current standards of treatment)
+in Indian patients with major depressive disorder.
+Methods
+A total of 11 centers in India participated in this controlled,
+randomized, double–blind, single dummy, titrable dose,
+parallel group, multi-centric study.
+
+In order to maintain the blind, all double blind study
+medication was administered in alu- alu (aluminum –
+aluminum) strips. No other psychotropic drugs were allowed
+except a sedative/hypnotic (Benzodiazepine/
+Nonbenzodiazepine) for treatment emergent anxiety/
+insomnia.
+
+Patients:
+Eligible participants were male or female outpatients, 18 to
+65 years of age, with ICD-10 diagnosis of Major Depressive
+Episode and a minimum score of 18 on the Hamilton Rating
+Scale for Depression (HAM-D).
+
+Follow-up visits
+
+Categories of patients included were:
+
+Follow-up visits were after 1,2, 3 & 4 weeks of double
+blind treatment. Efficacy assessments included the 17-items
+HAM-D scale, CGI-I and CGI-S scale. Adverse events
+were enquired and recorded at every visit.
+Electrocardiogram (ECG), physical examination, and
+laboratory tests were performed at screening and at the
+end of week 4.
+
+I. Newly diagnosed patients
+II. Previously diagnosed patients not responding to the
+prescribed antidepressants
+Patients were excluded if they had 1) recent ongoing
+significant non-psychiatric medical disorder, 2) a history of
+substance abuse, 3) chronic suicidal ideation and behavior,
+4) participated in any drug trial within 4 weeks, 5)
+
+Drugs and Dose Administration
+The drugs were administered in the following manner as
+stated in the table below :
+334
+
+<tx>Escitalopram</tx> Versus <tx>Citalopram</tx> And <tx>Sertraline</tx>
+<tx>Escitalopram</tx>
+
+<tx>Citalopram</tx>
+
+<tx>Sertraline</tx>
+
+Morning
+
+Evening
+
+Morning
+
+Evening
+
+Morning
+
+Evening
+
+Wk 1
+
+Placebo
+
+10mg
+
+<tx>Placebo</tx>
+
+20mg
+
+<tx>Placebo</tx>
+
+50mg
+
+Wk 2
+
+<tx>Placebo</tx>
+
+10mg
+
+<tx>Placebo</tx>
+
+20mg
+
+<tx>Placebo</tx>
+
+100mg
+
+If HAM-D score decrease 50% from the baseline after two weeks, the same dose was continued. Otherwise
+the dose was titrated upwards.
+Responder
+
+Non- Responder
+
+Responder
+
+Non- Responder
+
+Responder
+
+Non- Responder
+
+Morn
+
+Eve
+
+Morn
+
+Eve
+
+Morn
+
+Eve
+
+Morn
+
+Eve
+
+Morn
+
+Eve
+
+Morn
+
+Eve
+
+Wk 3
+
+P
+
+10 mg
+
+P
+
+20mg
+
+P
+
+20mg
+
+P
+
+40mg
+
+P
+
+100mg
+
+50 mg 100mg
+
+Wk 4
+
+P
+
+10 mg
+
+P
+
+20mg
+
+P
+
+20mg
+
+P
+
+40mg
+
+P
+
+100mg
+
+50 mg 100mg
+
+Note: P= <tx>Placebo</tx>; Responder = HAM-D score reduced by 50% from the baseline; Morn = morning and Eve = Evening
+
+Of Variance (RMANOVA) with baseline as covariate
+followed by Bonferroni post hoc test for week-by-week
+comparison between the treatment groups.
+
+Primary Efficacy Measures
+1) Change in HAM-D total score (The sum of all 17 items).
+2) CGI –S score and CGI –I score.
+
+CGI-S and CGI-I scores were subjected to chi-square test
+for finding within-group significance.
+
+3) Response rate: HAM-D score decrease by 50% from
+baseline.
+
+Laboratory investigations data was first checked for its
+normality. If found normal, the data was subjected to
+parametric test (paired t test). Otherwise, the data was
+subjected to Non-Parametric (Wilcoxon Sing Rank) test
+for checking significance from baseline to last visit.
+
+4) Remission rate: HAM-D score below 8.
+Safety and Tolerability Measures
+All adverse events volunteered, observed and enquired
+during the study or within 6 days of the last day of treatment
+were recorded. Additional information on the adverse event
+included date of onset, duration of event, concurrent
+therapies, the investigator’s assessment of severity, possible
+cause relationship to study drug, and whether a change in
+dose or withdrawal of treatment was required. A 12 lead
+ECG was done at baseline and at the end of the study.
+Clinical laboratory tests, including routine hematology, serum
+chemistry and liver function tests were carried out at
+baseline and at end of study.
+
+Treatment group comparisons of patient’s demographic
+characteristics and baseline severity measurements were
+done using chi-square test and ANOVA. Fisher’s exact
+test was used for categorical data where cell numbers were
+small. Statistical significance was defined as 2-sided p value
+< 0.05.
+Results
+Demography
+
+Statistical Analysis
+
+A total of 214 patients were randomized (balanced
+randomization) to receive either <tx>Escitalopram</tx> or <tx>Citalopram</tx>
+or <tx>Sertraline</tx> in the study. The demographic data for the
+patients are shown in Table 1. There was no statistically
+significant difference in the various demographic
+characteristics like age, gender, illness duration and illness
+severity among the treatment groups.
+
+The three treatment groups were compared for the change
+in scores (from baseline) on various psychiatric scales. With
+the purpose of Intention To Treat (ITT), Last Observation
+Carried Forward (LOCF) approach was used.
+Since the data for HAM-D were measured on ordinal scale,
+the data for these two parameters were subjected to NonParametric tests. The total HAM-D scores at each followup visit were subjected to Wilcoxon sign rank test for finding
+significant change from baseline (within group comparison).
+The data was subjected to Repeated Measures Analysis
+
+16 patients dropped out from the study. Of the 16 patients,
+9 were in the <tx>Sertraline</tx> group, 3 in the <tx>Citalopram</tx> group
+and 4 in the <tx>Escitalopram</tx> group. The reasons for the dropout
+from the study are presented in Table 2.
+335
+
+Vaya Lalit et al
+Table 1.
+
+Efficacy
+
+DEMOGRAPHIC PROFILE OF PATIENTS
+Escitalopram
+(N=69)
+
+Citalopram
+(N=74)
+
+Males (n)
+
+30
+
+30
+
+36
+
+Females (n)
+
+39
+
+43
+
+35
+
+33+8
+
+33+9
+
+37+11
+
+Duration of illness
+(Median months)
+
+5.5
+
+4
+
+5
+
+History of suicide
+attempt (n)
+
+3
+
+2
+
+1
+
+25 + 5
+
+25 + 4
+
+17
+
+20
+
+17
+
+20 + 1
+
+19 + 1
+
+20 + 1
+
+52
+
+54
+
+54
+
+28+5
+
+27+4
+
+The HAM-D score showed a significant decrease from
+baseline (within group) at each weekly assessment in the
+three treatment groups (Figure 1). However the difference
+between groups was not statistically significant at any
+assessment.
+
+Sertraline
+(N=71)
+
+27+4
+
+Age (years) (Mean+S.D.)
+
+Severity of illness
+(HAM-D Score)(Mean+SD) 26 + 6
+
+Fig. 1. HAM-D scores, mean change from baseline
+
+Severe (HAM-D=18-21)
+(n)
+HAM-D Score (Mean+SD)
+Very Severe (HAM-D>21)
+(n)
+HAM-D Score (Mean+SD)
+Table 2.
+Reasons
+
+No significant difference was observed between treatments, when the
+data was subjected to RMANOVA with baseline as covariate followed
+by Bonferroni post hoc test for week-by-week comparison.
+
+The assessment of global improvement (CGI-I) showed
+that a statistically significant improvement (over baseline)
+occurred at the end of the study in each treatment group
+(Figure 2). However the difference between treatment
+groups was not statistically significant.
+
+DROP OUTS
+<tx>Escitalopram</tx>
+
+<tx>Citalopram</tx>
+2
+
+<tx>Sertraline</tx>
+
+<tx>ADRs</tx>
+
+1
+
+Discontinuation on
+Pt’s. request
+
+1
+
+0
+
+1
+
+Loss of
+efficacy
+
+0
+
+1
+
+0
+
+Reason not
+mentioned
+
+2
+
+0
+
+3
+
+Other
+Reasons
+
+0
+
+0
+
+1
+
+Total
+
+4
+
+3
+
+9
+
+a
+
+b1-2
+
+4c1-4
+
+Fig. 2: CGI-S Scores. Mean change from baseline
+
+a= Mild headache, nervousness & agitation which were
+considered of ‘probable’ causality. Headache required
+prescription medication. Study drug was discontinued.
+b1= Throbbing headache which was considered of ‘certain’
+causality. Headache required prescription medication. Study
+drug was discontinued.
+
+The severity of illness (CGI-S) decreased significantly
+with each of the treatment (Figure 3). The between
+treatment comparison did not show statistically significant
+difference at any assessment visit.
+
+b2= Study drug was discontinued after only 3 days of
+treatment because of G.I. side effects.
+c1= Nausea & vomiting of moderate severity which were
+considered of ‘certain’ causality and required prescription
+medication. Study drug was discontinued.
+
+Response rate at end of week 2 : A 50% reduction (from
+baseline) in the total HAM-D score was observed in 58%
+patients in Escitalopram group (10mg) as compared to 49%
+in the Citalopram group (20 mg) and 52% in the Sertraline
+group (100mg) at the end of two weeks of treatment
+(Figure 4).
+
+c2-3= Study drug was discontinued because of severe
+headache.
+c4= Giddiness, vomiting & throbbing headache of moderate
+severity which were considered of ‘certain’ causality and
+required prescription medication. Study drug was
+discontinued.
+
+336
+
+<tx>Escitalopram</tx> Versus <tx>Citalopram</tx> And <tx>Sertraline</tx>
+
+Fig. 3: CGI-S Scores. Mean change from baseline
+
+Remission rate : is defined as decrease in HAM-D total
+score to < 7. In Escitalopram group the remission rate was
+74% as compared to 65% in Citalopram and 77% in
+Sertraline group patients after 4 weeks of treatment (Figure
+6).
+Fig. 6: Remitted Cases at end of Week-4
+
+Fig. 4: Responders at Week-2
+
+Effect on Patients continued for 6 weeks : Data from 88
+patients who were continued for 6 weeks on study treatment
+showed that the trend (of change in HAM-D score in three
+groups) that was seen in the first four weeks was maintained
+over the next two weeks (Figure 7).
+Fig. 7: HAM-D scores, mean change from baseline
+(6 weeks)
+
+Response rate at the end of week 4 : Response rate after
+4 weeks of treatment was 90% in Escitalopram group, 86%
+in Citalopram and 97% in Sertraline group patients
+(Figure 5).
+Fig. 5: Responders at Week-4
+
+No significant difference was observed between treatments, when the
+data was subjected to RMANOVA with baseline as covariate followed
+by Bonferroni post hoc test for week-by-week comparison.
+
+Onset of action :
+Proportionately more patients responded to Escitalopram
+(58%) and Sertraline (52%) as compared to Citalopram
+(49%) in the first two weeks of the therapy (Figure 8).
+
+337
+
+Vaya Lalit et al
+
+Most of the adverse events were mild in severity (Figure
+9). Proportionately more people required OTC / prescription
+drugs in the Citalopram and Sertraline group as compared
+to Escitalopram (Figure 10). Most of these adverse events
+were causally not related to the drug treatment.
+
+Fig. 8: Onset of Action / Onset of Response
+
+Fig. 9: Severity of ADR’s
+
+Safety:
+No serious adverse event was reported by any patient in
+the three treatment groups. The percentage of patients
+reporting adverse events was 45% in the Escitalopram
+group, 56%in the Sertraline group and 58% in the Citalopram
+group. No unexpected side effect was reported. The most
+common adverse events were headache [Sertraline (41%),
+Citalopram (24%), Escitalopram (17%)], gastrointestinal
+side effects [Sertraline (17%), Citalopram (15%),
+Escitalopram (9%)], giddiness [Sertraline (23%), Citalopram
+(14%), Escitalopram (10%)] and insomnia [Sertraline
+(13%), Citalopram (20%), Escitalopram (19%)] (Table 3).
+Table 3.
+
+Note: Many subjects had more than one ADR
+
+Fig. 10: Management of ADR’s
+
+ADVERSE DRUG REACTIONS (ADR)
+Escitalo- Citalopram
+pram
+
+N
+
+69
+
+Patients having ADR’s
+
+n(%)
+
+Dropouts due to ADR’s n
+Headache
+
+n(%)
+
+74
+
+Sertraline
+71
+
+31(45)
+
+43(58)
+
+1
+
+2
+
+40(56)
+4
+
+12(17)
+
+18(24)
+
+29(41)
+
+G.I. Side Effects
+
+n(%)
+
+6(9)
+
+11(15)
+
+12(17)
+
+Giddiness
+
+n(%)
+
+7(10)
+
+10(14)
+
+16(23)
+
+Insomnia
+
+n(%)
+
+13(19)
+
+15(20)
+
+9(13)
+
+Anxiety
+
+n(%)
+
+1(1)
+
+3(4)
+
+1(1)
+
+Tremors
+
+n(%)
+
+5(7)
+
+7(9)
+
+3(4)
+
+Agitation
+
+n(%)
+
+2(3)
+
+5(7)
+
+2(3)
+
+Abnormal Ejaculation
+
+n(%)
+
+2(3)
+
+Libido Decreased
+
+n(%)
+
+0(0) $
+
+1(1) $
+
+2(3) $
+
+Other ADR’s #
+
+n
+
+20(29)
+
+23(31)
+
+14(20)
+
+$
+
+3(4)
+
+$
+
+1(1)
+
+◆
+
+Sexual side effects (males) were reported by only a few
+patients in this trial. This is possibly because of the discomfort
+patients’ feel in reporting such events.
+
+Note: patients may have had more than one ADR’s
+
+◆
+
+Note: Some patients had more than one treatment
+
+$
+
+$ = Incidence corrected for gender
+
+◆
+
+The laboratory investigations like hematology, biochemistry
+and ECG, carried out before and after treatment did not
+
+# = Restlessness, Dry mouth, Somnolence, Yawning,
+Itching, Diaphoresis, Asthenia
+
+338
+
+Escitalopram Versus Citalopram And Sertraline
+
+show any clinically significant change from baseline in any
+treatment group.
+
+Fig. 13: Total Remitters After Dose Escalation
+
+Dose response:
+Proportionately more patients responded (58%) and remitted
+(23%) to initial dose (10mg) of Escitalopram as compared
+to Citalopram (49% & 19% respectively) and Sertraline
+(52% & 17% respectively) (Figure 11). On increasing the
+dose, the response and remission rate in Citalopram group
+were 86% & 65% respectively, as compared to Sertraline
+(97% & 77% respectively), and Escitalopram group (90%
+and 74% respectively), after four week of therapy (Figure
+12 & 13).
+Fig. 11: Responders / Remitters To Initial Dosages
+
+Fig. 14: Dose Adverse Events Relationship
+
+Fig. 12: Total Responders After Dose Escalation
+
+32
+
+45
+Discussion
+
+37
+
+Enantiomers are non-superimposable, mirror-image type of
+isomers that have identical physio-chemical properties.
+They are distinguished on the basis of the differences in
+their ability to rotate polarised light.
+Importantly, they can have different biological properties
+(pharmacodynamic and pharmacokinetic). This is because
+various receptors and other target proteins have chiral
+molecules in them and show stereo selectivity.
+Recent advances in chiral technology and the ability to
+synthesize enantiomerically pure compounds, together with
+regulatory influences (FDA’s Policy 1992, Brussells, CPMP
+1993), have led the pharmaceutical industry to attempt,
+wherever relevant and possible, to develop new chemical
+
+Most of the adverse events occurred during the initiation
+of the therapy i.e. with the initial dosages. Increasing the
+dose did not result in corresponding increase in the adverse
+events (Figure 14).
+339
+
+Vaya Lalit et al
+
+entities as single isomers. In parallel, there has been interest
+in “chiral switching”, the replacement of an already
+approved racemate by a single enantiomer. Potential
+advantages of chiral switching include an improved
+therapeutic index through increased potency and selectivity
+and decreased side effects; an improved onset and duration
+of effect; and a decreased propensity for drug-drug
+interactions.
+
+week 1 onwards (observed cases). By comparison,
+citalopram 20 mg/day did not demonstrate a statistically
+significant effect compared to placebo indicating faster onset
+of action of escitalopram. The difference between the active
+treatment groups was not statistically significant (William
+2002).
+In a meta-analysis by Azorin J.M. et al. (2004), data were
+pooled (506 patients) from three different clinical trials, each
+similar in design and inclusion/exclusion criteria, primary
+endpoints and assessment schedules. Among them, 169
+received escitalopram, 171 received citalopram and 166
+received the placebo. The primary efficacy parameter was
+the mean change from baseline to end of treatment in
+MADRS total score between escitalopram and citalopram
+groups. The change from baseline to endpoint of the
+Hamilton rating scale for Depression (HAM-D) and the
+Clinical Global Impression of Improvement and Severity
+(CGI-I and CGI-S) were also analysed as secondary
+criteria. Results showed that the mean change from baseline
+in the MADRS total score was significantly higher in the
+escitalopram group compared with the citalopram group (17.3 vs - 13.8 respectively, p=0.003). This significant
+difference was observed as early as week 1 (p=0.01).
+Response rates were significantly higher for escitalopram
+than for citalopram (56% vs 41% respectively, p=0.007).
+A borderline significant difference was found for remission
+rate in the observed-cases analysis (43% vs 33%
+respectively, p=0.07). Analyses of the HAM-D, CGI-I and
+CGI-S scores revealed consistent results. Sanchez C et al.
+(2004) reached to similar conclusions in their meta-analysis.
+
+Current therapy of depression requires improvement in many
+areas including 1) a requirement for a faster onset of action
+than provided by the current therapies [2-4 weeks]; 2) an
+increase in response rate; 3) a better long-term efficacy
+and safety; 4) efficacy in resistant depression; 5) efficacy
+in associated anxiety; 6) lesser number of dropouts.
+Can chiral switching of the available antidepressants help
+in achieving these unmet needs in the therapy of depression?
+This question was explored in the present study where the
+S(-)enantiomer of citalopram was compared against the
+standard anti-depressants sertraline and racemic citalopram.
+The results of the study show that escitalopram produced
+greater mean changes in the HAM-D scores than
+citalopram through out the study period. There was also a
+proportionately higher response/ remission rate than
+citalopram. The differences however, could not reach
+statistical significance. This is mainly because of a small
+sample size. The trial was not designed (in terms of the
+subject numbers) to look for statistically significant
+differences between treatment groups. It was a trial done
+mainly to see the efficacy and safety of Escitalopram, the
+new antidepressant drug in Indian patients of major
+depression.
+
+In vitro studies show that escitalopram has no or very low
+affinity for serotonergic or other receptors including alphaand beta-adrenergic, dopamine, histamine, muscarinic, and
+benzodiazepine receptors. This suggests a very safe adverse
+effect profile. The common treatment emergent adverse
+events reported for escitalopram include insomnia, nausea,
+diarrhea and dizziness.
+
+Data from 118 patients who were followed for additional
+two weeks (total of six weeks) was available. These patients
+were evenly distributed among the three treatment groups.
+The efficacy of the three drugs was minimally enhanced
+over the additional 2 weeks. As seen in the Figure 7, clear
+separation of escitalopram group profile from citalopram
+was maintained throughout the 6-weeks. Sertraline profile
+caught up with the escitalopram profile at week-4.
+
+Similar side effect profile was seen in the present trial. In
+addition, headache was also reported commonly in this study.
+No adverse events were serious enough to require
+hospitalization. Majority of adverse events were mild to
+moderate in severity and required no treatment, resolving
+on their own over 2-5 days. In all treatment groups, the
+adverse events occurred mainly in the first two weeks of
+therapy. Adverse events occurred more frequently and
+with more severity in the citalopram and sertraline group.
+Consequently, there were greater dropouts in the sertraline
+group and more patients in sertraline and citalopram group
+
+In the pivotal clinical trials conducted for the regulatory
+submission to USFDA, Escitalopram was seen to be more
+effective than placebo as assessed by standard study
+endpoints (change in MADRS, HAM-D & CGI scores) in
+randomized, double blind studies in patients with major
+depression. Efficacy analysis showed a significantly superior
+therapeutic effect for escitalopram versus placebo from
+340
+
+Escitalopram Versus Citalopram And Sertraline
+
+required ‘Over The Counter’ and ‘prescription medicine’
+for the treatment of these adverse events.
+
+References
+Azorin J.M., Llorca P.M., Despiegel N., Verpillat P., (2004). Escitalopram
+is more effective than citalopram for the treatment of severe major
+depressive disorder. Encephale 30(2) : 158-66.
+
+There was one pointer to the claimed early onset of action
+of escitalopram in the present trial. This included a higher
+response rate to escitalopram in the first two weeks of
+therapy than citalopram/sertraline. It is possible that the
+response rate was less in sertraline group because the
+patients were on 100mg dose only for 1 week. However,
+the dosing regimen chosen for sertraline is the one, which
+is recommended in the package insert (ZOLOFT®).
+
+Committee for Proprietary Medical Products. Working Parties on Quality,
+safety and Efficacy of Medicinal Products. Note for guidance: Investigational
+of chiral active substance (III/3501/91). (1993), Brussells : CPMP.
+FDA’s Policy statement on the development of new stereoisomeric drugs
+(stereomeric Drug Policy) Federal Register 1992;57: FR22249.
+Hutt A.J., Tan S.C. (1996) Drug Chirality and its clinical significance.
+Drugs, 52, 1-12
+Hyttel J., Boges K.P. et al.(1992) The pharmacological effect of Citalopram
+resides in the (S)-(+)-enantiomer. Journal of Neurological Transmission
+General Section 88,157-160
+
+Higher % of patients responded / remitted to 10 mg dose
+of escitalopram as compared to the initial dosage of
+citalopram (20 mg) & sertraline (50-100 mg). Dose
+escalation requirement was therefore less in escitalopram
+treated group.
+
+Janet, B.W. & Williams, D.S.W. (2000) Clinical Global Impressions (CGI)
+Scale, pp 100-102, Washington DC, American Psychiatric Association
+Joubert A.F., Stein DJ.(1999) Citalopram and anxiety disorders. Review of
+Contemporary Pharmacotherapy, 10, 79-123
+Keller M.B.(2000) Citalopram therapy for depression: a review of 10
+years of European experience and data from US clinical trials. Journal of
+Clinical Psychiatry, 61:896-908
+
+Conclusion
+
+Mitchell P.J., Hogg S.(2001) Behavioural effects of Escitalopram predicts
+potent antidepressant acitivity. In:New Research Abstracts of the 154 th
+Annual Meeting of the American Psychiatric Association; May 9, New
+Orleans, La. Abstract NR 503:136-137
+
+Chiral switching of racemic Citalopram to S (+) citalopram
+has resulted in a drug twice as potent as the racemic mixture.
+Additionally escitalopram has been shown to be more
+effective and better-tolerated drug than citalopram. It has
+also proved to be an equieffective and a safer alternative
+to Sertraline.
+
+Montgomery S.A., Loft H. et al (2001) Escitalopram (S-enantiomer of
+Citalopram): clinical efficacy and onset of action predicted from a rat
+model. Pharmacological Toxicology, 88, 282-286
+Owens M.J., Knight D.L., (2001) Second generation SSRIS: human
+monoamine transporter binding profile of Escitalopram and R-fluoxetine.
+Biological Psychiatry , 50, 345-350
+
+Source of funding:
+
+Sanchez C., Brennum Lt.(2000) The S-enantiomer of Citalopram is a
+highly selective and potent serotonin reuptake inhibitor. Presented at the
+55 th annual meeting of the Society of Biological Psychiatry; May 11-13,
+Chicago, III
+
+This paper is based on the clinical trial sponsored by Torrent Pharmaceuticals
+Ltd.,
+
+Sanchez C., Hogg S.(2000) The antidepressant effect of Citalopram resides
+in the S-enantiomer. Presented at the 40 th annual meeting of the New
+Clinical Drug Evaluation Unit; Boca Raton , Florida
+
+Acknowledgements:
+Many thanks to Mr. Hitesh Dave for typing and formatting the article and
+all the other help during the conduct of the trial.
+
+Sanchez C., Bogeso K.P., Ebert B., Reines E.H., Braestrup C., (2004)
+Escitalopram versus citalopram: the surprising role of the R-enantiomer.
+Psychopharmacology , 174 (2), 163 - 176
+Tucker G.T. (2000) Chiral switches. Lancet, 355, 1085-1087
+Willetts J., Lippa A.(1999) Clinical development of Citalopram. Journal
+of Clinical Psychopharmacology, 19, 36S-46S.
+Yonkers, K.A. & Samson J. (2000) Hamilton Rating Scale For Depression
+(Ham-D), pp 526-529, Washington DC, American Psychiatric Association
+
+341

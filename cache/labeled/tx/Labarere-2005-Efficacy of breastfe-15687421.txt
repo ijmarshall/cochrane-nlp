@@ -1,0 +1,991 @@
+Efficacy of Breastfeeding Support Provided by Trained Clinicians During an
+Early, Routine, Preventive Visit: A Prospective, Randomized, Open Trial of 226
+Mother-Infant Pairs
+Jose Labarere, Nathalie Gelbert-Baudino, Anne-Sophie Ayral, Cathy Duc, Martine
+Berchotteau, Nathalie Bouchon, Camille Schelstraete, Jean-Philippe Vittoz, Patrice
+Francois and Jean-Claude Pons
+Pediatrics 2005;115;e139
+DOI: 10.1542/peds.2004-1362
+
+The online version of this article, along with updated information and services, is
+located on the World Wide Web at:
+http://pediatrics.aappublications.org/content/115/2/e139.full.html
+
+PEDIATRICS is the official journal of the American Academy of Pediatrics. A monthly
+publication, it has been published continuously since 1948. PEDIATRICS is owned,
+published, and trademarked by the American Academy of Pediatrics, 141 Northwest Point
+Boulevard, Elk Grove Village, Illinois, 60007. Copyright © 2005 by the American Academy
+of Pediatrics. All rights reserved. Print ISSN: 0031-4005. Online ISSN: 1098-4275.
+
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+Efficacy of Breastfeeding Support Provided by Trained Clinicians During
+an Early, Routine, Preventive Visit: A Prospective, Randomized, Open
+Trial of 226 Mother-Infant Pairs
+Jose Labarere, MD*; Nathalie Gelbert-Baudino, MD‡; Anne-Sophie Ayral, MD‡; Cathy Duc, MD‡;
+Martine Berchotteau, MD§; Nathalie Bouchon, MD§; Camille Schelstraete, MD‡; Jean-Philippe Vittoz, MSc*;
+Patrice Francois, MD, PhD*࿣; and Jean-Claude Pons, MD, PhD¶
+ABSTRACT. Background. Despite growing evidence
+of the benefits of prolonged breastfeeding for mother
+and infant health, the rate of breastfeeding at infant age
+of 6 months remains below the Healthy People 2010 goal.
+The greatest decrease in the breastfeeding rate occurs
+during the first 4 postpartum weeks. Mothers who discontinue breastfeeding early are more likely to report
+lack of confidence in their ability to breastfeed, problems
+with the infant latching or suckling, and lack of individualized encouragement from their clinicians in the early
+postdischarge period. Observational studies suggest that
+primary care physicians can increase breastfeeding rates
+through specific advice and practices during routine preventive visits. However, robust scientific evidence based
+on randomized, controlled trials is currently lacking.
+Objective. The purpose of this study was to determine whether attending an <tx>early, routine, preventive,
+outpatient visit delivered in a primary care physician’s
+office</tx> would improve breastfeeding outcomes.
+Design. The study was a prospective, randomized,
+parallel-group, open trial.
+Setting. Participants were recruited at a level 3 maternity facility, with an average of 2000 births per year, in
+France.
+Participants. A total of <n>231</n> mothers who had delivered a healthy singleton infant (gestational age: >37 completed weeks) and were breastfeeding on the day of
+discharge were recruited and randomized (116 were assigned to the intervention group and 115 to the control
+group) between October 1, 2001, and May 31, 2002; 226
+mother-infant pairs (112 in the intervention group and
+114 in the control group) contributed data on outcomes.
+Intervention. Support for breastfeeding in the control
+group included the <tx>usual verbal encouragement provided by the maternity ward staff members, a general
+health assessment and an evaluation for evidence of successful breastfeeding behavior by the pediatrician working in the obstetrics department on the day of discharge,
+From the *Quality of Care Unit and Departments of ࿣Pediatrics and ¶Obstetrics, Gynecology, and Reproductive Medicine, Grenoble University</tx>
+Hospital, Grenoble, France; ‡Chambery, France; and §Department of Pediatrics, Chambery Teaching Hospital, Chambery, France.
+Accepted for publication Sep 20, 2004.
+doi:10.1542/peds.2004-1362
+Preliminary results from this study were presented at the French Society of
+Pediatrics meeting; June 2, 2004; Lille, France; and were printed in abstract
+form as part of the proceedings.
+No conflict of interest declared.
+Address correspondence to Jose Labarere, MD, Unite d’Evaluation Medicale, Pavillon Taillefer, CHU-BP 217, 38043 Grenoble Cedex 9, France.
+E-mail: jlabarere@chu-grenoble.fr
+PEDIATRICS (ISSN 0031 4005). Copyright © 2005 by the American Academy of Pediatrics.
+
+provision of the telephone number of a peer support
+group, mandatory routine, preventive, outpatient visits at
+1, 2, 3, 4, 5, and 6 months of infant age, and 10 weeks of
+paid maternity leave (extended to 18 weeks after the birth
+of the third child). In addition to the usual predischarge
+and postdischarge support, the mothers in the intervention group were invited to attend an individual, routine,
+preventive, outpatient visit in the office of 1 of the 17
+participating primary care physicians (pediatricians or
+family physicians) within 2 weeks after the birth. The
+participating physicians received a 5-hour training program on breastfeeding, delivered in 2 parts in 1 month,
+before the beginning of the study.
+Outcome Measures. The primary outcome was the
+prevalence of exclusive breastfeeding reported at 4
+weeks (defined as giving maternal milk as the only food
+source, with no other foods or liquids, other than vitamins or medications, being given). The secondary outcomes included any breastfeeding reported at 4 weeks,
+breastfeeding duration, breastfeeding difficulties, and
+satisfaction with breastfeeding experiences. Classification into breastfeeding categories reported at 4 weeks
+was based on 24-hour dietary recall.
+Results. Ninety-two mothers (79.3%) assigned to the
+intervention group and 8 mothers (7.0%) assigned to the
+control group reported that they had attended the routine, preventive, outpatient visit in the office of 1 of the
+17 primary care physicians participating in the study.
+Mothers in the intervention group were more likely to
+report exclusive breastfeeding at 4 weeks (83.9% vs
+71.9%; hazard ratio: 1.17; 95% confidence interval [CI]:
+1.01–1.34) and longer breastfeeding duration (median: 18
+weeks vs 13 weeks; hazard ratio: 1.40; 95% CI: 1.03-1.92).
+They were less likely to report any breastfeeding difficulties (55.3% vs 72.8%; hazard ratio: 0.76; 95% CI: 0.620.93). There was no significant difference between the 2
+groups with respect to the rate of any breastfeeding at 4
+weeks (89.3% vs 81.6%; hazard ratio: 1.09; 95% CI: 0.981.22) and the rate of mothers fairly or very satisfied with
+their breastfeeding experiences (91.1% vs 87.7%; hazard
+ratio: 1.04; 95% CI: 0.95-1.14).
+Conclusions. Although we cannot exclude the possibility that findings might differ in other health care
+systems, this study provides preliminary evidence of
+the efficacy of <tx>breastfeeding support through an early,
+routine, preventive visit in the offices of trained primary
+care physicians</tx>. Our findings also suggest that a short
+training program for practicing physicians might contribute to improving breastfeeding outcomes. Multifaceted interventions aiming to support breastfeeding
+should involve primary care physicians. Pediatrics 2005;
+115:e139–e146. URL: www.pediatrics.org/cgi/doi/10.1542/
+
+www.pediatrics.org/cgi/doi/10.1542/peds.2004-1362
+PEDIATRICS Vol. 115 No. 2 February 2005
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+e139
+
+peds.2004-1362; breastfeeding, counseling, primary care
+physicians, randomized, controlled trial.
+ABBREVIATION. CI, confidence interval.
+
+T
+
+he benefits of prolonged breastfeeding for
+mother and infant health are documented in a
+vast scientific literature.1 The American Academy of Pediatrics recommends exclusive breastfeeding for the first 6 months of life, continuing to Ն1
+year with the addition of complementary foods at ϳ6
+months of age.2 In its Healthy People 2010 recommendations, the US Department of Health and Human Services sets goals of 75% of mothers breastfeeding exclusively in the early postpartum period
+and 50% continuing to breastfeed for at least 6
+months.3
+The hospital has been a particular focus of efforts
+to promote initiation of breastfeeding in the past
+decade.4 As a result, large-scale national surveys
+indicated that the in-hospital breastfeeding rate
+reached the highest level recorded to date in the
+United States (69.5% in 2001) and would meet or
+exceed the Healthy People 2010 goal of 75% for the
+early postpartum period if increases in breastfeeding
+continued at the current rate (ϳ2% per year).5 However, the estimates of any breastfeeding at 6 months
+of age (from 27.0% to 32.5% in 2001) still fall significantly short of the Healthy People 2010 goal.5,6 The
+largest decreases in breastfeeding rates occur during
+the first 4 postpartum weeks among different subgroups of mother-infant pairs.7,8 Reasons for early
+breastfeeding discontinuation are complicated.
+Mothers who discontinue breastfeeding early are
+more likely to report a lack of confidence in their
+ability to breastfeed,7,8 problems with the infant
+latching or suckling,8,9 breast pain or soreness,8,9 perceptions of insufficient milk supply,8,9 or a lack of
+individualized encouragement from their clinicians8
+in the early postdischarge period.
+Many interventions directed at early preventable
+breastfeeding problems and relying on peer counselor or nurse follow-up visits at home or in the clinic
+have attempted to increase breastfeeding rates. These
+interventions occur as an adjunct to routine preventive visits, rather than within them, and have had
+generally limited success.10–13 In contrast, the results
+of observational studies suggest that support with
+breastfeeding problems and promotion of breastfeeding provided by clinicians during routine preventive visits in office settings are associated with
+higher rates of exclusive breastfeeding.14 However,
+randomized trials testing the efficacy of interventions delivered through existing primary health care
+services are currently lacking.8 Such trials are challenging to conduct in the United States because
+mothers, health care providers, managed care organizations, and insurance companies have vested interests in early discharge, home or clinic postpartum
+follow-up visits, and specific breastfeeding support.
+The French health care system differs to some
+extent from the US health care system.15 In 2001, the
+mean length of stay after normal vaginal delivery
+e140
+
+was 4.8 days in France. Newborns benefit from routine, preventive, outpatient visits delivered by a pediatrician or a family physician in an office setting
+during the first 6 months of life (ie, at 8 days, and 1,
+2, 3, 4, 5, and 6 months of infant age). The period of
+paid maternity leave is 10 weeks after the birth,
+extended to 18 weeks after the birth of the third
+child. Despite these legal conditions, the prevalence
+of breastfeeding was 70.8% in our hospital and 58.1%
+at 1 month of infant age.16 The decrease in breastfeeding rates during the first 1 month of life is likely
+to be related to a lack of early adequate breastfeeding
+support after discharge. Most mothers do not attend
+the mandatory preventive outpatient visit at 8 days
+of infant age, because it is usually anticipated in the
+maternity ward before discharge, for various practical reasons.
+The objective of this prospective, randomized, parallel-group, open trial was to determine whether attending <tx>a routine, preventive, outpatient visit delivered in a primary care physician’s office</tx> within 2
+weeks after the infant’s birth would improve breastfeeding outcomes. Our primary hypothesis was that
+the exclusive breastfeeding rate at 4 weeks would be
+increased among mother-infant pairs attending the
+routine, preventive, outpatient visit (ie, the intervention group), in comparison with those receiving the
+usual postnatal support (ie, the control group). Our
+secondary hypotheses were that the rate of any
+breastfeeding at 4 weeks, breastfeeding duration, the
+proportion of mothers who experienced no breastfeeding difficulty, and the rate of satisfaction with
+the breastfeeding experience would be increased
+among mother-infant pairs in the intervention
+group, in comparison with those in the control
+group.
+METHODS
+Setting
+Mother-infant pairs were recruited in the maternity section of
+the department of obstetrics and gynecology of the Chambery
+Teaching Hospital (Chambery, France), a level 3 maternity facility
+where an average of 2000 deliveries per year have taken place in
+the past 5 years.
+
+Participants
+The study population consisted of mothers who had delivered
+a healthy singleton infant (gestational age: Ն37 completed weeks)
+and were breastfeeding on the day of discharge. Mother-infant
+pairs were considered ineligible and were not enrolled in the
+study if the infant was admitted to a neonatal unit or if the mother
+was transferred to an intensive care unit, was Յ18 years of age,
+was living outside Chambery and its suburbs, refused or was
+unable to give consent, was unable to speak French, or was unlikely to complete follow-up monitoring because of psychosocial
+problems such as homelessness.
+
+Enrollment and Interventions
+Consecutive mother-infant pairs were screened for eligibility
+by 2 residents 7 days per week. Eligible mother-infant pairs were
+recruited on the day of discharge. They were randomly assigned
+either to receive the usual postdischarge support (control group)
+or to attend a routine, preventive, outpatient visit in a primary
+care physician’s office within 2 weeks after the birth (intervention
+group).
+
+BREASTFEEDING SUPPORT BY TRAINED CLINICIANS
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+Fig 1. Flow diagram of mother-infant pair progress through the trial.
+
+Control Group
+The mothers in the control group received <tx>the usual verbal
+encouragement</tx> to maintain breastfeeding, provided by the maternity ward staff. On the day of discharge, the infant was examined
+by the pediatrician working in the department, for a general
+health assessment and an evaluation for evidence of successful
+breastfeeding behavior. The mothers were also provided with the
+telephone number of a peer support group that they could call to
+ask questions and request help. They were not required to attend
+the mandatory, preventive, outpatient visit at 8 days of infant age,
+because it was anticipated in the maternity ward before discharge.
+The postdischarge follow-up monitoring consisted of <tx>routine, preventive, outpatient visits in a primary care physician’s office at 1,
+2, 3, 4, 5, and 6 months of infant age</tx>.
+
+Intervention Group
+In addition to the usual predischarge and postdischarge support, the mothers in the intervention group were invited to attend
+<tx>an individual, routine, preventive, outpatient visit in the office of
+1 of the 17 participating primary care physicians, within 2 weeks
+after the birth</tx>. The participating physicians were pediatricians or
+family physicians practicing in Chambery and its suburbs. They
+had attended a 5-hour training program delivered in 2 parts in 1
+month before the beginning of the study. We had developed the
+training program on the basis of guidelines and review arti-
+
+cles.17–19 It was intended to improve the physicians’ breastfeedingrelated knowledge and counseling skills. The topics covered were
+general health assessment, lactation physiology, feeding position
+and latch-on assessment, management of common lactation problems (nipple pain, nipple cracks, sore nipples, mastitis, and maternal concern regarding low milk supply), management of infant
+problems (insufficient weight gain, breastfeeding jaundice, diarrhea, and dehydration), maternal medication use while breastfeeding, and sources of support. The training program was delivered through lectures, panel discussions, role-playing exercises,
+and printed educational materials. It was delivered as a standalone intervention and did not contain any postcourse measures to
+change health professionals’ performance.
+
+Randomization
+The allocation sequence was generated by the statistical adviser
+of the study with random permuted blocks with a block size of 8.
+The randomization assignments were unknown to any of the
+investigators and were concealed in consecutively numbered,
+sealed, opaque envelopes. The 2 residents opened the envelopes
+sequentially after the mothers signed the consent forms.
+
+Data Collection
+Baseline data on demographic characteristics, clinical variables,
+and in-hospital breastfeeding experiences were collected by the 2
+
+www.pediatrics.org/cgi/doi/10.1542/peds.2004-1362
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+e141
+
+residents through chart review and enrollment interviews. The
+participating physicians were asked to complete and return a
+questionnaire after each routine, preventive, outpatient visit
+within 2 weeks after the birth. The data included breastfeedingrelated problems and management of those problems (counseling,
+prescribed medications, or additional visits). Mothers in the control and intervention groups were sent a postal questionnaire
+when the infants reached 4 and 26 weeks of age, respectively. As
+described previously,20,21 we used a postal questionnaire to assess
+breastfeeding outcomes and satisfaction with breastfeeding experiences, to limit the risk of observer bias. A stamped addressed
+envelope was enclosed with a cover letter encouraging the mother
+to complete and return the questionnaire. A second questionnaire
+was sent to nonrespondents 10 days later. Nonrespondents to the
+second questionnaire were interviewed by telephone by 1 of the
+authors.
+
+Outcome Measures
+The primary outcome was the prevalence of exclusive breastfeeding reported at 4 weeks. Exclusive breastfeeding was defined
+as giving maternal milk as the only food source, with no other
+liquids (other than vitamins or medications) or foods being given.22 The secondary study outcomes were prevalence of any
+breastfeeding reported at 4 weeks, median duration of breastfeeding, breastfeeding difficulties, and maternal satisfaction with the
+infant feeding experience, rated on a 4-point, single-item scale.
+Breastfeeding was defined as receipt by the infant of any breast
+milk. Classification into breastfeeding categories, as reported at 4
+weeks, was based on 24-hour dietary recall. Breastfeeding duration was equal to the infant age when the mother completely
+stopped breastfeeding and was censored at the time of 26 weeks
+for mothers who reported that they were still breastfeeding at that
+time.
+
+Sample Size
+On the basis of the results of a previous study,16 we expected an
+exclusive breastfeeding rate of 70% at 4 weeks among motherinfant pairs in the control group. We estimated that a sample of
+108 mother-infant pairs in each group would have 85% power
+with a 2-tailed ␣ error of Ͻ.05 to detect a 25% relative increase in
+the rate of exclusive breastfeeding at 4 weeks (corresponding to a
+17.5% absolute increase from 70% to 87.5%). We assumed that
+ϳ5% of mothers would be lost to follow-up monitoring; therefore,
+we planned to include 115 eligible mother-infant pairs in each
+group.
+
+Statistical Analyses
+Analyses were conducted according to the intention-to-treat
+principle. Comparisons were performed by using the Student’s t
+test for continuous variables and the ␹2 test or Fisher’s exact test,
+
+TABLE 1.
+
+where appropriate, for categorical variables. In the multivariate
+analysis, we used a logistic regression model to estimate the odds
+ratio of exclusive breastfeeding at 4 weeks associated with the
+intervention, after adjustment for maternal age, white-collar employment status, education status, smoking history, parity, prenatal class attendance, epidural anesthesia, gestational age at delivery, infant birth weight, breastfeeding within 1 hour after birth
+status, postpartum length of stay, and expected breastfeeding
+duration. The risks of breastfeeding continuation over time were
+estimated according to the Kaplan-Meier method and were compared between the 2 groups with the Cox proportional-hazards
+model. A 2-tailed P value of Ͻ.05 was considered to indicate
+statistical significance. Hazard ratios were reported with 95%
+confidence intervals (CIs). All statistical analyses were performed
+with Stata 6.0 (Stata Corp, College Station, TX).
+The study protocol was approved by the Grenoble University
+Hospital Institutional Review Board for the Protection of Human
+Subjects (Comite Consultatif de Protection des Personnes pour la
+Recherche Biomedicale), the French Data Protection Agency
+(Commission Nationale de l’Informatique et des Libertes), and the
+Medical Board of Savoie County (Conseil de l’Ordre des Medecins
+de Savoie). Written informed consent was obtained from all enrolled mothers.
+
+RESULTS
+Study Patients
+
+Between October 1, 2001, and May 31, 2002, a total
+of 1080 mother-infant pairs were assessed for eligibility; 231 were eligible, were approached, provided
+informed consent, and were randomized (Fig 1). Of
+these, 116 were assigned to the intervention group
+and 115 to the control group. The baseline characteristics of the 2 groups were similar (Table 1).
+Attendance at the Routine, Preventive, Outpatient Visit
+
+Ninety-two mothers (79.3%) assigned to the intervention group and 8 mothers (7.0%) assigned to the
+control group reported that they had attended the
+<tx>routine, preventive, outpatient visit</tx> in the office of 1
+of the 17 primary care physicians participating in the
+study (Fig 1). Eighty-seven questionnaires were completed and returned by 13 physicians (range: 1–26
+questionnaires per physician). The questionnaires involved 86 mothers in the intervention group and 1
+mother in the control group. The mothers attended
+the physician’s office visit at 15.2 days of infant age,
+
+Baseline Characteristics of the Mother-Infant Pairs
+Characteristics
+
+No. of Patients (%)
+Intervention Group
+(n ϭ 116)
+
+Age, y, mean (SD)
+Education more than high school graduate
+White-collar worker
+Living with spouse/partner
+Smoking history
+Prenatal class attendance
+Primiparity
+Epidural anesthesia
+Delivery through cesarean section
+Female infant
+Gestational age at delivery, wk, mean (SD)
+Infant birth weight, g, mean (SD)
+Apgar score of Ͻ7 at 1 min
+Breastfed within 1 h after birth
+Expected duration of breastfeeding, mo,
+median (interquartile range)
+Postpartum length of stay of Ͼ4 d
+Return to work or school at 18 wk
+
+e142
+
+Control Group
+(n ϭ 115)
+
+29.3 (4.1)
+87 (75.0)
+92 (79.3)
+114 (98.3)
+27 (23.3)
+84 (72.4)
+58 (50.0)
+69 (59.5)
+10 (8.6)
+56 (48.3)
+39.7 (1.3)
+3314 (441)
+1 (0.9)
+48 (41.4)
+4 (3–6)
+
+29.7 (4.8)
+84 (73.0)
+87 (75.6)
+112 (97.4)
+22 (19.1)
+88 (76.5)
+63 (54.8)
+73 (63.5)
+10 (8.7)
+53 (46.1)
+39.8 (1.2)
+3325 (396)
+0
+53 (46.1)
+4 (3–6)
+
+57 (49.1)
+40/112 (35.7)
+
+59 (51.3)
+35/114 (30.7)
+
+<tx>BREASTFEEDING SUPPORT BY TRAINED CLINICIANS</tx>
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+on average (SD: 4.2 days). The most frequent breastfeeding-related problems reported by the physicians
+were breast pain or soreness (26 cases, 29.9%), jaundice (15 cases, 17.2%), nipple cracks (14 cases, 16.1%),
+latching difficulties (6 cases, 6.9%), desire to discontinue (5 cases, 5.7%), oral thrush (3 cases, 3.4%),
+mastitis (1 case, 1.1%), insufficient weight gain (1
+case, 1.1%), and colic (1 case, 1.1%). The most frequent behaviors reported by the physicians were
+counseling (25 cases, 28.7%), providing information
+on a peer support group (15 cases, 17.2%), prescribing medications (10 cases, 11.5%), scheduling a subsequent office visit (8 cases, 9.2%), and prescribing a
+breast pump (5 cases, 5.7%). No mother-infant pair
+was prescribed laboratory tests.
+Outcomes
+
+Outcomes were unknown for 4 mother-infant
+pairs in the intervention group and 1 mother-infant
+pair in the control group (Fig 1). Therefore, data for
+112 mother-infant pairs in the intervention group
+and 114 in the control group were available for analysis.
+At 4 weeks of infant age, the rate of exclusive
+breastfeeding was significantly higher in the intervention group than in the control group (Table 2). In
+the multivariate analysis, the association between the
+intervention and exclusive breastfeeding at 4 weeks
+remained significant after adjustment for potential
+confounding (adjusted odds ratio: 2.44; 95% CI: 1.18 –
+5.03) (Table 3). No first-order interaction terms for
+interactions between the intervention group and the
+predictors entered in the model were statistically
+significant. With the assumption that missing data
+were negative outcomes in the intervention group
+(n ϭ 4) and a positive outcome in the control group
+(n ϭ 1) in the sensitivity analysis, the rate of exclusive breastfeeding at 4 weeks remained higher, although not significantly different, in the intervention
+group, compared with the control group (94 of 116
+cases [81.0%] vs 83 of 115 cases [72.2%]; hazard ratio:
+1.12; 95% CI: 0.97-1.30). There was no significant
+difference between the 2 study groups with respect
+to the rate of any breastfeeding at 4 weeks. The
+median breastfeeding duration was higher in the
+intervention group (18 weeks) than in the control
+group (13 weeks) (Fig 2). The mothers in the intervention group were less likely to report any breastfeeding difficulties (Table 2). The main breastfeeding
+difficulties reported were breast pain or soreness
+(28.6% in the intervention group vs 31.6% in the
+control group), not enough milk (23.4% vs 37.7%),
+lack of motivation (20.5% vs 30.7%), infant refused
+TABLE 2.
+
+breast (4.5% vs 16.7%), mastitis (2.7% vs 2.6%), and
+other or unspecified difficulties (24.1% vs 38.6%).
+The rates of mothers reporting fair or high satisfaction with breastfeeding experiences did not differ
+significantly between the 2 groups.
+DISCUSSION
+
+This prospective randomized trial demonstrates
+that, compared with <tx>usual care</tx>, <tx>attending a routine,
+preventive, outpatient visit in the office of a primary
+care physician by 2 weeks of infant age</tx> is associated
+with a significant increase in the rate of exclusive
+breastfeeding at 4 weeks (83.9% vs 71.9%) and longer
+median breastfeeding duration (18 weeks vs 13
+weeks). The benefits of exclusive breastfeeding for
+infant health are documented in a vast scientific literature,23 and exclusive breastfeeding is also widely
+considered to be a strong predictor of longer breastfeeding duration. Our findings were robust, because
+the increase in the rate of exclusive breastfeeding
+persisted after controlling for potential confounding
+factors in the multivariate analysis (adjusted odds
+ratio: 2.44; 95% CI: 1.18 –5.03). The improvements in
+breastfeeding outcomes were logically paralleled by
+a decrease in the rate of mothers reporting any
+breastfeeding difficulties in the intervention group
+(55.3% vs 72.8%). This was likely related to the high
+level of attendance at the routine, preventive, outpatient visit in the intervention group (79.3%). This
+outpatient visit gave the physicians the opportunity
+to screen and manage early breastfeeding difficulties
+and to prevent early discontinuation. One surprising
+finding was that the satisfaction rates were equally
+high for the 2 groups, despite a significant difference
+in breastfeeding duration (18 weeks vs 13 weeks).
+Satisfaction with breastfeeding experiences is probably not entirely determined by the discrepancy between baseline expectations and final outcomes, and
+unmeasured psychologic factors may affect baseline
+expectations during breastfeeding experiences, a
+phenomenon that is called maturation bias.
+Evidence-based data suggest that exclusive breastfeeding rates are increased by support for motherinfant pairs.24 Most interventions aiming to support
+breastfeeding are time-intensive interventions that
+rely on specifically trained nurses or peer counselors
+and that occur as adjuncts to routine preventive visits.8 However, offering support in addition to routine
+preventive visits has a limited impact on breastfeeding outcomes in developed countries.12,13,25–27 In
+contrast, our findings are in accordance with the
+results of prior observational studies showing that
+support provided by clinicians through specific ad-
+
+Univariate Analyses of Outcome Measures
+Outcome
+
+No. of Patients (%)
+Intervention Group
+
+Exclusive breastfeeding at 4 wk
+Any breastfeeding at 4 wk
+Duration of any breastfeeding, wk, median
+Reporting any breastfeeding difficulties
+Very or fairly satisfied with experience of
+breastfeeding
+
+Control Group
+
+94/112 (83.9)
+100/112 (89.3)
+18
+62/112 (55.3)
+102/112 (91.1)
+
+82/114 (71.9)
+93/114 (81.6)
+13
+83/114 (72.8)
+100/114 (87.7)
+
+Hazard Ratio
+(95% CI)
+
+P Value
+
+1.17 (1.01–1.34)
+1.09 (0.98–1.22)
+1.40 (1.03–1.92)
+0.76 (0.62–0.93)
+1.04 (0.95–1.14)
+
+.03
+.10
+.03
+Ͻ.01
+.41
+
+www.pediatrics.org/cgi/doi/10.1542/peds.2004-1362
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+e143
+
+TABLE 3.
+
+Multivariate Analysis of Mother-Infant Pair Characteristics Associated With Exclusive Breastfeeding at 4 Weeks
+Characteristics
+
+No. of Patients
+
+Adjusted
+Odds Ratio
+(95% CI)
+
+P Value
+
+18 (36.0)
+
+2.44 (1.18–5.03)
+
+.02
+
+18 (10.2)
+66 (37.5)
+69 (39.2)
+23 (13.1)
+132 (75.0)
+139 (79.0)
+34 (19.3)
+133 (75.6)
+85 (48.3)
+100 (56.8)
+
+13 (26.0)
+18 (36.0)
+13 (26.0)
+6 (12.0)
+36 (72.0)
+36 (72.0)
+13 (26.0)
+37 (74.0)
+34 (68.0)
+39 (78.0)
+
+0.40 (0.14–1.14)
+1.00
+1.22 (0.50–2.98)
+0.75 (0.23–2.51)
+0.90 (0.37–2.17)
+1.51 (0.63–3.66)
+0.98 (0.41–2.33)
+1.92 (0.76–4.84)
+0.87 (0.32–2.41)
+0.32 (0.13–0.76)
+
+.09
+
+35 (19.9)
+91 (51.7)
+50 (28.4)
+
+11 (22.0)
+33 (66.0)
+6 (12.0)
+
+0.84 (0.32–2.18)
+1.00
+3.44 (1.20–9.82)
+
+.72
+
+30 (17.0)
+79 (44.9)
+59 (33.5)
+8 (4.6)
+83 (47.2)
+81 (46.0)
+83 (47.1)
+
+11 (22.0)
+26 (52.0)
+10 (20.0)
+3 (6.0)
+18 (36.0)
+33 (66.0)
+17 (34.0)
+
+0.94 (0.36–2.48)
+1.00
+1.51 (0.62–3.70)
+0.87 (0.15–4.85)
+1.65 (0.75–3.61)
+0.66 (0.26–1.69)
+2.49 (1.12–5.53)
+
+.90
+
+Exclusive
+Breastfeeding at 4 wk
+(n ϭ 176)
+Intervention group
+Age
+Ͻ25 y
+25–29 y
+30–34 y
+Ն35 y
+Education more than high school graduate
+White-collar worker
+Smoking history
+Prenatal class attendance
+Primiparity
+Epidural anesthesia
+Gestational age at delivery
+37–38 wk
+39–40 wk
+Ͼ40 wk
+Infant birth weight
+Ͻ3000 g
+3000–3499 g
+3500–3999 g
+Ն4000 g
+Breastfed within 1 h after birth
+Postpartum length of stay of Ͼ4 d
+Expected breastfeeding duration of Ͼ4 mo
+
+Lack of Exclusive
+Breastfeeding at 4 wk
+(n ϭ 50)
+
+94 (53.4)
+
+.66
+.65
+.80
+.36
+.96
+.17
+.80
+.01
+
+.02
+
+.37
+.87
+.21
+.39
+.02
+
+Fig 2. Kaplan-Meier estimates of any breastfeeding, stratified according to study group.
+
+vice and practices during routine preventive visits is
+associated with higher exclusive breastfeeding rates
+and increased breastfeeding duration.8,14
+This study has broader clinical implications, in
+e144
+
+that it demonstrates that common barriers to breastfeeding support by primary care physicians during
+routine preventive visits can be resolved. Practicing
+physicians have a considerable knowledge deficit
+
+BREASTFEEDING SUPPORT BY TRAINED CLINICIANS
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+regarding breastfeeding, a lack of confidence in their
+counseling skills, difficulties in advising mothers
+with lactation problems, and limited time to address
+breastfeeding issues during preventive visits.14,28
+Moreover, substantial gaps in communication between clinicians and mothers regarding breastfeeding may occur during preventive visits.29 Therefore,
+we developed a training program on breastfeeding
+for pediatricians and family physicians who participated in the study. The successful implementation of
+our training program depended on many factors,
+including the clinical content, the use of interactive
+techniques, and the limited amount of time required
+for its delivery within the constraints of busy practices (5 hours, delivered in 2 parts).
+Despite the encouraging findings of our study, it
+should be noted that the median duration of breastfeeding in the intervention group (18 weeks) was still
+less than the Healthy People 2010 goal. Breastfeeding
+support provided by the primary care physician during routine preventive visits is likely to have limited
+impact, compared with the effects of various barriers
+that affect breastfeeding duration negatively, such as
+psychologic factors, cultural factors, and return to
+work.30 By 18 weeks, only 33.8% of the mothers in
+our study had returned to work or school, although
+maternity leave ranges from 10 to 18 weeks in
+France. This was in accordance with the results of a
+prior study conducted in the same area, which suggested that some mothers benefit from extended
+leave.20 Specific counseling regarding methods of
+breastfeeding after the return to work has been recommended,29 although robust evidence of the effects
+of such counseling on breastfeeding outcomes is currently lacking.20 Other approaches, such as part-time
+work, are also thought to help mothers combine
+breastfeeding and employment.30
+The findings of the current study need to be interpreted in the context of its limitations. First, selfselection of motivated clinicians participating in this
+study was likely an important factor contributing to
+the improvements in breastfeeding outcomes in the
+intervention group. Although this trial demonstrates
+the efficacy of support for breastfeeding delivered by
+the primary care physician through an early, routine,
+preventive visit, the effectiveness of this type of support is probably less in daily practice. This issue
+deserves additional study, although implementation
+trials of breastfeeding support during routine preventive visits would be challenging to conduct in
+developed countries.
+Second, it was not possible to blind observers in
+this randomized, open trial, because of interactions
+with mothers during the outpatient visit and assessment of breastfeeding outcomes. Therefore, we used
+a postal questionnaire to assess breastfeeding outcomes, to limit the risk of observer bias. Some mothers might have given erroneous information regarding their breastfeeding status at 4 weeks or the
+duration of breastfeeding. However, it was unlikely
+that misclassification bias in reporting breastfeeding
+outcomes differed according to the study group. The
+4-week exclusive breastfeeding estimate was based
+on 24-hour dietary recall, as in most clinical trials.23
+
+Some mothers who were exclusively breastfeeding at
+4 weeks might not have maintained that status since
+birth.31 It is interesting to note that these mothers
+who did not maintain exclusive breastfeeding since
+birth returned to exclusive breastfeeding at 4 weeks,
+which is a positive behavior change. Breastfeeding
+duration was assessed retrospectively, on the basis of
+data obtained at 26 weeks. It has been shown that
+reported breastfeeding duration can be considered
+accurate, with a long recall period.32 We did not
+assess exclusive breastfeeding duration, however,
+because 6-month exclusive breastfeeding duration
+recall has been shown to be inaccurate.33
+Third, our study was conducted in a single setting
+and focused on a socioeconomically low-risk population living in a medium-sized city. Moreover, the
+organization of health services has been recognized
+as a major factor contributing to breastfeeding initiation and continuation.34 These facts may limit the
+applicability of our results to other settings or health
+care systems. In addition, the mean length of stay
+after normal vaginal delivery is much longer in
+France than in other Western countries, including the
+United States. However, the mean postpartum
+length of stay did not differ between the control
+group and the intervention group in the current
+study, and the mothers enrolled in each group were
+still breastfeeding at discharge, a point that supports
+the effectiveness of our intervention in improving
+breastfeeding outcomes.
+CONCLUSIONS
+
+The current study provides preliminary evidence
+of the efficacy of breastfeeding support through an
+early, routine, preventive visit in the offices of
+trained primary care physicians. These findings support the American Academy of Pediatrics policy
+statement calling for pediatricians to promote and
+support breastfeeding.2 Our findings also suggest
+that a short training program for practicing physicians may contribute to improving breastfeeding
+outcomes. We recommend that multifaceted interventions aiming to support breastfeeding involve
+pediatricians and family physicians in developed
+countries with low or intermediate breastfeeding
+prevalences.
+ACKNOWLEDGMENTS
+This study was supported in part by grants from the Union
+Professionnelle des Medecins Liberaux de la Region Rhone Alpes
+´
+´
+(Lyon, France) and by grants from the Delegation Regionale a la
+´ ´
+´
+Recherche Clinique, Centre Hospitalier Universitaire (Grenoble,
+France). J.L. was supported by a grant from the Egide Foundation
+(Program Lavoisier).
+We thank Linda Northrup for editorial assistance.
+The following investigators participated in the study: Myriam
+Bell, Arnaud Buffin, and Nathalie Gelbert-Baudino (pediatricians);
+Corinne Chabert, Anne Chatriot, Marie-Lise Cressens, Christine
+Gomez, Frederique Rogeaux, Emmanuel Cussac, and Martine Sutter (pediatricians, Protection Maternelle et Infantile); and Emmanuelle Groult, Bernard Lanier, Christian Perrotte, Francis Ravier,
+Jean-Luc Vignoulle, Camille Schelstraete, and Jean-Louis Voyron
+(family physicians) (Chambery, France).
+
+REFERENCES
+1. Kramer MS, Kakuma R. Optimal duration of exclusive breastfeeding.
+Cochrane Database Syst Rev. 2004;(3):CD003517
+
+www.pediatrics.org/cgi/doi/10.1542/peds.2004-1362
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+e145
+
+2. American Academy of Pediatrics, Work Group on Breastfeeding.
+Breastfeeding and the use of human milk. Pediatrics. 1997;100:1035–1039
+3. US Department of Health and Human Services. Developing Objectives for
+Healthy People 2010. Washington, DC: US Department of Health and
+Human Services, Office of Disease Prevention and Health Promotion;
+1997
+4. Philipp BL, Merewood A, Miller LW, et al. Baby-friendly hospital
+initiative improves breastfeeding initiation rates in a US hospital setting. Pediatrics. 2001;108:677– 681
+5. Ryan AS, Wenjun Z, Acosta A. Breastfeeding continues to increase into
+the new millennium. Pediatrics. 2002;110:1103–1109
+6. Li R, Zhao Z, Mokdad A, Barker L, Grummer-Strawn L. Prevalence of
+breastfeeding in the United States: the 2001 National Immunization
+Survey. Pediatrics. 2003;111:1198 –1201
+7. Ertem IO, Votto N, Leventhal JM. The timing and predictors of the early
+termination of breastfeeding. Pediatrics. 2001;107:543–548
+8. Taveras EM, Capra AM, Braveman PA, Jensvold NG, Escobar GJ, Lieu
+TA. Clinician support and psychosocial risk factors associated with
+breastfeeding discontinuation. Pediatrics. 2003;112:108 –115
+9. Kuan LW, Britto M, Decolongon J, Schoettker PJ, Atherton HD, Kotagal
+UR. Health system factors contributing to breastfeeding success. Pediatrics. 1999;104(3). Available at: www.pediatrics.org/cgi/content/full/
+104/3/e28
+10. McKeever P, Stevens B, Miller KL, et al. Home versus hospital breastfeeding support for newborns: a randomized controlled trial. Birth.
+2002;29:258 –265
+11. Lieu TA, Braveman PA, Escobar GJ, Fischer AF, Jensvold NG, Capra
+AM. A randomized comparison of home and clinic follow-up visits
+after early postpartum hospital discharge. Pediatrics. 2000;105:
+1058 –1065
+12. Gagnon AJ, Dougherty G, Jimenez V, Leduc N. Randomized trial of
+postpartum care after hospital discharge. Pediatrics. 2002;109:1074 –1080
+13. Escobar GJ, Braveman PA, Ackerson L, et al. A randomized comparison
+of home visits and hospital-based group follow-up visits after early
+postpartum discharge. Pediatrics. 2001;108:719 –727
+14. Taveras EM, Li R, Grummer-Strawn L, et al. Opinions and practices of
+clinicians associated with continuation of exclusive breastfeeding. Pediatrics. 2004;113(4). Available at: www.pediatrics.org/cgi/content/full/
+113/4/e283
+15. Fielding JE, Lancry PJ. Lessons from France: “vive la difference”: the
+French health care system and US health system reform. JAMA. 1993;
+270:748 –756
+16. Labarere J, Dalla-Lana C, Schelstraete C, et al. Initiation and duration of
+breastfeeeding in obstetric hospitals of Aix-Chambery (France) [in
+French]. Arch Pediatr. 2001;8:807– 815
+17. Agence Nationale d’Accreditation et d’Evaluation en Sante. Breast
+feeding: implementation and continuation through the first six months
+of life: recommendations (May 2002) [in French]. Gynecol Obstet Fertil.
+2003;31:481– 490
+
+e146
+
+18. Lawrence RA. Breastfeeding: A Guide for Medical Profession. 5th ed. St
+Louis, MO: Mosby; 1999
+19. Beaufrere B, Bresson JL, Briend A, et al. Promotion of breast feeding: it’s
+the role of pediatricians [in French]. Arch Pediatr. 2000;7:1149 –1153
+20. Labarere J, Bellin V, Fourny M, Gagnaire JC, Francois P, Pons JC.
+Assessment of a structured in-hospital educational intervention addressing breastfeeding: a prospective randomised open trial. BJOG.
+2003;110:847– 852
+21. Vittoz JP, Labarere J, Castell M, Durand M, Pons JC. Effect of a training
+program for maternity ward professionals on duration of breastfeeding.
+Birth. 2004;31:302–307
+22. World Health Organization. Indicators for Assessing Breast-feeding Practices. Geneva, Switzerland: World Health Organization; 1991
+23. Bhandari N, Bahl R, Mazumdar S, Martines J, Black RE, Bhan MK. Effect
+of community-based promotion of exclusive breastfeeding on diarrhoeal illness and growth: a cluster randomised controlled trial. Lancet.
+2003;361:1418 –1423
+24. Sikorski J, Renfrew MJ. Support for breastfeeding mothers. Cochrane
+Database Syst Rev. 2004;(4):CD001141
+25. Graffy J, Taylor J, Williams A, Eldridge S. Randomised controlled trial
+of support from volunteer counsellors for mothers considering breast
+feeding. BMJ. 2004;328:26
+26. Dennis CL, Hodnett E, Gallop R, Chalmers B. The effect of peer support
+on breast-feeding duration among primiparous women: a randomized
+controlled trial. CMAJ. 2002;166:21–28
+27. Morrell CJ, Spiby H, Stewart P, Walters S, Morgan A. Costs and effectiveness of community postnatal support workers: randomised controlled trial. BMJ. 2000;321:593–598
+28. Freed GL, Clark SJ, Sorenson J, Lohr JA, Cefalo R, Curtis P. National
+assessment of physicians’ breast-feeding knowledge, attitudes, training,
+and experience. JAMA. 1995;273:472– 476
+29. Taveras EM, Li R, Grummer-Strawn L, et al. Mothers’ and clinicians’
+perspectives on breastfeeding counseling during routine preventive
+visits. Pediatrics. 2004;113(5). Available at: www.pediatrics.org/cgi/
+content/full/113/5/e405
+30. Fein SB, Roe B. The effect of work status on initiation and duration of
+breast-feeding. Am J Public Health. 1998;88:1042–1046
+31. Cattaneo A, Davanzo R, Ronfani L. Are data on the prevalence and
+duration of breastfeeding reliable? The case of Italy. Acta Paediatr.
+2000;89:88 –93
+32. Launer LJ, Forman MR, Hundt G. Maternal recall of infant feeding
+events is accurate. J Epidemiol Community Health. 1992;46:203–206
+33. Bland RM, Rollins NC, Solarsh G, Van den Broeck J, Coovadia HM.
+Maternal recall of exclusive breast feeding duration. Arch Dis Child.
+2003;88:778 –783
+34. Fairbank L, O’Meara S, Renfrew MJ, Woolridge M, Sowden AJ, ListerSharp D. A systematic review to evaluate the effectiveness of interventions to promote the initiation of breastfeeding. Health Technol Assess.
+2000;4:1–171
+
+BREASTFEEDING SUPPORT BY TRAINED CLINICIANS
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014
+
+Efficacy of Breastfeeding Support Provided by Trained Clinicians During an
+Early, Routine, Preventive Visit: A Prospective, Randomized, Open Trial of 226
+Mother-Infant Pairs
+Jose Labarere, Nathalie Gelbert-Baudino, Anne-Sophie Ayral, Cathy Duc, Martine
+Berchotteau, Nathalie Bouchon, Camille Schelstraete, Jean-Philippe Vittoz, Patrice
+Francois and Jean-Claude Pons
+Pediatrics 2005;115;e139
+DOI: 10.1542/peds.2004-1362
+Updated Information &
+Services
+
+including high resolution figures, can be found at:
+http://pediatrics.aappublications.org/content/115/2/e139.full.h
+tml
+
+References
+
+This article cites 28 articles, 13 of which can be accessed free
+at:
+http://pediatrics.aappublications.org/content/115/2/e139.full.h
+tml#ref-list-1
+
+Citations
+
+This article has been cited by 11 HighWire-hosted articles:
+http://pediatrics.aappublications.org/content/115/2/e139.full.h
+tml#related-urls
+
+Subspecialty Collections
+
+This article, along with others on similar topics, appears in
+the following collection(s):
+Fetus/Newborn Infant
+http://pediatrics.aappublications.org/cgi/collection/fetus:newb
+orn_infant_sub
+Nutrition
+http://pediatrics.aappublications.org/cgi/collection/nutrition_s
+ub
+Breastfeeding
+http://pediatrics.aappublications.org/cgi/collection/breastfeedi
+ng_sub
+
+Permissions & Licensing
+
+Information about reproducing this article in parts (figures,
+tables) or in its entirety can be found online at:
+http://pediatrics.aappublications.org/site/misc/Permissions.xht
+ml
+
+Reprints
+
+Information about ordering reprints can be found online:
+http://pediatrics.aappublications.org/site/misc/reprints.xhtml
+
+PEDIATRICS is the official journal of the American Academy of Pediatrics. A monthly
+publication, it has been published continuously since 1948. PEDIATRICS is owned, published,
+and trademarked by the American Academy of Pediatrics, 141 Northwest Point Boulevard, Elk
+Grove Village, Illinois, 60007. Copyright © 2005 by the American Academy of Pediatrics. All
+rights reserved. Print ISSN: 0031-4005. Online ISSN: 1098-4275.
+
+Downloaded from pediatrics.aappublications.org at Brown Univ on March 12, 2014

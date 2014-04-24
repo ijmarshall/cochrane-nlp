@@ -1,0 +1,467 @@
+infected with human immunodeficiency
+virus type I. Multicenter AIDS Cohort study
+Group. N Engl J Med 1990; 322:
+161–65.
+3 Grant AD, Djomand G,
+De Cock KM. Natural history and
+spectrum of disease in adults with
+HIV/AIDS in Africa. AIDS 1997; 11 (suppl
+B): S43–54.
+4 Lucas SB, Hounnou A, Peacock C, et al.
+The mortality and pathology of HIV
+infection in a West African city. AIDS 1993;
+7: 1569–79.
+5 Wiktor SZ, Sassan-Morokro M,
+Grant AD, et al. Efficacy of
+trimethoprim-sulphamethoxazole
+prophylaxis to decrease morbidity and
+mortality in HIV-1-infected patients with
+tuberculosis in Abidjan, Cote d’Ivoire: a
+randomised controlled trial. Lancet 1999;
+353: 1469–75.
+
+Authors’ reply
+Sir—In our trial, the total number of
+days in hospital was 18% lower in
+patients from the co-trimoxazole
+group than in those from the <tx>placebo</tx>
+group (758 vs 924). This reduction
+was more important for the total
+number of days at the day-hospital
+(–34%, 205 vs 309) than for the
+number of inpatient days at the
+university hospital (–10%, 553 v s
+615).
+The
+total
+number
+of
+unscheduled consultations was 12%
+lower in the <tx>co-trimoxazole</tx> group than
+in the <tx>placebo</tx> group (3744 vs 4265).
+There were 348 days in hospital and
+1717 unscheduled consultations per
+100 person-years in the <tx>co-trimoxazole</tx>
+group, versus 430 and 1984 in the
+<tx>placebo</tx> group. Thus, in our
+population and under our standard of
+care, <tx>co-trimoxazole prophylaxis</tx> could
+be roughly estimated to have saved 82
+days in hospital and 267 consultations
+per 100 person-years, in addition
+with
+all
+related
+unscheduled
+complementary examinations and
+curative treatments. The overall cost
+of these two latter factors was about
+eight times higher than that of hospital
+admissions.
+Accurate cost-effectiveness analyses
+should take into account other factors
+(eg, numbers of unemployed days).
+Our trial did not have the best designs
+to allow such analyses, because our
+conditions of care (consultations,
+medications,
+examinations
+and
+hospitalisations free of charge, and
+examinations not routinely used in
+other community clinics) differed from
+the usual conditions of Côte d’Ivoire
+where patients have to pay for all
+services. We thus fully agree with
+Christopher Hudson and Timothy
+Roach that cost-effectiveness analysis
+still needs to be done in resourcepoor settings where <tx>co-trimoxazole</tx>
+prophylaxis could be recommended.
+These analyses, which need to
+
+THE LANCET • Vol 354 • July 24, 1999
+
+document the number of hospital
+admissions
+and
+consultations
+according to diagnostic category,
+could also help establish whether to
+recommend the large-scale use of cotrimoxazole prophylaxis at early stages
+of HIV-1-infection, at more advanced
+ones, or not to recommend it,
+depending on the local spectrum of
+HIV-1-related infections.
+In Côte d’Ivoire, a recent national
+consensus statement recommended
+that co-trimoxazole prophylaxis should
+be systemically proposed to all HIV-1infected adults at WHO clinical
+stages 2, 3, or 4, and that these
+recommendations should be adapted
+in the future, depending on the
+evolution of bacterial susceptibility to
+c o - t r i m o x a z o l e . 1 If resistance of
+pneumococci
+and
+non-typhi
+salmonella becomes as frequent in
+Côte d’Ivoire as in Malawi, future
+statements will be likely to favour an
+advanced co-trimoxazole chemoprophylaxis, to focus on parasitic
+infections that are common in patients
+with low CD4 cell counts. The results
+of our early prophylaxis trial should
+not mask the efficacy of cotrimoxazole in the prevention of
+toxoplasmosis at more advanced
+stages. Although Richard Brindle
+argues that “the choice of cotrimoxazole seems to have been based
+more on its historical use . . . than on
+the microbiology of HIV-1-associated
+infections
+in
+Africa”,
+the
+“historically”-proven efficacy of cotrimoxazole against toxoplasmosis,
+together with the spectrum of severe
+morbidity related to HIV-1-infection
+in Côte d’Ivoire, were part of our
+decision to chose co-trimoxazole.
+Trimethoprim alone cannot be
+considered
+as
+the
+first-line
+toxoplasmosis primary prophylaxis.
+We share the concerns of Richard
+Brindle, and Martin Boeree and their
+colleagues about the spread of
+bacterial and parasitic resistance.
+However, <tx>co-trimoxazole</tx> has been
+widely used in Africa for a long
+time, and both bacterial resistance to
+<tx>co-trimoxazole</tx> and P falciparum
+resistance
+to
+<tx>sulphadoxinepyrimethamine</tx> exist in African
+settings
+where
+<tx>co-trimoxazole</tx>
+prophylaxis is not introduced. Thus,
+it is likely that <tx>co-trimoxazole</tx> will
+continue to be widely prescribed,
+and that susceptibility will continue
+to drop, even if <tx>co-trimoxazole</tx>
+prophylaxis is not recommended
+widely. Before this resistance becomes
+widespread, should <tx>co-trimoxazole</tx>
+be reserved for a non-HIV-related
+use in Africa? We believe that this
+question should be carefully discussed,
+
+together with the risk of “therapeutic
+nihilism” mentioned by Motasim
+Badri and colleagues.
+*Xavier Anglaret, Alain Attia,
+Gwenola Gourvellec, Timothée Ouassa,
+Geneviève Chêne, for the Cotrimo-CI
+study group
+*Centre de Diagnostic et de Recherches sur le
+SIDA (CeDRes), CHU de Treichville, 01 BP 1839
+Abidjan, Côte d’Ivoire
+(e-mail: cedres@africaonline.co.ci)
+1
+
+Société Ivoirienne de Pathologie
+Infecieuse et Tropicale. <tx>Cotrimoxazole en
+prophylaxie</tx> des infections opportunistes
+chez les patients infectés par le VIH en Côte
+d’Ivoire. Abidjan, 19 Février 1999.
+
+Oral contraceptives and
+risk of hip fractures
+Sir—Karl Michaëlsson and colleagues’
+data (May 1, p 1481)1 from a large
+case-control study from Sweden
+indicate an inverse relation between
+use of <tx>oral contraceptives</tx> and the risk
+of hip fractures, which, if confirmed,
+would have major public-health
+implications.
+We examined this issue with data
+from a case-control study of hip
+fractures undertaken in Italy between
+1983 and 1992.2,3 Cases were 279
+women aged 29–74 years (median age
+62), admitted to a network of teaching
+and general hospitals in the greater
+Milan area. Controls were 1861
+women, aged 25–74 (median age 55)
+admitted for non-traumatic conditions
+to the same network of hospitals.
+Ever use of oral contraceptives was
+reported by ten (4%) cases and 167
+(9%) controls, corresponding to a
+multivariate odds ratio of 0·98 (95%
+CI, 0·47–2·03). The odds ratio was
+1·04 (0·42–2·55) for women who had
+used <tx>oral contraceptives</tx> for 2 years or
+longer. Among ever users of hormone
+replacement therapy the odds ratio
+was 0·53 (0·23–1·19).
+Our study does not lend support to
+the existence of a consistent relation of
+hip-fracture risk with use of oral
+contraceptives. Given the low
+frequency of users, our study had
+limited power to detect a potential
+association
+between
+exogenous
+oestrogens
+and
+hip
+fractures.
+Nevertheless our risk estimates accord
+with a reduced risk in users of
+hormone replacement therapy.4,5 This
+finding is consistent with a short-term
+influence of <tx>oestrogen</tx> on bone mass. 4,5
+*Carlo La Vecchia, Alessandra Tavani,
+Silvano Gallus
+*Istituto di Statistica Medica e Biometria,
+Università degli Studi di Milano, 20133 Milan,
+Italy; and Istituto di Ricerche Farmacologiche
+Mario Negri, Milan, Italy
+
+335
+
+1
+
+Michaëlsson K, Baron JA, Farahmand BY,
+Persson I, Ljunghall S. Oral-contraceptive
+use and risk of hip fracture: a case-control
+study. Lancet 1999; 353: 1481–84.
+2 La Vecchia C, Negri E, Levi F, Baron JA.
+Cigarette smoking, body mass and other
+risk factors for fractures of the hip in
+women. Int J Epidemiol 1991; 20: 671–77.
+3 Parazzini F, Tavani A, Ricci E,
+L aV e c c h i a C. Menstrual and reproductive
+factors and hip fractures in post
+menopausal women. Maturitas 1996; 24:
+191–96.
+4 Felson DT, Zhang Y, Hannan MT, et al.
+The effect of postmenopausal estrogen
+therapy on bone density in elderly women.
+N Engl J Med 1993; 329: 1141–46.
+5 Ettinger B, Grady D. The waning effect of
+postmenopausal estrogen therapy on
+osteoporosis. N Engl J Med 1993;
+329: 1192–93.
+
+Mannose-binding lectin and
+meningococcal disease
+Sir—Martin Hibberd and colleagues
+(March 27, p 1049)1 report that genetic
+variants of mannose-binding lectin
+(MBL) are associated with increased
+susceptibility to meningococcal disease
+in two separate studies, one with
+controls admitted to hospital with noninfectious disorders and the other with
+healthy controls recruited in the
+community.
+Further analysis of the data reveals
+two additional interesting results. The
+first is the hospital and community
+control groups differ in allele frequency
+for the codon 52 MBL variant (0·024 vs
+0·045) and codon 54 variant (0·066 vs
+0·141). Combining the two variants
+gives an odds ratio of 0·43 (p=0·0002).
+The second result is that the codon 57
+variant, measured only in the hospital
+study, seems to have a protective rather
+than a harmful effect (allelic odds ratio
+0·36, p=0·04). If these differences do
+not reflect ethnic biases in the control
+group (racial differences in MBL
+variants are well described), 2,3 they
+suggest that: codon 52 and 54 variants
+may protect against the non-infectious
+disorders in the hospital controls; and
+that the codon 57 variant, which is
+most common among Africans,2,3 has
+an opposite effect on meningococcal
+disease outcome to codon 52 and 54
+variants. Are Hibberd and colleagues
+able to shed any light on these
+observations?
+*Christoph Tang, Dominic Kwiatkowski
+Department of Paediatrics, John Radcliffe
+Hospital, Headington, Oxford OX3 9DU, UK
+(e-mail: christoph.tang@paediatrics.oxford.ac.uk)
+1
+
+2
+
+Hibberd ML, Sumiya M, Summerfield JA,
+Booy R, Levin M, and the Meningococcal
+Research Group. Association of variants of
+the gene for mannose-binding lectin with
+susceptibility to meningococcal disease.
+Lancet 1999; 353: 1049–53.
+Lipscombe RJ, Sumiya M, Hill AV, et al.
+
+336
+
+3
+
+High frequencies in African and non-African
+populations of independent mutations in the
+mannose binding protein gene. Hum Mol
+Genet 1992; 1: 709–15.
+Turner MW. Mannose-binding lectin: the
+pluripotent molecule of the innate immune
+system. Immunol Today 1996; 17:
+532–40.
+
+Sir—Martin Hibberd and colleagues1
+report an increased frequency of MBL
+variant alleles causing dominant
+decrease in the MBL serum
+concentration in English patients with
+meningococcal disease. In 1993, we
+reported a lack of association with low
+serum concentrations of MBL and
+tendency to meningococcal serogroup
+B (n=74) or serogroup C (n=25)
+disease in Norwegian patients (52
+females) aged 12–21 years compared
+with controls.2 These patients also took
+part in a national, randomised trial of
+vaccine efficacy against serogroup B
+meningococcal
+disease,
+which
+comprised 171 800 students in
+Norwegian secondary school3 and
+54 000 military recruits. 119 individuals
+of the study population developed
+meningococcal disease during the 3year observation period. Serum samples
+from 13 fatal cases were not available
+for the investigation. Among the 106
+survivors, serum samples were taken
+from the 99 included patients, which
+were collected at least 6 months after
+the onset of disease.
+Because of the complexity of the
+MBL polymorphisms, 4 our serum
+measurement may not adequately
+reflect the MBL polymorphisms in the
+patients, which could explain the
+discrepancy between our results and
+those of Hibberd and colleagues.
+Therefore, our patients were asked to
+donate an additional blood sample for
+DNA analysis; 75 of the previously
+included patients agreed to take part in
+the genetic study. The overall
+frequency of MBL variant alleles in the
+patients with meningococcal disease
+was almost identical to that found in
+Norwegian controls (0·19 and 0·21,
+respectively,* which lends support to
+the conclusion in our earlier study.2
+There were an excess of MBL-variantalleles homozygotes, in the English
+patients, but no excess in the
+Norwegian patients (1·3% vs 3% in the
+controls). In addition, no association
+was found with an MBL promoter allele
+in position Ϫ221 (X/Y), which is also
+associated with low MBL serum
+concentrations. Stratification in receipt
+of active vaccine versus placebo did not
+change the overall conclusion.
+The discrepancies between the
+English and the Norwegian studies are
+not clear. It may be argued that we
+studied only survivors and, thus, missed
+*Full data available from authors, on request.
+
+fatal cases who might have been
+deficient in MBL. However, in the
+English study, the patients homozygous
+for MBL variant alleles had a lower
+mortality rate and less use of intensive
+care than their MBL competent
+counterparts, which argues against such
+a bias in our patients.
+The English study comprised one
+hospital-based study (n=194, mean age
+3·5 years) and one community-based
+study (n=72, mean age 15 years). In
+the Norwegian study the median age
+was 16 years. However, with
+stratification according to genotype,
+carriers of MBL variant alleles tended
+to be younger when they contracted
+meningococcal disease than those
+homozygous for the normal allele
+(median age 15 years and 17 years,
+respectively; Mann-Whitney, p=0·05).
+The MBL variant allele frequency in
+those below 16 years was 0·25,
+compared with 0·15 in those 16 years
+or older (Fisher’s p=0·06). This result
+indicates that MBL may have an
+immune protective role against
+meningococcal disease in young
+patients, whereas it is less important in
+the older patients. This could partly
+explain the differences between the
+English and Norwegian findings.
+Thus, the MBL variant alleles did
+not contribute to the overall protection
+against meningococcal disease in
+Norwegian patients, but an agedependent effect seems possible and
+needs to be further investigated, for
+example, in the community-based part
+of the study by Hibberd and colleagues.
+*Peter Garred, Hans O Madsen,
+Arne Svejgaard, Terje E Michaelsen
+*Department of Clinical Immunology-7631,
+Rigshospitalet, 2200 Copenhagen N, Denmark;
+and National Institute of Public Health, Oslo,
+Norway
+(e-mail: Garred@post5.tele.dk)
+1
+
+Hibberd ML, Sumiya M, Summerfield JA,
+Booy R, Levin M, and the Meningococcal
+Research Group. Association of variants of
+the gene for mannose-binding lectin with
+susceptibility to meningococcal disease.
+Lancet 1999; 353: 1049–53.
+2 Garred P, Michealsen TE, Bjunc G, Thiel S,
+Svejgaard A. A low serum concentration of
+mannan-binding protein is not associated
+with serogroup B or C meningococcal
+disease. Scan J Immunol 1993; 37:
+468–70.
+3 Bjune G, Høiby EA, Grønneby JK, et al.
+Effect of outer membrane vescicle vaccine
+against group B meningococcal disease in
+Norway. Lancet 1991; 2: 1093–96.
+4 Garred P, Madsen HO, Svejgaard A.
+Genetics of human mannan-binding protein.
+In: Ezekowitz RAB, Sastry K, Reid KBM,
+eds. Collectins and innate immunity, Austin,
+TX: RG Landes Company, 1996:
+139–64.
+5 Madsen HO, Garred P, Thiel S, et al.
+Interplay between promoter and structural
+gene variants control basal serum level of
+mannan-binding protein. J Immunol 1995;
+155: 3013–20.
+
+THE LANCET • Vol 354 • July 24, 1999
