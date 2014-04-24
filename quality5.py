@@ -267,6 +267,13 @@ class DataFilter(object):
         self.data_instance = data_instance
         self.available_ids = self._get_available_ids()
 
+    # def _get_available_ids(self, pmid_instance=0):
+    #     """
+    #     subclass this to obtain the subset of ids available
+    #     pmid_instance = the count of the current pmid (allowing for repetitions)
+    #     """
+    #     # in the base class return *all* ids
+    #     return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance]
     def _get_available_ids(self, pmid_instance=0):
         """
         subclass this to obtain the subset of ids available
@@ -275,8 +282,11 @@ class DataFilter(object):
         # in the base class return *all* ids
         return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance]
 
+
     def Xy(self, doc_indices):
         pass
+
+
 
 
 
@@ -294,7 +304,6 @@ class DocFilter(DomainFilter):
     def _get_available_ids(self, pmid_instance=0):
         return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance and v[pmid_instance]["doc-y"][self.domain] != 0]
         
-
     def Xy(self, doc_indices, pmid_instance=0):
         X = []
         y = []
@@ -304,12 +313,10 @@ class DocFilter(DomainFilter):
             y.append(doc_i["doc-y"][self.domain])
         return X, y
 
-
 class SentFilter(DomainFilter):
 
     def _get_available_ids(self, pmid_instance=0):
         return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance and v[pmid_instance]["sent-y"][self.domain]]
-
 
     def Xy(self, doc_indices, pmid_instance=0):
         X = []
@@ -329,7 +336,7 @@ class MultiTaskDocFilter(DataFilter):
     # i.e. return all documents
 
     def Xy(self, doc_indices):
-        raise NotImplemented("Xy not used in MultiTaskDocFilter - you probably want Xyi() for interaction terms")
+        raise NotImplemented("Xy not used in MultiTaskDocFilter - you probably want Xyi() for (X, y, interaction term) tuples")
 
     def Xyi(self, doc_indices, pmid_instance=0):
         X = []
@@ -343,7 +350,7 @@ class MultiTaskDocFilter(DataFilter):
                     continue 
                 X.append(doc_i["doc-text"])
                 y.append(judgement)
-                interactions.append(domain)
+                interactions.append(domain)            
         return X, y, interactions
 
 
@@ -454,19 +461,18 @@ ModularCountVectorizer = ModularVectorizer
 ############################################################
 class ExperimentBase(object):
 
-    def __init__(self, dat=None):
-        if dat is None:
-            self.dat = self._get_data_filter()
-        else:
-            self.dat = dat
+    def __init__(self, folds=5):
+        logging.info('initialising experiment variables')
+        self.dat = self._get_data_filter()
         self.dat.generate_data()
-        self.dat_filter = self._get_filter(self.dat)
         self.metrics = BinaryMetricsRecorder(self.dat.CORE_DOMAINS)
+
 
     def run(self):
         pass
 
     def save(self, filename):
+        logging.info('saving data')
         self.metrics.save_csv(filename)
 
     def _process_fold(self):
@@ -474,6 +480,7 @@ class ExperimentBase(object):
 
     def _get_data(self):
         return RoBData(test_mode=False)
+
 
     def _get_filter(self, dat):
         return DocFilter(dat)
@@ -488,7 +495,13 @@ class SimpleModel(ExperimentBase):
     Models each domain separately
     (produces 6 independent models)
     """
-    pass
+    def __init__(self):
+
+    def _get_data(self):
+        return RoBData(test_mode=False)
+
+    def _get_filter(self, dat):
+        return DocFilter(dat)
 
 
 class MultitaskModel(ExperimentBase):
