@@ -67,3 +67,17 @@ log4.txt
 pmids.txt
 
 *.csv
+
+*.mallet
+
+crf.vectorizer.pickle
+
+mallet-output/tx.mallet.test
+
+mallet-output/tx.mallet.test-indices
+
+mallet-output/tx.mallet.test-lbls
+
+mallet-output/tx.mallet.test-tokens
+
+mallet-output/tx.mallet.train
