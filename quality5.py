@@ -547,7 +547,6 @@ class MultitaskModel(ExperimentBase):
         for train, test in kf:
 
             X_train_d, y_train, i_train = self.filter.Xyi(uids[train])
-            
             X_test_d, y_test, i_test = self.filter.Xyi(uids[test])
 
 
@@ -745,6 +744,8 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
 
 if __name__ == '__main__':
+    # e = ExperimentBase()
+    # e.run()
     # simple_model_test()
 
     if len(sys.argv) > 1:
@@ -756,7 +757,7 @@ if __name__ == '__main__':
                 metrics_out_dir=metrics_out_dir)
     else:
         # simple_model_test(data_filter=DocFilter)
-        multitask_test()
+        # multitask_test()
     
 
 
