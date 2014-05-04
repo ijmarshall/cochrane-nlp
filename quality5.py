@@ -265,75 +265,70 @@ class DataFilter(object):
 
     def __init__(self, data_instance):
         self.data_instance = data_instance
-        self.available_ids = self._get_available_ids()
 
-    # def _get_available_ids(self, pmid_instance=0):
-    #     """
-    #     subclass this to obtain the subset of ids available
-    #     pmid_instance = the count of the current pmid (allowing for repetitions)
-    #     """
-    #     # in the base class return *all* ids
-    #     return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance]
-    def _get_available_ids(self, pmid_instance=0):
-        """
-        subclass this to obtain the subset of ids available
-        pmid_instance = the count of the current pmid (allowing for repetitions)
-        """
-        # in the base class return *all* ids
-        return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance]
+    def get_ids(self, filter_domain=None, filter_sents=False, pmid_instance=0):
+        if filter_sents and not filter_domain:
+            raise ValueError("filter_sents set to true; therefore a specific domain needs to be passed in filter_domain")
 
+        domain_filter = (lambda v: v[pmid_instance]["doc-y"][filter_domain] != 0) if filter_domain else lambda v: True
+        sent_filter = lambda v: v[pmid_instance]["sent-y"][filter_domain] if filter_sents else lambda v: True
+        instance_filter = lambda v: len(v) > pmid_instance
+ 
+        filter_pipe = [instance_filter, domain_filter, sent_filter]
+        return np.array([k for k, v in self.data_instance.data.iteritems() if all([f(v) for f in filter_pipe])])
 
     def Xy(self, doc_indices):
         pass
 
 
 
+# class DomainFilter(DataFilter):
+#     def __init__(self, *args, **kwargs):
+#         """
+#         params: domain = one of the CORE_DOMAINS to filter data by
+#         """
+#         self.domain = kwargs.pop("domain") # remove from the kwargs before calling super.__init__
+#         super(DomainFilter, self).__init__(*args, **kwargs)
 
 
-class DomainFilter(DataFilter):
-    def __init__(self, *args, **kwargs):
-        """
-        params: domain = one of the CORE_DOMAINS to filter data by
-        """
-        self.domain = kwargs.pop("domain") # remove from the kwargs before calling super.__init__
-        super(DomainFilter, self).__init__(*args, **kwargs)
+class DocFilter(DataFilter):
 
+    def Xy(self, doc_indices, pmid_instance=0, domain=None):
+        if domain is None:
+            raise ValueError("DocFilter requires specific domain to retrieve data for")
 
-class DocFilter(DomainFilter):
+        X = []
+        y = []
+        for i in doc_indices:
+            doc_i = self.data_instance.data[i]
+            if pmid_instance >= len(doc_i) or domain not in doc_i[pmid_instance]["doc-y"]:
+                continue
+                # skip if no information in this instance
+                # i.e. if there either isn't a n'th record for the study, or the domain isn't recorded in it
+                # (fails silently)
+            X.append(doc_i[pmid_instance]["doc-text"])
+            y.append(doc_i[pmid_instance]["doc-y"][domain])
+        return X, y
 
-    def _get_available_ids(self, pmid_instance=0):
-        return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance and v[pmid_instance]["doc-y"][self.domain] != 0]
-        
-    def Xy(self, doc_indices, pmid_instance=0):
+class SentFilter(DataFilter):
+
+    def Xy(self, doc_indices, pmid_instance=0, domain=None):
+        if domain is None:
+            raise ValueError("SentFilter requires specific domain to retrieve data for")
+
         X = []
         y = []
         for i in doc_indices:
             doc_i = self.data_instance.data[i][pmid_instance]
             X.append(doc_i["doc-text"])
-            y.append(doc_i["doc-y"][self.domain])
+            y.append(doc_i["doc-y"][domain])
         return X, y
 
-class SentFilter(DomainFilter):
-
-    def _get_available_ids(self, pmid_instance=0):
-        return [k for k, v in self.data_instance.data.iteritems() if len(v) >= pmid_instance and v[pmid_instance]["sent-y"][self.domain]]
-
-    def Xy(self, doc_indices, pmid_instance=0):
-        X = []
-        y = []
-        for i in doc_indices:
-            doc_i = self.data_instance.data[i][pmid_instance]
-            X.append(doc_i["doc-text"])
-            y.append(doc_i["doc-y"][self.domain])
-        return X, y
 
 class MultiTaskDocFilter(DataFilter):
     """
     for training a multi-task model (i.e. one model for all domains)
     """
-
-    # subclasses _get_available_ids() default behaviour
-    # i.e. return all documents
 
     def Xy(self, doc_indices):
         raise NotImplemented("Xy not used in MultiTaskDocFilter - you probably want Xyi() for (X, y, interaction term) tuples")
@@ -470,14 +465,18 @@ class ExperimentBase(object):
 
     def run(self, folds=5):
 
-        uids = self._get_uids()
+        uids_all = self.filter.get_ids(pmid_instance=0)
+        uids_hide = self.filter.get_ids(pmid_instance=1)
+
+        uids = np.setdiff1d(uids_all, uids_hide)
+
         kf = KFold(len(uids), n_folds=folds, shuffle=False)
 
         for domain in self.dat.CORE_DOMAINS:
             logging.info('domain %s' % domain)
             for train, test in kf:
-                X_train_d, y_train = self.filter.Xy(uids[train], domain=domain)
-                X_test_d, y_test = self.filter.Xy(uids[test], domain=domain)
+                X_train_d, y_train = self.filter.Xy(uids[train], domain=domain, pmid_instance=0)
+                X_test_d, y_test = self.filter.Xy(uids[test], domain=domain, pmid_instance=0)
 
                 y_preds = self._get_y_preds_from_fold(X_train_d, y_train, X_test_d)
                 
@@ -744,20 +743,10 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
 
 if __name__ == '__main__':
-    # e = ExperimentBase()
-    # e.run()
+    e = ExperimentBase()
+    e.run()
     # simple_model_test()
 
-    if len(sys.argv) > 1:
-        fold_to_run = int(sys.argv[1])
-        metrics_out_dir = sys.argv[2]
-        print "running fold %s and pickling output to %s" % (
-                fold_to_run, metrics_out_dir)
-        multitask_test(fold=fold_to_run, pickle_metrics=True, 
-                metrics_out_dir=metrics_out_dir)
-    else:
-        # simple_model_test(data_filter=DocFilter)
-        # multitask_test()
     
 
 
