@@ -453,7 +453,6 @@ class BinaryMetricsRecorder(object):
         
 
 ModularCountVectorizer = ModularVectorizer
-
 ############################################################
 #   
 #   experiments
@@ -461,31 +460,62 @@ ModularCountVectorizer = ModularVectorizer
 ############################################################
 class ExperimentBase(object):
 
-    def __init__(self, folds=5):
+    def __init__(self):
         logging.info('initialising experiment variables')
-        self.dat = self._get_data_filter()
-        self.dat.generate_data()
-        self.metrics = BinaryMetricsRecorder(self.dat.CORE_DOMAINS)
+        self.dat = self._get_data()
+        logging.info('generating data')
+        self.dat.generate_data(doc_level_only=True)
+        self.filter = self._get_filter(self.dat)
+        self.metrics = BinaryMetricsRecorder(domains=self.dat.CORE_DOMAINS)
 
+    def run(self, folds=5):
 
-    def run(self):
-        pass
+        uids = self._get_uids()
+        kf = KFold(len(uids), n_folds=folds, shuffle=False)
+
+        for domain in self.dat.CORE_DOMAINS:
+            logging.info('domain %s' % domain)
+            for train, test in kf:
+                X_train_d, y_train = self.filter.Xy(uids[train], domain=domain)
+                X_test_d, y_test = self.filter.Xy(uids[test], domain=domain)
+
+                y_preds = self._get_y_preds_from_fold(X_train_d, y_train, X_test_d)
+                
+                self.metrics.add_preds_test(y_preds, y_test, domain=domain)
 
     def save(self, filename):
         logging.info('saving data')
         self.metrics.save_csv(filename)
 
-    def _process_fold(self):
-        pass
+    def _get_y_preds_from_fold(self, X_train_d, y_train, X_test_d):
+        logging.info('modelling fold')
+        clf = self._get_model()
+        vec = self._get_vec()
+
+        X_train = vec.transform(X_train_d, low=2)
+        X_test = vec.transform(X_test_d)
+
+        clf.fit(X_train, y_train)
+
+        return clf.predict(X_test)
+
 
     def _get_data(self):
-        return RoBData(test_mode=False)
-
+        return RoBData(test_mode=True)
 
     def _get_filter(self, dat):
         return DocFilter(dat)
 
-    
+    def _get_uids(self):
+        return self.filter.get_ids()
+
+    def _get_vec(self):
+        return InteractionHashingVectorizer(norm=None, non_negative=True, binary=True)
+
+    def _get_model(self):
+        tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
+        return GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+
 
 
 
@@ -496,7 +526,7 @@ class SimpleModel(ExperimentBase):
     (produces 6 independent models)
     """
     def __init__(self):
-
+        pass
     def _get_data(self):
         return RoBData(test_mode=False)
 
@@ -509,7 +539,49 @@ class MultitaskModel(ExperimentBase):
     Models all domains together, and uses interaction
     features to predict with domain specific information
     """
-    pass
+    def run(self):
+
+        uids = self._get_uids()
+        kf = KFold(len(uids), n_folds=folds, shuffle=False)
+
+        for train, test in kf:
+
+            X_train_d, y_train, i_train = self.filter.Xyi(uids[train])
+            X_test_d, y_test, i_test = self.filter.Xyi(uids[test])
+
+
+
+    
+    def _get_y_preds_from_fold(self, X_train_d, y_train, i_train, X_test_d, i_test):
+        logging.info('building up training data')
+        interactions = {domain:[] for domain in dat.CORE_DOMAINS}
+        for doc_text, doc_domain in zip(X_train_d, i_train):
+            for domain in dat.CORE_DOMAINS:
+                if domain == doc_domain:
+                    interactions[domain].append(True)
+                else:
+                    interactions[domain].append(False)
+
+        logging.info('adding test data to vectorizer')
+        vec = ModularCountVectorizer()
+        vec.builder_clear()
+
+        logging.info('adding base features')
+        vec.builder_add_docs(X_train_d, low=10) # add base features
+
+        for domain in dat.CORE_DOMAINS:
+            logging.info('adding interactions for domain %s' % (domain,))
+            print np.sum(interactions[domain]), "/", len(interactions[domain]), "added for", domain
+            vec.builder_add_interaction_features(X_train_d, interactions=interactions[domain], prefix=domain+"-i-", low=2) # then add interactions
+
+        logging.info('fitting vectorizer')
+        X_train = vec.builder_fit_transform()
+        
+        logging.info('fitting model')
+        clf.fit(X_train, y_train)
+
+
+
 
 ##################################################
 #
@@ -672,6 +744,8 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
 
 if __name__ == '__main__':
+    # e = ExperimentBase()
+    # e.run()
     # simple_model_test()
 
     if len(sys.argv) > 1:
@@ -683,7 +757,7 @@ if __name__ == '__main__':
                 metrics_out_dir=metrics_out_dir)
     else:
         # simple_model_test(data_filter=DocFilter)
-        multitask_test()
+        # multitask_test()
     
 
 

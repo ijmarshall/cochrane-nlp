@@ -54,7 +54,7 @@ cur_dir = os.getcwd()
 ##################
 # for CRF stuff! #
 ##################
-MALLET_PATHS = "/Users/bwallace/dev/eclipse-workspace/mallet/bin/:/Users/bwallace/dev/eclipse-workspace/mallet/lib/mallet-deps.jar"
+MALLET_PATHS = "/Users/iain/Code/java/mallet/class/:/Users/iain/Code/java/mallet/lib/mallet-deps.jar"
 JAVA_PATH = "/usr/bin/java"
 MALLET_OUTPUT_DIR = os.path.join(cur_dir, "mallet-output")
 if not os.path.exists(MALLET_OUTPUT_DIR):
