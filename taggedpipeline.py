@@ -8,7 +8,7 @@ import cPickle as pickle
 from itertools import izip
 from indexnumbers import swap_num
 import re
-import bilearn2
+import bilearn
 
 from tokenizer import tag_words
 
@@ -18,7 +18,7 @@ with open('data/brill_pos_tagger.pck', 'rb') as f:
 
 
 
-class TaggedTextPipeline(bilearn2.bilearnPipeline):
+class TaggedTextPipeline(bilearn.bilearnPipeline):
 
     def __init__(self, text, window_size):
 
