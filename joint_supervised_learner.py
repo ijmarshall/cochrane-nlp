@@ -238,7 +238,7 @@ class SupervisedLearner:
                     # we flatten these for training.
                     train_str.append(
                         SupervisedLearner.to_mallet(self.X_fv[i], self.y[i]))
-
+                    
                 else:
                     # in the test case, we generate separate file strings for 
                     # the instances and the lables
