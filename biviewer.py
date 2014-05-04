@@ -114,7 +114,7 @@ class BiViewer():
                 cr = self.cdsr_cache_data[study['cdsr_filename']] 
             else:
                 # else load from file, save to end of cache, and delete oldest cached review
-                cr = RM5(COCHRANE_REVIEWS_PATH + study['cdsr_filename']).refs(full_parse=True, return_dict=True)
+                cr = RM5(COCHRANE_REVIEWS_PATH + study['cdsr_filename']).full_parse()
                 self.cdsr_cache_data[study['cdsr_filename']] = cr # save to cache
                 self.cdsr_cache_index.append(study['cdsr_filename']) # and add to index deque
 
