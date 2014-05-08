@@ -20,11 +20,8 @@ from indexnumbers import swap_num
 
 import configparser # easy_install configparser
 
-
-
-config = configparser.ConfigParser()
-config.read('CNLP.INI')
-base_path = config["Paths"]["base_path"]
+import cochranenlp
+base_path = cochranenlp.config["Paths"]["base_path"]
 
 
 
