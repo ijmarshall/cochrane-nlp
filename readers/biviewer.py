@@ -19,19 +19,15 @@ from rm5reader import *
 
 import os
 
+import cochranenlp
 
 ### set local paths from CNLP.INI
 
-import configparser # easy_install configparser
-config = configparser.ConfigParser()
-config.read('CNLP.INI')
-
-COCHRANE_REVIEWS_PATH = config["Paths"]["cochrane_reviews_path"] # to revman files
-PUBMED_ABSTRACTS_PATH = config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
-PDF_PATH = config["Paths"]["pdf_path"] # to pubmed pdfs
 
 
-
+COCHRANE_REVIEWS_PATH = cochranenlp.config["Paths"]["cochrane_reviews_path"] # to revman files
+PUBMED_ABSTRACTS_PATH = cochranenlp.config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
+PDF_PATH = cochranenlp.config["Paths"]["pdf_path"] # to pubmed pdfs
 
 class BiViewer():
     """
@@ -52,7 +48,7 @@ class BiViewer():
 
 
     def init_common_variables(self, in_memory=False, cdsr_cache_length=20,
-                 test_mode=False, linkfile="data/biviewer_links_all.pck"):
+                 test_mode=False, linkfile=os.path.join(cochranenlp.PATH, "data", "biviewer_links_all.pck")):
         "set up variables used in all subclasses"
         self.import_data(filename=linkfile, test_mode=test_mode)
         self.data = []
@@ -184,13 +180,13 @@ class PDFBiViewer(BiViewer):
     	return pdf_index
 
 
-    def second_view(self, study, cachepath="data/cache/"):
+    def second_view(self, study, cachepath=os.path.join(cochranenlp.PATH, "data", "cache")):
         """ overrides code which gets pubmed abstract
         and instead returns the full text of an associated PDF"""
 
         try:
             # try to read first as plain text from the cache if exists
-            with open(cachepath + os.path.splitext(os.path.basename(self.pdf_index[study['pmid']]))[0] + '.txt', 'rb') as f:
+            with open(os.path.join(cachepath,  os.path.splitext(os.path.basename(self.pdf_index[study['pmid']]))[0] + '.txt'), 'rb') as f:
                 text = f.read()
             return {"text": text, "pmid": study['pmid']}
         except:
@@ -198,7 +194,7 @@ class PDFBiViewer(BiViewer):
             pm = PdfReader(self.pdf_index[study['pmid']])
             return {"text": pm.get_text(), "pmid": study['pmid']}
 
-    def cache_pdfs(self, cachepath="data/cache/", refresh=False):
+    def cache_pdfs(self, cachepath=os.path.join(cochranenlp.PATH, "data", "cache"), refresh=False):
 
         if not os.path.exists(cachepath):
             os.makedirs(cachepath)
@@ -206,7 +202,7 @@ class PDFBiViewer(BiViewer):
         all_pdfs = set(os.path.splitext(os.path.basename(self.pdf_index[entry['pmid']]))[0] for entry in self.index_data)
 
         if not refresh:
-            already_done = set(os.path.splitext(os.path.basename(filename))[0] for filename in glob(cachepath + "*.txt"))
+            already_done = set(os.path.splitext(os.path.basename(filename))[0] for filename in glob(os.path.join(cachepath, "*.txt")))
             todo = list(all_pdfs - already_done)
         else:
             todo = list(all_pdfs)

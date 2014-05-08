@@ -10,8 +10,9 @@ import os
 import sys
 
 
-import sklearn
+
 import numpy as np
+import sklearn
 import codecs
 import yaml
 from unidecode import unidecode
@@ -28,11 +29,13 @@ from sklearn.cross_validation import KFold
 from sklearn.linear_model import SGDClassifier
 import sklearn.metrics
 
-from output.metrics import BinaryMetricsRecorder
-from output.progressbar import ProgressBar
-from readers import biviewer
-from ml.modhashvec import ModularVectorizer, InteractionHashingVectorizer
-from textprocessing.tokenizer import sent_tokenizer, word_tokenizer
+
+import cochranenlp
+from ..output.progressbar import ProgressBar
+from ..output.metrics import BinaryMetricsRecorder
+from ..readers import biviewer
+from ..ml.modhashvec import ModularVectorizer, InteractionHashingVectorizer
+from ..textprocessing.tokenizer import sent_tokenizer, word_tokenizer
 
 import pprint
 
@@ -161,7 +164,7 @@ class RoBData:
         return mapped_domain if mapped_domain in self.CORE_DOMAINS else "Other"
 
         
-    def _load_domain_map(self, filename="data/domain_names.txt"):
+    def _load_domain_map(self, filename=os.path.join(cochranenlp.PATH, "data", "domain_names.txt")):
 
         with codecs.open(filename, 'rb', 'utf-8') as f:
             raw_data = yaml.load(f)
@@ -370,12 +373,14 @@ class ExperimentBase(object):
         for domain in dat.CORE_DOMAINS:
             logging.info('domain %s' % domain)
 
-            X_train_d, y_train = self.filter.Xy(uids[train_ids], domain=domain)
-            X_test_d, y_test = self.filter.Xy(uids[test_ids], domain=domain)
+            # uids = 
 
-                y_preds = self._get_y_preds_from_fold(X_train_d, y_train, X_test_d)
-                
-                self.metrics.add_preds_test(y_preds, y_test, domain=domain)
+            X_train_d, y_train = doc_filter.Xy(uids[train_ids], domain=domain)
+            X_test_d, y_test = doc_filter.Xy(uids[test_ids], domain=domain)
+
+            y_preds = self._get_y_preds_from_fold(X_train_d, y_train, X_test_d)
+            
+            self.metrics.add_preds_test(y_preds, y_test, domain=domain)
 
     def save(self, filename):
         logging.info('saving data')
