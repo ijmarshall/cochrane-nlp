@@ -140,7 +140,7 @@ class RM5(XMLReader):
         return tree.attrib.get(study_id)
 
     @listhandler("study_id")
-    def references(self, study_id=None, hide_secondary_refs=True):
+    def references(self, study_id=None, hide_secondary_refs=False):
         """
         By default, returns details of primary study, or first study if none
         listed as primary

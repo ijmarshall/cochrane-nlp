@@ -363,27 +363,15 @@ ModularCountVectorizer = ModularVectorizer
 class ExperimentBase(object):
 
     def __init__(self):
-        logging.info('initialising experiment variables')
-        self.dat = self._get_data()
-        logging.info('generating data')
-        self.dat.generate_data(doc_level_only=True)
-        self.filter = self._get_filter(self.dat)
         self.metrics = BinaryMetricsRecorder(domains=self.dat.CORE_DOMAINS)
 
-    def run(self, folds=5):
+    def run(self, doc_filter, train_ids, test_ids):
 
-        uids_all = self.filter.get_ids(pmid_instance=0)
-        uids_hide = self.filter.get_ids(pmid_instance=1)
-
-        uids = np.setdiff1d(uids_all, uids_hide)
-
-        kf = KFold(len(uids), n_folds=folds, shuffle=False)
-
-        for domain in self.dat.CORE_DOMAINS:
+        for domain in dat.CORE_DOMAINS:
             logging.info('domain %s' % domain)
-            for train, test in kf:
-                X_train_d, y_train = self.filter.Xy(uids[train], domain=domain, pmid_instance=0)
-                X_test_d, y_test = self.filter.Xy(uids[test], domain=domain, pmid_instance=0)
+
+            X_train_d, y_train = self.filter.Xy(uids[train_ids], domain=domain)
+            X_test_d, y_test = self.filter.Xy(uids[test_ids], domain=domain)
 
                 y_preds = self._get_y_preds_from_fold(X_train_d, y_train, X_test_d)
                 
@@ -402,25 +390,15 @@ class ExperimentBase(object):
         X_test = vec.transform(X_test_d)
 
         clf.fit(X_train, y_train)
-
         return clf.predict(X_test)
 
-
-    def _get_data(self):
-        return RoBData(test_mode=True)
-
-    def _get_filter(self, dat):
-        return DocFilter(dat)
-
-    def _get_uids(self):
-        return self.filter.get_ids()
-
+    
     def _get_vec(self):
         return InteractionHashingVectorizer(norm=None, non_negative=True, binary=True)
-
+    
     def _get_model(self):
         tuned_parameters = {"alpha": np.logspace(-4, -1, 10)}
-        return GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='f1')
+        return GridSearchCV(SGDClassifier(loss="hinge", penalty="L2"), tuned_parameters, scoring='accuracy')
 
 
 
