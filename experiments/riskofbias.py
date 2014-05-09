@@ -48,16 +48,21 @@ import logging
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.DEBUG)
 
 
+
+
 ############################################################
 #   
 #   data reader
 #
 ############################################################
 
+
+CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
+                "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting", "Other"]
+
+
 class RoBData:
 
-    CORE_DOMAINS = ["Random sequence generation", "Allocation concealment", "Blinding of participants and personnel",
-                    "Blinding of outcome assessment", "Incomplete outcome data", "Selective reporting", "Other"]
 
     REGEX_QUOTE_PRESENT = re.compile("Quote\:")
     REGEX_QUOTE = re.compile("\"(.*?)\"") # retrive blocks of text in quotes
@@ -80,7 +85,7 @@ class RoBData:
         (though for simple models may not need sentence data)
         """
         if self.show_progress:
-                p = ProgressBar(self.max_studies, timer=True)
+            p = ProgressBar(self.max_studies, timer=True)
 
         self.data = collections.defaultdict(list) # indexed by PMID, list of data entries
 
@@ -110,9 +115,9 @@ class RoBData:
             ###
 
             # start off with core domains being unknown, populate known ones later
-            doc_y = {domain: 0 for domain in self.CORE_DOMAINS} # 0 = unknown
+            doc_y = {domain: 0 for domain in CORE_DOMAINS} # 0 = unknown
 
-            sent_y = {domain: [] for domain in self.CORE_DOMAINS}
+            sent_y = {domain: [] for domain in CORE_DOMAINS}
 
             quality_data = study.cochrane["QUALITY"]
             for domain in quality_data:
@@ -143,6 +148,9 @@ class RoBData:
 
     def _preprocess_cochrane(self, rawtext):
 
+        if rawtext is None: # look here if some problem with None type appearing later on in sentence processing (may need to change to empty string)
+            return None
+
         # regex clean up of cochrane strings
         processedtext = unidecode(rawtext)
         processedtext = re.sub(" +", " ", processedtext)
@@ -154,6 +162,7 @@ class RoBData:
         quote_parts = []
         for quote in quotes:
             quote_parts.extend(self.REGEX_ELLIPSIS.split(quote))
+
         return quote_parts
 
     def _map_to_core_domain(self, domain_free_text):
@@ -161,7 +170,7 @@ class RoBData:
         mapped_domain = self.domain_map.get(domain_free_text)
 
         # note the map includes non-core categories
-        return mapped_domain if mapped_domain in self.CORE_DOMAINS else "Other"
+        return mapped_domain if mapped_domain in CORE_DOMAINS else "Other"
 
         
     def _load_domain_map(self, filename=os.path.join(cochranenlp.PATH, "data", "domain_names.txt")):
@@ -282,7 +291,7 @@ class DataFilter(object):
         instance_filter = lambda v: len(v) > pmid_instance
  
         filter_pipe = [instance_filter, domain_filter, sent_filter]
-        return np.array([k for k, v in self.data_instance.data.iteritems() if all([f(v) for f in filter_pipe])])
+        return np.array([k for k, v in self.data_instance.data.iteritems() if all((f(v) for f in filter_pipe))])
 
     def Xy(self, doc_indices):
         pass
@@ -366,17 +375,27 @@ ModularCountVectorizer = ModularVectorizer
 class ExperimentBase(object):
 
     def __init__(self):
-        self.metrics = BinaryMetricsRecorder(domains=self.dat.CORE_DOMAINS)
+        self.metrics = BinaryMetricsRecorder(domains=CORE_DOMAINS)
 
-    def run(self, doc_filter, train_ids, test_ids):
+    def run(self, doc_filter, train_ids, test_ids, train_instance=0, test_instance=0):
 
-        for domain in dat.CORE_DOMAINS:
+        for domain in CORE_DOMAINS:
             logging.info('domain %s' % domain)
 
-            # uids = 
+            # allow ids to be domain specific
+            if isinstance(train_ids, dict):
+                train_ids_domain = train_ids[domain]
+            else:
+                train_ids_domain = train_ids
 
-            X_train_d, y_train = doc_filter.Xy(uids[train_ids], domain=domain)
-            X_test_d, y_test = doc_filter.Xy(uids[test_ids], domain=domain)
+            if isinstance(test_ids, dict):
+                test_ids_domain = test_ids[domain]
+            else:
+                test_ids_domain = test_ids
+
+
+            X_train_d, y_train = doc_filter.Xy(uids[train_ids_domain], domain=domain)
+            X_test_d, y_test = doc_filter.Xy(uids[test_ids_domain], domain=domain)
 
             y_preds = self._get_y_preds_from_fold(X_train_d, y_train, X_test_d)
             
@@ -443,9 +462,9 @@ class MultitaskModel(ExperimentBase):
     
     def _get_y_preds_from_fold(self, X_train_d, y_train, i_train, X_test_d, i_test):
         logging.info('building up training data')
-        interactions = {domain:[] for domain in dat.CORE_DOMAINS}
+        interactions = {domain:[] for domain in CORE_DOMAINS}
         for doc_text, doc_domain in zip(X_train_d, i_train):
-            for domain in dat.CORE_DOMAINS:
+            for domain in CORE_DOMAINS:
                 if domain == doc_domain:
                     interactions[domain].append(True)
                 else:
@@ -458,7 +477,7 @@ class MultitaskModel(ExperimentBase):
         logging.info('adding base features')
         vec.builder_add_docs(X_train_d, low=10) # add base features
 
-        for domain in dat.CORE_DOMAINS:
+        for domain in CORE_DOMAINS:
             logging.info('adding interactions for domain %s' % (domain,))
             print np.sum(interactions[domain]), "/", len(interactions[domain]), "added for", domain
             vec.builder_add_interaction_features(X_train_d, interactions=interactions[domain], prefix=domain+"-i-", low=2) # then add interactions
@@ -483,9 +502,9 @@ def simple_model_test(data_filter=DocFilter):
     dat.generate_data(doc_level_only=True)
 
 
-    metrics = BinaryMetricsRecorder(domains=dat.CORE_DOMAINS)
+    metrics = BinaryMetricsRecorder(domains=CORE_DOMAINS)
 
-    stupid_metrics = BinaryMetricsRecorder(domains=dat.CORE_DOMAINS)
+    stupid_metrics = BinaryMetricsRecorder(domains=CORE_DOMAINS)
 
 
     multitask_docs = MultiTaskDocFilter(dat) # use the same ids as the multitask model
@@ -493,7 +512,7 @@ def simple_model_test(data_filter=DocFilter):
     no_studies = len(multitask_uids)
     kf = KFold(no_studies, n_folds=5, shuffle=False)
 
-    for domain in dat.CORE_DOMAINS:
+    for domain in CORE_DOMAINS:
 
         docs = data_filter(dat, domain=domain)
         uids = np.array(docs.available_ids)
@@ -546,7 +565,7 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
 
 
     logging.info('loading metric recorder')
-    metrics = BinaryMetricsRecorder(domains=dat.CORE_DOMAINS)
+    metrics = BinaryMetricsRecorder(domains=CORE_DOMAINS)
 
 
     logging.info('generating training documents')
@@ -572,9 +591,9 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
         X_train_d, y_train, i_train = train_docs.Xyi(train_uids[train])
 
         logging.info('building up test data')
-        interactions = {domain:[] for domain in dat.CORE_DOMAINS}
+        interactions = {domain:[] for domain in CORE_DOMAINS}
         for doc_text, doc_domain in zip(X_train_d, i_train):
-            for domain in dat.CORE_DOMAINS:
+            for domain in CORE_DOMAINS:
                 if domain == doc_domain:
                     interactions[domain].append(True)
                 else:
@@ -587,7 +606,7 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
         logging.info('adding base features')
         vec.builder_add_docs(X_train_d, low=10) # add base features
 
-        for domain in dat.CORE_DOMAINS:
+        for domain in CORE_DOMAINS:
             logging.info('adding interactions for domain %s' % (domain,))
             print np.sum(interactions[domain]), "/", len(interactions[domain]), "added for", domain
             vec.builder_add_interaction_features(X_train_d, interactions=interactions[domain], prefix=domain+"-i-", low=2) # then add interactions
@@ -599,7 +618,7 @@ def multitask_test(fold=None, n_folds_total=5, pickle_metrics=False,
         clf.fit(X_train, y_train)
 
 
-        for domain in dat.CORE_DOMAINS:
+        for domain in CORE_DOMAINS:
 
             test_docs = DocFilter(dat, domain=domain) # test on regular doc model
             domain_uids = np.array(test_docs.available_ids)

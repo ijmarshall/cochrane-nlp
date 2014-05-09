@@ -28,6 +28,9 @@ import cochranenlp
 COCHRANE_REVIEWS_PATH = cochranenlp.config["Paths"]["cochrane_reviews_path"] # to revman files
 PUBMED_ABSTRACTS_PATH = cochranenlp.config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
 PDF_PATH = cochranenlp.config["Paths"]["pdf_path"] # to pubmed pdfs
+DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to pubmed pdfs
+
+
 
 class BiViewer():
     """
@@ -48,7 +51,7 @@ class BiViewer():
 
 
     def init_common_variables(self, in_memory=False, cdsr_cache_length=20,
-                 test_mode=False, linkfile=os.path.join(cochranenlp.PATH, "data", "biviewer_links_all.pck")):
+                 test_mode=False, linkfile=os.path.join(DATA_PATH, "biviewer_links_all.pck")):
         "set up variables used in all subclasses"
         self.import_data(filename=linkfile, test_mode=test_mode)
         self.data = []
@@ -180,21 +183,25 @@ class PDFBiViewer(BiViewer):
     	return pdf_index
 
 
-    def second_view(self, study, cachepath=os.path.join(cochranenlp.PATH, "data", "cache")):
+    def second_view(self, study, cachepath=os.path.join(DATA_PATH, "pdf_cache")):
         """ overrides code which gets pubmed abstract
         and instead returns the full text of an associated PDF"""
 
+    
+
         try:
+
             # try to read first as plain text from the cache if exists
             with open(os.path.join(cachepath,  os.path.splitext(os.path.basename(self.pdf_index[study['pmid']]))[0] + '.txt'), 'rb') as f:
                 text = f.read()
+
             return {"text": text, "pmid": study['pmid']}
         except:
             # otherwise run through pdftotext
             pm = PdfReader(self.pdf_index[study['pmid']])
             return {"text": pm.get_text(), "pmid": study['pmid']}
 
-    def cache_pdfs(self, cachepath=os.path.join(cochranenlp.PATH, "data", "cache"), refresh=False):
+    def cache_pdfs(self, cachepath=os.path.join(DATA_PATH, "cache"), refresh=False):
 
         if not os.path.exists(cachepath):
             os.makedirs(cachepath)
@@ -216,10 +223,12 @@ class PDFBiViewer(BiViewer):
             
             pb.tap()
 
-            pm = PdfReader(PDF_PATH + pdf_filename + '.pdf')
+
+
+            pm = PdfReader(os.path.join(PDF_PATH, pdf_filename + '.pdf'))
             text = pm.get_text()
 
-            with open(cachepath + pdf_filename + '.txt', 'wb') as f:
+            with open(os.path.join(cachepath, pdf_filename + '.txt', 'wb')) as f:
                 f.write(text)
 
 

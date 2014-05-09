@@ -100,8 +100,10 @@ class RM5(XMLReader):
 
     @listhandler(1, default_to_included_studies=False)
     def tree_search(self, query, tree):
-
-        return self.tree_to_unicode(tree.find(query))
+        if tree:
+            return self.tree_to_unicode(tree.find(query))
+        else:
+            return None
 
     def title(self):
         return self.tree_to_unicode(self.map["title"])
