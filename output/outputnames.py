@@ -13,5 +13,5 @@ def filename(label="", extension="csv"):
 	name = os.path.splitext(os.path.basename(__main__.__file__))[0]
 	time_stamp = time.strftime("%Y-%h-%d--%H%M")
 
-	return name + '-' + time_stamp + "."+ extension
+	return name + '-' + label + '-' + time_stamp + "."+ extension
 
