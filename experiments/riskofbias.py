@@ -317,7 +317,7 @@ class DocFilter(DataFilter):
         y = []
         for i in doc_indices:
             doc_i = self.data_instance.data[i]
-            if pmid_instance >= len(doc_i) or domain not in doc_i[pmid_instance]["doc-y"]:
+            if pmid_instance >= len(doc_i) or doc_i[pmid_instance]["doc-y"]==0:
                 continue
                 # skip if no information in this instance
                 # i.e. if there either isn't a n'th record for the study, or the domain isn't recorded in it
