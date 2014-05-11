@@ -9,20 +9,20 @@ Rajesh6, Palaniappun Vaiapuri7, Ramsubramaniam C.8, Rao Gundugurti P.9, Roy Kris
 Trivedi Jitendra K.11, Vankar Ganpat K.12, Karan Rajesh S.1, Shah Sweety1, Patel Ronak B.1
 ABSTRACT
 The present randomized, double blind, parallel group, controlled, multi-centric trial was designed to evaluate the efficacy and tolerability
-of escitalopram in comparison with citalopram and sertraline in the treatment of major depressive disorder. Outpatients (N=<n>214</n>) with an
+of <tx>escitalopram</tx> in comparison with <tx>citalopram and sertraline</tx> in the treatment of major depressive disorder. Outpatients (N=<n>214</n>) with an
 ongoing/newly diagnosed ICD-10 major depressive episode and a Hamilton Rating Scale for Depression (HAM-D) score of > 18 were
-randomly assigned to citalopram, 20–40 mg/day (74 patients), escitalopram, 10–20 mg/day (69 patients) and sertraline, 50-150 mg/day
+randomly assigned to <tx>citalopram, 20–40 mg/day</tx> (74 patients), <tx>escitalopram, 10–20 mg/day (69 patients)</tx> and <tx>sertraline, 50-150 mg/day</tx>
 (71 patients), for a 4-week double-blind treatment period, with dosage adjustment (after 2 weeks of treatment) according to the response
 to treatment. Clinical response was evaluated by the 17 items HAM-D and the Clinical Global Impression (CGI) scales, which were
 recorded at baseline and at weekly intervals. Tolerability was evaluated by observed/spontaneously reported adverse changes in
 laboratory parameters (baseline and after 4 weeks). Response rate was defined as a decrease in HAM-D score by 50% from baseline and
 remission rate was defined as a HAM-D score of < 8. Response rate at the end of two week were 58% for escitalopram (10mg/day), 49%
-for citalopram (20mg/day) and 52% for sertraline (50-100mg/day). Response rate at the end of four week were 90% for escitalopram (1020mg/day), 86% for citalopram (20-40mg/day) and 97% for sertraline (100-150mg/day). The Remission rates at the end of four weeks
-were 74% for escitalopram, 65% for citalopram and 77% for sertraline. Adverse experiences were reported by 45% of patients in
-escitalopram group, 58% patients in citalopram and 56% patients in the sertraline group. Additionally, there were lesser dropouts and
-lesser requirement for dose escalation in escitalopram than in citalopram and sertraline group. In conclusion Escitalopram, the Senantiomer of the citalopram is a safe and effective antidepressant in the Indian population. It has potentially superior efficacy than
-citalopram and a comparable efficacy to sertraline with fewer side effects than both citalopram and sertraline.
-Key Words : Escitalopram, Sertraline, Citalopram, SSRI’s.
+for <tx>citalopram (20mg/day)</tx> and 52% for <tx>sertraline (50-100mg/day)</tx>. Response rate at the end of four week were 90% for escitalopram (1020mg/day), 86% for <tx>citalopram (20-40mg/day)</tx> and 97% for <tx>sertraline (100-150mg/day)</tx>. The Remission rates at the end of four weeks
+were 74% for <tx>escitalopram</tx>, 65% for <tx>citalopram</tx> and 77% for <tx>sertraline</tx>. Adverse experiences were reported by 45% of patients in
+<tx>escitalopram</tx> group, 58% patients in <tx>citalopram</tx> and 56% patients in the <tx>sertraline</tx> group. Additionally, there were lesser dropouts and
+lesser requirement for dose escalation in <tx>escitalopram</tx> than in <tx>citalopram</tx> and <tx>sertraline</tx> group. In conclusion <tx>Escitalopram</tx>, the <tx>Senantiomer</tx> of the <tx>citalopram</tx> is a safe and effective antidepressant in the Indian population. It has potentially superior efficacy than
+<tx>citalopram</tx> and a comparable efficacy to <tx>sertraline</tx> with fewer side effects than both <tx>citalopram</tx> and <tx>sertraline</tx>.
+Key Words : <tx>Escitalopram</tx>, <tx>Sertraline</tx>, <tx>Citalopram</tx>, <tx>SSRI’s</tx>.
 
 Introduction
 
@@ -30,13 +30,13 @@ development of that single isomer could improve both risks
 and benefits over the original antidepressant compound.
 
 Chirality, potentially offers one method to improve upon
-the SSRI (selective serotonin reuptake inhibitors) class. If
+the SSRI (selective <tx>serotonin reuptake inhibitors</tx>) class. If
 all the serotonin reuptake inhibitory activity of racemic SSRI
 antidepressant resides in single isomer, it would be expected
 to be more potent than the racemate, and it might also be
 more selective (Hutt 2000; Tucker 2000). Thus, the clinical
 
-Escitalopram is the S-enantiomer of citalopram (SSRI); a
+<tx>Escitalopram</tx> is the S-enantiomer of <tx>citalopram (SSRI)</tx>; a
 racemic compound that has been demonstrated to be
 effective in the treatment of depression, panic disorder,
 premenstrual dysphoric disorder, and obsessive- compulsive
@@ -93,33 +93,33 @@ Department of Psychiatry, B.J. medical College and Civil hospital, Ahmedabad.
 
 Vaya Lalit et al
 
-Substantial evidence indicates that escitalopram is
+Substantial evidence indicates that <tx>escitalopram</tx> is
 responsible for the therapeutic efficacy of the racemate
-(Owens 2001). Escitalopram is over 100 times more potent
+(Owens 2001). <tx>Escitalopram</tx> is over 100 times more potent
 as serotonin reuptake inhibitor than its stereoisomer, Rcitalopram (Hyttel 1992; Sanchez 2000). In vivo studies of
 antidepressant action also support this conclusion;
-escitalopram is more potent and as efficacious as citalopram
+<tx>escitalopram</tx> is more potent and as efficacious as <tx>citalopram</tx>
 in various animal models of depression (Hyttel 1992;
 Mitchell 2001; Sanchez 2000; Montgomery 2001).
 
 schizoaffective or bipolar disorder, 6) seizure disorder, 7)
 anorexia nervosa, 8) hepatic and renal system dysfunction,
-9) therapy with lithium within the preceding month, 10)
-treatment with cimetidine, warfarin or MAO inhibitors, 11)
-hypersensitivity to citalopram, escitalopram and sertraline
-and non responders to citalopram and sertraline. Women
+9) <tx>therapy with lithium</tx> within the preceding month, 10)
+treatment with <tx>cimetidine, warfarin or MAO inhibitors</tx>, 11)
+hypersensitivity to <tx>citalopram</tx>, <tx>escitalopram</tx> and <tx>sertraline</tx>
+and non responders to <tx>citalopram</tx> and <tx>sertraline</tx>. Women
 of childbearing age not using contraceptives, pregnant
 women, lactating mothers, women desiring to have children,
 were also excluded.
 
-Escitalopram is therefore expected to offer several
-advantages over citalopram. Escitalopram theoretically
+<tx>Escitalopram</tx> is therefore expected to offer several
+advantages over <tx>citalopram</tx>. <tx>Escitalopram</tx> theoretically
 should have at least twice the antidepressant potency of
-citalopram, since the therapeutic effects of citalopram are
+<tx>citalopram</tx>, since the therapeutic effects of <tx>citalopram</tx> are
 thought to be dependent upon serotonin reuptake inhibition
-and escitalopram appears to be responsible for virtually all
-of the serotonin reuptake inhibition produced by citalopram.
-Moreover, if any adverse effects of racemic citalopram
+and <tx>escitalopram</tx> appears to be responsible for virtually all
+of the serotonin reuptake inhibition produced by <tx>citalopram</tx>.
+Moreover, if any adverse effects of racemic <tx>citalopram</tx>
 were attributable to the R- enantiomer, they would be
 avoided in patients treated with the pure S- enantiomer.
 
@@ -139,11 +139,11 @@ were enrolled in the study. Category I patients (Newly
 diagnosed) were started on drug therapy immediately.
 Category II patients (Non-responders) were started on trial
 drugs after a 1-week, single blind, placebo washout period
-(4 week for fluoxetine).
+(4 week for <tx>fluoxetine</tx>).
 
 The present multi-centric, parallel group study, examined
-the safety and efficacy of escitalopram in comparison with
-citalopram and sertraline (current standards of treatment)
+the safety and efficacy of <tx>escitalopram</tx> in comparison with
+<tx>citalopram</tx> and <tx>sertraline</tx> (current standards of treatment)
 in Indian patients with major depressive disorder.
 Methods
 A total of 11 centers in India participated in this controlled,
@@ -188,12 +188,12 @@ The drugs were administered in the following manner as
 stated in the table below :
 334
 
-Escitalopram Versus Citalopram And Sertraline
-Escitalopram
+<tx>Escitalopram</tx> Versus <tx>Citalopram</tx> And <tx>Sertraline</tx>
+<tx>Escitalopram</tx>
 
-Citalopram
+<tx>Citalopram</tx>
 
-Sertraline
+<tx>Sertraline</tx>
 
 Morning
 
@@ -213,25 +213,25 @@ Placebo
 
 10mg
 
-Placebo
+<tx>Placebo</tx>
 
 20mg
 
-Placebo
+<tx>Placebo</tx>
 
 50mg
 
 Wk 2
 
-Placebo
+<tx>Placebo</tx>
 
 10mg
 
-Placebo
+<tx>Placebo</tx>
 
 20mg
 
-Placebo
+<tx>Placebo</tx>
 
 100mg
 
@@ -321,7 +321,7 @@ P
 
 50 mg 100mg
 
-Note: P= Placebo; Responder = HAM-D score reduced by 50% from the baseline; Morn = morning and Eve = Evening
+Note: P= <tx>Placebo</tx>; Responder = HAM-D score reduced by 50% from the baseline; Morn = morning and Eve = Evening
 
 Of Variance (RMANOVA) with baseline as covariate
 followed by Bonferroni post hoc test for week-by-week
@@ -369,8 +369,8 @@ Demography
 Statistical Analysis
 
 A total of 214 patients were randomized (balanced
-randomization) to receive either Escitalopram or Citalopram
-or Sertraline in the study. The demographic data for the
+randomization) to receive either <tx>Escitalopram</tx> or <tx>Citalopram</tx>
+or <tx>Sertraline</tx> in the study. The demographic data for the
 patients are shown in Table 1. There was no statistically
 significant difference in the various demographic
 characteristics like age, gender, illness duration and illness
@@ -386,8 +386,8 @@ significant change from baseline (within group comparison).
 The data was subjected to Repeated Measures Analysis
 
 16 patients dropped out from the study. Of the 16 patients,
-9 were in the Sertraline group, 3 in the Citalopram group
-and 4 in the Escitalopram group. The reasons for the dropout
+9 were in the <tx>Sertraline</tx> group, 3 in the <tx>Citalopram</tx> group
+and 4 in the <tx>Escitalopram</tx> group. The reasons for the dropout
 from the study are presented in Table 2.
 335
 
@@ -507,14 +507,14 @@ occurred at the end of the study in each treatment group
 groups was not statistically significant.
 
 DROP OUTS
-Escitalopram
+<tx>Escitalopram</tx>
 
-Citalopram
+<tx>Citalopram</tx>
 2
 
-Sertraline
+<tx>Sertraline</tx>
 
-ADRs
+<tx>ADRs</tx>
 
 1
 
@@ -604,7 +604,7 @@ discontinued.
 
 336
 
-Escitalopram Versus Citalopram And Sertraline
+<tx>Escitalopram</tx> Versus <tx>Citalopram</tx> And <tx>Sertraline</tx>
 
 Fig. 3: CGI-S Scores. Mean change from baseline
 
