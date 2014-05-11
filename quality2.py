@@ -28,6 +28,15 @@ from sklearn import metrics
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
 
+## plotting! 
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+import moss
+import seaborn as sns
+sns.set(style="nogrid")
+sns.color_palette("deep")
+## end plotting
+
 from collections import defaultdict
 
 from sklearn.metrics import precision_recall_fscore_support

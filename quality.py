@@ -303,9 +303,9 @@ def _get_study_level_X_y(test_domain=CORE_DOMAINS[0], append_missing=False):
         #    print "STUDY LEVEL !!!!"
         #    pdb.set_trace()
 
-        if i > 200:
-            print "WARNING RETURNING SMALL SUBSET OF DATA!"
-            break  
+        #if i > 200:
+        #    print "WARNING RETURNING SMALL SUBSET OF DATA!"
+        #    break  
 
         study_indices.append(i)
         for domain in study.cochrane["QUALITY"]:
@@ -453,7 +453,7 @@ def augment_X(X, study_indices, y):
     return scipy.sparse.csc.csc_matrix((np.array(csc_data),(np.array(csc_rows),np.array(csc_cols))), 
                                         shape=(n_sentences, n_features*2))
 
-def joint_predict_sentences_reporting_bias():
+def joint_predict_sentences_reporting_bias(positives_per_pdf=1):
     '''
     @TODO bcw
 
@@ -481,8 +481,11 @@ def joint_predict_sentences_reporting_bias():
     # note that these may be effectively 'missing' for more studies in cases that no
     # supporting quote could be found...
     X, y, X_sents, vec, study_sent_indices, study_indices2 = _get_sentence_level_X_y()
-    
+    # I think you should just cheat here and add copies of the
+    # words to X_sents then revectorize (regenerate X)...
+    # TODO TODO TODO
 
+    metrics = []
     # now cross-validate
     clf = SGDClassifier(loss="hinge", penalty="l2")
     kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
@@ -499,9 +502,12 @@ def joint_predict_sentences_reporting_bias():
         # train/test split
         study_y_train = [map_study_lbl(study_y[i]) for i in train]
 
-        X_train = X[np_indices(train_indices)] 
+        # this is cheating!
+        study_y_mapped = [map_study_lbl(study_y[i]) for i in xrange(len(study_y))]
+        X_augmented = augment_X(X, study_sent_indices, study_y_mapped)
+        X_train = X_augmented[np_indices(train_indices)] 
         y_train = y[np_indices(train_indices)]
-        X_test = X[np_indices(test_indices)]
+        X_test = X_augmented[np_indices(test_indices)]
         y_test = y[np_indices(test_indices)]
         
         ###
@@ -511,23 +517,86 @@ def joint_predict_sentences_reporting_bias():
         # the study-level bias assessment
         ###
         
-        X_train = augment_X(X_train, train_indices, study_y_train)
-
 
         ### cheating!!!
-        study_y_test = [map_study_lbl(study_y[i]) for i in test]
-        X_test = augment_X(X_test, test_indices, study_y_test)
+        #study_y_test = [map_study_lbl(study_y[i]) for i in test]
+        #X_test = augment_X(X_test, test_indices, study_y_test)
 
        
         clf = SGDClassifier(loss="hinge", penalty="l2", alpha=.01)
         clf.fit(X_train, y_train)
-        pdb.set_trace()
-
-        ### TODO TODO TODO actually generate and evaluate predictions!!!
         
 
+        ### TODO TODO TODO actually generate and evaluate predictions!!!
+        TP = 0
+        FP = 0
+        TN = 0
+        FN = 0
+
+        print "testing..."
+        p = progressbar.ProgressBar(len(test_indices), timer=True)
+
+        for start, end in test_indices:
+
+            p.tap()
+            study_X = X_augmented[np_indices((start, end))]
+            study_y = y[np_indices((start, end))]
+
+            
+            
+            preds_all = clf.predict(study_X) #np.mean([clf.predict(study_X) for clf in models], 0)
+
+            max_indices = preds_all.argsort()[-positives_per_pdf:][::-1] + start
+        
+            real_index = None
+            if sum(study_y) > 0:
+                real_index = np.where(study_y==1)[0][0] + start
+
+            if real_index is None:
+                FP += positives_per_pdf
+                TN += (len(study_y) - positives_per_pdf)
+            elif real_index in max_indices:
+                TP += 1
+                TN += (len(study_y) - positives_per_pdf)
+                FP += (positives_per_pdf - 1)
+                # FN += 0
+            else:
+                # TP += 0
+                TN += (len(study_y) - positives_per_pdf - 1) 
+                FN += 1
+                FP += positives_per_pdf
+
+            print len(study_y)
+            
+
+        precision = float(TP) / (float(TP) + float(FP))
+        recall = float(TP) / (float(TP) + float(FN))
+        pdb.set_trace()
+        f1 = 2 * ((precision * recall) / (precision + recall))
+        accuracy = float(TP) / len(test_indices)
+
+        metrics.append({"precision": precision,
+                        "recall": recall,
+                        "f1": f1,
+                        "accuracy": accuracy})
+        pprint(metrics)
+        #pdb.set_trace()
+
+    print
+    pprint(metrics)
+
+    metric_types = ["precision", "recall", "f1", "accuracy"]
+
+    for metric_type in metric_types:
+
+        metric_vec = [metric[metric_type] for metric in metrics]
+
+        metric_mean = np.mean(metric_vec)
+
+        print "%s: %.5f" % (metric_type, metric_mean)
+
 def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_models=1, positives_per_pdf=1):
-    X, y, X_sents, vec, study_sent_indices = _get_sentence_level_X_y()
+    X, y, X_sents, vec, study_sent_indices, study_indices = _get_sentence_level_X_y()
     
     kf = KFold(len(study_sent_indices), n_folds=5, shuffle=True)
 
@@ -616,10 +685,15 @@ def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_mode
 
             max_indices = preds_all.argsort()[-positives_per_pdf:][::-1] + start
         
-        
-            real_index = np.where(study_y==1)[0][0] + start
+            real_index = None
+            if sum(study_y) > 0:
+                real_index = np.where(study_y==1)[0][0] + start
 
-            if real_index in max_indices:
+            if real_index is None:
+                FP += positives_per_pdf
+                TN += (len(study_y) - positives_per_pdf)
+
+            elif real_index in max_indices:
 
                 TP += 1
                 TN += (len(study_y) - positives_per_pdf)
@@ -636,6 +710,7 @@ def predict_sentences_reporting_bias(negative_sample_weighting=1, number_of_mode
 
         precision = float(TP) / (float(TP) + float(FP))
         recall = float(TP) / (float(TP) + float(FN))
+        pdb.set_trace()
         f1 = 2 * ((precision * recall) / (precision + recall))
         accuracy = float(TP) / len(test_indices)
 
@@ -687,10 +762,10 @@ def _get_sentence_level_X_y(test_domain=CORE_DOMAINS[0]):
 
     for i, study in enumerate(q):
 
-        if i > 200:
+        #if i > 200:
             #pdb.set_trace()
-            print "WARNING RETURNING SMALL SUBSET OF DATA!"
-            break
+        #    print "WARNING RETURNING SMALL SUBSET OF DATA!"
+        #    break
 
         study_indices.append(i)
 
