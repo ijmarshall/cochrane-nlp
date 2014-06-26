@@ -19,8 +19,8 @@ import scipy
 
 class ModularVectorizer(object):
 
-    def __init__(self):
-        self.vec = InteractionHashingVectorizer(norm=None, non_negative=True, binary=True)
+    def __init__(self, *args, **kwargs):
+        self.vec = InteractionHashingVectorizer(*args, **kwargs)
 
     def builder_clear(self):
         self.X = None
@@ -75,6 +75,8 @@ class InteractionHashingVectorizer(HashingVectorizer):
         stop_words = self.get_stop_words()
         tokenize = self.build_tokenizer()
 
+
+
         return lambda doc: self._word_ngrams(
             tokenize(preprocess(self.decode(doc))), stop_words, i_term=i_term)
 
@@ -84,6 +86,8 @@ class InteractionHashingVectorizer(HashingVectorizer):
         calls super of _word_ngrams, then adds interaction prefix onto each token
         """
         tokens = super(InteractionHashingVectorizer, self)._word_ngrams(tokens, stop_words)
+
+        # import pdb; pdb.set_trace()
 
         if i_term:
             return [i_term + token for token in tokens]
@@ -132,22 +136,26 @@ class InteractionHashingVectorizer(HashingVectorizer):
 
         return csr_matrix
 
-    def transform(self, X, y=None, i_vec=None, i_term=None, high=None, low=None, limit=None):
+    def transform(self, X_s, y=None, i_vec=None, i_term=None, high=None, low=None, limit=None):
         """
         same as HashingVectorizer transform, except allows for interaction list
         which is an iterable the same length as X filled with True/False
         this method adds an empty row to docs labelled as False
         """
         analyzer = self.build_analyzer(i_term=i_term)
-        if i_vec is None:
-            X = self._get_hasher().transform(analyzer(doc) for doc in X)
 
-        else:
-            X = self._get_hasher().transform(analyzer(doc) for doc in self._iter_interact_docs(X, i_vec))
-            
 
         
+
+        if i_vec is None:
+            X = self._get_hasher().transform(analyzer(doc) for doc in X_s)
+
+        else:
+            X = self._get_hasher().transform(analyzer(doc) for doc in self._iter_interact_docs(X_s, i_vec))
+        
         X.data.fill(1)
+
+        # import pdb; pdb.set_trace()
 
         if self.norm is not None:
             X = normalize(X, norm=self.norm, copy=False)

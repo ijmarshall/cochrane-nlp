@@ -335,9 +335,18 @@ class SentFilter(DataFilter):
         X = []
         y = []
         for i in doc_indices:
+
             doc_i = self.data_instance.data[i][pmid_instance]
-            X.append(doc_i["doc-text"])
-            y.append(doc_i["doc-y"][domain])
+
+            # make sentence list
+            sents = [doc_i["doc-text"][start:end] for start, end in doc_i["sent-spans"]]
+            X.append(sents)
+
+            # and make boolean array
+            sent_y = -np.ones(len(sents), dtype=np.int8) # most are -1s
+            sent_y[doc_i["sent-y"][domain]] = 1 # except these ones
+            y.append(sent_y)
+
         return X, y
 
 
