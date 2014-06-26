@@ -51,8 +51,6 @@ def integer_filter(w):
 def is_sample_size(w):
     return "n" in w["tags"]
 
-def is_target(w):
-    return self.target in w["tags"]
 
 class SupervisedLearner:
     def __init__(self, abstract_reader, target="n", 
@@ -76,6 +74,9 @@ class SupervisedLearner:
         self.test_set_p = test_set_p
         self.n_citations = len(self.abstract_reader)
 
+    def is_target(self, w):
+        return self.target in w["tags"]
+
     def plot_preds(self, preds, y):
         # (preds, y) = sl.cv()
         # sklearn wraps up the predicted results
@@ -92,6 +93,7 @@ class SupervisedLearner:
                     flatten_abstracts=False)
         self.vectorizer = DictVectorizer(sparse=True)
 
+        #if self.predicting_sample_size:
         # note that we keep structure around that keeps features 
         # in citations together. specifically, features will be a 
         # list of feature vectors representing words
@@ -99,21 +101,22 @@ class SupervisedLearner:
         all_features = []
         for citation_fvs in self.features:
             all_features.extend(citation_fvs)
-   
-       
+
         self.vectorizer.fit(all_features) 
+        #else:
+        #    self.vectorizer.fit(self.features)
+
         self.X_fv = []
         no_abstracts = 0
         for X_citation in self.features:
             if len(X_citation) > 0:
+                #pdb.set_trace()
                 self.X_fv.append(self.vectorizer.transform(X_citation))
             else:
                 self.X_fv.append(None)
                 no_abstracts += 1
         print "({0} had no abstracts!)".format(no_abstracts)
         #self.X_fv = [self.vectorizer.transform(X_citation) for X_citation in self.features if len(X_citation) > 0]
-
-
 
         if self.holding_out_a_test_set:
             self.set_held_out_indices()
@@ -207,29 +210,33 @@ class SupervisedLearner:
         clf.fit(X_train, y_train)
         print "ok -- testing!"
         max_index = lambda a: max((v, i) for i, v in enumerate(a))[1]
-
+        
         '''
         @TODO refactor. note that this will have to change for other
         targets (TX's, etc.)
         '''
         TPs, FPs, N_pos = 0, 0, 0
+        no_truth = 0
         for test_citation_i, citation_fvs in enumerate(X_test):
             true_lbls_i = y_test[test_citation_i]
-            preds_i = clf.best_estimator_.decision_function(citation_fvs)
+
             # we set the index corresponding to the max 
             # val (most likely entry) to 1; all else are 0
+            preds_i = clf.best_estimator_.decision_function(citation_fvs)
             preds_i_max = max_index(preds_i)
             preds_i = [-1]*len(preds_i)
             preds_i[preds_i_max] = 1
 
             # *abstract level* predictions. 
+            
             if not 1 in true_lbls_i:
                 cit_n = test_citation_indices[test_citation_i]
-                print "-- no sample size for abstract (biview_id) {0}!".format(
+                print "-- no target for abstract (biview_id) {0}!".format(
                             self.abstract_reader[cit_n]["biview_id"])
                 # since we force a prediction for every abstract right now,
                 # i'll penalize us here. this is an upperbound on precision.
-                FPs += 1 
+                FPs += 1
+                no_truth += 1 
             else:
                 N_pos += 1 
                 if preds_i.index(1) == true_lbls_i.index(1):
@@ -239,6 +246,7 @@ class SupervisedLearner:
 
 
         N = len(X_test)
+        print "no labels available for %s citations!" % no_truth
         return TPs, FPs, N_pos, N
 
 
@@ -247,6 +255,7 @@ class SupervisedLearner:
             self.X_fv, self.y, test_size=0.1)
         clf = SupervisedLearner._get_SVM()
         clf.fit(X_train, y_train)
+
         preds = None
         if predict_probs:
             # well, *log* probs, anyway
@@ -258,8 +267,9 @@ class SupervisedLearner:
 
     @staticmethod 
     def _get_SVM():
-        tune_params = [{"C":[1,5,10,100,1000]}]
+        tune_params = [{"C":[.01, .1, 1,5,10]}]
         return GridSearchCV(LinearSVC(), tune_params, scoring="f1")
+        #return LinearSVC(C=.1)
 
 
     def train(self):
@@ -316,9 +326,9 @@ class SupervisedLearner:
                         answer_key=is_sample_size, 
                         filter=integer_filter)
             else: 
-                X_i = p.get_features(flatten=False)
-                y_i = p.get_answers(flatten=False, 
-                        answer_key=is_target)
+                X_i = p.get_features(flatten=True)
+                y_i = p.get_answers(flatten=True, 
+                        answer_key=self.is_target)
 
             if flatten_abstracts:
                 X.extend(X_i)
@@ -327,7 +337,7 @@ class SupervisedLearner:
                 X.append(X_i)
                 y.append(y_i)
 
-            pb.tap()
+            pb.tap()    
 
         return X, y
 
@@ -412,6 +422,7 @@ def learning_curve():
     return [int(sl.n_citations*p) for p in train_ps], average_fs, lows, highs
 
 
+
 def train_and_pickle_full_text(path="cache/labeled/"):
     # get full text reader here, 
     #tagged_texts = [tokenizer.tag_words(text) for text in texts]
@@ -420,11 +431,14 @@ def train_and_pickle_full_text(path="cache/labeled/"):
     sl = SupervisedLearner(reader, target="n")
     sl.generate_features()
     clf, vectorizer = sl.train_on_all_data()
+
     with open("sample_size_predictor_ft.pickle", "wb") as out_f:
-        pickle.dump(clf, out_f)
+        pickle.dump(clf.best_estimator_, out_f)
+        #pickle.dump(clf, out_f)
 
     with open("sample_size_vectorizer_ft.pickle", "wb") as out_f:
         pickle.dump(vectorizer, out_f)
+
     return clf, vectorizer
 
 def train_and_pickle():
@@ -434,16 +448,19 @@ def train_and_pickle():
         cleaner, and in part because python kept yelling at me about
         pickling functions, and I didn't get to the bottom of it.
     """
-    target = "n"
-    reader = MergedTaggedAbstractReader()
+    print "-- treatment model --"
+    target = "tx"
+    #reader = MergedTaggedAbstractReader( merge_function=lambda a,b: a or b)
+    reader = FullTextReader()
     sl = SupervisedLearner(reader, target=target)
     sl.generate_features()
     clf, vectorizer = sl.train_on_all_data()
-    with open("sample_size_predictor.pickle", "wb") as out_f:
+    with open("tx_predictor_ft.pickle", "wb") as out_f:
         pickle.dump(clf, out_f)
 
-    with open("sample_size_vectorizer.pickle", "wb") as out_f:
+    with open("tx_vectorizer_ft.pickle", "wb") as out_f:
         pickle.dump(vectorizer, out_f)
+    pdb.set_trace()
     return clf, vectorizer
 
 if __name__ == "__main__":
