@@ -183,12 +183,9 @@ class PDFBiViewer(BiViewer):
     	return pdf_index
 
 
-    def second_view(self, study, cachepath=os.path.join(DATA_PATH, "pdf_cache")):
+    def second_view(self, study, cachepath=os.path.join(DATA_PATH, "cache")):
         """ overrides code which gets pubmed abstract
         and instead returns the full text of an associated PDF"""
-
-    
-
         try:
 
             # try to read first as plain text from the cache if exists
@@ -202,7 +199,6 @@ class PDFBiViewer(BiViewer):
             return {"text": pm.get_text(), "pmid": study['pmid']}
 
     def cache_pdfs(self, cachepath=os.path.join(DATA_PATH, "cache"), refresh=False):
-
         if not os.path.exists(cachepath):
             os.makedirs(cachepath)
         
