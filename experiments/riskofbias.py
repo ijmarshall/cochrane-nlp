@@ -374,6 +374,66 @@ class MultiTaskDocFilter(DataFilter):
         return X, y, interactions
 
 
+class MultiTaskSentFilter(DataFilter):
+    """
+    for training a multi-task model (i.e. one model for all domains)
+    """
+
+    def Xy(self, doc_indices):
+        raise NotImplemented("Xy not used in MultiTaskSentFilter - you probably want Xyi() for (X, y, interaction term) tuples")
+
+    def Xyi(self, doc_indices, pmid_instance=0):
+
+        # try just buidling y and interactions, leave sentences as iterator to save a bit memory
+        # X = []
+        y = []
+        interactions = []
+        
+        for i in doc_indices:
+
+            doc_i = self.data_instance.data[i][pmid_instance]
+
+            # make sentence list
+            #sents = [doc_i["doc-text"][start:end] for start, end in doc_i["sent-spans"]]
+            sent_len = len(doc_i["sent-spans"])
+
+            for domain, judgements in doc_i["sent-y"].iteritems():
+                if not judgements: # skip the blanks
+                    continue
+
+                # add sents once per each domain we have sent info for
+                # X.extend(sents)
+
+                # and make boolean array
+                sent_y = -np.ones(sent_len, dtype=np.int8) # most are -1s
+                sent_y[doc_i["sent-y"][domain]] = 1 # except these ones
+                y = np.append(y, sent_y)
+
+                interactions.extend([domain] * sent_len) 
+
+        return (doc for doc in self.X_iter(doc_indices, pmid_instance)), y, interactions
+
+    def X_iter(self, doc_indices, pmid_instance=0):
+
+        print "running X_iter"
+        
+        for i in doc_indices:
+
+            doc_i = self.data_instance.data[i][pmid_instance]
+
+            # make sentence list
+            sents = [doc_i["doc-text"][start:end] for start, end in doc_i["sent-spans"]]
+
+            for judgements in doc_i["sent-y"].itervalues():
+                if not judgements: # skip the blanks
+                    continue
+
+                # add sents once per each domain we have sent info for
+                for sent in sents:
+                    yield(sent)
+
+                
+
 
 ModularCountVectorizer = ModularVectorizer
 ############################################################
