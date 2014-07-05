@@ -1,0 +1,58 @@
+package ebm.spa;
+
+message Document {
+  message Interval {
+    required uint32 upper = 1;
+    required uint32 lower = 2;
+  }
+
+  required string text = 1;
+  optional string uri = 2;
+
+  message Node {
+    required uint32 page_index = 1;
+    required uint32 node_index = 2;
+    required Document.Interval interval = 3;
+  }
+
+  repeated Node nodes = 3;
+
+  message Page {
+    required uint32 length = 1;
+    required uint32 offset = 2;
+  }
+
+  repeated Page pages = 4;
+
+  message Mapping {
+    message Element {
+      required uint32 node_index = 1;
+      required Document.Interval range = 2;
+    }
+    repeated Element elements = 1;
+  }
+
+  repeated Mapping words = 5;
+  repeated Mapping sentences = 6;
+
+  message Marginalis {
+    optional string type = 1; // could be a RDF/RDFa type
+    required string title = 2;
+    optional string description = 3; // a markdown string
+
+    message Annotation {
+      optional string uri = 1;
+      optional string label = 2;
+      optional string content = 3;
+
+      message Mapping {
+        required string key = 1; // must reference to some field in the document that stores the mappings
+        required uint32 index = 2;
+      }
+      optional Mapping mapping = 4;
+    }
+    repeated Annotation annotations = 4;
+  }
+
+  repeated Marginalis marginalia = 7; // stores the added marginalia and its annotations
+}
