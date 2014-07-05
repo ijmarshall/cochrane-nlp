@@ -144,12 +144,8 @@ class InteractionHashingVectorizer(HashingVectorizer):
         """
         analyzer = self.build_analyzer(i_term=i_term)
 
-
-        
-
         if i_vec is None:
             X = self._get_hasher().transform(analyzer(doc) for doc in X_s)
-
         else:
             X = self._get_hasher().transform(analyzer(doc) for doc in self._iter_interact_docs(X_s, i_vec))
         
