@@ -75,8 +75,6 @@ class InteractionHashingVectorizer(HashingVectorizer):
         stop_words = self.get_stop_words()
         tokenize = self.build_tokenizer()
 
-
-
         return lambda doc: self._word_ngrams(
             tokenize(preprocess(self.decode(doc))), stop_words, i_term=i_term)
 
