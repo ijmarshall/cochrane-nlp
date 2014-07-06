@@ -224,7 +224,7 @@ class PDFBiViewer(BiViewer):
             pm = PdfReader(os.path.join(PDF_PATH, pdf_filename + '.pdf'))
             text = pm.get_text()
 
-            with open(os.path.join(cachepath, pdf_filename + '.txt', 'wb')) as f:
+            with open(os.path.join(cachepath, pdf_filename + '.txt'), 'wb') as f:
                 f.write(text)
 
 
