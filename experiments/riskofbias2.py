@@ -404,6 +404,21 @@ class MultiTaskDocFilter(DataFilter):
                     continue 
 
                 yield (doc_i["doc-text"], doc_domain)
+
+    def X(self, doc_indices, pmid_instance=0, domain=None):
+        X = []
+        y = []
+        interactions = []
+
+        for i in doc_indices:
+            doc_i = self.data_instance.data[i][pmid_instance]
+            for doc_domain, judgement in doc_i["doc-y"].iteritems():                
+                if domain is not None and domain != doc_domain:
+                    continue
+                if judgement == 0: # skip the blanks
+                    continue 
+
+                yield doc_i["doc-text"]
         
 
 
