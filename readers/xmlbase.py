@@ -21,18 +21,22 @@ class XMLReader():
     def load(self, filename):
         return ET.parse(filename)
             
-    def _ET2unicode(self, ET_instance):
+    def _ET2unicode(self, ET_instance, strip_tags=True):
         "returns unicode of elementtree contents"
         if ET_instance is not None:
-            return (" ".join(ET.tostringlist(ET_instance, method="text", encoding="utf-8"))).strip()
+            if strip_tags:
+                print "tags stripped!"
+                return (" ".join(ET.tostringlist(ET_instance, method="text", encoding="utf-8"))).strip()
+            else:
+                return ET.tostring(ET_instance, method="xml", encoding="utf-8")
         else:
             return ""
 
-    def _ETfind(self, element_name, ET_instance):
+    def _ETfind(self, element_name, ET_instance, strip_tags=True):
         "finds (first) subelement, returns unicode of contents if present, else returns None"
         subelement = ET_instance.find(element_name)
         if subelement is not None:
-            return self._ET2unicode(subelement)
+            return self._ET2unicode(subelement, strip_tags=strip_tags)
         else:
             return ""
 

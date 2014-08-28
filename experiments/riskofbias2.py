@@ -378,12 +378,15 @@ class MultiTaskDocFilter(DataFilter):
         raise NotImplemented("Xy not used in MultiTaskDocFilter - you probably want Xyi() for (X, y, interaction term) tuples")
 
     def y(self, doc_indices, pmid_instance=0, domain=None):
+
+        if isinstance(domain, str):
+            domain = [domain]
         
         y = []
         for i in doc_indices:
             doc_i = self.data_instance.data[i][pmid_instance]
             for doc_domain, judgement in doc_i["doc-y"].iteritems():                
-                if domain is not None and domain != doc_domain:
+                if domain is not None and doc_domain not in domain:
                     continue
                 if judgement == 0: # skip the blanks
                     continue 
@@ -394,11 +397,13 @@ class MultiTaskDocFilter(DataFilter):
         X = []
         y = []
         interactions = []
+        if isinstance(domain, str):
+            domain = [domain]
 
         for i in doc_indices:
             doc_i = self.data_instance.data[i][pmid_instance]
             for doc_domain, judgement in doc_i["doc-y"].iteritems():                
-                if domain is not None and domain != doc_domain:
+                if domain is not None and doc_domain not in domain:
                     continue
                 if judgement == 0: # skip the blanks
                     continue 
@@ -410,10 +415,13 @@ class MultiTaskDocFilter(DataFilter):
         y = []
         interactions = []
 
+        if isinstance(domain, str):
+            domain = [domain]
+
         for i in doc_indices:
             doc_i = self.data_instance.data[i][pmid_instance]
             for doc_domain, judgement in doc_i["doc-y"].iteritems():                
-                if domain is not None and domain != doc_domain:
+                if domain is not None and doc_domain not in domain:
                     continue
                 if judgement == 0: # skip the blanks
                     continue 
@@ -435,6 +443,9 @@ class MultiTaskSentFilter(DataFilter):
 
         y = []
 
+        if isinstance(domain, str):
+            domain = [domain]
+
         for i in doc_indices:
 
             doc_i = self.data_instance.data[i][pmid_instance]
@@ -442,7 +453,7 @@ class MultiTaskSentFilter(DataFilter):
             sent_len = len(doc_i["sent-spans"])
 
             for doc_domain, judgements in doc_i["sent-y"].iteritems():
-                if (domain is not None) and (domain != doc_domain): # skip irrelevant domains if filter used
+                if (domain is not None) and doc_domain not in domain: # skip irrelevant domains if filter used
                     continue
 
                 if not judgements: # skip the blanks
@@ -461,6 +472,9 @@ class MultiTaskSentFilter(DataFilter):
         
     def y_uids(self, doc_indices, pmid_instance=0, domain=None):
 
+        if isinstance(domain, str):
+            domain = [domain]
+
         y_uids = []
 
         for i in doc_indices:
@@ -470,7 +484,7 @@ class MultiTaskSentFilter(DataFilter):
             sent_len = len(doc_i["sent-spans"])
 
             for doc_domain, judgements in doc_i["sent-y"].iteritems():
-                if (domain is not None) and (domain != doc_domain): # skip irrelevant domains if filter used
+                if (domain is not None) and doc_domain not in domain: # skip irrelevant domains if filter used
                     continue
 
                 if not judgements: # skip the blanks
@@ -483,6 +497,9 @@ class MultiTaskSentFilter(DataFilter):
 
     def X_i(self, doc_indices, pmid_instance=0, hide_interactions=False, domain=None):
 
+        if isinstance(domain, str):
+            domain = [domain]
+
         print "running X_iter"
         
         for i in doc_indices:
@@ -494,7 +511,7 @@ class MultiTaskSentFilter(DataFilter):
 
             for doc_domain, judgements in doc_i["sent-y"].iteritems():
 
-                if (domain is not None) and (domain != doc_domain): # skip irrelevant domains if filter used
+                if (domain is not None) and doc_domain not in domain: # skip irrelevant domains if filter used
                     continue
 
                 if not judgements: # skip the blanks
@@ -509,6 +526,8 @@ class MultiTaskSentFilter(DataFilter):
 
     def iter_pmid(self, doc_indices, pmid_instance=0, hide_interactions=False, domain=None):
 
+        if isinstance(domain, str):
+            domain = [domain]
         
         for i in doc_indices:
 
@@ -516,7 +535,7 @@ class MultiTaskSentFilter(DataFilter):
 
             for doc_domain, judgements in doc_i["sent-y"].iteritems():
 
-                if (domain is not None) and (domain != doc_domain): # skip irrelevant domains if filter used
+                if (domain is not None) and doc_domain not in domain: # skip irrelevant domains if filter used
                     continue
 
                 if not judgements: # skip the blanks
