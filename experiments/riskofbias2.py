@@ -79,7 +79,7 @@ class RoBData:
         
 
 
-    def generate_data(self, doc_level_only=False, force_cache_refresh=False, dont_save=False):
+    def generate_data(self, doc_level_only=False, force_cache_refresh=True, dont_save=False, skip_small_files=False):
         """
         simultaneously generate document and sentence data
         (though for simple models may not need sentence data)
@@ -109,9 +109,10 @@ class RoBData:
                     p.tap()
 
 
-                
-
                 pdf_text = self._preprocess_pdf(study.studypdf["text"])
+
+                if skip_small_files and len(pdf_text < 5000):
+                    continue
 
                 if not doc_level_only:
                     matcher.load_pdftext(pdf_text) # load the PDF once
