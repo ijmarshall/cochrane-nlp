@@ -87,8 +87,12 @@ class PdfReader(TextReader):
         """
         # bcw -- the quotes around the file path are necessary on
         # some systems!
-        rawtext = subprocess.check_output(['pdftotext', "%s" % filename, '-'])
-        return rawtext.strip() # remove any multiple blank lines at the end
+        try:
+            rawtext = subprocess.check_output(['pdftotext', "%s" % filename, '-'])
+            return rawtext.strip() # remove any multiple blank lines at the end
+        except:
+            # if error message generated
+            return ""
 
 
 class HtmlReader(TextReader):

@@ -22,6 +22,10 @@ def dictzip(*args):
         [l1item.update(l2item) for l1item, l2item in zip(args[0], arg)]
     return args[0]
 
+
+
+
+
 def listhandler(list_param_key, default_to_included_studies=True):
     """
     decorates other string handling functions, so
@@ -37,7 +41,6 @@ def listhandler(list_param_key, default_to_included_studies=True):
     def outer_wrapper(func):
         @wraps(func)
         def inner_wrapper(*args, **kwargs):
-            
             # first, get the parameter of interest, which is passed by the decorator as a string
             # or integer.
             # check here whether a string; if so, it's a kwarg
@@ -85,16 +88,22 @@ class RM5(XMLReader):
         self.map["included_studies"] = self.data.find('STUDIES_AND_REFERENCES/STUDIES/INCLUDED_STUDIES')
         self.map["quality"] = self.data.find('QUALITY_ITEMS')
         self.map["characteristics"] = self.data.find('CHARACTERISTICS_OF_STUDIES/CHARACTERISTICS_OF_INCLUDED_STUDIES')
+        self.map["analyses"] = self.data.find('ANALYSES_AND_DATA')
+
         self.all_ids = self.included_study_ids()
+        self.comparison_ids = self.get_comparison_ids()
         
         
-    def tree_to_unicode(self, tree):
+    def tree_to_unicode(self, tree, strip_tags=True):
         """
         returns unicode of elementtree contents (in an slightly complicated way!)
         cochrane XML may contain HTML, this allows it to be extracted properly
         """
         if tree is not None:
-            return (" ".join(ET.tostringlist(tree, method="text", encoding="utf-8"))).strip()
+            if strip_tags:
+                return (" ".join(ET.tostringlist(tree, method="text", encoding="utf-8"))).strip()
+            else:
+                return ET.tostring(tree, method="text", encoding="utf-8")
         else:
             return None
 
@@ -136,6 +145,16 @@ class RM5(XMLReader):
         (note that the id is unique in the *review* only, and not across the library)
         """
         return [study.attrib.get("ID") for study in self.map["included_studies"].findall("STUDY")]
+
+    def get_comparison_ids(self):
+        """
+        returns the Cochrane review internal unique id for all included comparisons
+        (note that the id is unique in the *review* only, and not across the library)
+        """
+        return [study.attrib.get("ID") for study in self.map["analyses"].findall("COMPARISON")]
+
+
+
 
     @listhandler(1)
     def tree_attributes(self, study_id, tree):
@@ -271,81 +290,6 @@ class RM5(XMLReader):
             
         return output
             
-
-
-    # def refs(self, full_parse=False):
-
-    #     studies_ET = self.data.findall("STUDIES_AND_REFERENCES/STUDIES/INCLUDED_STUDIES/STUDY")
-        
-    #     if full_parse:
-    #         characteristics = self.ref_characteristics()
-    #         quality = self.ref_quality()
-    #     else:
-    #         characteristics = None
-    #         quality = None
- 
-                   
-    #     def _ref_parse_to_dict(study_ET, characteristics=None, quality=None):
-
-    #         references = study_ET.findall("REFERENCE")
-
-    #         for i, reference in enumerate(references):
-    #             if reference.get("PRIMARY") == "YES":
-    #                 # either get the first references marked as the primary ref
-    #                 primary_ref = reference
-    #                 primary_status = "YES"
-    #                 index_ref = i
-    #                 break
-    #         else:
-                
-    #             # or set the primary ref to the first one
-    #             primary_ref = study_ET.find("REFERENCE") # select first one
-    #             # if no references, should return empty
-    #             primary_status = "NO"
-    #             index_ref = 0
-                
-
-    #         if primary_ref:
-    #             output_dict = {"TI": self._ETfind("TI", primary_ref),
-    #                           "SO": self._ETfind("SO", primary_ref),
-    #                           "AU": self._refs_AU(self._ETfind("AU", primary_ref)),
-    #                           "fAU": self._refs_AU(self._ETfind("AU", primary_ref))[0],
-    #                           "YR": self._ETfind("YR", primary_ref),
-    #                           "PG": self._refs_PG(self._ETfind("PG", primary_ref)),
-    #                           "fPG": self._refs_PG(self._ETfind("PG", primary_ref))[0],
-    #                           "VL": self._ETfind("VL", primary_ref),
-    #                           "NO": self._ETfind("NO", primary_ref),
-    #                           "ID": study_ET.attrib.get("ID"),
-    #                           "PRIMARY": primary_status,
-    #                           "REF_INDEX": index_ref}
-    #         else: # else no data in cochrane review
-    #             output_dict = {"TI": "",
-    #                           "SO": "",
-    #                           "AU": [],
-    #                           "fAU": "",
-    #                           "YR": "",
-    #                           "PG": [],
-    #                           "fPG": "",
-    #                           "VL": "",
-    #                           "NO": "",
-    #                           "ID": study_ET.attrib.get("ID"),
-    #                           "PRIMARY": -1,
-    #                           "REF_INDEX": -1}
-
-                          
-    #         if characteristics != None:
-    #             id = output_dict["ID"]
-    #             output_dict.update(characteristics.get(id, {}))
-                
-    #         if quality != None:
-    #             id = output_dict["ID"]
-    #             output_dict["QUALITY"] = quality.get(id, {})
-           
-    #         return output_dict
-    #     if return_dict:
-    #         return {study_ET.attrib.get("ID"): _ref_parse_to_dict(study_ET, characteristics=characteristics, quality=quality) for study_ET in studies_ET}
-    #     else:
-    #         return [_ref_parse_to_dict(study_ET, characteristics=characteristics, quality=quality) for study_ET in studies_ET]
             
         
     def _refs_PG(self, ref):
@@ -378,7 +322,7 @@ class RM5(XMLReader):
         return authors
 
     def sof_table(self):
-        return self._ETfind("SOF_TABLES/SOF_TABLE", self.data)
+        return self._ETfind("SOF_TABLES/SOF_TABLE", self.data, strip_tags=False)
 
 
 
@@ -418,7 +362,7 @@ def main():
 
     print
     print "Primary reference details for %s" % (ids[1])
-    print reader.references(study_id=ids[0])
+    print reader.references()
     print
 
     # print "All citation details for %s" % (ids[0])
@@ -431,33 +375,39 @@ def main():
     print
 
     print "Quality info"
-    print reader.quality(study_id=ids[0])
+    print reader.quality(study_id=ids[1])
 
 
 
-    # refs = reader.references() # False just retrieves the citation
-    # print "No included studies: %d" % (len(refs),)
-    # print
+    refs = reader.references() # False just retrieves the citation
+    print "No included studies: %d" % (len(refs),)
+    print
 
-    # print "First included study title:"
-    # print refs[0]["TI"]
-    # print
 
-    # print "Population details"
-    # print refs[0]["CHAR_PARTICIPANTS"]
-    # print
 
-    # print "Risk of bias"
-    # print
+    print "First included study title:"
+    print refs[ids[0]][0]["TI"]
+    print
 
-    # for i, domain in enumerate(refs[0]["QUALITY"]):
+    print "Population details"
+    print reader.char_refs(study_id=ids[0])["CHAR_PARTICIPANTS"]
+    print
+
+    print "Risk of bias"
+    print
+
+    # for i, domain in enumerate(refs[ids[0]]["QUALITY"]):
     #     print "Domain number %d" % (i, )
     #     print "Name\t\t" + domain["DOMAIN"]
     #     print "Description\t" + domain["DESCRIPTION"]
     #     print "Rating\t\t" + domain["RATING"]
         
-    # print reader.references()
-    # print reader.references(['STD-Thomas-1987', 'STD-Vercellini-1999'])
+    print reader.references()
+    print
+    print reader.references(study_id = ['STD-Thomas-1987', 'STD-Vercellini-1999'])
+
+    print
+    print reader.sof_table()
 
 
 
