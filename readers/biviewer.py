@@ -191,9 +191,12 @@ class PDFBiViewer(BiViewer):
     	pdf_index = {}
 
     	for filename in pdf_filenames_all:
-    		
-    		pmids = re.search("([1-9][0-9]*)\.pdf", filename)
-    		if pmids:
+            
+            pmids = re.search("([1-9][0-9]*)\.pdf", filename)
+            # pmids = re.search("_([1-9][0-9]*)\.pdf", filename) # uncomment this to retrive just the initial 2,200 or so PDFs (ignore the new ones)
+
+
+            if pmids:
     			pdf_index[pmids.group(1)] = filename
     	return pdf_index
 
