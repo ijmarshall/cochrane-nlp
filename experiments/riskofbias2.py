@@ -377,9 +377,10 @@ class MultiTaskDocFilter(DataFilter):
     def Xy(self, doc_indices):
         raise NotImplemented("Xy not used in MultiTaskDocFilter - you probably want Xyi() for (X, y, interaction term) tuples")
 
-    def y(self, doc_indices, pmid_instance=0, domain=None):
-        
+
+    def y(self, doc_indices, pmid_instance=0, domain=None, interactions_too=False):
         y = []
+        interactions = []
         for i in doc_indices:
             doc_i = self.data_instance.data[i][pmid_instance]
             for doc_domain, judgement in doc_i["doc-y"].iteritems():                
@@ -388,6 +389,9 @@ class MultiTaskDocFilter(DataFilter):
                 if judgement == 0: # skip the blanks
                     continue 
                 y.append(judgement)
+                interactions.append(doc_domain) 
+        if interactions_too:
+            return y, interactions 
         return y
 
     def Xyi(self, doc_indices, pmid_instance=0, domain=None):
@@ -476,7 +480,7 @@ class MultiTaskSentFilter(DataFilter):
 
             # make sentence list
             sents = [doc_i["doc-text"][start:end] for start, end in doc_i["sent-spans"]]
-
+            
             for doc_domain, judgements in doc_i["sent-y"].iteritems():
 
                 if (domain is not None) and (domain != doc_domain): # skip irrelevant domains if filter used
