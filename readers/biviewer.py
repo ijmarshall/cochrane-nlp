@@ -88,8 +88,6 @@ class BiViewer():
 
         # end temporary code
 
-                    
-
     def __len__(self):
         "returns number of RCTs in index (not number of Cochrane reviews)"
         return len(self.index_data)
@@ -160,8 +158,25 @@ class PDFBiViewer(BiViewer):
 
         # limit self index to those studies with linked PDFs
         self.index_data = [item for item in self.index_data if item["pmid"] in self.pdf_index]
+        
+        # (optionally) keep a map of PMIDs to data indices around
+        self.pmids_to_indices = None
 
+    def get_study_from_pmid(self, pmid):
+        if self.pmids_to_indices is None:
+            print "building a pmid dict -- this will take a bit..."
+            self.build_pmid_to_index_d()
+            print "ok!"
+        
+        i = self.pmids_to_indices[pmid]
+        return self[i]
 
+    def build_pmid_to_index_d(self):
+        ''' builds a dictionary mapping study pmids to dat indices '''
+        self.pmids_to_indices = {}
+        for i, study in enumerate(self):
+            pmid = study.studypdf['pmid']
+            self.pmids_to_indices[pmid] = i 
 
 
     def get_pdf_index(self):
