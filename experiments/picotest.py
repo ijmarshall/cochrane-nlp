@@ -9,7 +9,10 @@ from collections import Counter
 from nltk.corpus import stopwords
 import re
 import random
-
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sys
 
 
 def word_list(text):
@@ -47,6 +50,31 @@ def main():
         for i, sent in enumerate(pdf_sents):
             sent_words = word_list(sent)
             intersects.append(len(cdsr_words.intersection(sent_words)))
+
+        try:
+            arg = sys.argv[1]
+        except:
+            arg = ""
+
+        intersects = np.array(intersects)
+
+        if arg == "plot":
+            sns.set_palette("deep", desat=.6)
+            sns.set_context(rc={"figure.figsize": (8, 4)})
+            sns.distplot(intersects, kde=False)
+            # sns.factorplot("frequency", 
+                # data=, x_order=range(0, 20))
+            plt.show()
+        elif arg == "pc":
+            intersects_pc = (intersects*100)/len(cdsr_words)
+            sns.set_palette("deep", desat=.6)
+            sns.set_context(rc={"figure.figsize": (8, 4)})
+
+            sns.distplot(np.array(intersects_pc), kde=False)
+            # sns.factorplot("frequency", 
+                # data=, x_order=range(0, 20))
+            plt.show()
+
 
         max_val = max(intersects)
         max_indices = [i for i, j in enumerate(intersects) if j == max_val]
