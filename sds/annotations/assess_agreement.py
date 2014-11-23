@@ -32,6 +32,15 @@ def get_label_triples(path, labeler_str, label_index):
 
     return label_triples
 
+def _simple_merge_metric(lbl1, lbl2):
+    ''' '''
+    if lbl1 == lbl2 or all(
+            [lbl in ("1", "2") for lbl in [lbl1, lbl2]]):
+        return 0
+    else:
+        # then lbl1 != lbl2 and one of them is a 0.
+        return 1
+
 def calc_agreement():
     brian = get_brians_lbls()
     print "\nnumber of labels from brian: %s" % len(brian)
@@ -53,6 +62,15 @@ def calc_agreement():
     print "\n -- kappa --"
     print task.kappa()
 
+    #### what about if we treat 1s and 2s as agreements?
+    task = AnnotationTask(all_triples, distance=_simple_merge_metric)
+    print "\nok, now grouping.."
+
+    print "\n -- average overall agreement, grouping 1s and 2s --"
+    print task.avg_Ao()
+
+    print "\n -- and kappa (with grouping) --"
+    print task.kappa()
 
 if __name__ == '__main__':
     calc_agreement()
