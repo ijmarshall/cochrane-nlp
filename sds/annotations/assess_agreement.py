@@ -41,6 +41,15 @@ def _simple_merge_metric(lbl1, lbl2):
         # then lbl1 != lbl2 and one of them is a 0.
         return 1
 
+def _twos_v_all_metric(lbl1, lbl2):
+    ''' '''
+    if lbl1 == lbl2 or not any(
+        [lbl == "2" for lbl in [lbl1, lbl2]]):
+        return 0
+    else:
+        return 1
+
+
 def calc_agreement():
     brian = get_brians_lbls()
     print "\nnumber of labels from brian: %s" % len(brian)
@@ -70,6 +79,17 @@ def calc_agreement():
     print task.avg_Ao()
 
     print "\n -- and kappa (with grouping) --"
+    print task.kappa()
+
+    #### and if we only pay attention to whether there is 
+    #### agreement on 2's?
+    task = AnnotationTask(all_triples, distance=_twos_v_all_metric)
+    print "\nok, now 2s v all.."
+
+    print "\n -- average overall agreement, 2s v all --"
+    print task.avg_Ao()
+
+    print "\n -- and kappa (2s v all) --"
     print task.kappa()
 
 if __name__ == '__main__':
