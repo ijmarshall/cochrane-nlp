@@ -54,3 +54,6 @@ def calc_agreement():
     print task.kappa()
 
 
+if __name__ == '__main__':
+    calc_agreement()
+
