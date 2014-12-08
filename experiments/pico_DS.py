@@ -121,9 +121,7 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     ranked_sentences, scores = [list(x) for x in zip(*sorted(
             zip(sentences, sentence_scores), 
             key=itemgetter(1), reverse=True))]
-    
-    if study[1]['pmid'] == "12052800" and PICO_field == "CHAR_OUTCOMES":
-        pdb.set_trace()
+
     return ranked_sentences, scores, shared_tokens
 
 

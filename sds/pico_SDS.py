@@ -54,9 +54,28 @@ def generate_DS_X_y(annotations_path="sds/annotations/for_labeling_sharma.csv", 
                 pdb.set_trace()
 
 
-            # get the study from the PMID
-            study = biview.get_study_from_pmid(study_id)
+            # get the study from the PMID.
+            # 12/8/14. this is more complicated than originally imagined,
+            # because we overlooked the detail that PMIDs are not
+            # unique keys for the CDSR (!). multiple instances
+            # of a given article (PMID) may exist in the database.
+            ##
+            studies = biview.get_study_from_pmid(study_id, all_entries=True)
+            study = None 
+            for study_ in studies:
+                if target_sentence == study_.cochrane["CHARACTERISTICS"][PICO_field]:
+                    study = study_
+                    break
+            else:
+                # we should certainly never get here;
+                # this would mean that none of the retreived
+                # studies (studies with this PMID) match the
+                # labeled candidate sentence
+                pdb.set_trace()
 
+            #print "ok!"
+            #if len(studies) > 1:
+            #    pdb.set_trace()
             X_i_text = candidate_sentence
 
             ## numeric features
@@ -74,6 +93,8 @@ def generate_DS_X_y(annotations_path="sds/annotations/for_labeling_sharma.csv", 
             study_id = "%s" % study[1]['pmid']
             pdf_sents = pico_DS.sent_tokenize(pdf)
 
+
+
             # note that this should never return None, because we would have only
             # written out for labeling studies/fields that had at least one match.
             ranked_sentences, scores, shared_tokens = pico_DS.get_ranked_sentences_for_study_and_field(study, 
@@ -82,10 +103,6 @@ def generate_DS_X_y(annotations_path="sds/annotations/for_labeling_sharma.csv", 
             # don't take more than max_sentences sentences
             num_to_keep = min(len([score for score in scores if score >= cutoff]), max_sentences)
 
-            # TMP TMP TMP
-            #candidates1 = list(candidates)
-            scores1 = list(scores)
-            shared_tokens1 = list(shared_tokens)
 
             target_text = study.cochrane["CHARACTERISTICS"][PICO_field]
             candidates = ranked_sentences[:num_to_keep]
