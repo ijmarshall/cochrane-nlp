@@ -104,7 +104,7 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     shared_tokens = []
 
     # this is the target sentence
-    t = study.cochrane["CHARACTERISTICS"][PICO_field]
+    t = study.cochrane["CHARACTERISTICS"][PICO_field].decode("utf-8", errors="ignore")
     
     if t is None:
         return None
@@ -112,6 +112,7 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     cdsr_words = word_list(t)
 
     for i, sent in enumerate(pdf_sents):
+        sent = sent.decode("utf-8", errors="ignore")
         sent_words = word_list(sent)
         sentences.append(sent)
         shared_tokens_i = cdsr_words.intersection(sent_words)
