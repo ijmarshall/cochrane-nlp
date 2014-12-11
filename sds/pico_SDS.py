@@ -28,8 +28,11 @@ from experiments import pico_DS
 def run_experiment():
     # X and y for supervised distant supervision
     DS_learning_tasks = get_DS_features_and_labels()
-    for domain in DS_learning_tasks:
-        pass
+    for domain, task in DS_learning_tasks.items():
+        # note that 'task' here is comprises
+        # ('raw') extracted features and labels
+        X_d, y_d = generate_X_y(task)
+        pdb.set_trace()
 
 def _score_to_binary_lbl(y_str, zero_one=True):
     if y_str.strip() == "2":
@@ -63,19 +66,33 @@ def generate_X_y(DS_learning_task, binary_labels=True, y_lbl_func=_score_to_bina
         #X_i_numeric = np.matrix(X_i_numeric)
         ##pdb.set_trace()
         X_combined = sp.sparse.hstack((X_v, X_i_numeric))
-        
+        X.append(X_combined)
+        y.append(y_lbl_func(y_i))
+        #pdb.set_trace()
+    return X, y
 
-
-
-def get_DS_features_and_labels(annotations_path="sds/annotations/for_labeling_sharma.csv", 
+# "sds/annotations/for_labeling_sharma.csv"
+def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sharma.csv",
+                                labels_path="sds/annotations/sharma-merged-labels.csv",
+                                label_index=-1,
                                 max_sentences=10, cutoff=4, normalize_numeric_cols=True):
     '''
-    We make the assumption that the annotations file comprises
+    We are making the assumption that files containing *labels* are (at least 
+    optionally) distinct from the file containing the corresponding labels. 
+    The former path is specified by the "candidates_path" argument; the latter 
+    by the "labels path". This was an easy way to get out of unicode hell. 
+    This way, you can use the candidates file you originally generate directly 
+    and combine this with the labels returned (in whatever format they may be). 
+
+    We make the assumption that the 'original' file comprises
     the following fields (in this order!)
 
-        study id,PICO field,CDSR sentence,candidate sentence,rating
+        study id,PICO field,CDSR sentence,candidate sentence
 
-    This returns a dictionary, where the keys are the domains of interest,
+    And the labels file should have the labels in the label_index (by default,
+    the last column in the sheet).
+
+    This function returns a dictionary, where the keys are the domains of interest,
     specifically "CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS" and "CHAR_OUTCOMES".
     Each of these, in turn, contains X and y vectors (of equal cardinality).
     The X instances are tuples, where the first entry is a vector of numerical 
@@ -94,18 +111,32 @@ def get_DS_features_and_labels(annotations_path="sds/annotations/for_labeling_sh
         # X, y for each domain.
         X_y_dict[d] = {"X":[], "y":[]}
 
-    with open(annotations_path, 'rU') as labels_file:
-        annotations_reader = unicode_csv_reader(labels_file)
-        annotations_reader.next() # skip header 
+    print "reading candidates from: %s" % candidates_path
+    print "and labels from: %s." % labels_path
+
+    with open(candidates_path, 'rb') as candidates_file, open(labels_path, 'rU') as labels_file:
+        candidates = list(unicode_csv_reader(candidates_file))
+        # note that we just use a vanilla CSV reader for the 
+        # labels!
+        labels = list(csv.reader(labels_file)) 
+
+        if len(candidates) != len(labels):
+            print "you have a mismatch between candidate sentences and labels!"
+            pdb.set_trace()
+
+        # skip headers
+        candidates = candidates[1:]
+        labels = labels[1:]
+        
         ###
         # note that the structure of the annotations
         # file means that studies are repeated, and
         # there are multiple annotated sentences
         # *per domain*. 
-        for annotation_line in annotations_reader:
+        for candidate_line, label_line in zip(candidates, labels):
+            #print annotation_line
             try:
-                study_id, PICO_field, target_sentence, \
-                    candidate_sentence, label = annotation_line
+                study_id, PICO_field, target_sentence, candidate_sentence = candidate_line[:4]
                 PICO_field = pico_strs_to_domains[PICO_field.strip()]
             except:
                 pdb.set_trace()
@@ -167,6 +198,7 @@ def get_DS_features_and_labels(annotations_path="sds/annotations/for_labeling_sh
                 cur_candidate_index = candidates.index(candidate_sentence)
             except:
                 pdb.set_trace()
+
             # shared tokens for this candidate
             cur_shared_tokens = shared_tokens[cur_candidate_index]
             # extend X_i text with shared tokens (using 
@@ -188,7 +220,7 @@ def get_DS_features_and_labels(annotations_path="sds/annotations/for_labeling_sh
             X_i = (X_i_numeric, X_i_text)
             # @TODO we may want to do something else here
             # with the label (e.g., maybe binarize it?)
-            y_i = label
+            y_i = label_line[label_index]
             X_y_dict[PICO_field]["X"].append(X_i)
             X_y_dict[PICO_field]["y"].append(y_i)
 
@@ -210,15 +242,17 @@ def get_DS_features_and_labels(annotations_path="sds/annotations/for_labeling_sh
                 for i in xrange(len(domain_X)):
                     # this is not cool
                     X_y_dict[domain]["X"][i][0][j] = X_y_dict[domain]["X"][i][0][j] / z_j
-            #pdb.set_trace()
-
-
+    
     return X_y_dict
 
+
 ''' completely ripped off from Alex Martelli '''
-def unicode_csv_reader(utf8_data, dialect=csv.excel, **kwargs):
-    csv_reader = csv.reader(utf8_data, dialect=dialect, **kwargs)
+def unicode_csv_reader(utf8_data, **kwargs):
+    csv_reader = csv.reader(utf8_data, **kwargs)
     for row in csv_reader:
-        yield [unicode(cell, 'utf-8') for cell in row]
+        try:
+            yield [unicode(cell, 'utf-8') for cell in row]
+        except:
+            pdb.set_trace()
 
             
