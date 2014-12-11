@@ -16,6 +16,10 @@ import numpy as np
 import scipy as sp
 import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression 
+from sklearn.grid_search import GridSearchCV
+from sklearn import cross_validation
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 
 from readers import biviewer
 
@@ -31,8 +35,15 @@ def run_experiment():
     for domain, task in DS_learning_tasks.items():
         # note that 'task' here is comprises
         # ('raw') extracted features and labels
-        X_d, y_d = generate_X_y(task)
-        pdb.set_trace()
+        X_d, y_d, X_v = generate_X_y(task)
+        #pdb.set_trace()
+        return X_d, y_d, X_v
+
+def build_clf(X, y):
+    tune_params = [{"C":[.0001, .001, .01, .1, 1, 10]}]
+    clf = GridSearchCV(LogisticRegression(), tune_params, scoring="f1")
+
+
 
 def _score_to_binary_lbl(y_str, zero_one=True):
     if y_str.strip() == "2":
@@ -60,15 +71,20 @@ def generate_X_y(DS_learning_task, binary_labels=True, y_lbl_func=_score_to_bina
     print "ok."
 
     X, y = [], []
+    X1 = []
+    
     for X_i, y_i in zip(DS_learning_task["X"], DS_learning_task["y"]):
         X_i_numeric, X_i_text = X_i
         X_v = vectorizer.transform([X_i_text])[0]
         #X_i_numeric = np.matrix(X_i_numeric)
         ##pdb.set_trace()
+
+        X1.append(X_v)
         X_combined = sp.sparse.hstack((X_v, X_i_numeric))
-        X.append(X_combined)
-        y.append(y_lbl_func(y_i))
         #pdb.set_trace()
+        X.append(np.asarray(X_combined.todense())[0])
+        y.append(y_lbl_func(y_i))
+        
     return X, y
 
 # "sds/annotations/for_labeling_sharma.csv"
