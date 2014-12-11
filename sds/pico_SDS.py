@@ -35,9 +35,9 @@ def run_experiment():
     for domain, task in DS_learning_tasks.items():
         # note that 'task' here is comprises
         # ('raw') extracted features and labels
-        X_d, y_d, X_v = generate_X_y(task)
+        X_d, y_d = generate_X_y(task)
         #pdb.set_trace()
-        return X_d, y_d, X_v
+        return X_d, y_d
 
 def build_clf(X, y):
     tune_params = [{"C":[.0001, .001, .01, .1, 1, 10]}]
@@ -45,8 +45,13 @@ def build_clf(X, y):
 
 
 
-def _score_to_binary_lbl(y_str, zero_one=True):
-    if y_str.strip() == "2":
+def _score_to_ordinal_lbl(y_str):
+    return float(y_str.strip())
+
+def _score_to_binary_lbl(y_str, zero_one=True, threshold=1):
+    # will label anything >= threshold as '1'; otherwise 0
+    # (or -1, depending on the zero_one flag).
+    if float(y_str.strip()) >= threshold:
         return 1
 
     return 0 if zero_one else -1
