@@ -29,20 +29,73 @@ from readers import biviewer
 from experiments import pico_DS 
 
 
-def run_experiment():
+def run_experiment(iters=10):
     # X and y for supervised distant supervision
     DS_learning_tasks = get_DS_features_and_labels()
     for domain, task in DS_learning_tasks.items():
         # note that 'task' here is comprises
         # ('raw') extracted features and labels
         X_d, y_d = generate_X_y(task)
+        pmids_d = task["pmid"]
+
         #pdb.set_trace()
-        return X_d, y_d
+        # for experimentation, uncomment below...
+        # in general these would be fed into 
+        # the build_clf function, below
+        #return X_d, y_d, task["pmid"]
+        for iter_ in xrange(iters):   
+            train_X, train_y, test_X, test_y = train_test_by_pmid(X_d, y_d, pmids_d)
+            model = build_clf(train_X, train_y)
+            model.fit(train_X, train_y)
 
+            # To evaluate performance with respect
+            # to the *true* (or primary) task, you 
+            # should do the following
+            #   (1) Train the DS model (M_DS) using all train_X, train_y
+            #       here. 
+            #   (2) Generate as many DS labels as possible
+            #       for PICO. For SDS, use M_DS to either 
+            #       (a) filter out labels predicted to be 
+            #       irrelevant, or, (b) weight instances 
+            #       w.r.t. predicted probability of being good
+            #   (3) Other methods should basically just use
+            #       the DS labels directly, possibly in combination
+            #       with train_X, train_y
+            #   (4) Train the `primary' model M_P using the entire
+            #       distantly derived `psuedo-labeled' corpus
+            #   (5) Assess performance using held out labeled 
+            #       data.
+            pdb.set_trace()
+
+
+def train_test_by_pmid(X, y, pmids, train_p=.8):
+    '''
+    randomly sample 80% of the pmids as training instances; 
+    the rest will be testing 
+    '''
+    unique_pmids = list(set(pmids))
+    train_size = int(train_p * len(unique_pmids))
+    train_pmids = random.sample(unique_pmids, train_size)
+    test_pmids = list(set(pmids) - set(train_pmids))
+    train_X, train_y, test_X, test_y = [], [], [], []
+    for i, pmid in enumerate(pmids):
+        if pmid in train_pmids:
+            train_X.append(X[i])
+            train_y.append(y[i])
+        else:
+            test_X.append(X[i])
+            test_y.append(y[i])
+    return train_X, train_y, test_X, test_y
+
+
+## TODO probably mess with class weights; possibly undersample?
+# in general we need to check to see how well calibrated our 
+# model is!
 def build_clf(X, y):
-    tune_params = [{"C":[.0001, .001, .01, .1, 1, 10]}]
-    clf = GridSearchCV(LogisticRegression(), tune_params, scoring="f1")
-
+    # .0001, .001, 
+    tune_params = [{"C":[.001, .001, .01, .1, .05, 1, 2, 5, 10]}]
+    clf = GridSearchCV(LogisticRegression(), tune_params, scoring="accuracy", cv=5)
+    return clf
 
 
 def _score_to_ordinal_lbl(y_str):
@@ -101,7 +154,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
     We are making the assumption that files containing *labels* are (at least 
     optionally) distinct from the file containing the corresponding labels. 
     The former path is specified by the "candidates_path" argument; the latter 
-    by the "labels path". This was an easy way to get out of unicode hell. 
+    by the "labels_path". This was an easy way to get out of unicode hell. 
     This way, you can use the candidates file you originally generate directly 
     and combine this with the labels returned (in whatever format they may be). 
 
@@ -129,8 +182,11 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
 
     X_y_dict = {}
     for d in domains:
-        # X, y for each domain.
-        X_y_dict[d] = {"X":[], "y":[]}
+        # X, y and pmids for each domain. the latter
+        # is so we can know which studies each candidate
+        # was generated for.
+        X_y_dict[d] = {"X":[], "y":[], "pmid":[]}
+
 
     print "reading candidates from: %s" % candidates_path
     print "and labels from: %s." % labels_path
@@ -244,6 +300,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             y_i = label_line[label_index]
             X_y_dict[PICO_field]["X"].append(X_i)
             X_y_dict[PICO_field]["y"].append(y_i)
+            X_y_dict[PICO_field]["pmid"].append(study_id)
 
     if normalize_numeric_cols:
         # @TODO ugh, yeah this is not very readable
