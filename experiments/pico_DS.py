@@ -18,12 +18,65 @@ from collections import Counter
 
 from readers import biviewer
 
+PICO_DOMAINS = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
+
 def word_list(text):
     text = text.lower()
     word_set = set(re.split('[^a-z]+', text))
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
+def all_PICO_DS(cutoff=4, max_sentences=10):
+    ###
+    # for now we'll just grab sentences and `labels' according
+    # to simple criteria.
+    ###
+    X_y_dict = {domain: {"sentences":[], "y":[]} for domain in PICO_DOMAINS}
+    p = biviewer.PDFBiViewer()
+    for n, study in enumerate(p):
+        if n % 100 == 0:
+            print "on study %s" % n 
+
+        ### TMP TMP TMP
+        if n > 300:
+            return X_y_dict
+            
+        pdf = study.studypdf['text']
+        study_id = "%s" % study[1]['pmid']
+        pdf_sents = sent_tokenize(pdf)
+
+        for pico_field in PICO_DOMAINS:
+            ranked_sentences_and_scores = \
+                    get_ranked_sentences_for_study_and_field(study, 
+                                pico_field, pdf_sents=pdf_sents)
+    
+                
+            # in this case, there was no supervision in the
+            # CDSR so we just keep on moving
+            if ranked_sentences_and_scores is None:
+                pass 
+            else:
+                #### 
+                # then add all sentences that meet our DS
+                # criteria as positive examples; all others 
+                # are -1. 
+                ###
+
+                # the :2 throws away the shared tokens here.
+                ranked_sentences, scores = ranked_sentences_and_scores[:2]
+                # don't take more than max_sentences sentences
+                #num_to_keep = min(len([score for score in scores if score >= cutoff]), max_sentences)
+
+                pos_count = 0 # place an upper-bound on the number of pos. instances.
+                for sent, score in zip(ranked_sentences, scores):
+                    X_y_dict[pico_field]["sentences"].append(sent)
+                    cur_y = -1
+                    if pos_count < max_sentences and score >= cutoff:
+                        cur_y = 1
+                        pos_count += 1  
+                    X_y_dict[pico_field]["y"].append(cur_y)
+
+    return X_y_dict
 
 def output_data_for_labeling(N=5, output_file_path="for_labeling.csv", cutoff=4, max_sentences=10):
     ''' generate a CSV file for labeling matches '''
@@ -48,7 +101,7 @@ def output_data_for_labeling(N=5, output_file_path="for_labeling.csv", cutoff=4,
             study_id = "%s" % study[1]['pmid']
             pdf_sents = sent_tokenize(pdf)
 
-            for pico_field in ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]:
+            for pico_field in PICO_DOMAINS:
                 ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study, 
                             pico_field, pdf_sents=pdf_sents)
                 
@@ -103,11 +156,13 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     # record the shared words
     shared_tokens = []
 
-    # this is the target sentence
-    t = study.cochrane["CHARACTERISTICS"][PICO_field].decode("utf-8", errors="ignore")
-    
+    t = study.cochrane["CHARACTERISTICS"][PICO_field]
     if t is None:
-        return None
+        # no supervision here!
+        return None 
+
+    # this is the target sentence
+    t = t.decode("utf-8", errors="ignore")
    
     cdsr_words = word_list(t)
 
