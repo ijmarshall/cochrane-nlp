@@ -27,6 +27,12 @@ def word_list(text):
     return word_set.difference(stop_set)
 
 def all_PICO_DS(cutoff=4, max_sentences=10):
+    '''
+    Generates all available `labeled' PICO training data via naive
+    DS strategy of token matching and returns a nested dictionary; 
+    the top level are PICO domains, and sentences / `labels' are 
+    nested beneath these.
+    '''
     ###
     # for now we'll just grab sentences and `labels' according
     # to simple criteria.
@@ -40,7 +46,7 @@ def all_PICO_DS(cutoff=4, max_sentences=10):
         ### TMP TMP TMP
         if n > 300:
             return X_y_dict
-            
+
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
         pdf_sents = sent_tokenize(pdf)
