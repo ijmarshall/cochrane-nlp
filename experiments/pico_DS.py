@@ -8,13 +8,16 @@ import sys
 import csv 
 import pdb
 from operator import itemgetter
+from collections import Counter
 
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
-from collections import Counter
+
+# for generating DS features from sentences
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 from readers import biviewer
 
@@ -26,18 +29,27 @@ def word_list(text):
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
-def all_PICO_DS(cutoff=4, max_sentences=10):
+def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True):
     '''
     Generates all available `labeled' PICO training data via naive
     DS strategy of token matching and returns a nested dictionary; 
     the top level are PICO domains, and sentences / `labels' are 
     nested beneath these.
+
+    If the vectorize flag is True, then we return (sparse)
+    feature representations of the sentences. 
+    @TODO @TODO
+    should probably better engineer these features! e.g., should 
+    at least swap nums in, and probably other tricks...
     '''
     ###
     # for now we'll just grab sentences and `labels' according
     # to simple criteria.
     ###
-    X_y_dict = {domain: {"sentences":[], "y":[]} for domain in PICO_DOMAINS}
+    sentences_y_dict = {
+        domain: {"sentences":[], "y":[], "pmids":[]} for 
+        domain in PICO_DOMAINS}
+
     p = biviewer.PDFBiViewer()
     for n, study in enumerate(p):
         if n % 100 == 0:
@@ -45,7 +57,8 @@ def all_PICO_DS(cutoff=4, max_sentences=10):
 
         ### TMP TMP TMP
         if n > 300:
-            return X_y_dict
+            #return sentences_y_dict
+            break
 
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
@@ -75,14 +88,43 @@ def all_PICO_DS(cutoff=4, max_sentences=10):
 
                 pos_count = 0 # place an upper-bound on the number of pos. instances.
                 for sent, score in zip(ranked_sentences, scores):
-                    X_y_dict[pico_field]["sentences"].append(sent)
+                    sentences_y_dict[pico_field]["sentences"].append(sent)
                     cur_y = -1
                     if pos_count < max_sentences and score >= cutoff:
                         cur_y = 1
                         pos_count += 1  
-                    X_y_dict[pico_field]["y"].append(cur_y)
+                    sentences_y_dict[pico_field]["y"].append(cur_y)
+                    sentences_y_dict[pico_field]["pmids"].append(study_id)
+    
+    # add vector representations to the dictionary
+    if add_vectors:
+        sentences_y_dict, domain_vectorizers = vectorize(sentences_y_dict)
+        return sentences_y_dict, domain_vectorizers
+        
+    return sentences_y_dict
 
-    return X_y_dict
+
+def vectorize(sentences_y_dict):
+    '''
+    Vectorize the sentences in each pico domain and 
+    mutate the sentences_y_dict parameter by adding 
+    these representations.
+    '''
+    domain_vectorizers = {}
+    for domain in PICO_DOMAINS:
+        all_sentences = sentences_y_dict[domain]["sentences"]
+
+        vectorizer = CountVectorizer(min_df=3, max_features=50000, ngram_range=(1, 2))
+        vectorizer.fit(all_sentences)
+        X = vectorizer.transform(all_sentences)
+        tf_transformer = TfidfTransformer().fit(X)
+        sentences_y_dict[domain]["X"] = tf_transformer.transform(X)
+
+        # hold on to the vectorizers.
+        domain_vectorizers[domain] = vectorizer
+
+    return sentences_y_dict, domain_vectorizers
+    #all_sentences = X_y_dict
 
 def output_data_for_labeling(N=5, output_file_path="for_labeling.csv", cutoff=4, max_sentences=10):
     ''' generate a CSV file for labeling matches '''
