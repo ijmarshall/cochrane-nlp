@@ -16,7 +16,8 @@ import numpy as np
 import scipy as sp
 import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression 
+from sklearn.linear_model import LogisticRegression, SGDClassifier
+
 from sklearn.grid_search import GridSearchCV
 from sklearn import cross_validation
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
@@ -27,22 +28,133 @@ from readers import biviewer
 # sentences. this is possibly not the ideal 
 # location.
 from experiments import pico_DS 
+domains = pico_DS.PICO_DOMAINS 
+
+def DS_PICO_experiment():
+    '''
+    This is an implementation of a naive baseline 
+    distantly supervised method
+    '''
+    
+    sentences_y_dict, domain_vectorizers = pico_DS.all_PICO_DS()
+    
+
+    # this is kind of confusingly named; we need these 
+    # DS labels for evaluation here -- we don't care for 
+    # the features in this case, though. 
+    # @TODO refactor or rename method?
+    DS_learning_tasks = get_DS_features_and_labels()
+
+    for domain in domains:
+        # here we need to grab the annotations used also
+        # for SDS to evaluate our strategy
+        domain_supervision = DS_learning_tasks[domain]
+
+        # @TODO probably want to make this some 
+        # *sample* of the supervision, rather 
+        # than all of it!
+        testing_pmids = domain_supervision["pmids"]
+
+        ###
+        # which rows correspond to studies that 
+        # are in the testing data? we want to 
+        # exclude these. 
+        domain_DS = sentences_y_dict[domain]
+
+        train_rows, test_rows = [], []
+        y_test_DS = [] # tricky
+        for i, pmid in enumerate(domain_DS['pmids']):
+            if pmid not in testing_pmids:
+                train_rows.append(i)
+            else:
+                test_rows.append(i)
+                ###
+                # this is tricky.
+                # we have to identify the current sentence from 
+                # DS in our supervised label set. To do this, we 
+                # first figure out which sentences were labeled
+                # for this study (pmid).
+                first_index = domain_supervision["pmids"].index(pmid)
+                study_indices = range(first_index, first_index+domain_supervision["pmids"].count(pmid))
+                # ok, now grab the actual sentences corresponding
+                # to these labels
+                labeled_sentences, labels = [], []
+                for sent_index in study_indices:
+                    labeled_sentences.append(domain_supervision["sentences"][sent_index])
+                    labels.append(domain_supervision["y"][sent_index])
+
+                try:
+                    # which of these sentences are we looking at now?
+                    matched_sentence_index = labeled_sentences.index(
+                        domain_DS["sentences"][i])
+
+                    # ok, now, finally: what was it's label? 
+                    cur_label = _score_to_binary_lbl(labels[matched_sentence_index], 
+                                        threshold=1, zero_one=False)
+                    #if cur_label >= 1:
+                    #    pdb.set_trace()
+                    y_test_DS.append(cur_label)
+                    
+                except:
+                    # this shouldn't happen, as it would mean that 
+                    # the sentence in our test data could not be 
+                    # matched to 
+                    #print "something is up -- could not match a DS sentence!"
+                    #pdb.set_trace()
+
+                    ### 
+                    # CORRECTION this will happen all the time!
+                    # Specifically, we'll be here every time we 
+                    # encounter a sentence that didn't rank high
+                    # enough to get a label. The assumption is that
+                    # these are -1s!
+                    y_test_DS.append(-1)
 
 
-def run_experiment(iters=10):
+        print "huzzah!"
+        pdb.set_trace()
+        X_train_DS = domain_DS["X"][train_rows]
+        # the tricky part is going to be to get the
+        # labels for this 
+        X_test_DS = domain_DS["X"][test_rows] 
+        y_train_DS = np.array(domain_DS["y"])[train_rows]
+
+
+        clf = get_DS_clf()
+        pdb.set_trace()
+
+ 
+
+        clf.fit(X_DS, y_DS)
+
+
+
+def get_DS_clf():
+    # .0001, .001, 
+    tune_params = [{"alpha":[.00001, .0001, .001, .01, .1]}]
+    #clf = GridSearchCV(LogisticRegression(), tune_params, scoring="accuracy", cv=5)
+
+    ###
+    # note to self: for SGDClassifier you want to use the sample_weight
+    # argument to instance-weight examples!
+    clf = GridSearchCV(SGDClassifier(shuffle=True), tune_params, scoring="f1")
+
+    return clf
+
+def run_sds_experiment(iters=10):
     # X and y for supervised distant supervision
     DS_learning_tasks = get_DS_features_and_labels()
     for domain, task in DS_learning_tasks.items():
         # note that 'task' here is comprises
         # ('raw') extracted features and labels
         X_d, y_d = generate_X_y(task)
-        pmids_d = task["pmid"]
+        pmids_d = task["pmids"]
 
         #pdb.set_trace()
         # for experimentation, uncomment below...
         # in general these would be fed into 
         # the build_clf function, below
-        #return X_d, y_d, task["pmid"]
+        #return X_d, y_d, task["pmids"]
         for iter_ in xrange(iters):   
             train_X, train_y, test_X, test_y = train_test_by_pmid(X_d, y_d, pmids_d)
             model = build_clf(train_X, train_y)
@@ -68,9 +180,11 @@ def run_experiment(iters=10):
             pdb.set_trace()
 
 
+
+
 def train_test_by_pmid(X, y, pmids, train_p=.8):
     '''
-    randomly sample 80% of the pmids as training instances; 
+    Randomly sample 80% of the pmids as training instances; 
     the rest will be testing 
     '''
     unique_pmids = list(set(pmids))
@@ -129,17 +243,11 @@ def generate_X_y(DS_learning_task, binary_labels=True, y_lbl_func=_score_to_bina
     print "ok."
 
     X, y = [], []
-    X1 = []
-    
+ 
     for X_i, y_i in zip(DS_learning_task["X"], DS_learning_task["y"]):
         X_i_numeric, X_i_text = X_i
         X_v = vectorizer.transform([X_i_text])[0]
-        #X_i_numeric = np.matrix(X_i_numeric)
-        ##pdb.set_trace()
-
-        X1.append(X_v)
         X_combined = sp.sparse.hstack((X_v, X_i_numeric))
-        #pdb.set_trace()
         X.append(np.asarray(X_combined.todense())[0])
         y.append(y_lbl_func(y_i))
         
@@ -176,7 +284,6 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
     '''
     biview = biviewer.PDFBiViewer() 
 
-    domains = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
     # this is just to standardize terms/strings
     pico_strs_to_domains = dict(zip(["PARTICIPANTS", "INTERVENTIONS","OUTCOMES"], domains))
 
@@ -185,7 +292,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
         # X, y and pmids for each domain. the latter
         # is so we can know which studies each candidate
         # was generated for.
-        X_y_dict[d] = {"X":[], "y":[], "pmid":[]}
+        X_y_dict[d] = {"X":[], "y":[], "pmids":[], "sentences":[]}
 
 
     print "reading candidates from: %s" % candidates_path
@@ -263,7 +370,8 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
                         PICO_field, pdf_sents=pdf_sents)
             
             # don't take more than max_sentences sentences
-            num_to_keep = min(len([score for score in scores if score >= cutoff]), max_sentences)
+            num_to_keep = min(len([score for score in scores if score >= cutoff]), 
+                                    max_sentences)
 
 
             target_text = study.cochrane["CHARACTERISTICS"][PICO_field]
@@ -300,7 +408,10 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             y_i = label_line[label_index]
             X_y_dict[PICO_field]["X"].append(X_i)
             X_y_dict[PICO_field]["y"].append(y_i)
-            X_y_dict[PICO_field]["pmid"].append(study_id)
+            X_y_dict[PICO_field]["pmids"].append(study_id)
+
+            # also include the actual sentences
+            X_y_dict[PICO_field]["sentences"].append(candidate_sentence)
 
     if normalize_numeric_cols:
         # @TODO ugh, yeah this is not very readable
