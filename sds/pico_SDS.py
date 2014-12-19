@@ -11,6 +11,7 @@ this is to generate \tilde{x} and \tilde{y}.
 import pdb
 import random
 import csv
+import pickle
 
 import numpy as np 
 import scipy as sp
@@ -30,14 +31,23 @@ from readers import biviewer
 from experiments import pico_DS 
 domains = pico_DS.PICO_DOMAINS 
 
-def DS_PICO_experiment():
+def DS_PICO_experiment(y_dict_pickle="sds/sentences_y_dict.pickle", 
+                            domain_v_pickle="sds/vectorizers.pickle"):
     '''
     This is an implementation of a naive baseline 
     distantly supervised method
     '''
     
-    sentences_y_dict, domain_vectorizers = pico_DS.all_PICO_DS()
-    
+    if y_dict_pickle is None:
+        sentences_y_dict, domain_vectorizers = pico_DS.all_PICO_DS()
+    else:
+        with open(y_dict_pickle) as y_dict_f:
+            print "unpickling sentences and y dict..."
+            sentences_y_dict = pickle.load(y_dict_f)
+            print "ok!"
+
+        with open(domain_v_pickle) as domain_f:
+            domain_vectorizers = pickle.load(domain_f)
 
     # this is kind of confusingly named; we need these 
     # DS labels for evaluation here -- we don't care for 
@@ -83,51 +93,54 @@ def DS_PICO_experiment():
                     labeled_sentences.append(domain_supervision["sentences"][sent_index])
                     labels.append(domain_supervision["y"][sent_index])
 
+               
                 try:
                     # which of these sentences are we looking at now?
-                    matched_sentence_index = labeled_sentences.index(
-                        domain_DS["sentences"][i])
+                    matched_sentence_index = labeled_sentences.index(domain_DS["sentences"][i])
 
                     # ok, now, finally: what was it's label? 
                     cur_label = _score_to_binary_lbl(labels[matched_sentence_index], 
                                         threshold=1, zero_one=False)
-                    #if cur_label >= 1:
-                    #    pdb.set_trace()
+
                     y_test_DS.append(cur_label)
                     
                 except:
-                    # this shouldn't happen, as it would mean that 
-                    # the sentence in our test data could not be 
-                    # matched to 
-                    #print "something is up -- could not match a DS sentence!"
-                    #pdb.set_trace()
-
+  
                     ### 
-                    # CORRECTION this will happen all the time!
-                    # Specifically, we'll be here every time we 
+                    # NOTE here is where we are explicitly making
+                    # the assumption that any sentences in articles
+                    # *not* labeled are irrelevant. ie., every time we 
                     # encounter a sentence that didn't rank high
-                    # enough to get a label. The assumption is that
-                    # these are -1s!
+                    # enough to get a label we give it a "-1" label.
                     y_test_DS.append(-1)
 
 
+
         print "huzzah!"
-        pdb.set_trace()
+        #pdb.set_trace()
         X_train_DS = domain_DS["X"][train_rows]
         # the tricky part is going to be to get the
         # labels for this 
         X_test_DS = domain_DS["X"][test_rows] 
         y_train_DS = np.array(domain_DS["y"])[train_rows]
 
-
         clf = get_DS_clf()
-        pdb.set_trace()
+        
+        print "fitting model..."
+        clf.fit(X_train_DS, y_train_DS)
+        print "ok!"
+        preds = clf.predict(X_test_DS)
 
- 
-
-        clf.fit(X_DS, y_DS)
-
-
+        precision, recall, f, support = precision_recall_fscore_support(
+                                            y_test_DS, preds)
+        
+        print "-"*25
+        print "performance for domain %s" % domain 
+        print sklearn.metrics.classification_report(y_test_DS, preds)
+        print "... and the confusion matrix:"
+        print confusion_matrix(y_test_DS, preds)
+        print "-"*25
+        print "\n\n"
 
 def get_DS_clf():
     # .0001, .001, 
@@ -137,7 +150,8 @@ def get_DS_clf():
     ###
     # note to self: for SGDClassifier you want to use the sample_weight
     # argument to instance-weight examples!
-    clf = GridSearchCV(SGDClassifier(shuffle=True), tune_params, scoring="f1")
+    clf = GridSearchCV(SGDClassifier(shuffle=True, class_weight="auto"), 
+             tune_params, scoring="f1")
 
     return clf
 
@@ -252,6 +266,7 @@ def generate_X_y(DS_learning_task, binary_labels=True, y_lbl_func=_score_to_bina
         y.append(y_lbl_func(y_i))
         
     return X, y
+
 
 # "sds/annotations/for_labeling_sharma.csv"
 def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sharma.csv",
@@ -433,6 +448,78 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
                     X_y_dict[domain]["X"][i][0][j] = X_y_dict[domain]["X"][i][0][j] / z_j
     
     return X_y_dict
+
+
+'''
+Routines to generate XML for entailment task (for Katrin et al.)
+'''
+def generate_entailment_output(candidates_path="sds/annotations/for_labeling_sharma.csv",
+                                labels_path="sds/annotations/sharma-merged-labels.csv",
+                                label_index=-1):
+    '''
+    Generate and output data for the `textual entailment' 
+    task. 
+    '''
+
+    ### 
+    # @TODO should probalby make this a global var or something
+    # since it's defined multiply
+    pico_strs_to_domains = dict(
+        zip(["PARTICIPANTS", "INTERVENTIONS","OUTCOMES"], domains))
+
+
+    entailment_out = ['''<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE entailment-corpus SYSTEM "rte.dtd">\n<entailment-cdsr-corpus>''']
+
+    with open(candidates_path, 'rb') as candidates_file, open(labels_path, 'rU') as labels_file:
+        candidates = list(unicode_csv_reader(candidates_file))
+        # note that we just use a vanilla CSV reader for the 
+        # labels!
+        labels = list(csv.reader(labels_file)) 
+
+        if len(candidates) != len(labels):
+            print "you have a mismatch between candidate sentences and labels!"
+            pdb.set_trace()
+
+        # skip headers
+        candidates = candidates[1:]
+        labels = labels[1:]
+        
+        ###
+        # note that the structure of the annotations
+        # file means that studies are repeated, and
+        # there are multiple annotated sentences
+        # *per domain*. 
+        for i, (candidate_line, label_line) in enumerate(zip(candidates, labels)):
+            #print annotation_line
+            try:
+                study_id, PICO_field, target_sentence, candidate_sentence = candidate_line[:4]
+                PICO_field = pico_strs_to_domains[PICO_field.strip()]
+            except:
+                pdb.set_trace()
+
+            y_i = label_line[label_index]
+
+            cur_pair_str = generate_XML(i, study_id, PICO_field, target_sentence, candidate_sentence, y_i)
+            #pdb.set_trace()
+
+            entailment_out.append(cur_pair_str)
+
+    entailment_out.append("</entailment-cdsr-corpus>")
+    with open("cdsr-entailment.xml", 'wb') as outf:
+        # you are going to get unicode errors here!
+        outf.write("\n".join(entailment_out).encode("UTF-8", errors='ignore'))
+
+def generate_XML(pair_id, pmid, PICO_field, t, h, label):
+    '''
+    Given a something like 
+
+        <pair id=5 pmid="18275573" value=2>
+        <t> Australian and New Zealand Journal of Obstetrics and Gynaecology 2008; 48: DOI: </t>
+        <h> 70 women presenting between 24 and 34 weeks' gestation with symptoms and signs of threatened preterm labour, where acute symptoms were arrested following use of tocolytic medication.</h>
+        </pair>
+    '''
+    entailment_str = u'''<pair id=%s pmid='%s' pico_field='%s' value=%s>\n<t> %s </t>\n<h> %s </h>\n</pair>\n\n''' % (pair_id, pmid, PICO_field, label, t, h)
+    return entailment_str
 
 
 ''' completely ripped off from Alex Martelli '''

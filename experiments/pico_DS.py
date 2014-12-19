@@ -9,6 +9,7 @@ import csv
 import pdb
 from operator import itemgetter
 from collections import Counter
+import pickle 
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,7 +30,7 @@ def word_list(text):
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
-def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True):
+def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     '''
     Generates all available `labeled' PICO training data via naive
     DS strategy of token matching and returns a nested dictionary; 
@@ -41,6 +42,11 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True):
     @TODO @TODO
     should probably better engineer these features! e.g., should 
     at least swap nums in, and probably other tricks...
+
+    WARNING this is pretty slow and there is a lot of data!
+    you should set the pickle_DS flag to True and to dump this
+    data to disk and then read it in directly rather than 
+    re-generating it every time.
     '''
     ###
     # for now we'll just grab sentences and `labels' according
@@ -56,9 +62,11 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True):
             print "on study %s" % n 
 
         ### TMP TMP TMP
+        '''
         if n > 300:
             #return sentences_y_dict
             break
+        '''
 
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
@@ -99,8 +107,12 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True):
     # add vector representations to the dictionary
     if add_vectors:
         sentences_y_dict, domain_vectorizers = vectorize(sentences_y_dict)
+        if pickle_DS:
+            with open("pickled_sentences_y_dict.pickle", 'wb') as outf:
+                pickle.dump(sentences_y_dict, outf)
+
         return sentences_y_dict, domain_vectorizers
-        
+
     return sentences_y_dict
 
 
