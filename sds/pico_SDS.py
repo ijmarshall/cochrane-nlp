@@ -6,12 +6,20 @@ distant supervision for PICO task) contained in
 the annotations file to feature vectors and labels for the 
 candidate filtering task. In the writeup nomenclature,
 this is to generate \tilde{x} and \tilde{y}.
+
+@TODO Technically to be consistent this module should probably 
+live in the cochranenlpexperiments lib rather than here
 '''
 
 import pdb
 import random
 import csv
 import pickle
+import os 
+import time
+import copy 
+from datetime import datetime
+
 
 import numpy as np 
 import scipy as sp
@@ -31,116 +39,392 @@ from readers import biviewer
 from experiments import pico_DS 
 domains = pico_DS.PICO_DOMAINS 
 
-def DS_PICO_experiment(y_dict_pickle="sds/sentences_y_dict.pickle", 
+def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None, 
+                            strategy="baseline_DS", output_dir="sds/results/",
+                            y_dict_pickle="sds/sentences_y_dict.pickle", 
                             domain_v_pickle="sds/vectorizers.pickle"):
     '''
-    This is an implementation of a naive baseline 
-    distantly supervised method
+    Runs multiple (iters) experiments using the specified strategy.
+
+    If `cv' is true, cross-validation will be performed using `iters' splits. 
+    Otherwise, `training_proportion' should be provided to specify the 
+    fraction of examples to be held out for each iter.
     '''
+    output_path = os.path.join(output_dir, 
+            "%s-results-%s.txt" % (int(time.time()), strategy))
+    print "will write results out to %s" % output_path
     
+    # write out a preample..
+    with open(output_path, 'a') as out:
+        out.write("run at %s\n" % str(datetime.now()))
+        out.write("strategy=%s\n" % strategy)
+        if cv:
+            out.write("%s-fold cross-validation." % iters)
+        else:
+            out.write("%s random splits using %s of the data for testing." %
+                         (iters, test_proportion))
+        out.write("\n\n\n")
+
+    ## load in the available supervision
+    sentences_y_dict, domain_vectorizers = None, None 
     if y_dict_pickle is None:
         sentences_y_dict, domain_vectorizers = pico_DS.all_PICO_DS()
     else:
-        with open(y_dict_pickle) as y_dict_f:
-            print "unpickling sentences and y dict..."
-            sentences_y_dict = pickle.load(y_dict_f)
-            print "ok!"
+        sentences_y_dict, domain_vectorizers = _unpickle_PICO_DS(y_dict_pickle,
+                                                    domain_v_pickle)
 
-        with open(domain_v_pickle) as domain_f:
-            domain_vectorizers = pickle.load(domain_f)
-
+    ## now load in the direct supervision we have.
     # this is kind of confusingly named; we need these 
     # DS labels for evaluation here -- we don't care for 
     # the features in this case, though. 
     # @TODO refactor or rename method?
     DS_learning_tasks = get_DS_features_and_labels()
 
-    for domain in domains:
+    ## now we divvy up into train/test splits.
+    # this will be a dictionary mapping domains to 
+    # lists of test PMIDs.
+    test_id_lists = {}
+    ## @NOTE are you sure you're handling the
+    ## train/test splits correctly here? 
+    if cv:
+        for domain in domains:
+            labeled_pmids_for_domain = DS_learning_tasks[domain]["pmids"]
+            kfolds = cross_validation.KFold(len(labeled_pmids_for_domain), iters, shuffle=True)
+            test_id_lists[domain] = []
+            for train_indices, test_indices in kfolds:
+                test_id_lists[domain].append(
+                        [labeled_pmids_for_domain[j] for j in test_indices])                                   
+
+    for iter_ in xrange(iters):
+
+        ## if we're doing cross-fold validation,
+        # then we need to assemble a dictionary for 
+        # this fold mapping domains to test PMIDs
+        cur_test_pmids_dict = None
+        if cv:
+            test_ids_for_cur_fold = [test_id_lists[domain][iter_] for domain in domains]
+            cur_test_pmids_dict = dict(zip(domains, test_ids_for_cur_fold))
+
+        output_str = DS_PICO_experiment(sentences_y_dict, domain_vectorizers, 
+                                            DS_learning_tasks, strategy=strategy,
+                                            test_pmids_dict=cur_test_pmids_dict, 
+                                            test_proportion=test_proportion)
+
+        print "\n".join(output_str) + "\n\n"
+        with open(output_path, 'a') as output_f:
+            output_f.write("\n\n\n\n -- fold/iter %s --\n\n" % iter_)
+            output_f.write("\n".join(output_str))
+
+###
+# note: the *_1000 pickles are subsets of the available DS to 
+# speed things up for experimentation purposes!
+def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks, 
+                        strategy="baseline_DS", test_pmids_dict=None, test_proportion=1,
+                        use_distant_supervision_only=False):
+    '''
+    This is an implementation of a naive baseline 
+    distantly supervised method. 
+
+    If test_pmids_list is not None, then the list 
+    of PMIDs specified by this parameter will be
+    held out as testing data. 
+
+    If test_pmids_list is None, then we randomly 
+    select (test_proportion*100)% of the directly
+    labeled data to be our held out data. Note 
+    that if this is 1 (as by default), then this 
+    means we are training entirely on DS data and 
+    then evaluating via the direct supervision.
+
+    If use_distant_supervision_only is True, then 
+    we do not exploit the direct supervision even
+    when available. (This is a useful baseline.)
+    '''
+    testing_pmids = None
+    output_str = []
+    for domain_index, domain in enumerate(domains):
         # here we need to grab the annotations used also
         # for SDS to evaluate our strategy
         domain_supervision = DS_learning_tasks[domain]
 
-        # @TODO probably want to make this some 
-        # *sample* of the supervision, rather 
-        # than all of it!
-        testing_pmids = domain_supervision["pmids"]
+        if test_pmids_dict is None:
+            if p < 1:
+                n_testing = int(p * len(domain_supervision["pmids"]))
+                testing_pmids = random.sample(domain_supervision["pmids"], n_testing)
+            else:
+                testing_pmids = domain_supervision["pmids"]
+
+        else:
+            testing_pmids = test_pmids_dict[domain]
+            # do we actually have labels corresponding to 
+            # these PMIDs???
+            assert len(set(testing_pmids).intersection(
+                            set(domain_supervision["pmids"]))) == len(set(testing_pmids)), \
+                            '''there is a mismatch between the testing PMIDs given and the 
+                                supervision available!'''
+
+
+            print "using provided list of %s PMIDs for testing!" % len(
+                    testing_pmids)
+            
 
         ###
         # which rows correspond to studies that 
         # are in the testing data? we want to 
         # exclude these. 
-        domain_DS = sentences_y_dict[domain]
+        # note that we mutate the labels here. thus 
+        # we take a deepcopy so that we don't expose these 
+        # labels later on.
+        domain_DS = copy.deepcopy(sentences_y_dict[domain])
 
         train_rows, test_rows = [], []
         y_test_DS = [] # tricky
-        for i, pmid in enumerate(domain_DS['pmids']):
+        directly_supervised_indices = []
+        for i, pmid in enumerate(domain_DS["pmids"]):
+            cur_sentence = domain_DS["sentences"][i]
             if pmid not in testing_pmids:
                 train_rows.append(i)
+
+                ### 
+                # here we need to overwrite any labels for which 
+                # we have explicit supervision here!
+                if pmid in domain_supervision["pmids"] and not use_distant_supervision_only:
+                    cur_label = _match_direct_to_distant_supervision(
+                        domain_supervision, pmid, cur_sentence)
+                    if cur_label is not None:
+                        print cur_label
+                        # then overwrite the existing label
+                        domain_DS["y"][i] = cur_label
+                        # keep track of row indices that correspond
+                        # to directly supervised instances
+                        directly_supervised_indices.append(i)
             else:
                 test_rows.append(i)
-                ###
-                # this is tricky.
-                # we have to identify the current sentence from 
-                # DS in our supervised label set. To do this, we 
-                # first figure out which sentences were labeled
-                # for this study (pmid).
-                first_index = domain_supervision["pmids"].index(pmid)
-                study_indices = range(first_index, first_index+domain_supervision["pmids"].count(pmid))
-                # ok, now grab the actual sentences corresponding
-                # to these labels
-                labeled_sentences, labels = [], []
-                for sent_index in study_indices:
-                    labeled_sentences.append(domain_supervision["sentences"][sent_index])
-                    labels.append(domain_supervision["y"][sent_index])
-
-               
-                try:
-                    # which of these sentences are we looking at now?
-                    matched_sentence_index = labeled_sentences.index(domain_DS["sentences"][i])
-
-                    # ok, now, finally: what was it's label? 
-                    cur_label = _score_to_binary_lbl(labels[matched_sentence_index], 
-                                        threshold=1, zero_one=False)
-
-                    y_test_DS.append(cur_label)
-                    
-                except:
-  
-                    ### 
-                    # NOTE here is where we are explicitly making
-                    # the assumption that any sentences in articles
-                    # *not* labeled are irrelevant. ie., every time we 
-                    # encounter a sentence that didn't rank high
-                    # enough to get a label we give it a "-1" label.
-                    y_test_DS.append(-1)
-
-
+                cur_label = _match_direct_to_distant_supervision(domain_supervision, 
+                                            pmid, cur_sentence)
+                if cur_label is None:
+                    cur_label = -1
+                y_test_DS.append(cur_label)
 
         print "huzzah!"
-        #pdb.set_trace()
+
+        # do we have roughly the expected amount of supervision?
+        # I think so (per domain, anyway)
+        pdb.set_trace()
+
+        ### 
+        # it's possible that here we end up with an empty 
+        # training set if we're working with a subset 
+        # of the DS data! since this would only be for dev/testing
+        # purposes, I think we can safely ignore such cases,
+        # but this may cause things to break during evaluation..
+        ###
+        if len(y_test_DS) == 0:
+            return ["-"*25, "\n\n no testing data! \n\n", "-"*25]
+
         X_train_DS = domain_DS["X"][train_rows]
         # the tricky part is going to be to get the
         # labels for this 
         X_test_DS = domain_DS["X"][test_rows] 
         y_train_DS = np.array(domain_DS["y"])[train_rows]
-
-        clf = get_DS_clf()
-        
-        print "fitting model..."
-        clf.fit(X_train_DS, y_train_DS)
-        print "ok!"
-        preds = clf.predict(X_test_DS)
+       
+        clf = None 
+        ###
+        # @TMP the second bit of this conditional is temporary 
+        # and for debugging purposes only!!!
+        if strategy.lower() == "nguyen" and len(directly_supervised_indices) > 0:
+            clf = build_nguyen_model(X_train_DS, y_train_DS, 
+                                    directly_supervised_indices)
+        else:
+            clf = get_DS_clf()
+            print "fitting model..."
+            clf.fit(X_train_DS, y_train_DS)
+            preds = clf.predict(X_test_DS)
 
         precision, recall, f, support = precision_recall_fscore_support(
                                             y_test_DS, preds)
         
-        print "-"*25
-        print "performance for domain %s" % domain 
-        print sklearn.metrics.classification_report(y_test_DS, preds)
-        print "... and the confusion matrix:"
-        print confusion_matrix(y_test_DS, preds)
-        print "-"*25
-        print "\n\n"
+        ## now rankings
+        raw_scores = clf.decision_function(X_test_DS)
+        
+        auc = None      
+        auc = sklearn.metrics.roc_auc_score(y_test_DS, raw_scores)
+        
+        output_str.append("-"*25)  
+        output_str.append("method: %s" % strategy)
+        output_str.append("domain: %s" % domain)
+        output_str.append(str(sklearn.metrics.classification_report(y_test_DS, preds)))
+        output_str.append("\n")
+        output_str.append("confusion matrix: %s" % str(confusion_matrix(y_test_DS, preds)))
+        output_str.append("AUC: %s" % auc)
+        output_str.append("-"*25) 
+
+    return output_str 
+
+
+def _match_direct_to_distant_supervision(domain_supervision, pmid, cur_sentence):
+  
+    ###
+    # this is tricky.
+    # we have to identify the current sentence from 
+    # DS in our supervised label set. To do this, we 
+    # first figure out which sentences were labeled
+    # for this study (pmid).
+    first_index = domain_supervision["pmids"].index(pmid)
+    study_indices = range(first_index, first_index+domain_supervision["pmids"].count(pmid))
+    # now grab the actual sentences corresponding
+    # to these labels
+    labeled_sentences, labels = [], []
+    for sent_index in study_indices:
+        labeled_sentences.append(domain_supervision["sentences"][sent_index])
+        labels.append(domain_supervision["y"][sent_index])
+
+    try:
+        # which of these sentences are we looking at now?
+        # domain_DS["sentences"][i]
+        matched_sentence_index = labeled_sentences.index(cur_sentence)
+        # and, finally, what was its (human-given) label? 
+        cur_label = _score_to_binary_lbl(labels[matched_sentence_index], 
+                            threshold=1, zero_one=False)
+        #y_test_DS.append(cur_label)
+        return cur_label
+    except:
+        ### 
+        # NOTE here is where we are explicitly making
+        # the assumption that any sentences in articles
+        # *not* labeled are irrelevant. ie., every time we 
+        # encounter a sentence that didn't rank high
+        # enough to get a label we give it a "-1" label.
+        #y_test_DS.append(-1)
+        return None
+        
+
+## @TODO finish this
+class Nguyen():
+    '''
+    This is the model due to Nguyen et al. [2011],
+    which is just an interpolation of probability 
+    estimates from two models: one trained on the 
+    directly supervised data and the other on the 
+    distantly supervised examples.
+    '''
+    def __init__(self, m1, m2):
+        self.m1 = m1
+        self.m2 = m2 
+
+        self.meta_clf = None
+
+    def fit(self, X, y):
+        # maybe we shouldn't even do regularization?
+        self.meta_clf = LogisticRegression()
+
+        ###
+        # these will be vectors! you'll need to 
+        # combine them
+        X1 = self.m1.predict_proba_(X)
+        X2 = self.m2.predict_proba_(X)
+        pdb.set_trace()
+        self.meta_clf.fit(X, y)
+
+    def transform(self, x):
+        '''
+        go from raw input to `stacked' representation
+        comprising m1 and m2 probability predictions.
+        '''
+        pass 
+
+    def predict(self, x):
+        pass 
+
+    def predict_proba_(self, x):
+        pass 
+
+
+def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.6):
+    '''
+    This implements the model of Nguyen et al., 2011. 
+
+    We assume that X_train, y_train comprise *both* 
+    distantly and directly supervised instances, and 
+    that the (row) indices of the latter are provided 
+    in the direct_indices list.
+
+    p_valudation is a parameter encoding what fraction 
+    of the *directly supervised* instances to use to 
+    fit the \alpha, \beta interpolation parameters, i.e., 
+    to fit the `stacked' model with. See page 737 of Nguyen
+    paper (it's not super clear on this detail, actually).
+    '''
+
+    def _inverse_indices(nrows, indices):
+        # for when you want to grab -[list of indices]. 
+        # this seems kinda hacky but could not find a 
+        # more numpythonic way of doing it...
+        return list(set(range(nrows)) - set(indices))
+
+    # train model 1 on direct and model 2 on 
+    # distant supervision 
+
+    ##############
+    # model 1    #
+    ##############
+    X_direct = X_train[direct_indices]
+    y_direct = y_train[direct_indices]
+
+    # the catch here is that we actually do 
+    # not want to train on *all* direct 
+    # supervision, because we need to use some
+    # of this to fit the 'meta' or 'stacked'
+    # model (else we risk letting the strictly
+    # supervised model appear better than it
+    # is, since it has seen the 
+    n_direct = X_direct.shape[0] 
+    validation_size = int(p_validation * n_direct)
+    print "fitting Nguyen using %s instances." % validation_size
+    validation_indices = random.sample(range(n_direct), validation_size)
+    X_validation = X_direct[validation_indices]
+    y_validation = y_direct[validation_indices]
+
+    # now get the set to actually train on...
+    direct_train_indices = _inverse_indices(n_direct, validation_indices)
+    m1 = get_direct_clf()
+    
+    print "nguyen!!"
+    pdb.set_trace()
+    m1.fit(X_direct[direct_train_indices], 
+                y_direct[direct_train_indices])
+
+
+    #############
+    # model 2   #
+    #############
+    DS_indices = _inverse_indices(X_train.shape[0], direct_indices)
+    X_DS = X_train[DS_indices]
+    y_DS = y_train[DS_indices]
+    m2 = get_DS_clf()
+    m2.fit(X_DS, y_DS)
+
+    # now you need to combine these somehow. 
+    # i think it would suffice to run predictions 
+    # through a regressor? 
+    nguyen_model = Nguyen(m1, m2)
+    pdb.set_trace()
+
+def _unpickle_PICO_DS(y_dict_pickle, domain_v_pickle):
+    with open(y_dict_pickle) as y_dict_f:
+        print "unpickling sentences and y dict..."
+        sentences_y_dict = pickle.load(y_dict_f)
+        print "done unpickling."
+
+    with open(domain_v_pickle) as domain_f:
+        domain_vectorizers = pickle.load(domain_f)
+
+    return sentences_y_dict, domain_vectorizers
+
+def get_direct_clf():
+    # for now this is just the same as the 
+    # DS classifier; may want to revisit this though
+    return get_DS_clf()
 
 def get_DS_clf():
     # .0001, .001, 
@@ -150,7 +434,8 @@ def get_DS_clf():
     ###
     # note to self: for SGDClassifier you want to use the sample_weight
     # argument to instance-weight examples!
-    clf = GridSearchCV(SGDClassifier(shuffle=True, class_weight="auto"), 
+    clf = GridSearchCV(SGDClassifier(
+             shuffle=True, class_weight="auto", loss="log"), 
              tune_params, scoring="f1")
 
     return clf
@@ -177,10 +462,10 @@ def run_sds_experiment(iters=10):
             # To evaluate performance with respect
             # to the *true* (or primary) task, you 
             # should do the following
-            #   (1) Train the DS model (M_DS) using all train_X, train_y
+            #   (1) Train the SDS model (M_SDS) using all train_X, train_y
             #       here. 
             #   (2) Generate as many DS labels as possible
-            #       for PICO. For SDS, use M_DS to either 
+            #       for PICO. For SDS, use M_SDS to either 
             #       (a) filter out labels predicted to be 
             #       irrelevant, or, (b) weight instances 
             #       w.r.t. predicted probability of being good
@@ -274,6 +559,8 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
                                 label_index=-1,
                                 max_sentences=10, cutoff=4, normalize_numeric_cols=True):
     '''
+    Load in the supervision (X,y) for DS task.
+
     We are making the assumption that files containing *labels* are (at least 
     optionally) distinct from the file containing the corresponding labels. 
     The former path is specified by the "candidates_path" argument; the latter 
