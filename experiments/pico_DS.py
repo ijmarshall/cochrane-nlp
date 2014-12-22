@@ -1,5 +1,10 @@
 #
-#   testing methods of distant supervision from CDSR to PDF
+#   Derives distant supervision for PICO.
+#
+#   @TODO this should almost certainly live in the sds
+#   package... or something? On the other hand, this is 
+#   lacks the "s" in "sds": perhaps we should refactor
+#   and create a DS package somewhere?
 #
 
 import re
@@ -61,12 +66,9 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
         if n % 100 == 0:
             print "on study %s" % n 
 
-        ### TMP TMP TMP
-        '''
-        if n > 300:
-            #return sentences_y_dict
-            break
-        '''
+        ### tmp tmp tmp
+        if n > 1000:
+            break 
 
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
@@ -108,8 +110,14 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     if add_vectors:
         sentences_y_dict, domain_vectorizers = vectorize(sentences_y_dict)
         if pickle_DS:
-            with open("pickled_sentences_y_dict.pickle", 'wb') as outf:
+
+            print "pickling..."
+            with open("sds/sentences_y_dict_1000.pickle", 'wb') as outf:
                 pickle.dump(sentences_y_dict, outf)
+
+            with open("sds/vectorizers_1000.pickle", 'wb') as outf:
+                pickle.dump(domain_vectorizers, outf)
+            print "done!"
 
         return sentences_y_dict, domain_vectorizers
 
