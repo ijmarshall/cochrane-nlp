@@ -39,6 +39,13 @@ from readers import biviewer
 from experiments import pico_DS 
 domains = pico_DS.PICO_DOMAINS 
 
+### TODO TODO TODO 12/22
+#       * further verification of Nguyun
+#       * additional sanity checks on data/supervision/DS matching
+#       * profit.
+###
+# note: the *_1000 pickles are subsets of the available DS to 
+# speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None, 
                             strategy="baseline_DS", output_dir="sds/results/",
                             y_dict_pickle="sds/sentences_y_dict.pickle", 
@@ -76,7 +83,7 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
     ## now load in the direct supervision we have.
     # this is kind of confusingly named; we need these 
     # DS labels for evaluation here -- we don't care for 
-    # the features in this case, though. 
+    # the features *unless* we are doing SDS! 
     # @TODO refactor or rename method?
     DS_learning_tasks = get_DS_features_and_labels()
 
@@ -115,15 +122,19 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
             output_f.write("\n\n\n\n -- fold/iter %s --\n\n" % iter_)
             output_f.write("\n".join(output_str))
 
-###
-# note: the *_1000 pickles are subsets of the available DS to 
-# speed things up for experimentation purposes!
+
+
 def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks, 
                         strategy="baseline_DS", test_pmids_dict=None, test_proportion=1,
                         use_distant_supervision_only=False):
     '''
     This is an implementation of a naive baseline 
     distantly supervised method. 
+
+    The sentences_y_dict argument is assumed to be 
+    a dictionary mapping domains to lists of sentences,
+    their vector representations ("X") and their 
+    distantly derived labeld ("y").
 
     If test_pmids_list is not None, then the list 
     of PMIDs specified by this parameter will be
@@ -142,9 +153,12 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
     '''
     testing_pmids = None
     output_str = []
+
     for domain_index, domain in enumerate(domains):
+        ##
         # here we need to grab the annotations used also
-        # for SDS to evaluate our strategy
+        # for SDS to evaluate our strategy.
+        # note: this is the *direct* supervision!
         domain_supervision = DS_learning_tasks[domain]
 
         if test_pmids_dict is None:
@@ -180,7 +194,12 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
         train_rows, test_rows = [], []
         y_test_DS = [] # tricky
         directly_supervised_indices = []
+
+        ## 12/23/14 TMP TMP TMP see comments below
+        #print "!!!! WARNING !!!! -- using fabricated direct labels for testing purposes"
+        ## END TMP
         for i, pmid in enumerate(domain_DS["pmids"]):
+
             cur_sentence = domain_DS["sentences"][i]
             if pmid not in testing_pmids:
                 train_rows.append(i)
@@ -188,11 +207,27 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
                 ### 
                 # here we need to overwrite any labels for which 
                 # we have explicit supervision here!
+                ### 12/23/14 TMP TMP TMP
+                # swapping this out to randomly treat DS as directly supervised
                 if pmid in domain_supervision["pmids"] and not use_distant_supervision_only:
+                    
+                    # 12/23/14 -- TMP TMP TMP
+                    # for debugging reasons I'm setting this 
+                    # arbitrarily, so that we have a sufficient
+                    # amount of explicit supervision to train 
+                    # various `pooled' models.
+                    # @TODO @TODO obviously need to change back 
+                    #   before running in earnest!
                     cur_label = _match_direct_to_distant_supervision(
                         domain_supervision, pmid, cur_sentence)
+                    
+                    #cur_label = None 
+                    #if random.random() < .5: 
+                    #    cur_label = 1 if (random.random() < .5) else -1
+                    ## END TMP
+
                     if cur_label is not None:
-                        print cur_label
+                        #print cur_label
                         # then overwrite the existing label
                         domain_DS["y"][i] = cur_label
                         # keep track of row indices that correspond
@@ -206,11 +241,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
                     cur_label = -1
                 y_test_DS.append(cur_label)
 
-        print "huzzah!"
-
-        # do we have roughly the expected amount of supervision?
-        # I think so (per domain, anyway)
-        pdb.set_trace()
+        print "huzzah -- both direct and distant data ready to go!"
 
         ### 
         # it's possible that here we end up with an empty 
@@ -229,25 +260,47 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
         y_train_DS = np.array(domain_DS["y"])[train_rows]
        
         clf = None 
-        ###
-        # @TMP the second bit of this conditional is temporary 
-        # and for debugging purposes only!!!
-        if strategy.lower() == "nguyen" and len(directly_supervised_indices) > 0:
+    
+        strategy_name = strategy.lower()
+        if strategy_name == "sds":
+            # transform the distant supervision
+            X_direct, y_direct, direct_pmids = generate_X_y(domain_supervision, return_pmids_too=True)
+
+            # pretty sure you want the stuff in the 
+            # the domain_supervision vector (X and y)
+            ###
+            # X_direct, y_direct, X_distant, y_distant
+
+            clf = build_SDS_model(X_direct, y_direct, direct_pmids, 
+                                    testing_pmids, X_train_DS, y_train_DS)
+            #clf = build_SDS_model(X_train_DS, y_train_DS, 
+            #                        directly_supervised_indices)
+        
+        elif strategy_name == "nguyen":
+            if len(directly_supervised_indices) == 0:
+                print "no direct supervision provided!"
+                return ["-"*25, "\n\n no directly labeled data!!! \n\n", "-"*25]
+
             clf = build_nguyen_model(X_train_DS, y_train_DS, 
                                     directly_supervised_indices)
+
         else:
             clf = get_DS_clf()
-            print "fitting model..."
+            print "standard distant supervision. fitting model..."
+        
             clf.fit(X_train_DS, y_train_DS)
-            preds = clf.predict(X_test_DS)
+        preds = clf.predict(X_test_DS)
 
+        #pdb.set_trace()
         precision, recall, f, support = precision_recall_fscore_support(
                                             y_test_DS, preds)
         
         ## now rankings
+
         raw_scores = clf.decision_function(X_test_DS)
         
-        auc = None      
+        auc = None  
+        #pdb.set_trace()    
         auc = sklearn.metrics.roc_auc_score(y_test_DS, raw_scores)
         
         output_str.append("-"*25)  
@@ -299,7 +352,35 @@ def _match_direct_to_distant_supervision(domain_supervision, pmid, cur_sentence)
         return None
         
 
-## @TODO finish this
+def build_SDS_model(X_direct, y_direct, pmids_direct, 
+                    testing_pmids, X_distant_train, y_distant_train):
+    # (1) Train the SDS model (M_SDS) using directly 
+    #  labeled data
+
+    X_direct_train, y_direct_train = [], []
+    #X_direct_test, y_direct_test = [], []
+
+    for i, pmid in enumerate(pmids_direct):
+        x_i, y_i = X_direct[i], y_direct[i]
+
+        if pmid not in testing_pmids:
+            X_direct_train.append(x_i)
+            y_direct_train.append(y_i)
+        #else:
+        #    X_direct_test.append()
+
+
+    m_sds = LogisticRegression()
+    m_sds.train(X_direct_train, y_direct_train)
+
+    pdb.set_trace()
+    #  (2) Generate as many DS labels as possible
+    #  for PICO. For SDS, use M_SDS to either 
+    #  (a) filter out labels predicted to be 
+    #  irrelevant, or, (b) weight instances 
+    #  w.r.t. predicted probability of being good
+    
+
 class Nguyen():
     '''
     This is the model due to Nguyen et al. [2011],
@@ -315,32 +396,52 @@ class Nguyen():
         self.meta_clf = None
 
     def fit(self, X, y):
+        ###
+        # combine predicted probabilities from
+        # our two constituent models.
+        #pdb.set_trace()
+        #X1 = self.m1.predict_proba(X)[:,1]
+        #X2 = self.m2.predict_proba(X)[:,1]
+        #XX = sp.vstack((X1,X2)).T
+
+        XX = self._transform(X)
+
         # maybe we shouldn't even do regularization?
         self.meta_clf = LogisticRegression()
+        self.meta_clf.fit(XX, y)
 
-        ###
-        # these will be vectors! you'll need to 
-        # combine them
-        X1 = self.m1.predict_proba_(X)
-        X2 = self.m2.predict_proba_(X)
-        pdb.set_trace()
-        self.meta_clf.fit(X, y)
-
-    def transform(self, x):
+    def _transform(self, X):
         '''
         go from raw input to `stacked' representation
         comprising m1 and m2 probability predictions.
         '''
-        pass 
 
-    def predict(self, x):
-        pass 
+        '''
+        x1 = self.m1.predict_proba(x)[0][1]
+        x2 = self.m2.predict_proba(x)[0][1]
+        x_stacked = np.array([x1, x2])  
+        return x_stacked
+        '''
+        X1 = self.m1.predict_proba(X)[:,1]
+        X2 = self.m2.predict_proba(X)[:,1]
+        XX = sp.vstack((X1,X2)).T
+        #pdb.set_trace()
+        return XX 
 
-    def predict_proba_(self, x):
-        pass 
 
+    def predict(self, X):
+        X_stacked = self._transform(X)
+        return self.meta_clf.predict(X_stacked)
 
-def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.6):
+    def predict_proba(self, X):
+        X_stacked = self._transform(X)
+        return self.meta_clf.predict_proba(X_stacked)[:,1]
+
+    def decision_function(self, X):
+        ''' just to conform to SGD API '''
+        return self.predict_proba(X)
+
+def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.5):
     '''
     This implements the model of Nguyen et al., 2011. 
 
@@ -388,9 +489,6 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.6):
     # now get the set to actually train on...
     direct_train_indices = _inverse_indices(n_direct, validation_indices)
     m1 = get_direct_clf()
-    
-    print "nguyen!!"
-    pdb.set_trace()
     m1.fit(X_direct[direct_train_indices], 
                 y_direct[direct_train_indices])
 
@@ -408,11 +506,13 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.6):
     # i think it would suffice to run predictions 
     # through a regressor? 
     nguyen_model = Nguyen(m1, m2)
-    pdb.set_trace()
+    print "fitting Nguyen model to validation set..."
+    nguyen_model.fit(X_validation, y_validation)
+    return nguyen_model
 
 def _unpickle_PICO_DS(y_dict_pickle, domain_v_pickle):
     with open(y_dict_pickle) as y_dict_f:
-        print "unpickling sentences and y dict..."
+        print "unpickling sentences and y dict (from %s)" % y_dict_pickle
         sentences_y_dict = pickle.load(y_dict_f)
         print "done unpickling."
 
@@ -507,7 +607,8 @@ def train_test_by_pmid(X, y, pmids, train_p=.8):
 def build_clf(X, y):
     # .0001, .001, 
     tune_params = [{"C":[.001, .001, .01, .1, .05, 1, 2, 5, 10]}]
-    clf = GridSearchCV(LogisticRegression(), tune_params, scoring="accuracy", cv=5)
+    clf = GridSearchCV(LogisticRegression(class_weight="auto"), 
+                        tune_params, scoring="f1", cv=5)
     return clf
 
 
@@ -522,7 +623,9 @@ def _score_to_binary_lbl(y_str, zero_one=True, threshold=1):
 
     return 0 if zero_one else -1
 
-def generate_X_y(DS_learning_task, binary_labels=True, y_lbl_func=_score_to_binary_lbl):
+def generate_X_y(DS_learning_task, binary_labels=True, 
+                    y_lbl_func=_score_to_binary_lbl, 
+                    return_pmids_too=False):
     '''
     This goes from the output generated by get_DS_features_and_labels
     (below) *for a single domain* to actual vectors and scalar/binary 
@@ -535,27 +638,32 @@ def generate_X_y(DS_learning_task, binary_labels=True, y_lbl_func=_score_to_bina
         # extracted
         all_domain_texts.append(X_i[1])
 
-    vectorizer = TfidfVectorizer(stop_words='english', decode_error=u'ignore', min_df=1)
+    vectorizer = TfidfVectorizer(stop_words='english', min_df=3, 
+                                    max_features=50000, decode_error=u'ignore')
     print "fitting vectorizer ... "
-    #pdb.set_trace()
     vectorizer.fit(all_domain_texts)
     print "ok."
 
-    X, y = [], []
- 
-    for X_i, y_i in zip(DS_learning_task["X"], DS_learning_task["y"]):
+    X, y, pmids = [], [], []
+    
+    for X_i, y_i, pmid_i in zip(
+            DS_learning_task["X"], DS_learning_task["y"], DS_learning_task['pmids']):
         X_i_numeric, X_i_text = X_i
         X_v = vectorizer.transform([X_i_text])[0]
         X_combined = sp.sparse.hstack((X_v, X_i_numeric))
         X.append(np.asarray(X_combined.todense())[0])
         y.append(y_lbl_func(y_i))
-        
+        pmids.append(pmid_i)
+
+    if return_pmids_too:
+        return X, y, pmids
+
     return X, y
 
 
 # "sds/annotations/for_labeling_sharma.csv"
 def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sharma.csv",
-                                labels_path="sds/annotations/sharma-merged-labels.csv",
+                                labels_path="sds/annotations/sharma-merged-labels-1-2-15.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4, normalize_numeric_cols=True):
     '''
@@ -618,9 +726,8 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
         # note that the structure of the annotations
         # file means that studies are repeated, and
         # there are multiple annotated sentences
-        # *per domain*. 
+        # *per domain* for each study
         for candidate_line, label_line in zip(candidates, labels):
-            #print annotation_line
             try:
                 study_id, PICO_field, target_sentence, candidate_sentence = candidate_line[:4]
                 PICO_field = pico_strs_to_domains[PICO_field.strip()]
@@ -649,12 +756,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
                 print "err ... this should not happen -- something is very wrong."
                 pdb.set_trace()
 
-            X_i_text = candidate_sentence
 
-            ## numeric features
-            # @TODO add more!
-            X_i_numeric = []
-            X_i_numeric.append(len(candidate_sentence.split(" ")))
 
             ###
             # This part is kind of hacky. We go ahead and retrieve
@@ -686,10 +788,18 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             except:
                 pdb.set_trace()
 
+            '''
             # shared tokens for this candidate
             cur_shared_tokens = shared_tokens[cur_candidate_index]
             # extend X_i text with shared tokens (using 
             # special indicator prefix "shared_")
+            X_i_text = candidate_sentence
+
+            ## numeric features
+            # @TODO add more!
+            X_i_numeric = []
+            X_i_numeric.append(len(candidate_sentence.split(" ")))
+
             X_i_text = X_i_text + " ".join(["shared_%s" % tok for 
                                             tok in cur_shared_tokens if tok.strip() != ""])
 
@@ -705,6 +815,13 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             # note that we'll need to deal with merging these 
             # tesxtual and numeric feature sets elsewhere!
             X_i = (X_i_numeric, X_i_text)
+            '''
+
+            ## 1/2/14 -- refactored this to a separate method
+            # TODO delete above when feeling more confident...
+            X_i = extract_sds_features(candidate_sentence, shared_tokens, candidates, 
+                                    scores, cur_candidate_index)
+
             # @TODO we may want to do something else here
             # with the label (e.g., maybe binarize it?)
             y_i = label_line[label_index]
@@ -719,7 +836,11 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
         # @TODO ugh, yeah this is not very readable
         # at the very least should factor this out into
         # separate normalizing routine...
-
+        #
+        ### 
+        # separate note: should return the column z's
+        # so that we can appropriately normalize 
+        # features in to-be-seen examples!
         for domain in domains:
             domain_X = X_y_dict[domain]["X"]
             #num_numeric_feats = len(X_y_dict.values()[0]["X"][0][0])
@@ -733,8 +854,92 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
                 for i in xrange(len(domain_X)):
                     # this is not cool
                     X_y_dict[domain]["X"][i][0][j] = X_y_dict[domain]["X"][i][0][j] / z_j
-    
+            ###
+            # @TODO 1/2/15 -- what to do about scaling unlabeled examples???
     return X_y_dict
+
+
+def generate_sds_feature_vectors(study, PICO_field, pdf_sents, 
+                                    max_sentences=10, cutoff=4):
+    '''
+    This wil generate a set of feature vectors corresponding to the 
+    the top candidates found in pdf_sents matching the parametric
+    Cochrane study object for the given field. 
+
+    More specifically, given a Cochrane study object, a PICO 
+    field and a tokenized (matched) PDF, we here build and return 
+    a feature vector for each candidate that has >= cutoff overlap 
+    with the corresponding study entry (up to max_sentences such 
+    candidates will be returned). 
+    '''
+
+    DS = pico_DS.get_ranked_sentences_for_study_and_field(study,
+            PICO_field, pdf_sents=pdf_sents)
+
+    if DS is None:
+        # this is possible if the Cochrane entry 
+        # (as encapsulated by the study object) 
+        # does not contain an entry for the given 
+        # PICO field. probably we should filter such
+        # studies out? 
+        return False # or should this be []?
+
+    ranked_sentences, scores, shared_tokens = DS
+    
+    # essentially we just drop sentences that don't meet
+    # the cutoff. and we consider at most <= max_sentences. 
+    num_to_keep = min(len([score for score in scores if score >= cutoff]), 
+                            max_sentences)
+
+    target_text = study.cochrane["CHARACTERISTICS"][PICO_field]
+    candidates = ranked_sentences[:num_to_keep]
+    scores = scores[:num_to_keep]
+    shared_tokens = shared_tokens[:num_to_keep]
+    ###
+
+    # iterate over the sentences that constitute the candidate set 
+    # and build a feature vector corresponding to each.
+    X = []
+    # remember, these are *ranked* w.r.t. (naive) similarity
+    # to the target text, hence the cur_candidate_index
+    for cur_candidate_index, candidate in enumerate(candidates):
+        # shared tokens for this candidate
+        cur_shared_tokens = shared_tokens[cur_candidate_index]
+        candidate_text = candidates[cur_candidate_index]
+
+        X_i = extract_sds_features(candidate_text, shared_tokens, candidates, 
+                                    scores, cur_candidate_index)
+
+        X.append(X_i)
+
+
+
+def extract_sds_features(candidate_sentence, shared_tokens, candidates, 
+                                scores, cur_candidate_index):
+    # textual features
+    X_i_text = candidate_sentence
+
+    # extend X_i text with shared tokens (using 
+    # special indicator prefix "shared_")
+    cur_shared_tokens = shared_tokens[cur_candidate_index]
+    X_i_text = X_i_text + " ".join(["shared_%s" % tok for 
+                                    tok in cur_shared_tokens if tok.strip() != ""])
+
+
+    ## numeric features
+    X_i_numeric = []
+    X_i_numeric.append(len(candidate_sentence.split(" ")))
+
+    X_i_numeric.append(len(candidates) - cur_candidate_index)
+    candidate_score = scores[cur_candidate_index]
+    X_i_numeric.append(candidate_score - np.mean(scores))
+    X_i_numeric.append(candidate_score - np.median(scores))
+    X_i_numeric.append(candidate_score)
+
+    # note that we'll need to deal with merging these 
+    # tesxtual and numeric feature sets elsewhere!
+    X_i = (X_i_numeric, X_i_text)
+    return X_i 
 
 
 '''
