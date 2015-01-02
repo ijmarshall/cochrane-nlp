@@ -66,10 +66,6 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
         if n % 100 == 0:
             print "on study %s" % n 
 
-        ### tmp tmp tmp
-        if n > 1000:
-            break 
-
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
         pdf_sents = sent_tokenize(pdf)
@@ -112,10 +108,10 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
         if pickle_DS:
 
             print "pickling..."
-            with open("sds/sentences_y_dict_1000.pickle", 'wb') as outf:
+            with open("sds/sentences_y_dict.pickle", 'wb') as outf:
                 pickle.dump(sentences_y_dict, outf)
 
-            with open("sds/vectorizers_1000.pickle", 'wb') as outf:
+            with open("sds/vectorizers.pickle", 'wb') as outf:
                 pickle.dump(domain_vectorizers, outf)
             print "done!"
 
