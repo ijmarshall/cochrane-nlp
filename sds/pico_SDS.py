@@ -19,7 +19,7 @@ import os
 import time
 import copy 
 from datetime import datetime
-
+from collections import defaultdict
 
 import numpy as np 
 import scipy as sp
@@ -48,8 +48,8 @@ domains = pico_DS.PICO_DOMAINS
 # speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None, 
                             strategy="baseline_DS", output_dir="sds/results/",
-                            y_dict_pickle="sds/sentences_y_dict.pickle", 
-                            domain_v_pickle="sds/vectorizers.pickle"):
+                            y_dict_pickle="sds/sentences_y_dict_1000.pickle", 
+                            domain_v_pickle="sds/vectorizers_1000.pickle"):
     '''
     Runs multiple (iters) experiments using the specified strategy.
 
@@ -80,12 +80,17 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
         sentences_y_dict, domain_vectorizers = _unpickle_PICO_DS(y_dict_pickle,
                                                     domain_v_pickle)
 
+
     ## now load in the direct supervision we have.
     # this is kind of confusingly named; we need these 
     # DS labels for evaluation here -- we don't care for 
     # the features *unless* we are doing SDS! 
     # @TODO refactor or rename method?
-    DS_learning_tasks = get_DS_features_and_labels()
+    
+    # Note that the z_dict here is a dicitonary mapping
+    # PICO fields to vectors comprising normalization terms
+    # for each numeric feature/column. 
+    DS_learning_tasks, z_dict = get_DS_features_and_labels()
 
     ## now we divvy up into train/test splits.
     # this will be a dictionary mapping domains to 
@@ -115,7 +120,8 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
         output_str = DS_PICO_experiment(sentences_y_dict, domain_vectorizers, 
                                             DS_learning_tasks, strategy=strategy,
                                             test_pmids_dict=cur_test_pmids_dict, 
-                                            test_proportion=test_proportion)
+                                            test_proportion=test_proportion,
+                                            z_dict=z_dict)
 
         print "\n".join(output_str) + "\n\n"
         with open(output_path, 'a') as output_f:
@@ -126,7 +132,7 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
 
 def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks, 
                         strategy="baseline_DS", test_pmids_dict=None, test_proportion=1,
-                        use_distant_supervision_only=False):
+                        use_distant_supervision_only=False, z_dict=None):
     '''
     This is an implementation of a naive baseline 
     distantly supervised method. 
@@ -190,49 +196,51 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
         # we take a deepcopy so that we don't expose these 
         # labels later on.
         domain_DS = copy.deepcopy(sentences_y_dict[domain])
-
         train_rows, test_rows = [], []
         y_test_DS = [] # tricky
         directly_supervised_indices = []
 
-        ## 12/23/14 TMP TMP TMP see comments below
-        #print "!!!! WARNING !!!! -- using fabricated direct labels for testing purposes"
-        ## END TMP
+ 
         for i, pmid in enumerate(domain_DS["pmids"]):
 
             cur_sentence = domain_DS["sentences"][i]
+            
             if pmid not in testing_pmids:
+
                 train_rows.append(i)
 
                 ### 
                 # here we need to overwrite any labels for which 
-                # we have explicit supervision here!
-                ### 12/23/14 TMP TMP TMP
-                # swapping this out to randomly treat DS as directly supervised
+                # we have explicit supervision!
                 if pmid in domain_supervision["pmids"] and not use_distant_supervision_only:
-                    
-                    # 12/23/14 -- TMP TMP TMP
-                    # for debugging reasons I'm setting this 
-                    # arbitrarily, so that we have a sufficient
-                    # amount of explicit supervision to train 
-                    # various `pooled' models.
-                    # @TODO @TODO obviously need to change back 
-                    #   before running in earnest!
+                    ###
+                    # It is possible that this introduces some small amount of
+                    # noise, in the following way. We are checking if we have 
+                    # supervision for the current PMID, but this could correspond
+                    # to multiple entries in the CDSR. If a sentence did not rank
+                    # highly with respect to the `labeled' instance, or if it
+                    # ranked highly but was considered irrelevant, *and* this assessment
+                    # would not (or does not) hold for an alternative summary/target, 
+                    # then we may introduce a false negative here. I think this is 
+                    # rather unlikely and will, at the very least, be rare.
                     cur_label = _match_direct_to_distant_supervision(
                         domain_supervision, pmid, cur_sentence)
-                    
-                    #cur_label = None 
-                    #if random.random() < .5: 
-                    #    cur_label = 1 if (random.random() < .5) else -1
-                    ## END TMP
 
-                    if cur_label is not None:
-                        #print cur_label
-                        # then overwrite the existing label
-                        domain_DS["y"][i] = cur_label
-                        # keep track of row indices that correspond
-                        # to directly supervised instances
-                        directly_supervised_indices.append(i)
+                    # if this is None, it means the current sentence
+                    # was not found in the candidate set, implicitly
+                    # this means it is a -1.
+                    if cur_label is None:
+                        cur_label = -1
+                    
+                    # 1/7/15 -- previously, we were not considering
+                    # an instance directly supervised if cur_label
+                    # came back None. This was inconsistent with  
+                    #print cur_label
+                    # then overwrite the existing label
+                    domain_DS["y"][i] = cur_label
+                    # keep track of row indices that correspond
+                    # to directly supervised instances
+                    directly_supervised_indices.append(i)
             else:
                 test_rows.append(i)
                 cur_label = _match_direct_to_distant_supervision(domain_supervision, 
@@ -259,20 +267,102 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
         X_test_DS = domain_DS["X"][test_rows] 
         y_train_DS = np.array(domain_DS["y"])[train_rows]
        
+
         clf = None 
     
         strategy_name = strategy.lower()
         if strategy_name == "sds":
-            # transform the distant supervision
-            X_direct, y_direct, direct_pmids = generate_X_y(domain_supervision, return_pmids_too=True)
+
+            # we need the normalization scalars
+            # for the numerical SDS features!
+            assert z_dict is not None
+
+            # this transforms the small amount of direct supervision we
+            # have for the mapping task from candidate sentences to 
+            # the best sentences into feature vectors and labels with
+            # which to train a model
+            X_direct, y_direct, direct_pmids, vectorizer = generate_X_y(
+                                                    domain_supervision, 
+                                                    return_pmids_too=True)
 
             # pretty sure you want the stuff in the 
             # the domain_supervision vector (X and y)
             ###
             # X_direct, y_direct, X_distant, y_distant
 
+            ### 
+            # see also: run_sds_experiment method!!!
+            #
+
+            ''' SDS magic -- to be refactored '''
+            ## @TODO TODO TODO refactor everything into 
+            # the build_SDS_model method so that you don't clutter 
+            # this!!!
+            # could easily change this to get the DS features
+            # for a single domain
+
+            ### this will align with the DS_supervision.
+            
+            X_tilde_dict = get_DS_features_for_all_data(z_dict)
+
+            # need to vectorize! 
+            pdb.set_trace()
+            
+            # We unfortunately have to do some 
+            # bookkeeping here, which is a bit ugly.
+            # Specifically we need to match up the \tilde{X}
+            # entries with corresponding vectors in X/y_train_DS
+            # so that we can update the DS model
+            # X_tilde_train will contain only the subset of 
+            # sentences to be used for training.
+            # ** Note that the naming is confusing here because 
+            # there are two kinds of `training' data; one is 
+            # the direct supervision and one is the the 
+            # distant supervision ** 
+            X_tilde_train = [] 
+
+            # and this keeps a mapping from the X_tilde 
+            # indices to the corresponding DS training
+            # indices
+            tilde_indices_to_DS_indices = []
+            tilde_index = 0
+            # below we are depending on the implicit assumption
+            # that the train_rows -- into the DS -- are ordered
+            # in the same way as X_tilde; only the latter
+            # *only* includes studies (distantly) deemed positive.
+            # this whole thing is pretty confusing and should 
+            # somehow be refactored... 
+            for i, train_row_index in enumerate(train_rows):
+                # i think this might be problematic because
+                # we have overwritten this guy with 
+                # direct supervision in some cases
+                # BUT note that by definition all instances 
+                # for which we have direct supervision were
+                # candidates
+                if domain_DS['y'][train_row_index] == 1 or \
+                        train_row_index in directly_supervised_indices:
+                    tilde_indices_to_DS_indices.append(i)
+                    X_tilde_i = X_tilde_dict[domain]["X"][tilde_index]
+
+                    X_tilde_train.append(_to_vector(X_tilde_i, vectorizer))
+                    tilde_index += 1
+
+
+
+            ''' end SDS magic '''
+           
+  
+            # yes, yes... too many arguments ....
             clf = build_SDS_model(X_direct, y_direct, direct_pmids, 
-                                    testing_pmids, X_train_DS, y_train_DS)
+                                    directly_supervised_indices,
+                                    X_tilde_train, tilde_indices_to_DS_indices,
+                                    train_rows, testing_pmids, 
+                                    X_train_DS, y_train_DS, 
+                                    domain)
+            
+
+
+
             #clf = build_SDS_model(X_train_DS, y_train_DS, 
             #                        directly_supervised_indices)
         
@@ -315,6 +405,13 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
     return output_str 
 
 
+def _to_vector(X_i, vectorizer):
+    X_i_numeric, X_i_text = X_i
+    X_v = vectorizer.transform([X_i_text])[0]
+    X_combined = sp.sparse.hstack((X_v, X_i_numeric))
+    #X.append(np.asarray(X_combined.todense())[0])
+    return np.asarray(X_combined.todense())[0]
+
 def _match_direct_to_distant_supervision(domain_supervision, pmid, cur_sentence):
   
     ###
@@ -323,7 +420,11 @@ def _match_direct_to_distant_supervision(domain_supervision, pmid, cur_sentence)
     # DS in our supervised label set. To do this, we 
     # first figure out which sentences were labeled
     # for this study (pmid).
-    first_index = domain_supervision["pmids"].index(pmid)
+    first_index = domain_supervision["pmids"].index(pmid) 
+    # note: the above assumes that we have only one 
+    # labeled instance of a given PMID; it is theoretically
+    # possible that two separate instances have been labeled
+    # (corresponding to different entries in CDSR)
     study_indices = range(first_index, first_index+domain_supervision["pmids"].count(pmid))
     # now grab the actual sentences corresponding
     # to these labels
@@ -352,8 +453,14 @@ def _match_direct_to_distant_supervision(domain_supervision, pmid, cur_sentence)
         return None
         
 
-def build_SDS_model(X_direct, y_direct, pmids_direct, 
-                    testing_pmids, X_distant_train, y_distant_train):
+    
+def build_SDS_model(X_direct, y_direct, pmids_direct,
+                    directly_supervised_indices, 
+                    X_tilde_train, tilde_indices_to_DS_indices,
+                    train_rows, testing_pmids, 
+                    X_distant_train, y_distant_train, 
+                    domain):
+    
     # (1) Train the SDS model (M_SDS) using directly 
     #  labeled data
 
@@ -371,17 +478,60 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
 
 
     m_sds = LogisticRegression()
-    m_sds.train(X_direct_train, y_direct_train)
+    m_sds.fit(X_direct_train, y_direct_train)
 
-    pdb.set_trace()
+
     #  (2) Generate as many DS labels as possible
     #  for PICO. For SDS, use M_SDS to either 
     #  (a) filter out labels predicted to be 
     #  irrelevant, or, (b) weight instances 
     #  w.r.t. predicted probability of being good
-    
+   
+    ### 
+    # 1/3/15 -- need to build up vectors for all examples!
+    # i.e., not just labeled ones! see this method:
+    #   generate_sds_feature_vectors
+    # see also: 
+    #   get_ranked_sentences_for_study_and_field
+    # in pico_DS.py.
+    # 
+    # this will allow us to make predictions for all of the 
+    # CDSR ds data. we can use these to filter out examples 
+    # that are low probability (or weight accordingly), as 
+    # per above
 
-class Nguyen():
+    # this dictionary will map PICO fields to X and PMID
+    # vectors. Implicitly, these are all 'positive', according
+    # to distant supervision, 
+    #X_tilde_dict = get_DS_features_for_all_data(z_dict)
+    #pdb.set_trace()
+
+    # here we need to modify our labels
+    updated_ys = np.zeros(len(y_distant_train))
+    #for i, row_index in enumerate(train_rows):
+    #    pdb.set_trace()
+    for i, X_tilde in enumerate(X_tilde_train):
+        # make a prediction, then update the corresponding
+        # entry in the DS labels vector...
+        DS_index = tilde_indices_to_DS_indices[i]
+        if not i in directly_supervised_indices:
+            #pdb.set_trace()
+            pred = m_sds.predict_proba(X_tilde) # TODO TODO TODO 
+            # the probability that this candidate is indeed relevant.
+            updated_ys[DS_index] = pred[0][1]
+        else:
+            print "directly labeled!"
+            updated_ys[DS_index] = y_distant_train[DS_index]
+
+    # basically, iterate over the all entries in X_distant_y;
+    # each of these that is `1' corresponds to an entry in 
+    # the X_tilde vector. We should overwrite the labels
+    # then with the prediction made using m_sds
+    print "okay!!!!"
+    pdb.set_trace()
+
+
+class Nguyen:
     '''
     This is the model due to Nguyen et al. [2011],
     which is just an interpolation of probability 
@@ -399,7 +549,7 @@ class Nguyen():
         ###
         # combine predicted probabilities from
         # our two constituent models.
-        #pdb.set_trace()
+     
         #X1 = self.m1.predict_proba(X)[:,1]
         #X2 = self.m2.predict_proba(X)[:,1]
         #XX = sp.vstack((X1,X2)).T
@@ -425,7 +575,7 @@ class Nguyen():
         X1 = self.m1.predict_proba(X)[:,1]
         X2 = self.m2.predict_proba(X)[:,1]
         XX = sp.vstack((X1,X2)).T
-        #pdb.set_trace()
+        
         return XX 
 
 
@@ -549,7 +699,6 @@ def run_sds_experiment(iters=10):
         X_d, y_d = generate_X_y(task)
         pmids_d = task["pmids"]
 
-        #pdb.set_trace()
         # for experimentation, uncomment below...
         # in general these would be fed into 
         # the build_clf function, below
@@ -625,7 +774,7 @@ def _score_to_binary_lbl(y_str, zero_one=True, threshold=1):
 
 def generate_X_y(DS_learning_task, binary_labels=True, 
                     y_lbl_func=_score_to_binary_lbl, 
-                    return_pmids_too=False):
+                    return_pmids_too=False, just_X=False):
     '''
     This goes from the output generated by get_DS_features_and_labels
     (below) *for a single domain* to actual vectors and scalar/binary 
@@ -656,7 +805,9 @@ def generate_X_y(DS_learning_task, binary_labels=True,
         pmids.append(pmid_i)
 
     if return_pmids_too:
-        return X, y, pmids
+        # also returning the actual vectorizer for 
+        # later use...
+        return X, y, pmids, vectorizer
 
     return X, y
 
@@ -788,37 +939,6 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             except:
                 pdb.set_trace()
 
-            '''
-            # shared tokens for this candidate
-            cur_shared_tokens = shared_tokens[cur_candidate_index]
-            # extend X_i text with shared tokens (using 
-            # special indicator prefix "shared_")
-            X_i_text = candidate_sentence
-
-            ## numeric features
-            # @TODO add more!
-            X_i_numeric = []
-            X_i_numeric.append(len(candidate_sentence.split(" ")))
-
-            X_i_text = X_i_text + " ".join(["shared_%s" % tok for 
-                                            tok in cur_shared_tokens if tok.strip() != ""])
-
-            X_i_numeric.append(len(candidates) - cur_candidate_index)
-            candidate_score = scores[cur_candidate_index]
-            X_i_numeric.append(candidate_score - np.mean(scores))
-            X_i_numeric.append(candidate_score - np.median(scores))
-            
-            # @TODO add additional features, e.g., difference from next 
-            # highest candidate score..
-
-
-            # note that we'll need to deal with merging these 
-            # tesxtual and numeric feature sets elsewhere!
-            X_i = (X_i_numeric, X_i_text)
-            '''
-
-            ## 1/2/14 -- refactored this to a separate method
-            # TODO delete above when feeling more confident...
             X_i = extract_sds_features(candidate_sentence, shared_tokens, candidates, 
                                     scores, cur_candidate_index)
 
@@ -836,12 +956,11 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
         # @TODO ugh, yeah this is not very readable
         # at the very least should factor this out into
         # separate normalizing routine...
-        #
-        ### 
-        # separate note: should return the column z's
-        # so that we can appropriately normalize 
-        # features in to-be-seen examples!
+
+        # record the normalizing terms for later use
+        z_dict = {} 
         for domain in domains:
+            z_dict[domain] = []
             domain_X = X_y_dict[domain]["X"]
             #num_numeric_feats = len(X_y_dict.values()[0]["X"][0][0])
             num_numeric_feats = len(domain_X[0][0])
@@ -850,16 +969,117 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             for j in xrange(num_numeric_feats):
                 all_vals = [X_i[0][j] for X_i in domain_X] 
                 z_j = float(max(all_vals))
-
+                z_dict[domain].append(z_j)
                 for i in xrange(len(domain_X)):
                     # this is not cool
                     X_y_dict[domain]["X"][i][0][j] = X_y_dict[domain]["X"][i][0][j] / z_j
-            ###
-            # @TODO 1/2/15 -- what to do about scaling unlabeled examples???
+        return X_y_dict, z_dict 
+
     return X_y_dict
 
 
-def generate_sds_feature_vectors(study, PICO_field, pdf_sents, 
+
+
+def get_DS_features_for_all_data(numeric_col_zs, 
+                max_sentences=10, cutoff=4):
+    '''
+    basically we need to copy the above but build up the 
+    same dictionary for SDS! 
+
+    AH HA you need to pass in the directly labeled data 
+    here and then make sure that we grab the *correct* 
+    study objects in light of what has been labeled, 
+    as in lines 923--936 above!!!!!!!!
+
+    Crucially, by construction the feature vectors here 
+    will be ordered the exact same as those returned by 
+    all_PICO_DS in pico_DS.py. 
+    '''
+
+    # Note that by construction, *all* of these would 
+    # typically have `1's as corresponding labels. 
+    X_pmid_dict = {} # fields to feature vectors
+    for pico_field in pico_DS.PICO_DOMAINS:
+        X_pmid_dict[pico_field] = {"X":[], "pmids":[]}
+
+    p = biviewer.PDFBiViewer()
+    # By design this will iterate in the same
+    # order as `all_PICO_DS' in pico_DS. This is crucial
+    # because these items must be aligned.
+    for n, study in enumerate(p):
+        if n % 100 == 0:
+            print "on study %s" % n 
+
+        # should it be > or >= ?!
+        if n >= 1000:
+            break 
+
+        pdf = study.studypdf['text']
+        study_id = "%s" % study[1]['pmid']
+
+        '''
+        studies = biview.get_study_from_pmid(study_id, all_entries=True)
+        study = None 
+        for study_ in studies:
+            if target_sentence == study_.cochrane["CHARACTERISTICS"][PICO_field].decode(
+                    "utf-8", errors="ignore"):
+                study = study_
+                break
+        else:
+            # we should certainly never get here;
+            # this would mean that none of the retreived
+            # studies (studies with this PMID) match the
+            # labeled candidate sentence
+            print "err ... this should not happen -- something is very wrong."
+            pdb.set_trace()
+        '''
+
+        pdf_sents = pico_DS.sent_tokenize(pdf)
+
+        for pico_field in pico_DS.PICO_DOMAINS:
+            
+            X_i = generate_sds_feature_vectors_for_study(
+                        study, pico_field, pdf_sents)
+            #if study_id == u'15050264':
+            #    print "ok here's the issue."
+            #    pdb.set_trace()
+            if X_i: 
+                X_pmid_dict[pico_field]["X"].extend(X_i)
+                X_pmid_dict[pico_field]["pmids"].extend([study_id]*len(X_i))
+
+    # and now we normalize/scale numeric values via the
+    # provided constants which were recorded from the 
+    # training data
+    #pdb.set_trace()
+    for domain in pico_DS.PICO_DOMAINS:
+        domain_X = X_pmid_dict[domain]["X"]
+        
+        #num_numeric_feats = len(domain_X[0][0])
+        #assert (len(numeric_col_zs[domain]) == num_numeric_feats)
+        num_numeric_feats = None
+        for i in xrange(len(domain_X)):
+            X_i = domain_X[i]
+            if X_i is not None:
+                if num_numeric_feats is None:
+                    num_numeric_feats = len(X_i[0])
+                    assert len(numeric_col_zs[domain]) == num_numeric_feats
+                for j in xrange(num_numeric_feats):
+                    z_j = numeric_col_zs[domain][j]
+                    # yuck.
+                    X_pmid_dict[domain]["X"][i][0][j] = X_i[0][j] / z_j
+
+
+    return X_pmid_dict 
+
+### 
+# @TODO 1/2/2015 -- this is the key method to work on.
+# this will generate the feature vectors for the given 
+# study and PICO field. the task then is to iterate over
+# *all* the data in the CDSR and generate such vectors
+# for each field. Then apply the trained SDS model to filter
+# out or weight these!
+#
+def generate_sds_feature_vectors_for_study(study, PICO_field, pdf_sents, 
                                     max_sentences=10, cutoff=4):
     '''
     This wil generate a set of feature vectors corresponding to the 
@@ -876,6 +1096,7 @@ def generate_sds_feature_vectors(study, PICO_field, pdf_sents,
     DS = pico_DS.get_ranked_sentences_for_study_and_field(study,
             PICO_field, pdf_sents=pdf_sents)
 
+    
     if DS is None:
         # this is possible if the Cochrane entry 
         # (as encapsulated by the study object) 
@@ -892,27 +1113,39 @@ def generate_sds_feature_vectors(study, PICO_field, pdf_sents,
                             max_sentences)
 
     target_text = study.cochrane["CHARACTERISTICS"][PICO_field]
-    candidates = ranked_sentences[:num_to_keep]
-    scores = scores[:num_to_keep]
-    shared_tokens = shared_tokens[:num_to_keep]
-    ###
+    candidates = ranked_sentences
+    scores = scores
+    shared_tokens = shared_tokens
 
     # iterate over the sentences that constitute the candidate set 
     # and build a feature vector corresponding to each.
     X = []
+    # also keep track of the actual sentences represented by X
+    candidate_sentences = []
+
     # remember, these are *ranked* w.r.t. (naive) similarity
     # to the target text, hence the cur_candidate_index
-    for cur_candidate_index, candidate in enumerate(candidates):
+    for cur_candidate_index, candidate in enumerate(candidates[:num_to_keep]):
         # shared tokens for this candidate
         cur_shared_tokens = shared_tokens[cur_candidate_index]
         candidate_text = candidates[cur_candidate_index]
 
-        X_i = extract_sds_features(candidate_text, shared_tokens, candidates, 
-                                    scores, cur_candidate_index)
+        # remember, this is actually a tuple where the 
+        # first entry comprises numeric features and 
+        # the second contains the textual features
+        X_i = extract_sds_features(candidate_text, shared_tokens[:num_to_keep], candidates, 
+                                    scores[:num_to_keep], cur_candidate_index)
 
         X.append(X_i)
+        # i don't think we actually need these
+        candidate_sentences.append(candidate_text)
 
+    # pad out the vector with non-candidates for indexing purposes.
+    for noncandidate in candidates[num_to_keep:]:
+        X.append(None)
+        candidate_sentences.append(None)
 
+    return X 
 
 def extract_sds_features(candidate_sentence, shared_tokens, candidates, 
                                 scores, cur_candidate_index):
