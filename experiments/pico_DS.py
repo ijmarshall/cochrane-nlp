@@ -35,6 +35,7 @@ def word_list(text):
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
+
 def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     '''
     Generates all available `labeled' PICO training data via naive
@@ -59,12 +60,15 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     ###
     sentences_y_dict = {
         domain: {"sentences":[], "y":[], "pmids":[]} for 
-        domain in PICO_DOMAINS}
+            domain in PICO_DOMAINS}
 
     p = biviewer.PDFBiViewer()
     for n, study in enumerate(p):
         if n % 100 == 0:
             print "on study %s" % n 
+
+        #if n >= 1000:
+        #    break 
 
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
@@ -89,9 +93,6 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
                 # the :2 throws away the shared tokens here.
                 ranked_sentences, scores = ranked_sentences_and_scores[:2]
-                # don't take more than max_sentences sentences
-                #num_to_keep = min(len([score for score in scores if score >= cutoff]), max_sentences)
-
                 pos_count = 0 # place an upper-bound on the number of pos. instances.
                 for sent, score in zip(ranked_sentences, scores):
                     sentences_y_dict[pico_field]["sentences"].append(sent)
@@ -177,7 +178,8 @@ def output_data_for_labeling(N=5, output_file_path="for_labeling.csv", cutoff=4,
                     # the :2 throws away the shared tokens here.
                     ranked_sentences, scores = ranked_sentences_and_scores[:2]
                     # don't take more than max_sentences sentences
-                    num_to_keep = min(len([score for score in scores if score >= cutoff]), max_sentences)
+                    num_to_keep = min(len([score for score in scores if score >= cutoff]), 
+                                        max_sentences)
 
                 
                     ## what to do if this is zero?
