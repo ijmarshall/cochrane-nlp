@@ -10,7 +10,9 @@ this is to generate \tilde{x} and \tilde{y}.
 @TODO Technically to be consistent this module should probably 
 live in the cochranenlpexperiments lib rather than here
 '''
-
+import sys
+reload(sys)  
+sys.setdefaultencoding('utf8')
 import pdb
 import random
 import csv
@@ -87,11 +89,14 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
     # DS labels for evaluation here -- we don't care for 
     # the features *unless* we are doing SDS! 
     # @TODO refactor or rename method?
-    
+    #
     # Note that the z_dict here is a dicitonary mapping
     # PICO fields to vectors comprising normalization terms
     # for each numeric feature/column. 
-    DS_learning_tasks, z_dict = get_DS_features_and_labels()
+    #
+    # And domains_pmids_targets is a dictionary that 
+    # maps pmids and domains to target sentences
+    DS_learning_tasks, z_dict, domains_pmids_targets = get_DS_features_and_labels()
 
     ## now we divvy up into train/test splits.
     # this will be a dictionary mapping domains to 
@@ -121,19 +126,23 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
             cur_test_pmids_dict = dict(zip(domains, test_ids_for_cur_fold))
 
         output_str = DS_PICO_experiment(sentences_y_dict, domain_vectorizers, 
-                                            DS_learning_tasks, strategy=strategy,
+                                            DS_learning_tasks, domains_pmids_targets,
+                                            strategy=strategy,
                                             test_pmids_dict=cur_test_pmids_dict, 
                                             test_proportion=test_proportion,
                                             z_dict=z_dict)
 
-        print "\n".join(output_str) + "\n\n"
+        #pdb.set_trace()
+        print u"\n".join(output_str)
+        print "\n\n"
         with open(output_path, 'a') as output_f:
             output_f.write("\n\n\n\n -- fold/iter %s --\n\n" % iter_)
-            output_f.write("\n".join(output_str))
+            output_f.write(u"\n".join(output_str))
 
 
 
-def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks, 
+def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, 
+                        DS_learning_tasks, domains_pmids_targets,
                         strategy="baseline_DS", test_pmids_dict=None, test_proportion=1,
                         use_distant_supervision_only=False, z_dict=None):
     '''
@@ -161,7 +170,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
     when available. (This is a useful baseline.)
     '''
     testing_pmids = None
-    output_str = []
+    output_str = [""]
 
     for domain_index, domain in enumerate(domains):
         ##
@@ -219,7 +228,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
                 # we have explicit supervision!
                 if pmid in domain_supervision["pmids"] and not use_distant_supervision_only:
                     ###
-                    # It is possible that this introduces some small amount of
+                    # It is possible that this will introduce some small amount of
                     # noise, in the following way. We are checking if we have 
                     # supervision for the current PMID, but this could correspond
                     # to multiple entries in the CDSR. If a sentence did not rank
@@ -365,38 +374,76 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers, DS_learning_tasks,
         ### 
         # make predictions for each study
         current_pmid = None
+        current_target_text = None
         preds_for_current_pmid, rows_for_current_pmid = [], []
+        sentences_for_current_pmid, labels_for_current_pmid = [], []
         precisions, accs = [], []
         
 
         for test_row in test_rows:
             test_pmid = domain_DS["pmids"][test_row]
-            rows_for_current_pmid.append(test_row)
+            target_text = domains_pmids_targets[domain][test_pmid] #domain_DS["targets"][test_row]
+            current_sentence = domain_DS["sentences"][test_row]
+            current_label = domain_DS["y"][test_row]
             if current_pmid is None:
                 current_pmid = test_pmid 
+                current_target_text = target_text
+                sentences_for_current_pmid = [current_sentence]
+                rows_for_current_pmid = [test_row]
+                labels_for_current_pmid = [current_label]
             elif test_pmid != current_pmid:
                 #highest_pred = np.argmax(np.array(preds_for_current_pmid))
                 sorted_pred_indices = np.array(preds_for_current_pmid).argsort()
                 #highest_pred_indices = rows_for_current_pmid[highest_pred]
                 highest_pred_indices = sorted_pred_indices[-3:]
-                #pdb.set_trace()
-                true_labels = np.array(domain_DS["y"])[highest_pred_indices]
+
+                #true_labels = np.array(domain_DS["y"])[highest_pred_indices]
+                sentences, true_labels = [], []
+                for sent_i in highest_pred_indices:
+                    sentences.append(sentences_for_current_pmid[sent_i])
+                    true_labels.append(labels_for_current_pmid[sent_i])
+
+                #sentences = [sentences_for_current_pmid[sent_i]
+                #                for sent_i in highest_pred_indices]
+
+
+                #domain_DS["sentences"][sent_i].encode("utf8", errors='ignore') 
+                #    for sent_i in highest_pred_indices]
+
                 
+                output_str.append("\n -- domain %s in study %s --\n\n" % 
+                                    (domain, current_pmid))
+                output_str.append("-- target text --\n\n %s" % current_target_text)
+
+                output_str.append("\n\n-- candidate sentence --\n\n")
+                output_str.append("\n\n-- candidate sentence --\n\n".join(sentences))
+
                 # should we do something special if these were not
                 # directly supervised instances?
                 directly_supervised_indicators[test_row]
+                #pdb.set_trace()
 
-                precision_at_three = len(true_labels[true_labels>0])/3.0
+                #precision_at_three = len(true_labels[true_labels>0])/3.0
+                precision_at_three = true_labels.count(1)/3.0
                 precisions.append(precision_at_three)
 
                 top_pred_acc = 1 if true_labels[0] > 0 else 0
                 accs.append(top_pred_acc)
 
+                ## does the target text make sense now.. ???
+                #pdb.set_trace()
                 # domain_DS["sentences"][highest_prediction_index]
                 current_pmid = test_pmid 
+                current_target_text = target_text
                 preds_for_current_pmid = []
-                rows_for_current_pmid = []
+                sentences_for_current_pmid = [current_sentence]
+                labels_for_current_pmid = [current_label]
+                rows_for_current_pmid = [test_row]
                 pred_rows = []
+            else:
+                rows_for_current_pmid.append(test_row)
+                sentences_for_current_pmid.append(current_sentence)
+                labels_for_current_pmid.append(current_label)
 
             current_pred = clf.decision_function(domain_DS["X"][test_row])
             preds_for_current_pmid.append(current_pred[0])
@@ -481,7 +528,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                     train_rows, testing_pmids, 
                     X_distant_train, y_distant_train, 
                     domain, weight=1,
-                    direct_weight_scalar=10, 
+                    direct_weight_scalar=5, 
                     DS_weight_scalar=1):
     '''
     Here we train our SDS model and return it.
@@ -559,7 +606,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
             # instance that did not score high enough to be a candidate
             # so we just stick with our -1 label.
             updated_ys[i] = y_distant_train[i]
-            weights[i] = weight * DS_weight_scalar # arbitrary
+            weights[i] = 1.0 * DS_weight_scalar # arbitrary
 
     print "ok! updated labels, now training the actual model.."
 
@@ -717,7 +764,7 @@ def get_direct_clf():
 
 def get_DS_clf():
     # .0001, .001, 
-    tune_params = [{"alpha":[.00001, .0001, .01, .1, 1, 10]}]
+    tune_params = [{"alpha":[.00001, .001, 1, 10]}]
     #clf = GridSearchCV(LogisticRegression(), tune_params, scoring="accuracy", cv=5)
 
     ###
@@ -808,7 +855,7 @@ def get_lr_clf():
 def _score_to_ordinal_lbl(y_str):
     return float(y_str.strip())
 
-def _score_to_binary_lbl(y_str, zero_one=True, threshold=1):
+def _score_to_binary_lbl(y_str, zero_one=True, threshold=2):
     # will label anything >= threshold as '1'; otherwise 0
     # (or -1, depending on the zero_one flag).
     # 
@@ -861,7 +908,7 @@ def generate_X_y(DS_learning_task, binary_labels=True,
 
 # "sds/annotations/for_labeling_sharma.csv"
 def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sharma.csv",
-                                labels_path="sds/annotations/sharma-merged-labels-1-2-15.csv",
+                                labels_path="sds/annotations/sharma-merged-labels-1-14-15.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4, normalize_numeric_cols=True):
     '''
@@ -901,6 +948,12 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
         # is so we can know which studies each candidate
         # was generated for.
         X_y_dict[d] = {"X":[], "y":[], "pmids":[], "sentences":[]}
+        # this is a map from domains to dictionaries, which
+        # in turn map from pmids to target sentences
+        #domains_pmids_targets = dict(zip(domains, [{}]*3))
+        domains_pmids_targets = {}
+        for domain in domains:
+            domains_pmids_targets[domain] = {}
 
 
     print "reading candidates from: %s" % candidates_path
@@ -998,6 +1051,15 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
 
             # also include the actual sentences
             X_y_dict[PICO_field]["sentences"].append(candidate_sentence)
+            # and the corresponding target sentence
+            #X_y_dict[PICO_field]["targets"].append(target_text)
+
+            ## why is this 
+            # OUTCOMES: FEV1, FVC, PEF, Rescue use, asthma symptom free days & nights, adverse events .
+            # ???!?!
+            #if study_id == "8756801": #and PICO_field == "CHAR_PARTICIPANTS":
+            #    pdb.set_trace()
+            domains_pmids_targets[PICO_field][study_id] = target_text
 
     if normalize_numeric_cols:
         # @TODO ugh, yeah this is not very readable
@@ -1020,9 +1082,9 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
                 for i in xrange(len(domain_X)):
                     # this is not cool
                     X_y_dict[domain]["X"][i][0][j] = X_y_dict[domain]["X"][i][0][j] / z_j
-        return X_y_dict, z_dict 
+        return X_y_dict, z_dict, domains_pmids_targets
 
-    return X_y_dict
+    return X_y_dict, domains_pmids_targets
 
 
 
