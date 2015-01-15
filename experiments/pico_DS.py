@@ -121,6 +121,11 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     return sentences_y_dict
 
 
+''' 
+@TODO you really need to add additional (non-textual!) 
+features here, such as length of sentence; location in 
+text?; other features like average length of word?
+'''
 def vectorize(sentences_y_dict):
     '''
     Vectorize the sentences in each pico domain and 
@@ -143,7 +148,7 @@ def vectorize(sentences_y_dict):
     return sentences_y_dict, domain_vectorizers
     #all_sentences = X_y_dict
 
-def output_data_for_labeling(N=5, output_file_path="for_labeling.csv", cutoff=4, max_sentences=10):
+def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", cutoff=4, max_sentences=10):
     ''' generate a CSV file for labeling matches '''
 
     with open(output_file_path, 'wb') as outf:
