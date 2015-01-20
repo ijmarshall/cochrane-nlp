@@ -1054,13 +1054,12 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             # and the corresponding target sentence
             #X_y_dict[PICO_field]["targets"].append(target_text)
 
-            ## why is this 
-            # OUTCOMES: FEV1, FVC, PEF, Rescue use, asthma symptom free days & nights, adverse events .
-            # ???!?!
-            #if study_id == "8756801": #and PICO_field == "CHAR_PARTICIPANTS":
-            #    pdb.set_trace()
             domains_pmids_targets[PICO_field][study_id] = target_text
 
+    ###
+    # @TODO refactor to use the normalize function in the
+    # sklearn.preprocessing module
+    ####
     if normalize_numeric_cols:
         # @TODO ugh, yeah this is not very readable
         # at the very least should factor this out into
