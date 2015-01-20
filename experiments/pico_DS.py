@@ -15,15 +15,21 @@ import pdb
 from operator import itemgetter
 from collections import Counter
 import pickle 
+import string 
 
 import numpy as np
+import scipy as sp
+from scipy.sparse import lil_matrix, csc_matrix
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 
+
 # for generating DS features from sentences
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.preprocessing import normalize
 
 from readers import biviewer
 
@@ -136,17 +142,61 @@ def vectorize(sentences_y_dict):
     for domain in PICO_DOMAINS:
         all_sentences = sentences_y_dict[domain]["sentences"]
 
+        print "extracting textual (BoW) features"
         vectorizer = CountVectorizer(min_df=3, max_features=50000, ngram_range=(1, 2))
         vectorizer.fit(all_sentences)
         X = vectorizer.transform(all_sentences)
         tf_transformer = TfidfTransformer().fit(X)
-        sentences_y_dict[domain]["X"] = tf_transformer.transform(X)
-
+        X_text = tf_transformer.transform(X)
         # hold on to the vectorizers.
         domain_vectorizers[domain] = vectorizer
 
+        print "ok, extracting numeric features!"
+        X_numeric = extract_numeric_features(sentences_y_dict[domain]["sentences"])
+
+        # now combine feature sets.
+        sentences_y_dict[domain]["X"] = sp.sparse.hstack((X_text, X_numeric))
+
     return sentences_y_dict, domain_vectorizers
-    #all_sentences = X_y_dict
+
+
+def extract_numeric_features(sentences, normalize_matrix=True):
+    # number of numeric features (this is fixed
+    # for now; may wish to revisit this)
+    m = 5
+    n = len(sentences)
+    X_numeric = lil_matrix((n,m))#sp.sparse.csc_matrix((n,m))
+    for sentence_index, sentence in enumerate(sentences):
+        #if sentence_index % 1000 == 0:
+        #    print "numeric: %s" % sentence_index 
+
+        X_numeric[sentence_index,0] = len(sentence)
+        X_numeric[sentence_index,1] = sentence.count("\n")
+        tokens = word_tokenize(sentence)
+        punc_tokens = [t for t in tokens if t in string.punctuation]
+        token_count = len(tokens)
+        X_numeric[sentence_index,2] = len(tokens) - len(punc_tokens)
+        if token_count == 0:
+            X_numeric[sentence_index,2] = 0
+        else:
+            X_numeric[sentence_index,2] = float(len(punc_tokens)) / float(token_count)
+
+        num_numbers = sum([is_number(t) for t in tokens])
+        X_numeric[sentence_index,4] = num_numbers
+
+    # column-normalize
+    X_numeric = X_numeric.tocsc()
+    if normalize_matrix:
+        X_numeric = normalize(X_numeric, axis=0)
+
+    return X_numeric
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", cutoff=4, max_sentences=10):
     ''' generate a CSV file for labeling matches '''
