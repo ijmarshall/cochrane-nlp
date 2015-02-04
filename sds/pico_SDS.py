@@ -31,6 +31,7 @@ from sklearn.linear_model import LogisticRegression, SGDClassifier
 
 from sklearn.grid_search import GridSearchCV
 from sklearn import cross_validation
+from sklearn.cross_validation import train_test_split
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 
 from readers import biviewer
@@ -41,17 +42,18 @@ from readers import biviewer
 from experiments import pico_DS 
 domains = pico_DS.PICO_DOMAINS 
 
-### TODO TODO TODO 12/22
-#       * further verification of Nguyun
-#       * additional sanity checks on data/supervision/DS matching
-#       * profit.
+### TODO TODO TODO 1/19
+#     * Need to fix feature generation at test time; specifically need to 
+#       add in numerical features (concatenate these to textual features)
+#       as we do for training! errr.. i think.. unless this is already
+#       taken care of...
 ###
 # note: the *_1000 pickles are subsets of the available DS to 
 # speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None, 
                             strategy="baseline_DS", output_dir="sds/results/",
                             y_dict_pickle="sds/sentences_y_dict.pickle", 
-                            domain_v_pickle="sds/vectorizers.pickle"):
+                            domain_v_pickle="sds/vectorizers.pickle", random_seed=512):
     '''
     Runs multiple (iters) experiments using the specified strategy.
 
@@ -104,16 +106,26 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
     test_id_lists = {}
     ## @NOTE are you sure you're handling the
     ## train/test splits correctly here? 
-    if cv:
-        for domain in domains:
-            labeled_pmids_for_domain = list(set(DS_learning_tasks[domain]["pmids"]))
+    
+    for domain in domains:
+        labeled_pmids_for_domain = list(set(DS_learning_tasks[domain]["pmids"]))
+        test_id_lists[domain] = []
+        if cv:
             kfolds = cross_validation.KFold(len(labeled_pmids_for_domain), 
-                                                iters, shuffle=True, random_state=512)
-            
-            test_id_lists[domain] = []
+                                                iters, shuffle=True, random_state=random_seed)
             for train_indices, test_indices in kfolds:
                 test_id_lists[domain].append(
                     [labeled_pmids_for_domain[j] for j in test_indices])
+        else:
+            ### TODO validate
+            train_test_splits = []
+            
+            for iter_ in xrange(iters):
+                cur_train_test_split = train_test_split(
+                            labeled_pmids_for_domain, test_size=test_proportion, 
+                            random_state=random_seed+iter_)
+                test_id_lists[domain].append([cur_train_test_split[1]])
+
 
     for iter_ in xrange(iters):
 
@@ -315,7 +327,12 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                                                     domain_supervision, 
                                                     return_pmids_too=True)
 
+
+            #pdb.set_trace()
      
+            ### why do we do this here? 
+            # why not use X_direct ???
+
             ### this will align with the DS_supervision.
             # note that we now *pad* this vector to make sure
             # the entries align with the DS we have.
@@ -332,10 +349,8 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                     X_tilde_v = _to_vector(cur_X, vectorizer)
                 X_train_tilde.append(X_tilde_v)
 
-            # i think the directly supervised indices list is 
-            # screwed up because these are indices w.r.t. 
-            # the original list, not the train subset!
 
+            
             ''' end SDS magic '''
             clf = build_SDS_model(X_direct, y_direct, direct_pmids, 
                                     directly_supervised_indicators_train,
@@ -348,12 +363,12 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
 
         elif strategy_name == "nguyen":
-            if len(directly_supervised_indices) == 0:
+            if len(directly_supervised_indices_train) == 0:
                 print "no direct supervision provided!"
                 return ["-"*25, "\n\n no directly labeled data!!! \n\n", "-"*25]
 
             clf = build_nguyen_model(X_train_DS, y_train_DS, 
-                                    directly_supervised_indices)
+                                    directly_supervised_indices_train)
 
         else:
             clf = get_DS_clf()
@@ -377,7 +392,9 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         current_target_text = None
         preds_for_current_pmid, rows_for_current_pmid = [], []
         sentences_for_current_pmid, labels_for_current_pmid = [], []
-        precisions, accs = [], []
+        # any_relevant_indicators contains 1s where at least
+        # one of the top k sentences (say k=3) is highly relevant
+        any_relevant_indicators, precisions, accs = [], [], []
         
 
         for test_row in test_rows:
@@ -427,6 +444,9 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 precision_at_three = true_labels.count(1)/3.0
                 precisions.append(precision_at_three)
 
+                any_relevant = 1 if true_labels.count(1) > 0 else 0
+                any_relevant_indicators.append(any_relevant)
+
                 top_pred_acc = 1 if true_labels[0] > 0 else 0
                 accs.append(top_pred_acc)
 
@@ -460,6 +480,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         output_str.append("-"*25)  
         output_str.append("method: %s" % strategy)
         output_str.append("domain: %s" % domain)
+        output_str.append("at least one: %s" % np.mean(any_relevant_indicators))
         output_str.append("precisions: %s" % np.mean(precisions))
         output_str.append("accuracy: %s" % np.mean(accs))
         #output_str.append(str(sklearn.metrics.classification_report(y_test_DS, preds)))
@@ -528,7 +549,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                     train_rows, testing_pmids, 
                     X_distant_train, y_distant_train, 
                     domain, weight=1,
-                    direct_weight_scalar=5, 
+                    direct_weight_scalar=1, 
                     DS_weight_scalar=1):
     '''
     Here we train our SDS model and return it.
@@ -549,9 +570,13 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     binary vector indicating which training entries 
     correspond to direct supervision. This is nececessary
     because we don't want to overwrite labels that 
-    were explicitly provided. Further, these receive
+    were explicitly provided. 
 
+    so X_tilde_train is the matrix comprising all 
+    tilde instances for training 
 
+    X_direct_train are tilde entries for (directly) labeled 
+    intances so that we can train our sds model
     '''
     #############################################
     # (1) Train the SDS model (M_SDS) using directly 
@@ -559,6 +584,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     #############################################
     X_direct_train, y_direct_train = [], []
  
+    
     # don't train on testing articles!
     for i, pmid in enumerate(pmids_direct):
         x_i, y_i = X_direct[i], y_direct[i]
@@ -570,7 +596,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     # now train the SDS model that predicts 
     # whether candidate sentences are indeed good
     # fits
-    m_sds = get_lr_clf()
+    m_sds = get_lr_clf(class_weight=None)
     m_sds.fit(X_direct_train, y_direct_train)
 
 
@@ -585,8 +611,16 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     weights    = np.zeros(len(y_distant_train))
     _to_neg_one = lambda x : -1 if x <= 0 else 1
     for i, x_tilde_i in enumerate(X_tilde_train):
-        if x_tilde_i is not None:
-            if directly_supervised_indicators_train[i] < 1:            
+        if directly_supervised_indicators_train[i] > 0: 
+            # we do not overwrite direct labels.
+            print "directly labeled!"
+            #pdb.set_trace()
+            weights[i] = weight*direct_weight_scalar # or something big, since these are direct?
+            # (remember that we overwrote the DS labels with 
+            #   the direct above)
+            updated_ys[i] = y_distant_train[i]
+        else:
+            if x_tilde_i is not None and y_distant_train[i] > 0:             
                 weight = m_sds.predict_proba(x_tilde_i)[0][1]
                 pred = m_sds.predict(x_tilde_i)
                 pred = _to_neg_one(pred)
@@ -594,25 +628,20 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                 updated_ys[i] = pred #pred[0][1]
                 weights[i] = weight
             else:
-                # we do not overwrite direct labels.
-                print "directly labeled!"
-                #pdb.set_trace()
-                weights[i] = weight*direct_weight_scalar # or something big, since these are direct?
-                # (remember that we overwrote the DS labels with 
-                #   the direct above)
+                # if x_tilde_i is None that means this is a `padding'
+                # instance that did not score high enough to be a candidate
+                # so we just stick with our -1 label.
                 updated_ys[i] = y_distant_train[i]
-        else:
-            # if x_tilde_i is None that means this is a `padding'
-            # instance that did not score high enough to be a candidate
-            # so we just stick with our -1 label.
-            updated_ys[i] = y_distant_train[i]
-            weights[i] = 1.0 * DS_weight_scalar # arbitrary
+                weights[i] = 1.0 * DS_weight_scalar # arbitrary
 
     print "ok! updated labels, now training the actual model.."
 
+    ### NOTES 2/3/2015 -- only flips ***6*** labels
+    # in the DS -- out of 4230647+ !!! something is up
+    #pdb.set_trace()
     clf = get_DS_clf()
-    clf.fit(X_distant_train, updated_ys, sample_weight=weights)
-    #clf.fit(X_distant_train, updated_ys)   
+    #clf.fit(X_distant_train, updated_ys, sample_weight=weights)
+    clf.fit(X_distant_train, updated_ys)   
     return clf
 
 
@@ -840,15 +869,15 @@ def train_test_by_pmid(X, y, pmids, train_p=.8):
 # model is!
 def build_clf(X, y):
     # .0001, .001, 
-    tune_params = [{"C":[.001, .001, .01, .1, .05, 1, 2, 5, 10]}]
+    tune_params = [{"C":[.0001, .001, .01, .1, .05, 1, 2, 5, 10]}]
     clf = GridSearchCV(LogisticRegression(class_weight="auto"), 
                         tune_params, scoring="f1", cv=5)
     return clf
 
-def get_lr_clf():
-    tune_params = [{"C":[.001, .001, .01, .1, .05, 1, 2, 5, 10]}]
-    clf = GridSearchCV(LogisticRegression(class_weight="auto"), 
-                        tune_params, cv=5)
+def get_lr_clf(class_weight=None):
+    tune_params = [{"C":[.0001, .001, .01, .1, .05, 1, 2, 5, 10]}]
+    clf = GridSearchCV(LogisticRegression(class_weight=class_weight), 
+                        tune_params, scoring="accuracy", cv=5)
     return clf
 
 
@@ -871,7 +900,7 @@ def generate_X_y(DS_learning_task, binary_labels=True,
                     return_pmids_too=False, just_X=False):
     '''
     This goes from the output generated by get_DS_features_and_labels
-    (below) *for a single domain* to actual vectors and scalar/binary 
+    (below) *for a single domain* to feature vectors and scalar/binary 
     labels.
     '''
     all_domain_texts = []
@@ -906,11 +935,16 @@ def generate_X_y(DS_learning_task, binary_labels=True,
     return X, y
 
 
-# "sds/annotations/for_labeling_sharma.csv"
+#
+# 2/2/2015 note that the mysterious '158' below reflects when we made the change 
+# to labeling tables
+# 
 def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sharma.csv",
-                                labels_path="sds/annotations/sharma-merged-labels-1-14-15.csv",
+                                labels_path="sds/annotations/sharma-merged-labels-1-30-15.csv",
                                 label_index=-1,
-                                max_sentences=10, cutoff=4, normalize_numeric_cols=True):
+                                max_sentences=10, cutoff=4, 
+                                normalize_numeric_cols=True,
+                                start_row=158):
     '''
     Load in the supervision (X,y) for DS task.
 
@@ -935,7 +969,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
     The X instances are tuples, where the first entry is a vector of numerical 
     features, while the second is the string containing (whitespace-delimited) 
     textual features. The y vectors are singletons for each instance and are 
-    currently strings \in {"0", "1", "2"}.
+    currently strings \in {"t0", "t1", "0", "1", "2"}.
     '''
     biview = biviewer.PDFBiViewer() 
 
@@ -969,9 +1003,13 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             print "you have a mismatch between candidate sentences and labels!"
             pdb.set_trace()
 
-        # skip headers
-        candidates = candidates[1:]
-        labels = labels[1:]
+        if start_row is None:
+            # skip headers
+            start_row = 1
+        else:
+            print "--- starting at row: %s ---" % start_row
+        candidates = candidates[start_row:]
+        labels = labels[start_row:]
         
         ###
         # note that the structure of the annotations
@@ -1065,6 +1103,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
         # at the very least should factor this out into
         # separate normalizing routine...
 
+
         # record the normalizing terms for later use
         z_dict = {} 
         for domain in domains:
@@ -1074,8 +1113,12 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             num_numeric_feats = len(domain_X[0][0])
 
             col_Zs = [0]*num_numeric_feats
+
             for j in xrange(num_numeric_feats):
                 all_vals = [X_i[0][j] for X_i in domain_X] 
+                # note that this will have no effect on 
+                # binary features (since the z terms for 
+                # these will be 1)
                 z_j = float(max(all_vals))
                 z_dict[domain].append(z_j)
                 for i in xrange(len(domain_X)):
@@ -1272,10 +1315,19 @@ def extract_sds_features(candidate_sentence, shared_tokens, candidates,
     X_i_numeric.append(candidate_score - np.median(scores))
     X_i_numeric.append(candidate_score)
 
+    # 1/21 -- adding 'structural' features
+    structural_features = pico_DS.extract_structural_features(candidate_sentence)
+    X_i_numeric.extend(structural_features.tolist())
+
     # note that we'll need to deal with merging these 
     # tesxtual and numeric feature sets elsewhere!
     X_i = (X_i_numeric, X_i_text)
     return X_i 
+
+
+
+
+
 
 
 '''
