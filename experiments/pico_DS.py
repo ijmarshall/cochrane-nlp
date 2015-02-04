@@ -151,38 +151,23 @@ def vectorize(sentences_y_dict):
         # hold on to the vectorizers.
         domain_vectorizers[domain] = vectorizer
 
-        print "ok, extracting numeric features!"
+        print "ok, extracting (binary!) numeric features!"
         X_numeric = extract_numeric_features(sentences_y_dict[domain]["sentences"])
 
         # now combine feature sets.
-        sentences_y_dict[domain]["X"] = sp.sparse.hstack((X_text, X_numeric))
+        sentences_y_dict[domain]["X"] = sp.sparse.hstack((X_text, X_numeric)).tocsr()
 
     return sentences_y_dict, domain_vectorizers
 
 
-def extract_numeric_features(sentences, normalize_matrix=True):
+def extract_numeric_features(sentences, normalize_matrix=False):
     # number of numeric features (this is fixed
     # for now; may wish to revisit this)
-    m = 5
+    m = 6
     n = len(sentences)
     X_numeric = lil_matrix((n,m))#sp.sparse.csc_matrix((n,m))
     for sentence_index, sentence in enumerate(sentences):
-        #if sentence_index % 1000 == 0:
-        #    print "numeric: %s" % sentence_index 
-
-        X_numeric[sentence_index,0] = len(sentence)
-        X_numeric[sentence_index,1] = sentence.count("\n")
-        tokens = word_tokenize(sentence)
-        punc_tokens = [t for t in tokens if t in string.punctuation]
-        token_count = len(tokens)
-        X_numeric[sentence_index,2] = len(tokens) - len(punc_tokens)
-        if token_count == 0:
-            X_numeric[sentence_index,2] = 0
-        else:
-            X_numeric[sentence_index,2] = float(len(punc_tokens)) / float(token_count)
-
-        num_numbers = sum([is_number(t) for t in tokens])
-        X_numeric[sentence_index,4] = num_numbers
+        X_numeric[sentence_index, :] = extract_structural_features(sentence)
 
     # column-normalize
     X_numeric = X_numeric.tocsc()
@@ -190,6 +175,47 @@ def extract_numeric_features(sentences, normalize_matrix=True):
         X_numeric = normalize(X_numeric, axis=0)
 
     return X_numeric
+
+
+# @TODO improve this set! Note that this is used
+# both for X_tilde and for DS. 
+# one thing is you should probably bin these things!
+# also add feature for number of empty lines?
+def extract_structural_features(sentence):
+    fv = np.zeros(6)
+    #fv[0] = len(sentence)
+
+    ## @TODO bin these!
+
+    # indicator; 1 if there are more than 20 new lines
+    fv[0] = 1 if sentence.count("\n") > 20 else 0
+    fv[1] = 1 if sentence.count("\n") > 50 else 0
+
+    '''
+    tokens = word_tokenize(sentence)
+    punc_tokens = [t for t in tokens if t in string.punctuation]
+    token_count = len(tokens)
+    #fv[2] = len(tokens) - len(punc_tokens)
+    if token_count > 0:
+        fv[2] = float(len(punc_tokens)) / float(token_count)
+    '''
+
+    num_numbers = sum([is_number(t) for t in tokens])
+    if num_numbers > 0:
+        num_frac = num_numbers / float(len(tokens))
+        fv[2] = 1.0 if num_frac > .2 else 0.0
+        fv[3] = 1.0 if num_frac > .4 else 0.0
+
+    c = np.mean([len(line) for line in sentence.split("\n")])
+    fv[4] = average_line_length
+
+    if len(tokens):
+        average_token_len = np.mean([len(t) for t in tokens])
+        fv[5] = 1 if average_token_len < 4 else 0
+        #fv[6] = 1 if average_token_len < 3 else 0
+
+    #pdb.set_trace()
+    return fv
 
 def is_number(s):
     try:
