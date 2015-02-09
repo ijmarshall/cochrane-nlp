@@ -163,7 +163,7 @@ def vectorize(sentences_y_dict):
 def extract_numeric_features(sentences, normalize_matrix=False):
     # number of numeric features (this is fixed
     # for now; may wish to revisit this)
-    m = 6
+    m = 5
     n = len(sentences)
     X_numeric = lil_matrix((n,m))#sp.sparse.csc_matrix((n,m))
     for sentence_index, sentence in enumerate(sentences):
@@ -182,7 +182,7 @@ def extract_numeric_features(sentences, normalize_matrix=False):
 # one thing is you should probably bin these things!
 # also add feature for number of empty lines?
 def extract_structural_features(sentence):
-    fv = np.zeros(6)
+    fv = np.zeros(5)
     #fv[0] = len(sentence)
 
     ## @TODO bin these!
@@ -191,8 +191,8 @@ def extract_structural_features(sentence):
     fv[0] = 1 if sentence.count("\n") > 20 else 0
     fv[1] = 1 if sentence.count("\n") > 50 else 0
 
-    '''
     tokens = word_tokenize(sentence)
+    '''
     punc_tokens = [t for t in tokens if t in string.punctuation]
     token_count = len(tokens)
     #fv[2] = len(tokens) - len(punc_tokens)
@@ -206,12 +206,15 @@ def extract_structural_features(sentence):
         fv[2] = 1.0 if num_frac > .2 else 0.0
         fv[3] = 1.0 if num_frac > .4 else 0.0
 
-    c = np.mean([len(line) for line in sentence.split("\n")])
-    fv[4] = average_line_length
+    #average_line_length = np.mean([len(line) for line in sentence.split("\n")])
+    #pdb.set_trace()
+
+    ## TODO???
+    #fv[4] = average_line_length
 
     if len(tokens):
         average_token_len = np.mean([len(t) for t in tokens])
-        fv[5] = 1 if average_token_len < 4 else 0
+        fv[4] = 1 if average_token_len < 4 else 0
         #fv[6] = 1 if average_token_len < 3 else 0
 
     #pdb.set_trace()

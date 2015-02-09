@@ -307,6 +307,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         X_train_DS = domain_DS["X"][train_rows]
         X_test_DS = domain_DS["X"][test_rows] 
         y_train_DS = np.array(domain_DS["y"])[train_rows]
+
         directly_supervised_indicators_train = directly_supervised_indicators[train_rows]
         clf = None 
     
@@ -328,10 +329,10 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                                                     return_pmids_too=True)
 
 
-            #pdb.set_trace()
-     
-            ### why do we do this here? 
-            # why not use X_direct ???
+            # what is the relationship between generate_X_y
+            # and get_DS_features_for_all_data ????
+
+            ## this uses the generate_SDS_features method!
 
             ### this will align with the DS_supervision.
             # note that we now *pad* this vector to make sure
@@ -350,14 +351,14 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 X_train_tilde.append(X_tilde_v)
 
 
-            
+            train_sentences_DS = domain_DS["sentences"][train_rows]
             ''' end SDS magic '''
             clf = build_SDS_model(X_direct, y_direct, direct_pmids, 
                                     directly_supervised_indicators_train,
                                     X_train_tilde,
                                     train_rows, testing_pmids, 
                                     X_train_DS, y_train_DS, 
-                                    domain)
+                                    domain, sentences=train_sentences_DS)
             
 
 
@@ -438,7 +439,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 # should we do something special if these were not
                 # directly supervised instances?
                 directly_supervised_indicators[test_row]
-                #pdb.set_trace()
+            
 
                 #precision_at_three = len(true_labels[true_labels>0])/3.0
                 precision_at_three = true_labels.count(1)/3.0
@@ -450,8 +451,6 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 top_pred_acc = 1 if true_labels[0] > 0 else 0
                 accs.append(top_pred_acc)
 
-                ## does the target text make sense now.. ???
-                #pdb.set_trace()
                 # domain_DS["sentences"][highest_prediction_index]
                 current_pmid = test_pmid 
                 current_target_text = target_text
@@ -475,7 +474,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         #pdb.set_trace()    
         auc = sklearn.metrics.roc_auc_score(y_test_DS, raw_scores)
         '''
-        #pdb.set_trace()
+       
 
         output_str.append("-"*25)  
         output_str.append("method: %s" % strategy)
@@ -488,7 +487,6 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         #output_str.append("confusion matrix: %s" % str(confusion_matrix(y_test_DS, preds)))
         # output_str.append("AUC: %s" % auc)
         output_str.append("-"*25) 
-        #pdb.set_trace()
 
     return output_str 
 
@@ -550,7 +548,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                     X_distant_train, y_distant_train, 
                     domain, weight=1,
                     direct_weight_scalar=1, 
-                    DS_weight_scalar=1):
+                    DS_weight_scalar=1, sentences=None):
     '''
     Here we train our SDS model and return it.
     Specifically, this entails building a model 
@@ -582,6 +580,9 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     # (1) Train the SDS model (M_SDS) using directly 
     #  labeled data
     #############################################
+    # this is confusingly named because X_direct
+    # is actually the subset of X_tilde for which we
+    # have been given labels!
     X_direct_train, y_direct_train = [], []
  
     
@@ -593,10 +594,11 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
             X_direct_train.append(x_i)
             y_direct_train.append(y_i)
  
+
     # now train the SDS model that predicts 
     # whether candidate sentences are indeed good
-    # fits
-    m_sds = get_lr_clf(class_weight=None)
+    # fits (aim for high-precision)
+    m_sds = get_lr_clf(class_weight=None, scoring="precision")
     m_sds.fit(X_direct_train, y_direct_train)
 
 
@@ -610,11 +612,12 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     updated_ys = np.zeros(len(y_distant_train))
     weights    = np.zeros(len(y_distant_train))
     _to_neg_one = lambda x : -1 if x <= 0 else 1
+    flipped_count = 0
     for i, x_tilde_i in enumerate(X_tilde_train):
         if directly_supervised_indicators_train[i] > 0: 
             # we do not overwrite direct labels.
-            print "directly labeled!"
-            #pdb.set_trace()
+            #print "directly labeled!"
+        
             weights[i] = weight*direct_weight_scalar # or something big, since these are direct?
             # (remember that we overwrote the DS labels with 
             #   the direct above)
@@ -624,7 +627,10 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                 weight = m_sds.predict_proba(x_tilde_i)[0][1]
                 pred = m_sds.predict(x_tilde_i)
                 pred = _to_neg_one(pred)
-
+                cur_sent = sentences[i]
+                if pred < 1:
+                    flipped_count += 1
+                pdb.set_trace()
                 updated_ys[i] = pred #pred[0][1]
                 weights[i] = weight
             else:
@@ -634,7 +640,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                 updated_ys[i] = y_distant_train[i]
                 weights[i] = 1.0 * DS_weight_scalar # arbitrary
 
-    print "ok! updated labels, now training the actual model.."
+    print "ok! updated labels (flipped %s!), now training the actual model.." % flipped_count
 
     ### NOTES 2/3/2015 -- only flips ***6*** labels
     # in the DS -- out of 4230647+ !!! something is up
@@ -874,10 +880,10 @@ def build_clf(X, y):
                         tune_params, scoring="f1", cv=5)
     return clf
 
-def get_lr_clf(class_weight=None):
+def get_lr_clf(class_weight=None, scoring="accuracy"):
     tune_params = [{"C":[.0001, .001, .01, .1, .05, 1, 2, 5, 10]}]
     clf = GridSearchCV(LogisticRegression(class_weight=class_weight), 
-                        tune_params, scoring="accuracy", cv=5)
+                        tune_params, scoring=scoring, cv=5)
     return clf
 
 
@@ -939,8 +945,15 @@ def generate_X_y(DS_learning_task, binary_labels=True,
 # 2/2/2015 note that the mysterious '158' below reflects when we made the change 
 # to labeling tables
 # 
+'''
 def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sharma.csv",
                                 labels_path="sds/annotations/sharma-merged-labels-1-30-15.csv",
+
+'''
+# for the moment making labels and candidates the same!!! this is simpler
+# and should really be the general approach
+def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.csv",
+                                labels_path="sds/annotations/master/figure8.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4, 
                                 normalize_numeric_cols=True,
@@ -1032,6 +1045,12 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
             ##
             studies = biview.get_study_from_pmid(study_id, all_entries=True)
             study = None 
+            '''
+            (Pdb) print studies[0][0]["CHARACTERISTICS"][PICO_field]==target_sentence
+            False
+            
+
+            '''
             for study_ in studies:
                 if target_sentence == study_.cochrane["CHARACTERISTICS"][PICO_field].decode(
                         "utf-8", errors="ignore"):
