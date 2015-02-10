@@ -86,13 +86,14 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                                                     domain_v_pickle)
 
 
-    ## now load in the direct supervision we have.
+    ## 
+    # now load in the direct supervision we have.
     # this is kind of confusingly named; we need these 
     # DS labels for evaluation here -- we don't care for 
     # the features *unless* we are doing SDS! 
     # @TODO refactor or rename method?
     #
-    # Note that the z_dict here is a dicitonary mapping
+    # Note that the z_dict here is a dictionary mapping
     # PICO fields to vectors comprising normalization terms
     # for each numeric feature/column. 
     #
@@ -339,10 +340,17 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             # the entries align with the DS we have.
             X_tilde_dict = get_DS_features_for_all_data(z_dict)
 
+            # 2/9/2015
+            # the numerical attributes of X_direct and X_tilde_dict
+            # are, I think, off! see also the comments in
+            # build_SDS_model!
+
+
             # the above returns tuples of numeric and textual
             # features for each candidate. below we vectorize 
             # these. 
             X_train_tilde = []
+            train_sentences_DS = [] # tmp?
             for j in train_rows:
                 cur_X = X_tilde_dict[domain]["X"][j]
                 X_tilde_v = None
@@ -350,8 +358,9 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                     X_tilde_v = _to_vector(cur_X, vectorizer)
                 X_train_tilde.append(X_tilde_v)
 
-
-            train_sentences_DS = domain_DS["sentences"][train_rows]
+                train_sentences_DS.append(domain_DS["sentences"][j])
+            
+     
             ''' end SDS magic '''
             clf = build_SDS_model(X_direct, y_direct, direct_pmids, 
                                     directly_supervised_indicators_train,
@@ -547,7 +556,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                     train_rows, testing_pmids, 
                     X_distant_train, y_distant_train, 
                     domain, weight=1,
-                    direct_weight_scalar=1, 
+                    direct_weight_scalar=5, 
                     DS_weight_scalar=1, sentences=None):
     '''
     Here we train our SDS model and return it.
@@ -598,7 +607,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     # now train the SDS model that predicts 
     # whether candidate sentences are indeed good
     # fits (aim for high-precision)
-    m_sds = get_lr_clf(class_weight=None, scoring="precision")
+    m_sds = get_lr_clf(class_weight="auto", scoring="f1")
     m_sds.fit(X_direct_train, y_direct_train)
 
 
@@ -629,8 +638,9 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                 pred = _to_neg_one(pred)
                 cur_sent = sentences[i]
                 if pred < 1:
+                    print "flipped label for sent %s" % cur_sent
                     flipped_count += 1
-                pdb.set_trace()
+
                 updated_ys[i] = pred #pred[0][1]
                 weights[i] = weight
             else:
@@ -647,7 +657,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     #pdb.set_trace()
     clf = get_DS_clf()
     #clf.fit(X_distant_train, updated_ys, sample_weight=weights)
-    clf.fit(X_distant_train, updated_ys)   
+    clf.fit(X_distant_train, updated_ys, sample_weight=weights)   
     return clf
 
 
@@ -987,7 +997,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.c
     biview = biviewer.PDFBiViewer() 
 
     # this is just to standardize terms/strings
-    pico_strs_to_domains = dict(zip(["PARTICIPANTS", "INTERVENTIONS","OUTCOMES"], domains))
+    pico_strs_to_domains = dict(zip(["PARTICIPANTS","INTERVENTIONS","OUTCOMES"], domains))
 
     X_y_dict = {}
     for d in domains:
@@ -1215,7 +1225,6 @@ def get_DS_features_for_all_data(numeric_col_zs,
     # and now we normalize/scale numeric values via the
     # provided constants which were recorded from the 
     # training data
-    #pdb.set_trace()
     for domain in pico_DS.PICO_DOMAINS:
         domain_X = X_pmid_dict[domain]["X"]
         
@@ -1228,10 +1237,15 @@ def get_DS_features_for_all_data(numeric_col_zs,
                 if num_numeric_feats is None:
                     num_numeric_feats = len(X_i[0])
                     assert len(numeric_col_zs[domain]) == num_numeric_feats
+
                 for j in xrange(num_numeric_feats):
                     z_j = numeric_col_zs[domain][j]
                     # yuck.
+                    if (X_i[0][j] / z_j) > 10:
+                        pdb.set_trace()
+
                     X_pmid_dict[domain]["X"][i][0][j] = X_i[0][j] / z_j
+
 
 
     return X_pmid_dict 
@@ -1298,7 +1312,11 @@ def generate_sds_feature_vectors_for_study(study, PICO_field, pdf_sents,
         # remember, this is actually a tuple where the 
         # first entry comprises numeric features and 
         # the second contains the textual features
-        X_i = extract_sds_features(candidate_text, shared_tokens[:num_to_keep], candidates, 
+        #### 
+        # 2/10/15 ah ha! you were previously *not* truncating
+        # the candidates list!
+        X_i = extract_sds_features(candidate_text, shared_tokens[:num_to_keep], 
+                                    candidates[:num_to_keep], 
                                     scores[:num_to_keep], cur_candidate_index)
 
         X.append(X_i)
