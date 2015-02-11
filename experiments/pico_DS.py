@@ -65,8 +65,9 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     # to simple criteria.
     ###
     sentences_y_dict = {
-        domain: {"sentences":[], "y":[], "pmids":[]} for 
+        domain: {"sentences":[], "y":[], "pmids":[], "CDSR_id":[]} for 
             domain in PICO_DOMAINS}
+
 
     p = biviewer.PDFBiViewer()
     for n, study in enumerate(p):
@@ -79,12 +80,12 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
         pdf_sents = sent_tokenize(pdf)
-
+        cochrane_id = study.cochrane['cdsr_filename']
         for pico_field in PICO_DOMAINS:
             ranked_sentences_and_scores = \
                     get_ranked_sentences_for_study_and_field(study, 
                                 pico_field, pdf_sents=pdf_sents)
-    
+            
                 
             # in this case, there was no supervision in the
             # CDSR so we just keep on moving
@@ -108,6 +109,7 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
                         pos_count += 1  
                     sentences_y_dict[pico_field]["y"].append(cur_y)
                     sentences_y_dict[pico_field]["pmids"].append(study_id)
+                    sentences_y_dict[pico_field]["CDSR_id"].append(cochrane_id)
     
     # add vector representations to the dictionary
     if add_vectors:
@@ -115,10 +117,10 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
         if pickle_DS:
 
             print "pickling..."
-            with open("sds/sentences_y_dict.pickle", 'wb') as outf:
+            with open("sds/sentences_y_dict_with_ids.pickle", 'wb') as outf:
                 pickle.dump(sentences_y_dict, outf)
 
-            with open("sds/vectorizers.pickle", 'wb') as outf:
+            with open("sds/vectorizers_with_ids.pickle", 'wb') as outf:
                 pickle.dump(domain_vectorizers, outf)
             print "done!"
 
