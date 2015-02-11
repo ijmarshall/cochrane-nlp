@@ -42,12 +42,7 @@ from readers import biviewer
 from experiments import pico_DS 
 domains = pico_DS.PICO_DOMAINS 
 
-### TODO TODO TODO 1/19
-#     * Need to fix feature generation at test time; specifically need to 
-#       add in numerical features (concatenate these to textual features)
-#       as we do for training! errr.. i think.. unless this is already
-#       taken care of...
-###
+
 # note: the *_1000 pickles are subsets of the available DS to 
 # speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None, 
@@ -228,6 +223,28 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         y_test_DS = [] # slightly tricky
         directly_supervised_indicators = np.zeros(len(domain_DS["pmids"]))
     
+        ###
+        # I think it's clear what's happening
+        # pmids are not unique, but you're only checking
+        # for direct supervision by cross-referencing against
+        # the PMID...
+        # 
+        # I think you can just (arbitrarily) take the first
+        # instance you identify
+        ###
+
+        # make sure that domain_DS["pmids"]
+        # contains redundant entries!
+        # if it does, consider keeping a dictionary 
+        # around
+        unique_pmids = list(set(domain_DS["pmids"]))
+
+
+        '''
+        pdb.set_trace()
+        pmids_seen_so_far = []
+        last_pmid = None
+        '''
         for i, pmid in enumerate(domain_DS["pmids"]):
 
             cur_sentence = domain_DS["sentences"][i]
@@ -261,9 +278,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                     
                     # 1/7/15 -- previously, we were not considering
                     # an instance directly supervised if cur_label
-                    # came back None. This was inconsistent with  
-                    #print cur_label
-                    # then overwrite the existing label
+                    # came back None. 
                     domain_DS["y"][i] = cur_label
 
        
@@ -422,22 +437,27 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 #highest_pred = np.argmax(np.array(preds_for_current_pmid))
                 sorted_pred_indices = np.array(preds_for_current_pmid).argsort()
                 #highest_pred_indices = rows_for_current_pmid[highest_pred]
+                
+
                 highest_pred_indices = sorted_pred_indices[-3:]
+                #highest_pred_indices = reversed(sorted_pred_indices)
+
 
                 #true_labels = np.array(domain_DS["y"])[highest_pred_indices]
                 sentences, true_labels = [], []
+                unique_sent_count = 0
                 for sent_i in highest_pred_indices:
+                    
+                    #if not cur_pred_sent in 
                     sentences.append(sentences_for_current_pmid[sent_i])
+                    if len(sentences) != len(set(sentences)):
+                        pdb.set_trace()
+
+
+                    ### why do we sometimes get duplicate sentences??!?!
                     true_labels.append(labels_for_current_pmid[sent_i])
 
-                #sentences = [sentences_for_current_pmid[sent_i]
-                #                for sent_i in highest_pred_indices]
 
-
-                #domain_DS["sentences"][sent_i].encode("utf8", errors='ignore') 
-                #    for sent_i in highest_pred_indices]
-
-                
                 output_str.append("\n -- domain %s in study %s --\n\n" % 
                                     (domain, current_pmid))
                 output_str.append("-- target text --\n\n %s" % current_target_text)
@@ -621,7 +641,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     updated_ys = np.zeros(len(y_distant_train))
     weights    = np.zeros(len(y_distant_train))
     _to_neg_one = lambda x : -1 if x <= 0 else 1
-    flipped_count = 0
+    flipped_count, total_pos = 0, 0
     for i, x_tilde_i in enumerate(X_tilde_train):
         if directly_supervised_indicators_train[i] > 0: 
             # we do not overwrite direct labels.
@@ -632,14 +652,19 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
             #   the direct above)
             updated_ys[i] = y_distant_train[i]
         else:
-            if x_tilde_i is not None and y_distant_train[i] > 0:             
-                weight = m_sds.predict_proba(x_tilde_i)[0][1]
+            if x_tilde_i is not None and y_distant_train[i] > 0:  
+                predicted_prob_i = m_sds.predict_proba(x_tilde_i)[0][1]  
+                
                 pred = m_sds.predict(x_tilde_i)
                 pred = _to_neg_one(pred)
                 cur_sent = sentences[i]
+                total_pos += 1
                 if pred < 1:
-                    print "flipped label for sent %s" % cur_sent
+                    #print "flipped label for sent %s" % cur_sent
                     flipped_count += 1
+                    weight = 1-predicted_prob_i
+                else: 
+                    weight = predict_proba
 
                 updated_ys[i] = pred #pred[0][1]
                 weights[i] = weight
@@ -650,7 +675,8 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                 updated_ys[i] = y_distant_train[i]
                 weights[i] = 1.0 * DS_weight_scalar # arbitrary
 
-    print "ok! updated labels (flipped %s!), now training the actual model.." % flipped_count
+    print "ok! updated labels (flipped %s out of %s positive), now training the actual model.." % (
+                    flipped_count, total_pos)
 
     ### NOTES 2/3/2015 -- only flips ***6*** labels
     # in the DS -- out of 4230647+ !!! something is up
@@ -1055,12 +1081,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.c
             ##
             studies = biview.get_study_from_pmid(study_id, all_entries=True)
             study = None 
-            '''
-            (Pdb) print studies[0][0]["CHARACTERISTICS"][PICO_field]==target_sentence
-            False
-            
 
-            '''
             for study_ in studies:
                 if target_sentence == study_.cochrane["CHARACTERISTICS"][PICO_field].decode(
                         "utf-8", errors="ignore"):
@@ -1082,6 +1103,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.c
             # features that are not otherwise readily available
             # (e.g., the relative rank of the candidate sentence)
             ###
+
             pdf = study.studypdf['text']
             study_id = "%s" % study[1]['pmid']
             pdf_sents = pico_DS.sent_tokenize(pdf)
