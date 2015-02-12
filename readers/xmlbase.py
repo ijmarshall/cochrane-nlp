@@ -25,7 +25,7 @@ class XMLReader():
         "returns unicode of elementtree contents"
         if ET_instance is not None:
             if strip_tags:
-                print "tags stripped!"
+                # print "tags stripped!"
                 return (" ".join(ET.tostringlist(ET_instance, method="text", encoding="utf-8"))).strip()
             else:
                 return ET.tostring(ET_instance, method="xml", encoding="utf-8")
