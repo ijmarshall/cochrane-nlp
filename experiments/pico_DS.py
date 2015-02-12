@@ -60,6 +60,8 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     data to disk and then read it in directly rather than 
     re-generating it every time.
     '''
+    # IM: positional features go here somewhere
+
     ###
     # for now we'll just grab sentences and `labels' according
     # to simple criteria.
