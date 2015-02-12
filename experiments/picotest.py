@@ -17,11 +17,15 @@ import sys
 
 def word_list(text):
     text = text.lower()
-    word_set = set(re.split('[^a-z]+', text))
+    word_set = set(re.split('[\s\.\,\;]+', text))
+    # word_set = set(re.split('[^a-z]+', text))
+    # word_set = set(re.findall('[^a-z]+', text))
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
-
+# def num_count(text):
+#     text = text.lower()
+#     words = set(re.split('[^a-z]+', text))
 
 
 
