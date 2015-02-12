@@ -25,7 +25,7 @@ def word_list(text):
 
 
 
-def main():
+def main(arg=None):
     p = biviewer.PDFBiViewer()
 
     p_max = len(p) - 1
@@ -51,10 +51,7 @@ def main():
             sent_words = word_list(sent)
             intersects.append(len(cdsr_words.intersection(sent_words)))
 
-        try:
-            arg = sys.argv[1]
-        except:
-            arg = ""
+
 
         intersects = np.array(intersects)
 
@@ -95,4 +92,10 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    arg = None
+    try:
+        arg = sys.argv[1]
+    except:
+        pass
+
+    main(arg=arg)
