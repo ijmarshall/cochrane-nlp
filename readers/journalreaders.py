@@ -88,7 +88,7 @@ class PdfReader(TextReader):
         # bcw -- the quotes around the file path are necessary on
         # some systems!
         try:
-            rawtext = subprocess.check_output(['pdftotext', "%s" % filename, '-'])
+            rawtext = subprocess.check_output(['pdftotext', '-enc', 'UTF-8', '-opw', '',  '-upw', '', "%s" % filename, '-'])
             return rawtext.strip() # remove any multiple blank lines at the end
         except:
             # if error message generated
