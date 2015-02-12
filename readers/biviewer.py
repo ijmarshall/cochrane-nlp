@@ -4,20 +4,17 @@
         
 
 """
-
-Class for iterating through pubmed abstracts with associated Cochrane data
-
+module for iterating through pubmed abstracts with associated Cochrane data
 """
-
+import os
 import cPickle as pickle
 import collections
+from collections import defaultdict
 
 from journalreaders import PdfReader
 from pmreader import *
 from progressbar import ProgressBar
 from rm5reader import *
-
-import os
 
 import cochranenlp
 
@@ -162,21 +159,53 @@ class PDFBiViewer(BiViewer):
         # (optionally) keep a map of PMIDs to data indices around
         self.pmids_to_indices = None
 
-    def get_study_from_pmid(self, pmid):
+    def get_study_from_pmid(self, pmid, all_entries=True):
+        ''' 
+        Given a PMID, this method will identify and return an entry 
+        for the corresponding article. If the dictionary mapping 
+        PMIDs to CDSR entries has not yet been built, this will 
+        done first. If all_entries is True, then a (possibly singleton)
+        list comprising *all* CDSR entries for the given PMID will be 
+        returned. If this is False, one of these will be returned 
+        arbitrarily.
+        '''
         if self.pmids_to_indices is None:
             print "building a pmid dict -- this will take a bit..."
             self.build_pmid_to_index_d()
             print "ok!"
         
+        indices = self.pmids_to_indices[pmid]
+        if type([]) == type(indices) and not all_entries:
+            # then this is a list of indices, each
+            # pointing to different studies with
+            # the same PMID -- return the first (arbitrarily)
+            return self[indices[0]]
+        # otherwise return all studies with this PMID
+        return [self[i] for i in indices]
+
+    def pretty_print_fields_for_article(self, pmid):
+        if self.pmids_to_indices is None:
+            self.build_pmid_to_index_d()
+
         i = self.pmids_to_indices[pmid]
-        return self[i]
+        study = self[i]
+
+        out_str = ["\n--- characteristics for study %s ---\n\n" % pmid]
+        for field, text in study[0]["CHARACTERISTICS"].items():
+            out_str.append("%s \n %s \n\n" % (field.replace("CHAR_", ""), text))
+        print "".join(out_str)
 
     def build_pmid_to_index_d(self):
-        ''' builds a dictionary mapping study pmids to dat indices '''
-        self.pmids_to_indices = {}
+        ''' 
+        builds a dictionary mapping study pmids to 
+        lists of dat indices -- note that multiple 
+        CDSR entries may point to the same article 
+        (PMID).
+        '''
+        self.pmids_to_indices = defaultdict(list)
         for i, study in enumerate(self):
             pmid = study.studypdf['pmid']
-            self.pmids_to_indices[pmid] = i 
+            self.pmids_to_indices[pmid].append(i)
 
 
     def get_pdf_index(self):
