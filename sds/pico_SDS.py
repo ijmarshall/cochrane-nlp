@@ -293,12 +293,6 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 ####
                 # Then this index is associated with a study to be used for
                 # testing.
-                test_rows.append(i)
-                cur_label = _match_direct_to_distant_supervision(domain_supervision,
-                                            pmid, cur_sentence, threshold=2)
-                if cur_label is None:
-                    cur_label = -1
-
 
                 '''
                 Here we deal with the problem of articles being duplicated
@@ -702,9 +696,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     print "ok! updated labels (flipped %s out of %s positive), now training the actual model.." % (
                     flipped_count, total_pos)
 
-    ### NOTES 2/3/2015 -- only flips ***6*** labels
-    # in the DS -- out of 4230647+ !!! something is up
-    #pdb.set_trace()
+
     clf = get_DS_clf()
     #clf.fit(X_distant_train, updated_ys, sample_weight=weights)
     clf.fit(X_distant_train, updated_ys, sample_weight=weights)
@@ -1136,9 +1128,9 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.c
             # note that this should never return None, because we would have only
             # written out for labeling studies/fields that had at least one match.
 
-            pdb.set_trace()
-            ranked_sentences, scores, shared_tokens = pico_DS.get_ranked_sentences_for_study_and_field(study,
-                        PICO_field, pdf_sents=pdf_sents)
+            ranked_sentences, scores, shared_tokens = \
+                        pico_DS.get_ranked_sentences_for_study_and_field(study,
+                            PICO_field, pdf_sents=pdf_sents)
 
             # don't take more than max_sentences sentences
             num_to_keep = min(len([score for score in scores if score >= cutoff]),
