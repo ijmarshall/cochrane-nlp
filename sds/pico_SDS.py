@@ -48,7 +48,8 @@ domains = pico_DS.PICO_DOMAINS
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             strategy="baseline_DS", output_dir="sds/results/",
                             y_dict_pickle="sds/sentences_y_dict_with_ids.pickle", 
-                            domain_v_pickle="sds/vectorizers_y_dict_with_ids.pickle", random_seed=512):
+                            domain_v_pickle="sds/vectorizers_with_ids.pickle", 
+                            random_seed=512):
 
     '''
     Runs multiple (iters) experiments using the specified strategy.
