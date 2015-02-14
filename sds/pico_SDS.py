@@ -47,8 +47,8 @@ domains = pico_DS.PICO_DOMAINS
 # speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None, 
                             strategy="baseline_DS", output_dir="sds/results/",
-                            y_dict_pickle="sds/sentences_y_dict.pickle", 
-                            domain_v_pickle="sds/vectorizers.pickle", random_seed=512):
+                            y_dict_pickle="sds/sentences_y_dict_with_ids.pickle", 
+                            domain_v_pickle="sds/sentences_y_dict_with_ids.pickle", random_seed=512):
     '''
     Runs multiple (iters) experiments using the specified strategy.
 
@@ -291,16 +291,34 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 ####
                 # Then this index is associated with a study to be used for
                 # testing. 
-                test_rows.append(i)
-                cur_label = _match_direct_to_distant_supervision(domain_supervision, 
-                                            pmid, cur_sentence, threshold=2)
-                if cur_label is None:
-                    cur_label = -1
+                
 
-                y_test_DS.append(cur_label)
+                '''
+                Here we deal with the problem of articles being duplicated
+                in the test set. This is possible because the CDSR 
+                may contain multiple instances of any given article (PMID),
+                extracted (e.g.) for different reviews. Thus we rely on 
+                the CDSR identifier to ensure that we test on only 
+                one copy of each article (and specifically, the copy that 
+                we received direct supervision for).
+                '''
+                cur_test_index = domain_supervision['pmids'].index(pmid)
+                labeled_CDSR_entry = domain_supervision['CDSR_ids'][cur_test_index]
+                # only test against it matches up.
+                if domain_DS["CDSR_id"][i] != labeled_CDSR_entry:
+                    print "skipping test entry for %s, because the CDSR id does not match." % pmid
+                else:        
+                    test_rows.append(i)
 
-                if pmid in domain_supervision["pmids"]:
-                    directly_supervised_indicators[i] = 1
+                    cur_label = _match_direct_to_distant_supervision(domain_supervision, 
+                                                pmid, cur_sentence, threshold=2)
+                    if cur_label is None:
+                        cur_label = -1
+
+                    y_test_DS.append(cur_label)
+
+                    if pmid in domain_supervision["pmids"]:
+                        directly_supervised_indicators[i] = 1
 
         print "huzzah -- data all set up."
 
@@ -340,15 +358,13 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             # have for the mapping task from candidate sentences to 
             # the best sentences into feature vectors and labels with
             # which to train a model
+            #
+            # TODO probably X_direct should be renamed to X_tilde_direct
+            ###
             X_direct, y_direct, direct_pmids, vectorizer = generate_X_y(
                                                     domain_supervision, 
                                                     return_pmids_too=True)
 
-
-            # what is the relationship between generate_X_y
-            # and get_DS_features_for_all_data ????
-
-            ## this uses the generate_SDS_features method!
 
             ### this will align with the DS_supervision.
             # note that we now *pad* this vector to make sure
@@ -427,6 +443,8 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             target_text = domains_pmids_targets[domain][test_pmid] #domain_DS["targets"][test_row]
             current_sentence = domain_DS["sentences"][test_row]
             current_label = domain_DS["y"][test_row]
+            #current_CDSR_id = domain_DS["CDSR_id"][test_row]
+
             if current_pmid is None:
                 current_pmid = test_pmid 
                 current_target_text = target_text
@@ -447,10 +465,10 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 sentences, true_labels = [], []
                 unique_sent_count = 0
                 for sent_i in highest_pred_indices:
-                    
-                    #if not cur_pred_sent in 
+ 
                     sentences.append(sentences_for_current_pmid[sent_i])
                     if len(sentences) != len(set(sentences)):
+                        print "\nthere are redundant sentences within the predictions"
                         pdb.set_trace()
 
 
@@ -664,7 +682,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                     flipped_count += 1
                     weight = 1-predicted_prob_i
                 else: 
-                    weight = predict_proba
+                    weight = predicted_prob_i
 
                 updated_ys[i] = pred #pred[0][1]
                 weights[i] = weight
@@ -1030,7 +1048,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.c
         # X, y and pmids for each domain. the latter
         # is so we can know which studies each candidate
         # was generated for.
-        X_y_dict[d] = {"X":[], "y":[], "pmids":[], "sentences":[]}
+        X_y_dict[d] = {"X":[], "y":[], "pmids":[], "sentences":[], "CDSR_ids":[]}
         # this is a map from domains to dictionaries, which
         # in turn map from pmids to target sentences
         #domains_pmids_targets = dict(zip(domains, [{}]*3))
@@ -1106,6 +1124,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.c
 
             pdf = study.studypdf['text']
             study_id = "%s" % study[1]['pmid']
+            CDSR_id = study.cochrane['cdsr_filename']
             pdf_sents = pico_DS.sent_tokenize(pdf)
 
             # note that this should never return None, because we would have only
@@ -1137,6 +1156,13 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.c
             X_y_dict[PICO_field]["X"].append(X_i)
             X_y_dict[PICO_field]["y"].append(y_i)
             X_y_dict[PICO_field]["pmids"].append(study_id)
+            X_y_dict[PICO_field]["CDSR_ids"].append(CDSR_id)
+
+            ###
+            # note: studies[1].cochrane['cdsr_filename']
+            # does return a unique identifier for cochrane 
+            # studies... 
+            ###
 
             # also include the actual sentences
             X_y_dict[PICO_field]["sentences"].append(candidate_sentence)
