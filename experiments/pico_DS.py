@@ -2,7 +2,7 @@
 #   Derives distant supervision for PICO.
 #
 #   @TODO this should almost certainly live in the sds
-#   package... or something? On the other hand, this is 
+#   package... or something? On the other hand, this is
 #   lacks the "s" in "sds": perhaps we should refactor
 #   and create a DS package somewhere?
 #
@@ -10,12 +10,12 @@
 import re
 import random
 import sys
-import csv 
-import pdb
+import csv
+import ipdb
 from operator import itemgetter
 from collections import Counter
-import pickle 
-import string 
+import pickle
+import string
 
 import numpy as np
 import scipy as sp
@@ -45,19 +45,19 @@ def word_list(text):
 def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     '''
     Generates all available `labeled' PICO training data via naive
-    DS strategy of token matching and returns a nested dictionary; 
-    the top level are PICO domains, and sentences / `labels' are 
+    DS strategy of token matching and returns a nested dictionary;
+    the top level are PICO domains, and sentences / `labels' are
     nested beneath these.
 
     If the vectorize flag is True, then we return (sparse)
-    feature representations of the sentences. 
+    feature representations of the sentences.
     @TODO @TODO
-    should probably better engineer these features! e.g., should 
+    should probably better engineer these features! e.g., should
     at least swap nums in, and probably other tricks...
 
     WARNING this is pretty slow and there is a lot of data!
     you should set the pickle_DS flag to True and to dump this
-    data to disk and then read it in directly rather than 
+    data to disk and then read it in directly rather than
     re-generating it every time.
     '''
     # IM: positional features go here somewhere
@@ -67,37 +67,36 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     # to simple criteria.
     ###
     sentences_y_dict = {
-        domain: {"sentences":[], "y":[], "pmids":[], "CDSR_id":[]} for 
+        domain: {"sentences":[], "y":[], "pmids":[], "CDSR_id":[]} for
             domain in PICO_DOMAINS}
 
 
     p = biviewer.PDFBiViewer()
+
     for n, study in enumerate(p):
         if n % 100 == 0:
-            print "on study %s" % n 
+            print "on study %s" % n
 
         #if n >= 1000:
-        #    break 
+        #    break
 
-        pdf = study.studypdf['text']
+        pdf = study.studypdf['text'].decode("utf8", errors="ignore")
         study_id = "%s" % study[1]['pmid']
+
         pdf_sents = sent_tokenize(pdf)
         cochrane_id = study.cochrane['cdsr_filename']
         for pico_field in PICO_DOMAINS:
-            ranked_sentences_and_scores = \
-                    get_ranked_sentences_for_study_and_field(study, 
-                                pico_field, pdf_sents=pdf_sents)
-            
-                
+            ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study, pico_field, pdf_sents=pdf_sents)
+
             # in this case, there was no supervision in the
             # CDSR so we just keep on moving
             if ranked_sentences_and_scores is None:
-                pass 
+                pass
             else:
-                #### 
+                ####
                 # then add all sentences that meet our DS
-                # criteria as positive examples; all others 
-                # are -1. 
+                # criteria as positive examples; all others
+                # are -1.
                 ###
 
                 # the :2 throws away the shared tokens here.
@@ -108,11 +107,11 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
                     cur_y = -1
                     if pos_count < max_sentences and score >= cutoff:
                         cur_y = 1
-                        pos_count += 1  
+                        pos_count += 1
                     sentences_y_dict[pico_field]["y"].append(cur_y)
                     sentences_y_dict[pico_field]["pmids"].append(study_id)
                     sentences_y_dict[pico_field]["CDSR_id"].append(cochrane_id)
-    
+
     # add vector representations to the dictionary
     if add_vectors:
         sentences_y_dict, domain_vectorizers = vectorize(sentences_y_dict)
@@ -131,19 +130,20 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     return sentences_y_dict
 
 
-''' 
-@TODO you really need to add additional (non-textual!) 
-features here, such as length of sentence; location in 
+'''
+@TODO you really need to add additional (non-textual!)
+features here, such as length of sentence; location in
 text?; other features like average length of word?
 '''
 def vectorize(sentences_y_dict):
     '''
-    Vectorize the sentences in each pico domain and 
-    mutate the sentences_y_dict parameter by adding 
+    Vectorize the sentences in each pico domain and
+    mutate the sentences_y_dict parameter by adding
     these representations.
     '''
     domain_vectorizers = {}
     for domain in PICO_DOMAINS:
+
         all_sentences = sentences_y_dict[domain]["sentences"]
 
         print "extracting textual (BoW) features"
@@ -182,7 +182,7 @@ def extract_numeric_features(sentences, normalize_matrix=False):
 
 
 # @TODO improve this set! Note that this is used
-# both for X_tilde and for DS. 
+# both for X_tilde and for DS.
 # one thing is you should probably bin these things!
 # also add feature for number of empty lines?
 def extract_structural_features(sentence):
@@ -238,7 +238,7 @@ def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", 
         csv_writer = csv.writer(outf, delimiter=",")
 
         csv_writer.writerow(
-            ["study id", "PICO field", "CDSR sentence", 
+            ["study id", "PICO field", "CDSR sentence",
             "candidate sentence", "rating"])
 
         for i in xrange(N):
@@ -255,21 +255,21 @@ def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", 
             pdf_sents = sent_tokenize(pdf)
 
             for pico_field in PICO_DOMAINS:
-                ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study, 
+                ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study,
                             pico_field, pdf_sents=pdf_sents)
-                
+
                 # in this case, there was no target label in the
                 # CDSR so we just keep on moving
                 if ranked_sentences_and_scores is None:
-                    pass 
+                    pass
                 else:
                     # the :2 throws away the shared tokens here.
                     ranked_sentences, scores = ranked_sentences_and_scores[:2]
                     # don't take more than max_sentences sentences
-                    num_to_keep = min(len([score for score in scores if score >= cutoff]), 
+                    num_to_keep = min(len([score for score in scores if score >= cutoff]),
                                         max_sentences)
 
-                
+
                     ## what to do if this is zero?
                     if num_to_keep == 0:
                         print "no sentences passed threshold!"
@@ -277,33 +277,35 @@ def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", 
                         target_text = study.cochrane["CHARACTERISTICS"][pico_field]
                         for candidate in ranked_sentences[:num_to_keep]:
                             csv_writer.writerow([
-                                study_id, pico_field.replace("CHAR_", " "), 
+                                study_id, pico_field.replace("CHAR_", " "),
                                                 target_text, candidate, ""])
 
-              
+
 def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     '''
-    Given a study (readers.biviewer.Biviewer_View object) and 
-    a PICO field (one of: "CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", 
-    "CHAR_OUTCOMES"), return sentences in the PDF ranked w.r.t. how 
-    closely (in terms of number of shared tokens) they match the 
+    Given a study (readers.biviewer.Biviewer_View object) and
+    a PICO field (one of: "CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS",
+    "CHAR_OUTCOMES"), return sentences in the PDF ranked w.r.t. how
+    closely (in terms of number of shared tokens) they match the
     target sentence/summary in the CDSR.
 
     To avoid forcing re-tokenization for each field (in cases
-    where one is retrieving relevant sentences for multiple 
+    where one is retrieving relevant sentences for multiple
     PICO fields), one may optionally pass in pdf_sents; i.e., the
-    tokenized sentences within the pdf text. If this is None, 
+    tokenized sentences within the pdf text. If this is None,
     tokenization will be performed here.
     '''
 
-    # tokenize if necessary 
+    print "%s" % study[1]['pmid']
+
+    # tokenize if necessary
     if pdf_sents is None:
-        pdf = study.studypdf['text']
+        pdf = study.studypdf['text'].decode("utf-8", errors="ignore")
         pdf_sents = sent_tokenize(pdf)
 
     # i.e., number of shared tokens
     sentence_scores = []
-    
+
     # sentence texts
     sentences = []
 
@@ -313,11 +315,11 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     t = study.cochrane["CHARACTERISTICS"][PICO_field]
     if t is None:
         # no supervision here!
-        return None 
+        return None
 
     # this is the target sentence
     t = t.decode("utf-8", errors="ignore")
-   
+
     cdsr_words = word_list(t)
 
     for i, sent in enumerate(pdf_sents):
@@ -328,9 +330,7 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
         shared_tokens.append(shared_tokens_i)
         sentence_scores.append(len(shared_tokens_i))
 
-    ranked_sentences, scores = [list(x) for x in zip(*sorted(
-            zip(sentences, sentence_scores), 
-            key=itemgetter(1), reverse=True))]
+    ranked_sentences, scores = [list(x) for x in zip(*sorted(zip(sentences, sentence_scores), key=lambda x: x[1], reverse=True))] or [[],[]]
 
     return ranked_sentences, scores, shared_tokens
 
