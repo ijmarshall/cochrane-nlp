@@ -948,9 +948,12 @@ def _score_to_binary_lbl(y_str, zero_one=True, threshold=2):
     #
     # the 't' would indicate a table; we treat these as
     # irrelevant (-1s).
-    if not "t" in y_str and float(y_str.strip()) >= threshold:
-        return 1
-
+    try:
+        if not "t" in y_str and float(y_str.strip()) >= threshold:
+            return 1
+    except:
+        pdb.set_trace() 
+        
     return 0 if zero_one else -1
 
 def generate_X_y(DS_learning_task, binary_labels=True,
@@ -1004,8 +1007,8 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
 '''
 # for the moment making labels and candidates the same!!! this is simpler
 # and should really be the general approach
-def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8.csv",
-                                labels_path="sds/annotations/master/figure8.csv",
+def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-2-15.csv",
+                                labels_path="sds/annotations/master/figure8-2-15.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4,
                                 normalize_numeric_cols=True,
