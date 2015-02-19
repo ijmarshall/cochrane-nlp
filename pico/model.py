@@ -65,13 +65,11 @@ def get_sentences(held_out):
     return [{"pmid": k, "sentence": v} for k, t in zip(pmids, sentences) for v in t]
 
 
+
+vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(1, 2), analyzer="word", decode_error="ignore")
+
 def vectorize(sentences):
-    h = HashingVectorizer(stop_words=stopwords.words('english'),
-                          norm="l2",
-                          ngram_range=(1, 2),
-                          analyzer="word",
-                          decode_error="ignore")
-    return h.transform(sentences)
+    return vectorizer.transform(sentences)
 
 
 def get_X(sentences):
@@ -117,12 +115,14 @@ def get_y(domain, sentences, threshold=0.3):
     return y
 
 
-def get_test_data(file):
+def get_test_data(file, domain):
     out = []
+    test_domain = domain.replace("CHAR_", "").strip()
     with open(file) as f:
         reader = csv.DictReader(f)
         for row in reader:
-            out.append(row)
+            if row['PICO field'].strip() == test_domain:
+                out.append(row)
 
     held_out = set([t['study id'] for t in out])
     return out, held_out
@@ -134,7 +134,7 @@ def scorer_factory(test_data):
 
     def scorer(estimator, X, y):
         y_pred = estimator.predict(X_test)
-        return precision_recall_fscore_support(y_true, y_pred)
+        return precision_recall_fscore_support(y_true, y_pred, average="micro")
 
     return scorer
 
@@ -155,7 +155,7 @@ def run_experiment(X, domain, sentences, scorer):
         sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="l2", alpha=params["alpha"])
         logging.info("fitting...")
         sgd.fit(X, y)
-        precision, recall, f1 = scorer(sgd, None, None)
+        precision, recall, f1, support = scorer(sgd, None, None)
         logging.info("precision %s, recall %s, f1 %s" % (precision, recall, f1))
         if(precision > best_score):
             logging.info("this estimator was better!")
@@ -169,7 +169,7 @@ def run_experiment(X, domain, sentences, scorer):
 def run_experiments(domain):
     logging.info("setting up")
     ratings = DATA_PATH + "../sds/annotations/master/figure8-2-15.csv"
-    test, held_out = get_test_data(ratings)
+    test, held_out = get_test_data(ratings, domain)
     sentences = get_sentences(held_out)
     train_X = get_X(sentences)
     scorer = scorer_factory(test)
