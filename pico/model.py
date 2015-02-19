@@ -84,7 +84,7 @@ def get_characteristic_fragments(pmid, domain):
     return " ".join(char)
 
 
-def __get_lsh(domain, pmid, sentences):
+def __get_similarity(domain, pmid, sentences):
     s2 = sentence_tokenizer.tokenize(get_characteristic_fragments(domain, pmid))
     y1 = vectorize(s2) if s2 else vectorize([""])
 
@@ -105,7 +105,7 @@ def get_y(domain, sentences, threshold=0.3):
         elif pmid_ptr != s['pmid']:
             # next pmid
             logging.debug("distilling essence of %s for %s at %s" % (pmid_ptr, domain, threshold))
-            R = __get_lsh(domain, pmid_ptr, tmp)
+            R = __get_similarity(domain, pmid_ptr, tmp)
             y[idx_ptr:idx] = sum(np.any(R > threshold)).A[0, :]
 
             tmp = []
@@ -141,8 +141,6 @@ def scorer_factory(test_data):
 
 def run_experiment(X, domain, sentences, scorer):
     logging.debug("running experiment for %s" % domain)
-    y = get_y(domain, sentences)
-
     tune_params = ParameterGrid([
         {"alpha": [.00001, .001, 1, 10],
          "threshold": [0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5]}])
