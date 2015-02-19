@@ -160,6 +160,7 @@ def run_experiment(X, domain, sentences, scorer):
         if(precision > best_score):
             logging.info("this estimator was better!")
             best_estimator = sgd
+            best_score = precision
 
     logging.debug("storing %s" % domain)
     with open(DATA_PATH + domain + ".pck", "wb") as f:
