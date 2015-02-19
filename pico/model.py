@@ -42,7 +42,7 @@ Predict [X,y] with 5-fold crossvalidation per PICO using SGD
 
 DATA_PATH = cochranenlp.config["Paths"]["base_path"]
 
-PICO_DOMAINS = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
+# PICO_DOMAINS = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
 
 viewer = biviewer.PDFBiViewer()
 
@@ -79,12 +79,11 @@ def get_X(sentences):
 def get_characteristic_fragments(pmid, domain):
     studies = viewer.get_study_from_pmid(pmid)
     char = [s[0]["CHARACTERISTICS"][domain] or "" for s in studies]
-    return " ".join(char)
+    return " ".join(char).decode("utf-8", errors="ignore")
 
 
 def __get_similarity(y2, domain, pmid):
     s2 = sentence_tokenizer.tokenize(get_characteristic_fragments(pmid, domain))
-    logging.info("foo %s" % s2)
     y1 = vectorize(s2) if s2 else vectorize([""])
 
     return (y1 * y2.T)
@@ -141,7 +140,7 @@ def run_experiment(X, domain, sentences, scorer):
     logging.debug("running experiment for %s" % domain)
     tune_params = ParameterGrid([
         {"alpha": [.00001, .001, 1, 10],
-         "threshold": [0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5]}])
+         "threshold": [0.1, 0.125, 0.15, 0.175, 0.2, 0.25, 0.3, 0.5]}])
 
     best_estimator = None
     best_score = 0
@@ -149,7 +148,7 @@ def run_experiment(X, domain, sentences, scorer):
     for params in tune_params:
         logging.info("running %s with alpha=%s, threshold=%s" % (domain, params["alpha"], params["threshold"]))
         logging.info("getting y...")
-        y = get_y(domain, sentences, threshold=params["threshold"])
+        y = get_y(X, domain, sentences, threshold=params["threshold"])
         sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="l2", alpha=params["alpha"])
         logging.info("fitting...")
         sgd.fit(X, y)
