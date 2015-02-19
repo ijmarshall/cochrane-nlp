@@ -48,19 +48,6 @@ viewer = biviewer.PDFBiViewer()
 
 sentence_tokenizer = PunktSentenceTokenizer()
 
-class memoize:
-    def __init__(self, function):
-        self.function = function
-        self.memoized = {}
-
-    def __call__(self, *args):
-        try:
-            return self.memoized[args]
-        except KeyError:
-            self.memoized[args] = self.function(*args)
-            return self.memoized[args]
-
-
 def get_sentences(held_out):
     pmids = set()
     sentences = []
@@ -165,21 +152,23 @@ def run_experiment(X, domain, sentences, scorer):
 
     for params in tune_params:
         logging.info("running %s with alpha=%s, threshold=%s" % (domain, params["alpha"], params["threshold"]))
+        logging.info("getting y...")
         y = get_y(domain, sentences, threshold=params["threshold"])
         sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="l2", alpha=params["alpha"])
+        logging.info("fitting...")
         sgd.fit(X, y)
-        precision, recall, f1 = scorer(sgd)
+        precision, recall, f1 = scorer(sgd, None, None)
         logging.info("precision %s, recall %s, f1 %s" % (precision, recall, f1))
         if(precision > best_score):
+            logging.info("this estimator was better!")
             best_estimator = sgd
 
     logging.debug("storing %s" % domain)
     with open(DATA_PATH + domain + ".pck", "wb") as f:
         pickle.dump(best_estimator, f)
-        f.close()
 
 
-def run_experiments():
+def run_experiments(domain):
     logging.info("setting up")
     ratings = DATA_PATH + "../sds/annotations/master/figure8-2-15.csv"
     test, held_out = get_test_data(ratings)
@@ -188,9 +177,9 @@ def run_experiments():
     scorer = scorer_factory(test)
 
     logging.info("starting experiments")
-    for domain in PICO_DOMAINS:
-        run_experiment(train_X, domain, sentences, scorer)
-
+    run_experiment(train_X, domain, sentences, scorer)
 
 if __name__ == '__main__':
-    run_experiments()
+    domain = sys.argv[1]
+    logging.info(domain)
+    run_experiments(domain)
