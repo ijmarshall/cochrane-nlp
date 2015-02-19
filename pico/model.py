@@ -83,30 +83,29 @@ def get_characteristic_fragments(pmid, domain):
 
 
 def __get_similarity(y2, domain, pmid):
-    s2 = sentence_tokenizer.tokenize(get_characteristic_fragments(domain, pmid))
+    s2 = sentence_tokenizer.tokenize(get_characteristic_fragments(pmid, domain))
+    logging.info("foo %s" % s2)
     y1 = vectorize(s2) if s2 else vectorize([""])
 
     return (y1 * y2.T)
 
 
 def get_y(X, domain, sentences, threshold=0.3):
-    y = np.empty(len(sentences), 'bool')
+    y = np.zeros(len(sentences), 'bool')
 
     pmid_ptr = None
     tmp = []
-    idx_ptr = 0
     for idx, s in enumerate(sentences):
         if not pmid_ptr:
             pmid_ptr = s['pmid']
         elif pmid_ptr != s['pmid']:
             # next pmid
             logging.debug("distilling essence of %s for %s at %s" % (pmid_ptr, domain, threshold))
-            y2 = X[idx_ptr:idx+1,:]
+            y2 = X[tmp,:]
             R = __get_similarity(y2, domain, pmid_ptr)
-            y[idx_ptr:idx+1] = sum(np.any(R > threshold)).A[0, :]
+            y[tmp] = sum(np.any(R > threshold)).A[0,:]
 
             tmp = []
-            idx_ptr = idx
             pmid_ptr = s['pmid']
 
         tmp.append(idx)
