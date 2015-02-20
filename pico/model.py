@@ -1,4 +1,4 @@
-import sys, os, logging, csv, collections
+import sys, os, logging, csv, collections, functools
 import cPickle as pickle
 import os.path
 logging.basicConfig(level=logging.DEBUG)
@@ -48,42 +48,47 @@ sentence_tokenizer = PunktSentenceTokenizer()
 
 domain = sys.argv[1]
 
+vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(5, 5), analyzer="char_wb", decode_error="ignore")
+
 
 class memoized(object):
-   '''Decorator. Caches a function's return value each time it is called.
-   If called later with the same arguments, the cached value is returned
-   (not reevaluated).
-   '''
-   def __init__(self, func):
-      self.func = func
-      self.cache = {}
-   def __call__(self, *args):
-      if not isinstance(args, collections.Hashable):
-         # uncacheable. a list, for instance.
-         # better to not cache than blow up.
-         return self.func(*args)
-      if args in self.cache:
-         return self.cache[args]
-      else:
-         value = self.func(*args)
-         self.cache[args] = value
-         return value
-   def __repr__(self):
-      '''Return the function's docstring.'''
-      return self.func.__doc__
-   def __get__(self, obj, objtype):
-      '''Support instance methods.'''
-      return functools.partial(self.__call__, obj)
+    '''Decorator. Caches a function's return value each time it is called.
+    If called later with the same arguments, the cached value is returned
+    (not reevaluated).
+    '''
+    def __init__(self, func):
+        self.func = func
+        self.cache = {}
+
+    def __call__(self, *args):
+        if not isinstance(args, collections.Hashable):
+            return self.func(*args)
+        if args in self.cache:
+            return self.cache[args]
+        else:
+            value = self.func(*args)
+            self.cache[args] = value
+            return value
+
+    def __repr__(self):
+        '''Return the function's docstring.'''
+        return self.func.__doc__
+
+    def __get__(self, obj, objtype):
+        '''Support instance methods.'''
+        return functools.partial(self.__call__, obj)
+
 
 def persist(file_name):
+    file_name_with_extension = file_name + ".pck"
     def func_decorator(func):
         def func_wrapper(*args, **kwargs):
-            if os.path.isfile(file_name):
-                with open(file_name, 'rb') as f:
+            if os.path.isfile(file_name_with_extension):
+                with open(file_name_with_extension, 'rb') as f:
                     return pickle.load(f)
             else:
                 result = func(*args, **kwargs)
-                with open(file_name, 'wb') as f:
+                with open(file_name_with_extension, 'wb') as f:
                     pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
                 return result
         return func_wrapper
@@ -92,6 +97,7 @@ def persist(file_name):
 
 @persist(DATA_PATH + "sentences")
 def get_sentences():
+    logging.info("getting sentences")
     pmids = set()
     sentences = []
     for study in viewer:
@@ -106,15 +112,13 @@ def get_sentences():
     return [{"pmid": k, "sentence": v} for k, t in zip(pmids, sentences) for v in t]
 
 
-
-vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(5, 5), analyzer="char_wb", decode_error="ignore")
-
 def vectorize(sentences):
     return vectorizer.transform(sentences)
 
 @persist(DATA_PATH + "X_" + domain)
 def get_X(sentences, held_out):
-    return vectorize([x["sentence"] for x in sentences if not x["pmid"] in held_out])
+    logging.debug("vectorizing sentences")
+    return vectorize([s["sentence"] for s in sentences if not s["pmid"] in held_out])
 
 @memoized
 def get_characteristic_fragment(pmid, domain):
@@ -125,19 +129,29 @@ def get_characteristic_fragment(pmid, domain):
 
 
 @persist(DATA_PATH + "fragments_" + domain)
-def get_characteristic_fragments(sentences, domain):
-    return [get_characteristic_fragment(s['pmid'], domain) or "" for s in sentences]
+def get_characteristic_fragments(sentences, domain, held_out):
+    logging.info("getting CDSR fragments")
+    return [get_characteristic_fragment(s['pmid'], domain) or "" for s in sentences if not s['pmid'] in held_out]
+
+
+@persist(DATA_PATH + "fragments_vector_" + domain)
+def get_characteristic_fragment_vector(fragments):
+    logging.info("vectorizing CDSR fragments")
+    return vectorize(fragments)
 
 
 @persist(DATA_PATH + "R_" + domain)
-def get_R(X, cdsr_fragments):
-    logging.info("vectorizing CDSR fragments")
-    y = vectorize(cdsr_fragments)
+def get_R(X, y):
+    assert X.shape == y.shape
     logging.info("computing similarity ...")
-    return (X * y.T)
+    R = np.zeros(y.shape[0], 'float')
+    for idx in range(len(R)):  # we're using a loop here to save memory
+        R[idx] = (y[idx,:] * X[idx,:].T).A[0,0]
+    return R
+
 
 def get_y(R, threshold):
-    return (np.any(R >= threshold) * 1).A[:,0]
+    return (R >= threshold) * 1
 
 
 def get_test_data(file, domain):
@@ -204,22 +218,20 @@ def start(domain, is_cached):
     scorer = scorer_factory(test)
 
     if not is_cached:
-        logging.info("getting sentences")
         sentences = get_sentences()
 
-        logging.debug("vectorizing sentences")
         X = get_X(sentences, held_out)
 
-        logging.info("getting CDSR fragments")
-        cdsr_fragments = get_characteristic_fragments(sentences, domain)
+        fragments = get_characteristic_fragments(sentences, domain, held_out)
 
-        R = get_R(X, cdsr_fragments)
+        y = get_characteristic_fragment_vector(fragments)
+        R = get_R(X, y)
     else:
-        X = get_X(None, None)
-        R = get_R(None, None)
+        X = get_X()  # Cached
+        R = get_R()  # Cached
 
     logging.info("starting experiments")
-    run_experiment(X, R, scorer)
+    run_experiments(X, R, scorer)
 
 if __name__ == '__main__':
     domain = sys.argv[1]
