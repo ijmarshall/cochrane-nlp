@@ -132,7 +132,7 @@ def get_test_data(file, domain):
 
 def scorer_factory(test_data):
     X_test = vectorize([t['sentence'] for t in test_data])
-    y_true = np.array([1 if t['rating'] in set('1', '2', 't1') else 0 for t in test_data])
+    y_true = np.array([1 if t['rating'] in set(['1', '2', 't1']) else 0 for t in test_data])
 
     def scorer(estimator, X, y):
         logging.info("Estimating %s %s" %s (len(y_true), sum(y_true)))
@@ -175,9 +175,9 @@ def run_experiments(domain):
     logging.info("setting up")
     ratings = DATA_PATH + "../sds/annotations/master/figure8-2-15.csv"
     test, held_out = get_test_data(ratings, domain)
+    scorer = scorer_factory(test)
     sentences = get_sentences(held_out)
     train_X = get_X(sentences)
-    scorer = scorer_factory(test)
 
     logging.info("starting experiments")
     run_experiment(train_X, domain, sentences, scorer)
