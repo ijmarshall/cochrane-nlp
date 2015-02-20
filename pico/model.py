@@ -71,7 +71,6 @@ vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2",
 def vectorize(sentences):
     return vectorizer.transform(sentences)
 
-
 def get_X(sentences):
     return vectorize([x["sentence"] for x in sentences])
 
@@ -91,7 +90,7 @@ def __get_similarity(domain, sentences, pmid):
     return (y1 * y2.T)
 
 
-def get_y(X, domain, sentences, threshold=0.3):
+def get_y(domain, sentences, threshold=0.3):
     y = np.zeros(len(sentences), 'bool')
 
     pmid_ptr = None
@@ -133,10 +132,12 @@ def get_test_data(file, domain):
 
 def scorer_factory(test_data):
     X_test = vectorize([t['sentence'] for t in test_data])
-    y_true = np.array([1 if t['rating'] == '2' else 0 for t in test_data])
+    y_true = np.array([1 if t['rating'] in set('1', '2', 't1') else 0 for t in test_data])
 
     def scorer(estimator, X, y):
+        logging.info("Estimating %s %s" %s (len(y_true), sum(y_true)))
         y_pred = estimator.predict(X_test)
+        logging.info("Predicted %s %s" % (len(y_pred), sum(y_pred)))
         return precision_recall_fscore_support(y_true, y_pred, average="micro")
 
     return scorer
@@ -154,7 +155,8 @@ def run_experiment(X, domain, sentences, scorer):
     for params in tune_params:
         logging.info("running %s with alpha=%s, threshold=%s" % (domain, params["alpha"], params["threshold"]))
         logging.info("getting y...")
-        y = get_y(X, domain, sentences, threshold=params["threshold"])
+        y = get_y(domain, sentences, threshold=params["threshold"])
+        logging.info("Number of samples %s, of which positive %s" % (len(y), sum(y)))
         sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="l2", alpha=params["alpha"])
         logging.info("fitting...")
         sgd.fit(X, y)
@@ -164,10 +166,9 @@ def run_experiment(X, domain, sentences, scorer):
             logging.info("this estimator was better!")
             best_estimator = sgd
             best_score = precision
-
-    logging.debug("storing %s" % domain)
-    with open(DATA_PATH + domain + ".pck", "wb") as f:
-        pickle.dump(best_estimator, f)
+            logging.debug("storing %s" % domain)
+            with open(DATA_PATH + domain + ".pck", "wb") as f:
+                pickle.dump(best_estimator, f)
 
 
 def run_experiments(domain):
