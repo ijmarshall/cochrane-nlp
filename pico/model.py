@@ -66,7 +66,7 @@ def get_sentences(held_out):
 
 
 
-vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(1, 2), analyzer="word", decode_error="ignore")
+vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(5, 5), analyzer="char_wb", decode_error="ignore")
 
 def vectorize(sentences):
     return vectorizer.transform(sentences)
@@ -90,12 +90,13 @@ def __get_similarity(domain, sentences, pmid):
     return (y1 * y2.T)
 
 
-def get_y(domain, sentences, threshold=0.3):
+def get_y(domain, sentences, threshold):
     y = np.zeros(len(sentences), 'bool')
 
     pmid_ptr = None
     tmp = []
     idx_ptr = 0
+    idxs = []
     for idx, s in enumerate(sentences):
         if not pmid_ptr:
             pmid_ptr = s['pmid']
@@ -103,12 +104,14 @@ def get_y(domain, sentences, threshold=0.3):
             # next pmid
             logging.debug("distilling essence of %s for %s at %s" % (pmid_ptr, domain, threshold))
             R = __get_similarity(domain, tmp, pmid_ptr)
-            y[idx_ptr:idx] = sum(np.any(R > threshold)).A[0, :]
+            y[idxs] = sum(np.any(R > threshold)).A[0, :]
 
             tmp = []
+            idxs = []
             pmid_ptr = s['pmid']
             idx_ptr = idx
 
+        idxs.append(idx)
         tmp.append(s['sentence'])
 
     return y
@@ -132,10 +135,10 @@ def get_test_data(file, domain):
 
 def scorer_factory(test_data):
     X_test = vectorize([t['sentence'] for t in test_data])
-    y_true = np.array([1 if t['rating'] in set('1', '2', 't1') else 0 for t in test_data])
+    y_true = np.array([1 if t['rating'] in set(['1', '2', 't1']) else 0 for t in test_data])
 
     def scorer(estimator, X, y):
-        logging.info("Estimating %s %s" %s (len(y_true), sum(y_true)))
+        logging.info("Estimating %s %s" % (len(y_true), sum(y_true)))
         y_pred = estimator.predict(X_test)
         logging.info("Predicted %s %s" % (len(y_pred), sum(y_pred)))
         return precision_recall_fscore_support(y_true, y_pred, average="micro")
@@ -175,9 +178,9 @@ def run_experiments(domain):
     logging.info("setting up")
     ratings = DATA_PATH + "../sds/annotations/master/figure8-2-15.csv"
     test, held_out = get_test_data(ratings, domain)
+    scorer = scorer_factory(test)
     sentences = get_sentences(held_out)
     train_X = get_X(sentences)
-    scorer = scorer_factory(test)
 
     logging.info("starting experiments")
     run_experiment(train_X, domain, sentences, scorer)
