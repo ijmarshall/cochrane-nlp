@@ -66,7 +66,7 @@ def get_sentences(held_out):
 
 
 
-vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(5, 5), analyzer="char_wb", decode_error="ignore")
+vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(1, 2), analyzer="word", decode_error="ignore")
 
 def vectorize(sentences):
     return vectorizer.transform(sentences)
@@ -82,10 +82,12 @@ def get_characteristic_fragments(pmid, domain):
     return " ".join(char).decode("utf-8", errors="ignore")
 
 
-def __get_similarity(y2, domain, pmid):
+def __get_similarity(domain, sentences, pmid):
     s2 = sentence_tokenizer.tokenize(get_characteristic_fragments(pmid, domain))
     y1 = vectorize(s2) if s2 else vectorize([""])
 
+    # determine the cosine similarity of the sentences, and marking as relevant if exceeding threshold
+    y2 = vectorize(sentences)
     return (y1 * y2.T)
 
 
@@ -94,20 +96,21 @@ def get_y(X, domain, sentences, threshold=0.3):
 
     pmid_ptr = None
     tmp = []
+    idx_ptr = 0
     for idx, s in enumerate(sentences):
         if not pmid_ptr:
             pmid_ptr = s['pmid']
         elif pmid_ptr != s['pmid']:
             # next pmid
             logging.debug("distilling essence of %s for %s at %s" % (pmid_ptr, domain, threshold))
-            y2 = X[tmp,:]
-            R = __get_similarity(y2, domain, pmid_ptr)
-            y[tmp] = sum(np.any(R > threshold)).A[0,:]
+            R = __get_similarity(domain, pmid_ptr, tmp)
+            y[idx_ptr:idx] = sum(np.any(R > threshold)).A[0, :]
 
             tmp = []
             pmid_ptr = s['pmid']
+            idx_ptr = idx
 
-        tmp.append(idx)
+        tmp.append(s['sentence'])
 
     return y
 
