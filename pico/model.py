@@ -103,7 +103,7 @@ def get_y(X, domain, sentences, threshold=0.3):
         elif pmid_ptr != s['pmid']:
             # next pmid
             logging.debug("distilling essence of %s for %s at %s" % (pmid_ptr, domain, threshold))
-            R = __get_similarity(domain, pmid_ptr, tmp)
+            R = __get_similarity(domain, tmp, pmid_ptr)
             y[idx_ptr:idx] = sum(np.any(R > threshold)).A[0, :]
 
             tmp = []
@@ -122,9 +122,12 @@ def get_test_data(file, domain):
         reader = csv.DictReader(f)
         for row in reader:
             if row['PICO field'].strip() == test_domain:
-                out.append(row)
+                candidate = row['candidate sentence'].decode("utf-8", errors="ignore")
+                sentences = sentence_tokenizer.tokenize(candidate)
+                for s in sentences:
+                    out.append({"sentence": s, "rating": row['rating'], 'pmid': row['study id']})
 
-    held_out = set([t['study id'] for t in out])
+    held_out = set([t['pmid'] for t in out])
     return out, held_out
 
 
@@ -157,7 +160,7 @@ def run_experiment(X, domain, sentences, scorer):
         sgd.fit(X, y)
         precision, recall, f1, support = scorer(sgd, None, None)
         logging.info("precision %s, recall %s, f1 %s" % (precision, recall, f1))
-        if(precision > best_score):
+        if(precision >= best_score):
             logging.info("this estimator was better!")
             best_estimator = sgd
             best_score = precision
