@@ -11,7 +11,7 @@ import re
 import random
 import sys
 import csv
-import ipdb
+import pdb
 from operator import itemgetter
 from collections import Counter
 import pickle
@@ -231,8 +231,12 @@ def is_number(s):
     except ValueError:
         return False
 
-def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", cutoff=4, max_sentences=10):
+def output_data_for_labeling(N=7, output_file_path="for_labeling-2-16-15_shared.csv", 
+                                cutoff=4, max_sentences=10, exclude_list=None):
     ''' generate a CSV file for labeling matches '''
+
+    if exclude_list is None:
+        exclude_list = []
 
     with open(output_file_path, 'wb') as outf:
         csv_writer = csv.writer(outf, delimiter=",")
@@ -241,7 +245,9 @@ def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", 
             ["study id", "PICO field", "CDSR sentence",
             "candidate sentence", "rating"])
 
-        for i in xrange(N):
+        #for i in xrange(N):
+        count = 0
+        while count < N:
             p = biviewer.PDFBiViewer()
             p_max = len(p) - 1
 
@@ -252,33 +258,37 @@ def output_data_for_labeling(N=25, output_file_path="for_labeling-1-14-15.csv", 
             study = p[p_i]
             pdf = study.studypdf['text']
             study_id = "%s" % study[1]['pmid']
-            pdf_sents = sent_tokenize(pdf)
+            #pdb.set_trace()
 
-            for pico_field in PICO_DOMAINS:
-                ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study,
-                            pico_field, pdf_sents=pdf_sents)
+            if study_id not in exclude_list:
+                count += 1
+                pdf_sents = sent_tokenize(pdf)
 
-                # in this case, there was no target label in the
-                # CDSR so we just keep on moving
-                if ranked_sentences_and_scores is None:
-                    pass
-                else:
-                    # the :2 throws away the shared tokens here.
-                    ranked_sentences, scores = ranked_sentences_and_scores[:2]
-                    # don't take more than max_sentences sentences
-                    num_to_keep = min(len([score for score in scores if score >= cutoff]),
-                                        max_sentences)
+                for pico_field in PICO_DOMAINS:
+                    ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study,
+                                pico_field, pdf_sents=pdf_sents)
 
-
-                    ## what to do if this is zero?
-                    if num_to_keep == 0:
-                        print "no sentences passed threshold!"
+                    # in this case, there was no target label in the
+                    # CDSR so we just keep on moving
+                    if ranked_sentences_and_scores is None:
+                        pass
                     else:
-                        target_text = study.cochrane["CHARACTERISTICS"][pico_field]
-                        for candidate in ranked_sentences[:num_to_keep]:
-                            csv_writer.writerow([
-                                study_id, pico_field.replace("CHAR_", " "),
-                                                target_text, candidate, ""])
+                        # the :2 throws away the shared tokens here.
+                        ranked_sentences, scores = ranked_sentences_and_scores[:2]
+                        # don't take more than max_sentences sentences
+                        num_to_keep = min(len([score for score in scores if score >= cutoff]),
+                                            max_sentences)
+
+
+                        ## what to do if this is zero?
+                        if num_to_keep == 0:
+                            print "no sentences passed threshold!"
+                        else:
+                            target_text = study.cochrane["CHARACTERISTICS"][pico_field]
+                            for candidate in ranked_sentences[:num_to_keep]:
+                                csv_writer.writerow([
+                                    study_id, pico_field.replace("CHAR_", " "),
+                                                    target_text, candidate, ""])
 
 
 def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
@@ -296,7 +306,6 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     tokenization will be performed here.
     '''
 
-    print "%s" % study[1]['pmid']
 
     # tokenize if necessary
     if pdf_sents is None:

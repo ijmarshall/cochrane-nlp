@@ -132,7 +132,7 @@ def get_test_data(file, domain):
 
 
 def scorer_factory(test_data):
-    X_test = vectorize([t['candidate sentence'] for t in test_data])
+    X_test = vectorize([t['sentence'] for t in test_data])
     y_true = np.array([1 if t['rating'] == '2' else 0 for t in test_data])
 
     def scorer(estimator, X, y):
