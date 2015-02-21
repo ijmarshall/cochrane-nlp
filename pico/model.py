@@ -48,8 +48,6 @@ sentence_tokenizer = PunktSentenceTokenizer()
 
 domain = sys.argv[1]
 
-vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(5, 5), analyzer="char_wb", decode_error="ignore")
-
 
 class memoized(object):
     '''Decorator. Caches a function's return value each time it is called.
@@ -90,7 +88,8 @@ def persist(file_name):
                 result = func(*args, **kwargs)
                 with open(file_name_with_extension, 'wb') as f:
                     pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
-                return result
+                    f.close()
+                    return result
         return func_wrapper
     return func_decorator
 
@@ -112,10 +111,15 @@ def get_sentences():
     return [{"pmid": k, "sentence": v} for k, t in zip(pmids, sentences) for v in t]
 
 
+vectorizer = HashingVectorizer(stop_words=stopwords.words('english'),
+                               norm="l2", ngram_range=(3, 3),
+                               analyzer="char_wb",
+                               decode_error="ignore",
+                               strip_accents="ascii")
+
 def vectorize(sentences):
     return vectorizer.transform(sentences)
 
-@persist(DATA_PATH + "X_" + domain)
 def get_X(sentences, held_out):
     logging.debug("vectorizing sentences")
     return vectorize([s["sentence"] for s in sentences if not s["pmid"] in held_out])
@@ -145,18 +149,17 @@ def get_R(X, y):
     logging.info("computing similarity ...")
     R = np.zeros(y.shape[0], 'float')
     for idx in range(len(R)):  # we're using a loop here to save memory
-        R[idx] = (y[idx,:] * X[idx,:].T).A[0,0]
+        R[idx] = (y[idx,:] * X[idx,:].T)[0,0]
     return R
 
 
 def get_y(R, threshold):
-    return (R >= threshold) * 1
+    return (R >= threshold)
 
-
-def get_test_data(file, domain):
+def get_test_data(file_name, domain):
     out = []
     test_domain = domain.replace("CHAR_", "")
-    with open(file) as f:
+    with open(file_name) as f:
         reader = csv.DictReader(f)
         for row in reader:
             if row['PICO field'].strip() == test_domain:
@@ -171,7 +174,7 @@ def get_test_data(file, domain):
 
 def scorer_factory(test_data):
     X_test = vectorize([t['sentence'] for t in test_data])
-    y_true = np.array([1 if t['rating'] in set(['1', '2', 't1']) else 0 for t in test_data])
+    y_true = np.array([True if t['rating'] in set(['1', '2', 't1']) else False for t in test_data])
 
     def scorer(estimator, X, y):
         logging.info("Estimating %s %s" % (len(y_true), sum(y_true)))
@@ -186,7 +189,7 @@ def run_experiments(X, R, scorer):
     logging.debug("running experiment for %s" % domain)
     tune_params = ParameterGrid([
         {"alpha": [.00001, .001, 1, 10],
-         "threshold": [0.1, 0.125, 0.15, 0.175, 0.2, 0.25, 0.3, 0.5]}])
+         "threshold": [0.01, 0.05, 0.1, 0.125, 0.15, 0.175, 0.2, 0.25]}])
 
     best_estimator = None
     best_score = 0
