@@ -134,7 +134,6 @@ def get_characteristic_fragments(sentences, domain, held_out):
     return [get_characteristic_fragment(s['pmid'], domain) or "" for s in sentences if not s['pmid'] in held_out]
 
 
-@persist(DATA_PATH + "fragments_vector_" + domain)
 def get_characteristic_fragment_vector(fragments):
     logging.info("vectorizing CDSR fragments")
     return vectorize(fragments)
