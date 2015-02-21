@@ -1,10 +1,7 @@
-import sys, os, logging, csv, collections, functools
+import sys, os, logging, csv, collections, functools, traceback
 import cPickle as pickle
 import os.path
 logging.basicConfig(level=logging.DEBUG)
-
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 import numpy as np
 import scipy as sp
@@ -82,14 +79,23 @@ def persist(file_name):
     def func_decorator(func):
         def func_wrapper(*args, **kwargs):
             if os.path.isfile(file_name_with_extension):
-                with open(file_name_with_extension, 'rb') as f:
-                    return pickle.load(f)
-            else:
-                result = func(*args, **kwargs)
-                with open(file_name_with_extension, 'wb') as f:
-                    pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
+                try:
+                    f = open(file_name_with_extension, 'rb')
+                    result = pickle.load(f)
                     f.close()
                     return result
+                except Exception:
+                    logging.warn(traceback.format_exc())
+                    return None
+            else:
+                result = func(*args, **kwargs)
+                try:
+                    f = open(file_name_with_extension, 'wb')
+                    pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
+                    f.close()
+                except Exception:
+                    logging.warn(traceback.format_exc())
+                return result
         return func_wrapper
     return func_decorator
 
@@ -112,14 +118,16 @@ def get_sentences():
 
 
 vectorizer = HashingVectorizer(stop_words=stopwords.words('english'),
-                               norm="l2", ngram_range=(3, 3),
-                               analyzer="char_wb",
+                               norm="l2",
+                               ngram_range=(1, 2),
+                               analyzer="word",
                                decode_error="ignore",
                                strip_accents="ascii")
 
 def vectorize(sentences):
     return vectorizer.transform(sentences)
 
+@persist(DATA_PATH + "X_" + domain)
 def get_X(sentences, held_out):
     logging.debug("vectorizing sentences")
     return vectorize([s["sentence"] for s in sentences if not s["pmid"] in held_out])
@@ -174,13 +182,13 @@ def get_test_data(file_name, domain):
 
 def scorer_factory(test_data):
     X_test = vectorize([t['sentence'] for t in test_data])
-    y_true = np.array([True if t['rating'] in set(['1', '2', 't1']) else False for t in test_data])
+    y_true = np.array([True if t['rating'] in set(['2']) else False for t in test_data])
 
     def scorer(estimator, X, y):
         logging.info("Estimating %s %s" % (len(y_true), sum(y_true)))
         y_pred = estimator.predict(X_test)
         logging.info("Predicted %s %s" % (len(y_pred), sum(y_pred)))
-        return precision_recall_fscore_support(y_true, y_pred, average="micro")
+        return precision_recall_fscore_support(y_true, y_pred, average="macro")
 
     return scorer
 
@@ -188,8 +196,8 @@ def scorer_factory(test_data):
 def run_experiments(X, R, scorer):
     logging.debug("running experiment for %s" % domain)
     tune_params = ParameterGrid([
-        {"alpha": [.00001, .001, 1, 10],
-         "threshold": [0.01, 0.05, 0.1, 0.125, 0.15, 0.175, 0.2, 0.25]}])
+        {"alpha": [.0001],
+         "threshold": [0.001]}])
 
     best_estimator = None
     best_score = 0
@@ -199,12 +207,12 @@ def run_experiments(X, R, scorer):
         logging.info("getting y...")
         y = get_y(R, threshold=params["threshold"])
         logging.info("Number of samples %s, of which positive %s" % (len(y), sum(y)))
-        sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="l2", alpha=params["alpha"])
+        sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="elasticnet", alpha=params["alpha"])
         logging.info("fitting...")
         sgd.fit(X, y)
         precision, recall, f1, support = scorer(sgd, None, None)
         logging.info("precision %s, recall %s, f1 %s" % (precision, recall, f1))
-        if(precision >= best_score):
+        if(f1 >= best_score):
             logging.info("this estimator was better!")
             best_estimator = sgd
             best_score = precision
