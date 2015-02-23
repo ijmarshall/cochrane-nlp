@@ -15,7 +15,7 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import confusion_matrix, precision_score, precision_recall_fscore_support
 from sklearn.grid_search import ParameterGrid
 
-from nltk.tokenize.punkt import PunktSentenceTokenizer
+import nltk.tokenize
 from nltk.corpus import stopwords
 
 sys.path.insert(0, os.getcwd())
@@ -40,8 +40,6 @@ DATA_PATH = cochranenlp.config["Paths"]["base_path"]
 # PICO_DOMAINS = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
 
 viewer = biviewer.PDFBiViewer()
-
-sentence_tokenizer = PunktSentenceTokenizer()
 
 domain = sys.argv[1]
 
@@ -110,7 +108,7 @@ def get_sentences():
         if pmid not in pmids:  # Not Cached
             logging.debug("parsing sentences for %s" % pmid)
             text = study.studypdf["text"].decode("utf-8", errors="ignore")
-            sentences.append(sentence_tokenizer.tokenize(text))
+            sentences.append(nltk.sent_tokenize(text))
             pmids.add(pmid)
         else:
             logging.debug("skipping, already parsed %s" % pmid)
@@ -119,7 +117,7 @@ def get_sentences():
 
 vectorizer = HashingVectorizer(stop_words=stopwords.words('english'),
                                norm="l2",
-                               ngram_range=(1, 2),
+                               ngram_range=(1, 1),
                                analyzer="word",
                                decode_error="ignore",
                                strip_accents="ascii")
@@ -172,7 +170,7 @@ def get_test_data(file_name, domain):
         for row in reader:
             if row['PICO field'].strip() == test_domain:
                 candidate = row['candidate sentence'].decode("utf-8", errors="ignore")
-                sentences = sentence_tokenizer.tokenize(candidate)
+                sentences = nltk.sent_tokenize(candidate)
                 for s in sentences:
                     out.append({"sentence": s, "rating": row['rating'], 'pmid': row['study id']})
 
@@ -196,8 +194,8 @@ def scorer_factory(test_data):
 def run_experiments(X, R, scorer):
     logging.debug("running experiment for %s" % domain)
     tune_params = ParameterGrid([
-        {"alpha": [.0001],
-         "threshold": [0.001]}])
+        {"alpha": [.00001, .0001, 0.01, 0.1, 1],
+         "threshold": [0.001, 0.005, 0.075, 0.01, 0.025, 0.05, 0.75]}])
 
     best_estimator = None
     best_score = 0
