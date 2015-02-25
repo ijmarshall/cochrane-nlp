@@ -1,10 +1,7 @@
-import sys, os, logging, csv
+import sys, os, logging, csv, collections, functools, traceback
 import cPickle as pickle
 import os.path
-logging.basicConfig(level=logging.INFO)
-
-reload(sys)
-sys.setdefaultencoding('utf8')
+logging.basicConfig(level=logging.DEBUG)
 
 import numpy as np
 import scipy as sp
@@ -18,7 +15,7 @@ from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import confusion_matrix, precision_score, precision_recall_fscore_support
 from sklearn.grid_search import ParameterGrid
 
-from nltk.tokenize.punkt import PunktSentenceTokenizer
+import nltk.tokenize
 from nltk.corpus import stopwords
 
 sys.path.insert(0, os.getcwd())
@@ -33,10 +30,8 @@ TODO: add more features
 
 Per PICO
 - Iterate over all CDSR studies
-  * Get the PICO text and compute cosine distance with the LSH
-  * If distance > threshold set y = 1, 0 otherwise
-
-Predict [X,y] with 5-fold crossvalidation per PICO using SGD
+  * Get the PICO text and compute cosine similarity with the LSH
+  * If similarity > threshold set y = 1, 0 otherwise
 
 '''
 
@@ -46,101 +41,161 @@ DATA_PATH = cochranenlp.config["Paths"]["base_path"]
 
 viewer = biviewer.PDFBiViewer()
 
-sentence_tokenizer = PunktSentenceTokenizer()
+domain = sys.argv[1]
 
-def get_sentences(held_out):
+
+class memoized(object):
+    '''Decorator. Caches a function's return value each time it is called.
+    If called later with the same arguments, the cached value is returned
+    (not reevaluated).
+    '''
+    def __init__(self, func):
+        self.func = func
+        self.cache = {}
+
+    def __call__(self, *args):
+        if not isinstance(args, collections.Hashable):
+            return self.func(*args)
+        if args in self.cache:
+            return self.cache[args]
+        else:
+            value = self.func(*args)
+            self.cache[args] = value
+            return value
+
+    def __repr__(self):
+        '''Return the function's docstring.'''
+        return self.func.__doc__
+
+    def __get__(self, obj, objtype):
+        '''Support instance methods.'''
+        return functools.partial(self.__call__, obj)
+
+
+def persist(file_name):
+    file_name_with_extension = file_name + ".pck"
+    def func_decorator(func):
+        def func_wrapper(*args, **kwargs):
+            if os.path.isfile(file_name_with_extension):
+                try:
+                    f = open(file_name_with_extension, 'rb')
+                    result = pickle.load(f)
+                    f.close()
+                    return result
+                except Exception:
+                    logging.warn(traceback.format_exc())
+                    return None
+            else:
+                result = func(*args, **kwargs)
+                try:
+                    f = open(file_name_with_extension, 'wb')
+                    pickle.dump(result, f, pickle.HIGHEST_PROTOCOL)
+                    f.close()
+                except Exception:
+                    logging.warn(traceback.format_exc())
+                return result
+        return func_wrapper
+    return func_decorator
+
+
+@persist(DATA_PATH + "sentences")
+def get_sentences():
+    logging.info("getting sentences")
     pmids = set()
     sentences = []
     for study in viewer:
         pmid = study[1]['pmid']
-        if pmid in held_out:
-            continue
         if pmid not in pmids:  # Not Cached
             logging.debug("parsing sentences for %s" % pmid)
             text = study.studypdf["text"].decode("utf-8", errors="ignore")
-            sentences.append(sentence_tokenizer.tokenize(text))
+            sentences.append(nltk.sent_tokenize(text))
             pmids.add(pmid)
         else:
             logging.debug("skipping, already parsed %s" % pmid)
     return [{"pmid": k, "sentence": v} for k, t in zip(pmids, sentences) for v in t]
 
 
-
-vectorizer = HashingVectorizer(stop_words=stopwords.words('english'), norm="l2", ngram_range=(5, 5), analyzer="char_wb", decode_error="ignore")
+vectorizer = HashingVectorizer(stop_words=stopwords.words('english'),
+                               norm="l2",
+                               ngram_range=(1, 1),
+                               analyzer="word",
+                               decode_error="ignore",
+                               strip_accents="ascii")
 
 def vectorize(sentences):
     return vectorizer.transform(sentences)
 
+@persist(DATA_PATH + "X_" + domain)
+def get_X(sentences, held_out):
+    logging.debug("vectorizing sentences")
+    return vectorize([s["sentence"] for s in sentences if not s["pmid"] in held_out])
 
-def get_X(sentences):
-    return vectorize([x["sentence"] for x in sentences])
-
-
-def get_characteristic_fragments(pmid, domain):
+@memoized
+def get_characteristic_fragment(pmid, domain):
+    logging.debug("getting %s fragment for %s" % (domain, pmid))
     studies = viewer.get_study_from_pmid(pmid)
     char = [s[0]["CHARACTERISTICS"][domain] or "" for s in studies]
     return " ".join(char).decode("utf-8", errors="ignore")
 
 
-def __get_similarity(y2, domain, pmid):
-    s2 = sentence_tokenizer.tokenize(get_characteristic_fragments(pmid, domain))
-    y1 = vectorize(s2) if s2 else vectorize([""])
-
-    return (y1 * y2.T)
-
-
-def get_y(X, domain, sentences, threshold=0.3):
-    y = np.zeros(len(sentences), 'bool')
-
-    pmid_ptr = None
-    tmp = []
-    for idx, s in enumerate(sentences):
-        if not pmid_ptr:
-            pmid_ptr = s['pmid']
-        elif pmid_ptr != s['pmid']:
-            # next pmid
-            logging.debug("distilling essence of %s for %s at %s" % (pmid_ptr, domain, threshold))
-            y2 = X[tmp,:]
-            R = __get_similarity(y2, domain, pmid_ptr)
-            y[tmp] = sum(np.any(R > threshold)).A[0,:]
-
-            tmp = []
-            pmid_ptr = s['pmid']
-
-        tmp.append(idx)
-
-    return y
+@persist(DATA_PATH + "fragments_" + domain)
+def get_characteristic_fragments(sentences, domain, held_out):
+    logging.info("getting CDSR fragments")
+    return [get_characteristic_fragment(s['pmid'], domain) or "" for s in sentences if not s['pmid'] in held_out]
 
 
-def get_test_data(file, domain):
+def get_characteristic_fragment_vector(fragments):
+    logging.info("vectorizing CDSR fragments")
+    return vectorize(fragments)
+
+
+@persist(DATA_PATH + "R_" + domain)
+def get_R(X, y):
+    assert X.shape == y.shape
+    logging.info("computing similarity ...")
+    R = np.zeros(y.shape[0], 'float')
+    for idx in range(len(R)):  # we're using a loop here to save memory
+        R[idx] = (y[idx,:] * X[idx,:].T)[0,0]
+    return R
+
+
+def get_y(R, threshold):
+    return (R >= threshold)
+
+def get_test_data(file_name, domain):
     out = []
     test_domain = domain.replace("CHAR_", "")
-    with open(file) as f:
+    with open(file_name) as f:
         reader = csv.DictReader(f)
         for row in reader:
             if row['PICO field'].strip() == test_domain:
-                out.append(row)
+                candidate = row['candidate sentence'].decode("utf-8", errors="ignore")
+                sentences = nltk.sent_tokenize(candidate)
+                for s in sentences:
+                    out.append({"sentence": s, "rating": row['rating'], 'pmid': row['study id']})
 
-    held_out = set([t['study id'] for t in out])
+    held_out = set([t['pmid'] for t in out])
     return out, held_out
 
 
 def scorer_factory(test_data):
-    X_test = vectorize([t['candidate sentence'] for t in test_data])
-    y_true = np.array([1 if t['rating'] == '2' else 0 for t in test_data])
+    X_test = vectorize([t['sentence'] for t in test_data])
+    y_true = np.array([True if t['rating'] in set(['2']) else False for t in test_data])
 
     def scorer(estimator, X, y):
+        logging.info("Estimating %s %s" % (len(y_true), sum(y_true)))
         y_pred = estimator.predict(X_test)
-        return precision_recall_fscore_support(y_true, y_pred, average="micro")
+        logging.info("Predicted %s %s" % (len(y_pred), sum(y_pred)))
+        return precision_recall_fscore_support(y_true, y_pred, average="macro")
 
     return scorer
 
 
-def run_experiment(X, domain, sentences, scorer):
+def run_experiments(X, R, scorer):
     logging.debug("running experiment for %s" % domain)
     tune_params = ParameterGrid([
-        {"alpha": [.00001, .001, 1, 10],
-         "threshold": [0.1, 0.125, 0.15, 0.175, 0.2, 0.25, 0.3, 0.5]}])
+        {"alpha": [.00001, .0001, 0.01, 0.1, 1],
+         "threshold": [0.001, 0.005, 0.075, 0.01, 0.025, 0.05, 0.75]}])
 
     best_estimator = None
     best_score = 0
@@ -148,34 +203,46 @@ def run_experiment(X, domain, sentences, scorer):
     for params in tune_params:
         logging.info("running %s with alpha=%s, threshold=%s" % (domain, params["alpha"], params["threshold"]))
         logging.info("getting y...")
-        y = get_y(X, domain, sentences, threshold=params["threshold"])
-        sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="l2", alpha=params["alpha"])
+        y = get_y(R, threshold=params["threshold"])
+        logging.info("Number of samples %s, of which positive %s" % (len(y), sum(y)))
+        sgd = SGDClassifier(shuffle=True, loss="hinge", penalty="elasticnet", alpha=params["alpha"])
         logging.info("fitting...")
         sgd.fit(X, y)
         precision, recall, f1, support = scorer(sgd, None, None)
         logging.info("precision %s, recall %s, f1 %s" % (precision, recall, f1))
-        if(precision > best_score):
+        if(f1 >= best_score):
             logging.info("this estimator was better!")
             best_estimator = sgd
             best_score = precision
+            logging.debug("storing %s" % domain)
+            with open(DATA_PATH + domain + ".pck", "wb") as f:
+                pickle.dump(best_estimator, f)
 
-    logging.debug("storing %s" % domain)
-    with open(DATA_PATH + domain + ".pck", "wb") as f:
-        pickle.dump(best_estimator, f)
 
-
-def run_experiments(domain):
-    logging.info("setting up")
+def start(domain, is_cached):
+    logging.info("setting up (cached: %s)" % is_cached)
     ratings = DATA_PATH + "../sds/annotations/master/figure8-2-15.csv"
     test, held_out = get_test_data(ratings, domain)
-    sentences = get_sentences(held_out)
-    train_X = get_X(sentences)
     scorer = scorer_factory(test)
 
+    if not is_cached:
+        sentences = get_sentences()
+
+        X = get_X(sentences, held_out)
+
+        fragments = get_characteristic_fragments(sentences, domain, held_out)
+
+        y = get_characteristic_fragment_vector(fragments)
+        R = get_R(X, y)
+    else:
+        X = get_X()  # Cached
+        R = get_R()  # Cached
+
     logging.info("starting experiments")
-    run_experiment(train_X, domain, sentences, scorer)
+    run_experiments(X, R, scorer)
 
 if __name__ == '__main__':
     domain = sys.argv[1]
+    is_cached = sys.argv[2] == "1"
     logging.info(domain)
-    run_experiments(domain)
+    start(domain, is_cached)
