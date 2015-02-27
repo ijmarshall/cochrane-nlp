@@ -25,7 +25,21 @@ class Drugbank:
 
         drug_entities = self._find_longest_token_matches(tokens)
 
-        print drug_entities
+        output = []
+
+        last_marker = 0
+
+        for drug_entity in drug_entities:
+
+            output.extend(tokens[last_marker:drug_entity[1]])
+            output.append(drug_entity[0])
+            last_marker = drug_entity[2]+1
+
+        output.extend(tokens[last_marker:])
+        return ''.join(output)
+
+
+
 
 
     def _find_longest_token_matches(self, tokens):
@@ -41,7 +55,7 @@ class Drugbank:
         # each iteration of the loop
         
         for i, token in enumerate(tokens):
-
+            
 
 
             token_lower = token.lower()
@@ -49,7 +63,9 @@ class Drugbank:
 
             for token_list in last_tokens_buffer:
                 
-                lookup_key = " ".join(token_list + [token_lower])
+                lookup_key = "".join(token_list + [token_lower])
+
+                
                 result = self.data.get(lookup_key, set()).copy() # make a copy to stop the pop deleting items from the gazetteer below!
                 
                 
@@ -64,7 +80,10 @@ class Drugbank:
             last_tokens_buffer = temp_buffer
             temp_buffer = [[]]
 
-            output.extend(token_tags)
+            if token_tags:
+                longest_tag = sorted(token_tags, key=lambda x: x[2]-x[1])[0]
+
+                output.extend(token_tags)
 
         return output
 
@@ -72,10 +91,11 @@ def main():
     drugbank = Drugbank()
 
     test_text = """
-    Here is some text which mentions tylenol and ibuprofen and quinine.
+    Here is some text which mentions tylenol, ibuprofen, quinine, and valproic acid.
     """
 
-    drugbank.sub(test_text)
+    print drugbank.sub(test_text)
+
 
 
 
