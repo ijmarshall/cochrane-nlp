@@ -8,14 +8,18 @@ substitutes mentions of drugs in a string with the generic name
 
 
 import cPickle as pickle
+import cochranenlp
 import collections
 import re
+
+
+DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to pubmed pdfs
 
 
 class Drugbank:
 
     def __init__(self):
-            with open('drugbank/drugbank.pck', 'rb') as f:
+            with open(DATA_PATH + 'drugbank.pck', 'rb') as f:
                 self.data = pickle.load(f)
                 self.description = pickle.load(f)
 
