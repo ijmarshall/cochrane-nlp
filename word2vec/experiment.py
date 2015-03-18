@@ -70,7 +70,7 @@ viewer = biviewer.PDFBiViewer()
 
 model = Word2Vec.load_word2vec_format(word2vec_model, binary=True)
 
-n = 1000
+n = 5000
 exclude = [DET, NUM, PUNCT, X, PRT, NO_TAG, EOL]
 domains = ["CHAR_PARTICIPANTS", "CHAR_OUTCOMES", "CHAR_INTERVENTIONS"]
 
@@ -98,7 +98,7 @@ def get_fragments(domain, n):
 
 def fragment_embedding(model, fragment):
     tokens = tokenize(normalize(fragment))
-    return embedding(model, tokens) if len(tokens) else np.zeros(200)
+    return embedding(model, tokens) if len(tokens) else np.zeros(200) # 200 is the dimensionality of the dense vector
 
 fragments = [(domain, fragment) for domain in domains for fragment in get_fragments(domain,n) if fragment]
 
@@ -108,9 +108,9 @@ le.fit(domains)
 y = np.hstack(domain_labels[domain] for domain, fragment in fragments)
 
 # the asfarray comes from this bug https://github.com/scikit-learn/scikit-learn/issues/4124
-X = np.asfarray(np.vstack([fragment_embedding(model, fragment) for domain, fragment in fragments]), dtype='float')
+vecs = np.asfarray(np.vstack([fragment_embedding(model, fragment) for domain, fragment in fragments]), dtype='float')
 
-proj = TSNE().fit_transform(X)
+proj = TSNE().fit_transform(vecs)
 
 scatter(proj, y)
-plt.savefig('tsne.png', dpi=120)
+plt.savefig('tsne.png', dpi=300)
