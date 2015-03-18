@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
-import logging
+import logging, itertools
+logging.basicConfig(level=logging.DEBUG)
 
 from spacy.en import English
 from spacy.parts_of_speech import DET, NUM, PUNCT, X, PRT, NO_TAG, EOL
@@ -58,7 +59,7 @@ def scatter(x, labels):
     return f, ax, sc, txts
 
 ######
-
+import numpy as np
 from sklearn import preprocessing
 from sklearn.manifold import TSNE
 
@@ -68,9 +69,11 @@ word2vec_model = "/Volumes/Helios/vec-space-models/wikipedia-pubmed-and-PMC-w2v.
 
 viewer = biviewer.PDFBiViewer()
 
+logging.info("loading model")
 model = Word2Vec.load_word2vec_format(word2vec_model, binary=True)
+logging.info("done loading model")
 
-n = 5000
+n = 2500
 exclude = [DET, NUM, PUNCT, X, PRT, NO_TAG, EOL]
 domains = ["CHAR_PARTICIPANTS", "CHAR_OUTCOMES", "CHAR_INTERVENTIONS"]
 
@@ -90,8 +93,10 @@ def tokenize(s):
     return [tok.norm_ for tok in nlp(s) if is_eligable(tok)]
 
 def embedding(model, tokens):
-    vecs = [model[token] for token in tokens if model.vocab.has_key(token)]
-    return np.average(np.asmatrix(vecs), 0).A[0,]
+    try:
+        return np.average(np.asmatrix([model[token] for token in tokens if model.vocab.has_key(token)]), 0).A[0,]
+    except Exception, e: # division by 0 protection
+        return np.zeros(200)
 
 def get_fragments(domain, n):
     return [s[0]["CHARACTERISTICS"][domain] for s in itertools.islice(viewer, n)]
@@ -100,17 +105,19 @@ def fragment_embedding(model, fragment):
     tokens = tokenize(normalize(fragment))
     return embedding(model, tokens) if len(tokens) else np.zeros(200) # 200 is the dimensionality of the dense vector
 
+logging.debug("getting fragments from CDSR")
 fragments = [(domain, fragment) for domain in domains for fragment in get_fragments(domain,n) if fragment]
 
-le = preprocessing.LabelEncoder()
-le.fit(domains)
-
+logging.debug("getting y")
 y = np.hstack(domain_labels[domain] for domain, fragment in fragments)
 
 # the asfarray comes from this bug https://github.com/scikit-learn/scikit-learn/issues/4124
+logging.debug("getting all the word embedding")
 vecs = np.asfarray(np.vstack([fragment_embedding(model, fragment) for domain, fragment in fragments]), dtype='float')
 
-proj = TSNE().fit_transform(vecs)
+logging.debug("computing t-SNE manifold")
+proj = TSNE(n_iter=500).fit_transform(vecs)
 
+logging.debug("plotting graph")
 scatter(proj, y)
 plt.savefig('tsne.png', dpi=300)
