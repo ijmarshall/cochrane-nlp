@@ -39,7 +39,7 @@ def scatter(x, labels):
     # We create a scatter plot.
     f = plt.figure(figsize=(8, 8))
     ax = plt.subplot(aspect='equal')
-    sc = ax.scatter(x[:,0], x[:,1], lw=0, s=40, c=palette[colors.astype(np.int)])
+    sc = ax.scatter(x[:,0], x[:,1], lw=0, s=20, c=palette[colors.astype(np.int)])
     plt.xlim(-25, 25)
     plt.ylim(-25, 25)
     ax.axis('off')
@@ -60,6 +60,8 @@ def scatter(x, labels):
 
 ######
 import numpy as np
+
+import sklearn
 from sklearn import preprocessing
 from sklearn.manifold import TSNE
 
@@ -112,11 +114,11 @@ logging.debug("getting y")
 y = np.hstack(domain_labels[domain] for domain, fragment in fragments)
 
 # the asfarray comes from this bug https://github.com/scikit-learn/scikit-learn/issues/4124
-logging.debug("getting all the word embedding")
+logging.debug("getting all the word embeddings")
 vecs = np.asfarray(np.vstack([fragment_embedding(model, fragment) for domain, fragment in fragments]), dtype='float')
 
 logging.debug("computing t-SNE manifold")
-proj = TSNE(n_iter=500).fit_transform(vecs)
+proj = TSNE().fit_transform(vecs)
 
 logging.debug("plotting graph")
 scatter(proj, y)
