@@ -182,6 +182,8 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
     testing_pmids = None
     output_str = [""]
 
+    #for domain_index, domain in enumerate(domains):
+    ### 2/25 -- tmp tmp tmp doing population only!
     for domain_index, domain in enumerate(domains):
         ##
         # here we need to grab the annotations used also
@@ -222,8 +224,9 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         # we maintain two sets of binary labels; one takes all
         # sentences labeled `1' *or above* as `1', while the
         # other (y2) imposes a stricter threshold of `2'.
-        y_test_DS = [] # slightly tricky
-        directly_supervised_indicators = np.zeros(len(domain_DS["pmids"]))
+        y_test = [] # slightly tricky
+        y_test_relaxed = []
+        directly_supervised_indicators = np.zeros(len(domain_DS["pmids"])).astype("int32")
 
         ###
         # I think it's clear what's happening
@@ -270,17 +273,23 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                     # then we may introduce a false negative here. I think this is
                     # rather unlikely and will, at the very least, be rare.
                     cur_label = _match_direct_to_distant_supervision(
-                        domain_supervision, pmid, cur_sentence, threshold=2)
+                        domain_supervision, pmid, cur_sentence)
+
 
                     # if this is None, it means the current sentence
                     # was not found in the candidate set, implicitly
                     # this means it is a -1.
                     if cur_label is None:
                         cur_label = -1
-
+                    else:
+                        # we train only on 2's (highly relevant sentences), as we 
+                        # deem these as the target
+                        cur_label = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
+     
                     # 1/7/15 -- previously, we were not considering
                     # an instance directly supervised if cur_label
-                    # came back None.
+                    # came back None, although in seme sense
+                    # it's not clear that we should be...
                     domain_DS["y"][i] = cur_label
 
 
@@ -312,12 +321,27 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                     test_rows.append(i)
 
                     cur_label = _match_direct_to_distant_supervision(domain_supervision, 
-                                                pmid, cur_sentence, threshold=2)
+                                                pmid, cur_sentence)
                     if cur_label is None:
-                        cur_label = -1
+                        # not match found -> this was not a labeled sentence
+                        #   -> this is an irrelevant sentence
+                        cur_label_strict = -1
+                        cur_label_relaxed = -1
+                    else:
+                        cur_label_strict = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
+                        cur_label_relaxed = _score_to_binary_lbl(cur_label, threshold=1, zero_one=False)
 
-                    y_test_DS.append(cur_label)
+                    y_test.append(cur_label_strict)
+                    y_test_relaxed.append(cur_label_relaxed)
 
+
+                    ### 
+                    # 2/25/2015
+                    # note that we are *not* overwriting the DS
+                    # label here, which means the previous results
+                    # were with respect to *DS* not direct 
+                    # supervision! Arg!
+                    # domain_DS["y"][i] = cur_label
                     if pmid in domain_supervision["pmids"]:
                         directly_supervised_indicators[i] = 1
 
@@ -335,7 +359,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         # purposes, I think we can safely ignore such cases,
         # but this may cause things to break during evaluation.
         ###
-        if len(y_test_DS) == 0:
+        if len(y_test) == 0:
             return ["-"*25, "\n\n no testing data! \n\n", "-"*25]
 
 
@@ -371,7 +395,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             # note that we now *pad* this vector to make sure
             # the entries align with the DS we have.
             X_tilde_dict = get_DS_features_for_all_data(z_dict)
-
+            
             # 2/9/2015
             # the numerical attributes of X_direct and X_tilde_dict
             # are, I think, off! see also the comments in
@@ -405,12 +429,12 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
 
         elif strategy_name == "nguyen":
-            if len(directly_supervised_indices_train) == 0:
+            if len(directly_supervised_indicators_train) == 0:
                 print "no direct supervision provided!"
                 return ["-"*25, "\n\n no directly labeled data!!! \n\n", "-"*25]
 
             clf = build_nguyen_model(X_train_DS, y_train_DS,
-                                    directly_supervised_indices_train)
+                                    directly_supervised_indicators_train)
 
         else:
             clf = get_DS_clf()
@@ -434,16 +458,34 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         current_target_text = None
         preds_for_current_pmid, rows_for_current_pmid = [], []
         sentences_for_current_pmid, labels_for_current_pmid = [], []
+
+        # labels according to more forgiving 
+        # criteria (>= 1 rather 2)
+        labels_for_current_pmid_1 = []
+
         # any_relevant_indicators contains 1s where at least
         # one of the top k sentences (say k=3) is highly relevant
         any_relevant_indicators, precisions, accs = [], [], []
+        # metrics using more liberal evaluation!
+        any_relevant_indicators_1, precisions_1, accs_1 = [], [], []
 
-
-        for test_row in test_rows:
+        for test_row_index, test_row in enumerate(test_rows):
             test_pmid = domain_DS["pmids"][test_row]
             target_text = domains_pmids_targets[domain][test_pmid] #domain_DS["targets"][test_row]
             current_sentence = domain_DS["sentences"][test_row]
-            current_label = domain_DS["y"][test_row]
+            #current_label = domain_DS["y"][test_row]
+            # sanity check!
+            #if current_label != y_test[test_row_index]:
+            #    pdb.set_trace()
+            #assert current_label == y_test[test_row_index]
+            current_label = y_test[test_row_index]
+            current_label_1 = y_test_relaxed[test_row_index]
+
+            if current_label > current_label_1:
+                pdb.set_trace()
+
+            #current_label = domain_DS["y"][test_row]
+            #pdb.set_trace()
             #current_CDSR_id = domain_DS["CDSR_id"][test_row]
 
             if current_pmid is None:
@@ -452,6 +494,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 sentences_for_current_pmid = [current_sentence]
                 rows_for_current_pmid = [test_row]
                 labels_for_current_pmid = [current_label]
+                labels_for_current_pmid_1 = [current_label_1]
             elif test_pmid != current_pmid:
                 #highest_pred = np.argmax(np.array(preds_for_current_pmid))
                 sorted_pred_indices = np.array(preds_for_current_pmid).argsort()
@@ -464,17 +507,22 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
                 #true_labels = np.array(domain_DS["y"])[highest_pred_indices]
                 sentences, true_labels = [], []
+                true_labels_1 = []
                 unique_sent_count = 0
                 for sent_i in highest_pred_indices:
                     sentences.append(sentences_for_current_pmid[sent_i])
                     if len(sentences) != len(set(sentences)):
-                        print "\nthere are redundant sentences within the predictions"
-                        pdb.set_trace()
+                        print "\nwarning -- there are redundant sentences within the predictions"
+                        print sentences
+                        # this is not necessarily a *huge* problem, e.g., it's possible that
+                        # `unique' sentences are indeed exact matches. One example I have seen
+                        # [u'1991.', u'1992.', u'1992.']
+                        #pdb.set_trace()
 
 
                     ### why do we sometimes get duplicate sentences??!?!
                     true_labels.append(labels_for_current_pmid[sent_i])
-
+                    true_labels_1.append(labels_for_current_pmid_1[sent_i])
 
                 output_str.append("\n -- domain %s in study %s --\n\n" %
                                     (domain, current_pmid))
@@ -492,11 +540,23 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 precision_at_three = true_labels.count(1)/3.0
                 precisions.append(precision_at_three)
 
+                precision_at_three_1 = true_labels_1.count(1)/3.0
+                precisions_1.append(precision_at_three_1)
+
                 any_relevant = 1 if true_labels.count(1) > 0 else 0
                 any_relevant_indicators.append(any_relevant)
 
+                any_relevant_1 = 1 if true_labels_1.count(1) > 0 else 0
+                any_relevant_indicators_1.append(any_relevant_1)
+
+                if any_relevant > any_relevant_1:
+                    pdb.set_trace()
                 top_pred_acc = 1 if true_labels[0] > 0 else 0
                 accs.append(top_pred_acc)
+
+                top_pred_acc_1 = 1 if true_labels_1[0] > 0 else 0
+                accs_1.append(top_pred_acc_1)
+
 
                 # domain_DS["sentences"][highest_prediction_index]
                 current_pmid = test_pmid
@@ -504,12 +564,14 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 preds_for_current_pmid = []
                 sentences_for_current_pmid = [current_sentence]
                 labels_for_current_pmid = [current_label]
+                labels_for_current_pmid_1 = [current_label_1]
                 rows_for_current_pmid = [test_row]
                 pred_rows = []
             else:
                 rows_for_current_pmid.append(test_row)
                 sentences_for_current_pmid.append(current_sentence)
                 labels_for_current_pmid.append(current_label)
+                labels_for_current_pmid_1.append(current_label_1)
 
             current_pred = clf.decision_function(domain_DS["X"][test_row])
             preds_for_current_pmid.append(current_pred[0])
@@ -526,9 +588,15 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         output_str.append("-"*25)
         output_str.append("method: %s" % strategy)
         output_str.append("domain: %s" % domain)
-        output_str.append("at least one: %s" % np.mean(any_relevant_indicators))
-        output_str.append("precisions: %s" % np.mean(precisions))
-        output_str.append("accuracy: %s" % np.mean(accs))
+
+        output_str.append("at least one (>=2): %s" % np.mean(any_relevant_indicators))
+        output_str.append("precisions (>=2): %s" % np.mean(precisions))
+        output_str.append("accuracy (>=2): %s" % np.mean(accs))
+        output_str.append("--- using a less stringent criteria ---")
+        output_str.append("at least one (>=1): %s" % np.mean(any_relevant_indicators_1))
+        output_str.append("precisions (>=1): %s" % np.mean(precisions_1))
+        output_str.append("accuracy (>=1): %s" % np.mean(accs_1))
+
         #output_str.append(str(sklearn.metrics.classification_report(y_test_DS, preds)))
         output_str.append("\n")
         #output_str.append("confusion matrix: %s" % str(confusion_matrix(y_test_DS, preds)))
@@ -571,10 +639,19 @@ def _match_direct_to_distant_supervision(domain_supervision, pmid,
         # which of these sentences are we looking at now?
         # domain_DS["sentences"][i]
         matched_sentence_index = labeled_sentences.index(cur_sentence)
+
+        ### 
+        # let's not introduce the threshold here;
+        # instead, this can happen elsewhere (after
+        # the return. this allows, e.g., keeping both 
+        # '1' and '2' labels as 'positive' instances
+        # during evaluation.
+
         # and, finally, what was its (human-given) label?
-        cur_label = _score_to_binary_lbl(labels[matched_sentence_index],
-                            threshold=threshold, zero_one=False)
-        #y_test_DS.append(cur_label)
+        #cur_label = _score_to_binary_lbl(labels[matched_sentence_index],
+        #                    threshold=threshold, zero_one=False)
+        cur_label = labels[matched_sentence_index]
+
         return cur_label
     except:
         ###
@@ -729,7 +806,16 @@ class Nguyen:
 
         XX = self._transform(X)
 
+        # bcw: 3/18/15 -- updating to use something
+        # more than just vanilla LR with no tuning!
+        # also note the class weight arg here
         # maybe we shouldn't even do regularization?
+        '''
+        tune_params = [{"alpha":[1, 10, 100]}]
+        self.meta_clf = GridSearchCV(SGDClassifier(shuffle=True, 
+                 class_weight="auto", loss="log"),
+                 tune_params, scoring="precision")
+        '''
         self.meta_clf = LogisticRegression()
         self.meta_clf.fit(XX, y)
 
@@ -792,8 +878,18 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.5):
     ##############
     # model 1    #
     ##############
-    X_direct = X_train[direct_indices]
-    y_direct = y_train[direct_indices]
+
+    # direct_indices is a binary vector spanning the 
+    # whole corpus with ones indicating that direct supervision
+    # was provided for corresponding sentence. 
+    # here we are concerned with only these.
+    directly_supervised_indices = direct_indices.nonzero()
+
+    #X_direct = X_train[direct_indices]
+    X_direct = X_train[directly_supervised_indices]
+
+    #y_direct = y_train[direct_indices]
+    y_direct = y_train[directly_supervised_indices]
 
     # the catch here is that we actually do
     # not want to train on *all* direct
@@ -825,12 +921,15 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.5):
     m2 = get_DS_clf()
     m2.fit(X_DS, y_DS)
 
+    
+
     # now you need to combine these somehow.
     # i think it would suffice to run predictions
     # through a regressor?
     nguyen_model = Nguyen(m1, m2)
     print "fitting Nguyen model to validation set..."
     nguyen_model.fit(X_validation, y_validation)
+    #pdb.set_trace()
     return nguyen_model
 
 def _unpickle_PICO_DS(y_dict_pickle, domain_v_pickle):
@@ -942,18 +1041,29 @@ def get_lr_clf(class_weight=None, scoring="accuracy"):
 def _score_to_ordinal_lbl(y_str):
     return float(y_str.strip())
 
-def _score_to_binary_lbl(y_str, zero_one=True, threshold=2):
+def _is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+def _score_to_binary_lbl(y, zero_one=True, threshold=2):
     # will label anything >= threshold as '1'; otherwise 0
     # (or -1, depending on the zero_one flag).
     #
     # the 't' would indicate a table; we treat these as
     # irrelevant (-1s).
-    try:
-        if not "t" in y_str and float(y_str.strip()) >= threshold:
-            return 1
-    except:
-        pdb.set_trace() 
-        
+    if not _is_number(y):
+        # then this is a table; we'll return 
+        # -1 here (as this is the assumption for now)
+        if not "t" in y:
+            pdb.set_trace()
+        assert "t" in y
+
+    elif int(y) >= threshold:
+        return 1
+
     return 0 if zero_one else -1
 
 def generate_X_y(DS_learning_task, binary_labels=True,
@@ -999,6 +1109,8 @@ def generate_X_y(DS_learning_task, binary_labels=True,
 #
 # 2/2/2015 note that the mysterious '158' below reflects when we made the change
 # to labeling tables
+# 
+# 3/19/2015 we now remove rows 1-157 in the preprocessing/label merging step!
 #
 '''
 def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sharma.csv",
@@ -1007,12 +1119,14 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
 '''
 # for the moment making labels and candidates the same!!! this is simpler
 # and should really be the general approach
-def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-2-15.csv",
-                                labels_path="sds/annotations/master/figure8-2-15.csv",
+# 
+# was 8-2-24.csv
+def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-3-19.csv",
+                                labels_path="sds/annotations/master/figure8-3-19.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4,
                                 normalize_numeric_cols=True,
-                                start_row=158):
+                                start_row=0):
     '''
     Load in the supervision (X,y) for DS task.
 
@@ -1413,11 +1527,6 @@ def extract_sds_features(candidate_sentence, shared_tokens, candidates,
     return X_i
 
 
-
-
-
-
-
 '''
 Routines to generate XML for entailment task (for Katrin et al.)
 '''
@@ -1434,6 +1543,7 @@ def generate_entailment_output(candidates_path="sds/annotations/for_labeling_sha
     # since it's defined multiply
     pico_strs_to_domains = dict(
         zip(["PARTICIPANTS", "INTERVENTIONS","OUTCOMES"], domains))
+
 
 
     entailment_out = ['''<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE entailment-corpus SYSTEM "rte.dtd">\n<entailment-cdsr-corpus>''']
