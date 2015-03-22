@@ -482,6 +482,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             current_label_1 = y_test_relaxed[test_row_index]
 
             if current_label > current_label_1:
+                # should not happen; sanity check
                 pdb.set_trace()
 
             #current_label = domain_DS["y"][test_row]
@@ -517,7 +518,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                         # this is not necessarily a *huge* problem, e.g., it's possible that
                         # `unique' sentences are indeed exact matches. One example I have seen
                         # [u'1991.', u'1992.', u'1992.']
-                        #pdb.set_trace()
+                        pdb.set_trace()
 
 
                     ### why do we sometimes get duplicate sentences??!?!
@@ -804,20 +805,38 @@ class Nguyen:
         #X2 = self.m2.predict_proba(X)[:,1]
         #XX = sp.vstack((X1,X2)).T
 
-        XX = self._transform(X)
+        #XX = self._transform(X)
+
+        p1s = self.m1.predict_proba(X)[:,1]
+        p2s = self.m2.predict_proba(X)[:,1]
+
+        # yy_i = y_i - p1_i
+        yy = y - p1s  #self._transform_y(y, X)
+        XX = p1s - p2s
+        lr = sklearn.linear_model.LinearRegression(fit_intercept=False)
+
+
 
         # bcw: 3/18/15 -- updating to use something
         # more than just vanilla LR with no tuning!
         # also note the class weight arg here
         # maybe we shouldn't even do regularization?
-        '''
-        tune_params = [{"alpha":[1, 10, 100]}]
-        self.meta_clf = GridSearchCV(SGDClassifier(shuffle=True, 
-                 class_weight="auto", loss="log"),
-                 tune_params, scoring="precision")
-        '''
-        self.meta_clf = LogisticRegression()
+        
+        #tune_params = [{"alpha":[10000]}]
+        #self.meta_clf = GridSearchCV(SGDClassifier(shuffle=True, 
+        #         class_weight="auto", loss="log"),
+        #         tune_params, scoring="precision")
+        pdb.set_trace()
+        lr.fit(XX, yy)
+        self.beta = none 
+        
+        #self.meta_clf = LogisticRegression()
         self.meta_clf.fit(XX, y)
+
+
+    def _transform_y(self, X, y):
+        p1s = self.m1.predict_proba(X)[:,1]
+        return y - p1s
 
     def _transform(self, X):
         '''
@@ -929,7 +948,7 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.5):
     nguyen_model = Nguyen(m1, m2)
     print "fitting Nguyen model to validation set..."
     nguyen_model.fit(X_validation, y_validation)
-    #pdb.set_trace()
+    
     return nguyen_model
 
 def _unpickle_PICO_DS(y_dict_pickle, domain_v_pickle):
