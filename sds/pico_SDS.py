@@ -807,13 +807,13 @@ class Nguyen:
 
         #XX = self._transform(X)
 
-        p1s = self.m1.predict_proba(X)[:,1]
-        p2s = self.m2.predict_proba(X)[:,1]
+        self.beta = self._minimize(X, y)
+        pdb.set_trace()
 
         # yy_i = y_i - p1_i
-        yy = y - p1s  #self._transform_y(y, X)
-        XX = p1s - p2s
-        lr = sklearn.linear_model.LinearRegression(fit_intercept=False)
+        #yy = y - p1s  #self._transform_y(y, X)
+        #XX = p2s - p1s
+        #lr = sklearn.linear_model.LinearRegression(fit_intercept=False)
 
 
 
@@ -826,13 +826,29 @@ class Nguyen:
         #self.meta_clf = GridSearchCV(SGDClassifier(shuffle=True, 
         #         class_weight="auto", loss="log"),
         #         tune_params, scoring="precision")
-        pdb.set_trace()
-        lr.fit(XX, yy)
-        self.beta = none 
+        #pdb.set_trace()
+        #lr.fit(XX, yy)
+        #self.beta = None 
         
         #self.meta_clf = LogisticRegression()
-        self.meta_clf.fit(XX, y)
+        #self.meta_clf.fit(XX, y)
 
+    def _minimize(self, X, y):
+        p1s = self.m1.predict_proba(X)[:,1]
+        p2s = self.m2.predict_proba(X)[:,1]
+
+        betas = np.linspace(0,1,20)
+        beta_star, best_score = None, np.inf
+        for beta in betas: 
+            preds = (1-beta)*p1s + beta*p2s
+            errors = y - preds 
+            cur_score = np.sum(errors)
+            if cur_score < best_score:
+                beta_star = beta 
+                best_score = cur_score
+
+        print "best beta is: %s with score: %s" % (beta_star, best_score)
+        return beta_star
 
     def _transform_y(self, X, y):
         p1s = self.m1.predict_proba(X)[:,1]
