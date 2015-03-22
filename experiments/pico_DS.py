@@ -130,11 +130,6 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     return sentences_y_dict
 
 
-'''
-@TODO you really need to add additional (non-textual!)
-features here, such as length of sentence; location in
-text?; other features like average length of word?
-'''
 def vectorize(sentences_y_dict):
     '''
     Vectorize the sentences in each pico domain and
@@ -231,7 +226,7 @@ def is_number(s):
     except ValueError:
         return False
 
-def output_data_for_labeling(N=7, output_file_path="for_labeling-2-16-15_shared.csv", 
+def output_data_for_labeling(N=7, output_file_path="for_labeling-2-24-15_brian.csv", 
                                 cutoff=4, max_sentences=10, exclude_list=None):
     ''' generate a CSV file for labeling matches '''
 
@@ -260,7 +255,7 @@ def output_data_for_labeling(N=7, output_file_path="for_labeling-2-16-15_shared.
             study_id = "%s" % study[1]['pmid']
             #pdb.set_trace()
 
-            if study_id not in exclude_list:
+            if int(study_id) not in exclude_list:
                 count += 1
                 pdf_sents = sent_tokenize(pdf)
 
