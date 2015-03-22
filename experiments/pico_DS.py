@@ -14,7 +14,7 @@ import csv
 import pdb
 from operator import itemgetter
 from collections import Counter
-import pickle
+import cPickle as pickle
 import string
 
 import numpy as np
