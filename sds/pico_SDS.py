@@ -16,7 +16,7 @@ sys.setdefaultencoding('utf8')
 import pdb
 import random
 import csv
-import pickle
+import cPickle as pickle
 import os
 import time
 import copy
