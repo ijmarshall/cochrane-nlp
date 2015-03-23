@@ -183,8 +183,8 @@ def vectorize(sentences_y_dict):
 
         all_sentences = sentences_y_dict[domain]["sentences"]
 
-        vectorizer = PICO_vectorizer()
-        X, domain_vectorizers[domain] = vectorizer.fit_transform(all_sentences)
+        domain_vectorizers[domain] = PICO_vectorizer()
+        X = domain_vectorizers[domain].fit_transform(all_sentences)
 
     
     return sentences_y_dict, domain_vectorizers
