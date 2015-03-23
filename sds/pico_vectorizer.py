@@ -41,19 +41,10 @@ class PICO_vectorizer:
         return feature_matrix, self.vectorizer
     
     def fit_transform(self, sentences):
-        self.vectorizer = CountVectorizer(min_df=3, max_features=50000, ngram_range=(1, 2))
-        self.vectorizer.fit(sentences)
-        X = self.vectorizer.transform(sentences)
-        tf_transformer = TfidfTransformer().fit(X)
-        X_text = tf_transformer.transform(X)
-        #extract numeric features from sentences
-        X_numeric = self.extract_numeric_features(sentences)
-        #now combine feature sets.
-        feature_matrix = sp.sparse.hstack((X_text, X_numeric)).tocsr()
-        #returning the vectorizer and feature matrix
-        #need to figure out if we need to return vectorizer
-        return feature_matrix, self.vectorizer
-
+        self.fit(sentences)
+        f_matrix,vectorizer = self.transform(sentences)
+        return f_matrix, self.vectorizer 
+    
     def extract_numeric_features(self,sentences, normalize_matrix=False):
         # number of numeric features (this is fixed
         # for now; may wish to revisit this)
