@@ -75,14 +75,16 @@ logging.info("loading model")
 model = Word2Vec.load_word2vec_format(word2vec_model, binary=True)
 logging.info("done loading model")
 
-n = 2500
+n = 500
 exclude = [DET, NUM, PUNCT, X, PRT, NO_TAG, EOL]
 domains = ["CHAR_PARTICIPANTS", "CHAR_OUTCOMES", "CHAR_INTERVENTIONS"]
 
 domain_labels = {
     "CHAR_PARTICIPANTS": "P",
     "CHAR_OUTCOMES": "O",
-    "CHAR_INTERVENTIONS": "I"
+    "CHAR_INTERVENTIONS": "I",
+    "OTHER": "x"
+
 }
 
 def normalize(s):
@@ -107,8 +109,28 @@ def fragment_embedding(model, fragment):
     tokens = tokenize(normalize(fragment))
     return embedding(model, tokens) if len(tokens) else np.zeros(200) # 200 is the dimensionality of the dense vector
 
+import nltk
+import nltk.tokenize
+import random
+
+def sample(lst, n):
+    return [lst[i] for i in random.sample(xrange(len(lst)), n)]
+
+def get_random_sentences(n):
+    per_document = 10
+    num_documents = per_document/10
+    sentences = []
+    for i in range(num_documents):
+        text = viewer[i][1]["text"]
+        if text:
+            sents = nltk.sent_tokenize(normalize(text))
+            sentences.append(sample(sents, per_document))
+    return sentences
+
+
 logging.debug("getting fragments from CDSR")
 fragments = [(domain, fragment) for domain in domains for fragment in get_fragments(domain,n) if fragment]
+fragments.append([("OTHER", fragment) for fragment in get_random_sentences(n)])
 
 logging.debug("getting y")
 y = np.hstack(domain_labels[domain] for domain, fragment in fragments)
