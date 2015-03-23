@@ -29,6 +29,7 @@ from nltk.corpus import stopwords
 
 
 # cochranenlp stuff
+import cochranenlp.ml.pico_vectorizer
 from cochranenlp.ml.pico_vectorizer import PICO_vectorizer
 from cochranenlp.output import progressbar
 from cochranenlp.readers import biviewer
