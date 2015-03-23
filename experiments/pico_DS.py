@@ -113,8 +113,16 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
             # in this case, there was no supervision in the
             # CDSR so we just keep on moving
-            if ranked_sentences_and_scores is None: # IM: do we need to check for the [] case??
+            if ranked_sentences_and_scores is None:
+                #
+                # IM: note that ranked_sentences_and_scores returns None
+                # where empty CDSR strings, but returns empty lists
+                # where empty PDF strings (i.e. no sentences)
+                # this case is caught later on
+
                 pass
+            
+
             else:
                 ####
                 # then add all sentences that meet our DS
@@ -127,6 +135,12 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
                 pos_count = 0 # place an upper-bound on the number of positive instances.
                 for sent, score in zip(ranked_sentences, scores):
                     sentences_y_dict[pico_field]["sentences"].append(sent) # IM: why y_dict??
+
+                    # IM: Note that we're potentially including docs with all
+                    # negative sentences (where none pass the threshold)
+                    # though this seems to not happen much anecdotally.
+                    # may wish to exclude later
+
                     cur_y = -1
                     if pos_count < max_sentences and score >= cutoff:
                         cur_y = 1
