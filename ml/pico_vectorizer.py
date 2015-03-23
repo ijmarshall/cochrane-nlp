@@ -8,6 +8,9 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.preprocessing import normalize
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
+
+from cochranenlp.textprocessing.drugbank import Drugbank
+
 # PICO_vectorizer
 #   a vectorizer class for extracting
 #   features from sentences for learning
@@ -17,6 +20,7 @@ class PICO_vectorizer:
 
     def __init__(self):
         self.vectorizer = CountVectorizer(min_df=3, max_features=50000, ngram_range=(1, 2))
+        self.drugbank = Drugbank()
 
     def is_number(self,num):
         try:
@@ -29,21 +33,27 @@ class PICO_vectorizer:
         self.vectorizer.fit(sentences)
 
     def transform(self,sentences):
+
+        print "ok, extracting text features"
         X = self.vectorizer.transform(sentences)
         tf_transformer = TfidfTransformer().fit(X)
         X_text = tf_transformer.transform(X)
+
+        print "ok, extracting (binary!) numeric features!"
         #extract numeric features from sentences
         X_numeric = self.extract_numeric_features(sentences)
+
+        print "combining features"
         #now combine feature sets.
         feature_matrix = sp.sparse.hstack((X_text, X_numeric)).tocsr()
         #returning the vectorizer and feature matrix
         #need to figure out if we need to return vectorizer
-        return feature_matrix, self.vectorizer
+        return feature_matrix
     
     def fit_transform(self, sentences):
         self.fit(sentences)
-        f_matrix,vectorizer = self.transform(sentences)
-        return f_matrix, self.vectorizer 
+        f_matrix = self.transform(sentences)
+        return f_matrix
     
     def extract_numeric_features(self,sentences, normalize_matrix=False):
         # number of numeric features (this is fixed
@@ -72,9 +82,7 @@ class PICO_vectorizer:
         if len(tokens):
             average_token_len = np.mean([len(t) for t in tokens])
             fv[4] = 1 if average_token_len < 4 else 0
-        fv[5] = drugbank.contains_drug(sentence)
+        fv[5] = self.drugbank.contains_drug(sentence)
         return fv
-
-
 
         
