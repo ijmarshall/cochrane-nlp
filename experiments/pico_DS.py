@@ -7,6 +7,7 @@
 #   and create a DS package somewhere?
 #
 
+
 import re
 import random
 import sys
@@ -27,17 +28,33 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 
 
+# cochranenlp stuff
+from cochranenlp.ml.pico_vectorizer import PICO_vectorizer
+from cochranenlp.output import progressbar
+from cochranenlp.readers import biviewer
+from cochranenlp.textprocessing.indexnumbers import NumberTagger
+numberswap = NumberTagger().swap
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+
 # for generating DS features from sentences
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.preprocessing import normalize
 
-from readers import biviewer
+
 
 PICO_DOMAINS = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
 
 def word_list(text):
     text = text.lower()
-    word_set = set(re.split('[^a-z]+', text))
+
+    text = numberswap(text)
+
+
+    word_set = set(re.split('[^a-z0-9]+', text))
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
@@ -60,7 +77,7 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     data to disk and then read it in directly rather than
     re-generating it every time.
     '''
-    # IM: positional features go here somewhere
+    
 
     ###
     # for now we'll just grab sentences and `labels' according
@@ -71,16 +88,24 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
             domain in PICO_DOMAINS}
 
 
+    
+
     p = biviewer.PDFBiViewer()
 
+
+    progress = progressbar.ProgressBar(len(p), timer=True)
+
     for n, study in enumerate(p):
-        if n % 100 == 0:
-            print "on study %s" % n
+        progress.tap()
+        # if n % 100 == 0:
+        #     print "on study %s" % n
 
         #if n >= 1000:
         #    break
 
         pdf = study.studypdf['text'].decode("utf8", errors="ignore")
+        
+    
         study_id = "%s" % study[1]['pmid']
 
         pdf_sents = sent_tokenize(pdf)
@@ -337,6 +362,10 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     ranked_sentences, scores = [list(x) for x in zip(*sorted(zip(sentences, sentence_scores), key=lambda x: x[1], reverse=True))] or [[],[]]
 
     return ranked_sentences, scores, shared_tokens
+
+def main(arg):
+    all_PICO_DS()
+
 
 
 if __name__ == '__main__':
