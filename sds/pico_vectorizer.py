@@ -48,7 +48,7 @@ class PICO_vectorizer:
     def extract_numeric_features(self,sentences, normalize_matrix=False):
         # number of numeric features (this is fixed
         # for now; may wish to revisit this)
-        m = 5
+        m = 6
         n = len(sentences)
         X_numeric = lil_matrix((n,m))#sp.sparse.csc_matrix((n,m))
         for sentence_index, sentence in enumerate(sentences):
@@ -60,7 +60,7 @@ class PICO_vectorizer:
         return X_numeric
 
     def extract_structural_features(self,sentence):
-        fv = np.zeros(5)
+        fv = np.zeros(6)
         fv[0] = 1 if sentence.count("\n") > 20 else 0
         fv[1] = 1 if sentence.count("\n") > 50 else 0
         tokens = word_tokenize(sentence)
@@ -72,4 +72,9 @@ class PICO_vectorizer:
         if len(tokens):
             average_token_len = np.mean([len(t) for t in tokens])
             fv[4] = 1 if average_token_len < 4 else 0
+        fv[5] = drugbank.contains_drug(sentence)
         return fv
+
+
+
+        

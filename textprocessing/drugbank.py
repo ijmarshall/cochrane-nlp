@@ -43,7 +43,12 @@ class Drugbank:
         return ''.join(output)
 
 
+    def contains_drug(self, text):
 
+        tokens = re.split("([^A-Za-z0-9])", text)
+        drug_entities = self._find_longest_token_matches(tokens)
+
+        return len(drug_entities) > 0
 
 
     def _find_longest_token_matches(self, tokens):
@@ -98,7 +103,21 @@ def main():
     Here is some text which mentions tylenol, ibuprofen, quinine, and valproic acid.
     """
 
+    print test_text
+    print
     print drugbank.sub(test_text)
+    print drugbank.contains_drug(test_text)
+
+    
+    test_text = """
+    Here is some more text which contains no drug mention.
+    """
+
+    print test_text
+    print
+    print drugbank.sub(test_text)
+    print drugbank.contains_drug(test_text)
+
 
 
 
