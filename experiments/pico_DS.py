@@ -52,9 +52,7 @@ def word_list(text):
     text = text.lower()
 
     text = numberswap(text)
-
-
-    word_set = set(re.split('[^a-z0-9]+', text))
+    word_set = set(re.split('[^a-z0-9]+', text)) 
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
@@ -115,7 +113,7 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
             # in this case, there was no supervision in the
             # CDSR so we just keep on moving
-            if ranked_sentences_and_scores is None:
+            if ranked_sentences_and_scores is None: # IM: do we need to check for the [] case??
                 pass
             else:
                 ####
@@ -126,9 +124,9 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
                 # the :2 throws away the shared tokens here.
                 ranked_sentences, scores = ranked_sentences_and_scores[:2]
-                pos_count = 0 # place an upper-bound on the number of pos. instances.
+                pos_count = 0 # place an upper-bound on the number of positive instances.
                 for sent, score in zip(ranked_sentences, scores):
-                    sentences_y_dict[pico_field]["sentences"].append(sent)
+                    sentences_y_dict[pico_field]["sentences"].append(sent) # IM: why y_dict??
                     cur_y = -1
                     if pos_count < max_sentences and score >= cutoff:
                         cur_y = 1
@@ -298,6 +296,10 @@ def output_data_for_labeling(N=7, output_file_path="for_labeling-2-24-15_brian.c
                         # don't take more than max_sentences sentences
                         num_to_keep = min(len([score for score in scores if score >= cutoff]),
                                             max_sentences)
+                        # IM: max_sentences defaults to 10
+                        # cutoff defaults to 4 (chopping off the most uninformative left side bulk of the histogram)
+                        # therefore we're keeping up to a max of 10 sents
+                        # from those with >= 4 token matches
 
 
                         ## what to do if this is zero?
@@ -360,6 +362,8 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
         sentence_scores.append(len(shared_tokens_i))
 
     ranked_sentences, scores = [list(x) for x in zip(*sorted(zip(sentences, sentence_scores), key=lambda x: x[1], reverse=True))] or [[],[]]
+
+    #  IM to check: ranked_sentences = [] and scores = [] if no sentences in doc??
 
     return ranked_sentences, scores, shared_tokens
 
