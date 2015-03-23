@@ -75,7 +75,7 @@ logging.info("loading model")
 model = Word2Vec.load_word2vec_format(word2vec_model, binary=True)
 logging.info("done loading model")
 
-n = 500
+n = 2000
 exclude = [DET, NUM, PUNCT, X, PRT, NO_TAG, EOL]
 domains = ["CHAR_PARTICIPANTS", "CHAR_OUTCOMES", "CHAR_INTERVENTIONS"]
 
@@ -88,7 +88,10 @@ domain_labels = {
 }
 
 def normalize(s):
-    return fix_text(s.decode("utf-8", "ignore"))
+    try:
+        return fix_text(s.decode("utf-8", "ignore"))
+    except Exception:
+        return unicode(s)
 
 def is_eligable(tok):
     return tok.pos not in exclude and tok.norm_.isalnum()
@@ -100,14 +103,14 @@ def embedding(model, tokens):
     try:
         return np.average(np.asmatrix([model[token] for token in tokens if model.vocab.has_key(token)]), 0).A[0,]
     except Exception, e: # division by 0 protection
-        return np.zeros(200)
+        return np.zeros(200) # 200 is the dimensionality of the dense vector
 
 def get_fragments(domain, n):
     return [s[0]["CHARACTERISTICS"][domain] for s in itertools.islice(viewer, n)]
 
 def fragment_embedding(model, fragment):
     tokens = tokenize(normalize(fragment))
-    return embedding(model, tokens) if len(tokens) else np.zeros(200) # 200 is the dimensionality of the dense vector
+    return embedding(model, tokens) if len(tokens) else np.zeros(200)
 
 import nltk
 import nltk.tokenize
@@ -116,21 +119,20 @@ import random
 def sample(lst, n):
     return [lst[i] for i in random.sample(xrange(len(lst)), n)]
 
-def get_random_sentences(n):
-    per_document = 10
-    num_documents = per_document/10
+def get_random_sentences(n, per_document=10):
+    num_documents = n/per_document
     sentences = []
     for i in range(num_documents):
         text = viewer[i][1]["text"]
         if text:
             sents = nltk.sent_tokenize(normalize(text))
-            sentences.append(sample(sents, per_document))
+            sentences.extend(sample(sents, per_document))
     return sentences
 
 
 logging.debug("getting fragments from CDSR")
 fragments = [(domain, fragment) for domain in domains for fragment in get_fragments(domain,n) if fragment]
-fragments.append([("OTHER", fragment) for fragment in get_random_sentences(n)])
+fragments.extend([("OTHER", s) for s in get_random_sentences(n) if s])
 
 logging.debug("getting y")
 y = np.hstack(domain_labels[domain] for domain, fragment in fragments)
