@@ -40,6 +40,11 @@ from readers import biviewer
 # sentences. this is possibly not the ideal
 # location.
 from experiments import pico_DS
+
+import sys
+import cochranenlp
+DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to data
+
 domains = pico_DS.PICO_DOMAINS
 
 
@@ -47,8 +52,8 @@ domains = pico_DS.PICO_DOMAINS
 # speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             strategy="baseline_DS", output_dir="sds/results/",
-                            y_dict_pickle="sds/sentences_y_dict_with_ids.pickle", 
-                            domain_v_pickle="sds/vectorizers_with_ids.pickle", 
+                            y_dict_pickle="sds_sentence_data.pickle", 
+                            domain_v_pickle="sds_vectorizers.pickle", 
                             random_seed=512):
 
     '''
@@ -58,6 +63,8 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
     Otherwise, `training_proportion' should be provided to specify the
     fraction of examples to be held out for each iter.
     '''
+
+        
 
     output_path = os.path.join(output_dir,
             "%s-results-%s.txt" % (int(time.time()), strategy))
@@ -968,12 +975,14 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.5):
     return nguyen_model
 
 def _unpickle_PICO_DS(y_dict_pickle, domain_v_pickle):
-    with open(y_dict_pickle) as y_dict_f:
+
+
+    with open(os.path.join(DATA_PATH, y_dict_pickle)) as y_dict_f:
         print "unpickling sentences and y dict (from %s)" % y_dict_pickle
         sentences_y_dict = pickle.load(y_dict_f)
         print "done unpickling."
 
-    with open(domain_v_pickle) as domain_f:
+    with open(os.path.join(DATA_PATH,domain_v_pickle)) as domain_f:
         domain_vectorizers = pickle.load(domain_f)
 
     return sentences_y_dict, domain_vectorizers
