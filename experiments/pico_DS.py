@@ -56,11 +56,20 @@ from sklearn.preprocessing import normalize
 
 PICO_DOMAINS = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
 
-def word_list(text):
+def word_list(text, old_style=True):
+
+    if old_style:
+        return word_list_old_style(text)
     text = text.lower()
 
     text = numberswap(text)
     word_set = set(re.split('[^a-z0-9]+', text)) 
+    stop_set = set(stopwords.words('english'))
+    return word_set.difference(stop_set)
+
+def word_list_old_style(text):
+    text = text.lower()
+    word_set = set(re.split('[^a-z]+', text)) 
     stop_set = set(stopwords.words('english'))
     return word_set.difference(stop_set)
 
