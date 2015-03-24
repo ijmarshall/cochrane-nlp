@@ -99,7 +99,7 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     # to simple criteria.
     ###
     sentences_y_dict = {
-        domain: {"sentences":[], "y":[], "pmids":[], "CDSR_id":[]} for
+        domain: {"sentences":[], "y":[], "pmids":[], "CDSR_id":[], "positional_features":[]} for
             domain in PICO_DOMAINS}
 
 
@@ -112,11 +112,7 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
     for n, study in enumerate(p):
         progress.tap()
-        # if n % 100 == 0:
-        #     print "on study %s" % n
 
-        #if n >= 1000:
-        #    break
 
         pdf = study.studypdf['text'].decode("utf8", errors="ignore")
         
@@ -124,9 +120,13 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
         study_id = "%s" % study[1]['pmid']
 
         pdf_sents = sent_tokenize(pdf)
+
+        if len(pdf_sents) < 10: # these are all junk
+            continue
+
         cochrane_id = study.cochrane['cdsr_filename']
         for pico_field in PICO_DOMAINS:
-            ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study, pico_field, pdf_sents=pdf_sents)
+            ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study, pico_field, pdf_sents=pdf_sents, get_positional_features=True)
 
             # in this case, there was no supervision in the
             # CDSR so we just keep on moving
@@ -149,9 +149,13 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
                 # the :2 throws away the shared tokens here.
                 ranked_sentences, scores = ranked_sentences_and_scores[:2]
+
+                positional_features = ranked_sentences_and_scores[3]
+
                 pos_count = 0 # place an upper-bound on the number of positive instances.
-                for sent, score in zip(ranked_sentences, scores):
+                for sent, score, position in zip(ranked_sentences, scores, positional_features):
                     sentences_y_dict[pico_field]["sentences"].append(sent) # IM: why y_dict??
+                    sentences_y_dict[pico_field]["positional_features"].append(position)
 
                     # IM: Note that we're potentially including docs with all
                     # negative sentences (where none pass the threshold)
@@ -201,7 +205,7 @@ def vectorize(sentences_y_dict):
         all_sentences = sentences_y_dict[domain]["sentences"]
 
         domain_vectorizers[domain] = PICO_vectorizer()
-        X = domain_vectorizers[domain].fit_transform(all_sentences)
+        X = domain_vectorizers[domain].fit_transform(all_sentences, extra_features=sentences_y_dict[domain]["positional_features"])
 
     
     return sentences_y_dict, domain_vectorizers
@@ -233,12 +237,16 @@ def output_data_for_labeling(N=7, output_file_path="for_labeling-2-24-15_brian.c
             # store details, sentence-tokenize
             study = p[p_i]
             pdf = study.studypdf['text']
+
+            
             study_id = "%s" % study[1]['pmid']
             #pdb.set_trace()
 
             if int(study_id) not in exclude_list:
                 count += 1
                 pdf_sents = sent_tokenize(pdf)
+
+
 
                 for pico_field in PICO_DOMAINS:
                     ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study,
@@ -271,7 +279,7 @@ def output_data_for_labeling(N=7, output_file_path="for_labeling-2-24-15_brian.c
                                                     target_text, candidate, ""])
 
 
-def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
+def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None, get_positional_features=False):
     '''
     Given a study (readers.biviewer.Biviewer_View object) and
     a PICO field (one of: "CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS",
@@ -319,11 +327,32 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
         shared_tokens.append(shared_tokens_i)
         sentence_scores.append(len(shared_tokens_i))
 
-    ranked_sentences, scores = [list(x) for x in zip(*sorted(zip(sentences, sentence_scores), key=lambda x: x[1], reverse=True))] or [[],[]]
+
+
+    if get_positional_features:
+
+        # generate positional features here (quintiles)
+        num_sents = len(sentences)
+        quintile_cutoff = num_sents / 5 # the integer
+
+        if quintile_cutoff == 0:
+            sentence_quintiles = [{"DocTooSmallForQuintiles" : 1} for ii in xrange(num_sents)]
+            print "tiny file encountered... len=%d" % num_sents
+
+
+        else:
+            sentence_quintiles = [{"DocumentPositionQuintile%d" % (ii/quintile_cutoff): 1} for ii in xrange(num_sents)]
+
+        ranked_sentences, scores, positions = [list(x) for x in zip(*sorted(zip(sentences, sentence_scores, sentence_quintiles), key=lambda x: x[1], reverse=True))] or [[],[],[]]
+
+        return ranked_sentences, scores, shared_tokens, positions
+    else:
+        ranked_sentences, scores = [list(x) for x in zip(*sorted(zip(sentences, sentence_scores), key=lambda x: x[1], reverse=True))] or [[],[]]
+        return ranked_sentences, scores, shared_tokens
 
     #  IM to check: ranked_sentences = [] and scores = [] if no sentences in doc??
 
-    return ranked_sentences, scores, shared_tokens
+    
 
 def main(arg):
 
