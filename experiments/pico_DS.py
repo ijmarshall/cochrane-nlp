@@ -36,8 +36,15 @@ from cochranenlp.readers import biviewer
 from cochranenlp.textprocessing.indexnumbers import NumberTagger
 numberswap = NumberTagger().swap
 
+import cochranenlp
+DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to data
+
+
 import sys
 reload(sys)
+
+import os
+
 sys.setdefaultencoding('utf8')
 
 
@@ -161,10 +168,10 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
         if pickle_DS:
 
             print "pickling..."
-            with open("sds/sentences_y_dict_with_ids.pickle", 'wb') as outf:
+            with open(os.path.join(DATA_PATH, "sds_sentence_data.pickle"), 'wb') as outf:
                 pickle.dump(sentences_y_dict, outf)
 
-            with open("sds/vectorizers_with_ids.pickle", 'wb') as outf:
+            with open(os.path.join(DATA_PATH, "sds_vectorizers.pickle"), 'wb') as outf:
                 pickle.dump(domain_vectorizers, outf)
             print "done!"
 
@@ -310,6 +317,7 @@ def get_ranked_sentences_for_study_and_field(study, PICO_field, pdf_sents=None):
     return ranked_sentences, scores, shared_tokens
 
 def main(arg):
+
     all_PICO_DS()
 
 

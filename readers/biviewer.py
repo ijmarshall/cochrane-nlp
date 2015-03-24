@@ -48,9 +48,9 @@ class BiViewer():
 
 
     def init_common_variables(self, in_memory=False, cdsr_cache_length=20,
-                 test_mode=False, linkfile=os.path.join(DATA_PATH, "biviewer_links_all.pck")):
+                 test_mode=False, dedupe=True, linkfile=os.path.join(DATA_PATH, "biviewer_links_all.pck")):
         "set up variables used in all subclasses"
-        self.import_data(filename=linkfile, test_mode=test_mode)
+        self.import_data(filename=linkfile, test_mode=test_mode, dedupe=dedupe)
         self.data = []
         self.cdsr_cache_length = cdsr_cache_length
         self.cdsr_cache_index = collections.deque()
@@ -60,13 +60,36 @@ class BiViewer():
             self.load_data_in_memory()
 
 
-    def import_data(self, filename, test_mode=False):
+    def import_data(self, filename, test_mode=False, dedupe=True):
         "loads the pubmed-cdsr correspondance list"
         with open(filename, 'rb') as f:
             self.index_data = pickle.load(f)
         if test_mode:
             # get the first 2500 studies only (more since now per study, not per review)
             self.index_data = self.index_data[:2500]
+        if dedupe:
+            self.index_data = self.clean_up_data(self.index_data)
+
+    def clean_up_data(self, data):
+        """
+        make sure no duplicate studies cited in a review
+        weirdly this is necessary
+        """
+        output = []
+        cdsr_pmids_already_encountered = set()
+
+        for i, study in enumerate(data):
+
+            combo_id = study['cdsr_filename'] + study['pmid']
+
+            if combo_id not in cdsr_pmids_already_encountered:
+                cdsr_pmids_already_encountered.add(combo_id)
+                output.append(study)
+
+        return output
+
+
+
 
         # # TEMPORARY - limit index to first instance of any PDF 
         # # TODO make this better
