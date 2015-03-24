@@ -142,7 +142,7 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
                 ranked_sentences, scores = ranked_sentences_and_scores[:2]
                 pos_count = 0 # place an upper-bound on the number of positive instances.
                 for sent, score in zip(ranked_sentences, scores):
-                    sentences_y_dict[pico_field]["sentences"].append(sent) # IM: why y_dict??
+                    sentences_y_dict[pico_field]["sentences"].append(sent)
 
                     # IM: Note that we're potentially including docs with all
                     # negative sentences (where none pass the threshold)
@@ -159,7 +159,6 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
     # add vector representations to the dictionary
     if add_vectors:
-
 
 
         sentences_y_dict, domain_vectorizers = vectorize(sentences_y_dict)
