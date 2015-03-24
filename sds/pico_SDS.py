@@ -28,6 +28,7 @@ import scipy as sp
 import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.svm import LinearSVC 
 
 from sklearn.grid_search import GridSearchCV
 from sklearn import cross_validation
@@ -35,6 +36,7 @@ from sklearn.cross_validation import train_test_split
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 
 from readers import biviewer
+from cochranenlp.ml.pico_vectorizer import PICO_vectorizer
 
 # this module allows us to grab the ranked
 # sentences. this is possibly not the ideal
@@ -253,6 +255,9 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
 
         for i, pmid in enumerate(domain_DS["pmids"]):
+
+            if i % 100:
+                print "on study %s" % i 
 
             cur_sentence = domain_DS["sentences"][i]
 
@@ -497,10 +502,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 labels_for_current_pmid = [current_label]
                 labels_for_current_pmid_1 = [current_label_1]
             elif test_pmid != current_pmid or test_row_index == n_test_rows:
-                if sentences_for_current_pmid.count(sentences_for_current_pmid[5]) >= 2:
-                    print "WTF WTF WTF"
-                    pdb.set_trace()
-
+                
                 #highest_pred = np.argmax(np.array(preds_for_current_pmid))
                 sorted_pred_indices = np.array(preds_for_current_pmid).argsort()
                 #highest_pred_indices = rows_for_current_pmid[highest_pred]
@@ -522,7 +524,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                         # this is not necessarily a *huge* problem, e.g., it's possible that
                         # `unique' sentences are indeed exact matches. One example I have seen
                         # [u'1991.', u'1992.', u'1992.']
-                        pdb.set_trace()
+                        #pdb.set_trace()
 
 
                     ### why do we sometimes get duplicate sentences??!?!
@@ -786,6 +788,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
 
 
 
+
 class Nguyen:
     '''
     This is the model due to Nguyen et al. [2011],
@@ -906,10 +909,10 @@ class Nguyen:
         X_stacked = self._transform(X)
         return self.meta_clf.predict(X_stacked)
         '''
-        return self.m1.predict(X) 
+        return self.m2.predict(X) 
 
     def predict_proba(self, X):
-        return self.m1.predict_proba(X)
+        return self.m2.predict_proba(X)
         '''
         X_stacked = self._transform(X)
         return self.meta_clf.predict_proba(X_stacked)[:,1]
@@ -917,7 +920,7 @@ class Nguyen:
 
     def decision_function(self, X):
         ''' just to conform to SGD API '''
-        return self.m1.decision_function(X)
+        return self.m2.decision_function(X)
         '''
         return self.predict_proba(X)
         '''
@@ -1251,6 +1254,11 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-3
     print "reading candidates from: %s" % candidates_path
     print "and labels from: %s." % labels_path
 
+    # instantiate this outside the loop for efficiency;
+    # we need an instance of this to generate certain
+    # features
+    pico_v = PICO_vectorizer()
+
     with open(candidates_path, 'rb') as candidates_file, open(labels_path, 'rU') as labels_file:
         candidates = list(unicode_csv_reader(candidates_file))
         # note that we just use a vanilla CSV reader for the
@@ -1341,7 +1349,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-3
                 pdb.set_trace()
 
             X_i = extract_sds_features(candidate_sentence, shared_tokens, candidates,
-                                    scores, cur_candidate_index)
+                                    scores, cur_candidate_index, pico_vectorizer=pico_v)
 
             # @TODO we may want to do something else here
             # with the label (e.g., maybe binarize it?)
@@ -1419,6 +1427,9 @@ def get_DS_features_for_all_data(numeric_col_zs,
         X_pmid_dict[pico_field] = {"X":[], "pmids":[]}
 
     p = biviewer.PDFBiViewer()
+
+    pico_vectorizer = PICO_vectorizer()
+
     # By design this will iterate in the same
     # order as `all_PICO_DS' in pico_DS. This is crucial
     # because these items must be aligned.
@@ -1426,39 +1437,17 @@ def get_DS_features_for_all_data(numeric_col_zs,
         if n % 100 == 0:
             print "on study %s" % n
 
-        # should it be > or >= ?!
-        #if n >= 1000:
-        #    break
-
         pdf = study.studypdf['text']
         study_id = "%s" % study[1]['pmid']
-
-        '''
-        studies = biview.get_study_from_pmid(study_id, all_entries=True)
-        study = None
-        for study_ in studies:
-            if target_sentence == study_.cochrane["CHARACTERISTICS"][PICO_field].decode(
-                    "utf-8", errors="ignore"):
-                study = study_
-                break
-        else:
-            # we should certainly never get here;
-            # this would mean that none of the retreived
-            # studies (studies with this PMID) match the
-            # labeled candidate sentence
-            print "err ... this should not happen -- something is very wrong."
-            pdb.set_trace()
-        '''
 
         pdf_sents = pico_DS.sent_tokenize(pdf)
 
         for pico_field in pico_DS.PICO_DOMAINS:
 
             X_i = generate_sds_feature_vectors_for_study(
-                        study, pico_field, pdf_sents)
-            #if study_id == u'15050264':
-            #    print "ok here's the issue."
-            #    pdb.set_trace()
+                        study, pico_field, pdf_sents, 
+                        pico_vectorizer=pico_vectorizer)
+
             if X_i:
                 X_pmid_dict[pico_field]["X"].extend(X_i)
                 X_pmid_dict[pico_field]["pmids"].extend([study_id]*len(X_i))
@@ -1492,7 +1481,6 @@ def get_DS_features_for_all_data(numeric_col_zs,
     return X_pmid_dict
 
 ###
-# @TODO 1/2/2015 -- this is the key method to work on.
 # this will generate the feature vectors for the given
 # study and PICO field. the task then is to iterate over
 # *all* the data in the CDSR and generate such vectors
@@ -1500,7 +1488,7 @@ def get_DS_features_for_all_data(numeric_col_zs,
 # out or weight these!
 #
 def generate_sds_feature_vectors_for_study(study, PICO_field, pdf_sents,
-                                    max_sentences=10, cutoff=4):
+                                    max_sentences=10, cutoff=4, pico_vectorizer=None):
     '''
     This wil generate a set of feature vectors corresponding to the
     the top candidates found in pdf_sents matching the parametric
@@ -1543,6 +1531,9 @@ def generate_sds_feature_vectors_for_study(study, PICO_field, pdf_sents,
     # also keep track of the actual sentences represented by X
     candidate_sentences = []
 
+    if pico_vectorizer is None:
+        pico_vectorizer = PICO_vectorizer()
+
     # remember, these are *ranked* w.r.t. (naive) similarity
     # to the target text, hence the cur_candidate_index
     for cur_candidate_index, candidate in enumerate(candidates[:num_to_keep]):
@@ -1558,7 +1549,8 @@ def generate_sds_feature_vectors_for_study(study, PICO_field, pdf_sents,
         # the candidates list!
         X_i = extract_sds_features(candidate_text, shared_tokens[:num_to_keep],
                                     candidates[:num_to_keep],
-                                    scores[:num_to_keep], cur_candidate_index)
+                                    scores[:num_to_keep], cur_candidate_index,
+                                    pico_vectorizer=pico_vectorizer)
 
         X.append(X_i)
         # i don't think we actually need these
@@ -1572,7 +1564,11 @@ def generate_sds_feature_vectors_for_study(study, PICO_field, pdf_sents,
     return X
 
 def extract_sds_features(candidate_sentence, shared_tokens, candidates,
-                                scores, cur_candidate_index):
+                                scores, cur_candidate_index, pico_vectorizer=None):
+
+    if pico_vectorizer is None: 
+        pico_vectorizer = PICO_vectorizer()
+
     # textual features
     X_i_text = candidate_sentence
 
@@ -1594,7 +1590,9 @@ def extract_sds_features(candidate_sentence, shared_tokens, candidates,
     X_i_numeric.append(candidate_score)
 
     # 1/21 -- adding 'structural' features
-    structural_features = pico_DS.extract_structural_features(candidate_sentence)
+    #structural_features = pico_DS.extract_structural_features(candidate_sentence)
+    
+    structural_features = pico_v.extract_structural_features(candidate_sentence)
     X_i_numeric.extend(structural_features.tolist())
 
     # note that we'll need to deal with merging these
