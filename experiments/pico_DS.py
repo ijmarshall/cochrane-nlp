@@ -206,7 +206,7 @@ def vectorize(sentences_y_dict):
         all_sentences = sentences_y_dict[domain]["sentences"]
 
         domain_vectorizers[domain] = PICO_vectorizer()
-        X = domain_vectorizers[domain].fit_transform(all_sentences, extra_features=sentences_y_dict[domain]["positional_features"])
+        sentences_y_dict[domain]["X"] = domain_vectorizers[domain].fit_transform(all_sentences, extra_features=sentences_y_dict[domain]["positional_features"])
 
     
     return sentences_y_dict, domain_vectorizers
