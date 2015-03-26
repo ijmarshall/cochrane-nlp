@@ -16,6 +16,7 @@ sys.setdefaultencoding('utf8')
 import pdb
 import random
 import csv
+import sys
 import cPickle as pickle
 import os
 import time
@@ -34,17 +35,18 @@ from sklearn.grid_search import GridSearchCV
 from sklearn import cross_validation
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
-
-from readers import biviewer
+ 
+import cochranenlp
+from cochranenlp.readers import biviewer
 from cochranenlp.ml.pico_vectorizer import PICO_vectorizer
 
 # this module allows us to grab the ranked
 # sentences. this is possibly not the ideal
 # location.
-from experiments import pico_DS
+from cochranenlp.experiments import pico_DS
 
-import sys
-import cochranenlp
+
+
 DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to data
 
 domains = pico_DS.PICO_DOMAINS
@@ -54,8 +56,8 @@ domains = pico_DS.PICO_DOMAINS
 # speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             strategy="baseline_DS", output_dir="sds/results/",
-                            y_dict_pickle="sds_sentence_data.pickle", 
-                            domain_v_pickle="sds_vectorizers.pickle", 
+                            y_dict_pickle="sds_sentence_data.bak.pickle", 
+                            domain_v_pickle="sds_vectorizers.bak.pickle", 
                             random_seed=512):
 
     '''
@@ -119,7 +121,8 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
         test_id_lists[domain] = []
         if cv:
             kfolds = cross_validation.KFold(len(labeled_pmids_for_domain),
-                                                iters, shuffle=True, random_state=random_seed)
+                                                iters, shuffle=True, 
+                                                random_state=random_seed)
             for train_indices, test_indices in kfolds:
                 test_id_lists[domain].append(
                     [labeled_pmids_for_domain[j] for j in test_indices])
@@ -255,9 +258,6 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
 
         for i, pmid in enumerate(domain_DS["pmids"]):
-
-            if i % 100:
-                print "on study %s" % i 
 
             cur_sentence = domain_DS["sentences"][i]
 
@@ -478,21 +478,11 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             target_text = domains_pmids_targets[domain][test_pmid] #domain_DS["targets"][test_row]
             current_sentence = domain_DS["sentences"][test_row]
 
-            #current_label = domain_DS["y"][test_row]
-            # sanity check!
-            #if current_label != y_test[test_row_index]:
-            #    pdb.set_trace()
-            #assert current_label == y_test[test_row_index]
             current_label = y_test[test_row_index]
             current_label_1 = y_test_relaxed[test_row_index]
 
-            if current_label > current_label_1:
-                # should not happen; sanity check
-                pdb.set_trace()
-
-            #current_label = domain_DS["y"][test_row]
-            #pdb.set_trace()
-            #current_CDSR_id = domain_DS["CDSR_id"][test_row]
+            # should not happen; sanity check
+            assert current_label > current_label_1
 
             if current_pmid is None:
                 current_pmid = test_pmid
@@ -678,8 +668,8 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                     train_rows, testing_pmids,
                     X_distant_train, y_distant_train,
                     domain, weight=1,
-                    direct_weight_scalar=5,
-                    DS_weight_scalar=1, sentences=None):
+                    direct_weight_scalar=10,
+                    DS_weight_scalar=.25, sentences=None):
     '''
     Here we train our SDS model and return it.
     Specifically, this entails building a model
@@ -816,7 +806,7 @@ class Nguyen:
         #XX = sp.vstack((X1,X2)).T
 
         #XX = self._transform(X)
-        pass
+        self.beta = self._minimize(X,y)
         #self.alpha, self.beta = self._minimize(X, y)
         #pdb.set_trace()
 
@@ -844,41 +834,41 @@ class Nguyen:
         #self.meta_clf.fit(XX, y)
 
     def _minimize(self, X, y):
-        pass
-        '''
+
         p1s = self.m1.predict_proba(X)[:,1]
         p2s = self.m2.predict_proba(X)[:,1]
 
         yy = (y + 1)/2
-        #lambda_ = len(yy[yy==0])/float(len(yy[yy==1]))
-        lambda_ = 1.0
+        lambda_ = len(yy[yy==0])/float(len(yy[yy==1]))
+        #lambda_ = 1.0
 
         print "lambda is: %s" % lambda_
-        betas = np.linspace(0,1,20)
-        alphas = np.linspace(0,1,20)
+        betas = np.linspace(0,1,50)
+        #alphas = np.linspace(0,1,20)
 
-        alpha_star, beta_star, best_score = None, None, np.inf
+        beta_star, best_score = None, np.inf
 
-        for alpha in alphas:
-            for beta in betas: 
-                preds = alpha*p1s + beta*p2s
-                errors = abs(yy - preds)**2
-                
-                errors[yy==1] = errors[yy==1]*lambda_
+        #for alpha in alphas:
+        for beta in betas: 
+            preds = beta*p1s + (1-beta)*p2s
+            errors = abs(yy - preds)**2
+            
+            errors[yy==1] = errors[yy==1]*lambda_
 
-                cur_score = np.sum(errors)
-                print "score for alpha: %s, beta: %s is %s" % (alpha, beta, cur_score)
-                if cur_score < best_score:
-                    beta_star = beta 
-                    alpha_star = alpha
-                    best_score = cur_score
+            cur_score = np.sum(errors)
+            print "score for beta: %s is %s" % (beta, cur_score)
+            if cur_score < best_score:
+                beta_star = beta 
+                #alpha_star = alpha
+                best_score = cur_score
 
 
-        print "best alpha (weight for %s): %s, beta (weight for %s): %s with score: %s" % (
-            self.m1_name, alpha_star, self.m2_name, beta_star, best_score)
-        pdb.set_trace()
-        return alpha_star, beta_star
-        '''
+        print "best beta is: %s with score: %s" % (beta_star, best_score)
+        #print "best alpha (weight for %s): %s, beta (weight for %s): %s with score: %s" % (
+        #    self.m1_name, alpha_star, self.m2_name, beta_star, best_score)
+        #pdb.set_trace()
+        return beta_star
+       
 
     def _transform_y(self, X, y):
         pass 
@@ -904,15 +894,19 @@ class Nguyen:
         return XX
 
 
-    def predict(self, X):
+    def predict(self, X, threshold=.5):
         '''
         X_stacked = self._transform(X)
         return self.meta_clf.predict(X_stacked)
         '''
-        return self.m2.predict(X) 
+        return 1 if self.predict_proba(X) >= threshold else -1
 
     def predict_proba(self, X):
-        return self.m2.predict_proba(X)
+        #pdb.set_trace()
+        pred = self.beta * self.m1.predict_proba(X)[0][1] + (1-self.beta)*self.m2.predict_proba(X)[0][1]
+        return [pred, 1-pred] 
+                
+
         '''
         X_stacked = self._transform(X)
         return self.meta_clf.predict_proba(X_stacked)[:,1]
@@ -920,10 +914,8 @@ class Nguyen:
 
     def decision_function(self, X):
         ''' just to conform to SGD API '''
-        return self.m2.decision_function(X)
-        '''
         return self.predict_proba(X)
-        '''
+        
 
 def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     '''
@@ -960,10 +952,7 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     # here we are concerned with only these.
     directly_supervised_indices = direct_indices.nonzero()
 
-    #X_direct = X_train[direct_indices]
     X_direct = X_train[directly_supervised_indices]
-
-    #y_direct = y_train[direct_indices]
     y_direct = y_train[directly_supervised_indices]
 
     # the catch here is that we actually do
@@ -991,7 +980,6 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     #############
     # model 2   #
     #############
-    #pdb.set_trace()
     DS_indices = _inverse_indices(X_train.shape[0], list(directly_supervised_indices[0]))
     X_DS = X_train[DS_indices]
     y_DS = y_train[DS_indices]
@@ -999,7 +987,6 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     m2.fit(X_DS, y_DS)
 
     
-
     # now you need to combine these somehow.
     # i think it would suffice to run predictions
     # through a regressor?
@@ -1029,7 +1016,7 @@ def get_direct_clf():
 
 def get_DS_clf():
     # .0001, .001,
-    tune_params = [{"alpha":[.00001, .001, 1, 10]}]
+    tune_params = [{"alpha":[.00001, .0001, .001, 1, 10]}]
     #clf = GridSearchCV(LogisticRegression(), tune_params, scoring="accuracy", cv=5)
 
     ###
@@ -1592,11 +1579,11 @@ def extract_sds_features(candidate_sentence, shared_tokens, candidates,
     # 1/21 -- adding 'structural' features
     #structural_features = pico_DS.extract_structural_features(candidate_sentence)
     
-    structural_features = pico_v.extract_structural_features(candidate_sentence)
+    structural_features = pico_vectorizer.extract_structural_features(candidate_sentence)
     X_i_numeric.extend(structural_features.tolist())
 
     # note that we'll need to deal with merging these
-    # tesxtual and numeric feature sets elsewhere!
+    # textual and numeric feature sets elsewhere!
     X_i = (X_i_numeric, X_i_text)
     return X_i
 
