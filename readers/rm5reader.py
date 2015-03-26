@@ -10,6 +10,7 @@ from xmlbase import XMLReader
 from pprint import pprint # for testing purposes
 from functools import wraps
 import pdb
+import datetime
 
 def dictzip(*args):
     """
@@ -85,6 +86,7 @@ class RM5(XMLReader):
         XMLReader.__init__(self, filename)
         self.map = {}
         self.map["title"] = self.data.find('COVER_SHEET/TITLE')
+        self.map["search_date"] = self.data.find('COVER_SHEET/DATES/LAST_SEARCH/DATE')
         self.map["included_studies"] = self.data.find('STUDIES_AND_REFERENCES/STUDIES/INCLUDED_STUDIES')
         self.map["quality"] = self.data.find('QUALITY_ITEMS')
         self.map["characteristics"] = self.data.find('CHARACTERISTICS_OF_STUDIES/CHARACTERISTICS_OF_INCLUDED_STUDIES')
@@ -92,6 +94,12 @@ class RM5(XMLReader):
 
         self.all_ids = self.included_study_ids()
         self.comparison_ids = self.get_comparison_ids()
+
+    def camel_case(self, upper_string):
+        """
+        changes the horrible Cochrane upper case XML to nicer to read version
+        """
+        return upper_string.replace('_', ' ').title().replace(' ', '')
         
         
     def tree_to_unicode(self, tree, strip_tags=True):
@@ -139,19 +147,39 @@ class RM5(XMLReader):
         """
         return self.data.getroot().attrib.get("TYPE")
 
+    def search_date(self):
+        """
+        return a date object with the most recent search date
+        """
+
+        # print self.map["search_date"]
+        day, month, year = (int(self.map["search_date"].attrib.get(id_str)) for id_str in ["DAY", "MONTH", "YEAR"])
+
+        return datetime.date(day=day, month=month, year=year)
+
+
+
+
+
     def included_study_ids(self):
         """
         returns the Cochrane review internal unique id for all included studies
         (note that the id is unique in the *review* only, and not across the library)
         """
-        return [study.attrib.get("ID") for study in self.map["included_studies"].findall("STUDY")]
+        try:
+            return [study.attrib.get("ID") for study in self.map["included_studies"].findall("STUDY")]
+        except AttributeError:
+            return [] # where there are no included studies
 
     def get_comparison_ids(self):
         """
         returns the Cochrane review internal unique id for all included comparisons
         (note that the id is unique in the *review* only, and not across the library)
         """
-        return [study.attrib.get("ID") for study in self.map["analyses"].findall("COMPARISON")]
+        try:
+            return [study.attrib.get("ID") for study in self.map["analyses"].findall("COMPARISON")]
+        except AttributeError:
+            return []
 
 
 
@@ -324,6 +352,68 @@ class RM5(XMLReader):
     def sof_table(self):
         return self._ETfind("SOF_TABLES/SOF_TABLE", self.data, strip_tags=False)
 
+    def dich_outcomes(self):
+
+        output = []
+
+        try:
+            comp_data_entries = self.map["analyses"].findall("COMPARISON")
+        except:
+            return []
+
+        for comp_data_entry in comp_data_entries:
+
+            
+
+            comp_name = self.tree_search("NAME", comp_data_entry)
+            comp_no = comp_data_entry.attrib.get("NO")
+
+            dich_data_entries = comp_data_entry.findall("DICH_OUTCOME")
+
+        
+            for dich_data_entry in dich_data_entries:
+
+                variables_of_interest = ["NAME", "GROUP_LABEL_1", "GROUP_LABEL_2", "GRAPH_LABEL_1", "GRAPH_LABEL_2"]
+
+                dich_data_dict = {self.camel_case(id_str): self.tree_search(id_str, dich_data_entry) for id_str in variables_of_interest}
+
+                dich_data_dict["CmpNo"] = comp_no
+                dich_data_dict["CmpName"] = comp_name
+
+                variables_of_interest = ["TOTAL_1", "TOTAL_2", "CI_START", "CI_END", "EVENTS_1", "EVENTS_2", "EFFECT_SIZE", "ESTIMABLE", "STUDIES", "NO", "EFFECT_MEASURE"]
+
+                # dich_data_dict["AnalysisNo"] = dich_data_entry.attrib.get("NO")
+
+                dich_data_dict.update({self.camel_case(id_str): dich_data_entry.attrib.get(id_str) for id_str in variables_of_interest})
+
+                # now get the individual studies
+
+                study_entries = dich_data_entry.findall("DICH_DATA")
+
+                dich_data_dict["StudyData"] = []
+
+                variables_of_interest = ["TOTAL_1", "TOTAL_2", "CI_START", "CI_END", "EVENTS_1", "EVENTS_2", "EFFECT_SIZE", "ESTIMABLE", "STUDIES", "NAME", "STUDY_ID"]
+
+                for study_entry in study_entries:
+                    dich_data_dict["StudyData"].append({self.camel_case(id_str): study_entry.attrib.get(id_str) for id_str in variables_of_interest})
+
+
+
+
+
+                
+
+
+                output.append(dich_data_dict)
+        return output
+
+        
+
+
+
+        
+
+
 
 
 
@@ -339,7 +429,8 @@ def main():
     rm5_files = glob.glob(rm5_files_path + '*.rm5')
 
     # reader = RM5(random.choice(rm5_files))
-    reader = RM5(rm5_files[100])
+    reader = RM5(rm5_files_path + "CD004659 v. 5.0 Antiplatelet agents for preventing pre-eclampsia and its complications.rm5")
+    # reader = RM5(rm5_files[1020])
 
 
     print "Title:"
@@ -404,10 +495,28 @@ def main():
         
     print reader.references()
     print
-    print reader.references(study_id = ['STD-Thomas-1987', 'STD-Vercellini-1999'])
+    # print reader.references(study_id = ['STD-Thomas-1987', 'STD-Vercellini-1999'])
 
     print
     print reader.sof_table()
+
+
+    print reader.quality(study_id='STD-Brazil-1992a')
+
+    # print "Analyses"
+    # print
+    # print 
+    # analyses = reader.dich_outcomes()
+
+    # # print analyses
+
+    # # for analysis in analyses:
+    #     # print analysis["GroupLabel2"]
+        
+    #     if any(control_name in analysis["GroupLabel2"].lower() for control_name in ["placebo", "control", "usual care"]):
+    #         print analysis["Name"]
+    
+
 
 
 

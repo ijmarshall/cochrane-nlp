@@ -42,19 +42,23 @@ class BiViewer():
 
 
     def __init__(self, **kwargs):
-        
+        print kwargs
         self.init_common_variables(**kwargs)
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'pubmed'])
 
 
     def init_common_variables(self, in_memory=False, cdsr_cache_length=20,
-                 test_mode=False, dedupe=True, linkfile=os.path.join(DATA_PATH, "biviewer_links_all.pck")):
+                 test_mode=False, dedupe=True, linkfile=os.path.join(DATA_PATH, "biviewer_links_all.pck"), skip_small_files=False):
         "set up variables used in all subclasses"
         self.import_data(filename=linkfile, test_mode=test_mode, dedupe=dedupe)
         self.data = []
         self.cdsr_cache_length = cdsr_cache_length
         self.cdsr_cache_index = collections.deque()
         self.cdsr_cache_data = {}
+        
+
+        self.skip_small_files = skip_small_files
+
 
         if in_memory==True:
             self.load_data_in_memory()
@@ -69,6 +73,7 @@ class BiViewer():
             self.index_data = self.index_data[:2500]
         if dedupe:
             self.index_data = self.clean_up_data(self.index_data)
+        
 
     def clean_up_data(self, data):
         """
@@ -172,6 +177,8 @@ class PDFBiViewer(BiViewer):
     """
 
     def __init__(self, **kwargs):
+
+        
         self.BiviewerView = collections.namedtuple('BiViewer_View', ['cochrane', 'studypdf'])
         BiViewer.init_common_variables(self, **kwargs)
         self.pdf_index = self.get_pdf_index()
@@ -181,6 +188,7 @@ class PDFBiViewer(BiViewer):
         
         # (optionally) keep a map of PMIDs to data indices around
         self.pmids_to_indices = None
+
 
     def get_study_from_pmid(self, pmid, all_entries=True):
         ''' 
@@ -196,6 +204,9 @@ class PDFBiViewer(BiViewer):
             print "building a pmid dict -- this will take a bit..."
             self.build_pmid_to_index_d()
             print "ok!"
+
+
+        
         
         indices = self.pmids_to_indices[pmid]
         if type([]) == type(indices) and not all_entries:
@@ -242,10 +253,20 @@ class PDFBiViewer(BiViewer):
     	pdf_filenames_all = glob(PDF_PATH + "*.pdf")
     	pdf_index = {}
 
+        
+
+
+
     	for filename in pdf_filenames_all:
+
             
+
+
             pmids = re.search("([1-9][0-9]*)\.pdf", filename)
             # pmids = re.search("_([1-9][0-9]*)\.pdf", filename) # uncomment this to retrive just the initial 2,200 or so PDFs (ignore the new ones)
+
+            
+
 
 
             if pmids:
