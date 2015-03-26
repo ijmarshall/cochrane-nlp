@@ -233,8 +233,7 @@ def output_data_for_labeling(N=7, output_file_path="for_labeling-2-24-15_brian.c
             study = p[p_i]
             pdf = study.studypdf['text']
             study_id = "%s" % study[1]['pmid']
-            #pdb.set_trace()
-
+          
             if int(study_id) not in exclude_list:
                 count += 1
                 pdf_sents = sent_tokenize(pdf)
