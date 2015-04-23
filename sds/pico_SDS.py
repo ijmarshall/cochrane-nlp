@@ -195,7 +195,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
     testing_pmids = None
     output_str = [""]
 
-    if strategy == "sds":
+    if strategy.lower() == "sds":
         # we need the normalization scalars
         # for the numerical SDS features!
         assert z_dict is not None
@@ -301,19 +301,27 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                         # we train only on 2's (highly relevant sentences), as we 
                         # deem these as the target
                         cur_label = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
-     
+                        # 4/22/15 -- only considering these instances 'directly'
+                        # supervised -- previously was as below
+                        
+
                     # 1/7/15 -- previously, we were not considering
                     # an instance directly supervised if cur_label
                     # came back None, although in seme sense
                     # it's not clear that we should be...
                     domain_DS["y"][i] = cur_label
+                    directly_supervised_indicators[i] = 1
 
-
+                    '''
+                    ##
+                    # 4/22/15 -- this line previously here
+                    # 
                     #domain_DS["y2"][i] = cur_label
                     # keep track of row indices that correspond
                     # to directly supervised instances
                     #directly_supervised_indices.append(i)
                     directly_supervised_indicators[i] = 1
+                    '''
             else:
                 ####
                 # Then this index is associated with a study to be used for
@@ -391,8 +399,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
         ###
         # now train a classifier
-        strategy_name = strategy.lower()
-        if strategy_name == "sds":
+        if strategy.lower() == "sds":
             # this transforms the small amount of direct supervision we
             # have for the mapping task from candidate sentences to
             # the best sentences into feature vectors and labels with
@@ -732,14 +739,27 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     intances so that we can train our sds model
     '''
 
+    # this is likely key, as it scales the instance
+    # weighting for directly labeled vs indirectly 
+    # labeled instances. this make since especially
+    # because then the alphas will be different for
+    # the two models.
+    #
+    # another @TODO: what if we use the Nguyen 
+    # 'linear pooling' method to 'soft label'
+    # the remaining instances?
     if direct_weight_scalar_range is None:
-        direct_weight_scalar_range = np.linspace(.5,1,10)
+        # this will be very slow!
+        # changed this from 1, 5, 10 to 10, 50, 100
+        direct_weight_scalar_range = (.5, 2, 10, 100)#np.linspace(0,1,5)
 
     if weight_range is None: 
         weight_range = [1]
 
+ 
+
     if alpha_range is None: 
-        alpha_range = 10.0**-np.arange(5,10)
+        alpha_range = 10.0**-np.arange(3,7)
 
     #############################################
     # (1) Train the SDS model (M_SDS) using directly
@@ -766,14 +786,19 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
             direct_train_indices.append(i)
             direct_train_pmids.append(pmid)
 
-    unique_train_pmids = list(set(direct_train_pmids))
+    
 
     X_direct_train = []
     y_direct_train = []
+    pmids_direct_train = []
     for j in direct_train_indices:
+        ### don't you want... X_train_tilde here???
         X_direct_train.append(X_direct[j])
+
         # -1 and 1 
         y_direct_train.append(y_direct[j])
+
+        pmids_direct_train.append(pmids_direct[j])
 
     #X_direct_train = [X_direct[j] for j in direct_train_indices]
     # convert to 0/1 labels
@@ -784,6 +809,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     We need a subset of the labeled data with which to 
     tune our parameters. we do this based on PMIDs.
     '''
+    unique_train_pmids = list(set(direct_train_pmids))
     n_direct_train = len(unique_train_pmids)
     tuning_size = int(p_tuning * n_direct_train)
     print "tuning SDS using %s articles (pmids)." % tuning_size
@@ -830,9 +856,41 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     # now train the SDS model that predicts
     # whether candidate sentences are indeed good
     # fits (aim for high-precision)
+
+    # 4/10
+    # class_weight="auto"
+    # 4/21 - changed back to "auto"
+
     m_sds = get_lr_clf(class_weight="auto", scoring="f1")
 
-    m_sds.fit(X_direct_train, y_direct_train)
+    ### 
+    # note that X_direct is a misnomer; this is really
+    # X_tilde, though just for training instances!
+
+    ####
+    # 4/22 -- should we be exposing the tuning indices here??
+    #train_indicators_for_sds = np.ones(len(X_direct_train), dtype=np.int8)
+
+    X_direct_train_non_tuning = []
+    y_direct_train_non_tuning = []
+
+    #pdb.set_trace()
+    for pmid_i, pmid in enumerate(pmids_direct_train):
+        if not pmid in tuning_pmids:
+            try:
+                #print "pmid: %s" % pmid 
+                #print "index: %s" % pmid_i
+                #train_indicators_for_sds[pmid_i] = 0
+                X_direct_train_non_tuning.append(X_direct_train[pmid_i])
+                y_direct_train_non_tuning.append(y_direct_train[pmid_i])
+            except: 
+                pdb.set_trace()
+
+
+    m_sds.fit(X_direct_train_non_tuning, y_direct_train_non_tuning)
+
+    ### what's up with tables? is it calling them positive??!
+    pdb.set_trace()
 
     ##
     # here is the grid search over different instance weights
@@ -855,7 +913,11 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
 
 
         for i, x_tilde_i in enumerate(X_tilde_train):
-            if directly_supervised_indicators_train[i] > 0:
+
+            # 4/22 -- I think you want to also check the tuning indicators here!
+            # added "and tuning_indicators[i] == 0"
+            # is X_tilde_train the same shape ??? 
+            if directly_supervised_indicators_train[i] > 0 and not X_tilde_pmids[i] in tuning_pmids:
                 # we do not overwrite direct labels.
                 #print "directly labeled!"
 
@@ -865,10 +927,11 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                 updated_ys[i] = y_distant_train[i]
             else:
                 # distantly supervised; weight accordingly.
-                weights[i] = weight * (1 - direct_weight_scalar)
+                weights[i] = weight 
+                
                 if x_tilde_i is not None and y_distant_train[i] > 0:
-                    predicted_prob_i = m_sds.predict_proba(x_tilde_i)[0][1]
 
+                    predicted_prob_i = m_sds.predict_proba(x_tilde_i)[0][1]
                     pred = m_sds.predict(x_tilde_i)
                     #pred = _to_neg_one(pred)
                     cur_sent = sentences[i]
@@ -886,7 +949,11 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                     # if x_tilde_i is None that means this is a `padding'
                     # instance that did not score high enough to be a candidate
                     # so we just stick with our -1 label.
+
+                    ## maybe still scale by predicted prob of being negative 
+                    # here??
                     updated_ys[i] = y_distant_train[i]
+                    #weights[i] = weights[i] 
                    
         print "ok! updated labels (flipped %s out of %s positive), now training the actual model.." % (
                         flipped_count, total_pos)
@@ -894,7 +961,8 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
 
         #clf = get_DS_clf()
         for cur_alpha in alpha_range:
-            clf = SGDClassifier(alpha=cur_alpha, loss="log", class_weight="auto")
+            clf = SGDClassifier(alpha=cur_alpha, loss="log", 
+                                    class_weight="auto", shuffle=True)
 
             clf.fit(X_distant_train[non_tuning_indices], updated_ys[non_tuning_indices], 
                         sample_weight=weights[non_tuning_indices])
@@ -920,7 +988,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
                 clf_star = clf
                 weights_star = weights
 
-                print "found best score so far using: weight %s and direct_weight_scalar %s, alpha %s!" % (
+                print "-- found best score so far using: weight %s and direct_weight_scalar %s, alpha %s!" % (
                         weight_star, direct_weight_scalar, alpha_star)
     
     # refit this using *all* data!
@@ -1275,10 +1343,11 @@ def _score_to_binary_lbl(y, zero_one=True, threshold=2):
     # irrelevant (-1s).
     if not _is_number(y):
         # then this is a table; we'll return 
-        # -1 here (as this is the assumption for now)
+        # 0/-1 here (as this is the assumption for now)
         if not "t" in y:
             pdb.set_trace()
         assert "t" in y
+
 
     elif int(y) >= threshold:
         return 1
@@ -1317,10 +1386,12 @@ def generate_X_y(DS_learning_task, binary_labels=True,
         y.append(y_lbl_func(y_i))
         pmids.append(pmid_i)
 
+
     if return_pmids_too:
         # also returning the actual vectorizer for
         # later use...
         return X, y, pmids, vectorizer
+
 
     return X, y
 
@@ -1340,8 +1411,10 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
 # and should really be the general approach
 # 
 # was 8-2-24.csv
-def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-3-19.csv",
-                                labels_path="sds/annotations/master/figure8-3-19.csv",
+# 4/17 -- was figure8-3-19.csv   
+
+def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-4-20-15.csv",
+                                labels_path="sds/annotations/master/figure8-4-20-15.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4,
                                 normalize_numeric_cols=True,
@@ -1494,6 +1567,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-3
             # @TODO we may want to do something else here
             # with the label (e.g., maybe binarize it?)
             y_i = label_line[label_index]
+
             X_y_dict[PICO_field]["X"].append(X_i)
             X_y_dict[PICO_field]["y"].append(y_i)
             X_y_dict[PICO_field]["pmids"].append(study_id)
@@ -1721,7 +1795,10 @@ def extract_sds_features(candidate_sentence, shared_tokens, candidates,
 
     ## numeric features
     X_i_numeric = []
-    X_i_numeric.append(len(candidate_sentence.split(" ")))
+
+    # length should probably be a binary feature!
+    # and in any case, this is already coded for elsewhere
+    #X_i_numeric.append(len(candidate_sentence.split(" ")))
 
     X_i_numeric.append(len(candidates) - cur_candidate_index)
     candidate_score = scores[cur_candidate_index]
