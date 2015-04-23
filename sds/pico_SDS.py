@@ -59,7 +59,7 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             strategy="baseline_DS", output_dir="sds/results/",
                             y_dict_pickle="sds_sentence_data.pickle", 
                             domain_v_pickle="sds_vectorizers.pickle", 
-                            random_seed=512):
+                            random_seed=512,iter_num=-1):
 
     '''
     Runs multiple (iters) experiments using the specified strategy.
@@ -137,8 +137,14 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             random_state=random_seed+iter_)
                 test_id_lists[domain].append([cur_train_test_split[1]])
 
+    iter_start = 0
+    iter_end = iters
 
-    for iter_ in xrange(iters):
+    if iter_num != -1:
+        iter_start = iter_num
+        iter_end = iter_num + 1
+
+    for iter_ in xrange(iter_start,iter_end):
 
         ## if we're doing cross-fold validation,
         # then we need to assemble a dictionary for
