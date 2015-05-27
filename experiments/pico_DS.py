@@ -206,13 +206,14 @@ def vectorize(sentences_y_dict):
         all_sentences = sentences_y_dict[domain]["sentences"]
 
         domain_vectorizers[domain] = PICO_vectorizer()
-        sentences_y_dict[domain]["X"] = domain_vectorizers[domain].fit_transform(all_sentences, extra_features=sentences_y_dict[domain]["positional_features"])
+        sentences_y_dict[domain]["X"] = domain_vectorizers[domain].fit_transform(all_sentences, 
+                                            extra_features=sentences_y_dict[domain]["positional_features"])
 
     
     return sentences_y_dict, domain_vectorizers
 
 
-def output_data_for_labeling(N=7, output_file_path="for_labeling-2-24-15_brian.csv", 
+def output_data_for_labeling(N=7, output_file_path="for_labeling-3-27-15_brian.csv", 
                                 cutoff=4, max_sentences=10, exclude_list=None):
     ''' generate a CSV file for labeling matches '''
 
@@ -241,8 +242,7 @@ def output_data_for_labeling(N=7, output_file_path="for_labeling-2-24-15_brian.c
 
             
             study_id = "%s" % study[1]['pmid']
-            #pdb.set_trace()
-
+          
             if int(study_id) not in exclude_list:
                 count += 1
                 pdf_sents = sent_tokenize(pdf)

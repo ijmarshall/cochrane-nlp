@@ -16,12 +16,14 @@ sys.setdefaultencoding('utf8')
 import pdb
 import random
 import csv
+import sys
 import cPickle as pickle
 import os
 import time
 import copy
 from datetime import datetime
 from collections import defaultdict
+import itertools 
 
 import numpy as np
 import scipy as sp
@@ -34,17 +36,18 @@ from sklearn.grid_search import GridSearchCV
 from sklearn import cross_validation
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
-
-from readers import biviewer
+ 
+import cochranenlp
+from cochranenlp.readers import biviewer
 from cochranenlp.ml.pico_vectorizer import PICO_vectorizer
 
 # this module allows us to grab the ranked
 # sentences. this is possibly not the ideal
 # location.
-from experiments import pico_DS
+from cochranenlp.experiments import pico_DS
 
-import sys
-import cochranenlp
+
+
 DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to data
 
 domains = pico_DS.PICO_DOMAINS
@@ -56,7 +59,7 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             strategy="baseline_DS", output_dir="sds/results/",
                             y_dict_pickle="sds_sentence_data.pickle", 
                             domain_v_pickle="sds_vectorizers.pickle", 
-                            random_seed=512):
+                            random_seed=512,iter_num=-1):
 
     '''
     Runs multiple (iters) experiments using the specified strategy.
@@ -119,7 +122,8 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
         test_id_lists[domain] = []
         if cv:
             kfolds = cross_validation.KFold(len(labeled_pmids_for_domain),
-                                                iters, shuffle=True, random_state=random_seed)
+                                                iters, shuffle=True, 
+                                                random_state=random_seed)
             for train_indices, test_indices in kfolds:
                 test_id_lists[domain].append(
                     [labeled_pmids_for_domain[j] for j in test_indices])
@@ -133,8 +137,14 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             random_state=random_seed+iter_)
                 test_id_lists[domain].append([cur_train_test_split[1]])
 
+    iter_start = 0
+    iter_end = iters
 
-    for iter_ in xrange(iters):
+    if iter_num != -1:
+        iter_start = iter_num
+        iter_end = iter_num + 1
+
+    for iter_ in xrange(iter_start,iter_end):
 
         ## if we're doing cross-fold validation,
         # then we need to assemble a dictionary for
@@ -162,7 +172,7 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
 
 def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                         DS_learning_tasks, domains_pmids_targets,
-                        strategy="baseline_DS", test_pmids_dict=None, test_proportion=1,
+                        strategy="baseline_DS", test_pmids_dict=None, test_proportion=.8,
                         use_distant_supervision_only=False, z_dict=None):
     '''
     This is an implementation of a naive baseline
@@ -191,9 +201,18 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
     testing_pmids = None
     output_str = [""]
 
+    if strategy.lower() == "sds":
+        # we need the normalization scalars
+        # for the numerical SDS features!
+        assert z_dict is not None
+        ### this will align with the DS_supervision.
+        # note that we now *pad* this vector to make sure
+        # the entries align with the DS we have.
+        X_tilde_dict = get_DS_features_for_all_data(z_dict)
+
     #for domain_index, domain in enumerate(domains):
     ### 2/25 -- tmp tmp tmp doing population only!
-    for domain_index, domain in enumerate(domains):
+    for domain_index, domain in enumerate(domains[:1]):
         ##
         # here we need to grab the annotations used also
         # for SDS to evaluate our strategy.
@@ -253,11 +272,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         # around
         unique_pmids = list(set(domain_DS["pmids"]))
 
-
         for i, pmid in enumerate(domain_DS["pmids"]):
-
-            if i % 100:
-                print "on study %s" % i 
 
             cur_sentence = domain_DS["sentences"][i]
 
@@ -292,19 +307,27 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                         # we train only on 2's (highly relevant sentences), as we 
                         # deem these as the target
                         cur_label = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
-     
+                        # 4/22/15 -- only considering these instances 'directly'
+                        # supervised -- previously was as below
+                        
+
                     # 1/7/15 -- previously, we were not considering
                     # an instance directly supervised if cur_label
                     # came back None, although in seme sense
                     # it's not clear that we should be...
                     domain_DS["y"][i] = cur_label
+                    directly_supervised_indicators[i] = 1
 
-
+                    '''
+                    ##
+                    # 4/22/15 -- this line previously here
+                    # 
                     #domain_DS["y2"][i] = cur_label
                     # keep track of row indices that correspond
                     # to directly supervised instances
                     #directly_supervised_indices.append(i)
                     directly_supervised_indicators[i] = 1
+                    '''
             else:
                 ####
                 # Then this index is associated with a study to be used for
@@ -323,7 +346,9 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 labeled_CDSR_entry = domain_supervision['CDSR_ids'][cur_test_index]
                 # only test against it matches up.
                 if domain_DS["CDSR_id"][i] != labeled_CDSR_entry:
-                    print "skipping test entry for %s, because the CDSR id does not match." % pmid
+                    pass 
+                    # too much output...
+                    #print "skipping test entry for %s, because the CDSR id does not match." % pmid
                 else:        
                     test_rows.append(i)
 
@@ -371,6 +396,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
 
         X_train_DS = domain_DS["X"][train_rows]
+        pmids_train_DS = [domain_DS["pmids"][train_row] for train_row in train_rows]
         X_test_DS = domain_DS["X"][test_rows]
         y_train_DS = np.array(domain_DS["y"])[train_rows]
 
@@ -379,13 +405,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
 
         ###
         # now train a classifier
-        strategy_name = strategy.lower()
-        if strategy_name == "sds":
-
-            # we need the normalization scalars
-            # for the numerical SDS features!
-            assert z_dict is not None
-
+        if strategy.lower() == "sds":
             # this transforms the small amount of direct supervision we
             # have for the mapping task from candidate sentences to
             # the best sentences into feature vectors and labels with
@@ -396,36 +416,49 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             X_direct, y_direct, direct_pmids, vectorizer = generate_X_y(
                                                     domain_supervision,
                                                     return_pmids_too=True)
+     
+            ###
+            # I believe X_direct is just a subset of X_tilde_direct,
+            # and further we should have the corresponding labels
+            # already...
+            # 
+            # I think it would greatly simplify life if we didn't have
+            # this separate X_direct thing and instead used the
+            # corresponding entries X_tilde_dict!
 
-
-            ### this will align with the DS_supervision.
-            # note that we now *pad* this vector to make sure
-            # the entries align with the DS we have.
-            X_tilde_dict = get_DS_features_for_all_data(z_dict)
-            
+            # just use X_train
+         
 
 
             # the above returns tuples of numeric and textual
             # features for each candidate. below we vectorize
             # these.
             X_train_tilde = []
-            train_sentences_DS = [] # tmp?
+            train_sentences_DS = [] 
+            # train_tilde_pmids will contain the PMIDs
+            # for the X_tilde instances we have
+            train_tilde_pmids = []
             for j in train_rows:
                 cur_X = X_tilde_dict[domain]["X"][j]
                 X_tilde_v = None
                 if cur_X is not None:
                     X_tilde_v = _to_vector(cur_X, vectorizer)
                 X_train_tilde.append(X_tilde_v)
-
+                train_tilde_pmids.append(X_tilde_dict[domain]['pmids'][j])
                 train_sentences_DS.append(domain_DS["sentences"][j])
+
+
+            # you can't do this!
+            #train_pmids = [domain_DS["pmids"][j] for j in train_rows]
+
 
 
             ''' end SDS magic '''
             clf = build_SDS_model(X_direct, y_direct, direct_pmids,
                                     directly_supervised_indicators_train,
-                                    X_train_tilde,
+                                    X_train_tilde, train_tilde_pmids,
                                     train_rows, testing_pmids,
-                                    X_train_DS, y_train_DS,
+                                    X_train_DS, y_train_DS, pmids_train_DS,
                                     domain, sentences=train_sentences_DS)
 
 
@@ -478,21 +511,12 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
             target_text = domains_pmids_targets[domain][test_pmid] #domain_DS["targets"][test_row]
             current_sentence = domain_DS["sentences"][test_row]
 
-            #current_label = domain_DS["y"][test_row]
-            # sanity check!
-            #if current_label != y_test[test_row_index]:
-            #    pdb.set_trace()
-            #assert current_label == y_test[test_row_index]
             current_label = y_test[test_row_index]
             current_label_1 = y_test_relaxed[test_row_index]
 
             if current_label > current_label_1:
                 # should not happen; sanity check
                 pdb.set_trace()
-
-            #current_label = domain_DS["y"][test_row]
-            #pdb.set_trace()
-            #current_CDSR_id = domain_DS["CDSR_id"][test_row]
 
             if current_pmid is None:
                 current_pmid = test_pmid
@@ -506,7 +530,6 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 #highest_pred = np.argmax(np.array(preds_for_current_pmid))
                 sorted_pred_indices = np.array(preds_for_current_pmid).argsort()
                 #highest_pred_indices = rows_for_current_pmid[highest_pred]
-
 
                 highest_pred_indices = sorted_pred_indices[-3:]
                 #highest_pred_indices = reversed(sorted_pred_indices)
@@ -581,6 +604,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 labels_for_current_pmid_1.append(current_label_1)
 
             current_pred = clf.decision_function(domain_DS["X"][test_row])
+            #pdb.set_trace()
             preds_for_current_pmid.append(current_pred[0])
 
         '''
@@ -672,14 +696,24 @@ def _match_direct_to_distant_supervision(domain_supervision, pmid,
 
 
 
+
+### TODO TODO TODO grid search over scalars here!
+#
+# 1 out of training PMIDs, select a small 
+#       set for tuning. 
+# 2 exclude this set from induction of sds model
+#       and from receiving direct labels
 def build_SDS_model(X_direct, y_direct, pmids_direct,
                     directly_supervised_indicators_train,
-                    X_tilde_train,
+                    X_tilde_train, X_tilde_pmids,
                     train_rows, testing_pmids,
                     X_distant_train, y_distant_train,
-                    domain, weight=1,
-                    direct_weight_scalar=5,
-                    DS_weight_scalar=1, sentences=None):
+                    pmids_distant_train,
+                    domain, weight_range=None,
+                    direct_weight_scalar_range=None,
+                    alpha_range=None,
+                    sentences=None, 
+                    p_tuning=.25):
     '''
     Here we train our SDS model and return it.
     Specifically, this entails building a model
@@ -701,90 +735,273 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     because we don't want to overwrite labels that
     were explicitly provided.
 
-    so X_tilde_train is the matrix comprising all
+    X_tilde_train is the matrix comprising all
     tilde instances for training
+
+    train_pmids provides the PMIDs corresponding to 
+    rows in the training dataset. 
 
     X_direct_train are tilde entries for (directly) labeled
     intances so that we can train our sds model
     '''
+
+    # this is likely key, as it scales the instance
+    # weighting for directly labeled vs indirectly 
+    # labeled instances. this make since especially
+    # because then the alphas will be different for
+    # the two models.
+    #
+    # another @TODO: what if we use the Nguyen 
+    # 'linear pooling' method to 'soft label'
+    # the remaining instances?
+    if direct_weight_scalar_range is None:
+        # this will be very slow!
+        # changed this from 1, 5, 10 to 10, 50, 100
+        direct_weight_scalar_range = (.5, 2, 10, 100)#np.linspace(0,1,5)
+
+    if weight_range is None: 
+        weight_range = [1]
+
+ 
+
+    if alpha_range is None: 
+        alpha_range = 10.0**-np.arange(3,7)
+
     #############################################
     # (1) Train the SDS model (M_SDS) using directly
-    #  labeled data
+    #  labeled data. This model is the same regardless
+    #  of the scalar params to be tuned.
     #############################################
     # this is confusingly named because X_direct
     # is actually the subset of X_tilde for which we
     # have been given labels!
-    X_direct_train, y_direct_train = [], []
+    #X_direct_train, y_direct_train = [], []
 
 
+    ####
     # don't train on testing articles!
+    ####
+    direct_train_indices = []
+    direct_train_pmids = []
     for i, pmid in enumerate(pmids_direct):
-        x_i, y_i = X_direct[i], y_direct[i]
+        #x_i, y_i = X_direct[i], y_direct[i]
 
         if pmid not in testing_pmids:
-            X_direct_train.append(x_i)
-            y_direct_train.append(y_i)
+            #X_direct_train.append(x_i)
+            #y_direct_train.append(y_i)
+            direct_train_indices.append(i)
+            direct_train_pmids.append(pmid)
 
+    
+
+    X_direct_train = []
+    y_direct_train = []
+    pmids_direct_train = []
+    for j in direct_train_indices:
+        ### don't you want... X_train_tilde here???
+        X_direct_train.append(X_direct[j])
+
+        # -1 and 1 
+        y_direct_train.append(y_direct[j])
+
+        pmids_direct_train.append(pmids_direct[j])
+
+    #X_direct_train = [X_direct[j] for j in direct_train_indices]
+    # convert to 0/1 labels
+    #y_direct_train = [(y_direct[j] + 1)/2 for j in direct_train_indices] 
+
+   
+    '''
+    We need a subset of the labeled data with which to 
+    tune our parameters. we do this based on PMIDs.
+    '''
+    unique_train_pmids = list(set(direct_train_pmids))
+    n_direct_train = len(unique_train_pmids)
+    tuning_size = int(p_tuning * n_direct_train)
+    print "tuning SDS using %s articles (pmids)." % tuning_size
+    tuning_pmids = random.sample(unique_train_pmids, tuning_size)
+    # get the tuning indices based on this
+    tuning_indicators = np.zeros(X_distant_train.shape[0], dtype=np.int8)
+    for row, pmid in enumerate(pmids_distant_train):
+        if pmid in tuning_pmids:
+            tuning_indicators[row] = 1
+        
+    tuning_indices = tuning_indicators.nonzero()[0]
+    X_tune = X_distant_train[tuning_indices]
+    y_tune = y_distant_train[tuning_indices]
+    # will come in handy later!
+    non_tuning_indices = np.where(tuning_indicators == 0)[0]
+
+    '''
+    n_direct_train = directly_supervised_indicators_train[directly_supervised_indicators_train>0].shape[0]
+
+    #n_direct_train = len(direct_train_indices)
+    # hold this many instances out for direct model
+    ## TODO i think you should sample from the train_PMIDS???
+
+    tuning_size = int(p_tuning * n_direct_train)
+    print "tuning SDS using %s instances." % tuning_size
+    tuning_indices = random.sample(range(n_direct_train), tuning_size)
+
+    # inverse of the 'tuning indices'
+    non_tuning_indices = _inverse_indices(n_direct_train, tuning_indices)
+    
+
+
+    X_tune = X_distant_train[tuning_indices]
+    y_tune = y_distant_train[tuning_indices]
+    '''
+    #y_tune = 
+
+    #X_tune = sp.vstack([X_direct_train[j] for j in tuning_indices])
+    #y_tune = np.array([y_direct_train[j] for j in tuning_indices])
+
+    # for error scaling, below
+    lambda_ = len(y_tune[y_tune<=0])/float(len(y_tune[y_tune==1]))
 
     # now train the SDS model that predicts
     # whether candidate sentences are indeed good
     # fits (aim for high-precision)
+
+    # 4/10
+    # class_weight="auto"
+    # 4/21 - changed back to "auto"
+
     m_sds = get_lr_clf(class_weight="auto", scoring="f1")
-    m_sds.fit(X_direct_train, y_direct_train)
+
+    ### 
+    # note that X_direct is a misnomer; this is really
+    # X_tilde, though just for training instances!
+
+    ####
+    # 4/22 -- should we be exposing the tuning indices here??
+    #train_indicators_for_sds = np.ones(len(X_direct_train), dtype=np.int8)
+
+    X_direct_train_non_tuning = []
+    y_direct_train_non_tuning = []
+
+    #pdb.set_trace()
+    for pmid_i, pmid in enumerate(pmids_direct_train):
+        if not pmid in tuning_pmids:
+            try:
+                #print "pmid: %s" % pmid 
+                #print "index: %s" % pmid_i
+                #train_indicators_for_sds[pmid_i] = 0
+                X_direct_train_non_tuning.append(X_direct_train[pmid_i])
+                y_direct_train_non_tuning.append(y_direct_train[pmid_i])
+            except: 
+                pdb.set_trace()
 
 
-    #############################################
-    #  (2) Generate as many DS labels as possible
-    #  for PICO. For SDS, use M_SDS to either
-    #  (a) filter out labels predicted to be
-    #  irrelevant, or, (b) weight instances
-    #  w.r.t. predicted probability of being good
-    #############################################
-    updated_ys = np.zeros(len(y_distant_train))
-    weights    = np.zeros(len(y_distant_train))
-    _to_neg_one = lambda x : -1 if x <= 0 else 1
-    flipped_count, total_pos = 0, 0
-    for i, x_tilde_i in enumerate(X_tilde_train):
-        if directly_supervised_indicators_train[i] > 0:
-            # we do not overwrite direct labels.
-            #print "directly labeled!"
+    m_sds.fit(X_direct_train_non_tuning, y_direct_train_non_tuning)
 
-            weights[i] = weight*direct_weight_scalar # or something big, since these are direct?
-            # (remember that we overwrote the DS labels with
-            #   the direct above)
-            updated_ys[i] = y_distant_train[i]
-        else:
-            if x_tilde_i is not None and y_distant_train[i] > 0:
-                predicted_prob_i = m_sds.predict_proba(x_tilde_i)[0][1]
+    ### what's up with tables? is it calling them positive??!
+    pdb.set_trace()
 
-                pred = m_sds.predict(x_tilde_i)
-                pred = _to_neg_one(pred)
-                cur_sent = sentences[i]
-                total_pos += 1
-                if pred < 1:
-                    #print "flipped label for sent %s" % cur_sent
-                    flipped_count += 1
-                    weight = 1-predicted_prob_i
-                else: 
-                    weight = predicted_prob_i
+    ##
+    # here is the grid search over different instance weights
+    weights_star = None
+    weight_star, direct_weight_scalar_star, best_score, clf_star = None, None, np.inf, None
+    alpha_star = None 
+    n_distant_train = len(y_distant_train)
+    for weight, direct_weight_scalar in itertools.product(weight_range, direct_weight_scalar_range):
+        #############################################
+        #  (2) Generate as many DS labels as possible
+        #  for PICO. For SDS, use M_SDS to either
+        #  (a) filter out labels predicted to be
+        #  irrelevant, or, (b) weight instances
+        #  w.r.t. predicted probability of being good
+        #############################################
+        updated_ys = np.zeros(n_distant_train)
+        weights    = np.zeros(n_distant_train)
+        _to_neg_one = lambda x : -1 if x <= 0 else 1
+        flipped_count, total_pos = 0, 0
 
-                updated_ys[i] = pred #pred[0][1]
-                weights[i] = weight
-            else:
-                # if x_tilde_i is None that means this is a `padding'
-                # instance that did not score high enough to be a candidate
-                # so we just stick with our -1 label.
+
+        for i, x_tilde_i in enumerate(X_tilde_train):
+
+            # 4/22 -- I think you want to also check the tuning indicators here!
+            # added "and tuning_indicators[i] == 0"
+            # is X_tilde_train the same shape ??? 
+            if directly_supervised_indicators_train[i] > 0 and not X_tilde_pmids[i] in tuning_pmids:
+                # we do not overwrite direct labels.
+                #print "directly labeled!"
+
+                weights[i] = weight * direct_weight_scalar # or something big, since these are direct?
+                # (remember that we overwrote the DS labels with
+                #   the direct above)
                 updated_ys[i] = y_distant_train[i]
-                weights[i] = 1.0 * DS_weight_scalar # arbitrary
+            else:
+                # distantly supervised; weight accordingly.
+                weights[i] = weight 
+                
+                if x_tilde_i is not None and y_distant_train[i] > 0:
 
-    print "ok! updated labels (flipped %s out of %s positive), now training the actual model.." % (
-                    flipped_count, total_pos)
+                    predicted_prob_i = m_sds.predict_proba(x_tilde_i)[0][1]
+                    pred = m_sds.predict(x_tilde_i)
+                    #pred = _to_neg_one(pred)
+                    cur_sent = sentences[i]
+                    total_pos += 1
+                    if pred < 1:
+                        #print "flipped label for sent %s" % cur_sent
+                        flipped_count += 1
+                        weights[i] = weights[i] * (1-predicted_prob_i)
+                    else: 
+                        weights[i] = weights[i] * predicted_prob_i
+
+                    updated_ys[i] = _to_neg_one(pred)
+                    
+                else:
+                    # if x_tilde_i is None that means this is a `padding'
+                    # instance that did not score high enough to be a candidate
+                    # so we just stick with our -1 label.
+
+                    ## maybe still scale by predicted prob of being negative 
+                    # here??
+                    updated_ys[i] = y_distant_train[i]
+                    #weights[i] = weights[i] 
+                   
+        print "ok! updated labels (flipped %s out of %s positive), now training the actual model.." % (
+                        flipped_count, total_pos)
 
 
-    clf = get_DS_clf()
-    #clf.fit(X_distant_train, updated_ys, sample_weight=weights)
-    clf.fit(X_distant_train, updated_ys, sample_weight=weights)
-    return clf
+        #clf = get_DS_clf()
+        for cur_alpha in alpha_range:
+            clf = SGDClassifier(alpha=cur_alpha, loss="log", 
+                                    class_weight="auto", shuffle=True)
+
+            clf.fit(X_distant_train[non_tuning_indices], updated_ys[non_tuning_indices], 
+                        sample_weight=weights[non_tuning_indices])
+
+            
+            if len(set(updated_ys))>2:
+                print "!?"
+                pdb.set_trace()
+
+            # how do we do on the held out data? 
+            tune_preds = clf.predict_proba(X_tune)[:,1]
+            errors = abs(y_tune - tune_preds)**2
+            # upweight false negative costs
+            errors[y_tune==1] = errors[y_tune==1]*lambda_
+            cur_score = np.sum(errors)
+            print "score for alpha %s, weight %s, direct_weight_scalar %s is: %s" % (
+                               cur_alpha, weight, direct_weight_scalar, cur_score)
+            if cur_score < best_score:
+                best_score = cur_score 
+                weight_star= weight
+                direct_weight_scalar_star = direct_weight_scalar
+                alpha_star = cur_alpha
+                clf_star = clf
+                weights_star = weights
+
+                print "-- found best score so far using: weight %s and direct_weight_scalar %s, alpha %s!" % (
+                        weight_star, direct_weight_scalar, alpha_star)
+    
+    # refit this using *all* data!
+    print "\nfitting final model!"
+    clf_star = SGDClassifier(alpha=alpha_star, loss="log",  class_weight="auto")
+    clf_star.fit(X_distant_train, updated_ys, sample_weight=weights_star)
+    return clf_star
 
 
 
@@ -816,7 +1033,7 @@ class Nguyen:
         #XX = sp.vstack((X1,X2)).T
 
         #XX = self._transform(X)
-        pass
+        self.beta = self._minimize(X,y)
         #self.alpha, self.beta = self._minimize(X, y)
         #pdb.set_trace()
 
@@ -844,41 +1061,41 @@ class Nguyen:
         #self.meta_clf.fit(XX, y)
 
     def _minimize(self, X, y):
-        pass
-        '''
+
         p1s = self.m1.predict_proba(X)[:,1]
         p2s = self.m2.predict_proba(X)[:,1]
 
         yy = (y + 1)/2
-        #lambda_ = len(yy[yy==0])/float(len(yy[yy==1]))
-        lambda_ = 1.0
+        lambda_ = len(yy[yy==0])/float(len(yy[yy==1]))
+        #lambda_ = 1.0
 
         print "lambda is: %s" % lambda_
-        betas = np.linspace(0,1,20)
-        alphas = np.linspace(0,1,20)
+        betas = np.linspace(0,1,50)
+        #alphas = np.linspace(0,1,20)
 
-        alpha_star, beta_star, best_score = None, None, np.inf
+        beta_star, best_score = None, np.inf
 
-        for alpha in alphas:
-            for beta in betas: 
-                preds = alpha*p1s + beta*p2s
-                errors = abs(yy - preds)**2
-                
-                errors[yy==1] = errors[yy==1]*lambda_
+        #for alpha in alphas:
+        for beta in betas: 
+            preds = beta*p1s + (1-beta)*p2s
+            errors = abs(yy - preds)**2
+            
+            errors[yy==1] = errors[yy==1]*lambda_
 
-                cur_score = np.sum(errors)
-                print "score for alpha: %s, beta: %s is %s" % (alpha, beta, cur_score)
-                if cur_score < best_score:
-                    beta_star = beta 
-                    alpha_star = alpha
-                    best_score = cur_score
+            cur_score = np.sum(errors)
+            print "score for beta: %s is %s" % (beta, cur_score)
+            if cur_score < best_score:
+                beta_star = beta 
+                #alpha_star = alpha
+                best_score = cur_score
 
 
-        print "best alpha (weight for %s): %s, beta (weight for %s): %s with score: %s" % (
-            self.m1_name, alpha_star, self.m2_name, beta_star, best_score)
-        pdb.set_trace()
-        return alpha_star, beta_star
-        '''
+        print "best beta is: %s with score: %s" % (beta_star, best_score)
+        #print "best alpha (weight for %s): %s, beta (weight for %s): %s with score: %s" % (
+        #    self.m1_name, alpha_star, self.m2_name, beta_star, best_score)
+        #pdb.set_trace()
+        return beta_star
+       
 
     def _transform_y(self, X, y):
         pass 
@@ -904,15 +1121,19 @@ class Nguyen:
         return XX
 
 
-    def predict(self, X):
+    def predict(self, X, threshold=.5):
         '''
         X_stacked = self._transform(X)
         return self.meta_clf.predict(X_stacked)
         '''
-        return self.m2.predict(X) 
+        return 1 if self.predict_proba(X) >= threshold else -1
 
     def predict_proba(self, X):
-        return self.m2.predict_proba(X)
+        #pdb.set_trace()
+        pred = self.beta * self.m1.predict_proba(X)[0][1] + (1-self.beta)*self.m2.predict_proba(X)[0][1]
+        return [pred, 1-pred] 
+                
+
         '''
         X_stacked = self._transform(X)
         return self.meta_clf.predict_proba(X_stacked)[:,1]
@@ -920,10 +1141,14 @@ class Nguyen:
 
     def decision_function(self, X):
         ''' just to conform to SGD API '''
-        return self.m2.decision_function(X)
-        '''
         return self.predict_proba(X)
-        '''
+        
+
+def _inverse_indices(nrows, indices):
+    # for when you want to grab -[list of indices].
+    # this seems kinda hacky but could not find a
+    # more numpythonic way of doing it...
+    return list(set(range(nrows)) - set(indices))
 
 def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     '''
@@ -941,12 +1166,6 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     paper (it's not super clear on this detail, actually).
     '''
 
-    def _inverse_indices(nrows, indices):
-        # for when you want to grab -[list of indices].
-        # this seems kinda hacky but could not find a
-        # more numpythonic way of doing it...
-        return list(set(range(nrows)) - set(indices))
-
     # train model 1 on direct and model 2 on
     # distant supervision
 
@@ -960,10 +1179,7 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     # here we are concerned with only these.
     directly_supervised_indices = direct_indices.nonzero()
 
-    #X_direct = X_train[direct_indices]
     X_direct = X_train[directly_supervised_indices]
-
-    #y_direct = y_train[direct_indices]
     y_direct = y_train[directly_supervised_indices]
 
     # the catch here is that we actually do
@@ -991,7 +1207,6 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     #############
     # model 2   #
     #############
-    #pdb.set_trace()
     DS_indices = _inverse_indices(X_train.shape[0], list(directly_supervised_indices[0]))
     X_DS = X_train[DS_indices]
     y_DS = y_train[DS_indices]
@@ -999,7 +1214,6 @@ def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     m2.fit(X_DS, y_DS)
 
     
-
     # now you need to combine these somehow.
     # i think it would suffice to run predictions
     # through a regressor?
@@ -1029,7 +1243,7 @@ def get_direct_clf():
 
 def get_DS_clf():
     # .0001, .001,
-    tune_params = [{"alpha":[.00001, .001, 1, 10]}]
+    tune_params = [{"alpha":[.00001, .0001, .001, .01, .1, 1, 10]}]
     #clf = GridSearchCV(LogisticRegression(), tune_params, scoring="accuracy", cv=5)
 
     ###
@@ -1111,7 +1325,7 @@ def build_clf(X, y):
     return clf
 
 def get_lr_clf(class_weight=None, scoring="accuracy"):
-    tune_params = [{"C":[.0001, .001, .01, .1, .05, 1, 2, 5, 10]}]
+    tune_params = [{"C":[.00001, .0001, .001, .01, .1, .05, 1, 5, 10, 100]}]
     clf = GridSearchCV(LogisticRegression(class_weight=class_weight),
                         tune_params, scoring=scoring, cv=5)
     return clf
@@ -1135,10 +1349,11 @@ def _score_to_binary_lbl(y, zero_one=True, threshold=2):
     # irrelevant (-1s).
     if not _is_number(y):
         # then this is a table; we'll return 
-        # -1 here (as this is the assumption for now)
+        # 0/-1 here (as this is the assumption for now)
         if not "t" in y:
             pdb.set_trace()
         assert "t" in y
+
 
     elif int(y) >= threshold:
         return 1
@@ -1177,10 +1392,12 @@ def generate_X_y(DS_learning_task, binary_labels=True,
         y.append(y_lbl_func(y_i))
         pmids.append(pmid_i)
 
+
     if return_pmids_too:
         # also returning the actual vectorizer for
         # later use...
         return X, y, pmids, vectorizer
+
 
     return X, y
 
@@ -1200,8 +1417,10 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
 # and should really be the general approach
 # 
 # was 8-2-24.csv
-def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-3-19.csv",
-                                labels_path="sds/annotations/master/figure8-3-19.csv",
+# 4/17 -- was figure8-3-19.csv   
+
+def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-4-20-15.csv",
+                                labels_path="sds/annotations/master/figure8-4-20-15.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4,
                                 normalize_numeric_cols=True,
@@ -1354,6 +1573,7 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-3
             # @TODO we may want to do something else here
             # with the label (e.g., maybe binarize it?)
             y_i = label_line[label_index]
+
             X_y_dict[PICO_field]["X"].append(X_i)
             X_y_dict[PICO_field]["y"].append(y_i)
             X_y_dict[PICO_field]["pmids"].append(study_id)
@@ -1434,7 +1654,7 @@ def get_DS_features_for_all_data(numeric_col_zs,
     # order as `all_PICO_DS' in pico_DS. This is crucial
     # because these items must be aligned.
     for n, study in enumerate(p):
-        if n % 100 == 0:
+        if n % 1000 == 0:
             print "on study %s" % n
 
         pdf = study.studypdf['text']
@@ -1581,7 +1801,10 @@ def extract_sds_features(candidate_sentence, shared_tokens, candidates,
 
     ## numeric features
     X_i_numeric = []
-    X_i_numeric.append(len(candidate_sentence.split(" ")))
+
+    # length should probably be a binary feature!
+    # and in any case, this is already coded for elsewhere
+    #X_i_numeric.append(len(candidate_sentence.split(" ")))
 
     X_i_numeric.append(len(candidates) - cur_candidate_index)
     candidate_score = scores[cur_candidate_index]
@@ -1592,11 +1815,11 @@ def extract_sds_features(candidate_sentence, shared_tokens, candidates,
     # 1/21 -- adding 'structural' features
     #structural_features = pico_DS.extract_structural_features(candidate_sentence)
     
-    structural_features = pico_v.extract_structural_features(candidate_sentence)
+    structural_features = pico_vectorizer.extract_structural_features(candidate_sentence)
     X_i_numeric.extend(structural_features.tolist())
 
     # note that we'll need to deal with merging these
-    # tesxtual and numeric feature sets elsewhere!
+    # textual and numeric feature sets elsewhere!
     X_i = (X_i_numeric, X_i_text)
     return X_i
 
