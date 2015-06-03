@@ -8,7 +8,30 @@ import numpy as np
 
 from sklearn import metrics
 
+import matplotlib.pyplot as plt
+
 fields = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
+
+
+def generate_plots(nguyen_path, sds_path):
+    lbls_n, lbls2_n, scores_n = _read_lbls_and_scores(nguyen_path)
+    fpr_n, tpr_n, thresholds_n = metrics.roc_curve(lbls_n, scores_n)
+    auc_n =  metrics.auc(fpr_n, tpr_n)
+
+    lbls_sds, lbls2_sds, scores_sds = _read_lbls_and_scores(sds_path)
+    fpr_sds, tpr_sds, thresholds_sds = metrics.roc_curve(lbls_sds, scores_sds)
+    auc_sds =  metrics.auc(fpr_sds, tpr_sds)
+
+    ### 
+    # ok, plotting time
+    plt.figure()
+    plt.plot(fpr_n, tpr_n, label='Nguyen (area = %0.2f)' % auc_n)
+    plt.plot(fpr_sds, tpr_sds, label='SDS (area = %0.2f)' % auc_sds)
+    plt.legend(loc="lower right")
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROCs (for level 1 relevance)')
+    plt.savefig("ROCs.pdf")
 
 
 # e.g., fpath="1433334082-results-sds_all_sentence_scores.txt"
