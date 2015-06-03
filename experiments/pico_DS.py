@@ -125,8 +125,13 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
             continue
 
         cochrane_id = study.cochrane['cdsr_filename']
-        for pico_field in PICO_DOMAINS:
-            ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study, pico_field, pdf_sents=pdf_sents, get_positional_features=True)
+
+        ### bcw -- 4/29 -- only doing this for population at the moment!!!
+        ### @TODO @TODO
+        for pico_field in PICO_DOMAINS[:1]:
+         
+            ranked_sentences_and_scores = get_ranked_sentences_for_study_and_field(study, pico_field, pdf_sents=pdf_sents, 
+                get_positional_features=True)
 
             # in this case, there was no supervision in the
             # CDSR so we just keep on moving
@@ -201,7 +206,8 @@ def vectorize(sentences_y_dict):
     these representations.
     '''
     domain_vectorizers = {}
-    for domain in PICO_DOMAINS:
+    # bcw tmp tmp tmp
+    for domain in PICO_DOMAINS[:1]:
 
         all_sentences = sentences_y_dict[domain]["sentences"]
 
@@ -209,7 +215,8 @@ def vectorize(sentences_y_dict):
         sentences_y_dict[domain]["X"] = domain_vectorizers[domain].fit_transform(all_sentences, 
                                             extra_features=sentences_y_dict[domain]["positional_features"])
 
-    
+
+    #pdb.set_trace()
     return sentences_y_dict, domain_vectorizers
 
 

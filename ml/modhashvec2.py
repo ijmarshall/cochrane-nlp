@@ -37,6 +37,18 @@ class ModularVectorizer(object):
             # of the data (they will have values > weighting)
 
     def builder_add_docs(self, X_si, weighting=1, low=None):
+        '''
+        bcw notes: so the way this works is that we assume X_si is a list 
+        of *tuples* comprising strings and domains, like:
+
+            [("we randomized people into two groups.", "Risk of bias") ... ]
+
+        if it is *not*, i.e., there are no domain interactions to be added,
+        then _deal_with_input will magically create a 'blank' tuple 
+        containing the string (effectively a 'null' interaction). next, 
+        the analyzer will deal with actually tokenizing the words /
+        appending interactions (specifically, see the _word_ngrams method).
+        '''
         X_part = self.vec.transform(X_si, low=low)
         self._combine_matrices(X_part, weighting=weighting)
 

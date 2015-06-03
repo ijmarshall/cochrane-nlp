@@ -6,8 +6,34 @@ sys.setdefaultencoding('utf8')
 
 import numpy as np 
 
+from sklearn import metrics
 
 fields = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
+
+
+# e.g., fpath="1433334082-results-sds_all_sentence_scores.txt"
+def AUCs(fpath):
+    lbls, lbls2, scores = _read_lbls_and_scores(fpath)
+    fpr, tpr, thresholds = metrics.roc_curve(lbls, scores)
+    auc =  metrics.auc(fpr, tpr)
+    print "auc 1: %s" % auc
+
+    fpr, tpr, thresholds = metrics.roc_curve(lbls2, scores)
+    auc =  metrics.auc(fpr, tpr)
+    print "auc 2: %s" % auc
+
+
+def _read_lbls_and_scores(fpath):
+    lbls, lbls2, scores = [], [], []
+    with open(fpath, 'rU') as all_scores_f:
+        all_scores = csv.reader(all_scores_f)
+        all_scores.next() # headers
+        for pmid, sentence, raw_pred, lbl1, lbl2 in all_scores:
+            lbls.append(int(lbl1))
+            lbls2.append(int(lbl2))
+            scores.append(float(raw_pred))    
+
+    return np.array(lbls), np.array(lbls2), np.array(scores)
 
 def average_results(results_file_path, target_variable="at least one (>=1):", 
                         field="CHAR_PARTICIPANTS"):

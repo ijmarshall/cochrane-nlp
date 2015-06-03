@@ -7,13 +7,17 @@ from nltk.metrics import AnnotationTask
 
 def get_brians_lbls():
     # list of (coder, example id, value) triples
-    return get_label_triples("sharma__and_brian_ratings_5.csv", "brian", -1, start_index=276)
+    return get_label_triples("master.csv", "brian", -1)
+    #return get_label_triples("round3/for_labeling-2-16-15_shared_w_labels.csv", "brian", -1, start_index=0)
+    #return get_label_triples("sharma__and_brian_ratings_5.csv", "brian", -1, start_index=276)
     #return get_label_triples("rating compare3.csv", "brian", 11, start_index=42)
     #return get_label_triples("rating_compare_2.csv", "brian", 6)
     #return get_label_triples("brian_labels.csv", "brian", 0)
 
 def get_aakash_lbls():
-    return get_label_triples("sharma__and_brian_ratings_5.csv", "aakash", -2, start_index=276)
+    return get_label_triples("master.csv", "aakash", -2)
+    #return get_label_triples("round3/for_labeling-2-16-15_shared_w_labels.csv", "aakash", -2, start_index=0)
+    #return get_label_triples("sharma__and_brian_ratings_5.csv", "aakash", -2, start_index=276)
     #return get_label_triples("for_labeling_sharma_round2.csv", "aakash", 4, start_index=276)
     #return get_label_triples("rating compare3.csv", "aakash", 10, start_index=42)
     #return get_label_triples("for_labeling_sharma.csv", "aakash", 4)
@@ -29,9 +33,10 @@ def get_label_triples(path, labeler_str, label_index, start_index=0):
         reader = csv.reader(csv_file)
 
         for i, row in enumerate(reader):
-            print i
+            
             #pdb.set_trace()
             if i >= start_index:
+                print i
                 lbl = row[label_index].strip()
                 # this is to feed to the AnnotationTask
                 # class eventually; see: 
