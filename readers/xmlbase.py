@@ -13,14 +13,25 @@ class XMLReader():
     returns plain text - tokenization should be done externally
     """
 
-    def __init__(self, filename=None):
-        self.filename = filename
-        self.data = self.load(filename)
+    def __init__(self, filename=None, xml_string=None):
+
+        if filename:
+            self.parse_file(filename)
+        else:
+            self.parse_string(xml_string)
+
         self.section_map = {}
-                    
-    def load(self, filename):
-        return ET.parse(filename)
-            
+
+    def __getattr__(self, attr):
+        result = self.text_filtered_all(attr)
+        return result
+
+    def parse_file(self, filename):
+        self.data = ET.parse(filename)
+
+    def parse_string(self, xml_string):
+        self.data =  ET.fromstring(xml_string)
+
     def _ET2unicode(self, ET_instance, strip_tags=True):
         "returns unicode of elementtree contents"
         if ET_instance is not None:
@@ -58,9 +69,8 @@ class XMLReader():
             output[part_id] = self._ET2unicode(self.data.find(loc))
         return output
 
-    def xml_filtered_all(self, part_id=None):        
+    def xml_filtered_all(self, part_id=None):
         return self.data.findall(self.section_map[part_id])
 
-    def xml_filtered(self, part_id=None):        
+    def xml_filtered(self, part_id=None):
         return self.data.find(self.section_map[part_id])
-        
