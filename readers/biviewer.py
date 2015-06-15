@@ -13,6 +13,7 @@ from collections import defaultdict
 
 from journalreaders import PdfReader
 from pmreader import *
+import clinicaltrials
 from progressbar import ProgressBar
 from rm5reader import *
 
@@ -24,6 +25,7 @@ import cochranenlp
 
 COCHRANE_REVIEWS_PATH = cochranenlp.config["Paths"]["cochrane_reviews_path"] # to revman files
 PUBMED_ABSTRACTS_PATH = cochranenlp.config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
+CLINICAL_TRIALS_PATH = cochranenlp.config["Paths"]["clinical_trials_path"] # to clinicaltrials.gov
 PDF_PATH = cochranenlp.config["Paths"]["pdf_path"] # to pubmed pdfs
 DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to pubmed pdfs
 
@@ -166,6 +168,40 @@ class BiViewer():
             self.data.append(self[i])
 
 
+class ClinicalTrialsBiViewer(BiViewer):
+    """
+    Accesses parallel data from Clinicaltrials.gov and 
+    linked primary Pubmed abstracts
+
+    """
+    def __init__(self, **kwargs):
+        self.BiviewerView = collections.namedtuple('BiViewer_View', ['clinicaltrials', 'pubmed'])
+
+        if "linkfile" not in kwargs:
+            kwargs["linkfile"] = os.path.join(DATA_PATH, "clinicaltrials_links.pck")
+
+        kwargs["dedupe"] = False
+
+        BiViewer.init_common_variables(self, **kwargs)
+
+    def __getitem__(self, key):
+        
+        study = self.index_data[key]
+
+        ct = clinicaltrials.Reader(filename=CLINICAL_TRIALS_PATH + study['clinicaltrials.gov'])
+        pm = PubmedCorpusReader(PUBMED_ABSTRACTS_PATH + study['pmid'] + ".xml")
+
+
+        return self.BiviewerView(ct, pm)
+
+    def second_view(self, study):
+        """ not used here """
+        pass
+
+
+        # ct = clinicaltrials.Reader(filename=(CLINICAL_TRIALS_PATH + self.index_data[key]['clinicaltrials.gov']))
+
+        
 
 
 class PDFBiViewer(BiViewer):

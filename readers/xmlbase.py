@@ -15,16 +15,23 @@ class XMLReader():
 
     def __init__(self, filename=None, xml_string=None):
 
+        self.filename=filename
+
         if filename:
+            
             self.parse_file(filename)
         else:
             self.parse_string(xml_string)
 
         self.section_map = {}
 
-    def __getattr__(self, attr):
-        result = self.text_filtered_all(attr)
-        return result
+    # def __getattr__(self, attr):
+    #     result = self.text_filtered_all(attr)
+    #     return result
+
+
+    def __dir__(self):
+        return self.section_map.keys()
 
     def parse_file(self, filename):
         self.data = ET.parse(filename)
@@ -74,3 +81,5 @@ class XMLReader():
 
     def xml_filtered(self, part_id=None):
         return self.data.find(self.section_map[part_id])
+
+    get = text_filtered_all # synonym
