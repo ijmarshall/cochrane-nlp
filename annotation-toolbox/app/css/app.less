@@ -1,0 +1,130 @@
+tx { background-color: fadeout(#FFD273, 20%); }
+n { background-color: fadeout(#5EC4CD, 20%); }
+
+@tx1: fadeout(#FF7373, 20%);
+tx1 { background-color: @tx1; }
+tx1_a { background-color: lighten(@tx1, 20%); }
+tx1_b { background-color: lighten(@tx1, 20%); }
+tx1-a { background-color: lighten(@tx1, 20%); }
+tx1-b { background-color: lighten(@tx1, 20%); }
+n1 { background-color: spin(@tx1, 20); }
+
+@tx2: fadeout(#3BA3D0, 20%);
+tx2 { background-color: @tx2; }
+tx2_a { background-color: lighten(@tx2, 20%); }
+tx2_b { background-color: lighten(@tx2, 20%); }
+tx2-a { background-color: lighten(@tx2, 20%); }
+tx2-b { background-color: lighten(@tx2, 20%); }
+n2 { background-color: spin(@tx2, 20); }
+
+@tx3: fadeout(#86B32D, 20%);
+tx3 { background-color: @tx3; }
+tx3_a { background-color: lighten(@tx3, 20%); }
+tx3_b { background-color: lighten(@tx3, 20%); }
+tx3-a { background-color: lighten(@tx3, 20%); }
+tx3-b { background-color: lighten(@tx3, 20%); }
+n3 { background-color: spin(@tx3, 20); }
+
+@tx4: fadeout(#FF7800, 20%);
+tx4 { background-color: @tx4; }
+tx4_a { background-color: lighten(@tx4, 20%); }
+tx4_b { background-color: lighten(@tx4, 20%); }
+tx4-a { background-color: lighten(@tx4, 20%); }
+tx4-b { background-color: lighten(@tx4, 20%); }
+n4 { background-color: spin(@tx4, 20); }
+
+@tx5: fadeout(#78FF00, 20%);
+tx5 { background-color: @tx5; }
+tx5_a { background-color: lighten(@tx5, 20%); }
+tx5_b { background-color: lighten(@tx5, 20%); }
+tx5-a { background-color: lighten(@tx5, 20%); }
+tx5-b { background-color: lighten(@tx5, 20%); }
+n5 { background-color: spin(@tx5, 20); }
+
+.exclude {
+    color: #ccc;
+}
+.notes {
+    margin-top: 2em;
+    font-weight: bold;
+}
+
+.row {
+    min-width: 90% !important;
+}
+
+/* Annotate tooltip */
+#annotatePopup {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    position: absolute;
+    z-index: 10000;
+    display: none;
+    opacity: 0.8;
+    border: 1px solid #ccc;
+    background-color: white;
+    ul {
+        padding: 10px;
+        margin-bottom: 0;
+        list-style-type: none;
+        li {
+            a:hover { text-decoration: underline;}
+        }
+    }
+}
+
+/*====================================================
+  CSS Tooltips by Adam Whitroft
+  https://github.com/AdamWhitcroft/CSS.Tooltips
+  ====================================================*/
+/*==================================================*/
+/* $Tooltips */
+/*==================================================*/
+[data-tip] {
+    position:relative;
+    cursor:help;
+}
+[data-tip]:before {
+    content:'';
+    /* hides the tooltip when not hovered */
+    display:none;
+    border:5px solid #1a1a1a;
+    /* 4 border technique to create the arrow */
+    border-top-color:#1a1a1a;
+    border-right-color:transparent;
+    border-bottom-color:transparent;
+    border-left-color:transparent;
+    position:absolute;
+    top:-9px;
+    left:10px;
+    z-index:8;
+    font-size:0;
+    line-height:0;
+    width:0;
+    height:0;
+}
+[data-tip]:after {
+    display:none;
+    content:attr(data-tip);
+    position:absolute;
+    top:-35px;
+    left:0px;
+    padding:5px 8px;
+    background:#1a1a1a;
+    color:#fff;
+    z-index:9;
+    font-size: 1em;
+    height:26px;
+    line-height:19px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    white-space:nowrap;
+    word-wrap:normal;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+    display:block;
+}
