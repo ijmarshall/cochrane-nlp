@@ -26,9 +26,13 @@ class Reader(XMLReader):
         self.section_map["population"] = 'eligibility'
         self.section_map["interventions"] = 'intervention/intervention_name'
         self.section_map["outcomes"] = 'clinical_results/outcome_list/outcome'
-        self.section_map["arms"] = 'number_of_arms'
+        self.section_map["num_arms"] = 'number_of_arms'
+        self.section_map["arms"] = 'arm_group/arm_group_label'
         self.section_map["resultspmids"] = 'results_reference/PMID'
         self.section_map["pmids"] = 'reference/PMID'
+        self.section_map["nct_id"] = 'id_info/nct_id'
+
+
         # self.section_map["abstract"] = 'Article/Abstract'
         # self.section_map["linkedIds"] = 'OtherID'
         # self.section_map["pmid"] = 'PMID'
