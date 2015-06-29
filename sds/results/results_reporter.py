@@ -12,6 +12,9 @@ import scipy as sp
 from sklearn import metrics
 
 import matplotlib.pyplot as plt
+import pylab
+import seaborn as sns
+sns.set_style("whitegrid")
 
 fields = ["CHAR_PARTICIPANTS", "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]
 
@@ -141,6 +144,8 @@ def all_results():
         sig_test_etc(domain=d)
         print "\n\n"
 
+
+
 def sig_test_etc(domain="CHAR_OUTCOMES"):
     fpath_n = "1435156741-results-nguyen_all_sentence_scores.txt"
     aucs_n, fprs_sds, tprs_sds = aucs_per_pmid(fpath_n, domain=domain, lbl_str="lbl1")
@@ -160,11 +165,22 @@ def sig_test_etc(domain="CHAR_OUTCOMES"):
 
     draw_auc_stuff(aucs_n, aucs_sds, name=domain)
 
+def prettify_canvas():
+    ax1 = pylab.axes()
+    pylab.setp(ax1.get_xticklabels(), size=14)
+    pylab.setp(ax1.get_yticklabels(), size=14)
+    pylab.setp(ax1.xaxis.label, size=16)
+    pylab.setp(ax1.yaxis.label, size=16)
+    pylab.rcParams['font.family'] = 'sans-serif'
+    pylab.rcParams['font.sans-serif'] = ['Helvetica']
+    ax1.spines["top"].set_visible(False)
+    ax1.spines["right"].set_visible(False)
+    pylab.axes().xaxis
+    pylab.axes().yaxis
+
 def draw_auc_stuff(aucs_n, aucs_sds, name="yo", add_percentiles=False):
-    import pylab
-    import seaborn as sns
-    sns.set_style("whitegrid")
     pylab.clf()
+    prettify_canvas()
     sns.kdeplot(np.array(aucs_n), shade=True, color="red")
     sns.kdeplot(np.array(aucs_sds), shade=True, color="blue")
 
