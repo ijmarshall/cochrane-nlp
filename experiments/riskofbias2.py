@@ -395,8 +395,8 @@ class MultiTaskDocFilter(DataFilter):
                     continue 
                 y.append(judgement)
                 interactions.append(doc_domain) 
-        if interactions_too:
-            return y, interactions 
+        # if interactions_too:
+        #     return y, interactions 
         return y
 
     def Xyi(self, doc_indices, pmid_instance=0, domain=None):

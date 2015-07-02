@@ -6,6 +6,7 @@
 import urllib
 import socket
 import xml.etree.cElementTree as ET
+from cochranenlp.output import progressbar
 
 
 socket.setdefaulttimeout(6)
@@ -147,11 +148,16 @@ class IterSearch():
         self.buffer = {}
         self.pubmed = Pubmed()
 
-    def itersearch(self):
+    def itersearch(self, show_progress=False):
 
         count = int(self.pubmed.esearch(self.term, db=self.db, retmax=0)["Count"])
 
+        if show_progress:
+            p = progressbar.ProgressBar(count/self.retmax, timer=True)
+
         for i in range(0, count, self.retmax):
+            if show_progress:
+                p.tap()
             result = self.pubmed.esearch(self.term, db=self.db, retmax=self.retmax, retstart=i)
             for study_id in result["IdList"]:
                 yield(study_id)

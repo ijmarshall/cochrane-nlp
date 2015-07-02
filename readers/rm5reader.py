@@ -201,7 +201,7 @@ class RM5(XMLReader):
         study = self.map["included_studies"].find(search_string)
        
         cites = study.findall("REFERENCE")
-        part_ids = ["TI", "SO", "AU", "YR", "PG", "VL"]
+        part_ids = ["TI", "SO", "AU", "YR", "PG", "VL", "NO"]
 
         if hide_secondary_refs:
 
@@ -320,34 +320,7 @@ class RM5(XMLReader):
             
             
         
-    def _refs_PG(self, ref):
-        "Accepts string with page number e.g. 1254-63; outputs tuple (start, end)"
-        
-        if ref is None:
-            return ("", "")
-        
-        ref_parts = ref.split('-')
 
-        start = ref_parts[0]
-        
-        if len(ref_parts) == 1:
-            return (start, start)
-
-        elif len(ref_parts) == 2:
-            end = ref_parts[1]
-            
-            if len(end) < len(start):
-                end = start[:(len(start)-len(end))] + end
-            
-            return (start, end)
-        else:
-            return ("", "")
-            
-    def _refs_AU(self, author_string):
-        "Accepts string with list of authors; outputs list, et als removed"
-        author_string = re.sub("[\s\.,]*et al", "", author_string)
-        authors = author_string.split(', ')
-        return authors
 
     def sof_table(self):
         return self._ETfind("SOF_TABLES/SOF_TABLE", self.data, strip_tags=False)
@@ -484,8 +457,8 @@ def main():
     print reader.char_refs(study_id=ids[0])["CHAR_PARTICIPANTS"]
     print
 
-    print "Risk of bias"
-    print
+    # print "Risk of bias"
+    # print
 
     # for i, domain in enumerate(refs[ids[0]]["QUALITY"]):
     #     print "Domain number %d" % (i, )
@@ -493,15 +466,15 @@ def main():
     #     print "Description\t" + domain["DESCRIPTION"]
     #     print "Rating\t\t" + domain["RATING"]
         
-    print reader.references()
+    print reader.references().values()
     print
     # print reader.references(study_id = ['STD-Thomas-1987', 'STD-Vercellini-1999'])
 
-    print
-    print reader.sof_table()
+    # print
+    # print reader.sof_table()
 
 
-    print reader.quality(study_id='STD-Brazil-1992a')
+    # print reader.quality(study_id='STD-Brazil-1992a')
 
     # print "Analyses"
     # print
@@ -517,7 +490,34 @@ def main():
     #         print analysis["Name"]
     
 
+def _refs_PG(ref):
+    "Accepts string with page number e.g. 1254-63; outputs tuple (start, end)"
+    
+    if ref is None:
+        return ("", "")
+    
+    ref_parts = ref.split('-')
 
+    start = ref_parts[0]
+    
+    if len(ref_parts) == 1:
+        return (start, start)
+
+    elif len(ref_parts) == 2:
+        end = ref_parts[1]
+        
+        if len(end) < len(start):
+            end = start[:(len(start)-len(end))] + end
+        
+        return (start, end)
+    else:
+        return ("", "")
+        
+def _refs_AU(author_string):
+    "Accepts string with list of authors; outputs list, et als removed"
+    author_string = re.sub("[\s\.,]*et al", "", author_string)
+    authors = author_string.split(', ')
+    return authors
 
 
 if __name__ == '__main__':
