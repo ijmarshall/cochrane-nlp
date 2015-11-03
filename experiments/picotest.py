@@ -30,33 +30,35 @@ def word_list(text):
 
 
 def main(arg=None):
+    # Get an instance of the object that allows you to view cochrane aligned with full-text pdf publications
     p = biviewer.PDFBiViewer()
 
+    # Pick a random publication
     p_max = len(p) - 1
     p_i = random.randint(0, p_max)
 
+    # Get the text of the pdf of that publication
     pdf = p[p_i].studypdf['text']
+    pdf = pdf.decode('utf-8')
     pdf_sents = sent_tokenize(pdf)
 
     for part in ["CHAR_PARTICIPANTS"]:#, "CHAR_INTERVENTIONS", "CHAR_OUTCOMES"]:
 
         print part
+        print p[p_i].cochrane['cdsr_filename']
         print "*" * 40
 
+        # Get the population summary from cochrane for this pdf
         t = p[p_i].cochrane["CHARACTERISTICS"][part]
         cdsr_words = word_list(t)
 
         # print cdsr_words
 
-        
+        # For each sentence in the pdf, count how many words overlap with the cochrane population summary
         intersects = []
-
         for i, sent in enumerate(pdf_sents):
             sent_words = word_list(sent)
             intersects.append(len(cdsr_words.intersection(sent_words)))
-
-
-
         intersects = np.array(intersects)
 
         if arg == "plot":
@@ -77,21 +79,17 @@ def main(arg=None):
             plt.show()
 
 
+        # Find all the pdf sentences for which the maximum number of words matched
         max_val = max(intersects)
         max_indices = [i for i, j in enumerate(intersects) if j == max_val]
 
-        print "Text from CDSR:"
-        
-
-        
+        print "Population summary from CDSR:"
         print t
         print
 
-        print "Text from PDF:"
-        
-        
+        print "PDF sentences which have highest overlap:"
         for v in max_indices:
-            print pdf_sents[v]
+            print pdf_sents[v].replace('\n', ' ')
         print
 
 

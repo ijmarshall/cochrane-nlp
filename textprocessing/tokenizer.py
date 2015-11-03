@@ -18,11 +18,11 @@ import parse_annotations
 from indexnumbers import swap_num
 
 
-import configparser # easy_install configparser
+import ConfigParser # easy_install configparser
 
 import cochranenlp
 
-base_path = cochranenlp.config["Paths"]["base_path"]
+base_path = cochranenlp.config.get('Paths', 'BASE_PATH')
 
 
 

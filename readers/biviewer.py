@@ -21,13 +21,13 @@ import cochranenlp
 
 ### set local paths from CNLP.INI
 
+COCHRANE_REVIEWS_PATH = cochranenlp.config.get('Paths', 'COCHRANE_REVIEWS_PATH') # to revman files
+PUBMED_ABSTRACTS_PATH = cochranenlp.config.get('Paths', 'PUBMED_ABSTRACTS_PATH') # to pubmed xml
+CLINICAL_TRIALS_PATH = cochranenlp.config.get('Paths', 'CLINICAL_TRIALS_PATH') # to clinicaltrials.gov
+PDF_PATH = cochranenlp.config.get('Paths', 'PDF_PATH') # TO PUBMEd pdfs
+DATA_PATH = cochranenlp.config.get('Paths', 'BASE_PATH') # TO PUBMed pdfs
 
 
-COCHRANE_REVIEWS_PATH = cochranenlp.config["Paths"]["cochrane_reviews_path"] # to revman files
-PUBMED_ABSTRACTS_PATH = cochranenlp.config["Paths"]["pubmed_abstracts_path"] # to pubmed xml
-CLINICAL_TRIALS_PATH = cochranenlp.config["Paths"]["clinical_trials_path"] # to clinicaltrials.gov
-PDF_PATH = cochranenlp.config["Paths"]["pdf_path"] # to pubmed pdfs
-DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to pubmed pdfs
 
 
 

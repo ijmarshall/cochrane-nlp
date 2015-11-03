@@ -13,7 +13,7 @@ import collections
 import re
 
 
-DATA_PATH = cochranenlp.config["Paths"]["base_path"]
+DATA_PATH = cochranenlp.config.get('Paths', 'BASE_PATH') # TO PUBMed pdfs
 
 
 class Drugbank:

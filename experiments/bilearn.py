@@ -16,17 +16,17 @@ import math
 from pprint import pprint
 import re
 
-import biviewer
-from indexnumbers import swap_num
+from readers import biviewer
+from textprocessing.indexnumbers import swap_num
 
 import numpy as np
-import pipeline
+import textprocessing.pipeline
 import progressbar
 from scipy import stats
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
-from tokenizer import tag_words
-from journalreaders import LabeledAbstractReader
+from textprocessing.tokenizer import tag_words
+from readers.journalreaders import LabeledAbstractReader
 
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC

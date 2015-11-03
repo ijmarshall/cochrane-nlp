@@ -37,7 +37,7 @@ from cochranenlp.textprocessing.indexnumbers import NumberTagger
 numberswap = NumberTagger().swap
 
 import cochranenlp
-DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to data
+DATA_PATH = cochranenlp.config.get('Paths', 'BASE_PATH') # TO PUBMed pdfs
 
 
 import sys
@@ -113,10 +113,8 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
     for n, study in enumerate(p):
         progress.tap()
 
-
         pdf = study.studypdf['text'].decode("utf8", errors="ignore")
-        
-    
+
         study_id = "%s" % study[1]['pmid']
 
         pdf_sents = sent_tokenize(pdf)
@@ -174,7 +172,6 @@ def all_PICO_DS(cutoff=4, max_sentences=10, add_vectors=True, pickle_DS=True):
 
     # add vector representations to the dictionary
     if add_vectors:
-
 
         sentences_y_dict, domain_vectorizers = vectorize(sentences_y_dict)
 
