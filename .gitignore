@@ -81,3 +81,6 @@ mallet-output/tx.mallet.test-lbls
 mallet-output/tx.mallet.test-tokens
 
 mallet-output/tx.mallet.train
+
+# pycharm
+.idea/
