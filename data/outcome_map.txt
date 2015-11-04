@@ -1,0 +1,700 @@
+#
+#   Risk of bias - Outcome map
+#   0 = not yet assessed
+#   1 = mortality
+#   2 = other objective outcomes
+#   3 = subjective/mixed outcomes
+#   4 = exclude (i.e. the RoB is scope is not actually an outcome)
+#
+#   definitions of outcomes from:
+#   Savović, J. et al (2012). Influence of reported study design characteristics on intervention effect estimates from randomised controlled trials: combined analysis of meta-epidemiological studies. Health Technology Assessment (Winchester, England), 16(35), 1–82. http://doi.org/10.3310/hta16350
+? ''
+: 4
+'- of outcome assessors?': 4
+-of participants on self-reported outcomes?: 4
+1 to 6 months: 4
+10-day mortality: 1
+12 month follow up: 4
+12 weeks or less: 4
+2-day mortality: 1
+24 month follow up: 4
+3 months or less: 4
+3 months post discharge: 4
+30-day mortality: 1
+5 yr survival: 1
+50% or greater reduction in seizure frequency: 2
+6 months post discharge: 4
+< 1 month: 4
+AAD: 3
+AE: 3
+AMD: 2
+Accessibility: 4
+Active and controlled appeared similar: 4
+Active trachoma: 2
+Acute infective respiratory exacerbation: 3
+Acute nausea: 3
+Acute non-infective respiratory exacerbation: 3
+Acute vomiting: 3
+Administrative outcomes: 3
+Admission to NNU: 2
+Admission to special care - NICU: 2
+Adverse Events: 3
+Adverse drug events: 3
+Adverse effects: 3
+Adverse event outcomes: 3
+Adverse events: 3
+'Adverse events:': 3
+Adverse outcomes: 3
+After 12 weeks: 4
+After 3 months: 4
+Alcohol use outcomes: 3
+All Outcomes: 4
+All Outcomes:Outcome assessors blinded: 4
+All clinical outcomes: 4
+All groups: 4
+All other outcomes: 4
+All outcome: 4
+All outcomes: 4
+All outcomes (participants): 4
+All outcomes (personnel): 4
+All outcomes - Analyze in the group: 4
+All outcomes - Care providers?: 4
+All outcomes - Dropout rate acceptable: 4
+All outcomes - ITT analysis: 4
+All outcomes - ITT analysis?: 4
+All outcomes - Observers?: 4
+All outcomes - Participants?: 4
+All outcomes - Withdrawal/drop-out rate?: 4
+All outcomes - administrators of the intervention?: 4
+All outcomes - assessor: 4
+All outcomes - assessors: 4
+All outcomes - care provider: 4
+All outcomes - care provider?: 4
+All outcomes - care providers: 4
+All outcomes - care providers?: 4
+All outcomes - caregivers blinded: 4
+All outcomes - drop-out rate?: 4
+All outcomes - drop-outs: 4
+All outcomes - drop-outs during follow-up?: 4
+All outcomes - drop-outs during intervention?: 4
+All outcomes - drop-outs?: 4
+All outcomes - intention-to-treat analysis?: 4
+All outcomes - levels of attrition reported and acceptable: 4
+All outcomes - lost to follow-up: 4
+All outcomes - outcome assessor: 4
+All outcomes - outcome assessor?: 4
+All outcomes - outcome assessors: 4
+All outcomes - outcome assessors blinded: 4
+All outcomes - outcome assessors?: 4
+All outcomes - participants: 4
+All outcomes - participants blinded: 4
+All outcomes - participants?: 4
+All outcomes - patient: 4
+All outcomes - patients: 4
+All outcomes - patients?: 4
+All outcomes - personnel: 4
+All outcomes - providers: 4
+All outcomes - providers?: 4
+All outcomes Less than 6 weeks: 4
+All outcomes More than 6 weeks: 4
+All outcomes except death: 3
+All outcomes except drop out: 4
+All outcomes except mortality: 3
+All outcomes except mortality and survival: 3
+All outcomes except withdrawal: 3
+All outcomes later than 3 months after randomisation: 4
+All outcomes up to 3 month after randomisation: 4
+All outcomes(long term): 4
+All outcomes(short term): 4
+All outcomes- outcome assessors: 4
+All outcomes- outcome assessors?: 4
+All outcomes- participants: 4
+All outcomes- patients?: 4
+All outcomes- providers: 4
+All outcomes- providers?: 4
+All outcomes-.outcome assessors: 4
+All outcomes.: 4
+All outcomes. Participants, outcome assessors, clinicians, statisticians: 4
+'All outcomes: Participants blinded': 4
+All tests: 4
+All-cause mortality: 1
+Analgesia requirements: 3
+Anatomic outcome: 4
+Anterior resection or abdominoperineal resection: 2
+Any adverse event: 3
+Apgar scores: 3
+Arterial cord gas: 2
+Assessment of cause of death: 3
+Assessor: 4
+Assessor blinding; All outcomes: 4
+Assessor of bleeding assessment: 3
+Assessor-reported outcomes: 3
+Assessors: 4
+Asthma knowledge and skills: 3
+Asthma-related events: 3
+Asthma-related serious adverse events: 3
+Attitude: 3
+Author defined kidney failure: 3
+Average weight change: 3
+Binary outcomes: 4
+Biopsies: 2
+Blinded outcome: 4
+Blinding care provider: 4
+Blinding of Participants: 4
+Blinding of caregivers: 4
+Blinding of caregivers bias?: 4
+Blinding of healthcare providers?All outcomes: 4
+Blinding of outcome assessment?: 4
+Blinding of outcome assessor: 4
+Blinding of outcome assessors: 4
+Blinding of outcome assessors? All outcomes: 4
+Blinding of outcomes assessors?: 4
+Blinding of participants/care providers: 4
+Blinding of participants? All outcomes: 4
+Blinding of patients: 4
+Blinding of patients bias?: 4
+Blinding of patients?: 4
+Blinding of personnel delivering intervention - all outcomes: 4
+Blinding of provider: 4
+Blinding of providers or participants?: 4
+Blinding outcome assessor: 4
+Blinding outcome assessors: 4
+Blinding participants: 4
+Blinding patient: 4
+Blinding personnel delivering intervention: 4
+Block Assessment: 4
+Blood Pressure: 2
+Blood lead level: 2
+Body weight: 2
+Bone density outcomes: 2
+Breathlessness: 3
+C. difficile  incidence: 2
+CDAD: 2
+CR, toxicity, quality of life: 3
+Caesarean section rate: 2
+Cardiovascular measurement: 2
+Care needs: 3
+Care provider: 4
+Care provider blinding: 4
+Care providers: 4
+Care providers blinded: 4
+Caregiver or clinician: 4
+Caregiver reported outcomes: 3
+Caregiver-reported outcomes: 3
+Carers: 4
+Change in ankle dorsiflexion range of motion: 2
+Change in cardiac function measured by a diagnostic test (as defined by authors): 3
+Change in grade of nausea or vomiting at second visit compared to first: 3
+Change in quality of life (as defined by authors): 3
+Clinical Staff: 4
+Clinical assessments: 4
+Clinical cure: 3
+Clinical cure/failure: 3
+Clinical or neurophysiological outcome: 3
+Clinical outcomes: 3
+Clinical outcomes like CRBSI: 3
+Clinical parameters (severity scales, SpO 2 , respiratory and heart rate): 3
+Clinical scores and other symptoms/clinical outcomes: 3
+Clinical staff: 4
+Clinician: 4
+Clinician assessed outcomes: 3
+Clinician reported outcomes: 3
+Clinician-rated outcomes: 3
+Clinician-rated outcomes e.g. non-union, range of motion: 3
+Clinician/ Investigator: 4
+Clinicians: 4
+Clinicians/assessors: 4
+'Clinicians: surgeons and midwives': 4
+Co-investigators: 4
+Cognitive status: 3
+Complication: 0
+Complications: 0
+Continuity: 0
+Continuous outcomes: 4
+Cough frequency or score: 3
+Creatinine based: 2
+Cure at end of treatment: 3
+Data analysers: 4
+Data analyst: 4
+Data analysts: 4
+Days missed school: 2
+Death: 1
+Death, complications, readmission, re-operation: 2
+Death, reoperation: 2
+Death, residence, readmission: 2
+Deaths: 1
+Delay delivery interval: 2
+Development of CNV/geographic atrophy: 3
+Development of clinical heart failure (as defined by authors): 3
+Disability: 3
+Disease activity: 3
+Disease risk factor outcomes: 3
+Doctors, All outcomes: 4
+Drop out rate acceptable: 4
+Drop out rate described: 4
+Drop out rate described and acceptable (> 80%): 4
+Drop out rate described and acceptable - all outcomes: 4
+Drop out rates: 4
+Drop outs / withdrawals: 4
+Drop outs/withdrawals: 4
+Drop-out rate described and acceptable -All outcomes: 4
+Drop-outs - All outcomes: 4
+Duration of diarrhoea: 3
+Duration of hospital stay: 2
+Duration of response: 3
+Duration of vomiting: 3
+Economic: 4
+Economic outcomes: 4
+Efficacy: 4
+Efficacy outcomes: 4
+End of Study outcomes: 4
+Episodes of interaction with infants (e.g. holding and kangaroo care) and frequency of family visits: 3
+Exacerbations: 3
+Examiner Blinded: 3
+Examiner assessed outcomes: 3
+Exclusion of participants: 2
+Experimental group 1: 4
+Expert committee: 4
+Failure: 4
+Fallers: 3
+Falls: 3
+Falls and fallers: 3
+Family satisfaction and length of hospital stay: 3
+Follow up: 4
+Foot and ankle muscle strength: 3
+For investigator e patients: 4
+For outcome assessors: 4
+For participants: 4
+Fracture of the hip or pelvis: 2
+Fractures: 2
+Frequency of vomiting by day of treatment: 3
+Function: 3
+Function, QOL: 3
+Functional and clinical outcomes: 3
+Functional motor ability: 3
+Functional outcomes: 3
+Functional outcomes, pain, clinical outcomes, complications: 3
+Functional status: 3
+HDRS: 3
+HIT: 2
+Haemoglobin or anaemia: 2
+Handling of missing data: 4
+HbA1c: 2
+Head-to-head comparisons?: 4
+Health: 3
+Health care providers: 4
+Health care use ((re)admissions, LOS, return visits): 2
+Health care utilisation: 2
+Health-related quality of life: 3
+Healthcare providers - all outcomes: 4
+Hospital admission: 2
+Hospital emergency department contacts (all-cause): 2
+Hospital emergency department contacts (due to adverse drug events): 3
+Hospital readmissions (all-cause): 2
+Hospital readmissions (due to adverse drug events): 3
+Household dust: 3
+Hyperstimation rates: 3
+IKDC: 3
+ITT analysis: 4
+ITT analysis - All outcomes: 4
+ITT analysis - all outcomes: 4
+ITT analysis -All outcomes: 4
+ITT analysis undertaken: 4
+ITT-analyses performed?: 4
+IVH and PVL: 3
+Incomplete outcome(s) data: 4
+Independent reports: 4
+Intention to treat analysis: 4
+Intention to treat for primary outcome?: 4
+Intention-to-treat analysis: 4
+Intervention: 4
+Intervention blinded: 4
+Intravenous pain regimens: 3
+Investigator: 4
+Investigator and participant: 4
+Investigators: 4
+Is this the right outcome?: 4
+Knowledge: 3
+Laboratory assessed outcomes: 2
+Lactation: 3
+Length of second stage: 2
+Length of stay: 2
+Lesion size on fluorescein angiography: 2
+Levobupivacaine: 4
+Long term outcomes: 4
+Long-term outcomes: 4
+Longer-term outcomes: 4
+Lymphocyst formation: 2
+Malaria: 2
+Malaria infections: 2
+Manometric examinations: 2
+Masking of caregivers: 4
+Masking of outcome assessor: 4
+Masking of patients: 4
+Masking of physician: 4
+Maternal outcomes: 3
+Measurement of vision: 3
+Medical: 4
+Medical outcomes: 3
+Medium and long-term outcomes (3 and 6 months): 4
+Medium term term outcomes (up to 18 months): 4
+Microbiological outcomes like catheter colonization: 2
+Missing outcome data?: 4
+Mobility, functional outcomes, pain: 3
+Mortality: 1
+Mortality (all-cause): 1
+Mortality /complications: 3
+Mortality due to heart failure: 3
+Mortality/complications: 3
+Motor fluctuations & dyskinesias: 3
+Motor outcomes: 3
+Musculoskeletal disorders: 3
+NCATS: 3
+NPI (Neuro Psychiatric Inventory) and DCM (Dementia Care Mapping): 3
+Nasal damage: 3
+Need for intubation: 2
+Neonatal outcomes: 3
+Nephrotoxicity: 3
+Neuological outcome: 3
+Neurodevelopmental follow up: 2
+Number of drop-outs in each group reported: 4
+Nutritional outcomes: 3
+OCS treated exacerbations: 2
+OCS-treatment, admission to hospital & asthma-related SAEs: 3
+OCS-treatment, hospital admission & asthma-related SAEs: 3
+Objective: 2
+Objective measures: 2
+Objective outcome: 2
+Objective outcomes: 2
+Objective outcomes (Biochemical or virologic response): 2
+Objective outcomes (e.g. death, graft loss): 2
+Objective outcomes - duration of treatment, completion of treatment: 2
+Objective outcomes - opioid use by urine screen, HIV seroconversion: 2
+Objective outcomes except retention and dropouts: 2
+'Objective outcomes: Death': 1
+Objective outcomes; hospitalisation, deaths, SAEs: 3
+Objectives outcomes: 2
+Observed ADL (e.g. TUG test, mobility): 3
+Observed behaviour: 3
+Observer: 4
+Observer rated outcomes: 3
+Occurrence of adverse events and tolerability (as defined by authors): 3
+Ocular  Chlamydia trachomatis  infection: 2
+Office BP: 2
+On discharge home: 4
+Operative vaginal delivery rates: 2
+Operator: 4
+Other neonatal outcomes: 3
+Other outcomes: 4
+Other outcomes (adverse events, others): 3
+Otitis media: 3
+Oucome assessors: 4
+Outcome Asessors: 4
+Outcome Assessor: 4
+Outcome Assessors: 4
+Outcome acessors: 4
+Outcome assessed by physician: 3
+Outcome assessment: 4
+Outcome assessor: 4
+Outcome assessor blinded to the intervention: 4
+Outcome assessor blinded?: 4
+Outcome assessor blinding: 4
+Outcome assessors: 
+Outcome assessors - All outcomes: 4
+Outcome assessors - all outcomes: 4
+Outcome assessors blinded: 4
+Outcome assessors, All outcomes: 4
+Outcomes: 4
+Outcomes 1, 3, 4, 5: 4
+Overall Survival: 1
+Overall survival: 1
+PFS and OS: 3
+PFS and response: 3
+PUFA first: 3
+Pain: 3
+Pain (or surrogate): 3
+Pain belief: 3
+Parkinsonian impairment & disability: 3
+Participant: 4
+Participant blinded to the intervention: 4
+Participant blinded?: 4
+Participant blinding: 4
+Participant blinding; All outcomes: 4
+Participant reported outcome: 4
+Participant reported outcomes: 4
+Participants: 4
+Participants - all outcomes: 4
+Participants and personnel: 4
+Participants blinded: 4
+Participants requiring levodopa: 3
+Patient: 4
+Patient and the outcome assessor: 4
+Patient assessed: 4
+Patient assessed outcomes: 4
+Patient level: 3
+Patient reported: 3
+Patient reported measures: 3
+Patient reported outcomes: 3
+Patient-rated outcomes: 3
+Patient-rated outcomes e.g. pain: 3
+Patient-reported: 3
+Patient-reported outcomes: 3
+Patient/parent-reported outcomes (symptoms, QoL): 3
+Patients: 4
+Patients Blinded: 4
+Patients and providers: 4
+Patients, All outcomes: 4
+Patients/workers - All outcomes: 4
+Personnel: 4
+Personnel and outcome assessors: 4
+Personnel recruiting participants: 4
+Physical activity outcomes: 3
+Physical status: 3
+Physician: 4
+Physician and participant: 4
+Physician assessed: 4
+Physician/Medical Staff: 4
+Physicians: 4
+Physicians/Personnel: 4
+Placebo: 4
+Pneumonia: 3
+Post-operative outcomes: 3
+Postoperative morbidities and recovery: 3
+Pressure ulcer incidence: 3
+Primary: 4
+'Primary Outcome: visual field progression; HRQoL': 3
+Primary outcome: 4
+'Primary outcome: Child neurodevelopment': 4
+'Primary outcome: visual acuity': 2
+'Primary outcome: visual field; HRQoL': 3
+Primary outcomes: 4
+Professional: 4
+Progression AMD: 3
+Provider blinded?: 4
+Providers: 4
+Providers - All outcomes: 4
+Psychological status: 3
+Pulmonary embolism: 3
+Pulmonary function: 2
+Pulmonary function outcomes: 2
+Quality of Life: 3
+Quality of life: 3
+Quality of life outcomes: 3
+RDS-TTN: 3
+RIFLE: 3
+RRT: 3
+Radiological assessment of DDH: 2
+Radiological assessments: 2
+Radiological outcome: 2
+Radiotherapy and surgical excision: 2
+Rate of cervical dilatation prior to randomisation: 2
+Rate of cervical dilation post randomisation: 2
+Raters: 4
+Rates of loss to follow-up: 4
+Reasons for drop-out in each group reported: 4
+Reported ADL (e.g. Barthel, FIM): 3
+Researcher-assessed outcomes: 3
+Response: 4
+Retention in treatment: 2
+SAEs: 3
+STUDY_LEVEL: 4
+Safety and quality of life outcomes: 3
+Safety outcomes: 3
+Satisfaction: 3
+Secondary: 3
+'Secondary effect: Postpartum depression': 3
+'Secondary outcome: Anthropometric measures': 3
+'Secondary outcome: Assessment of visual function': 3
+Secondary outcomes: 4
+Seizure Reduction: 2
+Self reported outcomes: 3
+Self-reported outcomes: 3
+Sepsis: 2
+Short term: 4
+Short term outcomes: 4
+Short-term lymphocyst formation: 2
+Short-term outcomes: 4
+Short-term outcomes (1 month): 4
+Social needs: 3
+Spirometric testing: 2
+Sputum volume: 2
+Stool frequency by day of treatment: 2
+Stools examination: 2
+Study investigators/ personnel: 4
+Study participants: 4
+Study researchers: 4
+Subcutaneous lignocaine: 2
+Subjective: 3
+Subjective Outcomes: 3
+Subjective measures: 3
+Subjective outcome: 3
+Subjective outcomes: 3
+Subjective outcomes (Clinical events other than mortality, Histology): 3
+Subjective outcomes (e.g. blood pressure measurement): 3
+Subjective outcomes (e.g. craving, depressive symptoms, CGI,...): 3
+Subjective outcomes - intensity of withdrawal, adverse effects: 3
+Subjective outcomes - intensity of withdrawal, adverse effects): 3
+Subjective outcomes - self-report risk behaviour: 3
+'Subjective outcomes: Others': 3
+Subjects: 4
+Subjetive outcomes: 3
+Support: 3
+Surgeons: 4
+Surgical excision alone: 2
+Survival: 1
+Suspected stroke: 3
+Technicians: 4
+Therapists: 4
+Third observer outcome: 3
+Time to progression: 3
+Toxicities: 3
+Toxicity: 3
+Toxicity and disease related symptoms: 3
+Toxicity, disease related symptoms, CR: 3
+Transfusion: 2
+Treating physicians: 4
+Treatment: 4
+Treatment Allocation: 4
+Treatment Provider: 4
+Treatment failure: 3
+Treatment failure at 1 month or less: 3
+Treatment provider: 4
+Tumour Response: 3
+Tumour response: 3
+Ulcer healing: 3
+Underpowered study?: 4
+Use of services: 2
+Versus sham: 4
+Visual acuity: 2
+Visual acuity (primary outcome): 2
+Visual acuity outcomes: 2
+Visual field outcomes: 3
+Walk test: 4
+Was an intention to treat analysis performed?: 4
+Was drop out rate described and acceptable: 4
+Was the care provider blinded to the intervention?: 4
+Was the compliance acceptable in all groups?: 4
+Was the drop-out rate described and acceptable?: 4
+Was the outcome assessor blinded to the intervention?: 4
+Was the patient blinded to the intervention?: 4
+Were all randomised participants analysed in the group to which they were allocated?: 4
+Were drop out reported and equal between groups?: 4
+Were healthcare providers masked to treatment group?: 4
+Were outcome assessors masked to treatment group?: 4
+Were participants masked to treatment group?: 4
+Were the assessors of pain and function at follow-up blinded to the treatment allocation: 4
+Were the participants masked to the treatment group?: 4
+Were the physicians performing the preoperative tests masked to the treatment group?: 4
+Were the primary outcome assessors masked to the treatment group?: 4
+Were the secondary outcome assessors masked to the treatment group?: 4
+Where co-interventions avoided or similar?: 4
+Where groups similar at baseline?: 4
+Withdrawal/drop-out rate: 2
+Withdrawals: 2
+Withdrawals/side effects: 3
+Women: 4
+Women and clinical staff: 4
+Women and staff: 4
+Wound infection: 3
+'[Non-patient reported outcomes]': 3
+'[Patient reported outcomes]': 3
+acute pain: 3
+acute vomiting: 3
+all outcomes: 4
+all outcomes a part retention: 4
+alloutcomes: 4
+assessor: 4
+assessors: 4
+binary outcomes: 4
+care providers: 4
+certolizumab sc: 2
+change in cough frequency: 3
+chronic pain: 3
+clinical response: 3
+clinical staff: 4
+clinician: 4
+co-morbidity: 3
+complications: 3
+continuous outcomes: 4
+data analysis: 4
+early hernia recurrence: 3
+early infection or hematoma: 3
+efficacy: 3
+haemodynamics: 3
+infarct size ECG: 2
+infarct size ECG mapping: 2
+investigator: 4
+late hernia recurrence: 3
+late mesh infection: 3
+long-term outcomes: 4
+mood: 3
+mortality: 1
+mortality+haemodynamic: 3
+number of ulcers healed: 3
+? 'obj
+
+  e
+
+  ctive outcomes'
+: 2
+objective outcomes: 2
+? objective outcomes (drop out, use of substance measured by urine-analysis, abstinent
+  at follow up, initiation of naltrexone treatment)
+: 2
+objective outcomes (drop out, use of substances measured by urine analysis: 2
+'objective outcomes: recurrence, infection, hematoma': 0
+observer: 4
+observer-rated outcomes: 4
+of outcome assessors: 4
+of outcome assessors?: 4
+of participants: 4
+of participants?: 4
+of personnel: 4
+of staff administering treatment?: 4
+of those delivering intervention?: 4
+outcome assessment: 4
+outcome assessor: 4
+outcome assessors: 4
+outcome assessors?: 4
+outcomes 2-4 weeks: 4
+overall survival: 1
+oxidative stress: 2
+participant: 4
+participants: 4
+participants?: 4
+patient: 4
+patient-reported outcomes: 3
+patients: 4
+physicians: 4
+plasma beta-carotene: 2
+post 6 months: 4
+primary outcome: 4
+primary outcomes: 4
+pulmonary air leak: 3
+quality of life: 3
+safety: 3
+secondary outcomes: 4
+self report outcomes: 3
+self reported outcomes: 3
+self-rated outcomes: 3
+short-term outcomes: 4
+study personnel: 4
+subject: 4
+subjective outcomes: 3
+subjective outcomes (use of substances as measured by self report, side effects: 3
+'subjective outcomes: pain': 3
+subjective outcomes; exacerbations requiring OCS, asthma-related SAEs, withdrawal: 3
+the effect of cough on sleep of parents: 3
+the effect of the cough on sleep of the child: 3
+those administering treatment?: 4
+those delivering intervention: 4
+time to achieve complete healing: 4
+time to healing: 3
+unscheduled absences: 2
+up to 6 months: 4
+weight loss: 2
+were all randomized participants analyzed in the group to which they were allocated?: 4
+were drop-out reported and equal between groups?: 4
+wound area: 2
+wound healed: 3
+wound surface area: 2
