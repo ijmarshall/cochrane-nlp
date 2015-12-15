@@ -32,6 +32,10 @@ class Reader(XMLReader):
         self.section_map["pmids"] = 'reference/PMID'
         self.section_map["nct_id"] = 'id_info/nct_id'
 
+        self.section_map["study_type"] = 'study_type'
+
+        self.root = self.data.getroot()
+
 
         # self.section_map["abstract"] = 'Article/Abstract'
         # self.section_map["linkedIds"] = 'OtherID'
@@ -39,7 +43,13 @@ class Reader(XMLReader):
         # self.section_map["mesh"] = 'MeshHeadingList/MeshHeading/DescriptorName'
         # self.section_map["language"] = 'Article/Language'
 
+    @property
+    def study_type(self):
+        return self.root.find('study_type').text
 
+    @property
+    def phase(self):
+        return self.root.find('phase').text
 
 def main():
 
