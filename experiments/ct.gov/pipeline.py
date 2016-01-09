@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from support import word_cloud
+from support import word_cloud, sprint, duplicate_words
 
 import sklearn
 from sklearn.linear_model import SGDClassifier
@@ -231,14 +231,6 @@ def print_confusion_matrix(ys_test, predictions, clf):
                         horizontalalignment='center',
                         verticalalignment='center')
 
-def duplicate_words(pairs):
-    """Helper function which yields a number of duplicated words proportional to
-    their corresponding coefficients"""
-
-    for coef, word in pairs:
-        for _ in range(int(coef*100)):
-            yield word
-
 def most_important_features(clf, vocabulary):
     """Display word clouds of most important features
 
@@ -300,8 +292,3 @@ def do_pipeline(abstracts_targets, target):
     predictions = predict(best_clf, abstracts_test, ys_test, vectorizer)           
     print_confusion_matrix(ys_test, predictions, best_clf)
     most_important_features(best_clf, vocabulary)
-
-def sprint(message):
-    """Helper function for printing eye catching messages"""
-
-    print '*'*5, message, '*'*5
