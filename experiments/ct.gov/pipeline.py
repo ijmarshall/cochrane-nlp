@@ -29,7 +29,7 @@ def extract_target(abstracts_targets, target):
     
     return df
 
-def filter_sparse_classes(df, target, threshold=10):
+def filter_sparse_classes(df, target, verbose, threshold=10):
     """Filters away classes which we have less than `threshold` number of
     examples for.
     
@@ -37,14 +37,16 @@ def filter_sparse_classes(df, target, threshold=10):
     ----------
     df : dataframe returned from extract_targets()
     target : ct.gov field of interest for prediction
+    verbose : print distribution of classes if True
     
     """
     sizes = df.groupby(target).size()
 
     filtered_df = df[df[target].isin(sizes[sizes >= threshold].index)]
 
-    sprint('Class Breakdown')
-    print filtered_df.groupby(target).size()
+    if verbose:
+        sprint('Class Breakdown')
+        print filtered_df.groupby(target).size()
 
     return filtered_df
 
@@ -65,13 +67,17 @@ def view_class_examples(df, target):
         print '*'*5, df.iloc[index][target], '*'*5
         print df.iloc[index].abstract
 
-def word_cloud_classes(df, target):
+def word_cloud_classes(df, target, verbose):
     """Dispaly a word cloud for each class in `target`
 
     df : dataframe returned from filter_sparse_classes()
     target : ct.gov field of interest for prediction
+    verbose : display word clouds of all classes if True
 
     """
+    if not verbose:
+        return
+
     labels = df[target].unique()
 
     fig = plt.figure(figsize=(12, 2*len(labels)))
@@ -122,27 +128,31 @@ def get_vocabulary(vectorizer):
     """
     return [word for word, index in sorted(vectorizer.vocabulary_.items(), key=operator.itemgetter(1))]
 
-def do_grid_search(X_train, ys_train, k=5, num_alphas=10):
+def do_grid_search(X_train, ys_train, verbose=False, k=5, num_alphas=10):
     """Do a grid search over regularization term
 
     X_train : training set examples
     ys_train : training set labels
     k : number of folds to use in cross-validation
     num_alphas : number of alphas to search over
+    verbose : plot f1 and all scores for each hyperparameter setting if true
 
     Macro f1 scores for each setting of the regularization term are also
     plotted.
 
     """
+    verbose = 3 if verbose else 0
+
     M, N = X_train.shape
 
+    sprint('Grid Search')
     clf = SGDClassifier(class_weight='auto', n_iter=int(np.ceil(10**6/(M-M/k)))) # http://scikit-learn.org/stable/modules/sgd.html#tips-on-practical-use
 
     parameters = {
         'alpha': np.logspace(-1, -4, num_alphas)
     }
 
-    grid_search = GridSearchCV(clf, parameters, verbose=3, scoring='f1_macro', cv=k)
+    grid_search = GridSearchCV(clf, parameters, verbose=verbose, scoring='f1_macro', cv=k)
     grid_search.fit(X_train, ys_train)
 
     # Get scores for different hyperparam settings into dataframe
@@ -159,20 +169,21 @@ def do_grid_search(X_train, ys_train, k=5, num_alphas=10):
 
     df = pd.concat([alphas, scores], axis=1).fillna(0) # concatenate the two back together
 
-    # Plot f1 and all the scores for each hyperparam setting
-    axes = df['f1'].plot(yerr=df.err, linewidth=.5)
-    for s in score_columns:
-        axes = df[s].plot(ax=axes, style='.', c='black')
+    # Plot f1 and all the scores for each hyperparam setting?
+    if verbose:
+        axes = df['f1'].plot(yerr=df.err, linewidth=.5)
+        for s in score_columns:
+            axes = df[s].plot(ax=axes, style='.', c='black')
 
-    # Fix axes
-    tick_marks = np.arange(len(alphas))
-    plt.xticks(tick_marks, df.alpha.round(4), rotation=90)
-    axes.set_xlabel('alpha')
-    axes.set_ylabel('macro f1')
+        # Fix axes
+        tick_marks = np.arange(len(alphas))
+        plt.xticks(tick_marks, df.alpha.round(4), rotation=90)
+        axes.set_xlabel('alpha')
+        axes.set_ylabel('macro f1')
     
     return grid_search
 
-def predict(clf, abstracts_test, ys_test, vectorizer, verbose=True):
+def predict(clf, abstracts_test, ys_test, vectorizer, verbose):
     """Predict test labels
 
     clf : classifier used in prediction
@@ -185,29 +196,34 @@ def predict(clf, abstracts_test, ys_test, vectorizer, verbose=True):
     X_test = vectorizer.transform(abstracts_test)
     predictions = clf.predict(X_test)
     
-    if verbose:
-        # Compute f1s for all classes
-        lb = sklearn.preprocessing.LabelBinarizer()
-        f1s = sklearn.metrics.f1_score(lb.fit_transform(ys_test), lb.fit_transform(predictions), average=None)
+    # Compute f1s for all classes
+    lb = sklearn.preprocessing.LabelBinarizer()
+    f1s = sklearn.metrics.f1_score(lb.fit_transform(ys_test), lb.fit_transform(predictions), average=None)
+    f1 = np.mean(f1s)
 
+    if verbose:
         # Display f1s
         Classes = namedtuple('Classes', [re.sub('[^0-9a-zA-Z]+', '_', class_) for class_ in clf.classes_])
 
         sprint('Performance')
         print 'f1s: {}'.format({label: f1 for label, f1 in zip(clf.classes_, f1s)})
         print
-        print 'Average: {}'.format(np.mean(f1s))
+        print 'Average: {}'.format(f1)
     
-    return predictions
+    return predictions, f1
 
-def print_confusion_matrix(ys_test, predictions, clf):
+def print_confusion_matrix(ys_test, predictions, clf, verbose=False):
     """Print confusion matrix
 
     ys_test : test abstract labels
     predictions : test abstract label predictions
     clf : classifer used to make predictions
+    verbose : print confusion matrix if True
 
     """
+    if not verbose:
+        return
+
     confusion_matrix = sklearn.metrics.confusion_matrix(ys_test, predictions)
 
     fig = plt.figure()
@@ -231,13 +247,17 @@ def print_confusion_matrix(ys_test, predictions, clf):
                         horizontalalignment='center',
                         verticalalignment='center')
 
-def most_important_features(clf, vocabulary):
+def most_important_features(clf, vocabulary, verbose=False):
     """Display word clouds of most important features
 
     clf : trained classifier
     vocabulary : list of words in same order as clf features
+    verbose : return if False
 
     """
+    if not verbose:
+        return
+
     fig = plt.figure(figsize=(20, 20))
     plt.clf()
 
@@ -256,7 +276,7 @@ def most_important_features(clf, vocabulary):
     plt.axis('off')
     plt.show()
 
-def do_pipeline(abstracts_targets, target):
+def do_pipeline(abstracts_targets, target, verbose=False):
     """Execute ct.gov fixed-class prediction pipeline
 
     1. Extract targets
@@ -279,16 +299,17 @@ def do_pipeline(abstracts_targets, target):
     """
     
     df = extract_target(abstracts_targets, target)
-    df = filter_sparse_classes(df, target)
+    df = filter_sparse_classes(df, target, verbose)
     # view_class_examples(df, 'intervention_model')
     print
-    word_cloud_classes(df, target)
+    word_cloud_classes(df, target, verbose)
     abstracts_train, abstracts_test, ys_train, ys_test = train_test_split(df, target) 
     X_train, vectorizer = vectorize(abstracts_train)
     vocabulary = get_vocabulary(vectorizer)
-    sprint('Grid Search')
-    grid_search = do_grid_search(X_train, ys_train, k=3, num_alphas=5)
+    grid_search = do_grid_search(X_train, ys_train, verbose, k=3, num_alphas=5)
     best_clf = grid_search.best_estimator_
-    predictions = predict(best_clf, abstracts_test, ys_test, vectorizer)           
-    print_confusion_matrix(ys_test, predictions, best_clf)
-    most_important_features(best_clf, vocabulary)
+    predictions, f1 = predict(best_clf, abstracts_test, ys_test, vectorizer, verbose)           
+    print_confusion_matrix(ys_test, predictions, best_clf, verbose)
+    most_important_features(best_clf, vocabulary, verbose)
+
+    return f1
