@@ -17,6 +17,7 @@ import pdb
 import random
 import csv
 import sys
+import bz2
 import cPickle as pickle
 import os
 import time
@@ -27,6 +28,7 @@ import itertools
 
 import numpy as np
 import scipy as sp
+from scipy.sparse import csr_matrix
 import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression, SGDClassifier
@@ -36,7 +38,11 @@ from sklearn.grid_search import GridSearchCV
 from sklearn import cross_validation
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
- 
+
+import pandas as pd 
+
+import hickle 
+
 import cochranenlp
 from cochranenlp.readers import biviewer
 from cochranenlp.ml.pico_vectorizer import PICO_vectorizer
@@ -46,19 +52,478 @@ from cochranenlp.ml.pico_vectorizer import PICO_vectorizer
 # location.
 from cochranenlp.experiments import pico_DS
 
-
-
 DATA_PATH = cochranenlp.config["Paths"]["base_path"] # to data
 
 domains = pico_DS.PICO_DOMAINS
+
+
+
+def output_labeled_data(output_dir="sds/results/",
+                            y_dict_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_sentence_data10.pickle", 
+                            domain_v_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_vectorizers10.pickle"):
+    
+    sentences_y_dict, domain_vectorizers = _unpickle_PICO_DS(y_dict_pickle, domain_v_pickle)
+
+    output_str = [["row_num", "pmid", "domain", "sentence", "label" ]]
+
+    for domain in domains[1:]:
+        print "on domain: %s " % domain
+        domain_DS = sentences_y_dict[domain]
+
+        ###
+        # and this is where the direct supervision is loaded up
+        print "generating DS learning tasks..."
+
+        DS_learning_tasks, z_dict, domains_pmids_targets = get_DS_features_and_labels()
+        domain_supervision = DS_learning_tasks[domain]
+        
+        for i, pmid in enumerate(domain_DS["pmids"]):
+            if pmid in domain_supervision["pmids"]:
+                cur_sentence = domain_DS["sentences"][i]
+                cur_label = _match_direct_to_distant_supervision(
+                                domain_supervision, pmid, cur_sentence)
+                
+
+                # if this is None, it means the current sentence
+                # was not found in the candidate set, implicitly
+                # this means it is a -1.
+                if cur_label is None:
+                    cur_label = "-1 (distant)"
+                cur_str = ["%s" % i, "%s" % pmid, domain, cur_sentence, "%s" % cur_label]
+                output_str.append(cur_str)
+
+    
+    with open(os.path.join(output_dir, "for-ani.csv"), 'wb') as outf:
+        writer = csv.writer(outf)
+        writer.writerows(output_str)
+
+
+def dump_robot(output_dir="sds/results/",                      
+                y_dict_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_sentence_data10.pickle", 
+                domain_v_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_vectorizers10.pickle"):
+
+    ### 
+    # load in DS; we assume this is pickled already.
+    print "unpickling DS from %s..." % y_dict_pickle
+    sentences_y_dict, domain_vectorizers = _unpickle_PICO_DS(y_dict_pickle,
+                                                domain_v_pickle)
+    
+    ###
+    # and this is where the direct supervision is loaded up
+    print "generating DS learning tasks..."
+    DS_learning_tasks, z_dict, domains_pmids_targets = get_DS_features_and_labels()
+    print "done."
+
+    for domain in pico_DS.PICO_DOMAINS:
+        print "on domain %s" % domain 
+        output_path = os.path.join(output_dir, "%s-labeling.csv" % domain)
+        domain_DS = sentences_y_dict[domain]
+        domain_supervision = DS_learning_tasks[domain]
+
+    
+        ###
+        # these were directly labeled.
+        labeled_pmids_for_domain = list(
+                    set(DS_learning_tasks[domain]["pmids"]))
+
+
+        ###
+        # load in \tilde{X} for SDS
+        print "loading X_tilde_dict ... just the once though!"
+        X_tilde_dict, target_text_dict = get_DS_features_for_all_data(z_dict)
+        print "ok."
+        
+        train_rows, test_rows = [], []
+        directly_supervised_indicators = np.zeros(len(domain_DS["pmids"])).astype("int8")
+
+        unique_pmids = list(set(domain_DS["pmids"]))
+
+        pmids_already_seen = []
+        prev_pmid = None
+        for i, pmid in enumerate(domain_DS["pmids"]):
+            if prev_pmid is None:
+                pass 
+            elif pmid != prev_pmid:
+                pmids_already_seen.append(prev_pmid)
+
+            cur_sentence = domain_DS["sentences"][i]
+            
+            train_rows.append(i)
+
+            ###
+            # here we need to overwrite any labels for which
+            # we have explicit supervision!
+            if pmid in domain_supervision["pmids"]:
+
+                cur_label = _match_direct_to_distant_supervision(
+                    domain_supervision, pmid, cur_sentence)
+
+                # if this is None, it means the current sentence
+                # was not found in the candidate set, implicitly
+                # this means it is a -1.
+                if cur_label is None:
+                    cur_label = -1
+                else:
+                    # we train only on 2's (highly relevant sentences), as we 
+                    # are aiming for a high-precision model
+                    try:
+                        cur_label = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
+                    except:
+                        print "Ah! something wrong with this label."
+                        pdb.set_trace()
+                domain_DS["y"][i] = cur_label
+                directly_supervised_indicators[i] = 1
+
+            # this is to make sure we don't wind up
+            # with duplicate instances of documents
+            # in the test set
+            elif pmid not in pmids_already_seen:
+                test_rows.append(i)
+
+            prev_pmid = pmid
+
+        print "huzzah -- data all set up."
+        
+        ###
+        # assemble train and test sets
+        X_train_DS = domain_DS["X"][train_rows]
+        y_train_DS = np.array(domain_DS["y"])[train_rows]
+        pmids_train_DS = [domain_DS["pmids"][train_row] for train_row in train_rows]
+        directly_supervised_indicators_train = directly_supervised_indicators[train_rows]
+
+        ###
+        # build an SDS classifier
+        
+        # this transforms the small amount of direct supervision we
+        # have for the mapping task from candidate sentences to
+        # the best sentences into feature vectors and labels with
+        # which to train a model
+        #
+        # TODO probably X_direct should be renamed to X_tilde_direct
+        ###
+        X_direct, y_direct, direct_pmids, vectorizer = generate_X_y(
+                                                domain_supervision,
+                                                return_pmids_too=True) 
+        
+
+
+        # the above returns tuples of numeric and textual
+        # features for each candidate. below we vectorize
+        # these.
+        X_train_tilde = []
+        train_sentences_DS = [] 
+        train_tilde_pmids = []
+        for j in train_rows:
+            cur_X = X_tilde_dict[domain]["X"][j]
+            X_tilde_v = None
+            if cur_X is not None:
+                X_tilde_v = _to_vector(cur_X, vectorizer)
+            X_train_tilde.append(X_tilde_v)
+
+            train_tilde_pmids.append(X_tilde_dict[domain]['pmids'][j])
+            train_sentences_DS.append(domain_DS["sentences"][j])
+
+        # build the SDS model!
+        testing_pmids = [] # in this case we use *all* available labels!
+        print "building SDS model..."
+        sds_clf = build_SDS_model(X_direct, y_direct, direct_pmids,
+                                directly_supervised_indicators_train,
+                                X_train_tilde, train_tilde_pmids,
+                                train_rows, testing_pmids,
+                                X_train_DS, y_train_DS, pmids_train_DS,
+                                domain, sentences=train_sentences_DS)
+
+
+        # dump? 
+        # see: https://gist.github.com/ijmarshall/e2797042e86326bc307c
+        #pdb.set_trace()
+        coefs = csr_matrix(sds_clf.coef_)
+        model_tuple_out = (sds_clf.intercept_, coefs.data, coefs.indices, coefs.indptr)
+        model_out_path = os.path.join(output_dir, '%s.rbt' % domain)
+        hickle.dump(model_tuple_out, model_out_path, compression='gzip')
+        
+        # note that the vectorizers (for all domains) are already 
+        # available in the domain_v_pickle object
+        vec_out_path = os.path.join(output_dir, "%s_vectorizer.bz2_pickle" % domain)
+        vec_out_f = bz2.BZ2File(vec_out_path, 'w') 
+        pickle.dump(domain_vectorizers[domain], vec_out_f)
+        vec_out_f.close()
+        print "\n\n --- woo! %s pickled and available at: %s; vectorizer in %s --- \n\n" % (domain, model_out_path, vec_out_path)
+
+
+def use_model_to_generate_labeling_file(N, k=3, output_dir="sds/results/",
+                            y_dict_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_sentence_data10.pickle", 
+                            domain_v_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_vectorizers10.pickle"):
+    ''' generate file for annotation using models; this will select N studies at random '''    
+
+    ###
+    # setup output path.
+    output_path = os.path.join(output_dir, "%s-labeling.csv" % int(time.time()))
+    print "will write labeling file out to %s" % output_path
+
+ 
+    domain_index = 2
+    domain = "CHAR_OUTCOMES"
+
+    ### 
+    # load in DS; we assume this is pickled already.
+    print "unpickling DS from %s..." % y_dict_pickle
+    sentences_y_dict, domain_vectorizers = _unpickle_PICO_DS(y_dict_pickle,
+                                                domain_v_pickle)
+    
+    print "ok!"    
+    domain_DS = sentences_y_dict[domain]
+
+    ###
+    # and this is where the direct supervision is loaded up
+    print "generating DS learning tasks..."
+    DS_learning_tasks, z_dict, domains_pmids_targets = get_DS_features_and_labels()
+    domain_supervision = DS_learning_tasks[domain]
+    print "done."
+
+    #pdb.set_trace()
+    
+    ###
+    # these were directly labeled.
+    labeled_pmids_for_domain = list(
+                set(DS_learning_tasks[domain]["pmids"]))
+    
+
+    # now pick N new studies to have the ugrads label
+    print "selecting study PMIDs to label..."
+    pmids_to_label = pico_DS.pick_N_pmids(N, labeled_pmids_for_domain)
+    # these are the IDs to labeled (will basically be treated as 'test IDs')
+    testing_pmids = pmids_to_label
+    print "done. here are the PMIDs I selected: %s" % pmids_to_label
+
+    ###
+    # load in \tilde{X} for SDS
+    print "loading X_tilde_dict ... just the once though!"
+    X_tilde_dict, target_text_dict = get_DS_features_for_all_data(z_dict)
+    print "ok."
+    
+
+    train_rows, test_rows = [], []
+    directly_supervised_indicators = np.zeros(len(domain_DS["pmids"])).astype("int8")
+
+    unique_pmids = list(set(domain_DS["pmids"]))
+
+    ### 
+    # 6/7
+    # bcw: need to fix this prevent including studies twice!!!
+    pmids_already_seen = []
+    prev_pmid = None
+    for i, pmid in enumerate(domain_DS["pmids"]):
+        if prev_pmid is None:
+            pass 
+        elif pmid != prev_pmid:
+            pmids_already_seen.append(prev_pmid)
+
+        cur_sentence = domain_DS["sentences"][i]
+
+        if pmid not in testing_pmids:
+            train_rows.append(i)
+
+            ###
+            # here we need to overwrite any labels for which
+            # we have explicit supervision!
+            if pmid in domain_supervision["pmids"]:
+
+                cur_label = _match_direct_to_distant_supervision(
+                    domain_supervision, pmid, cur_sentence)
+
+                # if this is None, it means the current sentence
+                # was not found in the candidate set, implicitly
+                # this means it is a -1.
+                if cur_label is None:
+                    cur_label = -1
+                else:
+                    # we train only on 2's (highly relevant sentences), as we 
+                    # are aiming for a high-precision model
+                    try:
+                        cur_label = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
+                    except:
+                        print "Ah! something wrong with this label."
+                        pdb.set_trace()
+                domain_DS["y"][i] = cur_label
+                directly_supervised_indicators[i] = 1
+
+        # this is to make sure we don't wind up
+        # with duplicate instances of documents
+        # in the test set
+        elif pmid not in pmids_already_seen:
+            test_rows.append(i)
+
+        prev_pmid = pmid
+
+    print "huzzah -- data all set up."
+    
+    ###
+    # assemble train and test sets
+    X_train_DS = domain_DS["X"][train_rows]
+    y_train_DS = np.array(domain_DS["y"])[train_rows]
+    pmids_train_DS = [domain_DS["pmids"][train_row] for train_row in train_rows]
+    directly_supervised_indicators_train = directly_supervised_indicators[train_rows]
+
+    #X_test_DS = domain_DS["X"][test_rows]
+    #pmids_test_DS = [domain_DS["pmids"][test_row] for test_row in test_rows]
+
+
+    ###
+    # first build an SDS classifier
+    
+    # this transforms the small amount of direct supervision we
+    # have for the mapping task from candidate sentences to
+    # the best sentences into feature vectors and labels with
+    # which to train a model
+    #
+    # TODO probably X_direct should be renamed to X_tilde_direct
+    ###
+    X_direct, y_direct, direct_pmids, vectorizer = generate_X_y(
+                                            domain_supervision,
+                                            return_pmids_too=True) 
+    
+
+
+    # the above returns tuples of numeric and textual
+    # features for each candidate. below we vectorize
+    # these.
+    X_train_tilde = []
+    train_sentences_DS = [] 
+    train_tilde_pmids = []
+    for j in train_rows:
+        cur_X = X_tilde_dict[domain]["X"][j]
+        X_tilde_v = None
+        if cur_X is not None:
+            X_tilde_v = _to_vector(cur_X, vectorizer)
+        X_train_tilde.append(X_tilde_v)
+
+        train_tilde_pmids.append(X_tilde_dict[domain]['pmids'][j])
+        train_sentences_DS.append(domain_DS["sentences"][j])
+
+    # build the SDS model!
+    sds_clf = build_SDS_model(X_direct, y_direct, direct_pmids,
+                            directly_supervised_indicators_train,
+                            X_train_tilde, train_tilde_pmids,
+                            train_rows, testing_pmids,
+                            X_train_DS, y_train_DS, pmids_train_DS,
+                            domain, sentences=train_sentences_DS)
+
+
+
+    ### nguyen model!
+    print "OK! building Nguyen model..."
+    nguyen_clf = build_nguyen_model(X_train_DS, y_train_DS,
+                            directly_supervised_indicators_train)
+
+
+    #pdb.set_trace()
+    
+    ###
+    # now make predictions using both models
+    #pmids_to_preds_sds = defaultdict(list)
+    #pmids_to_preds_nguyen = defaultdict(list)
+    #X_test_DS = domain_DS["X"][test_rows]
+    #pmids_test_DS = [domain_DS["pmids"][test_row] for test_row in test_rows]
+    nguyen_preds, sds_preds = [], []
+    test_pmids, test_sentences = [], []
+    cdsr_sentences = []
+    # you'll need this to get the sentences
+    bv = biviewer.PDFBiViewer()
+    for test_row in test_rows:
+        x = domain_DS["X"][test_row]
+        nguyen_preds.append(nguyen_clf.decision_function(x)[0])
+        sds_raw_pred = sds_clf.decision_function(x)[0]
+        sds_preds.append(sds_raw_pred)
+        cur_pmid = domain_DS["pmids"][test_row]
+        test_pmids.append(cur_pmid)
+        # grab the pop summary from cdsr
+        study = bv.get_study_from_pmid(str(cur_pmid))
+        # note that if there are multiple studies
+        # with this PMID (as may happen!), then
+        # we just arbitrarily select the first.
+        population_sum = study[0].cochrane['CHARACTERISTICS']
+        cdsr_sentences.append(population_sum)
+
+        test_sentences.append(domain_DS["sentences"][test_row])
+        #cdsr_ids.append(domain_DS["CDSR_id"])
+
+
+    #pdb.set_trace()
+    all_preds = pd.DataFrame({"row_id": test_rows, 
+                              "pmid": test_pmids, 
+                              "sentence": test_sentences,
+                              "sds_pred": sds_preds,
+                              "nguyen_pred": nguyen_preds,
+                              "cdsr_sentences": cdsr_sentences})
+
+
+    grouped = all_preds.groupby("pmid")
+    preds_by_pmid = dict(list(grouped))
+    
+    # start assembling output
+    labeling_str = [["study id", "PICO field", "CDSR sentence", 
+                        "candidate sentence", "method", "rating"]]
+    for pmid, results in preds_by_pmid.items():    
+        nguyen_top_preds = _get_top_preds(results, "nguyen_pred", k=k)
+        sds_top_preds = _get_top_preds(results, "sds_pred", k=k)
+    
+        # sentences in both top ranked sets
+        shared = [s for s in nguyen_top_preds if s in sds_top_preds]
+
+        # note that this is the same across all sentences here.
+        #pdb.set_trace()
+
+        indices = results.index
+        cdsr_sent = results["cdsr_sentences"][indices[0]][domain] 
+        set_to_label = []
+        for s in shared:
+            set_to_label.append([str(pmid), domain, cdsr_sent, s, "BOTH",  " "])
+
+        for sent in nguyen_top_preds:
+            if not sent in shared: 
+                #set_to_label.append(sent)
+                set_to_label.append(
+                    [str(pmid), domain, cdsr_sent, sent, "nguyen", " "])
+
+        for sent in sds_top_preds:
+            #if sent.count("\n") > 20:
+            #    pdb.set_trace()
+
+            if not sent in shared:
+                set_to_label.append(
+                    [str(pmid), domain, cdsr_sent, sent, "sds", " "])
+
+        random.shuffle(set_to_label)
+        labeling_str.extend(set_to_label)
+
+
+    fout = open(os.path.join(output_dir, "for-labeling-%s-2.csv" % domain), 'wb')
+    writer = csv.writer(fout)
+    writer.writerows(labeling_str)
+
+
+# sort_key \in {"nguyen_pred", "sds_pred"}
+def _get_top_preds(results, sort_key, k=3):
+    ''' helper function: return top k sentences (as sorted by sort_key '''
+    sorted_results_for_pmid = results.sort(sort_key, ascending=False)
+    indices = sorted_results_for_pmid.index
+
+    top_preds = []
+    # only  output sentences for entire studies with '0' metric!
+    for i in indices[:k]:                  
+        top_preds.append(
+            sorted_results_for_pmid["sentence"][i])
+
+    return top_preds
 
 
 # note: the *_1000 pickles are subsets of the available DS to
 # speed things up for experimentation purposes!
 def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
                             strategy="baseline_DS", output_dir="sds/results/",
-                            y_dict_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_sentence_data9.pickle", 
-                            domain_v_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_vectorizers9.pickle", 
+                            y_dict_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_sentence_data10.pickle", 
+                            domain_v_pickle="/Users/byron/dev/cochrane/cochranenlp/data/sds_vectorizers10.pickle", 
                             random_seed=512):
 
     '''
@@ -72,7 +537,7 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
         
 
     output_path = os.path.join(output_dir,
-            "%s-results-%s.txt" % (int(time.time()), strategy))
+            "%s-results-tables-pos-%s.txt" % (int(time.time()), strategy))
     print "will write results out to %s" % output_path
 
     # write out a preample..
@@ -159,15 +624,15 @@ def run_DS_PICO_experiments(iters=5, cv=True, test_proportion=None,
             test_ids_for_cur_fold = [test_id_lists[domain][iter_] for domain in domains]
             cur_test_pmids_dict = dict(zip(domains, test_ids_for_cur_fold))
 
-        any_really_relevant_indicators, any_kinda_relevant_indicators, cur_all_sentence_output_str, output_str = \
-                                        DS_PICO_experiment(
-                                            sentences_y_dict, domain_vectorizers,
+        iter_results = DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                                             DS_learning_tasks, domains_pmids_targets,
                                             strategy=strategy,
                                             test_pmids_dict=cur_test_pmids_dict,
                                             test_proportion=test_proportion,
                                             z_dict=z_dict, X_tilde_dict=X_tilde_dict)
 
+        any_really_relevant_indicators, any_kinda_relevant_indicators, cur_all_sentence_output_str, output_str = iter_results
+                                        
         print u"\n".join(output_str)
         print "\n\n"
 
@@ -233,7 +698,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
     testing_pmids = None
     output_str = [""] # general output
     # pmid_, sentence_, str(pred_), str(lbl1_), str(lbl2_)]
-    all_sentence_preds_output = [["pmid", "sentence", "raw pred", "lbl1", "lbl2"]] # 6/2: exhaustive!
+    all_sentence_preds_output = [["domain", "pmid", "sentence", "raw pred", "lbl1", "lbl2"]] # 6/2: exhaustive!
 
     strategy_name = strategy.lower()
 
@@ -248,9 +713,14 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         # the entries align with the DS we have.
         X_tilde_dict, target_text_dict = get_DS_features_for_all_data(z_dict)
 
+    #elif strategy_name == "baseline_DS":
+    #    print "using distant supervision *only*"
+
+    if use_distant_supervision_only:
+        print "\n\n USING DISTANT SUPERVISION ONLY!\n\n"
+
     #for domain_index, domain in enumerate(domains):
-    ### 2/25 -- tmp tmp tmp doing population only!
-    for domain_index, domain in enumerate(domains[:1]):
+    for domain_index, domain in enumerate(domains):
         ##
         # here we need to grab the annotations used also
         # for SDS to evaluate our strategy.
@@ -293,7 +763,10 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         y_test = [] # slightly tricky
         y_test_relaxed = []
         directly_supervised_indicators = np.zeros(len(domain_DS["pmids"])).astype("int8")
-
+        # so this is to remember which examples we actually had an explicit
+        # label on, as opposed to just being part of studies
+        # that were directly labeled
+  
         ###
         # I think it's clear what's happening
         # pmids are not unique, but you're only checking
@@ -344,10 +817,9 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                     else:
                         # we train only on 2's (highly relevant sentences), as we 
                         # deem these as the target
-                        cur_label = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
-                        # 4/22/15 -- only considering these instances 'directly'
-                        # supervised -- previously was as below
-                        
+                        cur_label = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False, 
+                                        count_relevant_tables=False)
+
 
                     # 1/7/15 -- previously, we were not considering
                     # an instance directly supervised if cur_label
@@ -399,22 +871,18 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                         cur_label_strict = -1
                         cur_label_relaxed = -1
                     else:
-                        cur_label_strict = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False)
-                        cur_label_relaxed = _score_to_binary_lbl(cur_label, threshold=1, zero_one=False)
+                        ###
+                        # 12/28 -- experimental; counting relevant
+                        # tables here as 'positive!'
+                        cur_label_strict = _score_to_binary_lbl(cur_label, threshold=2, zero_one=False, count_relevant_tables=False)
+                        cur_label_relaxed = _score_to_binary_lbl(cur_label, threshold=1, zero_one=False, count_relevant_tables=False)
 
                     y_test.append(cur_label_strict)
                     y_test_relaxed.append(cur_label_relaxed)
 
-
-                    ### 
-                    # 2/25/2015
-                    # note that we are *not* overwriting the DS
-                    # label here, which means the previous results
-                    # were with respect to *DS* not direct 
-                    # supervision! Arg!
-                    # domain_DS["y"][i] = cur_label
                     if pmid in domain_supervision["pmids"]:
                         directly_supervised_indicators[i] = 1
+
 
         print "huzzah -- data all set up."
 
@@ -431,6 +899,8 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         # but this may cause things to break during evaluation.
         ###
         if len(y_test) == 0:
+            print "no testing data!"
+            pdb.set_trace()
             return ["-"*25, "\n\n no testing data! \n\n", "-"*25]
 
         X_train_DS = domain_DS["X"][train_rows]
@@ -441,6 +911,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         directly_supervised_indicators_train = directly_supervised_indicators[train_rows]
         clf = None
 
+        print "strategy: %s" % strategy
 
         ###
         # now train a classifier
@@ -474,17 +945,8 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                     X_tilde_v = _to_vector(cur_X, vectorizer)
                 X_train_tilde.append(X_tilde_v)
 
-
-
-
                 train_tilde_pmids.append(X_tilde_dict[domain]['pmids'][j])
                 train_sentences_DS.append(domain_DS["sentences"][j])
-
-
-
-            #pdb.set_trace()
-            ## find examples of X_direct where feature at -3 is large
-            ## *and* y is 1. what's up with these???
 
             ''' end SDS magic '''
             clf = build_SDS_model(X_direct, y_direct, direct_pmids,
@@ -493,18 +955,22 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                                     train_rows, testing_pmids,
                                     X_train_DS, y_train_DS, pmids_train_DS,
                                     domain, sentences=train_sentences_DS)
-            #pdb.set_trace()
-
-
+     
 
         elif strategy_name == "nguyen":
-            if len(directly_supervised_indicators_train) == 0:
+            if max(directly_supervised_indicators_train) == 0:
                 print "no direct supervision provided!"
                 return ["-"*25, "\n\n no directly labeled data!!! \n\n", "-"*25]
 
             clf = build_nguyen_model(X_train_DS, y_train_DS,
                                     directly_supervised_indicators_train)
 
+        elif strategy_name == "direct":
+            if max(directly_supervised_indicators_train) == 0:
+                print "no direct supervision provided!"
+                pdb.set_trace()
+            clf = build_direct_only_model(X_train_DS, y_train_DS, 
+                        directly_supervised_indicators_train)
         else:
             clf = get_DS_clf()
             print "standard distant supervision. fitting model..."
@@ -565,6 +1031,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                 rows_for_current_pmid = [test_row]
                 labels_for_current_pmid = [current_label]
                 labels_for_current_pmid_1 = [current_label_1]
+
             elif test_pmid != current_pmid or test_row_index == n_test_rows:
                 
                 ###
@@ -580,7 +1047,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
                                                     
                     # pmid, sentence, true label
                     all_sentence_preds_output.append(
-                        [pmid_, sentence_, str(pred_), str(lbl1_), str(lbl2_)])
+                        [domain, pmid_, sentence_, str(pred_), str(lbl1_), str(lbl2_)])
                 # 
                 ### end 6/2 additions ### 
 
@@ -690,8 +1157,7 @@ def DS_PICO_experiment(sentences_y_dict, domain_vectorizers,
         # output_str.append("AUC: %s" % auc)
         output_str.append("-"*25)
 
-    return any_relevant_indicators, any_relevant_indicators_1, \
-                all_sentence_preds_output, output_str
+    return any_relevant_indicators, any_relevant_indicators_1, all_sentence_preds_output, output_str
 
 
 def _to_vector(X_i, vectorizer):
@@ -814,18 +1280,17 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     if direct_weight_scalar_range is None:
         # this will be very slow!
         
-        direct_weight_scalar_range = (2, 4, 8, 10, 12)#, 5,10)#np.linspace(0,1,5)
+        direct_weight_scalar_range = (2, 10, 50, 100, 200, 500)#, 5,10)#np.linspace(0,1,5)
 
     if weight_range is None: 
         weight_range = [1]
 
-    #
-    # 6/1 i'm confused; why have the direct weight and distant weight?
-    #   -- just setting to 1
     distant_weight = 1.0 
 
     if alpha_range is None: 
-        alpha_range = 10.0**-np.arange(5,7)
+        # was 5,7
+        #alpha_range = 10.0**-np.arange(3,7)
+        alpha_range = [.00001, .0001, .001, .01, .1]
 
     #############################################
     # (1) Train the SDS model (M_SDS) using directly
@@ -889,6 +1354,8 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     tuning_indices = tuning_indicators.nonzero()[0]
     X_tune = X_distant_train[tuning_indices]
     y_tune = y_distant_train[tuning_indices]
+ 
+
     # will come in handy later!
     non_tuning_indices = np.where(tuning_indicators == 0)[0]
 
@@ -911,7 +1378,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     X_tune = X_distant_train[tuning_indices]
     y_tune = y_distant_train[tuning_indices]
     '''
-    #y_tune = 
+    y_tune = (y_tune + 1)/2
 
     #X_tune = sp.vstack([X_direct_train[j] for j in tuning_indices])
     #y_tune = np.array([y_direct_train[j] for j in tuning_indices])
@@ -928,7 +1395,7 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
     # 4/21 - changed back to "auto"
 
     # maybe switch to l1?
-    m_sds = get_lr_clf(class_weight="auto", scoring="f1", C_range=[1, 10, 100, 1000])
+    m_sds = get_lr_clf(class_weight="auto", scoring="f1", C_range=[1, 10, 100, 1000, 5000])
 
 
     ### 
@@ -1071,6 +1538,8 @@ def build_SDS_model(X_direct, y_direct, pmids_direct,
             # upweight false negative costs
             errors[y_tune==1] = errors[y_tune==1]*lambda_
             cur_score = np.sum(errors)
+            print "SDS"
+            #pdb.set_trace()
             print "score for alpha %s, weight %s, direct_weight_scalar %s is: %s" % (
                                cur_alpha, weight, direct_weight_scalar, cur_score)
             if cur_score < best_score:
@@ -1137,7 +1606,7 @@ class Nguyen:
         #lambda_ = 1.0
 
         print "lambda is: %s" % lambda_
-        betas = np.linspace(0,1,25)
+        betas = np.linspace(0,1,50)
         
         beta_star, best_score = None, np.inf
 
@@ -1149,6 +1618,8 @@ class Nguyen:
             errors[yy==1] = errors[yy==1]*lambda_
 
             cur_score = np.sum(errors)
+            #print "NGUYEN"
+            #pdb.set_trace()
             print "score for beta: %s is %s" % (beta, cur_score)
             if cur_score < best_score:
                 beta_star = beta 
@@ -1195,8 +1666,9 @@ class Nguyen:
         return 1 if self.predict_proba(X) >= threshold else -1
 
     def predict_proba(self, X):
+        # fixed???
         pred = self.beta * self.m1.predict_proba(X)[0][1] + (1-self.beta)*self.m2.predict_proba(X)[0][1]
-        return [pred, 1-pred] 
+        return [1-pred, pred] 
                 
 
         '''
@@ -1206,7 +1678,7 @@ class Nguyen:
 
     def decision_function(self, X):
         ''' just to conform to SGD API '''
-        return self.predict_proba(X)
+        return [self.predict_proba(X)[1]]
         
 
 def _inverse_indices(nrows, indices):
@@ -1214,6 +1686,18 @@ def _inverse_indices(nrows, indices):
     # this seems kinda hacky but could not find a
     # more numpythonic way of doing it...
     return list(set(range(nrows)) - set(indices))
+
+
+def build_direct_only_model(X_train, y_train, direct_indices):
+    directly_supervised_indices = direct_indices.nonzero()
+    X_direct = X_train[directly_supervised_indices]
+    y_direct = y_train[directly_supervised_indices]
+    m = get_DS_clf()
+    try:
+        m.fit(X_direct, y_direct)
+    except:
+        pdb.set_trace()
+    return m 
 
 def build_nguyen_model(X_train, y_train, direct_indices, p_validation=.25):
     '''
@@ -1411,7 +1895,7 @@ def _is_number(s):
     except ValueError:
         return False
 
-def _score_to_binary_lbl(y, zero_one=True, threshold=2):
+def _score_to_binary_lbl(y, zero_one=True, threshold=2, count_relevant_tables=False):
     # will label anything >= threshold as '1'; otherwise 0
     # (or -1, depending on the zero_one flag).
     #
@@ -1421,8 +1905,9 @@ def _score_to_binary_lbl(y, zero_one=True, threshold=2):
         # then this is a table; we'll return 
         # 0/-1 here (as this is the assumption for now)
         assert "t" in y
-
-
+        
+        if count_relevant_tables and y in ("t1", "t2"): 
+            return 1
     elif int(y) >= threshold:
         return 1
 
@@ -1488,8 +1973,14 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/for_labeling_sha
 # was 8-2-24.csv
 # 4/17 -- was figure8-3-19.csv   
 
-def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-4-20-15.csv",
+'''
+12/26/15 making revisions for JMLR -- previously was was 
+
+candidates_path="sds/annotations/master/figure8-4-20-15.csv",
                                 labels_path="sds/annotations/master/figure8-4-20-15.csv",
+'''
+def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-12-26-15.csv",
+                                labels_path="sds/annotations/master/figure8-12-26-15.csv",
                                 label_index=-1,
                                 max_sentences=10, cutoff=4,
                                 normalize_numeric_cols=True,
@@ -1643,23 +2134,28 @@ def get_DS_features_and_labels(candidates_path="sds/annotations/master/figure8-4
             # with the label (e.g., maybe binarize it?)
             y_i = label_line[label_index]
 
-            X_y_dict[PICO_field]["X"].append(X_i)
-            X_y_dict[PICO_field]["y"].append(y_i)
-            X_y_dict[PICO_field]["pmids"].append(study_id)
-            X_y_dict[PICO_field]["CDSR_ids"].append(CDSR_id)
+            # 6/23: handling issue of occasional 'missing' labels in the
+            # annotations files.
+            if y_i.strip() != "":
+                X_y_dict[PICO_field]["X"].append(X_i)
+                X_y_dict[PICO_field]["y"].append(y_i)
+                X_y_dict[PICO_field]["pmids"].append(study_id)
+                X_y_dict[PICO_field]["CDSR_ids"].append(CDSR_id)
 
-            ###
-            # note: studies[1].cochrane['cdsr_filename']
-            # does return a unique identifier for cochrane 
-            # studies... 
-            ###
+                ###
+                # note: studies[1].cochrane['cdsr_filename']
+                # does return a unique identifier for cochrane 
+                # studies... 
+                ###
 
-            # also include the actual sentences
-            X_y_dict[PICO_field]["sentences"].append(candidate_sentence)
-            # and the corresponding target sentence
-            #X_y_dict[PICO_field]["targets"].append(target_text)
+                # also include the actual sentences
+                X_y_dict[PICO_field]["sentences"].append(candidate_sentence)
+                # and the corresponding target sentence
+                #X_y_dict[PICO_field]["targets"].append(target_text)
 
-            domains_pmids_targets[PICO_field][study_id] = target_text
+                domains_pmids_targets[PICO_field][study_id] = target_text
+            else:
+                print "skipping %s; no label?!" % label_line
 
     ###
     # @TODO refactor to use the normalize function in the
@@ -1744,8 +2240,7 @@ def get_DS_features_for_all_data(numeric_col_zs,
 
         pdf_sents = pico_DS.sent_tokenize(pdf)
 
-        # TMP TMP TMP only doing population
-        for pico_field in pico_DS.PICO_DOMAINS[:1]:
+        for pico_field in pico_DS.PICO_DOMAINS:
 
             # 6/3 save the text, too
             target_text = study.cochrane["CHARACTERISTICS"][pico_field]
