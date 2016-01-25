@@ -124,6 +124,13 @@ class RM5(XMLReader):
 
     def title(self):
         return self.tree_to_unicode(self.map["title"])
+
+    def review_group(self):
+        """
+        returns the unique ID of the group which authored the review
+        """
+
+        return self.data.getroot().attrib.get("GROUP_ID")
         
     def cdno(self):
         """
@@ -294,7 +301,8 @@ class RM5(XMLReader):
 
         parse = {"CHARACTERISTICS": self.char_refs(study_id=study_id),
                  "QUALITY": self.quality(study_id=study_id),
-                 "REFERENCE": self.references(study_id=study_id)}
+                 "REFERENCE": self.references(study_id=study_id),
+                 "GROUP_ID": self.review_group()}
         
 
         return parse
@@ -398,7 +406,7 @@ def main():
     import random
     import glob
 
-    rm5_files_path = '/Users/iain/Code/data/cdsr2013/'
+    rm5_files_path = '/Users/iain/data/cdsr/2013/'
     rm5_files = glob.glob(rm5_files_path + '*.rm5')
 
     # reader = RM5(random.choice(rm5_files))
@@ -456,6 +464,9 @@ def main():
     print "Population details"
     print reader.char_refs(study_id=ids[0])["CHAR_PARTICIPANTS"]
     print
+
+    print "Written by the following review group:"
+    print reader.review_group()
 
     # print "Risk of bias"
     # print
