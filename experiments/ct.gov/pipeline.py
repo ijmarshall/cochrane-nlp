@@ -1,6 +1,7 @@
 import operator
 import re
 from collections import namedtuple
+import pickle
 
 import numpy as np
 import pandas as pd
@@ -9,9 +10,13 @@ import matplotlib.pyplot as plt
 from support import word_cloud, sprint, duplicate_words
 
 import sklearn
+from sklearn.cross_validation import KFold
 from sklearn.linear_model import SGDClassifier
 from sklearn.grid_search import GridSearchCV
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, HashingVectorizer
+
+# Verbosity levels
+VERBOSITY_MAXIMAL = 3
 
 
 def extract_target(abstracts_targets, target):
@@ -29,7 +34,7 @@ def extract_target(abstracts_targets, target):
     
     return df
 
-def filter_sparse_classes(df, target, verbose, threshold=10):
+def filter_sparse_classes(df, target, verbose, threshold=30):
     """Filters away classes which we have less than `threshold` number of
     examples for.
     
@@ -67,17 +72,13 @@ def view_class_examples(df, target):
         print '*'*5, df.iloc[index][target], '*'*5
         print df.iloc[index].abstract
 
-def word_cloud_classes(df, target, verbose):
+def word_cloud_classes(df, target):
     """Dispaly a word cloud for each class in `target`
 
     df : dataframe returned from filter_sparse_classes()
     target : ct.gov field of interest for prediction
-    verbose : display word clouds of all classes if True
 
     """
-    if not verbose:
-        return
-
     labels = df[target].unique()
 
     fig = plt.figure(figsize=(12, 2*len(labels)))
@@ -102,7 +103,7 @@ def train_test_split(df, target):
     """
     return sklearn.cross_validation.train_test_split(df.abstract, df[target])
 
-def vectorize(abstracts_train):
+def vectorize(abstracts_train, vect_type):
     """Vectorizes abstracts
 
     abstracts_train : abstracts for training returned from train_test_split()
@@ -111,7 +112,13 @@ def vectorize(abstracts_train):
     using a HashingVectorizer in the future simple
 
     """
-    vectorizer = TfidfVectorizer(ngram_range=(1, 2), stop_words='english', use_idf=False, binary=True) # HashingVectorizer
+    assert vect_type == 'hashing' or vect_type == 'tfidf'
+
+    if vect_type == 'hashing':
+        vectorizer = HashingVectorizer(ngram_range=(1, 2), stop_words='english', binary=True)
+    elif vect_type == 'tfidf':
+        vectorizer = TfidfVectorizer(ngram_range=(1, 2), stop_words='english', use_idf=False, binary=True)
+
     vectorizer.fit(abstracts_train)
 
     return vectorizer.transform(abstracts_train), vectorizer
@@ -128,20 +135,20 @@ def get_vocabulary(vectorizer):
     """
     return [word for word, index in sorted(vectorizer.vocabulary_.items(), key=operator.itemgetter(1))]
 
-def do_grid_search(X_train, ys_train, verbose=False, k=5, num_alphas=10):
+def do_grid_search(X_train, ys_train, verbosity=False, k=5, num_alphas=10):
     """Do a grid search over regularization term
 
     X_train : training set examples
     ys_train : training set labels
     k : number of folds to use in cross-validation
     num_alphas : number of alphas to search over
-    verbose : plot f1 and all scores for each hyperparameter setting if true
+    verbosity : plot f1 and all scores for each hyperparameter setting if maximal
 
     Macro f1 scores for each setting of the regularization term are also
     plotted.
 
     """
-    verbose = 3 if verbose else 0
+    verbosity = 3 if verbosity else 0
 
     M, N = X_train.shape
 
@@ -152,7 +159,7 @@ def do_grid_search(X_train, ys_train, verbose=False, k=5, num_alphas=10):
         'alpha': np.logspace(-1, -4, num_alphas)
     }
 
-    grid_search = GridSearchCV(clf, parameters, verbose=verbose, scoring='f1_macro', cv=k)
+    grid_search = GridSearchCV(clf, parameters, verbose=verbosity, scoring='f1_macro', cv=k)
     grid_search.fit(X_train, ys_train)
 
     # Get scores for different hyperparam settings into dataframe
@@ -170,7 +177,7 @@ def do_grid_search(X_train, ys_train, verbose=False, k=5, num_alphas=10):
     df = pd.concat([alphas, scores], axis=1).fillna(0) # concatenate the two back together
 
     # Plot f1 and all the scores for each hyperparam setting?
-    if verbose:
+    if verbosity == VERBOSITY_MAXIMAL:
         axes = df['f1'].plot(yerr=df.err, linewidth=.5)
         for s in score_columns:
             axes = df[s].plot(ax=axes, style='.', c='black')
@@ -183,16 +190,17 @@ def do_grid_search(X_train, ys_train, verbose=False, k=5, num_alphas=10):
     
     return grid_search
 
-def predict(clf, abstracts_test, ys_test, vectorizer, verbose):
+def predict(clf, df, target, vectorizer, verbosity):
     """Predict test labels
 
     clf : classifier used in prediction
-    abstracts_test : test abstract examples
-    ys_test : test abstract labels
+    df : dataframe with test examples
+    target : ct.gov field of interest for prediction
     vectorizer : vectorizer used to vectorize train abstract examples
-    verbose : print performance numbers if True
+    verbosity : print performance numbers if True
 
     """
+    abstracts_test, ys_test = df.abstract, df[target]
     X_test = vectorizer.transform(abstracts_test)
     predictions = clf.predict(X_test)
     
@@ -201,29 +209,27 @@ def predict(clf, abstracts_test, ys_test, vectorizer, verbose):
     f1s = sklearn.metrics.f1_score(lb.fit_transform(ys_test), lb.fit_transform(predictions), average=None)
     f1 = np.mean(f1s)
 
-    if verbose:
+    if verbosity == VERBOSITY_MAXIMAL:
         # Display f1s
         Classes = namedtuple('Classes', [re.sub('[^0-9a-zA-Z]+', '_', class_) for class_ in clf.classes_])
 
         sprint('Performance')
         print 'f1s: {}'.format({label: f1 for label, f1 in zip(clf.classes_, f1s)})
         print
+
+    if verbosity:
         print 'Average: {}'.format(f1)
     
     return predictions, f1
 
-def print_confusion_matrix(ys_test, predictions, clf, verbose=False):
+def print_confusion_matrix(ys_test, predictions, clf):
     """Print confusion matrix
 
     ys_test : test abstract labels
     predictions : test abstract label predictions
     clf : classifer used to make predictions
-    verbose : print confusion matrix if True
 
     """
-    if not verbose:
-        return
-
     confusion_matrix = sklearn.metrics.confusion_matrix(ys_test, predictions)
 
     fig = plt.figure()
@@ -276,8 +282,27 @@ def most_important_features(clf, vocabulary, verbose=False):
     plt.axis('off')
     plt.show()
 
-def do_pipeline(abstracts_targets, target, verbose=False):
+def pickle_model(clf, target):
+    """Pickle clf
+
+    clf : classifier to be pickled
+    target : used in the filename
+
+    """
+    with open('{}_clf.p'.format(target), 'wb') as f:
+        pickle.dump(clf, f)
+
+def do_pipeline(abstracts_targets, target,
+        vect_type='hashing', show_wc=False, verbosity=0, do_pickle=False):
     """Execute ct.gov fixed-class prediction pipeline
+
+    abstracts_targets : dataframe consisting of abstracts, pmid, and targets for
+    prediction
+    target : ct.gov field of interest for prediction
+    vect_type : use Hashing vectorizer if 'hashing' (else use TfidfVectorizer)
+    show_wc : display word clouds if True (vect_type must be tfidf)
+    verbosity : 0: print nothing; 1: print only average f1; 5+: display alpha search
+    do_pickle : pickle vectorizer and model if True
 
     1. Extract targets
     2. Filter away sparse classes
@@ -285,31 +310,59 @@ def do_pipeline(abstracts_targets, target, verbose=False):
           when there's a class in the prediction set that's not in the true_y
           set.  Additionally having a small number of classes hurts overall
           performance due to the fact macro_f1 scoring is currently being used.
-    3. View class examples (optional)
-    4. Word cloud classes (optional)
-    5. Train/test split
-    6. Vectorize training set
-    7. Extract ordered vocabulary (for model introspection - optional)
-    8. Grid search over regularization terms
-    9. Extract best estimator
-    10. Make predictions and evaluate performance
-    11. Print confusion matrix (optional)
-    12. Display most important features (optional)
+    
+    For each fold (train, test) split of the original data:
+        - Get best clf from cross-fold validation on the training data
+        - Make predictions on test set and evaluate performance
+        - Print confusion matrix (optional)
+        - Display most important features (optional)
+        - Pickle vectorizer and model (optional)
+
+    Yields the best clf found during cross-validation and its performance on the
+    test set. This is done for each fold in the dataset.
 
     """
-    
-    df = extract_target(abstracts_targets, target)
-    df = filter_sparse_classes(df, target, verbose)
-    # view_class_examples(df, 'intervention_model')
-    print
-    word_cloud_classes(df, target, verbose)
-    abstracts_train, abstracts_test, ys_train, ys_test = train_test_split(df, target) 
-    X_train, vectorizer = vectorize(abstracts_train)
-    vocabulary = get_vocabulary(vectorizer)
-    grid_search = do_grid_search(X_train, ys_train, verbose, k=3, num_alphas=5)
-    best_clf = grid_search.best_estimator_
-    predictions, f1 = predict(best_clf, abstracts_test, ys_test, vectorizer, verbose)           
-    print_confusion_matrix(ys_test, predictions, best_clf, verbose)
-    most_important_features(best_clf, vocabulary, verbose)
+    assert not (vect_type == 'hashing' and show_wc)
 
-    return f1
+    df = extract_target(abstracts_targets, target)
+    df = filter_sparse_classes(df, target, verbosity)
+    # view_class_examples(df, 'intervention_model')
+
+    for train, test in KFold(n=len(df), n_folds=3):
+        best_clf, vectorizer = best_clf_cv(df.iloc[train], target, show_wc, vect_type, verbosity) # do cross validation on training set
+        predictions, test_f1 = predict(best_clf, df.iloc[test], target, vectorizer, verbosity) # predict on test
+
+        if verbosity == VERBOSITY_MAXIMAL: print_confusion_matrix(ys_test, predictions, best_clf)
+        if show_wc: most_important_features(best_clf, vocabulary)
+        # if do_pickle: pickle_model(best_clf, target)
+
+        yield best_clf, test_f1
+
+def best_clf_cv(df, target, show_wc, vect_type, verbosity):
+    """Yield the best classifier found via cross-fold validation
+    
+    df : dataframe with train examples
+    target : ct.gov field of interest for prediction
+    vect_type : use Hashing vectorizer if 'hashing' (else use TfidfVectorizer)
+    show_wc : display word clouds if True (vect_type must be tfidf)
+    verbosity : 0: print nothing; 1: print only average f1; 5+: display alpha search
+
+    1. View class examples (optional)
+    2. Word cloud classes (optional)
+    3. Train/test split
+    4. Vectorize training set
+    5. Extract ordered vocabulary (for model introspection - optional)
+    6. Grid search over regularization terms
+    7. Return best clf found
+
+    Also yields the vectorizer for the training data.
+
+    """
+    print
+    if show_wc: word_cloud_classes(df, target)
+    abstracts_train, ys_train = df.abstract, df[target]
+    X_train, vectorizer = vectorize(abstracts_train, vect_type)
+    if vect_type == 'tfidf': vocabulary = get_vocabulary(vectorizer)
+    grid_search = do_grid_search(X_train, ys_train, verbosity, k=3, num_alphas=5)
+
+    return grid_search.best_estimator_, vectorizer
