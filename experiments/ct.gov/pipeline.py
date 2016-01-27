@@ -1,3 +1,4 @@
+import os
 import operator
 import re
 from collections import namedtuple
@@ -187,6 +188,8 @@ def do_grid_search(X_train, ys_train, verbosity=False, k=5, num_alphas=10):
         plt.xticks(tick_marks, df.alpha.round(4), rotation=90)
         axes.set_xlabel('alpha')
         axes.set_ylabel('macro f1')
+
+        plt.show()
     
     return grid_search
 
@@ -218,7 +221,7 @@ def predict(clf, df, target, vectorizer, verbosity):
         print
 
     if verbosity:
-        print 'Average: {}'.format(f1)
+        print 'Test f1: {}'.format(f1)
     
     return predictions, f1
 
@@ -282,15 +285,34 @@ def most_important_features(clf, vocabulary, verbose=False):
     plt.axis('off')
     plt.show()
 
-def pickle_model(clf, target):
-    """Pickle clf
+def best_clf_cv(df, target, show_wc, vect_type, verbosity):
+    """Yield the best classifier found via cross-fold validation
+    
+    df : dataframe with train examples
+    target : ct.gov field of interest for prediction
+    vect_type : use Hashing vectorizer if 'hashing' (else use TfidfVectorizer)
+    show_wc : display word clouds if True (vect_type must be tfidf)
+    verbosity : 0: print nothing; 1: print only average f1; 5+: display alpha search
 
-    clf : classifier to be pickled
-    target : used in the filename
+    1. View class examples (optional)
+    2. Word cloud classes (optional)
+    3. Train/test split
+    4. Vectorize training set
+    5. Extract ordered vocabulary (for model introspection - optional)
+    6. Grid search over regularization terms
+    7. Return best clf found
+
+    Also yields the vectorizer for the training data.
 
     """
-    with open('{}_clf.p'.format(target), 'wb') as f:
-        pickle.dump(clf, f)
+    print
+    if show_wc: word_cloud_classes(df, target)
+    abstracts_train, ys_train = df.abstract, df[target]
+    X_train, vectorizer = vectorize(abstracts_train, vect_type)
+    if vect_type == 'tfidf': vocabulary = get_vocabulary(vectorizer)
+    grid_search = do_grid_search(X_train, ys_train, verbosity, k=3, num_alphas=5)
+
+    return grid_search.best_estimator_, vectorizer
 
 def do_pipeline(abstracts_targets, target,
         vect_type='hashing', show_wc=False, verbosity=0, do_pickle=False):
@@ -337,32 +359,3 @@ def do_pipeline(abstracts_targets, target,
         # if do_pickle: pickle_model(best_clf, target)
 
         yield best_clf, test_f1
-
-def best_clf_cv(df, target, show_wc, vect_type, verbosity):
-    """Yield the best classifier found via cross-fold validation
-    
-    df : dataframe with train examples
-    target : ct.gov field of interest for prediction
-    vect_type : use Hashing vectorizer if 'hashing' (else use TfidfVectorizer)
-    show_wc : display word clouds if True (vect_type must be tfidf)
-    verbosity : 0: print nothing; 1: print only average f1; 5+: display alpha search
-
-    1. View class examples (optional)
-    2. Word cloud classes (optional)
-    3. Train/test split
-    4. Vectorize training set
-    5. Extract ordered vocabulary (for model introspection - optional)
-    6. Grid search over regularization terms
-    7. Return best clf found
-
-    Also yields the vectorizer for the training data.
-
-    """
-    print
-    if show_wc: word_cloud_classes(df, target)
-    abstracts_train, ys_train = df.abstract, df[target]
-    X_train, vectorizer = vectorize(abstracts_train, vect_type)
-    if vect_type == 'tfidf': vocabulary = get_vocabulary(vectorizer)
-    grid_search = do_grid_search(X_train, ys_train, verbosity, k=3, num_alphas=5)
-
-    return grid_search.best_estimator_, vectorizer
