@@ -2,25 +2,24 @@ import theano
 import theano.tensor as T
 
 class RNN:
-    def __init__(self, embeddings, H, num_classes, encoder, decoder):
+    def __init__(self, embeddings, encoder, decoder):
         """Initialize parameters and build theano graph
         
         Parameters
         ----------
         embeddings : V x word_dim 2darray of word embeddings
-        H : hidden layer size
-        num_classes : number of classes to predict
-        encoder : instance of Encoder
-        decoder : instance of Decoder
+        encoder : method of encoding abstract
+        decoder : method of decoding abstract
         
         """
         self.embeddings = theano.shared(value=embeddings, name='embeddings') # word embedding matrix
-        self.H, self.num_classes = H, num_classes
         self.encoder, self.decoder = encoder, decoder
 
         self.params = encoder.params + decoder.params #+ [self.embeddings]
         
-        self._theano_build() # build the theano graph
+        print 'Building theano graph...'
+        self._theano_build()
+        print 'Done!'
 
     def _theano_build(self):
         """Build theano computational graph
@@ -51,4 +50,4 @@ class RNN:
 
         self.predict = theano.function(inputs=[x_idxs], outputs=prediction)
 
-        self.hidden = theano.function(inputs=[x_idxs, y, lr], outputs=hidden, on_unused_input='warn')
+        self.compute_loss = theano.function(inputs=[x_idxs, y], outputs=loss)

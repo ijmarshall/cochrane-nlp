@@ -5,20 +5,20 @@ import theano.tensor as T
 
 class VanillaCell(object):
 
-    def __init__(self, H, word_dim):
+    def __init__(self, hidden_dim, word_dim):
         """Initialize learnable weights of a vanilla RNN cell
         
         Parameters
         ----------
-        H : dimensionality of hidden state
+        hidden_dim : dimensionality of hidden state
         word_dim : dimensionality of word vectors
         
         """
-        self.H, self.word_dim = H, word_dim
+        self.hidden_dim, self.word_dim = hidden_dim, word_dim
 
         # Random weight initialization
-        Wh = np.random.uniform(-1, 1, size=[H, H]) # hidden to hidden function
-        Wx = np.random.uniform(-1, 1, size=[word_dim, H]) # input to hidden function
+        Wh = np.random.uniform(-1, 1, size=[hidden_dim, hidden_dim]) # hidden to hidden function
+        Wx = np.random.uniform(-1, 1, size=[word_dim, hidden_dim]) # input to hidden function
         
         # Theano variables
         self.Wh = theano.shared(value=Wh, name='Wh') # hidden-hidden function
@@ -26,7 +26,7 @@ class VanillaCell(object):
 
         self.params = [self.Wh, self.Wx]
 
-        initial_h = np.zeros(H)
+        initial_h = np.zeros(hidden_dim)
         self.initial_vals = [dict(initial=initial_h)]
 
     def step(self, x, h_prev, *params):
