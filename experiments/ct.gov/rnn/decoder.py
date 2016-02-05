@@ -28,8 +28,6 @@ class SoftmaxDecoder(Decoder):
         self.params = [self.Ws]
 
     def decode(self, hidden):
-        [H] = hidden.shape
-
         scores = T.dot(hidden, self.Ws) # compute class scores with encoded abstract
         probs = T.nnet.softmax(scores)
 

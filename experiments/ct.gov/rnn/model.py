@@ -45,8 +45,10 @@ class RNN:
         # Compute gradients for sgd
         grads = [T.grad(loss, wrt=param) for param in self.params]
 
-        self.sgd_step = theano.function(inputs=[x_idxs, y, lr],
-                                        outputs=loss,
-                                        updates=[(param, param - lr*grad) for param, grad in zip(self.params, grads)])
+        self.do_sgd = theano.function(inputs=[x_idxs, y, lr],
+                                      outputs=loss,
+                                      updates=[(param, param - lr*grad) for param, grad in zip(self.params, grads)])
 
         self.predict = theano.function(inputs=[x_idxs], outputs=prediction)
+
+        self.hidden = theano.function(inputs=[x_idxs, y, lr], outputs=hidden, on_unused_input='warn')
