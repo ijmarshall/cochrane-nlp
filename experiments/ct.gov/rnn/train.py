@@ -44,15 +44,18 @@ class RNNTrainer:
             for x_idxs, y in zip(X, ys):
                 yield x_idxs, y
         
-    def train(self, X_train, ys_train, X_val, ys_val, learning_rate=.005, schedule_type='epoch', val_every=1e100):
+    def train(self, X_train, ys_train, X_val, ys_val,
+            learning_rate=.005, reg=.001, schedule_type='epoch', val_every=1e100):
         """Train for specified number of epochs
         
         X_train : list of training examples
         ys_train : training labels
         X_val : list of validation examples
         ys_val : validation labels
-        schedule : generator that yields training examples
         learning_rate : learning rate to use in sgd
+        reg : regularization term
+        schedule_type : training schedule {'epoch'}
+        val_every : number of iterations to go before reporting validation loss
         
         """
         if schedule_type == 'epoch':
@@ -60,12 +63,15 @@ class RNNTrainer:
         
         self.val_loss = [] # maintain val_loss state after this training is done
         for i, (x, y) in enumerate(schedule):
-            self.rnn.do_sgd(x, y, learning_rate)
+            self.rnn.do_sgd(x, y, learning_rate, reg)
             
             if not i % val_every:
                 val_schedule = self.epoch_trainer(X_val, ys_val)
-                val_loss = np.mean([self.rnn.compute_loss(x, y) for (x, y) in val_schedule])
+                tuples = [self.rnn.loss_prediction(x, y, reg) for (x, y) in val_schedule]
+
+                losses, predictions = zip(*tuples)
+                val_loss, predictions = np.mean(losses), map(float, predictions)
                 
-                print 'Validation Loss: {}'.format(val_loss)
+                print 'Loss, Accuracy = ({}, {})'.format(val_loss, np.mean(np.array(predictions)==ys_val))
                 
                 self.val_loss.append(val_loss)

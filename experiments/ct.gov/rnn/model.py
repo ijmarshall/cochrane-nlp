@@ -31,6 +31,7 @@ class RNN:
         x_idxs = T.ivector('x_idxs') # indices into embedding matrix for current abstract
         y = T.iscalar('y') # class label number
         lr = T.scalar('learning_rate')
+        reg = T.scalar('regularization')
 
         # Model
         # 
@@ -39,15 +40,25 @@ class RNN:
         hidden = self.encoder.encode(x)
         probs = self.decoder.decode(hidden) # get class probabilities
         prediction = T.argmax(probs, axis=1)
-        loss = -T.log(probs[0, y])
-
+        loss = -T.log(probs[0, y]) + reg*self.l2_loss()
         # Compute gradients for sgd
         grads = [T.grad(loss, wrt=param) for param in self.params]
 
-        self.do_sgd = theano.function(inputs=[x_idxs, y, lr],
+        self.do_sgd = theano.function(inputs=[x_idxs, y, lr, reg],
                                       outputs=loss,
-                                      updates=[(param, param - lr*grad) for param, grad in zip(self.params, grads)])
+                                      updates=[(param, param - lr*grad) for param, grad in zip(self.params, grads)],
+                                      on_unused_input='warn')
 
-        self.predict = theano.function(inputs=[x_idxs], outputs=prediction)
+        self.predict = theano.function(inputs=[x_idxs], outputs=prediction, on_unused_input='warn')
 
-        self.compute_loss = theano.function(inputs=[x_idxs, y], outputs=loss)
+        self.loss_prediction = theano.function(inputs=[x_idxs, y, reg], outputs=[loss, prediction], on_unused_input='warn')
+
+    def l2_loss(self):
+        """Compute L2 regularization loss for parameter settings"""
+
+        pows = [T.pow(param, 2) for param in self.params]
+        sums = [T.sum(pow) for pow in pows]
+
+        sum = T.sum(sums)
+
+        return sum
