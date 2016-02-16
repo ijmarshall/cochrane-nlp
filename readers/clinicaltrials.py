@@ -99,6 +99,9 @@ class Reader(XMLReader):
             key = re.sub('\s+', '_', key.strip()).lower() # lowercase and get rid of spaces
             self.fields[key] = value.strip()
 
+        # Primary outcome measure
+        self.fields['primary_outcome_measure'] = root.find('primary_outcome/measure').text
+
 
 def main():
 
