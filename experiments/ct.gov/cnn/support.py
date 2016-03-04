@@ -76,6 +76,60 @@ def examples_generator(dataset, target='gender', num_examples=None):
         for idx, entry in dataset[dataset[target] == label][:num_examples].iterrows():
             yield idx
 
-dataset = dataset.loc[list(examples_generator(dataset, num_examples=50))]
+    dataset = dataset.loc[list(examples_generator(dataset, num_examples=50))]
 
-dataset.groupby('gender').size()
+    dataset.groupby('gender').size()
+
+#from sklearn.cross_validation import KFold
+#
+#fold = KFold(len(abstracts_padded), n_folds=5, shuffle=True)
+#p = iter(fold)
+#
+#train_idxs, val_idxs = next(p)
+#val_idxs = train_idxs # HARD-CODE VALIDATION SET TO TRAINING SET FOR NOW!!!
+#
+#X_train, ys_train = abstracts_padded[train_idxs], ys[:, train_idxs]
+#X_val, ys_val = abstracts_padded[val_idxs], ys[:, val_idxs]
+#
+#num_train, num_val = len(X_train), len(X_val)
+#
+#val_dict = {label: y_row for label, y_row in zip(labels, ys_val)}
+
+#def batch_generator(ys, batch_size, balanced=True):
+#    """Yield successive batches for training
+#    
+#    This generator is not meant to be exhausted, but rather called by next().
+#    
+#    Each batch has batch_size/num_classes number of examples from each class
+#    
+#    """
+#    num_objectives, num_train = ys.shape
+#    
+#    while True:
+#        yield np.random.choice(num_train, size=batch_size)
+
+#train_batch = batch_generator(ys_train, batch_size)
+#
+#from support import produce_labels
+#
+#num_minis_per_epoch = (num_train/batch_size) # number of minibatches per epoch
+#num_batches = num_epochs * num_minis_per_epoch # go through n epochs
+#
+#for i in range(num_batches):
+#    if not i % num_minis_per_epoch:
+#        print 'Epoch {}...'.format(i/num_minis_per_epoch)
+#        
+#    batch_idxs = next(train_batch)
+#    
+#    X = X_train[batch_idxs]
+#    train_dict = dict(produce_labels(labels, class_sizes, ys_train[:, batch_idxs]))
+#    train_dict.update({'input': X})
+#
+#    train_error = model.train_on_batch(train_dict)
+#
+#    if not i % 10:
+#        print train_error
+#        
+#        predictions = model.predict({'input': X_val})
+#        for label, ys_pred in predictions.items():
+#            print '{} accuracy:'.format(label), np.mean(ys_pred.argmax(axis=1) == val_dict[label])
