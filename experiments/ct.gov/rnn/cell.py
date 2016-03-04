@@ -5,13 +5,14 @@ import theano.tensor as T
 
 class VanillaCell(object):
 
-    def __init__(self, hidden_dim, word_dim):
+    def __init__(self, hidden_dim, word_dim, predict=False):
         """Initialize learnable weights of a vanilla RNN cell
         
         Parameters
         ----------
         hidden_dim : dimensionality of hidden state
         word_dim : dimensionality of word vectors
+        predict : true if you want 
         
         """
         self.hidden_dim, self.word_dim = hidden_dim, word_dim
