@@ -5,6 +5,60 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+import keras
+
+
+class AccuracyCallback(keras.callbacks.Callback):
+    """Callback to compute accuracy during training"""
+
+    def __init__(self, validation_data, val_dict, batch_size, num_train, val_every):
+        """Callback to compute accuracy during training
+        
+        Parameters
+        ----------
+        validation : dict of data expected by graph.predict()
+        val_dict : dict from labels to classes
+        batch_size : number of examples per batch
+        num_train : number of examples in training set
+        val_every : number of times to to validation during an epoch
+
+        Also save the validation accuracies when you compute them.
+        
+        """
+        self.validation_data = validation_data
+        self.val_dict = val_dict
+        self.num_batches_since_val = 0
+        num_minis_per_epoch = (num_train/batch_size) # number of minibatches per epoch
+        self.K = num_minis_per_epoch / val_every # number of batches to go before doing validation
+        self.val_accuracies = {label:[] for label in val_dict}
+        
+        super(AccuracyCallback, self).__init__()
+        
+    def on_batch_end(self, batch, logs={}):
+        """Do validation if it's been a while
+        
+        Specifically, """
+        
+        # Hasn't been long enough since your last validation run?
+        if self.num_batches_since_val < self.K-1:
+            self.num_batches_since_val += 1
+            return
+            
+        predictions = self.model.predict(self.validation_data)
+        
+        print
+        for label, ys_pred in predictions.items():
+            accuracy = np.mean(ys_pred.argmax(axis=1) == self.val_dict[label])
+            print '{} accuracy:'.format(label), accuracy
+
+            # Write out the accuracy
+            with open('{}.loss'.format(label), 'a') as f:
+                f.write(str(accuracy) + '\n')
+
+            self.val_accuracies[label] += [accuracy]
+            
+        self.num_batches_since_val = 0
+
 def plot_confusion_matrix(confusion_matrix, columns):
     df = pd.DataFrame(confusion_matrix, columns=columns, index=columns)
     axes = plt.gca()
@@ -56,6 +110,10 @@ def produce_labels(labels, class_sizes, ys):
     for label, num_classes, y_row in zip(labels, class_sizes, ys):        
         ys_block = np.zeros([batch_size, num_classes])
         ys_block[np.arange(batch_size), y_row] = 1
+
+        # Take into account missing labels!
+        missing_data = np.argwhere(y_row == -1).flatten()
+        ys_block[missing_data] = 0
         
         yield (label, ys_block)
 

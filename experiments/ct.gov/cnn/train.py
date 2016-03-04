@@ -8,12 +8,15 @@
 
 # In[1]:
 
+import os
+
 import pickle
 
 import numpy as np
 
 import keras
-from keras.models import Graph
+
+from keras.models import Graph, model_from_json
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Convolution1D, MaxPooling1D
@@ -62,25 +65,28 @@ class Model:
 
     def build_model(self):
         """Build keras model
+
+        Check to see if one already exists on disk. If so, use that one instead.
         
-        Current architecture is:
-            embedding -> conv -> pool -> fc -> fork
+        Current architecture is embedding -> conv -> pool -> fc -> fork.
             
         """
-        nb_filter = 20
+        # Otherwise build a fresh model!
+
+        nb_filter = 128
         filter_length = 2
-        hidden_dims = 32
-        nb_epoch = 35
-        batch_size = 10
+        hidden_dims = 128
 
         model = Graph()
-        model.add_input(name='input', input_shape=[self.maxlen], dtype='int') # dtype='int' is 100% necessary for some reason!
+        model.add_input(name='input',
+                input_shape=[self.maxlen],
+                dtype='int') # dtype='int' is 100% necessary for some reason!
+
         model.add_node(Embedding(input_dim=self.vocab_size, output_dim=self.word_dim,
             weights=[self.embeddings],
             input_length=self.maxlen,
             trainable=False),
                     name='embedding', input='input')
-
         model.add_node(Dropout(0.25), name='dropout1', input='embedding')
 
         model.add_node(Convolution1D(nb_filter=nb_filter,
@@ -89,6 +95,7 @@ class Model:
                     name='conv',
                     input='dropout1')
         model.add_node(MaxPooling1D(pool_length=self.maxlen-1), name='pool', input='conv') # non-maximum suppression
+
         model.add_node(Flatten(), name='flat', input='pool')
         model.add_node(Dense(hidden_dims), name='z', input='flat')
         model.add_node(Activation('relu'), name='shared', input='z')
@@ -110,19 +117,39 @@ class Model:
         Save the weights after every epoch
 
         """
-        batch_size = 6
+        batch_size = 128
         num_epochs = 10
 
-        callback = AccuracyCallback(self.data, self.val_dict, batch_size, num_train=len(self.abstracts_padded), val_every=2)
-        checkpointer = keras.callbacks.ModelCheckpoint(filepath="weights.hdf5", verbose=1)
+        self.callback = AccuracyCallback(self.data, self.val_dict,
+                batch_size, num_train=len(self.abstracts_padded), val_every=2)
 
-        self.model.fit(self.data, validation_data=self.data,
-                batch_size=batch_size, callbacks=[callback, checkpointer], nb_epoch=10)
+        self.checkpointer = keras.callbacks.ModelCheckpoint(filepath='weights.hd5',
+                save_best_only=True, verbose=1)
+        
+        self.history = self.model.fit(self.data, validation_data=self.data,
+                batch_size=batch_size, callbacks=[self.callback, self.checkpointer], nb_epoch=num_epochs)
 
 if __name__ == '__main__':
-    model = Model()
+    m = Model()
 
-    model.load_embeddings()
-    model.load_labels()
-    model.build_model()
-    model.train()
+    # Load embeddings and labels
+    m.load_embeddings()
+    m.load_labels()
+
+    # Already built a model and it's on disk?
+    if os.path.isfile('model.json'):
+        m.model = model_from_json(open('model.json').read())
+        if os.path.isfile('weights.hd5'):
+            m.model.load_weights('weights.hd5')
+    else:
+        m.build_model() # build model from scratch!
+
+    # Save model to disk
+    json_string = m.model.to_json()
+    open('model.json', 'w').write(json_string)
+
+    m.train()
+
+    # Dump the trainer for later inspection
+    with open('trainer.p', 'wb') as f:
+        pickle.dump(m, f)
