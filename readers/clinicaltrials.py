@@ -47,9 +47,12 @@ class Reader(XMLReader):
         XMLReader.__init__(self, filename, xml_string)
         self.section_map["title"] = 'brief_title'
         self.section_map["design"] = 'study_design'
-        self.section_map["population"] = 'eligibility'
+        # self.section_map["population"] = 'eligibility'
+        self.section_map["population"] = 'condition'
         self.section_map["interventions"] = 'intervention/intervention_name'
         self.section_map["outcomes"] = 'clinical_results/outcome_list/outcome'
+        self.section_map["primary_outcome"] = 'primary_outcome/measure'
+        self.section_map["secondary_outcome"] = 'secondary_outcome/measure'
         self.section_map["num_arms"] = 'number_of_arms'
         self.section_map["arms"] = 'arm_group/arm_group_label'
         self.section_map["resultspmids"] = 'results_reference/PMID'
