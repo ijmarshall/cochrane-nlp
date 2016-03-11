@@ -6,18 +6,28 @@ import numpy as np
 import pandas as pd
 
 import keras
+from keras.utils.np_utils import to_categorical
+
+import sklearn
 
 
-class AccuracyCallback(keras.callbacks.Callback):
+class TestCallback(keras.callbacks.Callback):
+    def __init__(self):
+        super(TestCallback, self).__init__()
+
+    def on_batch_end(self, batch, logs={}):
+        print len(self.model.validation_data)
+        print self.model.output_order
+
+class ValidationCallback(keras.callbacks.Callback):
     """Callback to compute accuracy during training"""
 
-    def __init__(self, validation_data, val_dict, batch_size, num_train, val_every):
+    def __init__(self, val_data, batch_size, num_train, val_every):
         """Callback to compute accuracy during training
         
         Parameters
         ----------
-        validation : dict of data expected by graph.predict()
-        val_dict : dict from labels to classes
+        val_data : dict containing input and labels
         batch_size : number of examples per batch
         num_train : number of examples in training set
         val_every : number of times to to validation during an epoch
@@ -25,38 +35,34 @@ class AccuracyCallback(keras.callbacks.Callback):
         Also save the validation accuracies when you compute them.
         
         """
-        self.validation_data = validation_data
-        self.val_dict = val_dict
+        super(ValidationCallback, self).__init__()
+
+        self.val_data = val_data
         self.num_batches_since_val = 0
         num_minis_per_epoch = (num_train/batch_size) # number of minibatches per epoch
         self.K = num_minis_per_epoch / val_every # number of batches to go before doing validation
-        self.val_accuracies = {label:[] for label in val_dict}
-        
-        super(AccuracyCallback, self).__init__()
         
     def on_batch_end(self, batch, logs={}):
         """Do validation if it's been a while
         
-        Specifically, """
+        Concretely print out fscores for each class val_every number of times
+        per epoch.
         
+        """
         # Hasn't been long enough since your last validation run?
         if self.num_batches_since_val < self.K-1:
             self.num_batches_since_val += 1
             return
             
-        predictions = self.model.predict(self.validation_data)
+        predictions = self.model.predict(self.val_data)
         
-        print
         for label, ys_pred in predictions.items():
-            accuracy = np.mean(ys_pred.argmax(axis=1) == self.val_dict[label])
-            print '{} accuracy:'.format(label), accuracy
+            ys_val = self.val_data[label]
+            f1 = sklearn.metrics.f1_score(ys_val.argmax(axis=1),
+                                          ys_pred.argmax(axis=1), average='macro')
 
-            # Write out the accuracy
-            with open('{}.loss'.format(label), 'a') as f:
-                f.write(str(accuracy) + '\n')
+            print '{} f1:'.format(label), f1
 
-            self.val_accuracies[label] += [accuracy]
-            
         self.num_batches_since_val = 0
 
 def plot_confusion_matrix(confusion_matrix, columns):
@@ -89,12 +95,12 @@ def classinfo_generator(df):
         categories = df[column].cat.categories
         yield categories, len(categories)
 
-def produce_labels(labels, class_sizes, ys):
-    """Generates dict of labels for a minibatch for each objective
+def produce_labels(label_names, class_sizes, ys):
+    """Generates dict of label_names for a minibatch for each objective
     
     Parameters
     ----------
-    labels : list of label names (order must correspond to labels in ys)
+    label_names : list of label names (order must correspond to label_names in ys)
     class_sizes : list of class sizes
     ys : labels
     
@@ -102,16 +108,15 @@ def produce_labels(labels, class_sizes, ys):
     
     {gender: 2darray, phase: 2darray, ..., masking: 2darray}
     
-    where 2darray has one-hot labels for every row.
+    where 2darray has one-hot label_names for every row.
     
     """
-    num_objectives, batch_size = ys.shape
+    num_objectives, num_train = ys.shape
     
-    for label, num_classes, y_row in zip(labels, class_sizes, ys):        
-        ys_block = np.zeros([batch_size, num_classes])
-        ys_block[np.arange(batch_size), y_row] = 1
+    for label, num_classes, y_row in zip(label_names, class_sizes, ys):        
+        ys_block = to_categorical(y_row)
 
-        # Take into account missing labels!
+        # Take into account missing label_names!
         missing_data = np.argwhere(y_row == -1).flatten()
         ys_block[missing_data] = 0
         
