@@ -103,54 +103,101 @@ class Model:
                                                    self.ys[:, val_idxs]))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
-    def build_model(self, nb_filter, filter_len, hidden_dim):
+    def build_model(self, nb_filter, filter_len, hidden_dim, task_specific=False):
         """Build keras model
 
-        Current architecture is embedding -> conv -> pool -> fc -> fork.
-            
+        Start with declaring model names and have graph construction mirror it
+        as closely as possible.
+
         """
+        dropouts = {}
+
+        ### BEGIN LAYER NAMES #################################################
+                                                                              #
+        input = 'input'
+        embedding = 'embedding'
+        dropouts[embedding] = embedding + '_'
+        conv = 'conv'
+        pool = 'pool'
+        flat = 'flat'
+        shared = 'shared'
+        dropouts[shared] = shared + '_'
+
+        if task_specific:
+            task_specifics = {label: '{}_rep'.format(label) for label in self.label_names}
+
+            # Add dropout
+            for label in self.label_names:
+                specific_rep = task_specifics[label]
+                dropouts[specific_rep] = specific_rep + '_'
+
+        probs = {label: '{}_probs'.format(label) for label in self.label_names}
+        outputs = self.label_names
+                                                                              #
+        ### END LAYER NAMES ###################################################
+        
+
+        ### BEGIN GRAPH CONSTRUCTION ##########################################
+                                                                              #
         model = Graph()
 
-        # Input Layer
-        model.add_input(name='input',
+        model.add_input(name=input,
                         input_shape=[self.maxlen],
                         dtype='int') # dtype='int' is 100% necessary for some reason!
 
-        # Embedding Layer with dropout
         model.add_node(Embedding(input_dim=self.vocab_size, output_dim=self.word_dim,
                                  weights=[self.embeddings],
                                  input_length=self.maxlen,
                                  trainable=False),
-                       name='embedding', input='input')
-        model.add_node(Dropout(0.25), name='dropout1', input='embedding')
+                       name=embedding,
+                       input=input)
 
-        # Convolution layer
+        model.add_node(Dropout(0.25), name=dropouts[embedding], input=embedding)
         model.add_node(Convolution1D(nb_filter=nb_filter,
                                      filter_length=filter_len,
                                      activation='relu'),
-                       name='conv',
-                       input='dropout1')
+                       name=conv,
+                       input=dropouts[embedding])
 
-        # Non-maximum Supression
-        model.add_node(MaxPooling1D(pool_length=self.maxlen-1), name='pool', input='conv')
+        model.add_node(MaxPooling1D(pool_length=self.maxlen-1), name=pool, input=conv)
+        model.add_node(Flatten(), name=flat, input=pool)
+        model.add_node(Dense(hidden_dim, activation='relu'), name=shared, input=flat)
+        model.add_node(Dropout(0.25), name=dropouts[shared], input=shared)
 
-        # Flatten Layer
-        model.add_node(Flatten(), name='flat', input='pool')
-
-        # Dense Layer
-        model.add_node(Dense(hidden_dim), name='z', input='flat')
-        model.add_node(Activation('relu'), name='shared', input='z')
-        model.add_node(Dropout(0.25), name='dropout2', input='shared')
-
-        # Fork the graph and predict probabilities for each target from shared representation
         for label, num_classes in zip(self.label_names, self.class_sizes):
-            model.add_node(Dense(output_dim=num_classes, activation='softmax'),
-                           name='{}_probs'.format(label),
-                           input='dropout2')
-            model.add_output(name=label, input='{}_probs'.format(label)) # separate output for each label
+            # Fork the graph and predict probabilities for each target from shared representation
+
+            if task_specific: 
+                # Final dense hidden layer for task-specific representation
+
+                specific_rep = task_specifics[label]
+
+                model.add_node(Dense(hidden_dim, activation='relu'),
+                               name=specific_rep,
+                               input=dropouts[shared])
+
+                model.add_node(Dropout(0.25),
+                               name=dropouts[specific_rep],
+                               input=specific_rep)
+
+                model.add_node(Dense(output_dim=num_classes, activation='softmax'),
+                               name=probs[label],
+                               input=dropouts[specific_rep])
+            else:
+                # Straight from shared representation to softmax
+
+                model.add_node(Dense(output_dim=num_classes, activation='softmax'),
+                               name=probs[label],
+                               input=dropouts[shared])
+
+        for label in self.label_names:
+            model.add_output(name=label, input=probs[label]) # separate output for each label
 
         model.compile(optimizer='rmsprop',
                     loss={label: 'categorical_crossentropy' for label in self.label_names}) # CE for all the targets
+
+                                                                              #
+        ### END GRAPH CONSTRUCTION ############################################
 
         model_summary(model)
 
@@ -175,6 +222,7 @@ class Model:
         weights=('weights file', 'option', None, str),
         nb_epoch=('number of epochs', 'option', None, int),
         labels=('labels to predict', 'option'),
+        task_specific=('whether to include an addition task-specific hidden layer', 'flag', None, bool),
         nb_filter=('number of filters', 'option', None, int),
         filter_len=('length of filter', 'option', None, int),
         hidden_dim=('size of hidden state', 'option', None, int),
@@ -182,7 +230,7 @@ class Model:
         val_every=('number of times to compute validation per epoch', 'option', None, int)
 )
 def main(weights='', nb_epoch=5, labels='gender,phase_1',
-        nb_filter=128, filter_len=2, hidden_dim=128,
+        task_specific=False, nb_filter=128, filter_len=2, hidden_dim=128,
         batch_size=128, val_every=1):
     """Training process
 
@@ -197,7 +245,7 @@ def main(weights='', nb_epoch=5, labels='gender,phase_1',
     m.load_embeddings()
     m.load_labels(labels)
     m.do_train_val_split()
-    m.build_model(nb_filter, filter_len, hidden_dim)
+    m.build_model(nb_filter, filter_len, hidden_dim, task_specific)
 
     if os.path.isfile(weights):
         m.model.load_weights(weights)
