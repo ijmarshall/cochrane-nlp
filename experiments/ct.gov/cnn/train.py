@@ -9,6 +9,7 @@
 # In[1]:
 
 import os
+import sys
 
 from collections import OrderedDict
 
@@ -26,6 +27,7 @@ from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Convolution1D, MaxPooling1D
 from keras.utils.layer_utils import model_summary
+from keras.callbacks import ModelCheckpoint
 
 from support import classinfo_generator, produce_labels, ValidationCallback
 
@@ -45,7 +47,7 @@ class Model:
         vocab_size: number of words in the vocabulary
             
         """
-        embeddings_info = pickle.load(open('embeddings_info.p', 'rb'))
+        embeddings_info = pickle.load(open('pickle/embeddings_info.p', 'rb'))
 
         self.abstracts = embeddings_info['abstracts']
         self.abstracts_padded = embeddings_info['abstracts_padded']
@@ -62,41 +64,48 @@ class Model:
 
         """
         # Dataframes of labels
-        pruned_dataset = pickle.load(open('pruned_dataset.p', 'rb'))
-        binarized_dataset = pickle.load(open('binarized_dataset.p', 'rb'))
+        pruned_dataset = pickle.load(open('pickle/pruned_dataset.p', 'rb'))
+        binarized_dataset = pickle.load(open('pickle/binarized_dataset.p', 'rb'))
 
         # Only consider subset of labels passed in
         pruned_dataset = pruned_dataset[label_names]
         binarized_dataset = binarized_dataset[label_names]
 
-        ys = np.array(binarized_dataset).T # turn labels into numpy array
+        self.ys = np.array(binarized_dataset).T # turn labels into numpy array
 
         # Get class names and sizes
         class_info = list(classinfo_generator(pruned_dataset))
         class_names, self.class_sizes = zip(*class_info)
         class_names = {label: classes for label, classes in zip(label_names, class_names)}
 
-        # Train Test Split
+        self.label_names = label_names
+
+    def do_train_val_split(self):
+        """Split data up into separate train and validation sets
+
+        Use sklearn's function.
+
+        """
         fold = KFold(len(self.abstracts_padded), n_folds=5, shuffle=True)
         p = iter(fold)
         train_idxs, val_idxs = next(p)
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         # Extract training data to pass to keras fit()
-        self.train_data = OrderedDict(produce_labels(label_names, self.class_sizes, ys[:, train_idxs]))
+        self.train_data = OrderedDict(produce_labels(self.label_names,
+                                                     self.class_sizes,
+                                                     self.ys[:, train_idxs]))
         self.train_data.update({'input': self.abstracts_padded[train_idxs]})
 
         # Extract validation data to validate over
-        self.val_data = OrderedDict(produce_labels(label_names, self.class_sizes, ys[:, val_idxs]))
+        self.val_data = OrderedDict(produce_labels(self.label_names,
+                                                   self.class_sizes,
+                                                   self.ys[:, val_idxs]))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
-
-        self.label_names = label_names
 
     def build_model(self, nb_filter, filter_len, hidden_dim):
         """Build keras model
 
-        Check to see if one already exists on disk. If so, use that one instead.
-        
         Current architecture is embedding -> conv -> pool -> fc -> fork.
             
         """
@@ -150,11 +159,12 @@ class Model:
     def train(self, nb_epoch, batch_size, val_every):
         """Train the model for a fixed number of epochs
 
-        Save the weights after every epoch
+        Set up callbacks first.
 
         """
         val_callback = ValidationCallback(self.val_data, batch_size, self.num_train, val_every)
-        checkpointer = keras.callbacks.ModelCheckpoint(filepath='weights.hd5', verbose=2)
+        checkpointer = ModelCheckpoint(filepath='weights/{}.hd5'.format('+'.join(self.label_names)),
+                                       verbose=2)
 
         history = self.model.fit(self.train_data, batch_size=batch_size,
                                  nb_epoch=nb_epoch, verbose=2,
@@ -186,10 +196,14 @@ def main(weights='', nb_epoch=5, labels='gender,phase_1',
     m = Model()
     m.load_embeddings()
     m.load_labels(labels)
-
+    m.do_train_val_split()
     m.build_model(nb_filter, filter_len, hidden_dim)
+
     if os.path.isfile(weights):
         m.model.load_weights(weights)
+    else:
+        print >> sys.stderr, 'weights file {} not found!'.format(weights)
+
     m.train(nb_epoch, batch_size, val_every)
 
 

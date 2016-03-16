@@ -1,3 +1,4 @@
+import sys
 import operator
 
 import matplotlib.pyplot as plt
@@ -49,21 +50,50 @@ class ValidationCallback(keras.callbacks.Callback):
         per epoch.
         
         """
+        return # don't do anything here right now!
+
         # Hasn't been long enough since your last validation run?
         if self.num_batches_since_val < self.K-1:
             self.num_batches_since_val += 1
             return
             
+        loss = self.model.evaluate(self.val_data)
+        print 'val loss:', loss
+
         predictions = self.model.predict(self.val_data)
         
         for label, ys_pred in predictions.items():
-            ys_val = self.val_data[label]
-            f1 = sklearn.metrics.f1_score(ys_val.argmax(axis=1),
-                                          ys_pred.argmax(axis=1), average='macro')
+            # f1 score
+            ys_val = self.val_data[label].argmax(axis=1) # convert categorical to label-based
+            f1 = sklearn.metrics.f1_score(ys_val,
+                                          ys_pred.argmax(axis=1),
+                                          average='macro')
 
             print '{} f1:'.format(label), f1
 
         self.num_batches_since_val = 0
+
+    def on_epoch_end(self, epoch, logs={}):
+        """Evaluate validation loss and f1
+        
+        Compute macro f1 score (unweighted average across all classes)
+        
+        """
+        # loss
+        loss = self.model.evaluate(self.val_data)
+        print 'val loss:', loss
+
+        # f1
+        predictions = self.model.predict(self.val_data)
+        for label, ys_pred in predictions.items():
+            ys_val = self.val_data[label].argmax(axis=1) # convert categorical to indexes
+            f1 = sklearn.metrics.f1_score(ys_val,
+                                          ys_pred.argmax(axis=1),
+                                          average='macro')
+
+            print '{} f1:'.format(label), f1
+
+        sys.stdout.flush() # try and flush stdout so condor prints it!
 
 def plot_confusion_matrix(confusion_matrix, columns):
     df = pd.DataFrame(confusion_matrix, columns=columns, index=columns)
@@ -142,57 +172,3 @@ def examples_generator(dataset, target='gender', num_examples=None):
     dataset = dataset.loc[list(examples_generator(dataset, num_examples=50))]
 
     dataset.groupby('gender').size()
-
-#from sklearn.cross_validation import KFold
-#
-#fold = KFold(len(abstracts_padded), n_folds=5, shuffle=True)
-#p = iter(fold)
-#
-#train_idxs, val_idxs = next(p)
-#val_idxs = train_idxs # HARD-CODE VALIDATION SET TO TRAINING SET FOR NOW!!!
-#
-#X_train, ys_train = abstracts_padded[train_idxs], ys[:, train_idxs]
-#X_val, ys_val = abstracts_padded[val_idxs], ys[:, val_idxs]
-#
-#num_train, num_val = len(X_train), len(X_val)
-#
-#val_dict = {label: y_row for label, y_row in zip(labels, ys_val)}
-
-#def batch_generator(ys, batch_size, balanced=True):
-#    """Yield successive batches for training
-#    
-#    This generator is not meant to be exhausted, but rather called by next().
-#    
-#    Each batch has batch_size/num_classes number of examples from each class
-#    
-#    """
-#    num_objectives, num_train = ys.shape
-#    
-#    while True:
-#        yield np.random.choice(num_train, size=batch_size)
-
-#train_batch = batch_generator(ys_train, batch_size)
-#
-#from support import produce_labels
-#
-#num_minis_per_epoch = (num_train/batch_size) # number of minibatches per epoch
-#num_batches = num_epochs * num_minis_per_epoch # go through n epochs
-#
-#for i in range(num_batches):
-#    if not i % num_minis_per_epoch:
-#        print 'Epoch {}...'.format(i/num_minis_per_epoch)
-#        
-#    batch_idxs = next(train_batch)
-#    
-#    X = X_train[batch_idxs]
-#    train_dict = dict(produce_labels(labels, class_sizes, ys_train[:, batch_idxs]))
-#    train_dict.update({'input': X})
-#
-#    train_error = model.train_on_batch(train_dict)
-#
-#    if not i % 10:
-#        print train_error
-#        
-#        predictions = model.predict({'input': X_val})
-#        for label, ys_pred in predictions.items():
-#            print '{} accuracy:'.format(label), np.mean(ys_pred.argmax(axis=1) == val_dict[label])
