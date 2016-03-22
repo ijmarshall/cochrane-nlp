@@ -31,8 +31,6 @@ from keras.callbacks import ModelCheckpoint
 
 from support import classinfo_generator, produce_labels, ValidationCallback
 
-from condor_create import make_job
-
 class Model:
     def load_embeddings(self):
         """Load word embeddings and abstracts
@@ -88,7 +86,10 @@ class Model:
         Use sklearn's function.
 
         """
-        fold = KFold(len(self.abstracts_padded), n_folds=5, shuffle=True)
+        fold = KFold(len(self.abstracts_padded),
+                     n_folds=5,
+                     shuffle=True,
+                     random_state=0) # for reproducibility!
         p = iter(fold)
         train_idxs, val_idxs = next(p)
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
