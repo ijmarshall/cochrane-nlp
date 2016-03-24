@@ -28,6 +28,7 @@ from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Convolution1D, MaxPooling1D
 from keras.utils.layer_utils import model_summary
 from keras.callbacks import ModelCheckpoint
+from keras.regularizers import l2
 
 from support import classinfo_generator, produce_labels, ValidationCallback
 
@@ -106,7 +107,8 @@ class Model:
                                                    self.ys[:, val_idxs]))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
-    def build_model(self, nb_filter, filter_len, hidden_dim, dropout_prob, task_specific=False):
+    def build_model(self, nb_filter, filter_len, hidden_dim,
+            dropout_prob, dropout_emb, task_specific, reg, backprop_emb, word2vec_init):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -148,23 +150,27 @@ class Model:
                         input_shape=[self.maxlen],
                         dtype='int') # dtype='int' is 100% necessary for some reason!
 
+        init_embeddings = [self.embeddings] if word2vec_init else None
         model.add_node(Embedding(input_dim=self.vocab_size, output_dim=self.word_dim,
-                                 weights=[self.embeddings],
+                                 weights=init_embeddings,
                                  input_length=self.maxlen,
-                                 trainable=False),
+                                 trainable=backprop_emb),
                        name=embedding,
                        input=input)
 
-        model.add_node(Dropout(dropout_prob), name=dropouts[embedding], input=embedding)
+        model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
         model.add_node(Convolution1D(nb_filter=nb_filter,
                                      filter_length=filter_len,
-                                     activation='relu'),
+                                     activation='relu',
+                                     W_regularizer=l2(reg)),
                        name=conv,
                        input=dropouts[embedding])
 
         model.add_node(MaxPooling1D(pool_length=self.maxlen-(filter_len-1)), name=pool, input=conv)
         model.add_node(Flatten(), name=flat, input=pool)
-        model.add_node(Dense(hidden_dim, activation='relu'), name=shared, input=flat)
+        model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
+                       name=shared,
+                       input=flat)
         model.add_node(Dropout(dropout_prob), name=dropouts[shared], input=shared)
 
         for label, num_classes in zip(self.label_names, self.class_sizes):
@@ -175,7 +181,7 @@ class Model:
 
                 specific_rep = task_specifics[label]
 
-                model.add_node(Dense(hidden_dim, activation='relu'),
+                model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
                                name=specific_rep,
                                input=dropouts[shared])
 
@@ -183,13 +189,13 @@ class Model:
                                name=dropouts[specific_rep],
                                input=specific_rep)
 
-                model.add_node(Dense(output_dim=num_classes, activation='softmax'),
+                model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
                                name=probs[label],
                                input=dropouts[specific_rep])
             else:
                 # Straight from shared representation to softmax
 
-                model.add_node(Dense(output_dim=num_classes, activation='softmax'),
+                model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
                                name=probs[label],
                                input=dropouts[shared])
 
@@ -206,7 +212,7 @@ class Model:
 
         self.model = model
 
-    def train(self, nb_epoch, batch_size, val_every, weights_loc, exp_group):
+    def train(self, nb_epoch, batch_size, val_every, weights_loc, class_weight):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
@@ -215,27 +221,40 @@ class Model:
         val_callback = ValidationCallback(self.val_data, batch_size, self.num_train, val_every)
         checkpointer = ModelCheckpoint(filepath=weights_loc, verbose=2)
 
+        if class_weight:
+            # Load class weights and filter down to only labels we are considering
+            all_class_weights = pickle.load(open('pickle/class_weights.p', 'rb'))
+            class_weights = {label: weights for label, weights in all_class_weights.items() if label in self.label_names}
+        else:
+            class_weights = {} # no weighting
+
         history = self.model.fit(self.train_data, batch_size=batch_size,
                                  nb_epoch=nb_epoch, verbose=2,
-                                 callbacks=[checkpointer, val_callback])
+                                 callbacks=[checkpointer, val_callback],
+                                 class_weight=class_weights)
 
 
 @plac.annotations(
         nb_epoch=('number of epochs', 'option', None, int),
         labels=('labels to predict', 'option'),
-        task_specific=('whether to include an addition task-specific hidden layer', 'flag', None, bool),
+        task_specific=('whether to include an addition task-specific hidden layer', 'option', None, str),
         nb_filter=('number of filters', 'option', None, int),
         filter_len=('length of filter', 'option', None, int),
         hidden_dim=('size of hidden state', 'option', None, int),
         dropout_prob=('dropout probability', 'option', None, float),
+        dropout_emb=('perform dropout after the embedding layer', 'option', None, str),
+        reg=('l2 regularization constant', 'option', None, float),
+        backprop_emb=('whether to backprop into embeddings', 'option', None, str),
         batch_size=('batch size', 'option', None, int),
         val_every=('number of times to compute validation per epoch', 'option', None, int),
-        exp_group=('the name of the experiment group for loading weights', 'option', None, str)
+        exp_group=('the name of the experiment group for loading weights', 'option', None, str),
+        class_weight=('enfore class balance through loss scaling', 'option', None, str),
+        word2vec_init=('initialize embeddings with word2vec', 'option', None, str)
 )
-def main(nb_epoch=5, labels='gender,phase_1',
-        task_specific=False, nb_filter=128, filter_len=2, hidden_dim=128, dropout_prob=.5,
-        batch_size=128, val_every=1,
-        exp_group=''):
+def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
+        nb_filter=128, filter_len=2, hidden_dim=128, dropout_prob=.5, dropout_emb='True',
+        reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='',
+        class_weight='False', word2vec_init='True'):
     """Training process
 
     1. Load embeddings and labels
@@ -245,13 +264,21 @@ def main(nb_epoch=5, labels='gender,phase_1',
     """
     labels = labels.split(',')
 
+    # Convert boolean strings to actual booleans
+    task_specific = True if task_specific == 'True' else False
+    backprop_emb = True if backprop_emb == 'True' else False
+    class_weight = True if class_weight == 'True' else False
+    dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
+    word2vec_init = True if word2vec_init == 'True' else False
+
     weights_fname = '+'.join(arg.lstrip('-') for arg in sys.argv[1:])
 
     m = Model()
     m.load_embeddings()
     m.load_labels(labels)
     m.do_train_val_split()
-    m.build_model(nb_filter, filter_len, hidden_dim, dropout_prob, task_specific)
+    m.build_model(nb_filter, filter_len, hidden_dim, dropout_prob, dropout_emb,
+                  task_specific, reg, backprop_emb, word2vec_init)
 
     weights_loc = 'weights/{}/{}'.format(exp_group, weights_fname)
     if os.path.isfile(weights_loc):
@@ -259,7 +286,7 @@ def main(nb_epoch=5, labels='gender,phase_1',
     else:
         print >> sys.stderr, 'weights file {} not found!'.format(weights_loc)
 
-    m.train(nb_epoch, batch_size, val_every, weights_loc, exp_group)
+    m.train(nb_epoch, batch_size, val_every, weights_loc, class_weight)
 
 
 if __name__ == '__main__':
