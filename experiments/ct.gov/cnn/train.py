@@ -58,15 +58,20 @@ class Model:
         self.maxlen = embeddings_info['maxlen']
         self.vocab_size = embeddings_info['vocab_size']
 
-    def load_labels(self, label_names):
+    def load_labels(self, label_names, composite_labels):
         """Load labels for dataset
 
         Mainly configure class names and validation data
 
         """
-        # Dataframes of labels
-        pruned_dataset = pickle.load(open('pickle/pruned_dataset.p', 'rb'))
-        binarized_dataset = pickle.load(open('pickle/binarized_dataset.p', 'rb'))
+        # Use composite labels or factored labels?
+        if composite_labels:
+            symbols_file, labels_file = 'composite_labels.p', 'composite_binarized.p'
+        else:
+            symbols_file, labels_file = 'pruned_dataset.p', 'binarized_dataset.p'
+
+        pruned_dataset = pickle.load(open('pickle/{}'.format(symbols_file), 'rb'))
+        binarized_dataset = pickle.load(open('pickle/{}'.format(labels_file), 'rb'))
 
         # Only consider subset of labels passed in
         pruned_dataset = pruned_dataset[label_names]
@@ -212,7 +217,7 @@ class Model:
 
         self.model = model
 
-    def train(self, nb_epoch, batch_size, val_every, weights_loc, class_weight):
+    def train(self, nb_epoch, batch_size, val_every, weights_loc, class_weight, composite_labels):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
@@ -222,8 +227,13 @@ class Model:
         checkpointer = ModelCheckpoint(filepath=weights_loc, verbose=2)
 
         if class_weight:
+            if composite_labels:
+                class_weights_fname = 'composite_weights.p'
+            else:
+                class_weights_fname = 'class_weights.p'
+
             # Load class weights and filter down to only labels we are considering
-            all_class_weights = pickle.load(open('pickle/class_weights.p', 'rb'))
+            all_class_weights = pickle.load(open('pickle/{}'.format(class_weights_fname, 'rb')))
             class_weights = {label: weights for label, weights in all_class_weights.items() if label in self.label_names}
         else:
             class_weights = {} # no weighting
@@ -249,12 +259,14 @@ class Model:
         val_every=('number of times to compute validation per epoch', 'option', None, int),
         exp_group=('the name of the experiment group for loading weights', 'option', None, str),
         class_weight=('enfore class balance through loss scaling', 'option', None, str),
-        word2vec_init=('initialize embeddings with word2vec', 'option', None, str)
+        word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
+        composite_labels=('use composite labels as opposed to factored ones', 'option', None, str)
 )
 def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
         nb_filter=128, filter_len=2, hidden_dim=128, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='',
-        class_weight='False', word2vec_init='True'):
+        class_weight='False', word2vec_init='True',
+        composite_labels='False'):
     """Training process
 
     1. Load embeddings and labels
@@ -270,12 +282,13 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     class_weight = True if class_weight == 'True' else False
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
+    composite_labels = True if composite_labels == 'True' else False
 
     weights_fname = '+'.join(arg.lstrip('-') for arg in sys.argv[1:])
 
     m = Model()
     m.load_embeddings()
-    m.load_labels(labels)
+    m.load_labels(labels, composite_labels)
     m.do_train_val_split()
     m.build_model(nb_filter, filter_len, hidden_dim, dropout_prob, dropout_emb,
                   task_specific, reg, backprop_emb, word2vec_init)
@@ -286,7 +299,7 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     else:
         print >> sys.stderr, 'weights file {} not found!'.format(weights_loc)
 
-    m.train(nb_epoch, batch_size, val_every, weights_loc, class_weight)
+    m.train(nb_epoch, batch_size, val_every, weights_loc, class_weight, composite_labels)
 
 
 if __name__ == '__main__':
