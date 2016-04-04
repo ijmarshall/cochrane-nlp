@@ -112,8 +112,9 @@ class Model:
                                                    self.ys[:, val_idxs]))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
-    def build_model(self, nb_filter, filter_len, hidden_dim,
-            dropout_prob, dropout_emb, task_specific, reg, backprop_emb, word2vec_init):
+    def build_model(self, nb_filter, filter_lens, hidden_dim,
+            dropout_prob, dropout_emb, task_specific, reg, backprop_emb,
+            word2vec_init, exp_desc):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -127,9 +128,13 @@ class Model:
         input = 'input'
         embedding = 'embedding'
         dropouts[embedding] = embedding + '_'
-        conv = 'conv'
-        pool = 'pool'
-        flat = 'flat'
+
+        convs, pools, flats = {}, {}, {}
+        for filter_len in filter_lens:
+            convs[filter_len] = 'conv_{}'.format(filter_len)
+            pools[filter_len] = 'pool_{}'.format(filter_len)
+            flats[filter_len] = 'flat_{}'.format(filter_len)
+
         shared = 'shared'
         dropouts[shared] = shared + '_'
 
@@ -164,18 +169,34 @@ class Model:
                        input=input)
 
         model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
-        model.add_node(Convolution1D(nb_filter=nb_filter,
-                                     filter_length=filter_len,
-                                     activation='relu',
-                                     W_regularizer=l2(reg)),
-                       name=conv,
-                       input=dropouts[embedding])
 
-        model.add_node(MaxPooling1D(pool_length=self.maxlen-(filter_len-1)), name=pool, input=conv)
-        model.add_node(Flatten(), name=flat, input=pool)
-        model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
-                       name=shared,
-                       input=flat)
+        convs_list = []
+        for filter_len in filter_lens:
+            model.add_node(Convolution1D(nb_filter=nb_filter,
+                                        filter_length=filter_len,
+                                        activation='relu',
+                                        W_regularizer=l2(reg)),
+                           name=convs[filter_len],
+                           input=dropouts[embedding])
+
+            model.add_node(MaxPooling1D(pool_length=self.maxlen-(filter_len-1)),
+                           name=pools[filter_len],
+                           input=convs[filter_len])
+            model.add_node(Flatten(), name=flats[filter_len], input=pools[filter_len])
+
+            convs_list.append(flats[filter_len])
+
+        # Unfortunate hack where if there is only *one* conv filter len then
+        # inputs=(...) throws an error.
+        if len(filter_lens) > 1:
+            model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
+                           name=shared,
+                           inputs=convs_list)
+        else:
+            model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
+                           name=shared,
+                           input=convs_list[0])
+
         model.add_node(Dropout(dropout_prob), name=dropouts[shared], input=shared)
 
         for label, num_classes in zip(self.label_names, self.class_sizes):
@@ -213,18 +234,19 @@ class Model:
                                                                               #
         ### END GRAPH CONSTRUCTION ############################################
 
+        print exp_desc
         model_summary(model)
 
         self.model = model
 
-    def train(self, nb_epoch, batch_size, val_every, weights_loc, class_weight, composite_labels):
+    def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight, composite_labels):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
 
         """
-        val_callback = ValidationCallback(self.val_data, batch_size, self.num_train, val_every)
-        checkpointer = ModelCheckpoint(filepath=weights_loc, verbose=2)
+        val_callback = ValidationCallback(self.val_data, batch_size,
+                self.num_train, val_every, val_weights, f1_weights)
 
         if class_weight:
             if composite_labels:
@@ -240,7 +262,7 @@ class Model:
 
         history = self.model.fit(self.train_data, batch_size=batch_size,
                                  nb_epoch=nb_epoch, verbose=2,
-                                 callbacks=[checkpointer, val_callback],
+                                 callbacks=[val_callback],
                                  class_weight=class_weights)
 
 
@@ -249,7 +271,7 @@ class Model:
         labels=('labels to predict', 'option'),
         task_specific=('whether to include an addition task-specific hidden layer', 'option', None, str),
         nb_filter=('number of filters', 'option', None, int),
-        filter_len=('length of filter', 'option', None, int),
+        filter_lens=('length of filters', 'option', None, str),
         hidden_dim=('size of hidden state', 'option', None, int),
         dropout_prob=('dropout probability', 'option', None, float),
         dropout_emb=('perform dropout after the embedding layer', 'option', None, str),
@@ -258,13 +280,14 @@ class Model:
         batch_size=('batch size', 'option', None, int),
         val_every=('number of times to compute validation per epoch', 'option', None, int),
         exp_group=('the name of the experiment group for loading weights', 'option', None, str),
+        exp_id=('id of the experiment - usually an integer', 'option', None, str),
         class_weight=('enfore class balance through loss scaling', 'option', None, str),
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
         composite_labels=('use composite labels as opposed to factored ones', 'option', None, str)
 )
 def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
-        nb_filter=128, filter_len=2, hidden_dim=128, dropout_prob=.5, dropout_emb='True',
-        reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='',
+        nb_filter=128, filter_lens='1,2', hidden_dim=128, dropout_prob=.5, dropout_emb='True',
+        reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True',
         composite_labels='False'):
     """Training process
@@ -274,7 +297,14 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     3. Train
 
     """
+    # Build exp name from arg string
+    args = sys.argv[1:]
+    pnames, pvalues = [pname.lstrip('-') for pname in args[::2]], args[1::2]
+    exp_desc = '+'.join('='.join(arg_pair) for arg_pair in zip(pnames, pvalues))
+
+    # Parse list parameters into lists!
     labels = labels.split(',')
+    filter_lens = [int(filter_len) for filter_len in filter_lens.split(',')]
 
     # Convert boolean strings to actual booleans
     task_specific = True if task_specific == 'True' else False
@@ -284,22 +314,21 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     word2vec_init = True if word2vec_init == 'True' else False
     composite_labels = True if composite_labels == 'True' else False
 
-    weights_fname = '+'.join(arg.lstrip('-') for arg in sys.argv[1:])
-
     m = Model()
     m.load_embeddings()
     m.load_labels(labels, composite_labels)
     m.do_train_val_split()
-    m.build_model(nb_filter, filter_len, hidden_dim, dropout_prob, dropout_emb,
-                  task_specific, reg, backprop_emb, word2vec_init)
+    m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
+                  task_specific, reg, backprop_emb, word2vec_init, exp_desc)
 
-    weights_loc = 'weights/{}/{}'.format(exp_group, weights_fname)
-    if os.path.isfile(weights_loc):
-        m.model.load_weights(weights_loc)
+    val_weights = 'weights/{}/{}-val.h5'.format(exp_group, exp_id)
+    f1_weights = 'weights/{}/{}-f1.h5'.format(exp_group, exp_id)
+    if os.path.isfile(val_weights):
+        m.model.load_weights(val_weights)
     else:
-        print >> sys.stderr, 'weights file {} not found!'.format(weights_loc)
+        print >> sys.stderr, 'weights file {} not found!'.format(val_weights)
 
-    m.train(nb_epoch, batch_size, val_every, weights_loc, class_weight, composite_labels)
+    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight, composite_labels)
 
 
 if __name__ == '__main__':
