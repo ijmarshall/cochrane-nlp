@@ -1,3 +1,4 @@
+import sys
 import operator
 
 import matplotlib.pyplot as plt
@@ -22,8 +23,8 @@ class TestCallback(keras.callbacks.Callback):
 class ValidationCallback(keras.callbacks.Callback):
     """Callback to compute accuracy during training"""
 
-    def __init__(self, val_data, batch_size, num_train, val_every):
-        """Callback to compute accuracy during training
+    def __init__(self, val_data, batch_size, num_train, val_every, val_weights, f1_weights):
+        """Callback to compute f1 during training
         
         Parameters
         ----------
@@ -31,8 +32,9 @@ class ValidationCallback(keras.callbacks.Callback):
         batch_size : number of examples per batch
         num_train : number of examples in training set
         val_every : number of times to to validation during an epoch
+        f1_weights : location to save model weights
 
-        Also save the validation accuracies when you compute them.
+        Also save model weights whenever a new best f1 is reached.
         
         """
         super(ValidationCallback, self).__init__()
@@ -41,29 +43,43 @@ class ValidationCallback(keras.callbacks.Callback):
         self.num_batches_since_val = 0
         num_minis_per_epoch = (num_train/batch_size) # number of minibatches per epoch
         self.K = num_minis_per_epoch / val_every # number of batches to go before doing validation
+        self.best_f1 = 0
+        self.f1_weights = f1_weights
+        self.val_weights = val_weights
         
-    def on_batch_end(self, batch, logs={}):
-        """Do validation if it's been a while
+    def on_epoch_end(self, epoch, logs={}):
+        """Evaluate validation loss and f1
         
-        Concretely print out fscores for each class val_every number of times
-        per epoch.
+        Compute macro f1 score (unweighted average across all classes)
         
         """
-        # Hasn't been long enough since your last validation run?
-        if self.num_batches_since_val < self.K-1:
-            self.num_batches_since_val += 1
-            return
-            
+        # loss
+        loss = self.model.evaluate(self.val_data)
+        print 'val loss:', loss
+
+        # f1
         predictions = self.model.predict(self.val_data)
-        
         for label, ys_pred in predictions.items():
+            # f1 score
             ys_val = self.val_data[label]
-            f1 = sklearn.metrics.f1_score(ys_val.argmax(axis=1),
-                                          ys_pred.argmax(axis=1), average='macro')
 
-            print '{} f1:'.format(label), f1
+            # Rows that have *no* label have all zeros. Get rid of them!
+            valid_idxs = ys_val.any(axis=1)
+            f1 = sklearn.metrics.f1_score(ys_val[valid_idxs].argmax(axis=1),
+                                          ys_pred[valid_idxs].argmax(axis=1),
+                                          average=None)
 
-        self.num_batches_since_val = 0
+            print '{} f1: {}'.format(label, list(f1))
+
+            macro_f1 = np.mean(f1)
+            if macro_f1 > self.best_f1:
+                self.best_f1 = macro_f1 # update new best f1
+                self.model.save_weights(self.f1_weights, overwrite=True) # save model weights!
+
+        # Save val weights no matter what!
+        self.model.save_weights(self.val_weights, overwrite=True)
+
+        sys.stdout.flush() # try and flush stdout so condor prints it!
 
 def plot_confusion_matrix(confusion_matrix, columns):
     df = pd.DataFrame(confusion_matrix, columns=columns, index=columns)
@@ -142,57 +158,3 @@ def examples_generator(dataset, target='gender', num_examples=None):
     dataset = dataset.loc[list(examples_generator(dataset, num_examples=50))]
 
     dataset.groupby('gender').size()
-
-#from sklearn.cross_validation import KFold
-#
-#fold = KFold(len(abstracts_padded), n_folds=5, shuffle=True)
-#p = iter(fold)
-#
-#train_idxs, val_idxs = next(p)
-#val_idxs = train_idxs # HARD-CODE VALIDATION SET TO TRAINING SET FOR NOW!!!
-#
-#X_train, ys_train = abstracts_padded[train_idxs], ys[:, train_idxs]
-#X_val, ys_val = abstracts_padded[val_idxs], ys[:, val_idxs]
-#
-#num_train, num_val = len(X_train), len(X_val)
-#
-#val_dict = {label: y_row for label, y_row in zip(labels, ys_val)}
-
-#def batch_generator(ys, batch_size, balanced=True):
-#    """Yield successive batches for training
-#    
-#    This generator is not meant to be exhausted, but rather called by next().
-#    
-#    Each batch has batch_size/num_classes number of examples from each class
-#    
-#    """
-#    num_objectives, num_train = ys.shape
-#    
-#    while True:
-#        yield np.random.choice(num_train, size=batch_size)
-
-#train_batch = batch_generator(ys_train, batch_size)
-#
-#from support import produce_labels
-#
-#num_minis_per_epoch = (num_train/batch_size) # number of minibatches per epoch
-#num_batches = num_epochs * num_minis_per_epoch # go through n epochs
-#
-#for i in range(num_batches):
-#    if not i % num_minis_per_epoch:
-#        print 'Epoch {}...'.format(i/num_minis_per_epoch)
-#        
-#    batch_idxs = next(train_batch)
-#    
-#    X = X_train[batch_idxs]
-#    train_dict = dict(produce_labels(labels, class_sizes, ys_train[:, batch_idxs]))
-#    train_dict.update({'input': X})
-#
-#    train_error = model.train_on_batch(train_dict)
-#
-#    if not i % 10:
-#        print train_error
-#        
-#        predictions = model.predict({'input': X_val})
-#        for label, ys_pred in predictions.items():
-#            print '{} accuracy:'.format(label), np.mean(ys_pred.argmax(axis=1) == val_dict[label])
