@@ -65,6 +65,9 @@ class ValidationCallback(keras.callbacks.Callback):
 
             # Rows that have *no* label have all zeros. Get rid of them!
             valid_idxs = ys_val.any(axis=1)
+            if not np.any(valid_idxs):
+                continue # masked out label - go onto the next
+
             f1 = sklearn.metrics.f1_score(ys_val[valid_idxs].argmax(axis=1),
                                           ys_pred[valid_idxs].argmax(axis=1),
                                           average=None)
