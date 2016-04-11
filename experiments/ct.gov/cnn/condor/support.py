@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def subset_generator(container):
+def subset_generator(container, maxnum=None):
     """Yield random subset of label names
     
     Parameters
@@ -13,11 +13,12 @@ def subset_generator(container):
     
     """
     container = np.array([str(elem) for elem in container])
+    maxnum = len(container) if not maxnum else maxnum
 
     while True:
         bit_string = np.random.randint(low=2, size=len(container))
 
-        subset = container[bit_string==0]
+        subset = container[bit_string==0][:maxnum]
         if subset.size:
             yield ','.join(subset)
     
