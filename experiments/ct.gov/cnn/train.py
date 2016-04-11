@@ -112,9 +112,59 @@ class Model:
                                                    self.ys[:, val_idxs]))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
+    def add_representation(self, input, filter_lens, nb_filter, reg, name,
+            dropouts, hidden_dim, dropout_prob):
+        """Add a representation for a task
+
+        Parameters
+        ----------
+        input : name of input node
+        filter_lens : lengths of filters to use for convolution
+        name : name of final hidden vector representation
+        
+        Pipeline
+        --------
+        embedding
+        convolutions (multiple filters)
+        pool
+        flatten
+        dense
+        dropout
+        
+        """
+        convs, pools, flats = {}, {}, {}
+        for filter_len in filter_lens:
+            convs[filter_len] = 'conv_{}_{}'.format(filter_len, name)
+            pools[filter_len] = 'pool_{}_{}'.format(filter_len, name)
+            flats[filter_len] = 'flat_{}_{}'.format(filter_len, name)
+
+        # Add convolution -> max_pool -> flatten for each filter length
+        convs_list = []
+        for filter_len in filter_lens:
+            self.model.add_node(Convolution1D(nb_filter=nb_filter,
+                                              filter_length=filter_len,
+                                              activation='relu',
+                                              W_regularizer=l2(reg)),
+                                name=convs[filter_len],
+                                input=input)
+
+            self.model.add_node(MaxPooling1D(pool_length=self.maxlen-(filter_len-1)),
+                           name=pools[filter_len],
+                           input=convs[filter_len])
+            self.model.add_node(Flatten(), name=flats[filter_len], input=pools[filter_len])
+
+            convs_list.append(flats[filter_len])
+
+        # Run conv activations through a dense layer
+        self.model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
+                       name=name,
+                       inputs=convs_list)
+
+        self.model.add_node(Dropout(dropout_prob), name=dropouts[name], input=name)
+
     def build_model(self, nb_filter, filter_lens, hidden_dim,
             dropout_prob, dropout_emb, task_specific, reg, backprop_emb,
-            word2vec_init, exp_desc):
+            word2vec_init, exp_desc, skip_layer, exp_group, exp_id):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -129,14 +179,10 @@ class Model:
         embedding = 'embedding'
         dropouts[embedding] = embedding + '_'
 
-        convs, pools, flats = {}, {}, {}
-        for filter_len in filter_lens:
-            convs[filter_len] = 'conv_{}'.format(filter_len)
-            pools[filter_len] = 'pool_{}'.format(filter_len)
-            flats[filter_len] = 'flat_{}'.format(filter_len)
-
-        shared = 'shared'
-        dropouts[shared] = shared + '_'
+        individual_reps, shared_rep = {label: '{}_individual'.format(label) for label in self.label_names}, 'shared_rep'
+        dropouts[shared_rep] = shared_rep + '_'
+        for label, individual_rep in individual_reps.items():
+            dropouts[individual_rep] = individual_rep + '_'
 
         if task_specific:
             task_specifics = {label: '{}_rep'.format(label) for label in self.label_names}
@@ -154,7 +200,8 @@ class Model:
 
         ### BEGIN GRAPH CONSTRUCTION ##########################################
                                                                               #
-        model = Graph()
+        self.model = Graph()
+        model = self.model
 
         model.add_input(name=input,
                         input_shape=[self.maxlen],
@@ -170,34 +217,26 @@ class Model:
 
         model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
 
-        convs_list = []
-        for filter_len in filter_lens:
-            model.add_node(Convolution1D(nb_filter=nb_filter,
-                                        filter_length=filter_len,
-                                        activation='relu',
-                                        W_regularizer=l2(reg)),
-                           name=convs[filter_len],
-                           input=dropouts[embedding])
+        # Shared representation
+        self.add_representation(input=dropouts[embedding],
+                                filter_lens=filter_lens,
+                                nb_filter=nb_filter,
+                                reg=reg,
+                                name=shared_rep,
+                                dropouts=dropouts,
+                                hidden_dim=hidden_dim,
+                                dropout_prob=dropout_prob)
 
-            model.add_node(MaxPooling1D(pool_length=self.maxlen-(filter_len-1)),
-                           name=pools[filter_len],
-                           input=convs[filter_len])
-            model.add_node(Flatten(), name=flats[filter_len], input=pools[filter_len])
-
-            convs_list.append(flats[filter_len])
-
-        # Unfortunate hack where if there is only *one* conv filter len then
-        # inputs=(...) throws an error.
-        if len(filter_lens) > 1:
-            model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
-                           name=shared,
-                           inputs=convs_list)
-        else:
-            model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
-                           name=shared,
-                           input=convs_list[0])
-
-        model.add_node(Dropout(dropout_prob), name=dropouts[shared], input=shared)
+        # Individual representations
+        for label_name in self.label_names:
+            self.add_representation(input=dropouts[embedding],
+                                    filter_lens=filter_lens,
+                                    nb_filter=nb_filter,
+                                    reg=reg,
+                                    name=individual_reps[label_name],
+                                    dropouts=dropouts,
+                                    hidden_dim=hidden_dim,
+                                    dropout_prob=dropout_prob)
 
         for label, num_classes in zip(self.label_names, self.class_sizes):
             # Fork the graph and predict probabilities for each target from shared representation
@@ -209,7 +248,8 @@ class Model:
 
                 model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
                                name=specific_rep,
-                               input=dropouts[shared])
+                               input=dropouts[shared_rep] if individual_rep else None,
+                               inputs=[dropouts[individual_reps[label]], dropouts[shared_rep]] if individual_rep else [])
 
                 model.add_node(Dropout(dropout_prob),
                                name=dropouts[specific_rep],
@@ -223,7 +263,8 @@ class Model:
 
                 model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
                                name=probs[label],
-                               input=dropouts[shared])
+                               input=dropouts[shared_rep] if individual_rep else None,
+                               inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if individual_rep else [])
 
         for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
@@ -236,6 +277,10 @@ class Model:
 
         print exp_desc
         model_summary(model)
+
+        # Write architecture to disk
+        json_string = model.to_json()
+        open('models/{}/{}.json'.format(exp_group, exp_id), 'w').write(json_string)
 
         self.model = model
 
@@ -283,13 +328,13 @@ class Model:
         exp_id=('id of the experiment - usually an integer', 'option', None, str),
         class_weight=('enfore class balance through loss scaling', 'option', None, str),
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
-        composite_labels=('use composite labels as opposed to factored ones', 'option', None, str)
+        composite_labels=('use composite labels as opposed to factored ones', 'option', None, str),
+        skip_layer=('whether to allow each task to peak back at the input', 'option', None, str)
 )
 def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
         nb_filter=128, filter_lens='1,2', hidden_dim=128, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True',
-        composite_labels='False'):
+        class_weight='False', word2vec_init='True', composite_labels='False', skip_layer='True'):
     """Training process
 
     1. Load embeddings and labels
@@ -313,13 +358,14 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
     composite_labels = True if composite_labels == 'True' else False
+    skip_layer = True if skip_layer == 'True' else False
 
     m = Model()
     m.load_embeddings()
     m.load_labels(labels, composite_labels)
     m.do_train_val_split()
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
-                  task_specific, reg, backprop_emb, word2vec_init, exp_desc)
+                  task_specific, reg, backprop_emb, word2vec_init, exp_desc, skip_layer, exp_group, exp_id)
 
     val_weights = 'weights/{}/{}-val.h5'.format(exp_group, exp_id)
     f1_weights = 'weights/{}/{}-f1.h5'.format(exp_group, exp_id)
