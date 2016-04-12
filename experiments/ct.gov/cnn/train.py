@@ -319,9 +319,6 @@ class Model:
         else:
             class_weights = {} # no weighting
 
-        import pdb
-        pdb.set_trace()
-
         history = self.model.fit(self.train_data, batch_size=batch_size,
                                  nb_epoch=nb_epoch, verbose=2,
                                  callbacks=[val_callback],
