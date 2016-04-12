@@ -112,15 +112,14 @@ def classinfo_generator(df):
     """
     for column in df.columns:
         categories = df[column].cat.categories
-        yield categories, len(categories)
+        yield categories, len(categories) or 2
 
-def produce_labels(label_names, class_sizes, ys):
+def produce_labels(label_names, ys):
     """Generates dict of label_names for a minibatch for each objective
     
     Parameters
     ----------
     label_names : list of label names (order must correspond to label_names in ys)
-    class_sizes : list of class sizes
     ys : labels
     
     Will produce a dict like:
@@ -132,7 +131,12 @@ def produce_labels(label_names, class_sizes, ys):
     """
     num_objectives, num_train = ys.shape
     
-    for label, num_classes, y_row in zip(label_names, class_sizes, ys):        
+    for label, y_row in zip(label_names, ys):        
+        if np.all(y_row == -1):
+            yield label, np.zeros([len(y_row), 2]) # just yield a matrix full of zeros if label is not present
+
+            continue
+
         ys_block = to_categorical(y_row)
 
         # Take into account missing label_names!

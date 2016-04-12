@@ -33,6 +33,11 @@ from keras.regularizers import l2
 from support import classinfo_generator, produce_labels, ValidationCallback
 
 class Model:
+    def __init__(self, init, init_exp_group, init_exp_id):
+        self.pretrain = init
+        self.init_exp_group = init_exp_group
+        self.init_exp_id = init_exp_id
+
     def load_embeddings(self):
         """Load word embeddings and abstracts
         
@@ -58,33 +63,32 @@ class Model:
         self.maxlen = embeddings_info['maxlen']
         self.vocab_size = embeddings_info['vocab_size']
 
-    def load_labels(self, label_names, composite_labels):
+    def load_labels(self, label_names):
         """Load labels for dataset
 
         Mainly configure class names and validation data
 
         """
-        # Use composite labels or factored labels?
-        if composite_labels:
-            symbols_file, labels_file = 'composite_labels.p', 'composite_binarized.p'
-        else:
-            symbols_file, labels_file = 'pruned_dataset.p', 'binarized_dataset.p'
+        df = pickle.load(open('pickle/composite_labels.p', 'rb'))
 
-        pruned_dataset = pickle.load(open('pickle/{}'.format(symbols_file), 'rb'))
-        binarized_dataset = pickle.load(open('pickle/{}'.format(labels_file), 'rb'))
+        # Zero out all labels we are not considering
+        for column in set(df.columns)-set(label_names):
+            df[column] = np.nan
+            df[column] = df[column].astype('category')
 
-        # Only consider subset of labels passed in
-        pruned_dataset = pruned_dataset[label_names]
-        binarized_dataset = binarized_dataset[label_names]
+        binarized_dataset = df.copy()
+
+        for column in binarized_dataset:
+            binarized_dataset[column] = binarized_dataset[column].cat.codes
 
         self.ys = np.array(binarized_dataset).T # turn labels into numpy array
 
         # Get class names and sizes
-        class_info = list(classinfo_generator(pruned_dataset))
+        class_info = list(classinfo_generator(df))
         class_names, self.class_sizes = zip(*class_info)
         class_names = {label: classes for label, classes in zip(label_names, class_names)}
 
-        self.label_names = label_names
+        self.label_names = df.columns.tolist()
 
     def do_train_val_split(self):
         """Split data up into separate train and validation sets
@@ -101,15 +105,11 @@ class Model:
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         # Extract training data to pass to keras fit()
-        self.train_data = OrderedDict(produce_labels(self.label_names,
-                                                     self.class_sizes,
-                                                     self.ys[:, train_idxs]))
+        self.train_data = OrderedDict(produce_labels(self.label_names, self.ys[:, train_idxs]))
         self.train_data.update({'input': self.abstracts_padded[train_idxs]})
 
         # Extract validation data to validate over
-        self.val_data = OrderedDict(produce_labels(self.label_names,
-                                                   self.class_sizes,
-                                                   self.ys[:, val_idxs]))
+        self.val_data = OrderedDict(produce_labels(self.label_names, self.ys[:, val_idxs]))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
     def add_representation(self, input, filter_lens, nb_filter, reg, name,
@@ -171,6 +171,23 @@ class Model:
         as closely as possible.
 
         """
+        # Load model and weights from disk if saved
+        if self.pretrain:
+            self.model = model_from_json(open('{}/{}.json'.format(self.init_exp_group,
+                                                                  self.init_exp_id)).read())
+            self.model.load_weights('{}/{}.h5'.format(self.init_exp_group,
+                                                      self.init_exp_id))
+            print 'labels={}+group_from={}+id_from={}'.format(self.label_names,
+                                                              self.init_exp_group,
+                                                              self.init_exp_id)
+            model_summary(self.model)
+
+            # Write architecture to disk
+            json_string = model.to_json()
+            open('models/{}/{}.json'.format(exp_group, exp_id), 'w').write(json_string)
+
+            return
+
         dropouts = {}
 
         ### BEGIN LAYER NAMES #################################################
@@ -284,7 +301,7 @@ class Model:
 
         self.model = model
 
-    def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight, composite_labels):
+    def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
@@ -294,16 +311,16 @@ class Model:
                 self.num_train, val_every, val_weights, f1_weights)
 
         if class_weight:
-            if composite_labels:
-                class_weights_fname = 'composite_weights.p'
-            else:
-                class_weights_fname = 'class_weights.p'
+            class_weights_fname = 'composite_weights.p'
 
             # Load class weights and filter down to only labels we are considering
             all_class_weights = pickle.load(open('pickle/{}'.format(class_weights_fname, 'rb')))
             class_weights = {label: weights for label, weights in all_class_weights.items() if label in self.label_names}
         else:
             class_weights = {} # no weighting
+
+        import pdb
+        pdb.set_trace()
 
         history = self.model.fit(self.train_data, batch_size=batch_size,
                                  nb_epoch=nb_epoch, verbose=2,
@@ -328,13 +345,13 @@ class Model:
         exp_id=('id of the experiment - usually an integer', 'option', None, str),
         class_weight=('enfore class balance through loss scaling', 'option', None, str),
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
-        composite_labels=('use composite labels as opposed to factored ones', 'option', None, str),
-        skip_layer=('whether to allow each task to peak back at the input', 'option', None, str)
+        skip_layer=('whether to allow each task to peak back at the input', 'option', None, str),
+        init=('experiment ID and group to init from', 'option', None, str),
 )
-def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
+def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=128, filter_lens='1,2', hidden_dim=128, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', composite_labels='False', skip_layer='True'):
+        class_weight='False', word2vec_init='True', skip_layer='True', init=''):
     """Training process
 
     1. Load embeddings and labels
@@ -350,6 +367,7 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     # Parse list parameters into lists!
     labels = labels.split(',')
     filter_lens = [int(filter_len) for filter_len in filter_lens.split(',')]
+    init_group, init_id = init.split(',') if init else (None, None)
 
     # Convert boolean strings to actual booleans
     task_specific = True if task_specific == 'True' else False
@@ -357,12 +375,11 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     class_weight = True if class_weight == 'True' else False
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
-    composite_labels = True if composite_labels == 'True' else False
     skip_layer = True if skip_layer == 'True' else False
 
-    m = Model()
+    m = Model(init, init_group, init_id)
     m.load_embeddings()
-    m.load_labels(labels, composite_labels)
+    m.load_labels(labels)
     m.do_train_val_split()
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
                   task_specific, reg, backprop_emb, word2vec_init, exp_desc, skip_layer, exp_group, exp_id)
@@ -374,7 +391,7 @@ def main(nb_epoch=5, labels='gender,phase_1', task_specific='False',
     else:
         print >> sys.stderr, 'weights file {} not found!'.format(val_weights)
 
-    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight, composite_labels)
+    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight)
 
 
 if __name__ == '__main__':
