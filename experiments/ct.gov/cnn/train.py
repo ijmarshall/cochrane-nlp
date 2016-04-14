@@ -374,6 +374,9 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     word2vec_init = True if word2vec_init == 'True' else False
     skip_layer = True if skip_layer == 'True' else False
 
+    # Make it so there are nb_filter total
+    nb_filter /= len(filter_lens)
+
     m = Model(init, init_group, init_id)
     m.load_embeddings()
     m.load_labels(labels)
