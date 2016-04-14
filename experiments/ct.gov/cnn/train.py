@@ -70,18 +70,11 @@ class Model:
 
         """
         df = pickle.load(open('pickle/composite_labels.p', 'rb'))
+        bdf = pickle.load(open('pickle/composite_binarized.p', 'rb'))
 
-        # Zero out all labels we are not considering
-        for column in set(df.columns)-set(label_names):
-            df[column] = np.nan
-            df[column] = df[column].astype('category')
+        df, bdf = df[label_names], bdf[label_names]
 
-        binarized_dataset = df.copy()
-
-        for column in binarized_dataset:
-            binarized_dataset[column] = binarized_dataset[column].cat.codes
-
-        self.ys = np.array(binarized_dataset).T # turn labels into numpy array
+        self.ys = np.array(bdf).T # turn labels into numpy array
 
         # Get class names and sizes
         class_info = list(classinfo_generator(df))
@@ -243,6 +236,11 @@ class Model:
                                 dropouts=dropouts,
                                 hidden_dim=hidden_dim,
                                 dropout_prob=dropout_prob)
+
+        # Save just the model up to the shared portion so we can load in for
+        # pretraining in the future.
+        json_string = model.to_json()
+        open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
 
         # Individual representations
         for label_name in self.label_names:
