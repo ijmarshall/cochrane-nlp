@@ -72,14 +72,15 @@ class Model:
         df = pickle.load(open('pickle/composite_labels.p', 'rb'))
         bdf = pickle.load(open('pickle/composite_binarized.p', 'rb'))
 
+        # Cut down labels to only the ones we're predicting on
         df, bdf = df[label_names], bdf[label_names]
-
-        self.ys = np.array(bdf).T # turn labels into numpy array
 
         # Get class names and sizes
         class_info = list(classinfo_generator(df))
         class_names, self.class_sizes = zip(*class_info)
-        class_names = {label: classes for label, classes in zip(label_names, class_names)}
+        # class_names = {label: classes for label, classes in zip(label_names, class_names)}
+
+        self.ys = np.array(bdf).T # turn labels into numpy array
 
         self.label_names = df.columns.tolist()
 
@@ -98,11 +99,11 @@ class Model:
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         # Extract training data to pass to keras fit()
-        self.train_data = OrderedDict(produce_labels(self.label_names, self.ys[:, train_idxs]))
+        self.train_data = OrderedDict(produce_labels(self.label_names, self.ys[:, train_idxs], self.class_sizes))
         self.train_data.update({'input': self.abstracts_padded[train_idxs]})
 
         # Extract validation data to validate over
-        self.val_data = OrderedDict(produce_labels(self.label_names, self.ys[:, val_idxs]))
+        self.val_data = OrderedDict(produce_labels(self.label_names, self.ys[:, val_idxs], self.class_sizes))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
     def add_representation(self, input, filter_lens, nb_filter, reg, name,
@@ -166,18 +167,16 @@ class Model:
         """
         # Load model and weights from disk if saved
         if self.pretrain:
-            self.model = model_from_json(open('{}/{}.json'.format(self.init_exp_group,
-                                                                  self.init_exp_id)).read())
-            self.model.load_weights('{}/{}.h5'.format(self.init_exp_group,
-                                                      self.init_exp_id))
+            model_path = 'models/{}/{}.json'.format(self.init_exp_group, self.init_exp_id)
+            print >> sys.stderr, 'Loading model from {}...'.format(model_path)
+
+            self.model = model_from_json(open(model_path).read())
+            self.model.load_weights('weights/{}/{}-val.h5'.format(self.init_exp_group,
+                                                                  self.init_exp_id))
             print 'labels={}+group_from={}+id_from={}'.format(self.label_names,
                                                               self.init_exp_group,
                                                               self.init_exp_id)
             model_summary(self.model)
-
-            # Write architecture to disk
-            json_string = model.to_json()
-            open('models/{}/{}.json'.format(exp_group, exp_id), 'w').write(json_string)
 
             return
 
@@ -341,12 +340,12 @@ class Model:
         class_weight=('enfore class balance through loss scaling', 'option', None, str),
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
         skip_layer=('whether to allow each task to peak back at the input', 'option', None, str),
-        init=('experiment ID and group to init from', 'option', None, str),
+        use_pretrained=('experiment ID and group to init from', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=128, filter_lens='1,2', hidden_dim=128, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', skip_layer='True', init=''):
+        class_weight='False', word2vec_init='True', skip_layer='True', use_pretrained=''):
     """Training process
 
     1. Load embeddings and labels
@@ -362,7 +361,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     # Parse list parameters into lists!
     labels = labels.split(',')
     filter_lens = [int(filter_len) for filter_len in filter_lens.split(',')]
-    init_group, init_id = init.split(',') if init else (None, None)
+    pretrained_group, pretrained_id = use_pretrained.split(',') if use_pretrained else (None, None)
 
     # Convert boolean strings to actual booleans
     task_specific = True if task_specific == 'True' else False
@@ -372,21 +371,32 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     word2vec_init = True if word2vec_init == 'True' else False
     skip_layer = True if skip_layer == 'True' else False
 
-    # Make it so there are nb_filter total
+    # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
 
-    m = Model(init, init_group, init_id)
+    m = Model(use_pretrained, pretrained_group, pretrained_id)
+
     m.load_embeddings()
     m.load_labels(labels)
     m.do_train_val_split()
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
                   task_specific, reg, backprop_emb, word2vec_init, exp_desc, skip_layer, exp_group, exp_id)
 
+    if use_pretrained:
+        weights_exp_group, weights_exp_id = pretrained_group, pretrained_id
+    else:
+        weights_exp_group, weights_exp_id = exp_group, exp_id
+
+    # Weights to initialize model
+    init_weights = 'weights/{}/{}-val.h5'.format(weights_exp_group, weights_exp_id)
+
+    # Weights to save during training
     val_weights = 'weights/{}/{}-val.h5'.format(exp_group, exp_id)
     f1_weights = 'weights/{}/{}-f1.h5'.format(exp_group, exp_id)
-    if os.path.isfile(val_weights):
-        m.model.load_weights(val_weights)
+    if os.path.isfile(init_weights):
+        m.model.load_weights(init_weights)
     else:
+        assert not use_pretrained # error out if we said to use pretrained weights and they are nowhere to be found
         print >> sys.stderr, 'weights file {} not found!'.format(val_weights)
 
     m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight)
