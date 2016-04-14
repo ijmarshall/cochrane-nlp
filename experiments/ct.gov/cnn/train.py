@@ -372,7 +372,11 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     word2vec_init = True if word2vec_init == 'True' else False
     skip_layer = True if skip_layer == 'True' else False
 
+    # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
+    nb_filter /= len(filter_lens)
+
     m = Model(use_pretrained, pretrained_group, pretrained_id)
+
     m.load_embeddings()
     m.load_labels(labels)
     m.do_train_val_split()
