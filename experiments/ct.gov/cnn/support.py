@@ -133,11 +133,6 @@ def produce_labels(label_names, ys, class_sizes):
     num_objectives, num_train = ys.shape
     
     for label, y_row, class_size in zip(label_names, ys, class_sizes):
-        if np.all(y_row == -1):
-            yield label, np.zeros([len(y_row), class_size]) # just yield a matrix full of zeros if label is not present
-
-            continue
-
         ys_block = to_categorical(y_row)
 
         # Take into account missing label_names!
