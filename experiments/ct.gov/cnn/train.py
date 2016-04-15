@@ -266,25 +266,24 @@ class Model:
 
                 specific_rep = task_specifics[label]
 
-                model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
-                               name=specific_rep,
-                               input=dropouts[shared_rep] if individual_rep else None,
-                               inputs=[dropouts[individual_reps[label]], dropouts[shared_rep]] if individual_rep else [])
+                model.add_node(Dense(1, activation='relu', W_regularizer=l2(reg)),
+                               name=specific_rep+'_shared',
+                               input=dropouts[shared_rep])
 
-                model.add_node(Dropout(dropout_prob),
-                               name=dropouts[specific_rep],
-                               input=specific_rep)
+                model.add_node(Dense(1, activation='relu', W_regularizer=l2(reg)),
+                               name=specific_rep+'_skip',
+                               input=dropouts[individual_reps[label]])
 
                 model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
                                name=probs[label],
-                               input=dropouts[specific_rep])
+                               inputs=[specific_rep+'_shared', specific_rep+'_skip'])
             else:
                 # Straight from shared representation to softmax
 
                 model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
                                name=probs[label],
-                               input=dropouts[shared_rep] if individual_rep else None,
-                               inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if individual_rep else [])
+                               input=dropouts[shared_rep] if not skip_layer else None,
+                               inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if skip_layer else [])
 
         for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
@@ -347,7 +346,7 @@ class Model:
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
         skip_layer=('whether to allow each task to peak back at the input', 'option', None, str),
         use_pretrained=('experiment ID and group to init from', 'option', None, str),
-        smoosh_layers=('whether to smoosh shared and skip layers before combining them', None, str),
+        smoosh_layers=('whether to smoosh shared and skip layers before combining them', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
