@@ -158,7 +158,8 @@ class Model:
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
             dropout_prob, dropout_emb, task_specific, reg, backprop_emb,
-            word2vec_init, exp_desc, skip_layer, exp_group, exp_id):
+            word2vec_init, exp_desc, skip_layer, exp_group, exp_id,
+            smoosh_layers):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -346,11 +347,13 @@ class Model:
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
         skip_layer=('whether to allow each task to peak back at the input', 'option', None, str),
         use_pretrained=('experiment ID and group to init from', 'option', None, str),
+        smoosh_layers=('whether to smoosh shared and skip layers before combining them', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', skip_layer='True', use_pretrained=''):
+        class_weight='False', word2vec_init='True', skip_layer='True', use_pretrained='',
+        smoosh_layers='False'):
     """Training process
 
     1. Load embeddings and labels
@@ -375,6 +378,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
     skip_layer = True if skip_layer == 'True' else False
+    smoosh_layers = True if smoosh_layers == 'True' else False
 
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
@@ -385,7 +389,8 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     m.load_labels(labels)
     m.do_train_val_split()
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
-                  task_specific, reg, backprop_emb, word2vec_init, exp_desc, skip_layer, exp_group, exp_id)
+                  task_specific, reg, backprop_emb, word2vec_init, exp_desc,
+                  skip_layer, exp_group, exp_id, smoosh_layers)
 
     # Weights
     weights_str = 'weights/{}/{}-{}.h5'
