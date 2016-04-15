@@ -165,25 +165,10 @@ class Model:
         as closely as possible.
 
         """
-        # Load model and weights from disk if saved
-        if self.pretrain:
-            model_path = 'models/{}/{}.json'.format(self.init_exp_group, self.init_exp_id)
-            print >> sys.stderr, 'Loading model from {}...'.format(model_path)
-
-            self.model = model_from_json(open(model_path).read())
-            self.model.load_weights('weights/{}/{}-val.h5'.format(self.init_exp_group,
-                                                                  self.init_exp_id))
-            print 'labels={}+group_from={}+id_from={}'.format(self.label_names,
-                                                              self.init_exp_group,
-                                                              self.init_exp_id)
-            model_summary(self.model)
-
-            return
-
         dropouts = {}
 
-        ### BEGIN LAYER NAMES #################################################
-                                                                              #
+        # Define layer names ahead of model construction!
+
         input = 'input'
         embedding = 'embedding'
         dropouts[embedding] = embedding + '_'
@@ -203,43 +188,63 @@ class Model:
 
         probs = {label: '{}_probs'.format(label) for label in self.label_names}
         outputs = self.label_names
-                                                                              #
-        ### END LAYER NAMES ###################################################
-        
+            
+        if self.pretrain:
+            # Load architecture up to the shared layer and weights
 
-        ### BEGIN GRAPH CONSTRUCTION ##########################################
-                                                                              #
-        self.model = Graph()
-        model = self.model
+            model_path = 'models/{}/{}-base.json'.format(self.init_exp_group, self.init_exp_id)
+            print >> sys.stderr, 'Loading model from {}...'.format(model_path)
 
-        model.add_input(name=input,
-                        input_shape=[self.maxlen],
-                        dtype='int') # dtype='int' is 100% necessary for some reason!
+            self.model = model_from_json(open(model_path).read())
+            model = self.model
+            self.model.load_weights('weights/{}/{}-val.h5'.format(self.init_exp_group,
+                                                                  self.init_exp_id))
 
-        init_embeddings = [self.embeddings] if word2vec_init else None
-        model.add_node(Embedding(input_dim=self.vocab_size, output_dim=self.word_dim,
-                                 weights=init_embeddings,
-                                 input_length=self.maxlen,
-                                 trainable=backprop_emb),
-                       name=embedding,
-                       input=input)
+            # For visualization code...
+            print 'labels={}+group_from={}+id_from={}'.format(self.label_names,
+                                                              self.init_exp_group,
+                                                              self.init_exp_id)
+        else:
+            # Build model from scratch
 
-        model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
+            self.model = Graph()
+            model = self.model
 
-        # Shared representation
-        self.add_representation(input=dropouts[embedding],
-                                filter_lens=filter_lens,
-                                nb_filter=nb_filter,
-                                reg=reg,
-                                name=shared_rep,
-                                dropouts=dropouts,
-                                hidden_dim=hidden_dim,
-                                dropout_prob=dropout_prob)
+            model.add_input(name=input,
+                            input_shape=[self.maxlen],
+                            dtype='int') # dtype='int' is 100% necessary for some reason!
 
-        # Save just the model up to the shared portion so we can load in for
-        # pretraining in the future.
-        json_string = model.to_json()
-        open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
+            init_embeddings = [self.embeddings] if word2vec_init else None
+            model.add_node(Embedding(input_dim=self.vocab_size, output_dim=self.word_dim,
+                                    weights=init_embeddings,
+                                    input_length=self.maxlen,
+                                    trainable=backprop_emb),
+                        name=embedding,
+                        input=input)
+
+            model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
+
+            # Shared representation
+            self.add_representation(input=dropouts[embedding],
+                                    filter_lens=filter_lens,
+                                    nb_filter=nb_filter,
+                                    reg=reg,
+                                    name=shared_rep,
+                                    dropouts=dropouts,
+                                    hidden_dim=hidden_dim,
+                                    dropout_prob=dropout_prob)
+
+            # Save the model up to this point in case we want to do pretraining
+            # in the future!
+            json_string = model.to_json()
+            open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
+
+
+        # Take notice! It is at *this point* that both the pretrained models and
+        # newly contructed models are on equal footing! In both cases, we've
+        # constructed the model up to the shared representation and we need to
+        # add on the task specific portion(s)!
+
 
         # Individual representations
         for label_name in self.label_names:
@@ -343,7 +348,7 @@ class Model:
         use_pretrained=('experiment ID and group to init from', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
-        nb_filter=128, filter_lens='1,2', hidden_dim=128, dropout_prob=.5, dropout_emb='True',
+        nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True', skip_layer='True', use_pretrained=''):
     """Training process
@@ -382,22 +387,15 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
                   task_specific, reg, backprop_emb, word2vec_init, exp_desc, skip_layer, exp_group, exp_id)
 
-    if use_pretrained:
-        weights_exp_group, weights_exp_id = pretrained_group, pretrained_id
-    else:
-        weights_exp_group, weights_exp_id = exp_group, exp_id
+    # Weights
+    weights_str = 'weights/{}/{}-{}.h5'
+    val_weights = weights_str.format(exp_group, exp_id, 'val')
+    f1_weights = weights_str.format(exp_group, exp_id, 'f1')
 
-    # Weights to initialize model
-    init_weights = 'weights/{}/{}-val.h5'.format(weights_exp_group, weights_exp_id)
-
-    # Weights to save during training
-    val_weights = 'weights/{}/{}-val.h5'.format(exp_group, exp_id)
-    f1_weights = 'weights/{}/{}-f1.h5'.format(exp_group, exp_id)
-    if os.path.isfile(init_weights):
-        m.model.load_weights(init_weights)
-    else:
-        assert not use_pretrained # error out if we said to use pretrained weights and they are nowhere to be found
-        print >> sys.stderr, 'weights file {} not found!'.format(val_weights)
+    # Only load weights if we are not using pretraining (i.e. we're picking up where we left off)
+    if not use_pretrained and os.path.isfile(val_weights):
+        print >> sys.stderr, 'Loading weights from {}!'.format(val_weights)
+        m.model.load_weights(val_weights)
 
     m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight)
 
