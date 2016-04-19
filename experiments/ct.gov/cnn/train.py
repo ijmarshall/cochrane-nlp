@@ -84,10 +84,14 @@ class Model:
 
         self.label_names = df.columns.tolist()
 
-    def do_train_val_split(self):
+    def do_train_val_split(self, num_train):
         """Split data up into separate train and validation sets
 
-        Use sklearn's function.
+        Parameters
+        ----------
+        num_train : number of examples to train on
+
+        Pass a big number for num_train to include the entire training set.
 
         """
         fold = KFold(len(self.abstracts_padded),
@@ -96,6 +100,7 @@ class Model:
                      random_state=0) # for reproducibility!
         p = iter(fold)
         train_idxs, val_idxs = next(p)
+        train_idxs = train_idxs[:num_train] # cut down the number of examples to train on!
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         # Extract training data to pass to keras fit()
@@ -158,8 +163,7 @@ class Model:
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
             dropout_prob, dropout_emb, task_specific, reg, backprop_emb,
-            word2vec_init, exp_desc, skip_layer, exp_group, exp_id,
-            smoosh_layers):
+            word2vec_init, exp_desc, exp_group, exp_id, smoosh_layers):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -205,6 +209,14 @@ class Model:
             print 'labels={}+group_from={}+id_from={}'.format(self.label_names,
                                                               self.init_exp_group,
                                                               self.init_exp_id)
+
+            # Freeze learning rates for conv layers - hardcode at 3 filters for now!
+            for i in range(1, 4):
+                model.nodes['conv_{}_shared_rep'.format(i)].set_lr_multipliers(0., 0.)
+
+            # And the dense layer!
+            model.nodes[shared_rep].set_lr_multipliers(0., 0.)
+
         else:
             # Build model from scratch
 
@@ -241,22 +253,26 @@ class Model:
             open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
 
 
-        # Take notice! It is at *this point* that both the pretrained models and
-        # newly contructed models are on equal footing! In both cases, we've
+        #
+        # Take notice!
+        #
+        # It is at *this point* that both the pretrained models and newly
+        # contructed models are on equal footing! In both cases, we've
         # constructed the model up to the shared representation and we need to
         # add on the task specific portion(s)!
+        #
 
-
-        # Individual representations
-        for label_name in self.label_names:
-            self.add_representation(input=dropouts[embedding],
-                                    filter_lens=filter_lens,
-                                    nb_filter=nb_filter,
-                                    reg=reg,
-                                    name=individual_reps[label_name],
-                                    dropouts=dropouts,
-                                    hidden_dim=hidden_dim,
-                                    dropout_prob=dropout_prob)
+        # Use individual representations?
+        if task_specific:
+            for label_name in self.label_names:
+                self.add_representation(input=dropouts[embedding],
+                                        filter_lens=filter_lens,
+                                        nb_filter=nb_filter,
+                                        reg=reg,
+                                        name=individual_reps[label_name],
+                                        dropouts=dropouts,
+                                        hidden_dim=hidden_dim,
+                                        dropout_prob=dropout_prob)
 
         for label, num_classes in zip(self.label_names, self.class_sizes):
             # Fork the graph and predict probabilities for each target from shared representation
@@ -282,8 +298,8 @@ class Model:
 
                 model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
                                name=probs[label],
-                               input=dropouts[shared_rep] if not skip_layer else None,
-                               inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if skip_layer else [])
+                               input=dropouts[shared_rep] if not task_specific else None,
+                               inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
 
         for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
@@ -344,15 +360,15 @@ class Model:
         exp_id=('id of the experiment - usually an integer', 'option', None, str),
         class_weight=('enfore class balance through loss scaling', 'option', None, str),
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
-        skip_layer=('whether to allow each task to peak back at the input', 'option', None, str),
         use_pretrained=('experiment ID and group to init from', 'option', None, str),
         smoosh_layers=('whether to smoosh shared and skip layers before combining them', 'option', None, str),
+        num_train=('number of examples to train on', 'option', None, int),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', skip_layer='True', use_pretrained='',
-        smoosh_layers='False'):
+        class_weight='False', word2vec_init='True', use_pretrained='', smoosh_layers='False',
+        num_train=10000):
     """Training process
 
     1. Load embeddings and labels
@@ -376,7 +392,6 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     class_weight = True if class_weight == 'True' else False
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
-    skip_layer = True if skip_layer == 'True' else False
     smoosh_layers = True if smoosh_layers == 'True' else False
 
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
@@ -386,10 +401,10 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
 
     m.load_embeddings()
     m.load_labels(labels)
-    m.do_train_val_split()
+    m.do_train_val_split(num_train)
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
                   task_specific, reg, backprop_emb, word2vec_init, exp_desc,
-                  skip_layer, exp_group, exp_id, smoosh_layers)
+                  exp_group, exp_id, smoosh_layers)
 
     # Weights
     weights_str = 'weights/{}/{}-{}.h5'
