@@ -65,7 +65,6 @@ def cycle_generator(collection):
         for elem in collection:
             yield elem
 
-
 def all_subsets_generator(label_names):
     """Yield all subsets of labels"""
 
@@ -74,6 +73,16 @@ def all_subsets_generator(label_names):
             mask = np.array([int(bit) for bit in '{0:08b}'.format(bit_str)], dtype=np.bool)
             
             yield ','.join(label_names[mask])
+
+def lr_generator(lo, hi, pow=10, include_zero=True):
+    """Generate random floats in the range [lo, hi]"""
+    
+    nums = np.logspace(start=lo, stop=hi, num=hi-lo+1)
+    if include_zero:
+        nums = np.append(nums, [0.])
+
+    while True:
+        yield ','.join(str(lr_multiplier) for lr_multiplier in np.random.choice(nums, size=2))
 
 
 if __name__ == '__main__':
