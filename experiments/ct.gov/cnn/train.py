@@ -33,10 +33,14 @@ from keras.regularizers import l2
 from support import classinfo_generator, produce_labels, ValidationCallback
 
 class Model:
-    def __init__(self, init, init_exp_group, init_exp_id):
+    def __init__(self, init, init_exp_group, init_exp_id, lr_multipliers):
         self.pretrain = init
         self.init_exp_group = init_exp_group
         self.init_exp_id = init_exp_id
+        self.shared_multiplier, self.softmax_multiplier = lr_multipliers
+
+        # Use same lr multiplier for both weights and biases
+        self.shared_multiplier = [self.shared_multiplier]*2
 
     def load_embeddings(self):
         """Load word embeddings and abstracts
@@ -208,12 +212,11 @@ class Model:
                                                               self.init_exp_group,
                                                               self.init_exp_id)
 
-            # Freeze learning rates for conv layers - hardcode at 3 filters for now!
+            # Learning rate multipliers for convs and shared representation - hardcode at 3 filters for now!
             for i in range(1, 4):
-                model.nodes['conv_{}_shared_rep'.format(i)].set_lr_multipliers(0., 0.)
+                model.nodes['conv_{}_shared_rep'.format(i)].set_lr_multipliers(*self.shared_multiplier)
 
-            # And the dense layer!
-            model.nodes[shared_rep].set_lr_multipliers(0., 0.)
+            model.nodes[shared_rep].set_lr_multipliers(*self.shared_multiplier)
 
         else:
             # Build model from scratch
@@ -275,7 +278,11 @@ class Model:
         for label, num_classes in zip(self.label_names, self.class_sizes):
             # Fork the graph and predict probabilities for each target from shared representation
 
-            model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
+            model.add_node(Dense(output_dim=num_classes,
+                                 activation='softmax',
+                                 W_regularizer=l2(reg),
+                                 W_learning_rate_multiplier=self.softmax_multiplier,
+                                 b_learning_rate_multiplier=self.softmax_multiplier),
                            name=probs[label],
                            input=dropouts[shared_rep] if not task_specific else None,
                            inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
@@ -341,11 +348,13 @@ class Model:
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
         use_pretrained=('experiment ID and group to init from', 'option', None, str),
         num_train=('number of examples to train on', 'option', None, int),
+        lr_multipliers=('learning rate multipliers for shared representation and softmax layer', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', use_pretrained='', num_train=10000):
+        class_weight='False', word2vec_init='True', use_pretrained='', num_train=10000,
+        lr_multipliers='0,1'):
     """Training process
 
     1. Load embeddings and labels
@@ -362,6 +371,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     labels = labels.split(',')
     filter_lens = [int(filter_len) for filter_len in filter_lens.split(',')]
     pretrained_group, pretrained_id = use_pretrained.split(',') if use_pretrained else (None, None)
+    lr_multipliers = [float(lr_multiplier) for lr_multiplier in lr_multipliers.split(',')]
 
     # Convert boolean strings to actual booleans
     task_specific = True if task_specific == 'True' else False
@@ -373,7 +383,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
 
-    m = Model(use_pretrained, pretrained_group, pretrained_id)
+    m = Model(use_pretrained, pretrained_group, pretrained_id, lr_multipliers)
 
     m.load_embeddings()
     m.load_labels(labels)
