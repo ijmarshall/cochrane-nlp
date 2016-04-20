@@ -329,12 +329,13 @@ class DataFilter(object):
 
 class DocFilter(DataFilter):
 
-    def Xy(self, doc_indices, pmid_instance=0, domain=None):
+    def Xy(self, doc_indices, pmid_instance=0, domain=None, return_uids=False):
         if domain is None:
             raise ValueError("DocFilter requires specific domain to retrieve data for")
 
         X = []
         y = []
+        uids = []
         for i in doc_indices:
             doc_i = self.data_instance.data[i]
             if pmid_instance >= len(doc_i) or doc_i[pmid_instance]["doc-y"][domain]==0:
@@ -344,11 +345,15 @@ class DocFilter(DataFilter):
                 # (fails silently)
             X.append(doc_i[pmid_instance]["doc-text"])
             y.append(doc_i[pmid_instance]["doc-y"][domain])
+            #import pdb; pdb.set_trace()
+            uids.append(i)
+        if return_uids:
+            return X, y, uids
         return X, y
 
 class SentFilter(DataFilter):
 
-    def Xy(self, doc_indices, pmid_instance=0, domain=None):
+    def Xy(self, doc_indices, pmid_instance=0, domain=None, split_by_doc=False):
         if domain is None:
             raise ValueError("SentFilter requires specific domain to retrieve data for")
 
@@ -360,12 +365,17 @@ class SentFilter(DataFilter):
 
             # make sentence list
             sents = [doc_i["doc-text"][start:end] for start, end in doc_i["sent-spans"]]
-            X.extend(sents)
 
             # and make boolean array
             sent_y = -np.ones(len(sents), dtype=np.int8) # most are -1s
             sent_y[doc_i["sent-y"][domain]] = 1 # except these ones
-            y = np.append(y, sent_y)
+
+            if split_by_doc:
+                X.append(sents)
+                y.append(sent_y)
+            else:
+                X.extend(sents)
+                y = np.append(y, sent_y)
 
         return X, y
 
