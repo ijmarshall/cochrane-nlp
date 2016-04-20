@@ -163,7 +163,7 @@ class Model:
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
             dropout_prob, dropout_emb, task_specific, reg, backprop_emb,
-            word2vec_init, exp_desc, exp_group, exp_id, smoosh_layers):
+            word2vec_init, exp_desc, exp_group, exp_id):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -178,18 +178,16 @@ class Model:
         embedding = 'embedding'
         dropouts[embedding] = embedding + '_'
 
-        individual_reps, shared_rep = {label: '{}_individual'.format(label) for label in self.label_names}, 'shared_rep'
+        shared_rep = 'shared_rep'
         dropouts[shared_rep] = shared_rep + '_'
-        for label, individual_rep in individual_reps.items():
-            dropouts[individual_rep] = individual_rep + '_'
 
         if task_specific:
-            task_specifics = {label: '{}_rep'.format(label) for label in self.label_names}
-
-            # Add dropout
+            individual_reps = {}
             for label in self.label_names:
-                specific_rep = task_specifics[label]
-                dropouts[specific_rep] = specific_rep + '_'
+                individual_rep = '{}_indiv'.format(label)
+
+                individual_reps[label] = individual_rep
+                dropouts[individual_rep] = individual_rep + '_'
 
         probs = {label: '{}_probs'.format(label) for label in self.label_names}
         outputs = self.label_names
@@ -232,8 +230,8 @@ class Model:
                                     weights=init_embeddings,
                                     input_length=self.maxlen,
                                     trainable=backprop_emb),
-                        name=embedding,
-                        input=input)
+                           name=embedding,
+                           input=input)
 
             model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
 
@@ -256,7 +254,7 @@ class Model:
         #
         # Take notice!
         #
-        # It is at *this point* that both the pretrained models and newly
+        # It is at *this* point that both the pretrained and newly
         # contructed models are on equal footing! In both cases, we've
         # constructed the model up to the shared representation and we need to
         # add on the task specific portion(s)!
@@ -277,29 +275,10 @@ class Model:
         for label, num_classes in zip(self.label_names, self.class_sizes):
             # Fork the graph and predict probabilities for each target from shared representation
 
-            if task_specific: 
-                # Final dense hidden layer for task-specific representation
-
-                specific_rep = task_specifics[label]
-
-                model.add_node(Dense(1, activation='relu', W_regularizer=l2(reg)),
-                               name=specific_rep+'_shared',
-                               input=dropouts[shared_rep])
-
-                model.add_node(Dense(1, activation='relu', W_regularizer=l2(reg)),
-                               name=specific_rep+'_skip',
-                               input=dropouts[individual_reps[label]])
-
-                model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
-                               name=probs[label],
-                               inputs=[specific_rep+'_shared', specific_rep+'_skip'])
-            else:
-                # Straight from shared representation to softmax
-
-                model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
-                               name=probs[label],
-                               input=dropouts[shared_rep] if not task_specific else None,
-                               inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
+            model.add_node(Dense(output_dim=num_classes, activation='softmax', W_regularizer=l2(reg)),
+                           name=probs[label],
+                           input=dropouts[shared_rep] if not task_specific else None,
+                           inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
 
         for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
@@ -361,14 +340,12 @@ class Model:
         class_weight=('enfore class balance through loss scaling', 'option', None, str),
         word2vec_init=('initialize embeddings with word2vec', 'option', None, str),
         use_pretrained=('experiment ID and group to init from', 'option', None, str),
-        smoosh_layers=('whether to smoosh shared and skip layers before combining them', 'option', None, str),
         num_train=('number of examples to train on', 'option', None, int),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', use_pretrained='', smoosh_layers='False',
-        num_train=10000):
+        class_weight='False', word2vec_init='True', use_pretrained='', num_train=10000):
     """Training process
 
     1. Load embeddings and labels
@@ -392,7 +369,6 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     class_weight = True if class_weight == 'True' else False
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
-    smoosh_layers = True if smoosh_layers == 'True' else False
 
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
@@ -403,8 +379,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     m.load_labels(labels)
     m.do_train_val_split(num_train)
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
-                  task_specific, reg, backprop_emb, word2vec_init, exp_desc,
-                  exp_group, exp_id, smoosh_layers)
+                  task_specific, reg, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
 
     # Weights
     weights_str = 'weights/{}/{}-{}.h5'
