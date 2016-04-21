@@ -69,12 +69,15 @@ class RoBData:
     REGEX_ELLIPSIS = re.compile("\s*[\[\(]?\s?\.\.+\s?[\]\)]?\s*") # to catch various permetations of "..." and "[...]"
 
 
-    def __init__(self, test_mode=False, show_progress=True):
+    def __init__(self, test_mode=False, show_progress=True, abstracts_only=False):
 
         self.domain_map = self._load_domain_map()
-        self.pdfviewer = biviewer.PDFBiViewer()
+        if abstracts_only:
+            self.pdfviewer = biviewer.BiViewer()
+        else:
+            self.pdfviewer = biviewer.PDFBiViewer()
         self.max_studies = 200 if test_mode else len(self.pdfviewer)
-
+        self.abstracts_only = abstracts_only
         self.show_progress= show_progress
         
 
@@ -84,6 +87,11 @@ class RoBData:
         simultaneously generate document and sentence data
         (though for simple models may not need sentence data)
         """
+        if self.abstracts_only:
+            if not doc_level_only:
+                print "WARNING: no sentence level data is available for abstracts; setting doc_level_only to True"
+                doc_level_only = True
+
 
         try:        
             print "Attempting to load data cache..."
@@ -104,14 +112,15 @@ class RoBData:
 
                 if study_id > self.max_studies:
                     break
-
                 if self.show_progress:
                     p.tap()
+                if self.abstracts_only:
 
+                    pdf_text = study.pubmed["title"] + " " + study.pubmed["abstract"] + " " + ("DUMMYJOURNALCODE" + study.pubmed["journal"].replace(' ', ''))
+                else:
+                    pdf_text = self._preprocess_pdf(study.studypdf["text"])
 
-                pdf_text = self._preprocess_pdf(study.studypdf["text"])
-
-                if skip_small_files and len(pdf_text) < 10000:
+                if skip_small_files and len(pdf_text) < 5000:
                     continue
 
                 if not doc_level_only:
@@ -146,8 +155,10 @@ class RoBData:
 
                 if not doc_level_only:
                     study_data.update({"sent-spans": matcher.sent_indices, "sent-y": sent_y})
-
-                self.data[study.studypdf["pmid"]].append(study_data)
+                if self.abstracts_only:
+                    self.data[study.pubmed["pmid"]].append(study_data)
+                else:
+                    self.data[study.studypdf["pmid"]].append(study_data)
             if not dont_save:
                 self.save_data()
 
