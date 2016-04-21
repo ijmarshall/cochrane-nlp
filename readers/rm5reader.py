@@ -132,6 +132,7 @@ class RM5(XMLReader):
 
         return self.data.getroot().attrib.get("GROUP_ID")
         
+  
     def cdno(self):
         """
         first tries to get cdno from filename (most reliable), else try to extract from DOI
@@ -302,7 +303,10 @@ class RM5(XMLReader):
         parse = {"CHARACTERISTICS": self.char_refs(study_id=study_id),
                  "QUALITY": self.quality(study_id=study_id),
                  "REFERENCE": self.references(study_id=study_id),
-                 "GROUP_ID": self.review_group()}
+                 "GROUP_ID": self.review_group(),
+                 "CDNO": self.cdno(),
+                 "STUDY_ID": study_id,
+                 "TYPE": self.review_type()}
         
 
         return parse

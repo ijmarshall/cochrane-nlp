@@ -61,6 +61,9 @@ class PubmedCorpusReader(NLMCorpusReader):
         self.section_map["pmid"] = 'PMID'
         self.section_map["mesh"] = 'MeshHeadingList/MeshHeading/DescriptorName'
         self.section_map["language"] = 'Article/Language'
+        self.section_map["journal"] = 'Article/Journal/Title'
+        self.section_map["affiliation"] = 'Article/Affiliation'
+        self.section_map["ptype"] = 'Article/PublicationTypeList/PublicationType'
 
     def text_all(self):
         output = NLMCorpusReader.text_all(self) # get the normal output dict
