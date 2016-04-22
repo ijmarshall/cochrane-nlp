@@ -39,7 +39,7 @@ def args_generator(args, num_exps=32):
 
         yield args_setting
 
-def make_exp(exp_group, args, exp_name):
+def make_exp(exp_group, args):
     """Perform setup work for a condor experiment
     
     Parameters
@@ -54,7 +54,7 @@ def make_exp(exp_group, args, exp_name):
     """
     equalized_args = ['='.join(tup) for tup in args]
     stripped_args = [arg.lstrip('-') for arg in equalized_args]
-    # exp_name = '+'.join(stripped_args)
+    exp_name = [pvalue for (pname, pvalue) in args if pname == '-exp-id'][0]
     
     unrolled_args = [arg for arg_tup in args for arg in arg_tup]
     arg_str = ' '.join(unrolled_args) + ' -exp-group ' + exp_group
@@ -73,7 +73,7 @@ def make_exp(exp_group, args, exp_name):
 
     get_ipython().system(u"rm /tmp/tmp1 /tmp/tmp2 /tmp/tmp3")
     
-def make_exps(exp_group, args, num_exps):
+def make_exps(exp_group, args, num_exps, baseline_exp_groups=[]):
     """Wrapper around make_exp()
     
     Call make_exp() with `num_exps` number of experiments.
@@ -89,7 +89,11 @@ def make_exps(exp_group, args, num_exps):
     get_ipython().system(u'rm -rf ../params/$exp_group')
 
     for i, args_setting in enumerate(args_list):
-        make_exp(exp_group, args_setting, exp_name=i)
+        make_exp(exp_group, args_setting)
+
+    # Copy in existing experiments - for learning curve visualizations
+    for baseline_exp_group in baseline_exp_groups:
+        get_ipython().system(u'cp -r ../output/$baseline_exp_group/* ../output/$exp_group')
 
 
 if __name__ == '__main__':
