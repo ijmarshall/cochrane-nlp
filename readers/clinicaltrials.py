@@ -66,7 +66,10 @@ class Reader(XMLReader):
         # self.section_map["mesh"] = 'MeshHeadingList/MeshHeading/DescriptorName'
         # self.section_map["language"] = 'Article/Language'
 
-        self.extract_clf_fields()
+        # self.extract_clf_fields()
+
+    def get_links(self):
+        return self.text_filtered('resultspmids')
 
     def extract_clf_fields(self):
         """Extracts fields of interest for prediction from the ct.gov XML entry"""

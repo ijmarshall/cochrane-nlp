@@ -44,11 +44,11 @@ class XMLReader():
         if ET_instance is not None:
             if strip_tags:
                 # print "tags stripped!"
-                return (" ".join(ET.tostringlist(ET_instance, method="text", encoding="utf-8"))).strip()
+                return (" ".join(ET.tostringlist(ET_instance, method="text", encoding="utf-8"))).strip().decode("utf-8")
             else:
-                return ET.tostring(ET_instance, method="xml", encoding="utf-8")
+                return ET.tostring(ET_instance, method="xml", encoding="utf-8").decode("utf-8")
         else:
-            return ""
+            return u""
 
     def _ETfind(self, element_name, ET_instance, strip_tags=True):
         "finds (first) subelement, returns unicode of contents if present, else returns None"
