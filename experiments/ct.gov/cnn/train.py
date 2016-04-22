@@ -207,11 +207,6 @@ class Model:
             self.model.load_weights('weights/{}/{}-val.h5'.format(self.init_exp_group,
                                                                   self.init_exp_id))
 
-            # For visualization code...
-            print 'labels={}+group_from={}+id_from={}'.format(self.label_names,
-                                                              self.init_exp_group,
-                                                              self.init_exp_id)
-
             # Learning rate multipliers for convs and shared representation - hardcode at 3 filters for now!
             for i in range(1, 4):
                 model.nodes['conv_{}_shared_rep'.format(i)].set_lr_multipliers(*self.shared_multiplier)
@@ -253,6 +248,8 @@ class Model:
             json_string = model.to_json()
             open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
 
+            # Pickle the experiment description so it can be easily loaded back in!
+            pickle.dump(exp_desc, open('params/{}/{}.p'.format(exp_group, exp_id), 'wb'))
 
         #
         # Take notice!
@@ -349,12 +346,13 @@ class Model:
         use_pretrained=('experiment ID and group to init from', 'option', None, str),
         num_train=('number of examples to train on', 'option', None, int),
         lr_multipliers=('learning rate multipliers for shared representation and softmax layer', 'option', None, str),
+        learning_curve_id=('id of the learning curve (for visualization!)', 'option', None, int),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', use_pretrained='', num_train=10000,
-        lr_multipliers='0,1'):
+        class_weight='False', word2vec_init='True', use_pretrained='None', num_train=10000,
+        lr_multipliers='.0001,1', learning_curve_id=0):
     """Training process
 
     1. Load embeddings and labels
@@ -362,16 +360,24 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     3. Train
 
     """
-    # Build exp name from arg string
-    args = sys.argv[1:]
-    pnames, pvalues = [pname.lstrip('-') for pname in args[::2]], args[1::2]
-    exp_desc = '+'.join('='.join(arg_pair) for arg_pair in zip(pnames, pvalues))
-
     # Parse list parameters into lists!
     labels = labels.split(',')
     filter_lens = [int(filter_len) for filter_len in filter_lens.split(',')]
+    use_pretrained = '' if use_pretrained == 'None' else use_pretrained
     pretrained_group, pretrained_id = use_pretrained.split(',') if use_pretrained else (None, None)
     lr_multipliers = [float(lr_multiplier) for lr_multiplier in lr_multipliers.split(',')]
+
+    # Build exp info string for visualization code...
+    args = sys.argv[1:]
+    pnames, pvalues = [pname.lstrip('-') for pname in args[::2]], args[1::2]
+    exp_desc = '+'.join('='.join(arg_pair) for arg_pair in zip(pnames, pvalues))
+    if use_pretrained:
+        try: # Enrich experiment description with base model description
+            pretrained_exp_desc_loc = 'params/{}/{}.p'.format(pretrained_group, pretrained_id)
+            pretrained_exp_desc = pickle.load(open(pretrained_exp_desc_loc, 'rb'))
+            exp_desc = '+'.join([exp_desc, pretrained_exp_desc])
+        except IOError:
+            print >> sys.stderr, 'No params file there yet!'
 
     # Convert boolean strings to actual booleans
     task_specific = True if task_specific == 'True' else False
