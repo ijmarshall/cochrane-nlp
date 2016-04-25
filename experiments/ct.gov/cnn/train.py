@@ -73,11 +73,11 @@ class Model:
         Mainly configure class names and validation data
 
         """
-        df = pickle.load(open('pickle/composite_labels.p', 'rb'))
-        bdf = pickle.load(open('pickle/composite_binarized.p', 'rb'))
+        self.df = pickle.load(open('pickle/composite_labels.p', 'rb'))
+        self.bdf = pickle.load(open('pickle/composite_binarized.p', 'rb'))
 
         # Cut down labels to only the ones we're predicting on
-        df, bdf = df[label_names], bdf[label_names]
+        df, bdf = self.df[label_names], self.bdf[label_names]
 
         # Get class names and sizes
         class_info = list(classinfo_generator(df))
@@ -102,10 +102,24 @@ class Model:
                      n_folds=5,
                      shuffle=True,
                      random_state=0) # for reproducibility!
+
         p = iter(fold)
         train_idxs, val_idxs = next(p)
         train_idxs = train_idxs[:num_train] # cut down the number of examples to train on!
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
+
+        if len(self.label_names) == 1:
+            df = self.df.loc[train_idxs] # only consider train examples
+            label = self.label_names[0]
+            classes = df[label].cat.categories # get class names
+
+            # Get first occurring indexes of each class and prepend it to the
+            # front. Make sure to not double count!
+            indexes = [df[df[label] == class_].iloc[0].name for class_ in classes]
+            filtered_train_idxs = [train_idx for train_idx in train_idxs if train_idx not in indexes]
+            train_idxs = np.array(indexes + filtered_train_idxs)
+
+            assert len(train_idxs) == self.num_train
 
         # Extract training data to pass to keras fit()
         self.train_data = OrderedDict(produce_labels(self.label_names, self.ys[:, train_idxs], self.class_sizes))
