@@ -105,10 +105,11 @@ class Model:
 
         p = iter(fold)
         train_idxs, val_idxs = next(p)
-        train_idxs = train_idxs[:num_train] # cut down the number of examples to train on!
-        self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         if len(self.label_names) == 1:
+            # Take special care to move distinct class examples to the front of
+            # the line!
+            #
             df = self.df.loc[train_idxs] # only consider train examples
             label = self.label_names[0]
             classes = df[label].cat.categories # get class names
@@ -119,7 +120,8 @@ class Model:
             filtered_train_idxs = [train_idx for train_idx in train_idxs if train_idx not in indexes]
             train_idxs = np.array(indexes + filtered_train_idxs)
 
-            assert len(train_idxs) == self.num_train
+        train_idxs = train_idxs[:num_train] # cut down the number of examples to train on!
+        self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         # Extract training data to pass to keras fit()
         self.train_data = OrderedDict(produce_labels(self.label_names, self.ys[:, train_idxs], self.class_sizes))
