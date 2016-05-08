@@ -303,8 +303,8 @@ class Model:
         for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
 
-        model.compile(optimizer='rmsprop',
-                    loss={label: 'categorical_crossentropy' for label in self.label_names}) # CE for all the targets
+        model.compile(optimizer='adam',
+                      loss={label: 'categorical_crossentropy' for label in self.label_names}) # CE for all the targets
 
                                                                               #
         ### END GRAPH CONSTRUCTION ############################################
@@ -318,14 +318,15 @@ class Model:
 
         self.model = model
 
-    def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight):
+    def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights,
+            class_weight, save_weights):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
 
         """
         val_callback = ValidationCallback(self.val_data, batch_size,
-                self.num_train, val_every, val_weights, f1_weights)
+                self.num_train, val_every, val_weights, f1_weights, save_weights)
 
         if class_weight:
             class_weights_fname = 'composite_weights.p'
@@ -363,12 +364,13 @@ class Model:
         num_train=('number of examples to train on', 'option', None, int),
         lr_multipliers=('learning rate multipliers for shared representation and softmax layer', 'option', None, str),
         learning_curve_id=('id of the learning curve (for visualization!)', 'option', None, int),
+        save_weights=('whether to save weights during training', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=10000,
-        lr_multipliers='.0001,1', learning_curve_id=0):
+        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False'):
     """Training process
 
     1. Load embeddings and labels
@@ -401,6 +403,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     class_weight = True if class_weight == 'True' else False
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
+    save_weights = True if save_weights == 'True' else False
 
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
@@ -423,7 +426,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         print >> sys.stderr, 'Loading weights from {}!'.format(val_weights)
         m.model.load_weights(val_weights)
 
-    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight)
+    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight, save_weights)
 
 
 if __name__ == '__main__':

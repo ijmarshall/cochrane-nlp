@@ -23,7 +23,8 @@ class TestCallback(keras.callbacks.Callback):
 class ValidationCallback(keras.callbacks.Callback):
     """Callback to compute accuracy during training"""
 
-    def __init__(self, val_data, batch_size, num_train, val_every, val_weights, f1_weights):
+    def __init__(self, val_data, batch_size, num_train, val_every, val_weights,
+            f1_weights, save_weights):
         """Callback to compute f1 during training
         
         Parameters
@@ -46,6 +47,7 @@ class ValidationCallback(keras.callbacks.Callback):
         self.best_f1 = 0
         self.f1_weights = f1_weights
         self.val_weights = val_weights
+        self.save_weights = save_weights
         
     def on_epoch_end(self, epoch, logs={}):
         """Evaluate validation loss and f1
@@ -73,16 +75,21 @@ class ValidationCallback(keras.callbacks.Callback):
                                           average=None)
 
             print '{} f1: {}'.format(label, list(f1))
+            sys.stdout.flush() # try and flush stdout so condor prints it!
+
+            if not self.save_weights:
+                continue
 
             macro_f1 = np.mean(f1)
             if macro_f1 > self.best_f1:
                 self.best_f1 = macro_f1 # update new best f1
                 self.model.save_weights(self.f1_weights, overwrite=True) # save model weights!
 
+        if not self.save_weights:
+            return
+
         # Save val weights no matter what!
         self.model.save_weights(self.val_weights, overwrite=True)
-
-        sys.stdout.flush() # try and flush stdout so condor prints it!
 
 def plot_confusion_matrix(confusion_matrix, columns):
     df = pd.DataFrame(confusion_matrix, columns=columns, index=columns)
