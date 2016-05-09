@@ -42,7 +42,7 @@ class Model:
         # Use same lr multiplier for both weights and biases
         self.shared_multiplier = [self.shared_multiplier]*2
 
-    def load_embeddings(self):
+    def load_embeddings(self, word_vectors):
         """Load word embeddings and abstracts
         
         embeddings_info dict
@@ -61,7 +61,7 @@ class Model:
 
         self.abstracts = embeddings_info['abstracts']
         self.abstracts_padded = embeddings_info['abstracts_padded']
-        self.embeddings = embeddings_info['embeddings']
+        self.embeddings = embeddings_info['embeddings'][word_vectors]
         self.word_dim = embeddings_info['word_dim']
         self.word2idx, idx2word = embeddings_info['word2idx'], embeddings_info['idx2word']
         self.maxlen = embeddings_info['maxlen']
@@ -365,12 +365,13 @@ class Model:
         lr_multipliers=('learning rate multipliers for shared representation and softmax layer', 'option', None, str),
         learning_curve_id=('id of the learning curve (for visualization!)', 'option', None, int),
         save_weights=('whether to save weights during training', 'option', None, str),
+        word_vectors=('what kind of word vectors to initialize with', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=10000,
-        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False'):
+        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False', word_vectors='pubmed'):
     """Training process
 
     1. Load embeddings and labels
@@ -410,7 +411,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
 
     m = Model(use_pretrained, pretrained_group, pretrained_id, lr_multipliers)
 
-    m.load_embeddings()
+    m.load_embeddings(word_vectors)
     m.load_labels(labels)
     m.do_train_val_split(num_train)
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
