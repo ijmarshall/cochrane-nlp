@@ -117,7 +117,8 @@ class Pubmed:
             output_dicts.append ({"PMID": self._ETfind("PMID", article),
                                   "Journal": self._ETfind("Article/Journal/Title", article),
                                   "ArticleTitle": self._ETfind("Article/ArticleTitle", article),
-                                  "Abstract": self._ETfind("Article/Abstract", article)})
+                                  "Abstract": self._ETfind("Article/Abstract", article),
+                                  "Affiliation": self._ETfind("Article/Affiliation", article)})
 
         return output_dicts
 
@@ -234,12 +235,12 @@ class IterSummary():
 
 
 def main():
+    pass
+    # results = IterSummary(["14975573", "18021533", "21353478", "6583195", "999485"], retmax=10)
 
-    results = IterSummary(["14975573", "18021533", "21353478", "6583195", "999485"], retmax=10)
 
-
-    for i in results.itersummary():
-        print i
+    # for i in results.itersummary():
+    #     print i
 
 
 

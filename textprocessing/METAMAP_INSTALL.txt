@@ -1,0 +1,24 @@
+METAMAP INSTALLATION INSTRUCTIONS
+=================================
+
+By default this code works with Metamap 2014 (probably does work but untested with the newer versions). 
+
+This also requires the installation of specific additional vocabularies. This is since other systematic review automation projects are using SNOMED CT, MeSH, RxNorm, and ATC. 
+
+These instructions should work for Mac and Linux. They have not been tested in Windows, but the differences needed for Windows are described in the links below.
+
+1. Download the 2014 version of metamap from [the NIH site](https://metamap.nlm.nih.gov/MainDownload.shtml) -- you will require to register
+2. Install metamap following [these instructions](https://metamap.nlm.nih.gov/Installation.shtml)
+3. Visit [the additional vocabularies download page](https://metamap.nlm.nih.gov/DataSetDownload.shtml) 
+4. Download the following files:
+    - 2015 Specialist Lexicon
+    - Under '2015AB UMLS **NLM** Datasets' (make sure not *base* or *USAbase*)
+        + 2015AB Common Data 
+        + 2015AB Relaxed Model Data
+5. Install the new datasets following [these instructions](https://metamap.nlm.nih.gov/Docs/public_mm_additional_models.shtml). In brief, it involves untar.gz ing the files and placing them in the appropriate subdirectory of your metamap installation.
+6. Add your metamap path to the CNLP.ini file
+
+
+
+
+

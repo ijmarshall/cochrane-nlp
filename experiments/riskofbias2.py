@@ -69,12 +69,15 @@ class RoBData:
     REGEX_ELLIPSIS = re.compile("\s*[\[\(]?\s?\.\.+\s?[\]\)]?\s*") # to catch various permetations of "..." and "[...]"
 
 
-    def __init__(self, test_mode=False, show_progress=True):
+    def __init__(self, test_mode=False, show_progress=True, abstracts_only=False):
 
         self.domain_map = self._load_domain_map()
-        self.pdfviewer = biviewer.PDFBiViewer()
+        if abstracts_only:
+            self.pdfviewer = biviewer.BiViewer()
+        else:
+            self.pdfviewer = biviewer.PDFBiViewer()
         self.max_studies = 200 if test_mode else len(self.pdfviewer)
-
+        self.abstracts_only = abstracts_only
         self.show_progress= show_progress
         
 
@@ -84,6 +87,11 @@ class RoBData:
         simultaneously generate document and sentence data
         (though for simple models may not need sentence data)
         """
+        if self.abstracts_only:
+            if not doc_level_only:
+                print "WARNING: no sentence level data is available for abstracts; setting doc_level_only to True"
+                doc_level_only = True
+
 
         try:        
             print "Attempting to load data cache..."
@@ -104,14 +112,15 @@ class RoBData:
 
                 if study_id > self.max_studies:
                     break
-
                 if self.show_progress:
                     p.tap()
+                if self.abstracts_only:
 
+                    pdf_text = study.pubmed["title"] + " " + study.pubmed["abstract"] + " " + ("DUMMYJOURNALCODE" + study.pubmed["journal"].replace(' ', ''))
+                else:
+                    pdf_text = self._preprocess_pdf(study.studypdf["text"])
 
-                pdf_text = self._preprocess_pdf(study.studypdf["text"])
-
-                if skip_small_files and len(pdf_text) < 10000:
+                if skip_small_files and len(pdf_text) < 5000:
                     continue
 
                 if not doc_level_only:
@@ -146,8 +155,10 @@ class RoBData:
 
                 if not doc_level_only:
                     study_data.update({"sent-spans": matcher.sent_indices, "sent-y": sent_y})
-
-                self.data[study.studypdf["pmid"]].append(study_data)
+                if self.abstracts_only:
+                    self.data[study.pubmed["pmid"]].append(study_data)
+                else:
+                    self.data[study.studypdf["pmid"]].append(study_data)
             if not dont_save:
                 self.save_data()
 
@@ -329,12 +340,13 @@ class DataFilter(object):
 
 class DocFilter(DataFilter):
 
-    def Xy(self, doc_indices, pmid_instance=0, domain=None):
+    def Xy(self, doc_indices, pmid_instance=0, domain=None, return_uids=False):
         if domain is None:
             raise ValueError("DocFilter requires specific domain to retrieve data for")
 
         X = []
         y = []
+        uids = []
         for i in doc_indices:
             doc_i = self.data_instance.data[i]
             if pmid_instance >= len(doc_i) or doc_i[pmid_instance]["doc-y"][domain]==0:
@@ -344,11 +356,15 @@ class DocFilter(DataFilter):
                 # (fails silently)
             X.append(doc_i[pmid_instance]["doc-text"])
             y.append(doc_i[pmid_instance]["doc-y"][domain])
+            #import pdb; pdb.set_trace()
+            uids.append(i)
+        if return_uids:
+            return X, y, uids
         return X, y
 
 class SentFilter(DataFilter):
 
-    def Xy(self, doc_indices, pmid_instance=0, domain=None):
+    def Xy(self, doc_indices, pmid_instance=0, domain=None, split_by_doc=False):
         if domain is None:
             raise ValueError("SentFilter requires specific domain to retrieve data for")
 
@@ -360,12 +376,17 @@ class SentFilter(DataFilter):
 
             # make sentence list
             sents = [doc_i["doc-text"][start:end] for start, end in doc_i["sent-spans"]]
-            X.extend(sents)
 
             # and make boolean array
             sent_y = -np.ones(len(sents), dtype=np.int8) # most are -1s
             sent_y[doc_i["sent-y"][domain]] = 1 # except these ones
-            y = np.append(y, sent_y)
+
+            if split_by_doc:
+                X.append(sents)
+                y.append(sent_y)
+            else:
+                X.extend(sents)
+                y = np.append(y, sent_y)
 
         return X, y
 

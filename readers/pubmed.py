@@ -2,8 +2,6 @@
 #   Pubmed reader
 #
 from glob import glob
-import codecs
-from pprint import pprint
 import re
 from xmlbase import XMLReader
 
@@ -30,28 +28,7 @@ def list_bounds(input_list, index, boundary):
 
 
 
-
-
-class NLMCorpusReader(XMLReader):
-    pass
-
-
-
-
-
-
-class PMCCorpusReader(NLMCorpusReader):
-    #
-    # not fully functioning yet - nxml files are not really valid xml - they contain HTML within some fields
-    #
-    def __init__(self, filename):
-        NLMCorpusReader.__init__(self, filename)
-        self.section_map["title"] = 'front/article-meta/title-group/article-title'
-        self.section_map["abstract"] = 'front/article-meta/abstract'
-
-
-
-class PubmedCorpusReader(NLMCorpusReader):
+class Reader(XMLReader):
 
     def __init__(self, filename):
         NLMCorpusReader.__init__(self, filename)
@@ -61,9 +38,10 @@ class PubmedCorpusReader(NLMCorpusReader):
         self.section_map["pmid"] = 'PMID'
         self.section_map["mesh"] = 'MeshHeadingList/MeshHeading/DescriptorName'
         self.section_map["language"] = 'Article/Language'
-        self.section_map["journal"] = 'Article/Journal/Title'
         self.section_map["affiliation"] = 'Article/Affiliation'
         self.section_map["ptype"] = 'Article/PublicationTypeList/PublicationType'
+        
+        
 
     def text_all(self):
         output = NLMCorpusReader.text_all(self) # get the normal output dict
