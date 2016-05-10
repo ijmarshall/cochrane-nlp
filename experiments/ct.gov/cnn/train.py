@@ -30,10 +30,11 @@ from keras.utils.layer_utils import model_summary
 from keras.callbacks import ModelCheckpoint
 from keras.regularizers import l2
 
-from support import classinfo_generator, produce_labels, ValidationCallback
+from support import classinfo_generator, produce_labels, ValidationCallback, repeat_labels
 
 class Model:
-    def __init__(self, init, init_exp_group, init_exp_id, lr_multipliers):
+    def __init__(self, init, init_exp_group, init_exp_id, lr_multipliers,
+            round_robin, num_labels):
         self.pretrain = init
         self.init_exp_group = init_exp_group
         self.init_exp_id = init_exp_id
@@ -41,6 +42,9 @@ class Model:
 
         # Use same lr multiplier for both weights and biases
         self.shared_multiplier = [self.shared_multiplier]*2
+
+        self.round_robin = round_robin
+        self.num_labels = num_labels
 
     def load_embeddings(self, word_vectors):
         """Load word embeddings and abstracts
@@ -60,8 +64,12 @@ class Model:
         embeddings_info = pickle.load(open('pickle/embeddings_info.p', 'rb'))
 
         self.abstracts = embeddings_info['abstracts']
+
         self.abstracts_padded = embeddings_info['abstracts_padded']
         self.embeddings = embeddings_info['embeddings'][word_vectors]
+        if self.round_robin: # repeat embeddings
+            self.abstracts_repeated = np.tile(self.abstracts_padded, [self.num_labels, 1])
+
         self.word_dim = embeddings_info['word_dim']
         self.word2idx, idx2word = embeddings_info['word2idx'], embeddings_info['idx2word']
         self.maxlen = embeddings_info['maxlen']
@@ -85,6 +93,8 @@ class Model:
         # class_names = {label: classes for label, classes in zip(label_names, class_names)}
 
         self.ys = np.array(bdf).T # turn labels into numpy array
+        if self.round_robin: # repeat labels
+            self.ys_repeated = np.hstack(list(repeat_labels(self.ys)))
 
         self.label_names = df.columns.tolist()
 
@@ -106,6 +116,9 @@ class Model:
         p = iter(fold)
         train_idxs, val_idxs = next(p)
 
+        if self.round_robin: # repeat training idxs
+            train_idxs = [self.ys.shape[1]*i + train_idx for train_idx in train_idxs for i in range(self.num_labels)]
+
         if len(self.label_names) == 1:
             # Take special care to move distinct class examples to the front of
             # the line!
@@ -124,10 +137,17 @@ class Model:
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         # Extract training data to pass to keras fit()
-        self.train_data = OrderedDict(produce_labels(self.label_names, self.ys[:, train_idxs], self.class_sizes))
-        self.train_data.update({'input': self.abstracts_padded[train_idxs]})
+        #
+        # Take special care to repeat the abstracts if we're doing round robin
+        ys = self.ys_repeated if self.round_robin else self.ys
+        abstracts = self.abstracts_repeated if self.round_robin else self.abstracts_padded
+
+        self.train_data = OrderedDict(produce_labels(self.label_names, ys[:, train_idxs], self.class_sizes))
+        self.train_data.update({'input': abstracts[train_idxs]})
 
         # Extract validation data to validate over
+        #
+        # Never repeat abstracts nor labels here!
         self.val_data = OrderedDict(produce_labels(self.label_names, self.ys[:, val_idxs], self.class_sizes))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
@@ -174,12 +194,8 @@ class Model:
 
             convs_list.append(flats[filter_len])
 
-        # Run conv activations through a dense layer
-        self.model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
-                       name=name,
-                       inputs=convs_list)
-
-        self.model.add_node(Dropout(dropout_prob), name=dropouts[name], input=name)
+        # Hack to merge together activation maps
+        self.model.add_node(Dropout(1e-100), name=dropouts[name], inputs=convs_list)
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
             dropout_prob, dropout_emb, task_specific, reg, task_reg, backprop_emb,
@@ -209,7 +225,10 @@ class Model:
                 individual_reps[label] = individual_rep
                 dropouts[individual_rep] = individual_rep + '_'
 
+        denses = {label: '{}_dense'.format(label) for label in self.label_names}
+
         probs = {label: '{}_probs'.format(label) for label in self.label_names}
+
         outputs = self.label_names
             
         if self.pretrain:
@@ -289,7 +308,16 @@ class Model:
                                         dropout_prob=dropout_prob)
 
         for label, num_classes in zip(self.label_names, self.class_sizes):
-            # Fork the graph and predict probabilities for each target from shared representation
+            #
+            # Add dense layer and softmax layer for each task
+            #
+
+            model.add_node(Dense(output_dim=hidden_dim,
+                                 activation='relu',
+                                 W_regularizer=l2(reg)),
+                           name=denses[label],
+                           input=dropouts[shared_rep] if not task_specific else None,
+                           inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
 
             model.add_node(Dense(output_dim=num_classes,
                                  activation='softmax',
@@ -297,8 +325,7 @@ class Model:
                                  W_learning_rate_multiplier=self.softmax_multiplier,
                                  b_learning_rate_multiplier=self.softmax_multiplier),
                            name=probs[label],
-                           input=dropouts[shared_rep] if not task_specific else None,
-                           inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
+                           input=denses[label])
 
         for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
@@ -367,12 +394,14 @@ class Model:
         learning_curve_id=('id of the learning curve (for visualization!)', 'option', None, int),
         save_weights=('whether to save weights during training', 'option', None, str),
         word_vectors=('what kind of word vectors to initialize with', 'option', None, str),
+        round_robin=('whether to do multitask learning in a round robin fashion', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, task_reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', use_pretrained='None', num_train=10000,
-        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False', word_vectors='pubmed'):
+        class_weight='False', word2vec_init='True', use_pretrained='None', num_train=100000,
+        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False', word_vectors='pubmed',
+        round_robin='False'):
     """Training process
 
     1. Load embeddings and labels
@@ -406,11 +435,13 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
     save_weights = True if save_weights == 'True' else False
+    round_robin = True if round_robin == 'True' else False
 
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
 
-    m = Model(use_pretrained, pretrained_group, pretrained_id, lr_multipliers)
+    m = Model(use_pretrained, pretrained_group, pretrained_id, lr_multipliers,
+            round_robin, num_labels=len(labels))
 
     m.load_embeddings(word_vectors)
     m.load_labels(labels)

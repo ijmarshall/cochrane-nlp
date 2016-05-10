@@ -91,6 +91,29 @@ class ValidationCallback(keras.callbacks.Callback):
         # Save val weights no matter what!
         self.model.save_weights(self.val_weights, overwrite=True)
 
+def repeat_labels(ys):
+    """Repeat labels and fills in missing values with -1
+
+    Takes ys like the following:
+
+    ys: [[0, 1],
+         [1, 0]]
+
+    and returns the following:
+
+    ys: [[ 0,  1, -1, -1],
+         [-1, -1,  1,  0]]
+    
+    Useful for doing round robin-style training.
+    
+    """
+    for i, y_row in enumerate(ys):
+        chunk = ys.copy()
+
+        chunk[:i] = chunk[i+1:] = -1 # mark everything except the i'th row as missing
+
+        yield chunk
+        
 def plot_confusion_matrix(confusion_matrix, columns):
     df = pd.DataFrame(confusion_matrix, columns=columns, index=columns)
     axes = plt.gca()
