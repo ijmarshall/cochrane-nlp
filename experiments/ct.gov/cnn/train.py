@@ -131,8 +131,8 @@ class Model:
         self.val_data = OrderedDict(produce_labels(self.label_names, self.ys[:, val_idxs], self.class_sizes))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
-    def add_representation(self, input, filter_lens, nb_filter, reg, name,
-            dropouts, hidden_dim, dropout_prob):
+    def add_representation(self, input, filter_lens, nb_filter, reg,
+            name, dropouts, hidden_dim, dropout_prob):
         """Add a representation for a task
 
         Parameters
@@ -182,7 +182,7 @@ class Model:
         self.model.add_node(Dropout(dropout_prob), name=dropouts[name], input=name)
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
-            dropout_prob, dropout_emb, task_specific, reg, backprop_emb,
+            dropout_prob, dropout_emb, task_specific, reg, task_reg, backprop_emb,
             word2vec_init, exp_desc, exp_group, exp_id):
         """Build keras model
 
@@ -282,7 +282,7 @@ class Model:
                 self.add_representation(input=dropouts[embedding],
                                         filter_lens=filter_lens,
                                         nb_filter=nb_filter,
-                                        reg=reg,
+                                        reg=task_reg,
                                         name=individual_reps[label_name],
                                         dropouts=dropouts,
                                         hidden_dim=hidden_dim,
@@ -353,6 +353,7 @@ class Model:
         dropout_prob=('dropout probability', 'option', None, float),
         dropout_emb=('perform dropout after the embedding layer', 'option', None, str),
         reg=('l2 regularization constant', 'option', None, float),
+        task_reg=('l2 regularization constant for task-specific representation', 'option', None, float),
         backprop_emb=('whether to backprop into embeddings', 'option', None, str),
         batch_size=('batch size', 'option', None, int),
         val_every=('number of times to compute validation per epoch', 'option', None, int),
@@ -369,7 +370,7 @@ class Model:
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
-        reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
+        reg=0, task_reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=10000,
         lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False', word_vectors='pubmed'):
     """Training process
@@ -415,7 +416,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     m.load_labels(labels)
     m.do_train_val_split(num_train)
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
-                  task_specific, reg, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
+                  task_specific, reg, task_reg, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
 
     # Weights
     weights_str = 'weights/{}/{}-{}.h5'
