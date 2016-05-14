@@ -46,7 +46,7 @@ class Model:
         self.round_robin = round_robin
         self.num_labels = num_labels
 
-    def load_embeddings(self, word_vectors):
+    def load_embeddings(self, embeddings_file, word_vectors):
         """Load word embeddings and abstracts
         
         embeddings_info dict
@@ -61,7 +61,7 @@ class Model:
         vocab_size: number of words in the vocabulary
             
         """
-        embeddings_info = pickle.load(open('pickle/embeddings_info.p', 'rb'))
+        embeddings_info = pickle.load(open('pickle/{}'.format(embeddings_file), 'rb'))
 
         self.abstracts = embeddings_info['abstracts']
 
@@ -198,8 +198,8 @@ class Model:
         self.model.add_node(Dropout(1e-100), name=dropouts[name], inputs=convs_list)
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
-            dropout_prob, dropout_emb, task_specific, reg, task_reg, backprop_emb,
-            word2vec_init, exp_desc, exp_group, exp_id):
+            dropout_prob, dropout_emb, task_specific, reg, task_reg, resid_reg, resid_regs,
+            backprop_emb, word2vec_init, exp_desc, exp_group, exp_id):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -214,22 +214,34 @@ class Model:
         embedding = 'embedding'
         dropouts[embedding] = embedding + '_'
 
-        shared_rep = 'shared_rep'
-        dropouts[shared_rep] = shared_rep + '_'
+        # shared_rep = 'shared_rep'
+        # dropouts[shared_rep] = shared_rep + '_'
 
-        if task_specific:
-            individual_reps = {}
+        individual_reps = {}
+        for label in self.label_names:
+            individual_rep = '{}_indiv'.format(label)
+
+            individual_reps[label] = individual_rep
+            dropouts[individual_rep] = individual_rep + '_'
+
+        if self.num_labels > 1:
+            #
+            # Residual layers
+            #
+            rests = {label: 'except_{}'.format(label) for label in self.label_names}
+            primes = {label: '{}_prime'.format(label) for label in self.label_names}
             for label in self.label_names:
-                individual_rep = '{}_indiv'.format(label)
-
-                individual_reps[label] = individual_rep
-                dropouts[individual_rep] = individual_rep + '_'
+                dropouts[primes[label]] = primes[label] + '_'
 
         denses = {label: '{}_dense'.format(label) for label in self.label_names}
 
         probs = {label: '{}_probs'.format(label) for label in self.label_names}
 
         outputs = self.label_names
+
+        # Argument parsing
+        if not resid_regs:
+            resid_regs = [resid_reg]*self.num_labels
             
         if self.pretrain:
             # Load architecture up to the shared layer and weights
@@ -268,23 +280,23 @@ class Model:
 
             model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
 
-            # Shared representation
-            self.add_representation(input=dropouts[embedding],
-                                    filter_lens=filter_lens,
-                                    nb_filter=nb_filter,
-                                    reg=reg,
-                                    name=shared_rep,
-                                    dropouts=dropouts,
-                                    hidden_dim=hidden_dim,
-                                    dropout_prob=dropout_prob)
+            # # Shared representation
+            # self.add_representation(input=dropouts[embedding],
+            #                         filter_lens=filter_lens,
+            #                         nb_filter=nb_filter,
+            #                         reg=reg,
+            #                         name=shared_rep,
+            #                         dropouts=dropouts,
+            #                         hidden_dim=hidden_dim,
+            #                         dropout_prob=dropout_prob)
+            #
+            # # Save the model up to this point in case we want to do pretraining
+            # # in the future!
+            # json_string = model.to_json()
+            # open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
 
-            # Save the model up to this point in case we want to do pretraining
-            # in the future!
-            json_string = model.to_json()
-            open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
-
-            # Pickle the experiment description so it can be easily loaded back in!
-            pickle.dump(exp_desc, open('params/{}/{}.p'.format(exp_group, exp_id), 'wb'))
+            # # Pickle the experiment description so it can be easily loaded back in!
+            # pickle.dump(exp_desc, open('params/{}/{}.p'.format(exp_group, exp_id), 'wb'))
 
         #
         # Take notice!
@@ -295,39 +307,70 @@ class Model:
         # add on the task specific portion(s)!
         #
 
-        # Use individual representations?
-        if task_specific:
-            for label_name in self.label_names:
-                self.add_representation(input=dropouts[embedding],
-                                        filter_lens=filter_lens,
-                                        nb_filter=nb_filter,
-                                        reg=task_reg,
-                                        name=individual_reps[label_name],
-                                        dropouts=dropouts,
-                                        hidden_dim=hidden_dim,
-                                        dropout_prob=dropout_prob)
+        for label_name in self.label_names:
+            self.add_representation(input=dropouts[embedding],
+                                    filter_lens=filter_lens,
+                                    nb_filter=nb_filter,
+                                    reg=task_reg,
+                                    name=individual_reps[label_name],
+                                    dropouts=dropouts,
+                                    hidden_dim=hidden_dim,
+                                    dropout_prob=dropout_prob)
 
+        if self.num_labels > 1: # residual units
+            for label, num_classes, resid_reg in zip(self.label_names, self.class_sizes, resid_regs):
+                rest = [dropouts[individual_reps[lbl]] for lbl in self.label_names if not lbl == label]
+
+                model.add_node(Dense(output_dim=nb_filter*len(filter_lens),
+                                    activation='relu',
+                                    W_regularizer=l2(resid_reg)), #                                        |
+                            name=rests[label], # everything *except* the current representation as input v
+                            input=rest[0] if len(rest) == 1 else None,
+                            inputs=rest if len(rest) > 1 else None)
+
+                model.add_node(Dropout(1e-100),
+                            name=primes[label],
+                            inputs=[dropouts[individual_reps[label]], rests[label]], merge_mode='sum')
+
+                model.add_node(Dense(output_dim=hidden_dim,
+                                    activation='relu',
+                                    W_regularizer=l2(reg)),
+                            name=denses[label],
+                            input=primes[label])
+
+                model.add_node(Dense(output_dim=num_classes,
+                                    activation='softmax',
+                                    W_regularizer=l2(reg),
+                                    W_learning_rate_multiplier=self.softmax_multiplier,
+                                    b_learning_rate_multiplier=self.softmax_multiplier),
+                            name=probs[label],
+                            input=denses[label])
+
+                model.add_output(name=label, input=probs[label]) # separate output for each label
+        else:
+
+            #
+            # Just a dense layer
+            #
+
+            for label, num_classes in zip(self.label_names, self.class_sizes):
+                model.add_node(Dense(output_dim=hidden_dim,
+                                     activation='relu',
+                                     W_regularizer=l2(reg)),
+                               name=denses[label],
+                               input=dropouts[individual_reps[label]])
+
+        # Softmaxes and outputs
+        #
         for label, num_classes in zip(self.label_names, self.class_sizes):
-            #
-            # Add dense layer and softmax layer for each task
-            #
-
-            model.add_node(Dense(output_dim=hidden_dim,
-                                 activation='relu',
-                                 W_regularizer=l2(reg)),
-                           name=denses[label],
-                           input=dropouts[shared_rep] if not task_specific else None,
-                           inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
-
             model.add_node(Dense(output_dim=num_classes,
                                  activation='softmax',
                                  W_regularizer=l2(reg),
                                  W_learning_rate_multiplier=self.softmax_multiplier,
                                  b_learning_rate_multiplier=self.softmax_multiplier),
-                           name=probs[label],
-                           input=denses[label])
+                            name=probs[label],
+                            input=denses[label])
 
-        for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
 
         model.compile(optimizer='adam',
@@ -346,14 +389,15 @@ class Model:
         self.model = model
 
     def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights,
-            class_weight, save_weights):
+            class_weight, save_weights, probs_loc):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
 
         """
         val_callback = ValidationCallback(self.val_data, batch_size,
-                self.num_train, val_every, val_weights, f1_weights, save_weights)
+                self.num_train, val_every, val_weights, f1_weights,
+                save_weights, probs_loc)
 
         if class_weight:
             class_weights_fname = 'composite_weights.p'
@@ -395,13 +439,16 @@ class Model:
         save_weights=('whether to save weights during training', 'option', None, str),
         word_vectors=('what kind of word vectors to initialize with', 'option', None, str),
         round_robin=('whether to do multitask learning in a round robin fashion', 'option', None, str),
+        resid_reg=('how much to regularize the residual weights', 'option', None, float),
+        resid_regs=('how residual weights', 'option', None, str),
+        embeddings_file=('name of embeddings file to load', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, task_reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=100000,
-        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False', word_vectors='pubmed',
-        round_robin='False'):
+        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='True', word_vectors='pubmed',
+        round_robin='False', resid_reg=0., resid_regs='', embeddings_file='embeddings_info.p'):
     """Training process
 
     1. Load embeddings and labels
@@ -415,6 +462,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     use_pretrained = '' if use_pretrained == 'None' else use_pretrained
     pretrained_group, pretrained_id = use_pretrained.split(',') if use_pretrained else (None, None)
     lr_multipliers = [float(lr_multiplier) for lr_multiplier in lr_multipliers.split(',')]
+    if resid_regs: resid_regs = [float(rr) for rr in resid_regs.split(',')]
 
     # Build exp info string for visualization code...
     args = sys.argv[1:]
@@ -443,23 +491,25 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     m = Model(use_pretrained, pretrained_group, pretrained_id, lr_multipliers,
             round_robin, num_labels=len(labels))
 
-    m.load_embeddings(word_vectors)
+    m.load_embeddings(embeddings_file, word_vectors)
     m.load_labels(labels)
     m.do_train_val_split(num_train)
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
-                  task_specific, reg, task_reg, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
+                  task_specific, reg, task_reg, resid_reg, resid_regs, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
 
     # Weights
     weights_str = 'weights/{}/{}-{}.h5'
     val_weights = weights_str.format(exp_group, exp_id, 'val')
     f1_weights = weights_str.format(exp_group, exp_id, 'f1')
+    probs_loc = 'probs/{}/{}.p'.format(exp_group, exp_id)
 
     # Only load weights if we are not using pretraining (i.e. we're picking up where we left off)
     if not use_pretrained and os.path.isfile(val_weights):
         print >> sys.stderr, 'Loading weights from {}!'.format(val_weights)
         m.model.load_weights(val_weights)
 
-    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight, save_weights)
+    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights,
+            class_weight, save_weights, probs_loc)
 
 
 if __name__ == '__main__':
