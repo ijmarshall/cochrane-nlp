@@ -75,14 +75,14 @@ class Model:
         self.maxlen = embeddings_info['maxlen']
         self.vocab_size = embeddings_info['vocab_size']
 
-    def load_labels(self, label_names):
+    def load_labels(self, labels_file, label_names):
         """Load labels for dataset
 
         Mainly configure class names and validation data
 
         """
-        self.df = pickle.load(open('pickle/composite_labels.p', 'rb'))
-        self.bdf = pickle.load(open('pickle/composite_binarized.p', 'rb'))
+        self.df = pickle.load(open('pickle/{}_labels.p'.format(labels_file), 'rb'))
+        self.bdf = pickle.load(open('pickle/{}_binarized.p'.format(labels_file), 'rb'))
 
         # Cut down labels to only the ones we're predicting on
         df, bdf = self.df[label_names], self.bdf[label_names]
@@ -129,6 +129,7 @@ class Model:
 
             # Get first occurring indexes of each class and prepend it to the
             # front. Make sure to not double count!
+
             indexes = [df[df[label] == class_].iloc[0].name for class_ in classes]
             filtered_train_idxs = [train_idx for train_idx in train_idxs if train_idx not in indexes]
             train_idxs = np.array(indexes + filtered_train_idxs)
@@ -442,13 +443,15 @@ class Model:
         resid_reg=('how much to regularize the residual weights', 'option', None, float),
         resid_regs=('how residual weights', 'option', None, str),
         embeddings_file=('name of embeddings file to load', 'option', None, str),
+        labels_file=('name of labels file to load', 'option', None, str),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
         reg=0, task_reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=100000,
         lr_multipliers='.0001,1', learning_curve_id=0, save_weights='True', word_vectors='pubmed',
-        round_robin='False', resid_reg=0., resid_regs='', embeddings_file='embeddings_info.p'):
+        round_robin='False', resid_reg=0., resid_regs='', embeddings_file='embeddings_info.p',
+        labels_file='composite'):
     """Training process
 
     1. Load embeddings and labels
@@ -492,7 +495,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
             round_robin, num_labels=len(labels))
 
     m.load_embeddings(embeddings_file, word_vectors)
-    m.load_labels(labels)
+    m.load_labels(labels_file, labels)
     m.do_train_val_split(num_train)
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
                   task_specific, reg, task_reg, resid_reg, resid_regs, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
