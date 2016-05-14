@@ -409,10 +409,33 @@ class Model:
         else:
             class_weights = {} # no weighting
 
-        history = self.model.fit(self.train_data, batch_size=batch_size,
-                                 nb_epoch=nb_epoch, verbose=2,
-                                 callbacks=[val_callback],
-                                 class_weight=class_weights)
+        if fit_generator:
+
+            def minibatch_generator():
+                batch_idxs = np.random.choice(batch_size)
+
+                while True:
+                    train_data = {}
+                    for label in self.label_names:
+                        train_data[label] = self.train_data[label][batch_idxs]
+
+                    train_data['input'] = self.train_data['input'][batch_idxs]
+
+                    yield train_data
+
+            self.model.fit_generator(minibatch_generator(),
+                                     samples_per_epoch=self.num_train/batch_size,
+                                     nb_epoch=nb_epoch,
+                                     verbose=2,
+                                     callback=[val_callback],
+                                     class_weight=class_weights)
+        else:
+            self.model.fit(self.train_data,
+                           batch_size=batch_size,
+                           nb_epoch=nb_epoch,
+                           verbose=2,
+                           callbacks=[val_callback],
+                           class_weight=class_weights)
 
 
 @plac.annotations(
@@ -444,6 +467,8 @@ class Model:
         resid_regs=('how residual weights', 'option', None, str),
         embeddings_file=('name of embeddings file to load', 'option', None, str),
         labels_file=('name of labels file to load', 'option', None, str),
+        fit_generator=('whether to use balanced minibatch sampling', 'option', None, str),
+        minibatch_ratio=('ratio at which to sample the rare class', 'option', None, float),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
@@ -451,7 +476,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=100000,
         lr_multipliers='.0001,1', learning_curve_id=0, save_weights='True', word_vectors='pubmed',
         round_robin='False', resid_reg=0., resid_regs='', embeddings_file='embeddings_info.p',
-        labels_file='composite'):
+        labels_file='composite', fit_generator='False', minibatch_ratio=.5):
     """Training process
 
     1. Load embeddings and labels
@@ -512,7 +537,8 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         m.model.load_weights(val_weights)
 
     m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights,
-            class_weight, save_weights, probs_loc)
+            class_weight, save_weights, probs_loc, fit_generator,
+            minibatch_ratio)
 
 
 if __name__ == '__main__':
