@@ -17,6 +17,7 @@ import plac
 import pickle
 
 import numpy as np
+import pandas as pd
 
 from sklearn.cross_validation import KFold
 
@@ -145,6 +146,8 @@ class Model:
 
         self.train_data = OrderedDict(produce_labels(self.label_names, ys[:, train_idxs], self.class_sizes))
         self.train_data.update({'input': abstracts[train_idxs]})
+
+        self.ys_train = ys[:, train_idxs]
 
         # Extract validation data to validate over
         #
@@ -390,7 +393,7 @@ class Model:
         self.model = model
 
     def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights,
-            class_weight, save_weights, probs_loc):
+            class_weight, save_weights, probs_loc, fit_generator, mb_ratio):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
@@ -411,10 +414,26 @@ class Model:
 
         if fit_generator:
 
-            def minibatch_generator():
-                batch_idxs = np.random.choice(batch_size)
+            def batch_generator():
+                """Perform stratified sampling
+                
+                It is assumed we are doing binary classification because it
+                doesn't make sense to do this in the multiclass setting.
+                
+                """
+                ys_train = self.ys_train.flatten() # assume no multi-task
+                class_counts = pd.Series(ys_train).value_counts()
+                rare_class, common_class = class_counts.argmin(), class_counts.argmax()
+
+                rare_idxs = np.argwhere(ys_train == rare_class).flatten()
+                common_idxs = np.argwhere(ys_train == common_class).flatten()
 
                 while True:
+                    # do stratified sampling
+                    rare_batch_idxs = np.random.choice(rare_idxs, size=int(batch_size*mb_ratio) + 1)
+                    common_batch_idxs = np.random.choice(common_idxs, size=int(batch_size*(1-mb_ratio)))
+                    batch_idxs = np.concatenate([rare_batch_idxs, common_batch_idxs])
+
                     train_data = {}
                     for label in self.label_names:
                         train_data[label] = self.train_data[label][batch_idxs]
@@ -423,11 +442,11 @@ class Model:
 
                     yield train_data
 
-            self.model.fit_generator(minibatch_generator(),
+            self.model.fit_generator(batch_generator(),
                                      samples_per_epoch=self.num_train/batch_size,
                                      nb_epoch=nb_epoch,
                                      verbose=2,
-                                     callback=[val_callback],
+                                     callbacks=[val_callback],
                                      class_weight=class_weights)
         else:
             self.model.fit(self.train_data,
@@ -468,7 +487,7 @@ class Model:
         embeddings_file=('name of embeddings file to load', 'option', None, str),
         labels_file=('name of labels file to load', 'option', None, str),
         fit_generator=('whether to use balanced minibatch sampling', 'option', None, str),
-        minibatch_ratio=('ratio at which to sample the rare class', 'option', None, float),
+        mb_ratio=('ratio at which to sample the rare class', 'option', None, float),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
@@ -476,7 +495,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=100000,
         lr_multipliers='.0001,1', learning_curve_id=0, save_weights='True', word_vectors='pubmed',
         round_robin='False', resid_reg=0., resid_regs='', embeddings_file='embeddings_info.p',
-        labels_file='composite', fit_generator='False', minibatch_ratio=.5):
+        labels_file='composite', fit_generator='False', mb_ratio=.5):
     """Training process
 
     1. Load embeddings and labels
@@ -537,8 +556,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         m.model.load_weights(val_weights)
 
     m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights,
-            class_weight, save_weights, probs_loc, fit_generator,
-            minibatch_ratio)
+            class_weight, save_weights, probs_loc, fit_generator, mb_ratio)
 
 
 if __name__ == '__main__':
