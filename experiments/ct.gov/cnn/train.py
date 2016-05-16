@@ -205,7 +205,7 @@ class Model:
                             name=name,
                             inputs=convs_list)
 
-        self.mode.add_node(Dropout(dropout_prob), name=dropouts[name], input=name)
+        self.model.add_node(Dropout(dropout_prob), name=dropouts[name], input=name)
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
             dropout_prob, dropout_emb, task_specific, reg, task_reg, resid_reg, resid_regs,
@@ -487,6 +487,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     word2vec_init = True if word2vec_init == 'True' else False
     save_weights = True if save_weights == 'True' else False
     round_robin = True if round_robin == 'True' else False
+    fit_generator = True if fit_generator == 'True' else False
 
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
