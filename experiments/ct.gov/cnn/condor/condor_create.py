@@ -63,6 +63,7 @@ def make_exp(exp_group, args):
     get_ipython().system(u'mkdir -p ../weights/$exp_group/')
     get_ipython().system(u'mkdir -p ../models/$exp_group/')
     get_ipython().system(u'mkdir -p ../params/$exp_group/')
+    get_ipython().system(u'mkdir -p ../probs/$exp_group/')
     
     get_ipython().system(u"sed 's/ARGUMENTS/$arg_str/g' job_template > /tmp/tmp1")
     get_ipython().system(u"sed 's/EXP_GROUP/$exp_group/g' /tmp/tmp1 > /tmp/tmp2")
@@ -87,6 +88,7 @@ def make_exps(exp_group, args, num_exps, baseline_exp_groups=[]):
     get_ipython().system(u'rm -rf ../weights/$exp_group')
     get_ipython().system(u'rm -rf ../models/$exp_group')
     get_ipython().system(u'rm -rf ../params/$exp_group')
+    get_ipython().system(u'rm -rf ../probs/$exp_group')
 
     for i, args_setting in enumerate(args_list):
         make_exp(exp_group, args_setting)

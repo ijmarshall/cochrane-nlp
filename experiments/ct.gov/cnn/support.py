@@ -1,6 +1,8 @@
 import sys
 import operator
 
+import pickle
+
 import matplotlib.pyplot as plt
 
 import numpy as np
@@ -24,7 +26,7 @@ class ValidationCallback(keras.callbacks.Callback):
     """Callback to compute accuracy during training"""
 
     def __init__(self, val_data, batch_size, num_train, val_every, val_weights,
-            f1_weights, save_weights):
+            f1_weights, save_weights, probs_loc):
         """Callback to compute f1 during training
         
         Parameters
@@ -48,6 +50,7 @@ class ValidationCallback(keras.callbacks.Callback):
         self.f1_weights = f1_weights
         self.val_weights = val_weights
         self.save_weights = save_weights
+        self.probs_loc = probs_loc
         
     def on_epoch_end(self, epoch, logs={}):
         """Evaluate validation loss and f1
@@ -61,7 +64,9 @@ class ValidationCallback(keras.callbacks.Callback):
 
         # f1
         predictions = self.model.predict(self.val_data)
-        for label, ys_pred in predictions.items():
+
+        f1s = [-1]*len(predictions)
+        for i, (label, ys_pred) in enumerate(predictions.items()):
             # f1 score
             ys_val = self.val_data[label]
 
@@ -77,20 +82,42 @@ class ValidationCallback(keras.callbacks.Callback):
             print '{} f1: {}'.format(label, list(f1))
             sys.stdout.flush() # try and flush stdout so condor prints it!
 
-            if not self.save_weights:
-                continue
-
-            macro_f1 = np.mean(f1)
-            if macro_f1 > self.best_f1:
-                self.best_f1 = macro_f1 # update new best f1
-                self.model.save_weights(self.f1_weights, overwrite=True) # save model weights!
+            f1s[i] = np.mean(f1)
 
         if not self.save_weights:
-            return
+            return # turn back now!
+
+        if np.mean(f1s) > self.best_f1:
+            self.best_f1 = np.mean(f1s) # update new best f1
+            self.model.save_weights(self.f1_weights, overwrite=True) # save model weights!
+            pickle.dump(predictions, open(self.probs_loc, 'wb')) # save predicted probas
 
         # Save val weights no matter what!
         self.model.save_weights(self.val_weights, overwrite=True)
 
+def repeat_labels(ys):
+    """Repeat labels and fills in missing values with -1
+
+    Takes ys like the following:
+
+    ys: [[0, 1],
+         [1, 0]]
+
+    and returns the following:
+
+    ys: [[ 0,  1, -1, -1],
+         [-1, -1,  1,  0]]
+    
+    Useful for doing round robin-style training.
+    
+    """
+    for i, y_row in enumerate(ys):
+        chunk = ys.copy()
+
+        chunk[:i] = chunk[i+1:] = -1 # mark everything except the i'th row as missing
+
+        yield chunk
+        
 def plot_confusion_matrix(confusion_matrix, columns):
     df = pd.DataFrame(confusion_matrix, columns=columns, index=columns)
     axes = plt.gca()

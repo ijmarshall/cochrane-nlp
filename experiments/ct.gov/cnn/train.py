@@ -17,6 +17,7 @@ import plac
 import pickle
 
 import numpy as np
+import pandas as pd
 
 from sklearn.cross_validation import KFold
 
@@ -30,10 +31,11 @@ from keras.utils.layer_utils import model_summary
 from keras.callbacks import ModelCheckpoint
 from keras.regularizers import l2
 
-from support import classinfo_generator, produce_labels, ValidationCallback
+from support import classinfo_generator, produce_labels, ValidationCallback, repeat_labels
 
 class Model:
-    def __init__(self, init, init_exp_group, init_exp_id, lr_multipliers):
+    def __init__(self, init, init_exp_group, init_exp_id, lr_multipliers,
+            round_robin, num_labels):
         self.pretrain = init
         self.init_exp_group = init_exp_group
         self.init_exp_id = init_exp_id
@@ -42,7 +44,10 @@ class Model:
         # Use same lr multiplier for both weights and biases
         self.shared_multiplier = [self.shared_multiplier]*2
 
-    def load_embeddings(self):
+        self.round_robin = round_robin
+        self.num_labels = num_labels
+
+    def load_embeddings(self, embeddings_file, word_vectors):
         """Load word embeddings and abstracts
         
         embeddings_info dict
@@ -57,24 +62,28 @@ class Model:
         vocab_size: number of words in the vocabulary
             
         """
-        embeddings_info = pickle.load(open('pickle/embeddings_info.p', 'rb'))
+        embeddings_info = pickle.load(open('pickle/{}'.format(embeddings_file), 'rb'))
 
         self.abstracts = embeddings_info['abstracts']
+
         self.abstracts_padded = embeddings_info['abstracts_padded']
-        self.embeddings = embeddings_info['embeddings']
+        self.embeddings = embeddings_info['embeddings'][word_vectors]
+        if self.round_robin: # repeat embeddings
+            self.abstracts_repeated = np.tile(self.abstracts_padded, [self.num_labels, 1])
+
         self.word_dim = embeddings_info['word_dim']
         self.word2idx, idx2word = embeddings_info['word2idx'], embeddings_info['idx2word']
         self.maxlen = embeddings_info['maxlen']
         self.vocab_size = embeddings_info['vocab_size']
 
-    def load_labels(self, label_names):
+    def load_labels(self, labels_file, label_names):
         """Load labels for dataset
 
         Mainly configure class names and validation data
 
         """
-        self.df = pickle.load(open('pickle/composite_labels.p', 'rb'))
-        self.bdf = pickle.load(open('pickle/composite_binarized.p', 'rb'))
+        self.df = pickle.load(open('pickle/{}_labels.p'.format(labels_file), 'rb'))
+        self.bdf = pickle.load(open('pickle/{}_binarized.p'.format(labels_file), 'rb'))
 
         # Cut down labels to only the ones we're predicting on
         df, bdf = self.df[label_names], self.bdf[label_names]
@@ -85,6 +94,8 @@ class Model:
         # class_names = {label: classes for label, classes in zip(label_names, class_names)}
 
         self.ys = np.array(bdf).T # turn labels into numpy array
+        if self.round_robin: # repeat labels
+            self.ys_repeated = np.hstack(list(repeat_labels(self.ys)))
 
         self.label_names = df.columns.tolist()
 
@@ -106,6 +117,9 @@ class Model:
         p = iter(fold)
         train_idxs, val_idxs = next(p)
 
+        if self.round_robin: # repeat training idxs
+            train_idxs = [self.ys.shape[1]*i + train_idx for train_idx in train_idxs for i in range(self.num_labels)]
+
         if len(self.label_names) == 1:
             # Take special care to move distinct class examples to the front of
             # the line!
@@ -116,6 +130,7 @@ class Model:
 
             # Get first occurring indexes of each class and prepend it to the
             # front. Make sure to not double count!
+
             indexes = [df[df[label] == class_].iloc[0].name for class_ in classes]
             filtered_train_idxs = [train_idx for train_idx in train_idxs if train_idx not in indexes]
             train_idxs = np.array(indexes + filtered_train_idxs)
@@ -124,15 +139,24 @@ class Model:
         self.num_train, self.num_val = len(train_idxs), len(val_idxs)
 
         # Extract training data to pass to keras fit()
-        self.train_data = OrderedDict(produce_labels(self.label_names, self.ys[:, train_idxs], self.class_sizes))
-        self.train_data.update({'input': self.abstracts_padded[train_idxs]})
+        #
+        # Take special care to repeat the abstracts if we're doing round robin
+        ys = self.ys_repeated if self.round_robin else self.ys
+        abstracts = self.abstracts_repeated if self.round_robin else self.abstracts_padded
+
+        self.train_data = OrderedDict(produce_labels(self.label_names, ys[:, train_idxs], self.class_sizes))
+        self.train_data.update({'input': abstracts[train_idxs]})
+
+        self.ys_train = ys[:, train_idxs]
 
         # Extract validation data to validate over
+        #
+        # Never repeat abstracts nor labels here!
         self.val_data = OrderedDict(produce_labels(self.label_names, self.ys[:, val_idxs], self.class_sizes))
         self.val_data.update({'input': self.abstracts_padded[val_idxs]})
 
-    def add_representation(self, input, filter_lens, nb_filter, reg, name,
-            dropouts, hidden_dim, dropout_prob):
+    def add_representation(self, input, filter_lens, nb_filter, reg,
+            name, dropouts, hidden_dim, dropout_prob):
         """Add a representation for a task
 
         Parameters
@@ -174,16 +198,18 @@ class Model:
 
             convs_list.append(flats[filter_len])
 
-        # Run conv activations through a dense layer
-        self.model.add_node(Dense(hidden_dim, activation='relu', W_regularizer=l2(reg)),
-                       name=name,
-                       inputs=convs_list)
+        # Hack to merge together activation maps
+        self.model.add_node(Dense(output_dim=hidden_dim,
+                                  activation='relu',
+                                  W_regularizer=l2(reg)),
+                            name=name,
+                            inputs=convs_list)
 
         self.model.add_node(Dropout(dropout_prob), name=dropouts[name], input=name)
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
-            dropout_prob, dropout_emb, task_specific, reg, backprop_emb,
-            word2vec_init, exp_desc, exp_group, exp_id):
+            dropout_prob, dropout_emb, task_specific, reg, task_reg, resid_reg, resid_regs,
+            backprop_emb, word2vec_init, exp_desc, exp_group, exp_id):
         """Build keras model
 
         Start with declaring model names and have graph construction mirror it
@@ -201,17 +227,20 @@ class Model:
         shared_rep = 'shared_rep'
         dropouts[shared_rep] = shared_rep + '_'
 
-        if task_specific:
-            individual_reps = {}
-            for label in self.label_names:
-                individual_rep = '{}_indiv'.format(label)
+        # if task_specific:
+        #     individual_reps = {}
+        #     for label in self.label_names:
+        #         individual_rep = '{}_indiv'.format(label)
 
-                individual_reps[label] = individual_rep
-                dropouts[individual_rep] = individual_rep + '_'
+        #         individual_reps[label] = individual_rep
+        #         dropouts[individual_rep] = individual_rep + '_'
+
+        denses = {label: '{}_dense'.format(label) for label in self.label_names}
 
         probs = {label: '{}_probs'.format(label) for label in self.label_names}
+
         outputs = self.label_names
-            
+
         if self.pretrain:
             # Load architecture up to the shared layer and weights
 
@@ -258,7 +287,7 @@ class Model:
                                     dropouts=dropouts,
                                     hidden_dim=hidden_dim,
                                     dropout_prob=dropout_prob)
-
+            
             # Save the model up to this point in case we want to do pretraining
             # in the future!
             json_string = model.to_json()
@@ -276,31 +305,32 @@ class Model:
         # add on the task specific portion(s)!
         #
 
-        # Use individual representations?
-        if task_specific:
-            for label_name in self.label_names:
-                self.add_representation(input=dropouts[embedding],
-                                        filter_lens=filter_lens,
-                                        nb_filter=nb_filter,
-                                        reg=reg,
-                                        name=individual_reps[label_name],
-                                        dropouts=dropouts,
-                                        hidden_dim=hidden_dim,
-                                        dropout_prob=dropout_prob)
+        # if task_specific:
+        #     for label_name in self.label_names:
+        #         self.add_representation(input=dropouts[embedding],
+        #                                 filter_lens=filter_lens,
+        #                                 nb_filter=nb_filter,
+        #                                 reg=task_reg,
+        #                                 name=individual_reps[label_name],
+        #                                 dropouts=dropouts,
+        #                                 hidden_dim=hidden_dim,
+        #                                 dropout_prob=dropout_prob)
 
         for label, num_classes in zip(self.label_names, self.class_sizes):
-            # Fork the graph and predict probabilities for each target from shared representation
+            model.add_node(Dense(output_dim=hidden_dim,
+                                activation='relu',
+                                W_regularizer=l2(reg)),
+                        name=denses[label],
+                        input=dropouts[shared_rep])
 
             model.add_node(Dense(output_dim=num_classes,
                                  activation='softmax',
                                  W_regularizer=l2(reg),
                                  W_learning_rate_multiplier=self.softmax_multiplier,
                                  b_learning_rate_multiplier=self.softmax_multiplier),
-                           name=probs[label],
-                           input=dropouts[shared_rep] if not task_specific else None,
-                           inputs=[dropouts[shared_rep], dropouts[individual_reps[label]]] if task_specific else [])
+                            name=probs[label],
+                            input=denses[label])
 
-        for label in self.label_names:
             model.add_output(name=label, input=probs[label]) # separate output for each label
 
         model.compile(optimizer='adam',
@@ -319,14 +349,15 @@ class Model:
         self.model = model
 
     def train(self, nb_epoch, batch_size, val_every, val_weights, f1_weights,
-            class_weight, save_weights):
+            class_weight, save_weights, probs_loc, fit_generator, mb_ratio):
         """Train the model for a fixed number of epochs
 
         Set up callbacks first.
 
         """
         val_callback = ValidationCallback(self.val_data, batch_size,
-                self.num_train, val_every, val_weights, f1_weights, save_weights)
+                self.num_train, val_every, val_weights, f1_weights,
+                save_weights, probs_loc)
 
         if class_weight:
             class_weights_fname = 'composite_weights.p'
@@ -337,10 +368,49 @@ class Model:
         else:
             class_weights = {} # no weighting
 
-        history = self.model.fit(self.train_data, batch_size=batch_size,
-                                 nb_epoch=nb_epoch, verbose=2,
-                                 callbacks=[val_callback],
-                                 class_weight=class_weights)
+        if fit_generator:
+
+            def batch_generator():
+                """Perform stratified sampling
+                
+                It is assumed we are doing binary classification because it
+                doesn't make sense to do this in the multiclass setting.
+                
+                """
+                ys_train = self.ys_train.flatten() # assume no multi-task
+                class_counts = pd.Series(ys_train).value_counts()
+                rare_class, common_class = class_counts.argmin(), class_counts.argmax()
+
+                rare_idxs = np.argwhere(ys_train == rare_class).flatten()
+                common_idxs = np.argwhere(ys_train == common_class).flatten()
+
+                while True:
+                    # do stratified sampling
+                    rare_batch_idxs = np.random.choice(rare_idxs, size=int(batch_size*mb_ratio) + 1)
+                    common_batch_idxs = np.random.choice(common_idxs, size=int(batch_size*(1-mb_ratio)))
+                    batch_idxs = np.concatenate([rare_batch_idxs, common_batch_idxs])
+
+                    train_data = {}
+                    for label in self.label_names:
+                        train_data[label] = self.train_data[label][batch_idxs]
+
+                    train_data['input'] = self.train_data['input'][batch_idxs]
+
+                    yield train_data
+
+            self.model.fit_generator(batch_generator(),
+                                     samples_per_epoch=self.num_train/batch_size,
+                                     nb_epoch=nb_epoch,
+                                     verbose=2,
+                                     callbacks=[val_callback],
+                                     class_weight=class_weights)
+        else:
+            self.model.fit(self.train_data,
+                           batch_size=batch_size,
+                           nb_epoch=nb_epoch,
+                           verbose=2,
+                           callbacks=[val_callback],
+                           class_weight=class_weights)
 
 
 @plac.annotations(
@@ -353,6 +423,7 @@ class Model:
         dropout_prob=('dropout probability', 'option', None, float),
         dropout_emb=('perform dropout after the embedding layer', 'option', None, str),
         reg=('l2 regularization constant', 'option', None, float),
+        task_reg=('l2 regularization constant for task-specific representation', 'option', None, float),
         backprop_emb=('whether to backprop into embeddings', 'option', None, str),
         batch_size=('batch size', 'option', None, int),
         val_every=('number of times to compute validation per epoch', 'option', None, int),
@@ -365,12 +436,22 @@ class Model:
         lr_multipliers=('learning rate multipliers for shared representation and softmax layer', 'option', None, str),
         learning_curve_id=('id of the learning curve (for visualization!)', 'option', None, int),
         save_weights=('whether to save weights during training', 'option', None, str),
+        word_vectors=('what kind of word vectors to initialize with', 'option', None, str),
+        round_robin=('whether to do multitask learning in a round robin fashion', 'option', None, str),
+        resid_reg=('how much to regularize the residual weights', 'option', None, float),
+        resid_regs=('how residual weights', 'option', None, str),
+        embeddings_file=('name of embeddings file to load', 'option', None, str),
+        labels_file=('name of labels file to load', 'option', None, str),
+        fit_generator=('whether to use balanced minibatch sampling', 'option', None, str),
+        mb_ratio=('ratio at which to sample the rare class', 'option', None, float),
 )
 def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         nb_filter=729, filter_lens='1,2,3', hidden_dim=1024, dropout_prob=.5, dropout_emb='True',
-        reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
-        class_weight='False', word2vec_init='True', use_pretrained='None', num_train=10000,
-        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='False'):
+        reg=0, task_reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
+        class_weight='False', word2vec_init='True', use_pretrained='None', num_train=100000,
+        lr_multipliers='.0001,1', learning_curve_id=0, save_weights='True', word_vectors='pubmed',
+        round_robin='False', resid_reg=0., resid_regs='', embeddings_file='embeddings_info.p',
+        labels_file='composite', fit_generator='False', mb_ratio=.5):
     """Training process
 
     1. Load embeddings and labels
@@ -384,6 +465,7 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     use_pretrained = '' if use_pretrained == 'None' else use_pretrained
     pretrained_group, pretrained_id = use_pretrained.split(',') if use_pretrained else (None, None)
     lr_multipliers = [float(lr_multiplier) for lr_multiplier in lr_multipliers.split(',')]
+    if resid_regs: resid_regs = [float(rr) for rr in resid_regs.split(',')]
 
     # Build exp info string for visualization code...
     args = sys.argv[1:]
@@ -404,29 +486,34 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
     dropout_emb = dropout_prob if dropout_emb == 'True' else 1e-100
     word2vec_init = True if word2vec_init == 'True' else False
     save_weights = True if save_weights == 'True' else False
+    round_robin = True if round_robin == 'True' else False
+    fit_generator = True if fit_generator == 'True' else False
 
     # Make it so there are only nb_filter total - NOT nb_filter*len(filter_lens)
     nb_filter /= len(filter_lens)
 
-    m = Model(use_pretrained, pretrained_group, pretrained_id, lr_multipliers)
+    m = Model(use_pretrained, pretrained_group, pretrained_id, lr_multipliers,
+            round_robin, num_labels=len(labels))
 
-    m.load_embeddings()
-    m.load_labels(labels)
+    m.load_embeddings(embeddings_file, word_vectors)
+    m.load_labels(labels_file, labels)
     m.do_train_val_split(num_train)
     m.build_model(nb_filter, filter_lens, hidden_dim, dropout_prob, dropout_emb,
-                  task_specific, reg, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
+                  task_specific, reg, task_reg, resid_reg, resid_regs, backprop_emb, word2vec_init, exp_desc, exp_group, exp_id)
 
     # Weights
     weights_str = 'weights/{}/{}-{}.h5'
     val_weights = weights_str.format(exp_group, exp_id, 'val')
     f1_weights = weights_str.format(exp_group, exp_id, 'f1')
+    probs_loc = 'probs/{}/{}.p'.format(exp_group, exp_id)
 
     # Only load weights if we are not using pretraining (i.e. we're picking up where we left off)
     if not use_pretrained and os.path.isfile(val_weights):
         print >> sys.stderr, 'Loading weights from {}!'.format(val_weights)
         m.model.load_weights(val_weights)
 
-    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights, class_weight, save_weights)
+    m.train(nb_epoch, batch_size, val_every, val_weights, f1_weights,
+            class_weight, save_weights, probs_loc, fit_generator, mb_ratio)
 
 
 if __name__ == '__main__':
