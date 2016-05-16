@@ -199,7 +199,13 @@ class Model:
             convs_list.append(flats[filter_len])
 
         # Hack to merge together activation maps
-        self.model.add_node(Dropout(1e-100), name=dropouts[name], inputs=convs_list)
+        self.model.add_node(Dense(output_dim=hidden_dim,
+                                  activation='relu',
+                                  W_regularizer=l2(reg)),
+                            name=name,
+                            inputs=convs_list)
+
+        self.mode.add_node(Dropout(dropout_prob), name=dropouts[name], input=name)
 
     def build_model(self, nb_filter, filter_lens, hidden_dim,
             dropout_prob, dropout_emb, task_specific, reg, task_reg, resid_reg, resid_regs,
@@ -218,24 +224,16 @@ class Model:
         embedding = 'embedding'
         dropouts[embedding] = embedding + '_'
 
-        # shared_rep = 'shared_rep'
-        # dropouts[shared_rep] = shared_rep + '_'
+        shared_rep = 'shared_rep'
+        dropouts[shared_rep] = shared_rep + '_'
 
-        individual_reps = {}
-        for label in self.label_names:
-            individual_rep = '{}_indiv'.format(label)
+        # if task_specific:
+        #     individual_reps = {}
+        #     for label in self.label_names:
+        #         individual_rep = '{}_indiv'.format(label)
 
-            individual_reps[label] = individual_rep
-            dropouts[individual_rep] = individual_rep + '_'
-
-        if self.num_labels > 1:
-            #
-            # Residual layers
-            #
-            rests = {label: 'except_{}'.format(label) for label in self.label_names}
-            primes = {label: '{}_prime'.format(label) for label in self.label_names}
-            for label in self.label_names:
-                dropouts[primes[label]] = primes[label] + '_'
+        #         individual_reps[label] = individual_rep
+        #         dropouts[individual_rep] = individual_rep + '_'
 
         denses = {label: '{}_dense'.format(label) for label in self.label_names}
 
@@ -243,10 +241,6 @@ class Model:
 
         outputs = self.label_names
 
-        # Argument parsing
-        if not resid_regs:
-            resid_regs = [resid_reg]*self.num_labels
-            
         if self.pretrain:
             # Load architecture up to the shared layer and weights
 
@@ -284,23 +278,23 @@ class Model:
 
             model.add_node(Dropout(dropout_emb), name=dropouts[embedding], input=embedding)
 
-            # # Shared representation
-            # self.add_representation(input=dropouts[embedding],
-            #                         filter_lens=filter_lens,
-            #                         nb_filter=nb_filter,
-            #                         reg=reg,
-            #                         name=shared_rep,
-            #                         dropouts=dropouts,
-            #                         hidden_dim=hidden_dim,
-            #                         dropout_prob=dropout_prob)
-            #
-            # # Save the model up to this point in case we want to do pretraining
-            # # in the future!
-            # json_string = model.to_json()
-            # open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
+            # Shared representation
+            self.add_representation(input=dropouts[embedding],
+                                    filter_lens=filter_lens,
+                                    nb_filter=nb_filter,
+                                    reg=reg,
+                                    name=shared_rep,
+                                    dropouts=dropouts,
+                                    hidden_dim=hidden_dim,
+                                    dropout_prob=dropout_prob)
+            
+            # Save the model up to this point in case we want to do pretraining
+            # in the future!
+            json_string = model.to_json()
+            open('models/{}/{}-base.json'.format(exp_group, exp_id), 'w').write(json_string)
 
-            # # Pickle the experiment description so it can be easily loaded back in!
-            # pickle.dump(exp_desc, open('params/{}/{}.p'.format(exp_group, exp_id), 'wb'))
+            # Pickle the experiment description so it can be easily loaded back in!
+            pickle.dump(exp_desc, open('params/{}/{}.p'.format(exp_group, exp_id), 'wb'))
 
         #
         # Take notice!
@@ -311,62 +305,24 @@ class Model:
         # add on the task specific portion(s)!
         #
 
-        for label_name in self.label_names:
-            self.add_representation(input=dropouts[embedding],
-                                    filter_lens=filter_lens,
-                                    nb_filter=nb_filter,
-                                    reg=task_reg,
-                                    name=individual_reps[label_name],
-                                    dropouts=dropouts,
-                                    hidden_dim=hidden_dim,
-                                    dropout_prob=dropout_prob)
+        # if task_specific:
+        #     for label_name in self.label_names:
+        #         self.add_representation(input=dropouts[embedding],
+        #                                 filter_lens=filter_lens,
+        #                                 nb_filter=nb_filter,
+        #                                 reg=task_reg,
+        #                                 name=individual_reps[label_name],
+        #                                 dropouts=dropouts,
+        #                                 hidden_dim=hidden_dim,
+        #                                 dropout_prob=dropout_prob)
 
-        if self.num_labels > 1: # residual units
-            for label, num_classes, resid_reg in zip(self.label_names, self.class_sizes, resid_regs):
-                rest = [dropouts[individual_reps[lbl]] for lbl in self.label_names if not lbl == label]
-
-                model.add_node(Dense(output_dim=nb_filter*len(filter_lens),
-                                    activation='relu',
-                                    W_regularizer=l2(resid_reg)), #                                        |
-                            name=rests[label], # everything *except* the current representation as input v
-                            input=rest[0] if len(rest) == 1 else None,
-                            inputs=rest if len(rest) > 1 else None)
-
-                model.add_node(Dropout(1e-100),
-                            name=primes[label],
-                            inputs=[dropouts[individual_reps[label]], rests[label]], merge_mode='sum')
-
-                model.add_node(Dense(output_dim=hidden_dim,
-                                    activation='relu',
-                                    W_regularizer=l2(reg)),
-                            name=denses[label],
-                            input=primes[label])
-
-                model.add_node(Dense(output_dim=num_classes,
-                                    activation='softmax',
-                                    W_regularizer=l2(reg),
-                                    W_learning_rate_multiplier=self.softmax_multiplier,
-                                    b_learning_rate_multiplier=self.softmax_multiplier),
-                            name=probs[label],
-                            input=denses[label])
-
-                model.add_output(name=label, input=probs[label]) # separate output for each label
-        else:
-
-            #
-            # Just a dense layer
-            #
-
-            for label, num_classes in zip(self.label_names, self.class_sizes):
-                model.add_node(Dense(output_dim=hidden_dim,
-                                     activation='relu',
-                                     W_regularizer=l2(reg)),
-                               name=denses[label],
-                               input=dropouts[individual_reps[label]])
-
-        # Softmaxes and outputs
-        #
         for label, num_classes in zip(self.label_names, self.class_sizes):
+            model.add_node(Dense(output_dim=hidden_dim,
+                                activation='relu',
+                                W_regularizer=l2(reg)),
+                        name=denses[label],
+                        input=dropouts[shared_rep])
+
             model.add_node(Dense(output_dim=num_classes,
                                  activation='softmax',
                                  W_regularizer=l2(reg),
