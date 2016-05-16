@@ -9,6 +9,7 @@ from nltk import sent_tokenize, word_tokenize
 
 import keras
 from keras.preprocessing import sequence
+from keras.preprocessing.text import Tokenizer as KerasTokenizer
 
 from support import abstract2idxs_generator, length_generator
 
@@ -24,7 +25,7 @@ class Tokenizer:
         4. Compute maxlen based on the ratio and pad abstracts
 
         """
-        tok = keras.preprocessing.text.Tokenizer(filters=filters)
+        tok = KerasTokenizer(filters=filters)
 
         tok.fit_on_texts(abstracts)
         abstracts_idxed = tok.texts_to_sequences(abstracts)
@@ -35,14 +36,16 @@ class Tokenizer:
 
         # Compute maxlen based on the ratio and pad abstracts
         
-        lengths = pd.Series(list(length_generator(abstracts)))
-        for length in range(min(lengths), max(lengths)):
-            num_lengths = len(lengths[lengths <= length])
+        # lengths = pd.Series(list(length_generator(abstracts)))
+        # for length in range(min(lengths), max(lengths)):
+        #     num_lengths = len(lengths[lengths <= length])
 
-            if num_lengths / float(len(abstracts)) >= maxlen_ratio:
-                maxlen = length
+        #     if num_lengths / float(len(abstracts)) >= maxlen_ratio:
+        #         maxlen = length
 
-                break
+        #         break
+
+        maxlen = 464
 
         abstracts_padded = sequence.pad_sequences(abstracts_idxed, maxlen=maxlen)
 
@@ -77,7 +80,7 @@ class Tokenizer:
                     'idx2word': self.idx2word,
         }
 
-        pickle.dump(embeddings_info, open(pickle_name, 'wb'))
+        pickle.dump(embeddings_info, open('pickle/{}'.format(pickle_name), 'wb'))
 
     def test(self, abstract_idx):
         print self.abstracts[abstract_idx]
