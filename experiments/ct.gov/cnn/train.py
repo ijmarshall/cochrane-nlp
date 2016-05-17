@@ -450,8 +450,8 @@ def main(nb_epoch=5, labels='allocation,masking', task_specific='False',
         reg=0, task_reg=0, backprop_emb='False', batch_size=128, val_every=1, exp_group='', exp_id='',
         class_weight='False', word2vec_init='True', use_pretrained='None', num_train=100000,
         lr_multipliers='.0001,1', learning_curve_id=0, save_weights='True', word_vectors='pubmed',
-        round_robin='False', resid_reg=0., resid_regs='', embeddings_file='embeddings_info.p',
-        labels_file='composite', fit_generator='False', mb_ratio=.5):
+        round_robin='False', resid_reg=0., resid_regs='', embeddings_file='ct.gov_embeddings.p',
+        labels_file='ct.gov', fit_generator='False', mb_ratio=.5):
     """Training process
 
     1. Load embeddings and labels
